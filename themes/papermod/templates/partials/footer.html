@@ -1,14 +1,12 @@
 <footer class="footer">
+    <div>
+    {% include "partials/social_icons.html" %}
     {% if config.extra.papermod.copyright %}
     <span>{{ config.extra.papermod.copyright }}</span>
     {% else %}
     <span>&copy; {{ now() | date(format="%Y") }} <a href="{{ config.base_url }}">{{ config.author }}</a></span>
     {% endif %}
-    <span>
-        Powered by
-        <a href="https://www.getzola.org/" rel="noopener noreferrer" target="_blank">Zola</a> &
-        <a href="https://github.com/cydave/zola-theme-papermod" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+</div>
 </footer>
 
 {% if config.extra.papermod.show_scroll_to_top %}

@@ -9,15 +9,15 @@ I just pushed a working draft of the test bench code that has the necessities fo
 
 ## Test Bench Example
 
-Take a look at this revolutionary counter module I created.
+Take a look at this revolutionary counter module I created. 
 
-```
+```lucid
 module counter (
     input clk,
     output count[8]
 ) {
     dff counter[8] (.clk(clk))
-    
+
     always {
         counter.d = counter.q + 1
         count = counter.q
@@ -30,7 +30,7 @@ it actually work?!? There's no way to know. Oh wait, we could test it.
 
 Here is my test bench that does just that.
 
-```
+```lucid
 testBench myTestBench {
     sig clk // signal to use as my clock
     
@@ -74,13 +74,13 @@ parameters, but it could.
 
 For example, we could give it a parameter to repeat a specified number of times.
 
-```
+```lucid
 fun tickClock(times[32]) {
     repeat(times) {
         clk = 1
-        ${"$"}tick()
+        $tick()
         clk = 0
-        ${"$"}tick()
+        $tick()
     }
 }
 ```

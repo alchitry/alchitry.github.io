@@ -30,17 +30,12 @@
 <link rel="stylesheet" href="{{ get_url(path='css/styles.css') }}">
 <link rel="stylesheet" href="{{ get_url(path='css/override.css') }}">
 
-{% block head_favicons %}
-{# /* Favicons */}
-<link rel="icon" href="{{ site.Params.assets.favicon | default "favicon.ico" | absURL }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ site.Params.assets.favicon16x16 | default "favicon-16x16.png" | absURL }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ site.Params.assets.favicon32x32 | default "favicon-32x32.png" | absURL }}">
-<link rel="apple-touch-icon" href="{{ site.Params.assets.apple_touch_icon | default "apple-touch-icon.png" | absURL }}">
-<link rel="mask-icon" href="{{ site.Params.assets.safari_pinned_tab | default "safari-pinned-tab.svg" | absURL }}">
-<meta name="theme-color" content="{{ site.Params.assets.theme_color | default "#2e2e33" }}">
-<meta name="msapplication-TileColor" content="{{ site.Params.assets.msapplication_TileColor | default "#2e2e33" }}">
-#}
-{% endblock %}
+
+<link rel="icon" href="{{ get_url(path='favicon.svg')}}" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ get_url(path='favicon_16.png')}}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ get_url(path='favicon_32.png')}}">
+<link rel="apple-touch-icon" href="{{ get_url(path='apple-touch-icon.png')}}"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
 
 {% if config.generate_feed %}
 <link rel="alternate" type={% if config.feed_filename == "atom.xml" %}"application/atom+xml"{% else %}"application/rss+xml"{% endif %} title="RSS" href="{{ get_url(path=config.feed_filename) | safe }}">

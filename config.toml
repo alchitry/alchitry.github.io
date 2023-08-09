@@ -1,5 +1,6 @@
 # The URL the site will be built for
 base_url = "https://new.alchitry.com"
+author = "Alchitry"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -17,12 +18,15 @@ taxonomies = [
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = true
+extra_syntaxes_and_themes = ["syntaxes"]
+highlight_theme = "alchitry"
 
 [extra]
 # Put all your custom variables here
 
 [extra.papermod]
 title = "Alchitry"
+icon = "alchitry.svg"
 default_theme = "auto"
 theme = "dark"
 language_direction = "auto"
@@ -35,16 +39,16 @@ show_word_count = false
 show_post_nav_links = true
 show_post_meta = true
 default_toc_open = false
-edit_post_url = "https://github.com/cydave/zola-theme-papermod/tree/master"
+edit_post_url = "https://github.com/alchitry/alchitry.github.io/tree/master"
 #copyright = ""
 date_format = "%Y-%m-%d"
 navigation = [
-    { url = "$BASE_URL/news", title = "News" },
+    { url = "$BASE_URL/news", title = "News" }, 
     { url = "https://alchitry.com/", title = "Old Alchitry", is_external = true }
 ]
 
-home_title = "PaperMod"
-home_content = "Welcome to a demo of the PaperMod theme!<br><b>PaperMod</b> is a simple but fast and responsive theme with a useful feature-set that enhances UX.<br>Do give a 🌟 on Github !<br>PaperMod is based on the hugo-PaperMod theme."
+home_title = "Alchitry"
+home_content = "Welcome to the new Alchitry website! It is currently a work in progress..."
 social_icons = [
     { url = "https://github.com/alchitry", title = "GitHub", icon = "github" },
     { url = "$BASE_URL/atom.xml", title = "RSS", icon = "rss" },

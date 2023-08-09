@@ -1,0 +1,75 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/syntax.html
+name: Lucid
+file_extensions:
+  - luc
+scope: source.lucid
+contexts:
+  main:
+    # Strings begin and end with quotes, and use backslashes as an escape
+    # character
+    - match: '"'
+      scope: punctuation.definition.string.begin.lucid
+      push: double_quoted_string
+
+    # Comments begin with a '//' and finish at the end of the line
+    - match: '\/\/'
+      scope: punctuation.definition.comment.lucid
+      push: line_comment
+
+    # Block comments begin with a '/*' and finish at '*/'
+    - match: '\/\*'
+      scope: punctuation.definition.comment.begin.lucid
+      push: block_comment
+
+    # Keywords are if, else for and while.
+    # Note that blackslashes don't need to be escaped within single quoted
+    # strings in YAML. When using single quoted strings, only single quotes
+    # need to be escaped: this is done by using two single quotes next to each
+    # other.
+    - match: '\b(always|if|else|case|for|repeat|test|fun)\b'
+      scope: keyword.control.lucid
+
+    # Numbers
+    - match: '\b\d+\.\d+\b'
+      scope: constant.real.lucid
+
+    - match: '\b(?<![\d\.])\d*(?![\.\d])(b[01xXzZ]+|d\d+|h[a-fA-F0-9xXzZ]+)?\b'
+      scope: constant.numeric.lucid
+
+    - match: '\b[A-Z][A-Z0-9_]*[a-z][a-zA-Z0-9_]*\b'
+      scope: constant.name.lucid
+
+    - match: '\b(input|output|inout|var|sig|dff|fsm|const|struct|enum)\b'
+      scope: keyword.type.lucid
+
+    - match: '\b(module|global|testBench)\b'
+      scope: keyword.namespace.lucid
+
+    - match: '\b(signed|default)\b'
+      scope: keyword.signed.lucid
+
+    - match: '(([*!~+#\-\/:@|{}?^=><\]\[,();]+)|(c\{|x\{)|(\&(gt|lt|amp);))+'
+      scope: operator.lucid
+
+    - match: '\$\w*'
+      scope: function.lucid
+
+  double_quoted_string:
+    - meta_scope: string.quoted.double.lucid
+    - match: '\\.'
+      scope: constant.character.escape.lucid
+    - match: '"'
+      scope: punctuation.definition.string.end.lucid
+      pop: true
+
+  line_comment:
+    - meta_scope: comment.line.lucid
+    - match: $
+      pop: true
+
+  block_comment:
+    - meta_scope: comment.block.lucid
+    - match: '\*/'
+      pop: true
