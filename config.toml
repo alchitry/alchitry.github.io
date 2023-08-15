@@ -20,6 +20,7 @@ taxonomies = [
 highlight_code = true
 extra_syntaxes_and_themes = ["syntaxes"]
 highlight_theme = "alchitry"
+highlight_inline_lang = "lucid"
 
 [extra]
 # Put all your custom variables here
@@ -44,7 +45,8 @@ edit_post_url = "https://github.com/alchitry/alchitry.github.io/tree/master"
 date_format = "%Y-%m-%d"
 navigation = [
     { url = "$BASE_URL/news", title = "News" }, 
-    { url = "https://alchitry.com/", title = "Old Alchitry", is_external = true }
+    { url = "https://www.sparkfun.com/categories/tags/alchitry", title = "Shop", is_external = true },
+    { url = "https://alchitry.com/", title = "Old Alchitry", is_external = true },
 ]
 
 home_title = "Alchitry"
