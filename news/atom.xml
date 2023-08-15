@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title> - News</title>
+    <link href="https://new.alchitry.com/news/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://new.alchitry.com/news/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-06-07T00:00:00+00:00</updated>
+    <id>https://new.alchitry.com/news/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Alchitry Labs V2</title>
+        <published>2023-06-07T00:00:00+00:00</published>
+        <updated>2023-06-07T00:00:00+00:00</updated>
+        <author>
+          <name>Alchitry</name>
+        </author>
+        <link rel="alternate" href="https://new.alchitry.com/news/alchitry-labs-v2/" type="text/html"/>
+        <id>https://new.alchitry.com/news/alchitry-labs-v2/</id>
+        
+        <content type="html">&lt;p&gt;I am now starting to work on the UI of the Alchitry Labs rewrite!&lt;&#x2F;p&gt;
+&lt;p&gt;Alchitry Labs currently use UI toolkit, SWT. 
+This is the UI toolkit developed and used by Eclipse.
+At the time I started working on what was then the Mojo IDE, SWT was a solid choice.
+It allowed me to create a single UI that worked on Windows and Linux with minimal effort, and it looked native on both
+platforms.&lt;&#x2F;p&gt;
+&lt;p&gt;However, it hasn&#x27;t aged super well.&lt;&#x2F;p&gt;
+&lt;p&gt;I found it to be fairly limited when trying to do anything custom.
+For example, I wanted the project tree on the left side of the window to stay the same size when you resized the window.
+The main code editor should be the only thing that changes size to accommodate the new window size.
+SWT doesn&#x27;t allow for this, and instead you specify the size of each side as a percent.
+My workaround was to recalculate the percentages every time the window size changes to keep one side a fixed size.
+This mostly works, but if you resize the window a lot, you may notice the divider jumps around due to rounding errors.&lt;&#x2F;p&gt;
+&lt;p&gt;In newer versions of SWT, something changed&#x2F;broke that broke the tooltip window from popping up when hovering over an
+error in the text editor.
+I spend a stupid amount of time trying to figure out a fix for this before giving up and sticking with an old version
+of the library.
+This annoyingly prevents other bugs from getting fixed though.&lt;&#x2F;p&gt;
+&lt;p&gt;One of the worst offenders is the undo&#x2F;redo bug in the current Alchitry Labs. 
+I&#x27;ve spent days trying to get the undo&#x2F;redo function to be reliable, but for whatever reason, the way SWT handles the
+edit events have prevented me from getting it to always work. V2 already has a fully reliable undo&#x2F;redo working.&lt;&#x2F;p&gt;
+&lt;p&gt;TLDR, I&#x27;m moving to something else.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jetpack-compose&quot;&gt;Jetpack Compose&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#jetpack-compose&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;If you do any UI work and haven&#x27;t tried &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;JetBrains&#x2F;compose-multiplatform&quot;&gt;Jetpack Compose&lt;&#x2F;a&gt; you&#x27;re 
+missing out.&lt;&#x2F;p&gt;
+&lt;p&gt;This is a declarative UI framework originally developed for use on Android, but it has since made its way onto more 
+platforms including desktop.&lt;&#x2F;p&gt;
+&lt;p&gt;I find it a joy to use, and it doesn&#x27;t lock you into anything allowing me to create whatever custom UI elements or 
+tweaks I need.&lt;&#x2F;p&gt;
+&lt;p&gt;Unfortunately, the built-in text editor (TextField) has terrible performance if you are trying to edit any decent amount
+of text.
+This led me to write my own custom editor that has solid performance for thousands of lines of code.&lt;&#x2F;p&gt;
+&lt;p&gt;While this was a substantial amount of work, it also opens up potential in the future for doing cool tricks like 
+collapsable blocks. This was impossible with SWT.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;lucid-parser&quot;&gt;Lucid Parser&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#lucid-parser&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;I&#x27;ve also implemented the snapshots for &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and added &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$silentTick&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; which skips the snapshot step.
+The snapshots get compiled into a simulation result that holds the value of every signal in the design for every call
+of &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;This will allow the UI to display the results of the entire simulation.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-repo&quot;&gt;The Repo&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#the-repo&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The Lucid Parser repo has been renamed to &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;Alchitry-Labs-V2&quot;&gt;Alchitry Labs V2&lt;&#x2F;a&gt; and now 
+contains the UI and parser code. 
+This is where all the progress can be found.&lt;&#x2F;p&gt;
+&lt;p&gt;There is a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;Alchitry-Labs-V2&#x2F;discussions&quot;&gt;discussion page&lt;&#x2F;a&gt;, or you can 
+&lt;a href=&quot;mailto:justin@alchitry.com&quot;&gt;email me&lt;&#x2F;a&gt; and let me know your thoughts.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Lucid V2 - Update 2 - Test Benches</title>
+        <published>2023-06-01T00:00:00+00:00</published>
+        <updated>2023-06-01T00:00:00+00:00</updated>
+        <author>
+          <name>Alchitry</name>
+        </author>
+        <link rel="alternate" href="https://new.alchitry.com/news/lucid-v2-update-2/" type="text/html"/>
+        <id>https://new.alchitry.com/news/lucid-v2-update-2/</id>
+        
+        <content type="html">&lt;p&gt;Test benches are here!&lt;&#x2F;p&gt;
+&lt;p&gt;I just pushed a working draft of the test bench code that has the necessities for writing quick tests for you modules!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;test-bench-example&quot;&gt;Test Bench Example&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#test-bench-example&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Take a look at this revolutionary counter module I created. &lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#faac1f;&quot;&gt;module&lt;&#x2F;span&gt;&lt;span&gt; counter &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;input&lt;&#x2F;span&gt;&lt;span&gt; clk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;output&lt;&#x2F;span&gt;&lt;span&gt; count&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;dff&lt;&#x2F;span&gt;&lt;span&gt; counter&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;] (&lt;&#x2F;span&gt;&lt;span&gt;.clk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;clk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;))
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;always &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;        counter.d &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; counter.q &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;+ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1
+&lt;&#x2F;span&gt;&lt;span&gt;        count &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; counter.q
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;I designed it so that the output &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;count&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; will increment by one on every rising edge of the &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;clk&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; input. However, does 
+it actually work?!? There&#x27;s no way to know. Oh wait, we could test it.&lt;&#x2F;p&gt;
+&lt;p&gt;Here is my test bench that does just that.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#faac1f;&quot;&gt;testBench&lt;&#x2F;span&gt;&lt;span&gt; myTestBench &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;sig&lt;&#x2F;span&gt;&lt;span&gt; clk &lt;&#x2F;span&gt;&lt;span style=&quot;color:#969696;&quot;&gt;&#x2F;&#x2F; signal to use as my clock
+&lt;&#x2F;span&gt;&lt;span&gt;    
+&lt;&#x2F;span&gt;&lt;span&gt;    counter dut &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;.clk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;clk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#969696;&quot;&gt;&#x2F;&#x2F; device under test
+&lt;&#x2F;span&gt;&lt;span&gt;    
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;fun&lt;&#x2F;span&gt;&lt;span&gt; tickClock&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;        clk &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        clk &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;0
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;    
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;test&lt;&#x2F;span&gt;&lt;span&gt; simpleTest &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;        clk &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#969696;&quot;&gt;&#x2F;&#x2F; initialize the clock
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span&gt; i&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$print&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;dut.count&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$assert&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;dut.count &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;==&lt;&#x2F;span&gt;&lt;span&gt; i&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tickClock&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;        
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$assert&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;dut.count &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;== &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The insides of a &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#faac1f;&quot;&gt;testBench&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; are very similar to a &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#faac1f;&quot;&gt;module&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; with a couple of key differences. There are no ports
+or parameters and instead of &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;always&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; blocks you use &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;test&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;fun&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; blocks.&lt;&#x2F;p&gt;
+&lt;p&gt;On line 2, we create a signal named &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;clk&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; that will act as our clock.&lt;&#x2F;p&gt;
+&lt;p&gt;On line 4, we instantiate the device under test or &amp;quot;dut&amp;quot;. It is convention to call the module being tested &amp;quot;dut&amp;quot; but 
+there is nothing special about the name.&lt;&#x2F;p&gt;
+&lt;p&gt;Next, we have our function declaration. Functions have the same properties as tests, but they aren&#x27;t run directly. 
+Instead, functions are little pieces of helper code that can be called from tests.&lt;&#x2F;p&gt;
+&lt;p&gt;Here I defined the very common function of toggling the clock and called it &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;tickClock&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;. This function doesn&#x27;t have any
+parameters, but it could.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, we could give it a parameter to repeat a specified number of times.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;fun&lt;&#x2F;span&gt;&lt;span&gt; tickClock&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;times&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;32&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;]) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;times&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;        clk &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        clk &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;0
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Function arguments act the same as module inputs and can be multidimensional arrays or structs.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;test-bench-functions&quot;&gt;Test Bench Functions&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#test-bench-functions&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h3&gt;
+&lt;p&gt;Before we move on, let me quickly go over the couple of test bench specific functions that I&#x27;m using.&lt;&#x2F;p&gt;
+&lt;p&gt;The function &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is at the very core of the simulation. It initiates a simulation tick. So what is a simulation
+tick? This is when the simulator publishes all signal changes and recalculates the outputs for all the pieces in the 
+design whose input signals changed. Those output changes then trigger other updates if they are used as inputs. This 
+continues until the results of everything stabilize.&lt;&#x2F;p&gt;
+&lt;p&gt;The only time it won&#x27;t stabilize is if you have some kind of dependency loop like &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; b&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;b &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= ~&lt;&#x2F;span&gt;&lt;span&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;. In this case, 
+the simulator will quit after 1000 iterations. I chose this number as a seemingly nice upper bound, but it may change if
+I find designs often need more or fewer iterations. A loop like this would result in faulty hardware, and anything 
+requiring too many iterations to resolve would likely be too complicated to do in a single real clock cycle.&lt;&#x2F;p&gt;
+&lt;p&gt;So back to the test bench. Before we call &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;, first we need to set a value to all signals we are using. Signals 
+default to having a &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;bx&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; value so bad things will happen if we call &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; before setting a real value. By bad things,
+I mean that &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;bx&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; value will propagate throughout the design contaminating our counter.&lt;&#x2F;p&gt;
+&lt;p&gt;With &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;clk&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; set to 0, we call &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; to initialize the design.&lt;&#x2F;p&gt;
+&lt;p&gt;Next, we hit a &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; block that will repeat its contents 100 times and use the signal &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;i&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; as the iteration index.&lt;&#x2F;p&gt;
+&lt;p&gt;The first line in the loop prints the value of &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;dut.count&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; using the &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$print&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; function. This function takes one
+argument, the value to print. It currently outputs the value in the format &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;dut.count &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= {&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;00011100&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;} : &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;28&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; where the value
+is shown in its binary form as well as its decimal value (if it has one).&lt;&#x2F;p&gt;
+&lt;p&gt;The next line uses the &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$assert&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; function to check that the value of the counter matches the loop iteration we are on.
+The argument to &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$assert&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; can be anything, and it is treated as a boolean. That means if it is non-zero, nothing 
+happens, but if it is zero, the simulation is aborted and the &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$assert&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; that caused it is called out.&lt;&#x2F;p&gt;
+&lt;p&gt;This is very useful for checking values quickly without having to look back through the simulation manually to see if 
+values make sense.&lt;&#x2F;p&gt;
+&lt;p&gt;The last line in the loop is the call to the function &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tickClock&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; that we already defined.&lt;&#x2F;p&gt;
+&lt;p&gt;Finally, we end our test by checking that the counter output is 100 after the 100 cycles.&lt;&#x2F;p&gt;
+&lt;p&gt;This example is from one of the tests and can be found in the 
+&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;LucidParserV2&#x2F;blob&#x2F;9795d9dcea1a769be7567025b15607549c36edc3&#x2F;src&#x2F;test&#x2F;kotlin&#x2F;TestBenchTests.kt#L45&quot;&gt;repo here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;next-step&quot;&gt;Next Step&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#next-step&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The next step is to add snapshots of the entire design every time &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is called. This will allow for the 
+simulation results to be shown after it is run. Currently, it just runs discarding all intermediate values.&lt;&#x2F;p&gt;
+&lt;p&gt;I also plan to have a &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$silentTick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; or similarly named function that does a tick without taking a snapshot. This way
+you can use that when making the clock fall for most designs and avoid the overhead of an entire snapshot.&lt;&#x2F;p&gt;
+&lt;p&gt;As before, there is a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;LucidParserV2&#x2F;discussions&quot;&gt;discussion page&lt;&#x2F;a&gt; setup as part of the repo
+where you can let me know your thoughts.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Lucid V2 - Update 1</title>
+        <published>2023-05-30T00:00:00+00:00</published>
+        <updated>2023-05-30T00:00:00+00:00</updated>
+        <author>
+          <name>Alchitry</name>
+        </author>
+        <link rel="alternate" href="https://new.alchitry.com/news/lucid-v2-update-1/" type="text/html"/>
+        <id>https://new.alchitry.com/news/lucid-v2-update-1/</id>
+        
+        <content type="html">&lt;p&gt;I just pushed what I believe is the last piece of the core Lucid 2 rewrite. Since the last update, I added &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$widthOf&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;,
+&lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$fixedPoint&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;, &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$cFixedPoint&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;, and &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$fFixedPoint&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; functions.&lt;&#x2F;p&gt;
+&lt;p&gt;The &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$widthOf&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; function takes one argument and returns its width (number of bits). If the value is an array, the 
+returned value is also an array with each entry the width of the dimension. &lt;&#x2F;p&gt;
+&lt;p&gt;For example, &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$widthOf&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;({&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;8b0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;8b1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;})&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; will return an array &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; since the first dimension has two elements and the 
+inner dimension has 8. Remember that in Lucid (and all HDLs) arrays are indexed right to left to match bit numbers
+instead of left to right like most programming languages.&lt;&#x2F;p&gt;
+&lt;p&gt;If you read the &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;news&#x2F;lucid-v2&quot;&gt;original post&lt;&#x2F;a&gt;, you may remember for enums I presented the syntax
+&lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$widthOf&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;myFSM&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; to get the width of the enum. I ended up scrapping this since passing &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;myFSM&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; as an argument would 
+be a weird exception since you can&#x27;t use enums directly anywhere else. Instead, I added the &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;.WIDTH&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; constant just to 
+enums. So you can now get the width of an enum by using &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;myFSM.WIDTH&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; or &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$widthOf&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;myFSM.INIT&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; (where &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;INIT&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is any 
+member of &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;myFSM&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;).&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;fixed-point&quot;&gt;Fixed Point&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#fixed-point&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The fixed point functions work as expected. The basic one, &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$fixedPoint&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;, takes three arguments, the value to convert,
+the total width, and the fractional width. It returns the fixed point value that is closest to the given value.&lt;&#x2F;p&gt;
+&lt;p&gt;The function &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$cFixedPoint&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; takes the same arguments but returns the closet value that is greater than or equal to
+the given value.&lt;&#x2F;p&gt;
+&lt;p&gt;The function &lt;code class=&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$fFixedPoint&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is the same but returns the closet value that is less than or equal to the given value.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;interfaces&quot;&gt;Interfaces&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#interfaces&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;I attempted to implement interfaces, but along the way I discovered they were just too complicated to add at this point 
+for what I believe to be a relatively niche feature.&lt;&#x2F;p&gt;
+&lt;p&gt;They presented many weird cases that would be difficult to deal with such as an array of modules that used an interface.&lt;&#x2F;p&gt;
+&lt;p&gt;In the end, I decided using structs was a decent compromise to the added complexity.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;next-step&quot;&gt;Next Step&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#next-step&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The next step is to add test benches. I think I have most of this flushed out in my mind (again refer to the 
+&lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;news&#x2F;lucid-v2&quot;&gt;previous post&lt;&#x2F;a&gt; for details) but now it&#x27;s time to get it down in code.&lt;&#x2F;p&gt;
+&lt;p&gt;I don&#x27;t anticipate this being too difficult to write since the groundwork for simulations is already all there. In 
+&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;LucidParserV2&#x2F;blob&#x2F;466cdff73db24370cc8cf0f493eaa8d9a996ba21&#x2F;src&#x2F;test&#x2F;kotlin&#x2F;ModuleInstanceTests.kt#L79&quot;&gt;my tests&lt;&#x2F;a&gt;
+I&#x27;ve already simulated modules of counters.&lt;&#x2F;p&gt;
+&lt;p&gt;Once that&#x27;s done, it&#x27;ll be on to creating the Verilog translator.&lt;&#x2F;p&gt;
+&lt;p&gt;As before, there is a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;LucidParserV2&#x2F;discussions&quot;&gt;discussion page&lt;&#x2F;a&gt; setup as part of the repo
+where you can let me know your thoughts.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Lucid V2</title>
+        <published>2023-05-18T00:00:00+00:00</published>
+        <updated>2023-05-18T00:00:00+00:00</updated>
+        <author>
+          <name>Alchitry</name>
+        </author>
+        <link rel="alternate" href="https://new.alchitry.com/news/lucid-v2/" type="text/html"/>
+        <id>https://new.alchitry.com/news/lucid-v2/</id>
+        
+        <summary type="html">&lt;p&gt;A full rewrite of the Lucid parser in Alchitry Labs has been a long time coming.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>
