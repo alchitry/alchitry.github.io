@@ -571,7 +571,8 @@ pre:hover .copy-code {
   margin: 0 auto var(--content-gap);
 }
 .post-title {
-  margin-bottom: 2px;
+  margin-top: var(--gap);
+  margin-bottom: var(--gap);
   font-size: 40px;
 }
 .post-description {
