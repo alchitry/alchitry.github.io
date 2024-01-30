@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "7236c63e0aedb22d",
+        "id": "03bcee11efd362a9",
         "type": "tabs",
         "children": [
           {
-            "id": "55660fdb929c31af",
+            "id": "456ae4bcd6b9fef4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "news/Lucid-V2-Update-2.md",
+                "file": "news/Alchitry-Loader-V2.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "news/Lucid-V2-Update-2.md",
+                "file": "news/Alchitry-Loader-V2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "news/Lucid-V2-Update-2.md",
+                "file": "news/Alchitry-Loader-V2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "news/Lucid-V2-Update-2.md"
+                "file": "news/Alchitry-Loader-V2.md"
               }
             }
           }
@@ -146,15 +146,23 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "55660fdb929c31af",
+  "active": "456ae4bcd6b9fef4",
   "lastOpenFiles": [
+    "news/Alchitry-Labs-V2-Update-1.md",
+    "news/Alchitry-Labs-V2-Update-2.md",
+    "news/Alchitry-Labs-V2-Update-3.md",
+    "tags/_index.md",
+    "_index.md",
+    "[GitHub.md",
+    "().md",
+    "2.0.4-PREVIEW.md",
+    "news/Lucid-V2-Update-2.md",
+    "news/Alchitry-Loader-V2.md",
     "news/Lucid-V2-Update-1.md",
     "news/Lucid-V2.md",
+    "news/Alchitry-Labs-V2-CLI.md",
     "news/Alchitry-Labs-V2.md",
     "news/_index.md",
-    "_index.md",
-    "tags/_index.md",
-    "news/Lucid-V2-Update-2.md",
     "news",
     "posts/_index.md",
     "posts/Alchitry-Labs-V2.md",
@@ -168,11 +176,7 @@
     "posts/papermod-installation.md",
     "posts/markdown-example.md",
     "posts/2023-04-21_syntax_highlighting.md",
-    "posts/2023-04-07_example_post_2.md",
-    "posts/2023-04-07_example_post.md",
     "posts",
-    "News/Lucid-V2-Update-2.md",
-    "Untitled",
-    "News/Lucid-V2-Update-1.md"
+    "Untitled"
   ]
 }
