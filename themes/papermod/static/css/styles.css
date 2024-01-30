@@ -456,7 +456,7 @@ body:not(.dark) #sun {
 }
 code {
   direction: ltr;
-  font-family: Ubuntu Mono;
+  font-family: Ubuntu Mono, monospace;
 }
 div.highlight,
 pre {
