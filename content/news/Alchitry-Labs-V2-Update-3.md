@@ -1,6 +1,7 @@
 +++
 title = "Alchitry Labs V2 - Update 3"
 date = "2024-01-15"
+inline_language = "lucid"
 +++
 
 Simulations are now supported!

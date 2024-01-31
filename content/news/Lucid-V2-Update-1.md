@@ -1,6 +1,7 @@
 +++
 title = "Lucid V2 - Update 1"
 date = "2023-05-30"
+inline_language = "lucid"
 +++
 
 I just pushed what I believe is the last piece of the core Lucid 2 rewrite. Since the last update, I added `$widthOf()`,

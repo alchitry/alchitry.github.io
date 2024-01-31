@@ -1,6 +1,7 @@
 +++
 title = "Lucid V2 - Update 2 - Test Benches"
 date = "2023-06-01"
+inline_language = "lucid"
 +++
 
 Test benches are here!

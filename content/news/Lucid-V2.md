@@ -1,6 +1,7 @@
 +++
 title = "Lucid V2"
 date = "2023-05-18"
+inline_language = "lucid"
 +++
 
 A full rewrite of the Lucid parser in Alchitry Labs has been a long time coming.

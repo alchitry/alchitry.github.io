@@ -1,6 +1,7 @@
 +++
 title = "Alchitry Labs V2"
 date = "2023-06-07"
+inline_language = "lucid"
 +++
 
 I am now starting to work on the UI of the Alchitry Labs rewrite!

@@ -3,7 +3,7 @@ title = "Alchitry Labs V2 - Update 1"
 date = "2023-10-13"
 +++
 
-Today was the first time I've build a .bin file from Alchitry Labs V2!
+Today was the first time I built a .bin file from Alchitry Labs V2!
 
 Before we get too far ahead, there is a lot more to cover.
 
