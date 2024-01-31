@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "news/Alchitry-Loader-V2.md",
+                "file": "news/Alchitry-Labs-V2-Update-3.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "news/Alchitry-Loader-V2.md",
+                "file": "news/Alchitry-Labs-V2-Update-3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "news/Alchitry-Loader-V2.md",
+                "file": "news/Alchitry-Labs-V2-Update-3.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "news/Alchitry-Loader-V2.md"
+                "file": "news/Alchitry-Labs-V2-Update-3.md"
               }
             }
           }
@@ -148,19 +148,23 @@
   },
   "active": "456ae4bcd6b9fef4",
   "lastOpenFiles": [
-    "news/Alchitry-Labs-V2-Update-1.md",
-    "news/Alchitry-Labs-V2-Update-2.md",
+    "@.md",
     "news/Alchitry-Labs-V2-Update-3.md",
+    "news/Lucid-V2-Update-2.md",
+    "news/Lucid-V2-Update-1.md",
+    "news/Lucid-V2.md",
+    "@/news/Lucid-V2-Update-2.md",
+    "@/news",
+    "@",
+    "news/Alchitry-Labs-V2-Update-2.md",
+    "news/Alchitry-Labs-V2-Update-1.md",
+    "news/Alchitry-Labs-V2-CLI.md",
+    "news/Alchitry-Loader-V2.md",
     "tags/_index.md",
     "_index.md",
     "[GitHub.md",
     "().md",
     "2.0.4-PREVIEW.md",
-    "news/Lucid-V2-Update-2.md",
-    "news/Alchitry-Loader-V2.md",
-    "news/Lucid-V2-Update-1.md",
-    "news/Lucid-V2.md",
-    "news/Alchitry-Labs-V2-CLI.md",
     "news/Alchitry-Labs-V2.md",
     "news/_index.md",
     "news",
@@ -174,8 +178,6 @@
     "News/_index.md",
     "tags",
     "posts/papermod-installation.md",
-    "posts/markdown-example.md",
-    "posts/2023-04-21_syntax_highlighting.md",
     "posts",
     "Untitled"
   ]

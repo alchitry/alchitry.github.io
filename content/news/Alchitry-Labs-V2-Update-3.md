@@ -14,7 +14,7 @@ The new update, [2.0.4-PREVIEW](https://new.alchitry.com/Alchitry-Labs-V2/downlo
 
 To run a simulation you need to first create a test bench.
 
-I've covered these before when you could first run them from the command line so make sure to [check that out](https://alchitry.com/news/lucid-v2-update-2-test-benches) if you haven't already.
+I've covered these before when you could first run them from the command line so make sure to [check that out](@/news/Lucid-V2-Update-2.md) if you haven't already.
 
 There's been an addition to the `$print` function though. You can still pass it a signal directly for the old behavior, but you can now pass in a formatting string followed by the values to use.
 

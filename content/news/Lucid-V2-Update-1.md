@@ -4,8 +4,10 @@ date = "2023-05-30"
 inline_language = "lucid"
 +++
 
-I just pushed what I believe is the last piece of the core Lucid 2 rewrite. Since the last update, I added `$widthOf()`,
- `$fixedPoint()`, `$cFixedPoint()`, and `$fFixedPoint()` functions.
+I just pushed what I believe is the last piece of the core Lucid 2 rewrite.
+<!-- more -->
+
+Since the last update, I added `$widthOf()`, `$fixedPoint()`, `$cFixedPoint()`, and `$fFixedPoint()` functions.
 
 The `$widthOf()` function takes one argument and returns its width (number of bits). If the value is an array, the 
 returned value is also an array with each entry the width of the dimension. 

@@ -349,7 +349,7 @@ img {
   align-items: center;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1000px) {
   #menu {
     display: flex;
   }

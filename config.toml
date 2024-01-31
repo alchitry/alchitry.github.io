@@ -1,6 +1,6 @@
 # The URL the site will be built for
 base_url = "https://new.alchitry.com"
-author = "Alchitry"
+author = "Justin Rajewski"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -13,6 +13,9 @@ theme = "papermod"
 taxonomies = [
     { name = "tags", feed = true }
 ]
+
+generate_feed = true
+feed_filename = "atom.xml"
 
 [markdown]
 # Whether to do syntax highlighting
@@ -43,7 +46,8 @@ edit_post_url = "https://github.com/alchitry/alchitry.github.io/tree/master"
 #copyright = ""
 date_format = "%Y-%m-%d"
 navigation = [
-    { url = "$BASE_URL/news", title = "News" }, 
+    { url = "$BASE_URL/news", title = "News" },
+    { url = "$BASE_URL/boards", title = "Boards" },
     { url = "https://www.sparkfun.com/categories/tags/alchitry", title = "Shop", is_external = true },
     { url = "https://alchitry.com/", title = "Old Alchitry", is_external = true },
 ]
