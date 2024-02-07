@@ -4,28 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "03bcee11efd362a9",
+        "id": "bf9e80fe99270bce",
         "type": "tabs",
         "children": [
           {
-            "id": "456ae4bcd6b9fef4",
+            "id": "11034d8ec2bbf482",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorials/lucid_v1/Your-First-FPGA-Project.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "64fd2ede4f6f9fa0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Alchitry-Labs.md",
+                "file": "tutorials/setup/ISE.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tutorials/lucid_v1/Your-First-FPGA-Project.md",
+                "file": "tutorials/setup/ISE.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "tutorials/lucid_v1/Your-First-FPGA-Project.md",
+                "file": "tutorials/setup/ISE.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorials/lucid_v1/Your-First-FPGA-Project.md"
+                "file": "tutorials/setup/ISE.md"
               }
             }
           }
@@ -158,24 +146,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "456ae4bcd6b9fef4",
+  "active": "11034d8ec2bbf482",
   "lastOpenFiles": [
+    "tutorials/setup/iCEcube2.md",
+    "tutorials/setup/ISE.md",
+    "tutorials/setup/Vivado.md",
+    "Alchitry-Labs.md",
+    "tutorials/setup/_index.md",
+    "tutorials/lucid_v1/Your-First-FPGA-Project.md",
     "tutorials/lucid_v1/Your-First-FPGA-Project.md~",
     "@tutorials/setup/_index.md",
-    "tutorials/lucid_v1/Your-First-FPGA-Project.md",
     "@tutorials/setup",
     "@tutorials",
     "tutorials/Lucid-1-vs-2.md",
     "tutorials/_index.md",
-    "tutorials/setup/Vivado.md",
-    "tutorials/setup/ISE.md",
-    "tutorials/setup/iCEcube2.md",
-    "tutorials/setup/_index.md",
     "@/tutorials/setup/ViCEcube2.md",
     "@/tutorials/setup",
     "@/tutorials",
     "@",
-    "Alchitry-Labs.md",
     "news/Alchitry-Labs-V2.0.5-Simulations.md",
     "news/Alchitry-Labs-V2.md",
     "Counter.md",
@@ -194,7 +182,6 @@
     "_index.md",
     "news",
     "tags",
-    "posts",
-    "Untitled"
+    "posts"
   ]
 }
