@@ -80,6 +80,17 @@
         </dict>
         <dict>
             <key>name</key>
+            <string>Global</string>
+            <key>scope</key>
+            <string>constant.global</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#DA5A8C</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
             <string>Keyword</string>
             <key>scope</key>
             <string>keyword.control</string>

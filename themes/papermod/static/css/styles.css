@@ -258,7 +258,6 @@ img {
 }
 .nav {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   max-width: calc(var(--nav-width) + var(--gap) * 2);
   margin-inline-start: auto;
@@ -341,7 +340,7 @@ img {
 
 #overlayNavOpen span {
   font-size: 50px;
-  padding-right: 20px;
+  padding: 20px;
 }
 
 #overlayNavOpen {
@@ -349,7 +348,7 @@ img {
   align-items: center;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1100px) {
   #menu {
     display: flex;
   }
@@ -734,7 +733,7 @@ pre:hover .copy-code {
 .post-content pre code {
   display: block;
   margin: auto 0;
-  padding: 10px;
+  padding: 12px 20px 12px 20px;
   color: #d5d5d6;
   background: var(--hljs-bg) !important;
   border-radius: var(--radius);
@@ -757,7 +756,7 @@ pre:hover .copy-code {
 }
 .post-content img {
   border-radius: 4px;
-  margin: 1rem 0;
+  margin: 1rem auto;
 }
 .post-content img[src*="#center"] {
   margin: 1rem auto;

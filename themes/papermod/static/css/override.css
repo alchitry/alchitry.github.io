@@ -3,8 +3,7 @@
     border-radius: var(--radius);
 }
 .post-content pre code > table {
-    display: table;
-    margin: 10px auto;
+    margin: 0px auto;
     border-radius: var(--radius);
     border-spacing: 0;
     border-collapse: collapse;
@@ -12,6 +11,7 @@
     width: 100%;
 }
 .post-content pre code > table td {
+    min-width: 0;
     vertical-align: top;
     padding: 0;
     margin: 0;

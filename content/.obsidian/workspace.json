@@ -13,7 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "news/Alchitry-Labs-V2-Update-3.md",
+                "file": "tutorials/lucid_v1/Your-First-FPGA-Project.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "64fd2ede4f6f9fa0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Alchitry-Labs.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "news/Alchitry-Labs-V2-Update-3.md",
+                "file": "tutorials/lucid_v1/Your-First-FPGA-Project.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "news/Alchitry-Labs-V2-Update-3.md",
+                "file": "tutorials/lucid_v1/Your-First-FPGA-Project.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "news/Alchitry-Labs-V2-Update-3.md"
+                "file": "tutorials/lucid_v1/Your-First-FPGA-Project.md"
               }
             }
           }
@@ -148,36 +160,38 @@
   },
   "active": "456ae4bcd6b9fef4",
   "lastOpenFiles": [
-    "@.md",
-    "news/Alchitry-Labs-V2-Update-3.md",
-    "news/Lucid-V2-Update-2.md",
-    "news/Lucid-V2-Update-1.md",
-    "news/Lucid-V2.md",
-    "@/news/Lucid-V2-Update-2.md",
-    "@/news",
+    "tutorials/Lucid-1-vs-2.md",
+    "tutorials/_index.md",
+    "tutorials/setup/Vivado.md",
+    "tutorials/setup/ISE.md",
+    "tutorials/setup/iCEcube2.md",
+    "tutorials/setup/_index.md",
+    "@/tutorials/setup/ViCEcube2.md",
+    "@/tutorials/setup",
+    "@/tutorials",
     "@",
+    "Alchitry-Labs.md",
+    "tutorials/lucid_v1/Your-First-FPGA-Project.md",
+    "news/Alchitry-Labs-V2.0.5-Simulations.md",
+    "news/Alchitry-Labs-V2.md",
+    "Counter.md",
+    "news/Alchitry-Labs-V2-Update-3.md",
+    "news/Lucid-V2.md",
+    "news/Alchitry-Loader-V2.md",
     "news/Alchitry-Labs-V2-Update-2.md",
     "news/Alchitry-Labs-V2-Update-1.md",
     "news/Alchitry-Labs-V2-CLI.md",
-    "news/Alchitry-Loader-V2.md",
+    "@.md",
+    "news/Lucid-V2-Update-2.md",
+    "news/Lucid-V2-Update-1.md",
+    "@/news/Lucid-V2-Update-2.md",
+    "@/news",
     "tags/_index.md",
     "_index.md",
     "[GitHub.md",
     "().md",
-    "2.0.4-PREVIEW.md",
-    "news/Alchitry-Labs-V2.md",
-    "news/_index.md",
     "news",
-    "posts/_index.md",
-    "posts/Alchitry-Labs-V2.md",
-    "posts/Lucid-V2-Update-2.md",
-    "posts/Lucid-V2-Update-1.md",
-    "posts/Lucid-V2.md",
-    "News/Alchitry-Labs-V2.md",
-    "News/Lucid-V2.md",
-    "News/_index.md",
     "tags",
-    "posts/papermod-installation.md",
     "posts",
     "Untitled"
   ]

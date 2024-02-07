@@ -35,16 +35,19 @@ contexts:
     - match: '\b\d+\.\d+\b'
       scope: constant.real.lucid
 
-    - match: '\b(?<![\d\.])\d*(?![\.\d])(b[01xXzZ]+|d\d+|h[a-fA-F0-9xXzZ]+)?\b'
+    - match: '\b\d+(?!\.)|\d*(?!\.)b([01XzZ]|(x(?!{)))+|\d*(?!\.)d\d+|\d*(?!\.)h([a-fA-F0-9XzZ]|(x(?!{)))+'
       scope: constant.numeric.lucid
 
-    - match: '\b[A-Z][A-Z0-9_]*[a-z][a-zA-Z0-9_]*\b'
+    - match: '\b[A-Z][A-Z0-9_]*([a-wyz]|(c(?!{)))([a-wyzA-Z0-9_]|(x(?!{)))*'
+      scope: constant.global.lucid
+
+    - match: '\b[A-Z][A-Z0-9_]*'
       scope: constant.name.lucid
 
     - match: '\b(input|output|inout|var|sig|dff|fsm|const|struct|enum)\b'
       scope: keyword.type.lucid
 
-    - match: '\b(module|global|testBench)\b'
+    - match: '\b(module|global|testBench|always|test|fun)\b'
       scope: keyword.namespace.lucid
 
     - match: '\b(signed|default)\b'
