@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorials/lucid_v1/Synchronous-Logic.md",
+                "file": "tutorials/lucid-1-vs-2.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "947fa606fccecea1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "tutorials/setup/ise.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tutorials/lucid_v1/Synchronous-Logic.md",
+                "file": "tutorials/setup/ise.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "tutorials/lucid_v1/Synchronous-Logic.md",
+                "file": "tutorials/setup/ise.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorials/lucid_v1/Synchronous-Logic.md"
+                "file": "tutorials/setup/ise.md"
               }
             }
           }
@@ -146,43 +159,43 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "11034d8ec2bbf482",
+  "active": "947fa606fccecea1",
   "lastOpenFiles": [
-    "tutorials/lucid_v1/Your-First-FPGA-Project.md",
-    "tutorials/lucid_v1/Synchronous-Logic.md",
-    "news/Alchitry-Labs-V2.md",
-    "tutorials/_index.md",
-    "news/_index.md",
-    "tutorials/background/_index.md",
-    "tutorials/background/What-is-an-FPGA.md",
-    "tutorials/lucid_v1/_index.md",
-    "tutorials/background/Subtraction.md",
-    "tutorials/background/Addition.md",
-    "tutorials/background/Multiplexers.md",
-    "tutorials/background/Encodings.md",
-    "tutorials/background/How-does-an-FPGA-work.md",
-    "tutorials/background/Combinational-Logic.md",
-    "tutorials/background/Digital-Logic.md",
-    "tutorials/setup/iCEcube2.md",
+    "tutorials/setup/icecube2.md",
     "tutorials/setup/_index.md",
-    "tutorials/setup/ISE.md",
-    "tutorials/background",
-    "tutorials/setup/Vivado.md",
-    "Alchitry-Labs.md",
-    "tutorials/lucid_v1/Your-First-FPGA-Project.md~",
-    "@tutorials/setup/_index.md",
-    "@tutorials/setup",
-    "@tutorials",
-    "tutorials/Lucid-1-vs-2.md",
-    "@/tutorials/setup/ViCEcube2.md",
-    "@/tutorials/setup",
-    "@/tutorials",
+    "alchitry-labs.md",
+    "boards/_index.md",
+    "tutorials/_index.md",
+    "tutorials/projects/hexapod.md",
+    "tutorials/projects/clock-clock.md",
+    "tutorials/projects/gpu.md",
+    "tutorials/verilog/_index.md",
+    "tutorials/lucid-1-vs-2.md",
+    "tutorials/projects/_index.md",
+    "tutorials/verilog/mojo/_index.md",
+    "tutorials/projects",
+    "tutorials/verilog/verilog-operators.md",
+    "tutorials/verilog/mojo/writing-test-benches.md",
+    "tutorials/verilog/mojo/analog-inputs.md",
+    "tutorials/verilog/mojo/using-core-generator.md",
+    "tutorials/verilog/mojo",
+    "tutorials/verilog/mojo/embedded-processors.md",
+    "tutorials/verilog/mojo/sdram.md",
+    "tutorials/verilog/mojo/memory-mapping.md",
+    "tutorials/verilog/mojo/serial-peripheral-interface.md",
+    "tutorials/verilog/mojo/asynchronous-serial.md",
+    "tutorials/verilog/mojo/avr-interface.md",
+    "tutorials/verilog/mojo/servos.md",
+    "tutorials/verilog/mojo/hello-world.md",
+    "tutorials/verilog/mojo/finite-state-machines.md",
+    "tutorials/verilog/mojo/fpga-timing.md",
+    "tutorials/verilog",
+    "tutorials/lucid_v1/mojo",
+    "@/boards",
     "@",
-    "news/Alchitry-Labs-V2.0.5-Simulations.md",
-    "Counter.md",
-    "news/Alchitry-Labs-V2-Update-3.md",
-    "@/news",
-    "news",
-    "tags"
+    "tutorials/background",
+    "tutorials/lucid_v1/Your-First-FPGA-Project.md~",
+    "@tutorials/setup",
+    "@tutorials"
   ]
 }

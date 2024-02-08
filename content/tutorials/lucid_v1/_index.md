@@ -4,4 +4,4 @@ sort_by = "weight"
 paginate_by = 10
 +++
 
-These are the original Lucid tutorials.
+These are the original Lucid tutorials for the Alchitry boards. For the Mojo, [click here](@/tutorials/lucid_v1/mojo/_index.md).
