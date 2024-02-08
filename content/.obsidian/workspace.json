@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tutorials/setup/ISE.md",
+                "file": "tutorials/lucid_v1/Synchronous-Logic.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tutorials/setup/ISE.md",
+                "file": "tutorials/lucid_v1/Synchronous-Logic.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "tutorials/setup/ISE.md",
+                "file": "tutorials/lucid_v1/Synchronous-Logic.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tutorials/setup/ISE.md"
+                "file": "tutorials/lucid_v1/Synchronous-Logic.md"
               }
             }
           }
@@ -148,40 +148,41 @@
   },
   "active": "11034d8ec2bbf482",
   "lastOpenFiles": [
+    "tutorials/lucid_v1/Your-First-FPGA-Project.md",
+    "tutorials/lucid_v1/Synchronous-Logic.md",
+    "news/Alchitry-Labs-V2.md",
+    "tutorials/_index.md",
+    "news/_index.md",
+    "tutorials/background/_index.md",
+    "tutorials/background/What-is-an-FPGA.md",
+    "tutorials/lucid_v1/_index.md",
+    "tutorials/background/Subtraction.md",
+    "tutorials/background/Addition.md",
+    "tutorials/background/Multiplexers.md",
+    "tutorials/background/Encodings.md",
+    "tutorials/background/How-does-an-FPGA-work.md",
+    "tutorials/background/Combinational-Logic.md",
+    "tutorials/background/Digital-Logic.md",
     "tutorials/setup/iCEcube2.md",
+    "tutorials/setup/_index.md",
     "tutorials/setup/ISE.md",
+    "tutorials/background",
     "tutorials/setup/Vivado.md",
     "Alchitry-Labs.md",
-    "tutorials/setup/_index.md",
-    "tutorials/lucid_v1/Your-First-FPGA-Project.md",
     "tutorials/lucid_v1/Your-First-FPGA-Project.md~",
     "@tutorials/setup/_index.md",
     "@tutorials/setup",
     "@tutorials",
     "tutorials/Lucid-1-vs-2.md",
-    "tutorials/_index.md",
     "@/tutorials/setup/ViCEcube2.md",
     "@/tutorials/setup",
     "@/tutorials",
     "@",
     "news/Alchitry-Labs-V2.0.5-Simulations.md",
-    "news/Alchitry-Labs-V2.md",
     "Counter.md",
     "news/Alchitry-Labs-V2-Update-3.md",
-    "news/Lucid-V2.md",
-    "news/Alchitry-Loader-V2.md",
-    "news/Alchitry-Labs-V2-Update-2.md",
-    "news/Alchitry-Labs-V2-Update-1.md",
-    "news/Alchitry-Labs-V2-CLI.md",
-    "@.md",
-    "news/Lucid-V2-Update-2.md",
-    "news/Lucid-V2-Update-1.md",
-    "@/news/Lucid-V2-Update-2.md",
     "@/news",
-    "tags/_index.md",
-    "_index.md",
     "news",
-    "tags",
-    "posts"
+    "tags"
   ]
 }

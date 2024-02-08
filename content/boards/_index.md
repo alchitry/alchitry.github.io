@@ -7,4 +7,4 @@ template = "custom-section.html"
 
 Test index page
 
-[Alchitry Au](@/boards/Alchitry-Au.md)
+[Alchitry Au](@/boards/alchitry-au.md)
