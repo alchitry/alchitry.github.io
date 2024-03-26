@@ -55,7 +55,7 @@ navigation = [
 ]
 
 home_title = "Alchitry"
-home_content = "Welcome to the new Alchitry website! It is currently a work in progress... The layout for all the pages are here but most are still blank."
+home_content = "Welcome to the new Alchitry website! It is currently a work in progress... Visit [the old site](https://old.alchitry.com) for any missing content."
 social_icons = [
     { url = "https://github.com/alchitry", title = "GitHub", icon = "github" },
     { url = "$BASE_URL/atom.xml", title = "RSS", icon = "rss" },
