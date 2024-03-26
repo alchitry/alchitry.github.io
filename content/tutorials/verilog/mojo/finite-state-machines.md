@@ -3,4 +3,4 @@ title = "Finite State Machines"
 weight = 9
 +++
 
-TODO
+TODO: [Visit the old page until this is ported](https://old.alchitry.com/finite-state-machines-verilog)

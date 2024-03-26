@@ -50,6 +50,7 @@ navigation = [
     { url = "$BASE_URL/boards", title = "Boards" },
     { url = "$BASE_URL/alchitry-labs", title = "Alchitry Labs" },
     { url = "$BASE_URL/tutorials", title = "Tutorials" },
+    { url = "https://forum.alchitry.com", title = "Forum", is_external = true },
     { url = "https://www.sparkfun.com/categories/tags/alchitry", title = "Shop", is_external = true },
     { url = "https://old.alchitry.com/", title = "Old Alchitry", is_external = true },
 ]
