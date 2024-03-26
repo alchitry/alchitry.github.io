@@ -4,7 +4,7 @@ date = "2024-02-06"
 inline_language = "lucid"
 +++
 
-[Version 2.0.5-Preview](https://new.alchitry.com/Alchitry-Labs-V2/download.html) of Alchitry Labs is now available. It now supports simulating the main Alchitry boards as well as the Io Element.
+[Version 2.0.5-Preview](https://labs.alchitry.com/download.html) of Alchitry Labs is now available. It now supports simulating the main Alchitry boards as well as the Io Element.
 <!-- more -->
 
 ![Alchitry Labs V2.0.5 Preview](https://cdn.alchitry.com/labs-v2/alchitry-labs-2.0.5-preview.png)

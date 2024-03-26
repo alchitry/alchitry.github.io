@@ -26,7 +26,7 @@ The only downside right now is that it doesn't support Linux AArch64 (ARM). I be
 
 Now that I have this all setup, I can run a single command that builds my project, creates update packages, creates an update website, and pushes it all to GitHub.
 
-You can now download the latest version from the [GitHub page here](https://alchitry.github.io/Alchitry-Labs-V2/download.html)
+You can now download the latest version from the [GitHub page here](https://labs.alchitry.com/download.html)
 
 I'm currently just self signing everything. This only really matters for Windows and Macs where you'll see more security warnings when trying to install it.
 
@@ -84,4 +84,4 @@ Building Au projects is accessible from the command line interface now.
 
 If you want to check out the progress, see [the GitHub page](https://github.com/alchitry/Alchitry-Labs-V2).
 
-You can install the [latest version here](https://alchitry.github.io/Alchitry-Labs-V2/download.html).
+You can install the [latest version here](https://labs.alchitry.com/download.html).
