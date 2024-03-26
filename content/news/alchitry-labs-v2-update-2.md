@@ -61,7 +61,7 @@ I have a feeling that most people are using either one or the other and don't of
 
 ## Test It Out
 
-There is still a lot of features missing, but if you would like you can download the [latest version here](https://labs.alchitry.com/download.html).
+There is still a lot of features missing, but if you would like you can download the [latest version here](https://alchitry.com/Alchitry-Labs-V2/download.html).
 
 Everything should be there to make a simple project, build, and load it to any of the Alchitry boards.
 

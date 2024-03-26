@@ -1,6 +1,6 @@
 author = "cydave"
 title = "PaperMod"
-base_url = "https://new.alchitry.com"
+base_url = "https://alchitry.com"
 compile_sass = true
 build_search_index = true
 generate_feed = true

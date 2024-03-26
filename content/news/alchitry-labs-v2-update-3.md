@@ -10,7 +10,7 @@ Simulations are now supported!
 
 ## Test Benches
 
-The new update, [2.0.4-PREVIEW](https://labs.alchitry.com/download.html), now has the first draft of the
+The new update, [2.0.4-PREVIEW](https://alchitry.com/Alchitry-Labs-V2/download.html), now has the first draft of the
 simulation GUI.
 
 To run a simulation you need to first create a test bench.
