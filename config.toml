@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://new.alchitry.com"
+base_url = "https://alchitry.com"
 author = "Justin Rajewski"
 
 # Whether to automatically compile all Sass files in the sass directory
@@ -51,7 +51,7 @@ navigation = [
     { url = "$BASE_URL/alchitry-labs", title = "Alchitry Labs" },
     { url = "$BASE_URL/tutorials", title = "Tutorials" },
     { url = "https://www.sparkfun.com/categories/tags/alchitry", title = "Shop", is_external = true },
-    { url = "https://alchitry.com/", title = "Old Alchitry", is_external = true },
+    { url = "https://old.alchitry.com/", title = "Old Alchitry", is_external = true },
 ]
 
 home_title = "Alchitry"
