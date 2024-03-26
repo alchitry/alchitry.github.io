@@ -17,6 +17,10 @@ taxonomies = [
 generate_feed = true
 feed_filename = "atom.xml"
 
+[link_checker]
+internal_level = "error"
+external_level = "warn"
+
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
@@ -59,5 +63,6 @@ home_title = "Alchitry"
 home_content = "Welcome to the new Alchitry website! It is currently a work in progress... Visit [the old site](https://old.alchitry.com) for any missing content."
 social_icons = [
     { url = "https://github.com/alchitry", title = "GitHub", icon = "github" },
+    { url = "https://youtube.com/c/alchitry", title = "YouTube", icon = "youtube" },
     { url = "$BASE_URL/atom.xml", title = "RSS", icon = "rss" },
 ]
