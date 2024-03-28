@@ -2,6 +2,7 @@
 title = "Mojo"
 sort_by = "weight"
 paginate_by = 10
+ignored_pages = ["resume.md"]
 +++
 
 These are the legacy Verilog tutorials for the Mojo.

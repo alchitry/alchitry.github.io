@@ -94,7 +94,7 @@ The firmware is now updated.
 
 To update the Mojo in Windows you will need to download FLIP.
 
-[FLIP Download Page](http://www.atmel.com/tools/FLIP.aspx)
+[FLIP Download Page](https://www.microchip.com/en-us/development-tool/flip)
 
 There are two flavors of FLIP, one with a Java Runtime included and one without. Either will work as long as you have Java installed on your computer. If you are unsure if you have Java or not, download the one with the Runtime included.
 

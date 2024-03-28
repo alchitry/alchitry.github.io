@@ -19,7 +19,7 @@ checks by having null safe types built into the language.
 
 ## Breaking Changes
 
-I'm also taking this opportunity to reimagine some aspects of Lucid. Because of this, Lucid 2 will break compatibility
+I'm also taking this opportunity to re-imagine some aspects of Lucid. Because of this, Lucid 2 will break compatibility
 with the original Lucid.
 
 For example, currently you can use the `.WIDTH` property of signals in Lucid to access their dimensions (number of bits).
