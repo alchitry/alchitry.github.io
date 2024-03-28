@@ -8,13 +8,13 @@ This tutorial covers the various operators available in Verilog. If you have pro
 
 ### Bitwise Operators
 
-|Function|Operator|
-|---|---|
-|NOT|~|
-|AND|&|
-|OR|\||
-|XOR|^|
-|XNOR|~^ or ^~|
+| Function | Operator   |
+| -------- | ---------- |
+| NOT      | ~          |
+| AND      | &          |
+| OR       | \|         |
+| XOR      | ^          |
+| XNOR     | \~^ or ^\~ |
 
 These operators are called bitwise operators because they operate on each bit individually. These are used to perform basic logic functions and they get synthesized into their equivalent logic gate.
 
