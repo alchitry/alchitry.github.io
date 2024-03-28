@@ -72,7 +72,7 @@ versions that generate the closet value above or below the given value respectiv
 I'm also planning to implement interfaces. These will basically be like `struct` but each member will have a direction
 associated with it. I found myself often creating two `struct` where one would be for inputs and one would be for 
 outputs. For example, the `memory.in` and `memory.out` structs used by the 
-[DDR interface](https://cheetah-butterfly-yrct.squarespace.com/config/).
+[DDR interface](@/tutorials/lucid_v1/ddr3-memory.md).
 
 Interfaces will allow combining these into a single port. There will be "a" and "b" versions of each interface where
 the "b" version is a mirrored copy of "a" (inputs are outputs, outputs are inputs). That way a module with an "a" port 
