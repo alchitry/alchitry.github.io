@@ -457,6 +457,10 @@ code {
   direction: ltr;
   font-family: Ubuntu Mono, monospace;
 }
+code.short {
+  max-height: 500px;
+  overflow: scroll;
+}
 div.highlight,
 pre {
   position: relative;

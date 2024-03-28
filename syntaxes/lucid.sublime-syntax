@@ -35,7 +35,7 @@ contexts:
     - match: '\b\d+\.\d+\b'
       scope: constant.real.lucid
 
-    - match: '\b\d+(?!\.)|\d*(?!\.)b([01XzZ]|(x(?!{)))+|\d*(?!\.)d\d+|\d*(?!\.)h([a-fA-F0-9XzZ]|(x(?!{)))+'
+    - match: '\b\d+(?!\.)|\d*(?!\.)b([01XzZ]|(x(?!{)))+|\d*(?!\.)d\d+|\d*(?!\.)h([a-fA-F0-9XzZ]|(x(?!{)))+\gm'
       scope: constant.numeric.lucid
 
     - match: '\b[A-Z][A-Z0-9_]*([a-wyz]|(c(?!{)))([a-wyzA-Z0-9_]|(x(?!{)))*'
@@ -47,7 +47,7 @@ contexts:
     - match: '\b(input|output|inout|var|sig|dff|fsm|const|struct|enum)\b'
       scope: keyword.type.lucid
 
-    - match: '\b(module|global|testBench|always|test|fun)\b'
+    - match: '\b(module|global|testBench)\b'
       scope: keyword.namespace.lucid
 
     - match: '\b(signed|default)\b'

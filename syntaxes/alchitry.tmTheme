@@ -95,7 +95,7 @@
                 <key>name</key>
                 <string>Keyword</string>
                 <key>scope</key>
-                <string>keyword.control</string>
+                <string>keyword.control, keyword.other</string>
                 <key>settings</key>
                 <dict>
                     <key>fontStyle</key>
@@ -108,7 +108,7 @@
                 <key>name</key>
                 <string>Type</string>
                 <key>scope</key>
-                <string>keyword.type</string>
+                <string>keyword.type, storage.type</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
@@ -132,7 +132,7 @@
                 <key>name</key>
                 <string>Operator</string>
                 <key>scope</key>
-                <string>operator</string>
+                <string>operator, keyword.operator, storage.modifier</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
@@ -176,7 +176,7 @@
                 <key>name</key>
                 <string>Keyword, Storage</string>
                 <key>scope</key>
-                <string>keyword, storage.type, storage.modifier</string>
+                <string>keyword</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
@@ -187,7 +187,7 @@
                 <key>name</key>
                 <string>Operator, Misc</string>
                 <key>scope</key>
-                <string>keyword.operator, constant.other.color, meta.tag, punctuation.definition.tag, punctuation.separator.inheritance.php, punctuation.definition.tag.html, punctuation.definition.tag.begin.html, punctuation.definition.tag.end.html, punctuation.section.embedded, keyword.other.template, keyword.other.substitution</string>
+                <string>constant.other.color, meta.tag, punctuation.definition.tag, punctuation.separator.inheritance.php, punctuation.definition.tag.html, punctuation.definition.tag.begin.html, punctuation.definition.tag.end.html, punctuation.section.embedded, keyword.other.template, keyword.other.substitution</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
@@ -231,7 +231,7 @@
                 <key>name</key>
                 <string>Class, Support</string>
                 <key>scope</key>
-                <string>entity.name.class, entity.name.type.class, support.type, support.class, support.orther.namespace.use.php, meta.use.php, support.other.namespace.php, markup.changed.git_gutter</string>
+                <string>entity.name.class, entity.name.type.class, support.type, support.class, support.other.namespace.use.php, meta.use.php, support.other.namespace.php, markup.changed.git_gutter</string>
                 <key>settings</key>
                 <dict>
                     <key>foreground</key>
