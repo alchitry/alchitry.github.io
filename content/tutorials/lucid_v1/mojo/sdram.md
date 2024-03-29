@@ -3,15 +3,15 @@ title = "SDRAM"
 weight = 12
 +++
 
-This tutorial will cover how **DRAM** (**D**ynamic **R**andom **A**ccess **M**emory), or more specifically **SDRAM** (**S**ynchronized **DRAM**), works and how you can use it in your projects. We will be using the SDRAM Shield.
+This tutorial will cover how **DRAM** (**D**ynamic **R**andom **A**ccess **M**emory), or more specifically **SDRAM** (**S**ynchronized **DRAM**), works and how you can use it in your projects. We will be using the SDRAM Shield.
 
 ### What is RAM?
 
-It is first important to understand what **RAM** is in general before diving into a specific type. RAM is simply a large block of memory that you can access more or less at random very quickly. It provides temporary storage for your design for things like images, video, or sampled data. In some applications it can even be used to store the instructions and data for a processor.
+It is first important to understand what **RAM** is in general before diving into a specific type. RAM is simply a large block of memory that you can access more or less at random very quickly. It provides temporary storage for your design for things like images, video, or sampled data. In some applications it can even be used to store the instructions and data for a processor.
 
-Notice the word **temporary** I used. This is because RAM is a volatile form of memory. That means without power, the contents of the memory will be lost.
+Notice the word **temporary** I used. This is because RAM is a volatile form of memory. That means without power, the contents of the memory will be lost.
 
-RAM is organized into banks, rows, and columns. I like to think of RAM as a set of notebooks where each notebook is a _bank_, each page is a _row_, and each line is a _column_. Each bank, or notebook, can be accessed independently of the other banks. Each bank is comprised of many rows and each row has many columns. To access a specific piece of data you must specify all three pieces of information, the bank, row, and column.
+RAM is organized into banks, rows, and columns. I like to think of RAM as a set of notebooks where each notebook is a _bank_, each page is a _row_, and each line is a _column_. Each bank, or notebook, can be accessed independently of the other banks. Each bank is comprised of many rows and each row has many columns. To access a specific piece of data you must specify all three pieces of information, the bank, row, and column.
 
 The actual protocol required to access data depends on the type of RAM being used. However, all RAM breaks our a very similar interface. You generally have an address input, which specifies the row and column, a bank select input, which specifies the bank, a data input/output, which is used for reading and writing data, and a few control signals.
 
@@ -27,33 +27,33 @@ The basic cell in DRAM looks like the following.
 
 There is simply a capacitor that stores a charge, and a transistor that allows charge to either be put into the capacitor or taken out.
 
-These cells are arranged into a large 2D array of _rows_ and _columns_. These are the same rows and columns from before.
+These cells are arranged into a large 2D array of _rows_ and _columns_. These are the same rows and columns from before.
 
 When you write data to DRAM, charge is placed on capacitors that should have a value of 1, but no charge is placed on capacitors that have a value of 0.
 
-When you read data from DRAM, the charge on the capacitor is measured using a circuit called a **sense amplifier**. If the sense amplifier detected charge on the capacitor then it outputs a 1, otherwise it assumes the cell was a 0.
+When you read data from DRAM, the charge on the capacitor is measured using a circuit called a **sense amplifier**. If the sense amplifier detected charge on the capacitor then it outputs a 1, otherwise it assumes the cell was a 0.
 
-There are a two main problems to the fundamental design of DRAM. First, to read the charge from the capacitor, the charge must be drained. This causes all reads to be destructive. Once you read a piece of data from DRAM, the value is no longer being stored in the memory array. To deal with this, the data **must** be written back into the array when you are done with it. This is called **precharging**.
+There are a two main problems to the fundamental design of DRAM. First, to read the charge from the capacitor, the charge must be drained. This causes all reads to be destructive. Once you read a piece of data from DRAM, the value is no longer being stored in the memory array. To deal with this, the data **must** be written back into the array when you are done with it. This is called **precharging**.
 
-To make the interface to DRAM a bit more efficient, an entire row is read into a buffer in the DRAM. The process of reading a row into that buffer is referred to as **opening** or **activating** the row. Once a row is open, data can be read or written to any columns in that row without having to open it again.
+To make the interface to DRAM a bit more efficient, an entire row is read into a buffer in the DRAM. The process of reading a row into that buffer is referred to as **opening** or **activating** the row. Once a row is open, data can be read or written to any columns in that row without having to open it again.
 
-However, only one row per bank can be open at a time. To read from a different row in the same bank, you must first **precharge** the current row, then **open** the new row.
+However, only one row per bank can be open at a time. To read from a different row in the same bank, you must first **precharge** the current row, then **open** the new row.
 
-The second fundamental flaw of DRAM, and the reason it is called **dynamic** RAM, is that capacitors _leak_ charge. That means that once a charge is stored on a capacitor, it will start losing that charge. This happens either through the transistor connected to it, or through the capacitor itself. What this means for your data is that, if neglected, the values stored will be lost.
+The second fundamental flaw of DRAM, and the reason it is called **dynamic** RAM, is that capacitors _leak_ charge. That means that once a charge is stored on a capacitor, it will start losing that charge. This happens either through the transistor connected to it, or through the capacitor itself. What this means for your data is that, if neglected, the values stored will be lost.
 
-The fix to this problem is to periodically **refresh** each row. A refresh consists of simply reading a row then writing it back into the array. This process ensures that the capacitors retain their charge.
+The fix to this problem is to periodically **refresh** each row. A refresh consists of simply reading a row then writing it back into the array. This process ensures that the capacitors retain their charge.
 
-The amount of time a row can go between refreshes depends on the DRAM. However, the SDRAM chip on the SDRAM Shield, must be refreshed every **64ms**.
+The amount of time a row can go between refreshes depends on the DRAM. However, the SDRAM chip on the SDRAM Shield, must be refreshed every **64ms**.
 
 Generally, SDRAM will be able to perform the refresh operation for you. However, you still must tell it when to refresh.
 
 ### DRAM vs SDRAM
 
-The difference between these two types of RAM is that SDRAM is **synchronous** and DRAM is not. All this means is that the SDRAM uses a clock while DRAM does not. The benefits to SDRAM are that inputs and outputs are synchronized to whatever it is connected to, in our case the FPGA, as well as some speed benefits due to pipelining.
+The difference between these two types of RAM is that SDRAM is **synchronous** and DRAM is not. All this means is that the SDRAM uses a clock while DRAM does not. The benefits to SDRAM are that inputs and outputs are synchronized to whatever it is connected to, in our case the FPGA, as well as some speed benefits due to pipelining.
 
 SDRAM is much more common than plain DRAM.
 
-It is also worth noting that **DDR** (**D**ouble **D**ata **R**ate) RAM, usually heard in the context of computers, is a form of SDRAM.
+It is also worth noting that **DDR** (**D**ouble **D**ata **R**ate) RAM, usually heard in the context of computers, is a form of SDRAM.
 
 ### DRAM vs SRAM
 
@@ -67,9 +67,9 @@ SRAM is, however, faster and uses less power than DRAM. Because of this, it is s
 
 ## The Controller
 
-Create a new project based on the _Base Project_. We now need to add the SDRAM controller to our project. In the _Component Selector_, select _Controllers/SDRAM Controller_. We also need the pin definitions for the SDRAM Shield, so also check off _Constraints/SDRAM Shield_. Add these to your project.
+Create a new project based on the _Base Project_. We now need to add the SDRAM controller to our project. In the _Component Selector_, select _Controllers/SDRAM Controller_. We also need the pin definitions for the SDRAM Shield, so also check off _Constraints/SDRAM Shield_. Add these to your project.
 
-Open up the _sdram.luc_ file and take a look at it. It can be helpful to have the [datasheet](http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf) for the SDRAM chip open.
+Open up the _sdram.luc_ file and take a look at it. It can be helpful to have the [datasheet](http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf) for the SDRAM chip open.
 
 ```lucid,short
 // Interface to the SDRAM chip
@@ -434,7 +434,7 @@ This module uses some new advanced features that we haven't covered yet so let's
 
 ### Structs
 
-The most obvious new part to this module is the the use of _structs_. In this case, two structs are declared in the global namespace _Sdram_.
+The most obvious new part to this module is the the use of _structs_. In this case, two structs are declared in the global namespace _Sdram_.
 
 ```lucid
 // Interface to the SDRAM chip
@@ -461,7 +461,7 @@ global Sdram {
 
 You can declare structs inside your module, but they are then local to your module and can only be used internally (not in port definitions).
 
-A struct definition consists of the _struct_ keyword, followed by the name of the struct, followed by the list of the struct's members. A member declaration consists of a name, an optional struct type, and an optional array size.
+A struct definition consists of the _struct_ keyword, followed by the name of the struct, followed by the list of the struct's members. A member declaration consists of a name, an optional struct type, and an optional array size.
 
 Take a look at the following example.
 
@@ -478,11 +478,11 @@ struct display {
 }
 ```
 
-In this example we have two structs, _color_ and _display_. The _color_ struct has three members, _red_, _green_, and _blue_, each an 8bit array.
+In this example we have two structs, _color_ and _display_. The _color_ struct has three members, _red_, _green_, and _blue_, each an 8bit array.
 
-The _display_ struct is a bit more complex. The first two elements, _x_ and _y_ are 12bit arrays, but the third, _pixel_ is itself a struct of type _color_.
+The _display_ struct is a bit more complex. The first two elements, _x_ and _y_ are 12bit arrays, but the third, _pixel_ is itself a struct of type _color_.
 
-The _\<name>_ notation is used to specify the struct type. This can be used with struct members, _input_, _output_, _inout_, _sig_, and _dff_ types.
+The _\<name>_ notation is used to specify the struct type. This can be used with struct members, _input_, _output_, _inout_, _sig_, and _dff_ types.
 
 ### Accessing Struct Members
 
@@ -510,9 +510,9 @@ always {
 }
 ```
 
-The members of a struct are accessed the same way as the d/q signals of a _dff_ or the signals of a module instance.
+The members of a struct are accessed the same way as the d/q signals of a _dff_ or the signals of a module instance.
 
-The SDRAM controller uses two other structs defined in _memory_bus.luc_. These are split into a different file as they may be used by other modules besides the SDRAM controller.
+The SDRAM controller uses two other structs defined in _memory_bus.luc_. These are split into a different file as they may be used by other modules besides the SDRAM controller.
 
 ### The Interface
 
@@ -552,7 +552,7 @@ const CMD_REFRESH       = 4b0001;   // Perform a refresh
 const CMD_LOAD_MODE_REG = 4b0000;   // Load mode register
 ```
 
-These commands connect to the _CS_, _RAS_, _CAS_, and _WE_ pins on the SDRAM. See page 31 of the [datasheet](http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf) if you want to know more.
+These commands connect to the _CS_, _RAS_, _CAS_, and _WE_ pins on the SDRAM. See page 31 of the [datasheet](http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf) if you want to know more.
 
 ## The FSM
 
@@ -579,27 +579,27 @@ The entire controller is based around a single FSM.
   }
 ```
 
-The relations of these states can be summed up in the state diagram shown below. The _WAIT_ state wasn't shown for clarity.
+The relations of these states can be summed up in the state diagram shown below. The _WAIT_ state wasn't shown for clarity.
 
 ![sdram_controller_38832f10-c391-47b2-b689-16fda4f17e26.png](https://cdn.alchitry.com/lucid_v1/mojo/sdram_controller_38832f10-c391-47b2-b689-16fda4f17e26.png)
 
-When the board is powered on (or reset) the FSM starts in the _INIT_ state. SDRAM requires a bit of initialization before you can read and write to it. This is also covered in the [datasheet](http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf) (page 42) for those curious.
+When the board is powered on (or reset) the FSM starts in the _INIT_ state. SDRAM requires a bit of initialization before you can read and write to it. This is also covered in the [datasheet](http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf) (page 42) for those curious.
 
-After the board is initialized, it sits in the _IDLE_ state until one of two things happen, either it's time to perform a refresh or there is a pending operation.
+After the board is initialized, it sits in the _IDLE_ state until one of two things happen, either it's time to perform a refresh or there is a pending operation.
 
 First, let's talk about the refresh. To manage the refreshing, there is a timer that tells the controller to send another refresh operation. The SDRAM requires 8,192 refresh commands to be sent every 64ms. That means you can either send a refresh command every 7.813µs or all 8,192 commands in a batch every 64ms. To provide a more uniform interface, this controller sends the refresh commands evenly spaced. This limits the maximum amount of time the controller will be busy doing refreshes. In some applications where you need very fast burst speeds, but have some known down time, performing burst refreshing can be better.
 
 When a read or write command is pending, the controller first checks to see if the row is open. If the requested row is already open, life is great, it simply reads or writes to the row. If the row isn't open then it first opens the row before performing the operation. The worst case is if there is already another row open. In this case the other row must be precharged, before the controller can open the new row and perform the operation.
 
-Each of these operations has some number of cycles the SDRAM requires to complete (the reason for the _WAIT_ state). These sometimes vary with the clock frequency (in other words, they have a set amount of real time). This controller assumes a clock rate of 100MHz. This is important for other reasons as well that will be discussed a little later. All of these delays and timing specifications can be found in the [datasheet](http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf) (many of them are on pages 27-28).
+Each of these operations has some number of cycles the SDRAM requires to complete (the reason for the _WAIT_ state). These sometimes vary with the clock frequency (in other words, they have a set amount of real time). This controller assumes a clock rate of 100MHz. This is important for other reasons as well that will be discussed a little later. All of these delays and timing specifications can be found in the [datasheet](http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf) (many of them are on pages 27-28).
 
-This mostly sums up how the controller works. If you want an even deeper understanding, you need to take a look at the rest of the code in the controller as well as the SDRAM [datasheet](http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf).
+This mostly sums up how the controller works. If you want an even deeper understanding, you need to take a look at the rest of the code in the controller as well as the SDRAM [datasheet](http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf).
 
 However, there is some advanced voodoo magic going on in the controller code that is worth mentioning.
 
 ### Dealing with the Hardware
 
-When you start interfacing with a relatively high speed external device, you start having to deal with FPGA specific details. There are two hardware related issues addressed in the controller. The first is that the FPGA can't route a clock signal directly to an output pin. This is because the clock and general logic of an FPGA share different routing resources and there isn't a way for the clock signal to move back into the general routing system. However, we can use an _ODDR2_ primitive to compensate for this.
+When you start interfacing with a relatively high speed external device, you start having to deal with FPGA specific details. There are two hardware related issues addressed in the controller. The first is that the FPGA can't route a clock signal directly to an output pin. This is because the clock and general logic of an FPGA share different routing resources and there isn't a way for the clock signal to move back into the general routing system. However, we can use an _ODDR2_ primitive to compensate for this.
 
 ```
 // The OODR2 is used to output the FPGA clock to
@@ -623,15 +623,15 @@ oddr.R = 0;
 oddr.S = 0;
 ```
 
-This is the instantiation of a _ODDR2_ module. If you look the project files, you will notice there is no _xil_ODDR2.luc_ file. This is because this isn't really a module, but rather an **FPGA primitive**. ODDR2 or **O**utput **D**ouble **D**ata **R**ate 2, is a primitive that is generally used to output data on both the rising and falling edges of the clock (hence, _double_ data rate). However, in this case we are using the ODDR2 to simply output our clock signal. You can't output the clock signal directly due to how the FPGA is structured internally. So instead, you can use the ODDR with the data pins wired to 0 or 1.
+This is the instantiation of a _ODDR2_ module. If you look the project files, you will notice there is no _xil_ODDR2.luc_ file. This is because this isn't really a module, but rather an **FPGA primitive**. ODDR2 or **O**utput **D**ouble **D**ata **R**ate 2, is a primitive that is generally used to output data on both the rising and falling edges of the clock (hence, _double_ data rate). However, in this case we are using the ODDR2 to simply output our clock signal. You can't output the clock signal directly due to how the FPGA is structured internally. So instead, you can use the ODDR with the data pins wired to 0 or 1.
 
-When _C0_ has a rising edge, _D0_ is output until _C1_ has a rising edge. At that point _D1_ is output. Notice that in our case _C1_ is actually just the clock inverted. That means _D0_ is output when the clock rises and _D1_ is output when the clock falls.
+When _C0_ has a rising edge, _D0_ is output until _C1_ has a rising edge. At that point _D1_ is output. Notice that in our case _C1_ is actually just the clock inverted. That means _D0_ is output when the clock rises and _D1_ is output when the clock falls.
 
-You may be thinking now "Ok... but if _D0_ is output when the clock _rises_, shouldn't _D0_ be 1 and _D1_ be 0"? Very good my young padawan. That is exactly right _if_ you wanted to output to be the same as the clock. However, we **don't** want this. We want the output clock to be our clock inverted!
+You may be thinking now "Ok... but if _D0_ is output when the clock _rises_, shouldn't _D0_ be 1 and _D1_ be 0"? Very good my young padawan. That is exactly right _if_ you wanted to output to be the same as the clock. However, we **don't** want this. We want the output clock to be our clock inverted!
 
-Why the *&^$# would we want the clock to be inverted? Wouldn't that mean that the SDRAM would read it's inputs and change it's outputs on our falling edge? Oh wait... that's exactly what we want! We want this because that gives both devices half a clock cycle for their output to become stable before the other device. This all has to do with satisfying _setup_ and _hold_ times of both devices. If you don't know what the means, check out the [External IO Tutorial](@/tutorials/lucid_v1/mojo/external-io.md).
+Why the *&^$# would we want the clock to be inverted? Wouldn't that mean that the SDRAM would read it's inputs and change it's outputs on our falling edge? Oh wait... that's exactly what we want! We want this because that gives both devices half a clock cycle for their output to become stable before the other device. This all has to do with satisfying _setup_ and _hold_ times of both devices. If you don't know what the means, check out the [External IO Tutorial](@/tutorials/lucid_v1/mojo/external-io.md).
 
-Timing is the other hardware related issue we need to account for and we will use another FPGA primitive, the _IODELAY2_, to deal with it.
+Timing is the other hardware related issue we need to account for and we will use another FPGA primitive, the _IODELAY2_, to deal with it.
 
 ```lucid
 // The IODELAY2 is used to delay the clock a bit
@@ -662,15 +662,15 @@ iodelay.CE = 0;
 iodelay.RST = 0;
 ```
 
-As you may have guessed from the name, the _IODELAY2_ block provides a delay to inputs and outputs. In this case we are using it to delay the clock being output to the SDRAM. There are a lot of features of these primitives that aren't being used here. However if you want t check them out in their full glory, take a look at the [UG381](http://www.xilinx.com/support/documentation/user_guides/ug381.pdf) document from Xilinx (ODDR2 starts on page 62 and IODELAY2 starts on page 74).
+As you may have guessed from the name, the _IODELAY2_ block provides a delay to inputs and outputs. In this case we are using it to delay the clock being output to the SDRAM. There are a lot of features of these primitives that aren't being used here. However if you want t check them out in their full glory, take a look at the [UG381](http://www.xilinx.com/support/documentation/user_guides/ug381.pdf) document from Xilinx (ODDR2 starts on page 62 and IODELAY2 starts on page 74).
 
 We need the delay because simply inverting the clock doesn't quite ensure timing is met. We need to shift it a little more.
 
-The important values here are _DELAY_SRC_ is set to make the _IODELAY2_ delay an output and _ODELAY_VALUE_ is how much we want to delay the signal.
+The important values here are _DELAY_SRC_ is set to make the _IODELAY2_ delay an output and _ODELAY_VALUE_ is how much we want to delay the signal.
 
-The actual amount of delay that is given per step of _ODELAY_VALUE_ is a bit fuzzy and will actually vary over temperature and voltage in the Spartan 6 chip. However, with a 100MHz clock, using a delay of 100 (maximum is 255) ensures that the setup and hold times are being met. This delay was found empirically by running lots of tests checking for read/write errors.
+The actual amount of delay that is given per step of _ODELAY_VALUE_ is a bit fuzzy and will actually vary over temperature and voltage in the Spartan 6 chip. However, with a 100MHz clock, using a delay of 100 (maximum is 255) ensures that the setup and hold times are being met. This delay was found empirically by running lots of tests checking for read/write errors.
 
-The last piece to the puzzle is making sure that the input and output registers are packed into **IOBs**, or **I**nput **O**utput **B**uffers.
+The last piece to the puzzle is making sure that the input and output registers are packed into **IOBs**, or **I**nput **O**utput **B**uffers.
 
 ```lucid
 // IO buffer flip-flops are important for timing
@@ -686,7 +686,7 @@ dff dq [8] (#IOB(1));    // data output
 dff dqi [8] (#IOB(1));   // data input
 ```
 
-The _dff_ type has a parameter, _IOB_, that, when set to 1, will mark that flip-flop to be packed into an IOB.
+The _dff_ type has a parameter, _IOB_, that, when set to 1, will mark that flip-flop to be packed into an IOB.
 
 What the heck is an IOB? An IOB is simply a flip-flop that is embedded in the pin of the FPGA. They aren't in the typical FPGA fabric, but rather right at the inputs and outputs.
 
@@ -696,7 +696,7 @@ To make sure these registers are actually packed into the IOB, their output/inpu
 
 ### Xilinx Primitives
 
-At the time of writing this, the _IODELAY2_ and _ODDR2_ are the only primitives currently supported by the Mojo IDE. All the supported primitives can be found by typing _xil_ and the auto-complete will list the known modules (the primitives are always prefixed with _xil__). More primitives will be added over time.
+At the time of writing this, the _IODELAY2_ and _ODDR2_ are the only primitives currently supported by the Mojo IDE. All the supported primitives can be found by typing _xil_ and the auto-complete will list the known modules (the primitives are always prefixed with _xil__). More primitives will be added over time.
 
 This sums up how the controller works, but now we need to use it for something.
 
@@ -704,11 +704,11 @@ This sums up how the controller works, but now we need to use it for something.
 
 What good is a fancy SDRAM controller if we don't even use it? NO GOOD that what! To demonstrate how to use the controller we are going to create a tester. Our module will write a bunch of stuff to the RAM then read it back to make sure the contents are still there and correct.
 
-There is one big problem with creating a tester like this. What do we write to the RAM? It has to be something easily _generated_ because we don't have enough memory to memorize all the values. If we did we wouldn't be using the SDRAM. We could use part of the address, but this causes a very artificial pattern that can fail to detect some problems.
+There is one big problem with creating a tester like this. What do we write to the RAM? It has to be something easily _generated_ because we don't have enough memory to memorize all the values. If we did we wouldn't be using the SDRAM. We could use part of the address, but this causes a very artificial pattern that can fail to detect some problems.
 
-Instead we will use a pseudo-random number generator. The key word there is _pseudo_. Which is layman's terms translates to _not-really-a-random number generator_. This is something that generates _random-looking_ numbers but they are actually completely predictable. That's a great property for us because we need to be able to regenerate the exact same 8,388,608 long sequence of numbers to verify our write.
+Instead we will use a pseudo-random number generator. The key word there is _pseudo_. Which is layman's terms translates to _not-really-a-random number generator_. This is something that generates _random-looking_ numbers but they are actually completely predictable. That's a great property for us because we need to be able to regenerate the exact same 8,388,608 long sequence of numbers to verify our write.
 
-From the components library add _Math/Pseudo-random Number Generator_ to your project.
+From the components library add _Math/Pseudo-random Number Generator_ to your project.
 
 ```lucid
 module pn_gen #(
@@ -753,15 +753,15 @@ module pn_gen #(
 }
 ```
 
-This algorithm is called **Xorshift** and it simply is a ported version of one presented on [Wikipedia](https://en.wikipedia.org/wiki/Xorshift).
+This algorithm is called **Xorshift** and it simply is a ported version of one presented on [Wikipedia](https://en.wikipedia.org/wiki/Xorshift).
 
-This module will generate a new number each time _next_ is high. It can be reset to start the sequence over. If the value of _seed_ changes, the sequence will be different.
+This module will generate a new number each time _next_ is high. It can be reset to start the sequence over. If the value of _seed_ changes, the sequence will be different.
 
-This type of number generator is great for hardware because it only uses XOR and shift operations. Both of which are really cheap. However, it isn't a super great random number generator and should **not** be used for crypto purposes where it isn't good enough to _look_ random.
+This type of number generator is great for hardware because it only uses XOR and shift operations. Both of which are really cheap. However, it isn't a super great random number generator and should **not** be used for crypto purposes where it isn't good enough to _look_ random.
 
 ## The Memory Interface
 
-Before we get into our tester module, we need to understand the interface used for reading and writing the SDRAM. Take a look at _memory_bus.luc_.
+Before we get into our tester module, we need to understand the interface used for reading and writing the SDRAM. Take a look at _memory_bus.luc_.
 
 ```lucid
 // Generic Memory Interface
@@ -783,17 +783,17 @@ global Memory {
 }
 ```
 
-The interface consists of a _master_ and a _slave_. The _slave_ in this case is the SDRAM controller (the one receiving commands) and we will play the role of the _master_ by issuing commands.
+The interface consists of a _master_ and a _slave_. The _slave_ in this case is the SDRAM controller (the one receiving commands) and we will play the role of the _master_ by issuing commands.
 
-Whenever we want to issue a command, we need to first make sure that _slave.busy_ is 0. This indicates that the controller can accept a new command.
+Whenever we want to issue a command, we need to first make sure that _slave.busy_ is 0. This indicates that the controller can accept a new command.
 
-To issue a write command we set _master.write_ to 1, _master.addr_ to the address we want to write to, _master.data_ to the value we want to write, and finally _master.valid_ to 1 to indicate a new command.
+To issue a write command we set _master.write_ to 1, _master.addr_ to the address we want to write to, _master.data_ to the value we want to write, and finally _master.valid_ to 1 to indicate a new command.
 
-To perform a read we set _master.write_ to 0, _master.addr_ to the address to read, and _master.valid_ to 1. The value of _master.data_ is ignored. We then need to wait for _slave.valid_ to be 1. When it is 1, _slave.data_ is the value we requested. Note that _slave.busy_ may go back to 0 before the read is actually complete. This is because the busy flag only says when the controller can accept a new request, not necessarily when it idle. If you issue multiple read requests, they will be processed in the order they are received.
+To perform a read we set _master.write_ to 0, _master.addr_ to the address to read, and _master.valid_ to 1. The value of _master.data_ is ignored. We then need to wait for _slave.valid_ to be 1. When it is 1, _slave.data_ is the value we requested. Note that _slave.busy_ may go back to 0 before the read is actually complete. This is because the busy flag only says when the controller can accept a new request, not necessarily when it idle. If you issue multiple read requests, they will be processed in the order they are received.
 
 ## The Tester
 
-Create a new module named _ram_test_ and copy the following into it.
+Create a new module named _ram_test_ and copy the following into it.
 
 ```lucid,short
 module ram_test (
@@ -870,27 +870,27 @@ module ram_test (
 }
 ```
 
-Our tester has two states, _WRITE_ and _READ_. We start in the _WRITE_ state and fill up the RAM with random stuff. Once the RAM is full, we reset the number generator and move to the _READ_ state.
+Our tester has two states, _WRITE_ and _READ_. We start in the _WRITE_ state and fill up the RAM with random stuff. Once the RAM is full, we reset the number generator and move to the _READ_ state.
 
-In the _READ_ state we read each value back and generate the same sequence of numbers again. If the values we read back don't match the number in our sequence, we increment the error counter. The error counter is setup to saturate at 127 error so if there are a ton of errors it will simply max out.
+In the _READ_ state we read each value back and generate the same sequence of numbers again. If the values we read back don't match the number in our sequence, we increment the error counter. The error counter is setup to saturate at 127 error so if there are a ton of errors it will simply max out.
 
-We need to be able to see what our tester is doing so we will use the LEDs to show the status. We hook up _leds\[7]_ to the state (so we know when it's reading or writing) and the rest to the error counter.
+We need to be able to see what our tester is doing so we will use the LEDs to show the status. We hook up _leds\[7]_ to the state (so we know when it's reading or writing) and the rest to the error counter.
 
 ## Generating the Clock
 
 If you've been paying attention (you have haven't you?) you probably noticed that the SDRAM controller says it assumes a clock of 100MHz. However, the Mojo's clock is only 50Mhz. Whatever will do? Luckily the FPGA has a super rad circuit called a PLL that lets you generate new clocks. Even more rad is that there are tools to help us set it up.
 
-We are going to be using the **Core Generator** tool from Xilinx. Support for this tool is built into the Mojo IDE, so simply click _Project->Launch CoreGen_.
+We are going to be using the **Core Generator** tool from Xilinx. Support for this tool is built into the Mojo IDE, so simply click _Project->Launch CoreGen_.
 
 ![coregen.png](https://cdn.alchitry.com/lucid_v1/mojo/coregen.png)
 
-Under _FPGA Features and Design/Clocking_ double click on _Clocking Wizard_.
+Under _FPGA Features and Design/Clocking_ double click on _Clocking Wizard_.
 
 ![clkwiz1.png](https://cdn.alchitry.com/lucid_v1/mojo/clkwiz1.png)
 
 _You're a clocking wizard Harry!_
 
-Change the name to just _clk_wiz_ because the default is UGLY. Also uncheck _Phase alignment_ (we don't care about that) and set the _primary_ input clock to 50MHz.
+Change the name to just _clk_wiz_ because the default is UGLY. Also uncheck _Phase alignment_ (we don't care about that) and set the _primary_ input clock to 50MHz.
 
 ![clkwiz2.png](https://cdn.alchitry.com/lucid_v1/mojo/clkwiz2.png)
 
@@ -902,17 +902,17 @@ On page 3, uncheck everything because again, we don't care.
 
 ![clkwiz5.png](https://cdn.alchitry.com/lucid_v1/mojo/clkwiz5.png)
 
-Skip page 4 and on page 5, remove the _1_ from the signal names. We only have one input and one output so why bother labeling them 1?
+Skip page 4 and on page 5, remove the _1_ from the signal names. We only have one input and one output so why bother labeling them 1?
 
-Finally, click _Generate_.
+Finally, click _Generate_.
 
-Once it finishes generating the core, you can close all the CoreGen windows. The core should automagically (it's a word, trust me) be under the _Cores_ section of your project.
+Once it finishes generating the core, you can close all the CoreGen windows. The core should automagically (it's a word, trust me) be under the _Cores_ section of your project.
 
 ## The Top Level
 
 Now that we have all the pieces we need to hook it all up.
 
-If you take a look at the _sdram_shield.ucf_ file we added in the beginning of the tutorial, you'll notice that there are only two signals defined.
+If you take a look at the _sdram_shield.ucf_ file we added in the beginning of the tutorial, you'll notice that there are only two signals defined.
 
 ```ucf
 NET "sdramOut<0>" LOC = P5 | IOSTANDARD = LVTTL | SLEW = FAST;     # clk
@@ -952,7 +952,7 @@ NET "sdramInOut<7>" LOC = P10 | IOSTANDARD = LVTTL | SLEW = FAST;  # dq[7]
 
 This is setup so that all the signals will pack into the structs defined in the SDRAM controller.
 
-We can add them to _mojo_top.luc_ like below.
+We can add them to _mojo_top.luc_ like below.
 
 ```lucid
 output<Sdram.out> sdramOut,   // SDRAM outputs

@@ -33,11 +33,11 @@ If you look at the bottom of the window you will see **< Back** and **Next >** b
 
 On the same page there are also options to tell CoreGen what to optimize when generating your RAM. We have **Minimum Area** selected, which is the most important constraint in most cases.
 
-As you go through the configuration settings, you'll find settings for each port's **width** and **depth**. The **width** of a RAM is how many bits belong to each address. In this case, we use 16 bits as our width since the audio samples are 16 bits wide. The **depth** is how many address the RAM will have. While you don't strictly need to use a power of two for this, it can make life simpler because then you don't have any invalid addresses.
+As you go through the configuration settings, you'll find settings for each port's **width** and **depth**. The **width** of a RAM is how many bits belong to each address. In this case, we use 16 bits as our width since the audio samples are 16 bits wide. The **depth** is how many address the RAM will have. While you don't strictly need to use a power of two for this, it can make life simpler because then you don't have any invalid addresses.
 
-Once you configure a core how you want, just click the **Generate** button to get CoreGen to generate the core.
+Once you configure a core how you want, just click the **Generate** button to get CoreGen to generate the core.
 
-You should look at the other cores used in the project as well as the other cores available to you in your own projects. One thing to be aware of is that **not all cores are free**. Xilinx does a good job of providing a good base of free cores that cover a lot of functionality, but fancier cores such as the cores found in **Standard Bus Interfaces,** require you to purchase a license to use them in the FPGA (you can generally simulate with them, but that's no fun).
+You should look at the other cores used in the project as well as the other cores available to you in your own projects. One thing to be aware of is that **not all cores are free**. Xilinx does a good job of providing a good base of free cores that cover a lot of functionality, but fancier cores such as the cores found in **Standard Bus Interfaces,** require you to purchase a license to use them in the FPGA (you can generally simulate with them, but that's no fun).
 
 ### Adding cores to your project
 
@@ -45,11 +45,11 @@ After you have generated your core, it's still not in your project! First close 
 
 Since all the cores we are using in the Clock/Visualizer Shield Demo are already added, you'll get errors if you try to add it again. However, we'll do it anyways to show you how it's done.
 
-Most cores will have two files you need to add to your project, a **.v** file and a **.ngc** file. It's very important to have both, because the **.ngc** file is the one that actually has the information about the implementation of the core. The **.v** file is used as a kind of glue to connect the **.ngc** to your project.
+Most cores will have two files you need to add to your project, a **.v** file and a **.ngc** file. It's very important to have both, because the **.ngc** file is the one that actually has the information about the implementation of the core. The **.v** file is used as a kind of glue to connect the **.ngc** to your project.
 
-Click on **Project->Add Source**
+Click on **Project->Add Source**
 
-Navigate to where your cores were generated, in this case it's in the folder named **ipcore_dir**.
+Navigate to where your cores were generated, in this case it's in the folder named **ipcore_dir**.
 
 ![CoreGen_Adding_Core.png](https://cdn.alchitry.com/verilog/mojo/CoreGen_Adding_Core.png)
 
@@ -59,9 +59,9 @@ Select the two files for your core and click open. This will add them to your pr
 
 Once you've created your core and added it to your project, you need to actually use it!
 
-If you look in the **ipcore_dir** folder and open up the **.veo** file for your core, you will find an example on how to instantiate the core.
+If you look in the **ipcore_dir** folder and open up the **.veo** file for your core, you will find an example on how to instantiate the core.
 
-There are a lot of comments in the file but here is the important content of the **sample_ram.veo** file
+There are a lot of comments in the file but here is the important content of the **sample_ram.veo** file
 
 ```verilog,linenos,linenostart=49
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
@@ -77,6 +77,6 @@ sample_ram your_instance_name (
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 ```
 
-You can just copy and paste this into your project to use the **sample_ram** module. Of course, you still need to specify the correct inputs and outputs.
+You can just copy and paste this into your project to use the **sample_ram** module. Of course, you still need to specify the correct inputs and outputs.
 
 That's it! Using CoreGen is a great way to get some of the heavy lifting in a project done for you and in a very efficient way.

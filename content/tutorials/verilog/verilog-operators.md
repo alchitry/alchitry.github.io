@@ -82,7 +82,7 @@ assign b = a[0] & a[1] & a[2] & a[3];
 
 The shift operators in Verilog are very similar to the ones in other languages. They simply _shift_ the bits in a value over that many times to the right of left.
 
-The basic shift operators are **zero-filling** meaning that bits that don't have a value shifted into them are replaced with zeros. Take a look at the following example.
+The basic shift operators are **zero-filling** meaning that bits that don't have a value shifted into them are replaced with zeros. Take a look at the following example.
 
 ```verilog
 wire [4:0] a,b,c;
@@ -91,9 +91,9 @@ assign b = a << 2;
 assign c = a >> 2;
 ```
 
-In this example **b** will have the value `5'b10000` and **c** will have the value `5'b00101`. You can see with **b** the top two bits of **a** are lost, and with **c** the bottom two bits are lost.
+In this example **b** will have the value `5'b10000` and **c** will have the value `5'b00101`. You can see with **b** the top two bits of **a** are lost, and with **c** the bottom two bits are lost.
 
-Now let's take a look at the arithmetic shift operators. These vary from the basic shift operators because they perform **sign-extended** shifts. When shifting left, it performs exactly the same as the basic shift operator, but when shifting to the right,  the most-significant bit (the **sign** **bit**) plays a role.
+Now let's take a look at the arithmetic shift operators. These vary from the basic shift operators because they perform **sign-extended** shifts. When shifting left, it performs exactly the same as the basic shift operator, but when shifting to the right,  the most-significant bit (the **sign** **bit**) plays a role.
 
 If the sign bit is 0, then the arithmetic shift operator acts the same way as the basic shift operator. However, if the sign bit is 1, the shift will fill the left side with ones.
 
@@ -106,7 +106,7 @@ assign b = a <<< 2;
 assign c = a >>> 2;
 ```
 
- Now **b** will have the value `5'b10000` just like before, but **c** will have the value `5'b11101`.
+ Now **b** will have the value `5'b10000` just like before, but **c** will have the value `5'b11101`.
 
 Why would you ever want to fill the left side with the most-significant bit? The reason is because shifting bits is a very cheap way to perform multiplication and division by powers of two. Take the value 6 (4'b0110). If we shift it to the left one bit we get `4'b1100` or `12` and if we shift it to the right one bit we get 4'b0011 or 3. Now what about the value -4 (4'b1100)? If we shift it to the left one bit we get 4'b1000 or -8. However if we shift it to the right one bit we get 4'b0110 or 6! This is because we need to use the arithmetic shift. If we use the arithmetic shift we get 4'b1110 or -2!
 
@@ -121,7 +121,7 @@ Shift operations are very cheap! This is because they are essentially just a sig
 
 These are two very useful operators for manipulating bits.
 
-The **concatenation** operator is used to merge two values together into a wider value. 
+The **concatenation** operator is used to merge two values together into a wider value. 
 
 ```verilog
 wire [3:0] a,b;
@@ -131,9 +131,9 @@ assign b = 4'b1010;
 assign c = {a,b};
 ```
 
-In this example **c** has the value `8'b11001010`. You can concatenate as many signals together as you want by adding them to the comma-separated list.
+In this example **c** has the value `8'b11001010`. You can concatenate as many signals together as you want by adding them to the comma-separated list.
 
-The **replication** operator is used to duplicate a value multiple times.
+The **replication** operator is used to duplicate a value multiple times.
 
 ```verilog
 wire [1:0] a;
@@ -142,7 +142,7 @@ assign a = 4'b10;
 assign b = {4{a}};
 ```
 
-In this example **a** is replicated 4 times making the value of **b** be 8'b10101010.
+In this example **a** is replicated 4 times making the value of **b** be 8'b10101010.
 
 ### Arithmetic Operators
 
@@ -159,11 +159,11 @@ Verilog provides these six basic arithmetic operators to make basic math simpler
 
 The most important thing to remember is that not all of these operators can be synthesized! Only addition, subtraction, and multiplication are synthesizable! Some synthesizers will allow you to use divide if you are dividing by a power of two, but you should use a shift operator for that anyways. The reason the other three aren't synthesizable is because the circuits required to implement them are quite complicated. There are many trade offs that as a designer you need to make if you need to use divide, modulous, or power, that the synthesizer can't make for you. In most cases these operations will be pipe-lined to provide speed or reduce the amount of hardware used. This is something that the synthesizer can't do for you.
 
-When using addition and subtraction, the synthesizer will probably synthesize a circuit similar to the one shown in [this tutorial](@/tutorials/background/addition.md). However, the synthesizer is free to make optimizations as long as it adds the two values.
+When using addition and subtraction, the synthesizer will probably synthesize a circuit similar to the one shown in [this tutorial](@/tutorials/background/addition.md). However, the synthesizer is free to make optimizations as long as it adds the two values.
 
 For multiplication, many FPGAs (including the one used by the Mojo) have special resources dedicated to fast math. If these are available they will be used, however, if you run out of them a multiplication circuit will have to be generated which can be large and slow. Because of this you should never multiply by a power of two, but shift instead. Most synthesizers will be smart enough to do this for you but it is good practice not to rely on that.
 
-Also note that the **-** operator can be used to negate a number.
+Also note that the **-** operator can be used to negate a number.
 
 When two N-bit numbers are added or subtracted, an N+1-but number is produced. If you add or subtract two N-bit numbers and store the value in an N-bit number you need to think about overflow. For example, if you have a two bit number 3 (2'b11) and you add it to 2 (2'b10) the result will be 5 (3'b101) but if you store the value in a two bit number you get 1 (2'b01).
 
@@ -184,9 +184,9 @@ For multiplication of two N-bit numbers, the result will be an N*2-bit number. F
 
 These operators compare two values and produce a single bit to represent the result. A 1 is true and a 0 is false.
 
-The only strange thing to note is the case version of the equality tests. Bits in Verilog aren't only **0** or **1**, but they can also be **x** or **z**. For the standard equality tests, if either value has an **x** or **z** in it the result will be an **x**. However, for the case equality tests, it will test to see if these are matched in the other value. For example 4'b01x0 == 4'b01x0 produces an **x**, but 4'b01x0 === 4'b01x0 produces a **1**.
+The only strange thing to note is the case version of the equality tests. Bits in Verilog aren't only **0** or **1**, but they can also be **x** or **z**. For the standard equality tests, if either value has an **x** or **z** in it the result will be an **x**. However, for the case equality tests, it will test to see if these are matched in the other value. For example 4'b01x0 == 4'b01x0 produces an **x**, but 4'b01x0 === 4'b01x0 produces a **1**.
 
-In reality, hardware can't have an **x** value so the case equality tests are not synthesizable but are useful for simulations.
+In reality, hardware can't have an **x** value so the case equality tests are not synthesizable but are useful for simulations.
 
 ### Logical Operators
 
@@ -214,7 +214,7 @@ assign b = 4'b1110;
 assign c = a && b;
 ```
 
-In this example, **c** will have the value 1 because **a** and **b** are both non-zero.
+In this example, **c** will have the value 1 because **a** and **b** are both non-zero.
 
 ### Conditional Operator
 
@@ -232,4 +232,4 @@ assign c = 4'b1010;
 assign d = a > b ? c : 4'b0000;
 ```
 
-In this example **d** will have the value 4'b1010. When the expression on the left of the **?** is true (non-zero) the value on the left of the **:** will be assigned. If the expression is false the value on the right is used. In this case since **a** is greater than **b**, the value of **c** was assigned to **d**.
+In this example **d** will have the value 4'b1010. When the expression on the left of the **?** is true (non-zero) the value on the left of the **:** will be assigned. If the expression is false the value on the right is used. In this case since **a** is greater than **b**, the value of **c** was assigned to **d**.

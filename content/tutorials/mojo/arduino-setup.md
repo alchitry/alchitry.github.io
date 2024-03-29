@@ -49,34 +49,34 @@ If you are using **Ubuntu** and you installed it via the Software Center or the 
 
 Once you find the Arduino files, open the **hardware** folder, then open the **arduino** folder.
 
-You should now see the **boards.txt** file. Use the **boards.txt** file from the zip you downloaded earlier to replace the Arduino one.
+You should now see the **boards.txt** file. Use the **boards.txt** file from the zip you downloaded earlier to replace the Arduino one.
 
 The new file contains the declaration of the Mojo telling the Arduino IDE how to handle it.
 
-Now simply copy all the files in the **arduinoMod.zip** to the **hardware/arduino** folder. You should merge the various directories replacing only the files that are included in the modified files.
+Now simply copy all the files in the **arduinoMod.zip** to the **hardware/arduino** folder. You should merge the various directories replacing only the files that are included in the modified files.
 
 ## Getting Started
 
-To get started you need to download our base sketch that does the loading. To do this checkout our [GitHub page](https://github.com/embmicro/mojo-arduino) or download the zip directly from [here](https://github.com/embmicro/mojo-arduino/archive/master.zip).
+To get started you need to download our base sketch that does the loading. To do this checkout our [GitHub page](https://github.com/embmicro/mojo-arduino) or download the zip directly from [here](https://github.com/embmicro/mojo-arduino/archive/master.zip).
 
-Create a folder name **mojo_loader** in your sketchbook and extract the files into that folder. Arduino requires that the folder name match the main .ino file (in this case **mojo_loader.ino**). 
+Create a folder name **mojo_loader** in your sketchbook and extract the files into that folder. Arduino requires that the folder name match the main .ino file (in this case **mojo_loader.ino**). 
 
-Make sure that the Mojo is selected by going to **Tools/Boards** and selecting **Mojo V3**. Also make sure you select the correct serial port in **Tools/Serial Port** before trying to program the Mojo.
+Make sure that the Mojo is selected by going to **Tools/Boards** and selecting **Mojo V3**. Also make sure you select the correct serial port in **Tools/Serial Port** before trying to program the Mojo.
 
-In the main **mojo_loader** file there are only three functions you should have to change for most projects. They are **initPostLoad()**, **disablePostLoad()**, and **userLoop()**.
+In the main **mojo_loader** file there are only three functions you should have to change for most projects. They are **initPostLoad()**, **disablePostLoad()**, and **userLoop()**.
 
-**initPostLoad()** is called before **userLoop()** and should be used to do any setup your code needs.
+**initPostLoad()** is called before **userLoop()** and should be used to do any setup your code needs.
 
-**disablePostLoad()** is called before the Mojo enters loading mode and is used to **undo** anything you did in **initPostLoad()**. If you fail to properly undo your setup, the loading code may not function properly.
+**disablePostLoad()** is called before the Mojo enters loading mode and is used to **undo** anything you did in **initPostLoad()**. If you fail to properly undo your setup, the loading code may not function properly.
 
-**userLoop()** is where the bulk of your code should live. This acts much the same way as the basic **loop()** function provided by Arduino, but is only called when the FPGA has already been loaded. You should try to keep the loop duration fairly short so that the Mojo Loader will be able to get the Mojo into loading mode in a reasonable amount of time.
+**userLoop()** is where the bulk of your code should live. This acts much the same way as the basic **loop()** function provided by Arduino, but is only called when the FPGA has already been loaded. You should try to keep the loop duration fairly short so that the Mojo Loader will be able to get the Mojo into loading mode in a reasonable amount of time.
 
 ### Notes About Our Code
 
-If you look through our code you may notice we don't use some the Arduino libraries for things. In some cases it didn't make sense to use the libraries because we could do things more efficiently by accessing the registers directly. 
+If you look through our code you may notice we don't use some the Arduino libraries for things. In some cases it didn't make sense to use the libraries because we could do things more efficiently by accessing the registers directly. 
 
-The most noticeable example of this is we don't use **digitalWrite()**. Instead, we have use **SET()** which is a macro defined in **hardware.h**. **digitalWrite()** is actually fairly slow due to the fact that it disables and re-enables interrupts every time it is called. This was done so that if you are calling it from inside interrupts, it will work as expected. However, we never do that so the overhead is for nothing. **SET()** is as basic as you can get for setting pins, but it works basically the same way that **digitalWrite()** does.
+The most noticeable example of this is we don't use **digitalWrite()**. Instead, we have use **SET()** which is a macro defined in **hardware.h**. **digitalWrite()** is actually fairly slow due to the fact that it disables and re-enables interrupts every time it is called. This was done so that if you are calling it from inside interrupts, it will work as expected. However, we never do that so the overhead is for nothing. **SET()** is as basic as you can get for setting pins, but it works basically the same way that **digitalWrite()** does.
 
-We also decided not to use the libraries for **Serial1** and the **ADC**. This is because we did some fancy stuff with interrupts and ring buffers to allow the FPGA to have fast access to the USB port and the ADC. 
+We also decided not to use the libraries for **Serial1** and the **ADC**. This is because we did some fancy stuff with interrupts and ring buffers to allow the FPGA to have fast access to the USB port and the ADC. 
 
 If you don't want to use these optimizations, feel free to remove this code and replace it with the Arduino libraries.

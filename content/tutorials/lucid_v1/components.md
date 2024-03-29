@@ -84,30 +84,30 @@ always {
 
 On lines 28 and 29, we connect the external input and output to our two modules. 
 
-On lines 31 and 32, we connect the _rx_ module's outputs to the _tx_ module's inputs. 
+On lines 31 and 32, we connect the _rx_ module's outputs to the _tx_ module's inputs. 
 
-On line 33, we set the _block_ input of _tx_ to 0. When this value is 1, the _uart_tx_ component won't send any data out. This is useful if you have some way to tell that the receiver is busy. With the Au and Cu, we just assume the data is being read from the computer in a timely manner to keep the FTDI's buffer from overflowing. This is a reasonable assumption as long as there is some program actually reading the data.
+On line 33, we set the _block_ input of _tx_ to 0. When this value is 1, the _uart_tx_ component won't send any data out. This is useful if you have some way to tell that the receiver is busy. With the Au and Cu, we just assume the data is being read from the computer in a timely manner to keep the FTDI's buffer from overflowing. This is a reasonable assumption as long as there is some program actually reading the data.
 
 ### Sending and Receiving Data
 
-When new data arrives, the signal _rx.new_data_ goes high. This tells you that the data on _rx.data_ is valid. Normally you would want to wait for _rx.new_data_ to go high and then do something with the data.
+When new data arrives, the signal _rx.new_data_ goes high. This tells you that the data on _rx.data_ is valid. Normally you would want to wait for _rx.new_data_ to go high and then do something with the data.
 
-Writing data to the serial port follows the same idea. We set _tx.data_ to the byte to send and we set _tx.new_data_ high. However, there is one more signal to look out for. That is _tx.busy_. If this signal is high, the transmitter is busy for some reason, either it is currently sending a byte or block is high. Either way, if you try to send data when this is high, it will be ignored.
+Writing data to the serial port follows the same idea. We set _tx.data_ to the byte to send and we set _tx.new_data_ high. However, there is one more signal to look out for. That is _tx.busy_. If this signal is high, the transmitter is busy for some reason, either it is currently sending a byte or block is high. Either way, if you try to send data when this is high, it will be ignored.
 
-For this simple example, we are going to ignore _tx.busy_. This should not be a problem since we never block and the bytes coming in arrive at the same rate we can send them out.
+For this simple example, we are going to ignore _tx.busy_. This should not be a problem since we never block and the bytes coming in arrive at the same rate we can send them out.
 
-The next tutorial will handle this more gracefully by actually respecting this flag. 
+The next tutorial will handle this more gracefully by actually respecting this flag. 
 
-You should now be able to build your project and load it on the board. You can then go to **Tools->Serial Port Monitor** in Alchitry Labs to launch the monitor. From here, choose the virtual serial port the board connected to and you should be able to type data into the monitor. Whatever you type should be shown.
+You should now be able to build your project and load it on the board. You can then go to **Tools->Serial Port Monitor** in Alchitry Labs to launch the monitor. From here, choose the virtual serial port the board connected to and you should be able to type data into the monitor. Whatever you type should be shown.
 
 ## Capturing Data
 
 Before we wrap up, let's do a little more with the incoming data. We are going to save the last byte received and display it on the LEDs.
 
-To do this this, we need an 8 bit dff. The following line goes inside the _.clk(clk)_ block but outside the _.rsr(rst)_ block. It could go inside the _.rst(rst)_ block but it really doesn't need a reset.
+To do this this, we need an 8 bit dff. The following line goes inside the _.clk(clk)_ block but outside the _.rsr(rst)_ block. It could go inside the _.rst(rst)_ block but it really doesn't need a reset.
 
 ```lucid
-dff data[8];            // flip-flops to store last character
+dff data[8];            // flip-flops to store last character
 ```
 
 We can then write to the _dff_ when we have new data. These lines go at the end of the _always_ block. You can also remove the previous assignment of 0 to _led_.
@@ -119,11 +119,11 @@ if (rx.new_data)        // new byte received
 led = data.q;           // output the data
 ```
 
-On the last line, we connect the LEDs to the output of the _dff_.
+On the last line, we connect the LEDs to the output of the _dff_.
 
-If you don't assign a _dff_ a value, then it will retain the last value it had. Since we are only assigning it a value when _rx.new_data_ is high, it will hold the last byte until the next one comes in.
+If you don't assign a _dff_ a value, then it will retain the last value it had. Since we are only assigning it a value when _rx.new_data_ is high, it will hold the last byte until the next one comes in.
 
-Now, if you build and load your project, when you fire up a serial port monitor you should not only see the text you send back in the monitor, but the LEDs on the board should also changed depending on the character you sent.
+Now, if you build and load your project, when you fire up a serial port monitor you should not only see the text you send back in the monitor, but the LEDs on the board should also changed depending on the character you sent.
 
 The full module looks like this.
 

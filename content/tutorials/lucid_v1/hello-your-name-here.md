@@ -104,23 +104,23 @@ dff hello_count[$clog2(HELLO_TEXT.WIDTH[0])]; // HELLO_TEXT is 2D so WIDTH[0] ge
 dff prompt_count[$clog2(PROMPT_TEXT.WIDTH[0])];
 ```
 
-Let us take a look at _hello_count_. We need it to be wide enough so that we can index all the letters in HELLO_TEXT. We can get how many letters there are in the string by using the _WIDTH_ attribute. Because _HELLO_TEXT_ is a multi-dimensional array (2D in this case), _WIDTH_ will be a 2D array. The first index of _WIDTH_ is the number of indices in the first dimension of _HELLO_TEXT_. This is the number of letters. So we simply use _HELLO_TEXT.WIDTH[0]_. Note that the second dimension has a width of 8 since each letter is 8 bits wide.
+Let us take a look at _hello_count_. We need it to be wide enough so that we can index all the letters in HELLO_TEXT. We can get how many letters there are in the string by using the _WIDTH_ attribute. Because _HELLO_TEXT_ is a multi-dimensional array (2D in this case), _WIDTH_ will be a 2D array. The first index of _WIDTH_ is the number of indices in the first dimension of _HELLO_TEXT_. This is the number of letters. So we simply use _HELLO_TEXT.WIDTH[0]_. Note that the second dimension has a width of 8 since each letter is 8 bits wide.
 
-We can then use the _$clog2()_ function as before to make sure it is large enough to store values from 0 to _HELLO_TEXT.WIDTH[0]_-1.
+We can then use the _$clog2()_ function as before to make sure it is large enough to store values from 0 to _HELLO_TEXT.WIDTH[0]_-1.
 
-Next take a look at _name_count_. This will be used to index into the RAM. We can set this width to be whatever we want, but the size of the RAM will grow exponentially with it. I set it to 5 which will allow for a name of 25, or 32 letters long. We will play with this towards the end of the tutorial.
+Next take a look at _name_count_. This will be used to index into the RAM. We can set this width to be whatever we want, but the size of the RAM will grow exponentially with it. I set it to 5 which will allow for a name of 25, or 32 letters long. We will play with this towards the end of the tutorial.
 
-We need the size of the RAM to match the size of _name_count_.
+We need the size of the RAM to match the size of _name_count_.
 
 ```lucid
-simple_ram ram (#WIDTH(8), #DEPTH($pow(2,name_count.WIDTH)));
+simple_ram ram (#WIDTH(8), #DEPTH($pow(2,name_count.WIDTH)));
 ```
 
-Here we are using the function _$pow()_ which takes two constants and returns the first to the power of the second. In this case, _name_count.WIDTH_ is 5, so 25 is 32. By using _name_count.WIDTH_ instead of typing in 5 or 32 directly, we ensure that if we change the width of _name_count_ then everything will still work.
+Here we are using the function _$pow()_ which takes two constants and returns the first to the power of the second. In this case, _name_count.WIDTH_ is 5, so 25 is 32. By using _name_count.WIDTH_ instead of typing in 5 or 32 directly, we ensure that if we change the width of _name_count_ then everything will still work.
 
 ### The FSM
 
-The _IDLE_ and _PROMPT_ states should look very familiar to the last tutorial so we will jump to the _LISTEN_ state.
+The _IDLE_ and _PROMPT_ states should look very familiar to the last tutorial so we will jump to the _LISTEN_ state.
 
 ```lucid
 // LISTEN: Listen to the user as they type his/her name.
@@ -143,13 +143,13 @@ state.LISTEN:
   }
 ```
 
-Here we wait until _new_rx_ is 1. This signals that we have a new byte to process and that the data on _rx_data_ is valid. We then write _rx_data_ into our RAM. We are writing to the address specified by _name_count.q_ as _ram.address_ is set to this in the beginning of the always block.
+Here we wait until _new_rx_ is 1. This signals that we have a new byte to process and that the data on _rx_data_ is valid. We then write _rx_data_ into our RAM. We are writing to the address specified by _name_count.q_ as _ram.address_ is set to this in the beginning of the always block.
 
-We also need to send the character we received back so that you can see your name as you type it. We simply set _new_tx_ to 1 and _tx_data_ to _rx_data_. Note that we aren't checking _tx_busy_ so it is possible this byte will be dropped. However, in practice you can't type fast enough for this to be an issue. If you wanted to make this more robust you would need to buffer the received letters and send them out only when _tx_busy_ was 0.
+We also need to send the character we received back so that you can see your name as you type it. We simply set _new_tx_ to 1 and _tx_data_ to _rx_data_. Note that we aren't checking _tx_busy_ so it is possible this byte will be dropped. However, in practice you can't type fast enough for this to be an issue. If you wanted to make this more robust you would need to buffer the received letters and send them out only when _tx_busy_ was 0.
 
-The if statement is used to know when to stop. We have two conditions to stop on. The first is if we simply run out of space. To check of this we use _&name_count.q_. The & operator here **and**s all the bits of _name_count.q_ together into a single bit. This tells us if all the bits of _name_count.q_ are 1. The second condition is that the user pressed the enter key. We want to accept "\n" or "\r" as a stop character so we check for both.
+The if statement is used to know when to stop. We have two conditions to stop on. The first is if we simply run out of space. To check of this we use _&name_count.q_. The & operator here **and**s all the bits of _name_count.q_ together into a single bit. This tells us if all the bits of _name_count.q_ are 1. The second condition is that the user pressed the enter key. We want to accept "\n" or "\r" as a stop character so we check for both.
 
-When we are moving onto the next state, notice that we reset _name_count_. This is so that we can start printing the name from the beginning.
+When we are moving onto the next state, notice that we reset _name_count_. This is so that we can start printing the name from the beginning.
 
 ```lucid
 // HELLO: Prints the hello text with the given name inserted
@@ -179,13 +179,13 @@ state.HELLO:
   }
 ```
 
-In this state, we are going to use two counters, _hello_count_ and _name_count_. First we will start by sending each letter of _HELLO_TEXT_. However, once we hit the "@" letter we will send all the letters in our RAM. Once that is done, we will finish sending the rest of _HELLO_TEXT_.
+In this state, we are going to use two counters, _hello_count_ and _name_count_. First we will start by sending each letter of _HELLO_TEXT_. However, once we hit the "@" letter we will send all the letters in our RAM. Once that is done, we will finish sending the rest of _HELLO_TEXT_.
 
-Once everything has been sent, we return to the _IDLE_ state to await another key press to start it all over again.
+Once everything has been sent, we return to the _IDLE_ state to await another key press to start it all over again.
 
 ## The Top Level
 
-The top level tile file is exactly the same as last time since the interface to our _greeter_ module is the same.
+The top level tile file is exactly the same as last time since the interface to our _greeter_ module is the same.
 
 {% fenced_code_tab(tabs=["Au", "Cu", "Mojo"]) %}
 ```lucid
@@ -348,9 +348,9 @@ Notice that the moment you type 32 letters it cuts you off and says hello.
 
 >The rest of the tutorial is based on the Mojo and ISE.
 >
->For the Cu, iCEcube 2 shows similar (although somewhat simplified) statistics. It also seems to pack the RAM into BRAM even when it is only 32 entries deep. Changing it to 1024 (making _name_count_ 10 bits wide) entries deep will cause it to use two BRAMs. This is listed under _Device Utilization Summary_ in the build output.
+>For the Cu, iCEcube 2 shows similar (although somewhat simplified) statistics. It also seems to pack the RAM into BRAM even when it is only 32 entries deep. Changing it to 1024 (making _name_count_ 10 bits wide) entries deep will cause it to use two BRAMs. This is listed under _Device Utilization Summary_ in the build output.
 >
->For the Au, Vivado also shows similar statistics. Look for the table labeled _Report Cell Usage_ in the synthesis output. You will notice it is using eight of something called **RAM32X1S**. This is a 32x1bit RAM that fits our small RAM perfectly! It isn't BRAM but a special slice that can be confirmed as a tiny RAM (or generic logic). If you increase the RAM size, you'll notice it switches to using **RAMB18E1** which is larger more flexible BRAM. See [this document](https://www.xilinx.com/support/documentation/user_guides/ug473_7Series_Memory_Resources.pdf) for more info.
+>For the Au, Vivado also shows similar statistics. Look for the table labeled _Report Cell Usage_ in the synthesis output. You will notice it is using eight of something called **RAM32X1S**. This is a 32x1bit RAM that fits our small RAM perfectly! It isn't BRAM but a special slice that can be confirmed as a tiny RAM (or generic logic). If you increase the RAM size, you'll notice it switches to using **RAMB18E1** which is larger more flexible BRAM. See [this document](https://www.xilinx.com/support/documentation/user_guides/ug473_7Series_Memory_Resources.pdf) for more info.
 
 Once you've played with it a bit, look back at the output from the build. If you scroll up a bit from the bottom you should find something that looks like the following.
 
@@ -387,9 +387,9 @@ Slice Logic Utilization:
 
 This tells you how much of the FPGA your design is using. The two most important numbers are typically the slice register and slice LUT usage. You can see in our case we are using about 2% of the space in the FPGA!
 
-The reason we are looking at this is to see how the RAM was implemented in the FPGA. Remember the FPGA has blocks of RAM that we can use? These are shown under **Specific Feature Utilization**. **RAMB16BWER** and **RAMB8BWER** are the two types of BRAM we can use. But wait! We aren't using any! This is because our RAM is too small to warrant its own BRAM.
+The reason we are looking at this is to see how the RAM was implemented in the FPGA. Remember the FPGA has blocks of RAM that we can use? These are shown under **Specific Feature Utilization**. **RAMB16BWER** and **RAMB8BWER** are the two types of BRAM we can use. But wait! We aren't using any! This is because our RAM is too small to warrant its own BRAM.
 
-If we go back to where _name_count_ is declared and make it bigger, we can increase the RAM size.
+If we go back to where _name_count_ is declared and make it bigger, we can increase the RAM size.
 
 ```lucid
 dff name_count[8]; // 8 allows for 2^8 = 256 letters
@@ -470,6 +470,6 @@ Specific Feature Utilization:
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 ```
 
-Notice that we are using a **RAMB8BWER** now. Also notice that the number of registers and LUTs we are using went down. This is because we are using the BRAM instead of the general fabric.
+Notice that we are using a **RAMB8BWER** now. Also notice that the number of registers and LUTs we are using went down. This is because we are using the BRAM instead of the general fabric.
 
-This is why it is important to use the _simple_ram_ component that implements the template the tools look for. If we used a different coding style the tools may not recognize that it could use BRAM and we could quickly fill up the FPGA with a large RAM that would otherwise take very little space.
+This is why it is important to use the _simple_ram_ component that implements the template the tools look for. If we used a different coding style the tools may not recognize that it could use BRAM and we could quickly fill up the FPGA with a large RAM that would otherwise take very little space.

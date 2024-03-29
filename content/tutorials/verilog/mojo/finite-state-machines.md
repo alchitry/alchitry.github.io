@@ -187,9 +187,9 @@ localparam FORWARD = 0,
 reg [STATE_SIZE-1:0] state_d, state_q;
 ```
 
-Here we declare the various states we will use in a human readable way. By using **STATE_SIZE** it makes it easy to add or remove states if we change the design later.
+Here we declare the various states we will use in a human readable way. By using **STATE_SIZE** it makes it easy to add or remove states if we change the design later.
 
-All the stuff with **sl_d**, **sl_q**, **sr_d**, and **sr_q**, are used to prevent meta-stability when reading the switches. Be sure to check out the [metastability and debouncing tutorial](@/tutorials/verilog/mojo/metastability-and-debouncing.md) if you need a refresher. 
+All the stuff with **sl_d**, **sl_q**, **sr_d**, and **sr_q**, are used to prevent meta-stability when reading the switches. Be sure to check out the [metastability and debouncing tutorial](@/tutorials/verilog/mojo/metastability-and-debouncing.md) if you need a refresher. 
 
 Take note of the following two lines.
 
@@ -236,7 +236,7 @@ case (state_q)
 endcase
 ```
 
-When the counter is found to be high enough, the state transitions from **BACKUP_XXX** to **TURN_XXX**. Once it gets high enough again, it transitions from **TURN_XXX** to **FORWARD**. The counter will overflow during the first transition because it reached the top, and when the FSM reaches the **FORWARD** state the counter is held at 0.
+When the counter is found to be high enough, the state transitions from **BACKUP_XXX** to **TURN_XXX**. Once it gets high enough again, it transitions from **TURN_XXX** to **FORWARD**. The counter will overflow during the first transition because it reached the top, and when the FSM reaches the **FORWARD** state the counter is held at 0.
 
 The second case statement is used to generate the outputs based on the current state.
 
@@ -269,7 +269,7 @@ case (state_q)
 endcase
 ```
 
-These are fed to two servo modules (see the [servos tutorial](@/tutorials/verilog/mojo/servos.md)) for more info) and control the wheels of the robot.
+These are fed to two servo modules (see the [servos tutorial](@/tutorials/verilog/mojo/servos.md)) for more info) and control the wheels of the robot.
 
 ### Final Product
 

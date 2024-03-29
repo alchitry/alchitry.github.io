@@ -29,49 +29,49 @@ In the first tab, **MCS**, change the **Input Clock Frequency** to 50 since we w
 
 Take note of the **Instance Hierarchical Design Name,** it is very important later on. For now we'll just leave it at the default **mcs_0**.
 
-Set **Memory Size** to **16KB**. The absolute minimum required for this project is **8KB**, but if you add any extra code, you will want a little more.
+Set **Memory Size** to **16KB**. The absolute minimum required for this project is **8KB**, but if you add any extra code, you will want a little more.
 
-The **Memory Size** option is important because it dictates how much memory the processors has to store your code and variables. You will want to use a little memory as possible that will still fit your program since it uses valuable block RAM inside the FPGA.
+The **Memory Size** option is important because it dictates how much memory the processors has to store your code and variables. You will want to use a little memory as possible that will still fit your program since it uses valuable block RAM inside the FPGA.
 
 If you look at the top of the window you will see tabs for all the different peripherals available to you.
 
-In this tutorial, we will be using a timer to control how fast some LEDs blink. That means we will need a **FIT** (**F**ixed **I**nterval **T**imer) and some **GPO** (**G**eneral **P**urpose **O**utputs).
+In this tutorial, we will be using a timer to control how fast some LEDs blink. That means we will need a **FIT** (**F**ixed **I**nterval **T**imer) and some **GPO** (**G**eneral **P**urpose **O**utputs).
 
-In the **FIT** tab, check the **Use Timer** box.
+In the **FIT** tab, check the **Use Timer** box.
 
-We want our timer to count the number of **milliseconds** that elapse which will allow us to create a flexible delay function. Since the Mojo uses a 50MHz clock, we want the **Number of Clocks Between Strobes** to be 50,000,000 / 1,000 = 50,000.
+We want our timer to count the number of **milliseconds** that elapse which will allow us to create a flexible delay function. Since the Mojo uses a 50MHz clock, we want the **Number of Clocks Between Strobes** to be 50,000,000 / 1,000 = 50,000.
 
-We will also want the timer to generate an interrupt, so check the **Generate Interrupt** box.
+We will also want the timer to generate an interrupt, so check the **Generate Interrupt** box.
 
 ![coregen-fit.resized.png](https://cdn.alchitry.com/verilog/mojo/coregen-fit.resized.png)
 
-Head over to the **GPO** tab since we need some outputs for the LEDs.
+Head over to the **GPO** tab since we need some outputs for the LEDs.
 
-In the **General Purpose Output 1** box check the box **Use GPO**.
+In the **General Purpose Output 1** box check the box **Use GPO**.
 
-We only have 8 LEDs, so change the **Number of Bits** to 8.
+We only have 8 LEDs, so change the **Number of Bits** to 8.
 
-The **Initial Value of GPO** is fine as the default.
+The **Initial Value of GPO** is fine as the default.
 
 ![gpo_microblaze.resized.png](https://cdn.alchitry.com/verilog/mojo/gpo_microblaze.resized.png)
 
-Those are the only peripherals we need for this project, but feel free to check out the other ones as they may come in handy for your own projects. If you really want to get your feet wet, head over to [Xilinx's documentation](http://www.xilinx.com/tools/mb_mcs.htm).
+Those are the only peripherals we need for this project, but feel free to check out the other ones as they may come in handy for your own projects. If you really want to get your feet wet, head over to [Xilinx's documentation](http://www.xilinx.com/tools/mb_mcs.htm).
 
-Click **Generate** to generate the core!
+Click **Generate** to generate the core!
 
 ### Adding the core to your project
 
-After the core is done generating (it can take a while), you should see **microblaze_mcs** as a file in your project.
+After the core is done generating (it can take a while), you should see **microblaze_mcs** as a file in your project.
 
-We need to now instantiate this in our design. Open up **mojo_top.v** in your editor of choice.
+We need to now instantiate this in our design. Open up **mojo_top.v** in your editor of choice.
 
-Click on the **microblaze_mcs** source file and expand **CORE Generator** in the **Processes** panel. Double click on **View HDL Instantiation Template**. This file contains an _example_ instantiation of the core. You can refer to this file to make sure you get all the port names right.
+Click on the **microblaze_mcs** source file and expand **CORE Generator** in the **Processes** panel. Double click on **View HDL Instantiation Template**. This file contains an _example_ instantiation of the core. You can refer to this file to make sure you get all the port names right.
 
 ![instantiation_template.png](https://cdn.alchitry.com/verilog/mojo/instantiation_template.png)
 
 It's usually a good idea to just copy/paste it into your design and make the edits you need.
 
-In our case, we need to add it to **mojo_top.v**. The file should look as follows.
+In our case, we need to add it to **mojo_top.v**. The file should look as follows.
 
 ```verilog
 module mojo_top(
@@ -115,11 +115,11 @@ module mojo_top(
 endmodule
 ```
 
-Notice I made the instance name **mcs_0**. This **MUST** match the name you use when you generate the core. If you don't instantiate the core at the top of your design, you must include the path in the name in CORE Gen. For example, if you have your core in a module called **magic_sauce** then the path would be **magic_sauce/mcs_0**.
+Notice I made the instance name **mcs_0**. This **MUST** match the name you use when you generate the core. If you don't instantiate the core at the top of your design, you must include the path in the name in CORE Gen. For example, if you have your core in a module called **magic_sauce** then the path would be **magic_sauce/mcs_0**.
 
-In our design, we don't care about any of the outputs except **GPO1**, which is hooked up to the LEDs.
+In our design, we don't care about any of the outputs except **GPO1**, which is hooked up to the LEDs.
 
-The last step is to run the setup script that was generated. Open the **Tcl Console** by clicking **View->Panels->Tcl Console**. In the **Tcl Console** tab near the bottom of ISE, enter the following line and hit enter.
+The last step is to run the setup script that was generated. Open the **Tcl Console** by clicking **View->Panels->Tcl Console**. In the **Tcl Console** tab near the bottom of ISE, enter the following line and hit enter.
 
 ```bash
 source ipcore_dir/microblaze_mcs_setup.tcl
@@ -137,9 +137,9 @@ This changes your project settings to accommodate the new core. Note that these 
 
 There seems to be a bug in ISE which causes one of these settings to be wrong.
 
-Right click on **Implement Design** in the Processes panel with **mojo_top** selected in the Hierarchy panel. Choose **Properties**.
+Right click on **Implement Design** in the Processes panel with **mojo_top** selected in the Hierarchy panel. Choose **Properties**.
 
-Under the **Other Ngdbuild Command Line Options** you should see **-bm "ipcore_dir/microblaze_mcs.bmm"**. Replace that with **-bm "../ipcore_dir/microblaze_mcs.bmm"**
+Under the **Other Ngdbuild Command Line Options** you should see **-bm "ipcore_dir/microblaze_mcs.bmm"**. Replace that with **-bm "../ipcore_dir/microblaze_mcs.bmm"**
 
 ### Setting up XPS
 
@@ -147,57 +147,57 @@ Now we need to actually setup XPS, the IDE Xilinx provides that will compile our
 
 When you installed ISE, you actually installed XPS too!
 
-If you are using **Ubuntu** then you need to issue the following command because Ubuntu doesn't have a program called **gmake**, which is really just **make**.
+If you are using **Ubuntu** then you need to issue the following command because Ubuntu doesn't have a program called **gmake**, which is really just **make**.
 
 ```bash
-sudo ln -s /usr/bin/make /usr/bin/gmake
+sudo ln -s /usr/bin/make /usr/bin/gmake
 ```
 
 If you are using **Linux** you can create a snazzy launcher by running the following.
 
 ```bash
-sudo gnome-desktop-item-edit /usr/share/applications/ --create-new
+sudo gnome-desktop-item-edit /usr/share/applications/ --create-new
 ```
 
-Under **Name** enter **XPS SDK**.
+Under **Name** enter **XPS SDK**.
 
-Under **Command** enter **/opt/Xilinx/14.6/ISE_DS/EDK/bin/lin64/xsdk**, note that your version of ISE may vary.
+Under **Command** enter **/opt/Xilinx/14.6/ISE_DS/EDK/bin/lin64/xsdk**, note that your version of ISE may vary.
 
-You can find an icon at **/opt/Xilinx/14.6/ISE_DS/EDK/eclipse/lin64/eclipse/plugins/com.xilinx.sdk.product_1.0.0/icons/xps_sdk_32.png**
+You can find an icon at **/opt/Xilinx/14.6/ISE_DS/EDK/eclipse/lin64/eclipse/plugins/com.xilinx.sdk.product_1.0.0/icons/xps_sdk_32.png**
 
 ![](https://cdn.alchitry.com/verilog/mojo/launcher.png)
 
-Once you have **XPS** open, there are a few hoops to jump through before the coding can begin.
+Once you have **XPS** open, there are a few hoops to jump through before the coding can begin.
 
 ### Creating the project
 
-Click **File->New->Other...**
+Click **File->New->Other...**
 
-Under **Xilinx** choose **Hardware Platform Specification** and click **Next**.
+Under **Xilinx** choose **Hardware Platform Specification** and click **Next**.
 
-Enter **MojoDemo** as the **Project Name**. Note that you can't have spaces in your project names.
+Enter **MojoDemo** as the **Project Name**. Note that you can't have spaces in your project names.
 
-Under **Target Hardware Specification** click **Browse...** and navigate to the **ipcore_dir**. Select **microblaze_mcs_sdk.xml**.
+Under **Target Hardware Specification** click **Browse...** and navigate to the **ipcore_dir**. Select **microblaze_mcs_sdk.xml**.
 
 ![xps_hardware_project.resized.png](https://cdn.alchitry.com/verilog/mojo/xps_hardware_project.resized.png)
 
-Click **Finish**.
+Click **Finish**.
 
-Now you can create a project for your actual code. Click **File->New->Other...** and choose **Application Project** under **Xilinx**.
+Now you can create a project for your actual code. Click **File->New->Other...** and choose **Application Project** under **Xilinx**.
 
-Under **Project Name** enter **LED_Controller**.
+Under **Project Name** enter **LED_Controller**.
 
-Make sure that **Hardware Platform** is set to **MojoDemo** and the processor is **microblaze_mcs**.
+Make sure that **Hardware Platform** is set to **MojoDemo** and the processor is **microblaze_mcs**.
 
-Under **Target Software** make sure the **OS Platform** is set to **standalone**, **Language** is set to **C**, and **Board Support Package** is set to **Create New -> LED_Controller_bsp**.
+Under **Target Software** make sure the **OS Platform** is set to **standalone**, **Language** is set to **C**, and **Board Support Package** is set to **Create New -> LED_Controller_bsp**.
 
 ![xps_app_project.png](https://cdn.alchitry.com/verilog/mojo/xps_app_project.png)
 
-Click **Next**.
+Click **Next**.
 
-Choose **Empty Application** for a **Template** and click **Finish**.
+Choose **Empty Application** for a **Template** and click **Finish**.
 
-Open the project folder on the left for your project, **LED_Controller**. Right click the **src** folder and choose **New->Source File**. Enter **LEDBlinker.c** as the file name and click **Finish**.
+Open the project folder on the left for your project, **LED_Controller**. Right click the **src** folder and choose **New->Source File**. Enter **LEDBlinker.c** as the file name and click **Finish**.
 
 Open the new file and paste in the following code.
 
@@ -241,23 +241,23 @@ int main() {
 }
 ```
 
-This code works by first initalizing the GPO module, fixed-interval timer, and interrupts. The fixed-interval timer is setup to fire an interrupt every millisecond which will call our interrupt handler, **timerTick**. Each time **timerTick** is called, it increments a global variable **ct**. The **delay** function uses **ct** to delay for specified number of milliseconds.
+This code works by first initalizing the GPO module, fixed-interval timer, and interrupts. The fixed-interval timer is setup to fire an interrupt every millisecond which will call our interrupt handler, **timerTick**. Each time **timerTick** is called, it increments a global variable **ct**. The **delay** function uses **ct** to delay for specified number of milliseconds.
 
 It is worth looking at the other templates when you create a project to get an idea of some other functions you can use.
 
-Find the hammer icon on the top tool bar to build the project and generate an **.elf** file. This is the file that tells ISE how to program the processor.
+Find the hammer icon on the top tool bar to build the project and generate an **.elf** file. This is the file that tells ISE how to program the processor.
 
 ### Adding the .elf file to your project
 
 There is one last command to run to finish the project setup.
 
-Back in ISE, go to the **Tcl Console** again and enter the following command.
+Back in ISE, go to the **Tcl Console** again and enter the following command.
 
 ```bash
-microblaze_mcs_data2mem /path/to/project/LED_Controller/Debug/LED_Controller.elf
+microblaze_mcs_data2mem /path/to/project/LED_Controller/Debug/LED_Controller.elf
 ```
 
-Note that you will have to replace **/path/to/project** with your actual path.
+Note that you will have to replace **/path/to/project** with your actual path.
 
 It should output something similar to the following.
 
@@ -270,10 +270,10 @@ microblaze_mcs_data2mem: Bitstream does not exist. Not running "data2mem" to upd
 microblaze_mcs_data2mem: Done.
 ```
 
-You can now double click **Generate Programming File** to generate a **.bin** file that you can load onto your Mojo.
+You can now double click **Generate Programming File** to generate a **.bin** file that you can load onto your Mojo.
 
 If all went well you should now see the LEDs counting the seconds.
 
 ### Editing the code
 
-If you want to edit the code in **XPS** all you have to do after building the project is re-run the **Generate Programming File** stage in ISE to update the **.bin** file. You don't need to re-run **Synthesize** nor **Implement Design**.
+If you want to edit the code in **XPS** all you have to do after building the project is re-run the **Generate Programming File** stage in ISE to update the **.bin** file. You don't need to re-run **Synthesize** nor **Implement Design**.

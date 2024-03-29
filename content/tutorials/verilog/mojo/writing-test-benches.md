@@ -65,23 +65,23 @@ endmodule
 
 A test bench starts off with a module declaration, just like any other Verilog file you've seen before. However, it is important to notice the test bench module does not have any inputs or outputs. It is entirely self contained.
 
-After we declare our variables, we instantiate the module we will be testing. In this case it's the **basic_and** module. Notice the name is **DUT**. DUT is a very common name for the module to be tested in a test bench and it stands for **D**evice **U**nder **T**est.
+After we declare our variables, we instantiate the module we will be testing. In this case it's the **basic_and** module. Notice the name is **DUT**. DUT is a very common name for the module to be tested in a test bench and it stands for **D**evice **U**nder **T**est.
 
 ```verilog,linenos,linenostart=12
 initial begin
 ```
 
-This line has something new, the **initial** block. The initial block is used similarly to an **always** block except that the code in the block will only run once, at the start of the simulation. Because there is no equivalent to an initial block in hardware, initial blocks are not synthesizable and can only be used in test benches.
+This line has something new, the **initial** block. The initial block is used similarly to an **always** block except that the code in the block will only run once, at the start of the simulation. Because there is no equivalent to an initial block in hardware, initial blocks are not synthesizable and can only be used in test benches.
 
-Lines 13 and 14 simply assign values to **a**  and **b**.
+Lines 13 and 14 simply assign values to **a**  and **b**.
 
 ```verilog,linenos,linenostart=15
 #20
 ```
 
-This is another new line. The **#** syntax is used to specify a **delay**. In this case this tells the simulator to wait 20 units of time. This is important because without these delays we would have no time to observe how **a** and **b** affect the circuit. Again, there is no hardware equivalent to a delay like this, so these statements are not synthesizable.
+This is another new line. The **#** syntax is used to specify a **delay**. In this case this tells the simulator to wait 20 units of time. This is important because without these delays we would have no time to observe how **a** and **b** affect the circuit. Again, there is no hardware equivalent to a delay like this, so these statements are not synthesizable.
 
-It is very important to understand that we are still simulating **hardware**. That means that the delay of 20 units only affects the block the delay is in. The rest of your design will keep chugging away as if there was no delay. This is important because it allows you to specify inputs and wait for the output to be generated. 
+It is very important to understand that we are still simulating **hardware**. That means that the delay of 20 units only affects the block the delay is in. The rest of your design will keep chugging away as if there was no delay. This is important because it allows you to specify inputs and wait for the output to be generated. 
 
 Finally we get to the following line.
 
@@ -93,31 +93,31 @@ This line tells the simulator we are done simulating.
 
 ### Running a Test Bench
 
-As with all tutorials, we will start with the [Mojo Base Project](https://github.com/embmicro/mojo-base-project/archive/master.zip), so download a fresh copy now.
+As with all tutorials, we will start with the [Mojo Base Project](https://github.com/embmicro/mojo-base-project/archive/master.zip), so download a fresh copy now.
 
-Open up the project in ISE and add the two source files, **basic_and.v** and **basic_and_tb.v**.
+Open up the project in ISE and add the two source files, **basic_and.v** and **basic_and_tb.v**.
 
 Your project should look something like this.
 
 ![](https://cdn.alchitry.com/verilog/mojo/test_bench_files.png)
 
-If you created the files outside of ISE then **basic_and_tb** may not show up under the implementation tab. This is because ISE realizes that files that end in **_tb** are test benches and will mark them for use in simulation only. 
+If you created the files outside of ISE then **basic_and_tb** may not show up under the implementation tab. This is because ISE realizes that files that end in **_tb** are test benches and will mark them for use in simulation only. 
 
-If your test bench is showing up in the implementation tab, as shown above, **right click** on the test bench and choose **Source Properties...** 
+If your test bench is showing up in the implementation tab, as shown above, **right click** on the test bench and choose **Source Properties...** 
 
 ![test_bench_sim.png](https://cdn.alchitry.com/verilog/mojo/test_bench_sim.png)
 
-Change the **View Association** to **Simulation**.
+Change the **View Association** to **Simulation**.
 
-Back in ISE, click on the **Simulation** tab.
+Back in ISE, click on the **Simulation** tab.
 
 ![test_bench_sim_window.png](https://cdn.alchitry.com/verilog/mojo/test_bench_sim_window.png)
 
-Notice the **Simulate Behavioral Model** option now. This is how you launch the simulation. Make sure that **basic_and_tb** is selected and double click **Simulate Behavioral Model**.
+Notice the **Simulate Behavioral Model** option now. This is how you launch the simulation. Make sure that **basic_and_tb** is selected and double click **Simulate Behavioral Model**.
 
-That will launch **ISim**.
+That will launch **ISim**.
 
-It will show your test bench code and show where it hit **$finish;**. Go ahead and click on the tab that says **Default.wcfg**.
+It will show your test bench code and show where it hit **$finish;**. Go ahead and click on the tab that says **Default.wcfg**.
 
 ![test_bench_isim.resized.png](https://cdn.alchitry.com/verilog/mojo/test_bench_isim.resized.png)
 
@@ -125,15 +125,15 @@ Click the magnifying glass that looks like it has an X in it. That will fit the 
 
 ![test_bench_results.png](https://cdn.alchitry.com/verilog/mojo/test_bench_results.png)
 
-Notice how **a** and **b** change. Their values match the ones in our test bench and you can see that they change every 20 time units (ns in this case).
+Notice how **a** and **b** change. Their values match the ones in our test bench and you can see that they change every 20 time units (ns in this case).
 
-The power of the test bench is now you can look at **out**. If you compare **out** with the corresponding **a** and **b** inputs, you will notice that the module is in fact **anding** **a** and **b** together (1111 **and** 0101 = 0101!).
+The power of the test bench is now you can look at **out**. If you compare **out** with the corresponding **a** and **b** inputs, you will notice that the module is in fact **anding** **a** and **b** together (1111 **and** 0101 = 0101!).
 
 ### Sequential Test Benches
 
 The previous example is a great way to get you feet wet with test benches, but the circuit we tested didn't have any sequential logic in it. How do you go about testing a circuit that requires a clock signal?
 
-To show to do this, we will be testing the pwm module from the [pulse-width modulation tutorial](@/tutorials/verilog/mojo/pulse-width-modulation.md). 
+To show to do this, we will be testing the pwm module from the [pulse-width modulation tutorial](@/tutorials/verilog/mojo/pulse-width-modulation.md). 
 
 ```verilog,short
 module pwm #(parameter CTR_LEN = 8) (
@@ -221,27 +221,27 @@ initial begin
 end
 ```
 
-This first block generates the clock and reset signals. You will use basically this exact same initial block for any test bench that is testing a sequential circuit. 
+This first block generates the clock and reset signals. You will use basically this exact same initial block for any test bench that is testing a sequential circuit. 
 
-The **clk** and **rst** signals are initialized to 0 and 1 respectively. 
+The **clk** and **rst** signals are initialized to 0 and 1 respectively. 
 
-The next line uses the **repeat** statement.
+The next line uses the **repeat** statement.
 
 ```verilog,linenos,linenostart=17
-repeat(4) #10 clk = ~clk;
+repeat(4) #10 clk = ~clk;
 ```
 
 This is used to toggle the clock four times with 10 units of time between each toggle.
 
-After the clock is toggled a bit, **rst** is brought low to allow the circuit to resume normal operation. 
+After the clock is toggled a bit, **rst** is brought low to allow the circuit to resume normal operation. 
 
-It is very important to always reset your circuit before expecting any meaningful output. Flip-flops do not have a default value and will output **x** in simulations when they are not reset properly.
+It is very important to always reset your circuit before expecting any meaningful output. Flip-flops do not have a default value and will output **x** in simulations when they are not reset properly.
 
 ```verilog,linenos,linenostart=19
-forever #10 clk = ~clk; // generate a clock
+forever #10 clk = ~clk; // generate a clock
 ```
 
-The last line of this initial block will generate a clock signal forever! The **forever** keyword is used to create a loop that lasts, you guessed it, forever.
+The last line of this initial block will generate a clock signal forever! The **forever** keyword is used to create a loop that lasts, you guessed it, forever.
 
 The second initial block is where we do the actual testing.
 
@@ -257,11 +257,11 @@ initial begin
 end
 ```
 
-The first part of this block waits for **rst** to fall. This is accomplished with the **@(negedge signal)**; syntax. You can use **negedge** or **posedge** to make your initial block wait for the corresponding edge of that signal.
+The first part of this block waits for **rst** to fall. This is accomplished with the **@(negedge signal)**; syntax. You can use **negedge** or **posedge** to make your initial block wait for the corresponding edge of that signal.
 
-The signal **compare** is then set to 128 to make sure we get a 50% duty cycle from the **pwm** module. Since each cycle of the module takes 256 clock cycles (because we set **CTR_LEN** = 8), we need to wait for 256 positive edges of the clock.
+The signal **compare** is then set to 128 to make sure we get a 50% duty cycle from the **pwm** module. Since each cycle of the module takes 256 clock cycles (because we set **CTR_LEN** = 8), we need to wait for 256 positive edges of the clock.
 
-After we wait long enough we can change **compare** to a new value to test the **pwm** module under a different case.
+After we wait long enough we can change **compare** to a new value to test the **pwm** module under a different case.
 
 In this example we are only testing two cases, but in most test benches you should try more, especially the edge cases.
 
@@ -273,20 +273,20 @@ Now you may notice that the simulation stopped after 1us. This is the default va
 
 ![test_bench_toolbar.png](https://cdn.alchitry.com/verilog/mojo/test_bench_toolbar.png)
 
-Set it to 100us just to be safe. Since we have the **$finish;** statement in our test bench it doesn't hurt to set it longer than we need because it will end when it hits that line.
+Set it to 100us just to be safe. Since we have the **$finish;** statement in our test bench it doesn't hurt to set it longer than we need because it will end when it hits that line.
 
-If you now click the arrow with the hour glass it will run the rest of the simulation. 
+If you now click the arrow with the hour glass it will run the rest of the simulation. 
 
-Before looking at the signal we should show the **ctr_q** signal from the **pwm** module. To do this take a look af the signals shown on the left of the display.
+Before looking at the signal we should show the **ctr_q** signal from the **pwm** module. To do this take a look af the signals shown on the left of the display.
 
 ![test_bench_addsig.png](https://cdn.alchitry.com/verilog/mojo/test_bench_addsig.png)
 
-Expand the pwm_tb and select DUT. You can then right click **ctr_q[7:0]** and click **Add to Wave Window**.
+Expand the pwm_tb and select DUT. You can then right click **ctr_q[7:0]** and click **Add to Wave Window**.
 
 To get the waveform updated you need to click the icon in the toolbar that is a blue box with a white arrow pointing to the left (left most icon shown two pictures above). This will rerun the simulation from the beginning.
 
 ![test_bench_final.png](https://cdn.alchitry.com/verilog/mojo/test_bench_final.png)
 
-Here is what the final simulation should look like. You can see the pulses are exactly as we expected them to be. If you zoom in to any point you will be able to see the value of **ctr_q** and the rising and falling edges of **clk**.
+Here is what the final simulation should look like. You can see the pulses are exactly as we expected them to be. If you zoom in to any point you will be able to see the value of **ctr_q** and the rising and falling edges of **clk**.
 
 Hopefully this gives you a good starting point for writing your own test benches. Test benches are incredibly important for verifying that your modules are written correctly and everything is working as it should.

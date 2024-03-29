@@ -106,23 +106,23 @@ Windows may or may not find the driver for your Mojo. If it doesn't, open the De
 
 Right click on the **ATm32U4DFU** or **ATm16U4DFU**, depending on your Mojo, and click **Update Driver Software...** 
 
-Then choose **Browse my computer for driver software** and fill in the path to where you installed FLIP. Select the sub-folder **usb**.
+Then choose **Browse my computer for driver software** and fill in the path to where you installed FLIP. Select the sub-folder **usb**.
 
 ![bootloader-driver-path.png](https://cdn.alchitry.com/mojo/bootloader-driver-path.png)
 
-Click **Next** and install the driver.
+Click **Next** and install the driver.
 
 Once the driver is installed, launch FLIP.
 
 Click on the chip icon in the upper left corner and choose the microcontroller your Mojo has. If you have a Mojo V2 chances are you have an ATmega16U4, although some have ATmega32U4's. If you have a Mojo V3 you have an ATmega32U4.
 
-Click on the icon of the USB cable and choose **USB** then **Open**.
+Click on the icon of the USB cable and choose **USB** then **Open**.
 
-Next, click on the red book that has the red arrow pointing into it. When you hover over it with your mouse it should say **Load HEX File**. Select the **Mojo-Loader-1.2.hex** file you downloaded.
+Next, click on the red book that has the red arrow pointing into it. When you hover over it with your mouse it should say **Load HEX File**. Select the **Mojo-Loader-1.2.hex** file you downloaded.
 
 ![bootloader-load-hex.png](https://cdn.alchitry.com/mojo/bootloader-load-hex.png)
 
-Finally click on **Run**. Once that finishes click **Start Application**. The firmware is now updated!
+Finally click on **Run**. Once that finishes click **Start Application**. The firmware is now updated!
 
 ## Entering Bootloader Mode
 

@@ -37,9 +37,9 @@ There is another invalid assumption we need to correct. We assumed that the outp
 
 That means for the time between the **contamination delay** and **propagation delay** of our combinational logic, its output is unpredictable and possibly invalid.
 
-We now have to make sure that the **contamination delay** does not violate the hold time, and that the **combinational logic propogation delay** does not violate the setup time.
+We now have to make sure that the **contamination delay** does not violate the hold time, and that the **combinational logic propogation delay** does not violate the setup time.
 
-If we let the combinational logic propagation delay **= CLPD** and the contamination delay = **CD** the the following new formulas capture our constraints.
+If we let the combinational logic propagation delay **= CLPD** and the contamination delay = **CD** the the following new formulas capture our constraints.
 
 **CD > HT - CQ**
 
@@ -47,17 +47,17 @@ If we let the combinational logic propagation delay **= CLPD** and the contam
 
 ### **Clock Skew**
 
-This is the last invalid assumption we need to correct. We assumed that the clock reached all the flip-flops in the circuit at the same exact time. Since the clock needs to travel through the chip, this can't possibly be the case. The difference in time it takes to reach two flip-flops is known as the **clock skew**.
+This is the last invalid assumption we need to correct. We assumed that the clock reached all the flip-flops in the circuit at the same exact time. Since the clock needs to travel through the chip, this can't possibly be the case. The difference in time it takes to reach two flip-flops is known as the **clock skew**.
 
 In some cases clock skew can actually be helpful, but in many cases it takes away time from us.
 
-If we let clock skew = **CS** then the following formulas are updated versions of the previous ones.
+If we let clock skew = **CS** then the following formulas are updated versions of the previous ones.
 
 **CD > HT - CQ +/- CS**
 
 **CLPD < CLK - CQ - ST +/- CS**
 
-Note that the clock skew can have either sign. This is since the clock could arrive earlier to the first flip-flop, or later. It really just depends on how the circuit is laid out on the chip. Notice that if the first flip-flop gets the clock earlier (positive clock skew in our convention), then the constraint on the **contamination delay** becomes stricter and the constraint on the **combinational logic propagation delay** becomes looser. If the clock arrives at the second flip-flop first, the opposite is true.
+Note that the clock skew can have either sign. This is since the clock could arrive earlier to the first flip-flop, or later. It really just depends on how the circuit is laid out on the chip. Notice that if the first flip-flop gets the clock earlier (positive clock skew in our convention), then the constraint on the **contamination delay** becomes stricter and the constraint on the **combinational logic propagation delay** becomes looser. If the clock arrives at the second flip-flop first, the opposite is true.
 
 In general clock skew is bad. This is why FPGAs have special resources dedicated to routing clock signals. These are designed to deliver the clock to the entire FPGA (or sub-sections for local clocks) with minimal clock skew.
 
@@ -65,23 +65,23 @@ In general clock skew is bad. This is why FPGAs have special resources dedicated
 
 Enough of all these equations. Let's take a look at the following diagram which shows it all.
 
-In past tutorials, we have assumed that the moment the rising edge of the clock happens, the value of **D** showed up at **Q**. However, like all things, there is a slight delay. The **clock-to-Q propagation delay** specifies the amount of time after the rising edge of the clock that **Q** outputs the new value. This delay cuts into the time we have for the combinational logic since the input to the combinational logic is delayed!
+In past tutorials, we have assumed that the moment the rising edge of the clock happens, the value of **D** showed up at **Q**. However, like all things, there is a slight delay. The **clock-to-Q propagation delay** specifies the amount of time after the rising edge of the clock that **Q** outputs the new value. This delay cuts into the time we have for the combinational logic since the input to the combinational logic is delayed!
 
 To summarize, the time it take for the signal to propagate through the combinational logic must be shorter than the clock period minus the clock-to-Q propagation delay minus the setup time. The combinational logic delay must also be greater than the hold time minus the clock-to-Q propagation delay.
 
-If we let the combinational logic delay = **CLD**, clock period = **CLK**, setup time = **ST**, hold time = **HT**, clock-to-Q propagation delay = **CQ**, then the following formula shows our constraints.
+If we let the combinational logic delay = **CLD**, clock period = **CLK**, setup time = **ST**, hold time = **HT**, clock-to-Q propagation delay = **CQ**, then the following formula shows our constraints.
 
 **HT - CQ < CLD < CLK - CQ - ST**
 
 ### Contamination and Propagation Delays
 
-There is another invalid assumption we need to correct. We assumed that the output of our combinational logic was constant until the correct value showed up. This is not true. While the correct value is propagating, the output of the combinational logic can change multiple times before settling on the correct value. There are two important parameters that capture this behavior. The first, **contamination delay**, is the amount of time the output of the combinational logic will stay constant after it's inputs are changed. After that delay the outputs are _contaminated_. The second, **combinational logic propagation delay**, is the time that it takes for the output to be valid after the input changes.
+There is another invalid assumption we need to correct. We assumed that the output of our combinational logic was constant until the correct value showed up. This is not true. While the correct value is propagating, the output of the combinational logic can change multiple times before settling on the correct value. There are two important parameters that capture this behavior. The first, **contamination delay**, is the amount of time the output of the combinational logic will stay constant after it's inputs are changed. After that delay the outputs are _contaminated_. The second, **combinational logic propagation delay**, is the time that it takes for the output to be valid after the input changes.
 
-That means for the time between the **contamination delay** and **propagation delay** of our combinational logic, its output is unpredictable and possibly invalid.
+That means for the time between the **contamination delay** and **propagation delay** of our combinational logic, its output is unpredictable and possibly invalid.
 
-We now have to make sure that the **contamination delay** does not violate the hold time, and that the **combinational logic propogation delay** does not violate the setup time.
+We now have to make sure that the **contamination delay** does not violate the hold time, and that the **combinational logic propogation delay** does not violate the setup time.
 
-If we let the combinational logic propagation delay **= CLPD** and the contamination delay = **CD** the the following new formulas capture our constraints.
+If we let the combinational logic propagation delay **= CLPD** and the contamination delay = **CD** the the following new formulas capture our constraints.
 
 **CD > HT - CQ**
 
@@ -89,17 +89,17 @@ If we let the combinational logic propagation delay **= CLPD** and the contam
 
 ### **Clock Skew**
 
-This is the last invalid assumption we need to correct. We assumed that the clock reached all the flip-flops in the circuit at the same exact time. Since the clock needs to travel through the chip, this can't possibly be the case. The difference in time it takes to reach two flip-flops is known as the **clock skew**.
+This is the last invalid assumption we need to correct. We assumed that the clock reached all the flip-flops in the circuit at the same exact time. Since the clock needs to travel through the chip, this can't possibly be the case. The difference in time it takes to reach two flip-flops is known as the **clock skew**.
 
 In some cases clock skew can actually be helpful, but in many cases it takes away time from us.
 
-If we let clock skew = **CS** then the following formulas are updated versions of the previous ones.
+If we let clock skew = **CS** then the following formulas are updated versions of the previous ones.
 
 **CD > HT - CQ +/- CS**
 
 **CLPD < CLK - CQ - ST +/- CS**
 
-Note that the clock skew can have either sign. This is since the clock could arrive earlier to the first flip-flop, or later. It really just depends on how the circuit is laid out on the chip. Notice that if the first flip-flop gets the clock earlier (positive clock skew in our convention), then the constraint on the **contamination delay** becomes stricter and the constraint on the **combinational logic propagation delay** becomes looser. If the clock arrives at the second flip-flop first, the opposite is true.
+Note that the clock skew can have either sign. This is since the clock could arrive earlier to the first flip-flop, or later. It really just depends on how the circuit is laid out on the chip. Notice that if the first flip-flop gets the clock earlier (positive clock skew in our convention), then the constraint on the **contamination delay** becomes stricter and the constraint on the **combinational logic propagation delay** becomes looser. If the clock arrives at the second flip-flop first, the opposite is true.
 
 In general clock skew is bad. This is why FPGAs have special resources dedicated to routing clock signals. These are designed to deliver the clock to the entire FPGA (or sub-sections for local clocks) with minimal clock skew.
 
@@ -111,7 +111,7 @@ Enough of all these equations. Let's take a look at the following diagram which 
 
 For this diagram, the combinational logic just inverts the signal. The signals with a suffix of 1 are the left flip-flop in the first diagram, while the ones with a suffix of 2 are the right flip-flop. The grey shaded part of the signal is to show how that pulse propagates through the circuit.
 
-If you look at **Q1** and **Q2** then you will notice how **Q2** is an inverted version of **Q1** delayed by a clock cycle (since it goes through a flip-flop).
+If you look at **Q1** and **Q2** then you will notice how **Q2** is an inverted version of **Q1** delayed by a clock cycle (since it goes through a flip-flop).
 
 Also notice in this example, timing is met. The setup and hold times of the flip-flops are never violated.
 
@@ -119,13 +119,13 @@ Also notice in this example, timing is met. The setup and hold times of the flip
 
 When you are using an FPGA, you have control over very few of the parameters previously mentioned. This is because they are largely determined by the physical properties of the FPGA circuitry, but also because synthesis tools do a lot of the work for you.
 
-The two largest factors you have direct control over are the **clock** **period** and the **combinational logic propagation delay**. The delay can be shortened by removing some of the combinational logic between two flip-flops. How you remove this logic is up to you. Besides optimization of your design, you can pipeline your design. We'll cover that in a little bit. First, let's take a look at a case when timing is not being met.
+The two largest factors you have direct control over are the **clock** **period** and the **combinational logic propagation delay**. The delay can be shortened by removing some of the combinational logic between two flip-flops. How you remove this logic is up to you. Besides optimization of your design, you can pipeline your design. We'll cover that in a little bit. First, let's take a look at a case when timing is not being met.
 
 ### Broken timing
 
-[Download this project](http://cdn.embeddedmicro.com/Timing/Mojo-Timing.zip) and open it in ISE.
+[Download this project](http://cdn.embeddedmicro.com/Timing/Mojo-Timing.zip) and open it in ISE.
 
-The **timing.v** file is the one we are interested. Its contents are shown below.
+The **timing.v** file is the one we are interested. Its contents are shown below.
 
 ```verilog,linenos
 module timing (
@@ -163,23 +163,23 @@ After you open it, build the programming file. Once that done it should look lik
 
 Notice the spot that is highlighted. Even though the project built successfully, it failed to meet timing. That means that our design won't work properly at the clock we specified. There is simply too much combinational logic to put between two flip flops in this design.
 
-You can click on **(Timing Report)** to get more details on where timing could not be meet.
+You can click on **(Timing Report)** to get more details on where timing could not be meet.
 
 ![ise-timing-report.resized.png](https://cdn.alchitry.com/verilog/mojo/ise-timing-report.resized.png)
 
 While there are many paths that failed to meet timing, it's usually most helpful to just look at the worst ones and see where the problem is. Conveniently, those show up at the top of the list.
 
-Take a look at the **Source** and **Destination** fields. Even though what they say is a bit cryptic, you can usually glean enough information to tell where the problem is. In our case you can tell that the source is in our slow_multiply module and has to do with the signal **a_q**. This is exactly what we expect with all those multiplies.
+Take a look at the **Source** and **Destination** fields. Even though what they say is a bit cryptic, you can usually glean enough information to tell where the problem is. In our case you can tell that the source is in our slow_multiply module and has to do with the signal **a_q**. This is exactly what we expect with all those multiplies.
 
-One important thing to notice in the report is where it specifies the **minimum period**. In our case it says the minimum period is 25.334ns. That means the fastest our clock can be is 39.47 MHz (1 / 25.334ns). If we didn't care about maintaining the 50MHz clock, we could scale it down to say a 35MHz clock and our circuit would perform as expected.
+One important thing to notice in the report is where it specifies the **minimum period**. In our case it says the minimum period is 25.334ns. That means the fastest our clock can be is 39.47 MHz (1 / 25.334ns). If we didn't care about maintaining the 50MHz clock, we could scale it down to say a 35MHz clock and our circuit would perform as expected.
 
-Another important thing to notice is that there are no timing errors for the **hold paths**. This is because ISE tries really hard to satisfy the hold time even if that means making some of the setup times be violated. The reason for this is as long as all the hold times are satisfied, you can always scale back your clock speed to get your circuit to work. If there were hold time violations, the circuit could never work regardless of the clock frequency.
+Another important thing to notice is that there are no timing errors for the **hold paths**. This is because ISE tries really hard to satisfy the hold time even if that means making some of the setup times be violated. The reason for this is as long as all the hold times are satisfied, you can always scale back your clock speed to get your circuit to work. If there were hold time violations, the circuit could never work regardless of the clock frequency.
 
 ### Pipelining
 
-So assuming we want to keep our 50MHz clock, how do we fix the timing issue? The simple answer is to use a technique called **pipelining**. All that pipelining is, is adding flip-flops in the middle of big combinational logic blocks. In this case, since the timing problem isn't too bad, we are going to just place a set of flip-flops before the final largest (and slowest) multiplication.
+So assuming we want to keep our 50MHz clock, how do we fix the timing issue? The simple answer is to use a technique called **pipelining**. All that pipelining is, is adding flip-flops in the middle of big combinational logic blocks. In this case, since the timing problem isn't too bad, we are going to just place a set of flip-flops before the final largest (and slowest) multiplication.
 
-Open up **timing.v** and replace it with the following.
+Open up **timing.v** and replace it with the following.
 
 ```verilog
 module timing (
@@ -216,13 +216,13 @@ module timing (
 endmodule
 ```
 
-Now, the fourth power of **a** and **b** are computed in one clock cycle and in the next clock cycle those results are then multiplied to create the final result.
+Now, the fourth power of **a** and **b** are computed in one clock cycle and in the next clock cycle those results are then multiplied to create the final result.
 
 If you save the file and rebuild the project, you will notice that timing is now satisfied.
 
 ![ise-timing-met.resized.png](https://cdn.alchitry.com/verilog/mojo/ise-timing-met.resized.png)
 
-One important note with pipelining is that we only increase the latency of our result. We are not decreasing the throughput. That means that we can feed in a new set of numbers to be multiplied every clock cycle, but that their results won't show up at **c** until two clock cycles later. If we just decreased the clock speed to meet timing, we would be increasing latency and decreasing throughput.
+One important note with pipelining is that we only increase the latency of our result. We are not decreasing the throughput. That means that we can feed in a new set of numbers to be multiplied every clock cycle, but that their results won't show up at **c** until two clock cycles later. If we just decreased the clock speed to meet timing, we would be increasing latency and decreasing throughput.
 
 ### Conclusion
 

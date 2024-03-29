@@ -103,59 +103,59 @@ You could also assign the wire a value when declaring it like the following.
 wire rst = ~rst_n;
 ```
 
-It is a common convention to name signals that are active low (meaning a 0 is active) by appending **_n** to the end of their name. Following that convention, **rst_n** is active low, but we want an active high signal. To make **rst** an active high version of **rst_n** we can just invert **rst_n**. The **~** operator is the **not** operator. 
+It is a common convention to name signals that are active low (meaning a 0 is active) by appending **_n** to the end of their name. Following that convention, **rst_n** is active low, but we want an active high signal. To make **rst** an active high version of **rst_n** we can just invert **rst_n**. The **~** operator is the **not** operator. 
 
 However, we don't really want to do this since we need to condition our reset signal. This is because the reset signal comes from an external source and isn't synchronized with our clock. Don't worry about this for now. It'll be covered later.
 
 ### Instantiating a Module
 
-To take care of the reset conditioning, we have a module called the _reset_conditioner_ that will do all the magic for us.
+To take care of the reset conditioning, we have a module called the _reset_conditioner_ that will do all the magic for us.
 
 ```verilog,linenos,linenostart=11
 reset_conditioner reset_conditioner(.clk(clk), .in(!rst_n), .out(rst));
 ```
 
-The first _reset_conditioner_ is the name of the module we want to instantiate, the second _reset_conditioner_ is the name of this particular instance. The name you give the instance isn't particularly important. Just name it something descriptive so the hierarchy of your project is easy to understand. Using the same name for the instance and the module type is common when you only have one instance of it.
+The first _reset_conditioner_ is the name of the module we want to instantiate, the second _reset_conditioner_ is the name of this particular instance. The name you give the instance isn't particularly important. Just name it something descriptive so the hierarchy of your project is easy to understand. Using the same name for the instance and the module type is common when you only have one instance of it.
 
-The next part of the declaration wires up the inputs and outputs to signals in our design. The name following the period is the name of the module's port. The name in the parenthesis is the signal we are connecting it to.
+The next part of the declaration wires up the inputs and outputs to signals in our design. The name following the period is the name of the module's port. The name in the parenthesis is the signal we are connecting it to.
 
-The notable ones here are we are connecting _!rst_n_ to _in_ and _out_ to _rst_. The ! in front of _rst_n_ negates it just like the ~ from before. Both the ! and ~ operators are defined as **not** (meaning inverting). However, the ! is a _logical not_ while the ~ is a _bitwise not_. For a single bit like _rst_n_ they are interchangable. The difference will be covered more later.
+The notable ones here are we are connecting _!rst_n_ to _in_ and _out_ to _rst_. The ! in front of _rst_n_ negates it just like the ~ from before. Both the ! and ~ operators are defined as **not** (meaning inverting). However, the ! is a _logical not_ while the ~ is a _bitwise not_. For a single bit like _rst_n_ they are interchangable. The difference will be covered more later.
 
-The _rst_ wire we declared earlier is connected to the module's output. We can then use _rst_ in the rest of our design.
+The _rst_ wire we declared earlier is connected to the module's output. We can then use _rst_ in the rest of our design.
 
 ### Assigning a value
 
-There are many times where you want to assign a value to a wire that is already declared somewhere else. In this case, you can use the **assign** keyword.
+There are many times where you want to assign a value to a wire that is already declared somewhere else. In this case, you can use the **assign** keyword.
 
 ```verilog,linenos,linenostart=13
-assign led = rst ? 8'hAA : 8'h55;
+assign led = rst ? 8'hAA : 8'h55;
 ```
 
-Now is a good time to introduce constants in Verilog. A constant looks something like **8'hD5**, **5'd61**, or **4'b0101**. In these three cases, you can tell how many bits wide each constant is by the first number. The first one is 8 bits, the second 5, and the third 4. This is important because you usually want the constant's width to match the signal you are assigning it to. 
+Now is a good time to introduce constants in Verilog. A constant looks something like **8'hD5**, **5'd61**, or **4'b0101**. In these three cases, you can tell how many bits wide each constant is by the first number. The first one is 8 bits, the second 5, and the third 4. This is important because you usually want the constant's width to match the signal you are assigning it to. 
 
-The second part of the constant is the base for the number. A **h** means the number is in hex, a **d** means it's decimal, and **b** means it's binary. The rest of the constant is the actual value.
+The second part of the constant is the base for the number. A **h** means the number is in hex, a **d** means it's decimal, and **b** means it's binary. The rest of the constant is the actual value.
 
-There are actually two special values a bit can have, **Z** and **X**. Z means that the wire is high-impedance, or disconnected. X means that we don't care about the value, or the value is unknown (when you do simulations).
+There are actually two special values a bit can have, **Z** and **X**. Z means that the wire is high-impedance, or disconnected. X means that we don't care about the value, or the value is unknown (when you do simulations).
 
-It's important to know that an FPGA can't realize internal high impedance signals. You should typically avoid using Z unless it directly connects to a top-level output (or inout) where the FPGA can set the pin to high impedance. If you use them internally, the tools will fake it with "enable" signals which will result in a sub-optimal design.
+It's important to know that an FPGA can't realize internal high impedance signals. You should typically avoid using Z unless it directly connects to a top-level output (or inout) where the FPGA can set the pin to high impedance. If you use them internally, the tools will fake it with "enable" signals which will result in a sub-optimal design.
 
 It is helpful to assign a value of X when you don't care since it will allow the tools to set whatever value it wants at that time. This gives them a bit more freedom to optimize. Note that a value of X can't actually exist in hardware. A bit will always be 0 or 1.
 
 Now, let's look a bit closer at the assign statement.
 
 ```verilog,linenos,linenostart=13
-assign led = rst ? 8'hAA : 8'h55;
+assign led = rst ? 8'hAA : 8'h55;
 ```
 
-Ok, so what is going on here? We are using the **ternary** operator to select between two values to assign to _led_. The ternary operator is like an **if** statement and is realized in hardware with a multiplexer. If the value of the part before the **?** is true (non-zero) then the value directly following it is used. If it is false (zero), then the value after the **:** is used. In this case, when _rst_ is 1 (button pressed), the we use the value _8'hAA_. When it is 0 (button released), we use _8'h55_.
+Ok, so what is going on here? We are using the **ternary** operator to select between two values to assign to _led_. The ternary operator is like an **if** statement and is realized in hardware with a multiplexer. If the value of the part before the **?** is true (non-zero) then the value directly following it is used. If it is false (zero), then the value after the **:** is used. In this case, when _rst_ is 1 (button pressed), the we use the value _8'hAA_. When it is 0 (button released), we use _8'h55_.
 
-The last line in this module assigns _usb_tx_ to be _usb_rx_. This simply loops any serial data we receive. Since we aren't using these it is a reasonable default,.
+The last line in this module assigns _usb_tx_ to be _usb_rx_. This simply loops any serial data we receive. Since we aren't using these it is a reasonable default,.
 
 ### Creating a bin file
 
-It is now time to take our project and create a bin file that we can load onto the Au. To do this, find the **Generate Bitstream** entry under **PROGRAM AND DEBUG** on the way left of the window. Double click on it and the build cycle will start.
+It is now time to take our project and create a bin file that we can load onto the Au. To do this, find the **Generate Bitstream** entry under **PROGRAM AND DEBUG** on the way left of the window. Double click on it and the build cycle will start.
 
-In the top right corner, you will see the stage that is being run. It will run through three main build stages, synthesis, implementation, and bitstream generation.
+In the top right corner, you will see the stage that is being run. It will run through three main build stages, synthesis, implementation, and bitstream generation.
 
 Synthesis is where the tools look at your design and convert into a more abstract circuit representation.
 
@@ -169,16 +169,16 @@ Once Vivado has finished building the project it should look like this.
 
 ### Loading the bin file
 
-Once you open up the Alchitry Loader, select the .bin file created by Vivado. You can find it under _au_base_project.runs/impl_1/au_top.bin_.
+Once you open up the Alchitry Loader, select the .bin file created by Vivado. You can find it under _au_base_project.runs/impl_1/au_top.bin_.
 
-Make sure _Alchitry Au_ is selected as the board.
+Make sure _Alchitry Au_ is selected as the board.
 
-You can check _Program Flash_ if you want the configuration to be stored on the board for use after a power cycle. If you uncheck this, it will only be configured until it loses power.
+You can check _Program Flash_ if you want the configuration to be stored on the board for use after a power cycle. If you uncheck this, it will only be configured until it loses power.
 
 ![Screenshot_from_2019-07-02_10-39-29.png](https://cdn.alchitry.com/verilog/mojo/Screenshot_from_2019-07-02_10-39-29.png)
 
-Click _Program_ and your design will begin to transfer to the Au!
+Click _Program_ and your design will begin to transfer to the Au!
 
-Once it has transferred, try pressing the reset button. When you push the button the LEDs will flip states (off->on, on->off).
+Once it has transferred, try pressing the reset button. When you push the button the LEDs will flip states (off->on, on->off).
 
 Congratulations, you've completed your first project!

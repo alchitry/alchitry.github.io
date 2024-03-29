@@ -65,13 +65,13 @@ First navigate to C:\Xilinx\14.7\ISE_DS\ISE\bin
 
 The **nt** folders contain the executables. Right now any shortcuts you have and file associations point to the 64bit version. Move into the **nt** folder.
 
-Copy the file **ise**. Move back to the **bin** folder and into the **nt64** folder. Rename the current **ise** file to **ise64** and paste the 32bit version of the **ise** file. This will make sure you use the 32bit version.
+Copy the file **ise**. Move back to the **bin** folder and into the **nt64** folder. Rename the current **ise** file to **ise64** and paste the 32bit version of the **ise** file. This will make sure you use the 32bit version.
 
-If you would like a shortcut on your start screen, rename the file you just pasted into **nt64** to **ISE Design Suite**. Then right click it and choose **pin to start**.
+If you would like a shortcut on your start screen, rename the file you just pasted into **nt64** to **ISE Design Suite**. Then right click it and choose **pin to start**.
 
 ![](https://cdn.alchitry.com/setup/image-asset.png)
 
-Once it is pinned you need to rename it back to **ise**. I found that trick of renaming, pinning, change name back to be useful to make the launcher on the start page.
+Once it is pinned you need to rename it back to **ise**. I found that trick of renaming, pinning, change name back to be useful to make the launcher on the start page.
 
 ## Creating a launcher in Linux
 
@@ -84,10 +84,10 @@ cd /opt/Xilinx/14.7/ISE_DSsudo gedit run_ise.sh
 In the text editor paste the following code.
 
 ```bash
-#!/bin/bash. /opt/Xilinx/14.7/ISE_DS/settingsXX.shise
+#!/bin/bash. /opt/Xilinx/14.7/ISE_DS/settingsXX.shise
 ```
 
-Make sure you replace XX with the type of computer you are using (32 for 32bit computers;  64 for 64bit computers).
+Make sure you replace XX with the type of computer you are using (32 for 32bit computers;  64 for 64bit computers).
 
 Save and close the file. Then back in the command line enter the following.
 
@@ -97,12 +97,12 @@ sudo chmod +x run_ise.sh
 
 This will make the file you just created executable.
 
-The following applies to Ubuntu. If you are using Linux Mint just right click on the **Menu** button and click **Edit menu**. From there you can create a launcher the same way as shown below.
+The following applies to Ubuntu. If you are using Linux Mint just right click on the **Menu** button and click **Edit menu**. From there you can create a launcher the same way as shown below.
 
 Enter the following in the terminal.
 
 ```bash
-sudo apt-get install --no-install-recommends gnome-panelsudo gnome-desktop-item-edit /usr/share/applications/ --create-new
+sudo apt-get install --no-install-recommends gnome-panelsudo gnome-desktop-item-edit /usr/share/applications/ --create-new
 ```
 
 ![launcher_ubuntu.png](https://cdn.alchitry.com/setup/launcher_ubuntu.png)

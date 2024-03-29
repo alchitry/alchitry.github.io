@@ -87,11 +87,11 @@ The rest of the file is simply there to define what pins our top module (**mojo_
 NET "button" LOC = P50 | IOSTANDARD = LVCMOS33;
 ```
 
-There are three parts to this line. The **NET** part tells the tools which signal you are assigning constraints to. The **LOC** part stands for _location_ and defines the pin on the FPGA you want the signal to be connected to. Finally the **IOSTANDARD** specifies the standard to use. You should always use LVCMOS33 or LVTTL for the Mojo since the pins use 3.3V. For most practical purposes LVTTL and LVCMOS33 won't make a difference with your project. For more information see [this document from Xilinx](http://www.xilinx.com/support/documentation/user_guides/ug381.pdf) (Page 24).
+There are three parts to this line. The **NET** part tells the tools which signal you are assigning constraints to. The **LOC** part stands for _location_ and defines the pin on the FPGA you want the signal to be connected to. Finally the **IOSTANDARD** specifies the standard to use. You should always use LVCMOS33 or LVTTL for the Mojo since the pins use 3.3V. For most practical purposes LVTTL and LVCMOS33 won't make a difference with your project. For more information see [this document from Xilinx](http://www.xilinx.com/support/documentation/user_guides/ug381.pdf) (Page 24).
 
-If you look closely at the Mojo you will see a bunch of numbers next to the IO ports. These corrispond to the number you set **LOC** to. In this example I chose to connect the button the pin labled with **50** (top header, left side, bottom row) so the pin is **P50**. 
+If you look closely at the Mojo you will see a bunch of numbers next to the IO ports. These corrispond to the number you set **LOC** to. In this example I chose to connect the button the pin labled with **50** (top header, left side, bottom row) so the pin is **P50**. 
 
-You can also specify the pins an array should connect to by adding a line for each element and indexing that element with the <> notation. The signal **led** is an example of how this is done.
+You can also specify the pins an array should connect to by adding a line for each element and indexing that element with the <> notation. The signal **led** is an example of how this is done.
 
 ```ucf,linenos,linenostart=11
 NET "led<0>" LOC = P134 | IOSTANDARD = LVCMOS33;

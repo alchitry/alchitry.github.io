@@ -219,23 +219,23 @@ This will open a new dialog to customize the IP.
 
 The defaults on the first page are all fine. However, by default, it is set to output only a single 100MHz clock.
 
-Go to the **Output Clocks** tab and check the **clk_out2** box.
+Go to the **Output Clocks** tab and check the **clk_out2** box.
 
-Under **Output Freq (MHz) Requested**, enter 200.
+Under **Output Freq (MHz) Requested**, enter 200.
 
 ![Screenshot_from_2019-09-16_10-12-53.png](https://cdn.alchitry.com/lucid_v1/Screenshot_from_2019-09-16_10-12-53.png)
 
-We can now click _OK_ to close the dialog.
+We can now click _OK_ to close the dialog.
 
-Another dialog will open with some generation settings, just click on **Generate** to generate the core.
+Another dialog will open with some generation settings, just click on **Generate** to generate the core.
 
-After a few seconds, another dialog saying _Out-of-context module run was launched for generating output products._ Simply click OK and wait until you see 100% under the **Progress** section in the bottom of the main window.
+After a few seconds, another dialog saying _Out-of-context module run was launched for generating output products._ Simply click OK and wait until you see 100% under the **Progress** section in the bottom of the main window.
 
 ![Screenshot_from_2019-09-16_10-15-51.png](https://cdn.alchitry.com/lucid_v1/Screenshot_from_2019-09-16_10-15-51.png)
 
 You can now close the IP catalog.
 
-Back in Alchitry Labs, you should see some text in the console about finding the new core. You should also see _clk_wiz_0_ added to the **Cores** section of the project tree.
+Back in Alchitry Labs, you should see some text in the console about finding the new core. You should also see _clk_wiz_0_ added to the **Cores** section of the project tree.
 
 ![Screenshot_from_2019-09-16_10-17-14.png](https://cdn.alchitry.com/lucid_v1/Screenshot_from_2019-09-16_10-17-14.png)
 
@@ -304,15 +304,15 @@ module au_top (
 }
 ```
 
-Note that we are using the 100MHz output from the _clk_wiz_ module instead of the _clk_ signal directly. This is to keep the routing in the FPGA simple. The _clk_ only needs to route to the _clk_wiz_0_ core and nowhere else. You can often run into issues if you try to route the clock to special resources like the PLL used by the clock wizard and the general fabric.
+Note that we are using the 100MHz output from the _clk_wiz_ module instead of the _clk_ signal directly. This is to keep the routing in the FPGA simple. The _clk_ only needs to route to the _clk_wiz_0_ core and nowhere else. You can often run into issues if you try to route the clock to special resources like the PLL used by the clock wizard and the general fabric.
 
 The two outputs of the clock wizard are also phase aligned (rising edges match up) which may or may not be important for your design. The same is not true for the input clock and the output clocks. In this case, we don't really care about this.
 
-To clock the rest of our design, we will be using the signal _mig.ui_clk_ which is another synthesized clock from the memory interface. This clock is the one that the user interface is synchronized to. In our case, it is 81.25MHz. This is because our DDR3 interface is setup to run at 325MHz with a 4:1 ratio.
+To clock the rest of our design, we will be using the signal _mig.ui_clk_ which is another synthesized clock from the memory interface. This clock is the one that the user interface is synchronized to. In our case, it is 81.25MHz. This is because our DDR3 interface is setup to run at 325MHz with a 4:1 ratio.
 
-Also notice that we are using the _mig.sync_rst_ signal as our reset. Because of this, we can remove the _reset_conditioner_ module from our top level module.
+Also notice that we are using the _mig.sync_rst_ signal as our reset. Because of this, we can remove the _reset_conditioner_ module from our top level module.
 
-The reset button on the board will still work as the reset since it is used to reset the clock wizard which then resets the memory controller. This works since the _locked_ output of the clock wizard goes low when it is reset. The locked output goes high when it isn't being reset and the clocks are stable. If you don't hold your circuit in reset when this input isn't high, you risk running into glitches as the clocks may be doing weird things.
+The reset button on the board will still work as the reset since it is used to reset the clock wizard which then resets the memory controller. This works since the _locked_ output of the clock wizard goes low when it is reset. The locked output goes high when it isn't being reset and the clocks are stable. If you don't hold your circuit in reset when this input isn't high, you risk running into glitches as the clocks may be doing weird things.
 
 With all of that we are now fully setup to use the core!
 
@@ -320,39 +320,39 @@ With all of that we are now fully setup to use the core!
 
 The memory interface abstracts away a ton of the complexities of dealing with DDR3 memory, but the interface we get to it is still reasonably complex.
 
-Check out [this document](https://docs.amd.com/v/u/1.4-English/ug586_7Series_MIS) from Xilinx that details all the information on the core. Skip to page 57 and look at the section labeled **User Interface**.
+Check out [this document](https://docs.amd.com/v/u/1.4-English/ug586_7Series_MIS) from Xilinx that details all the information on the core. Skip to page 57 and look at the section labeled **User Interface**.
 
 This section details what each of the signals we will be interacting with do.
 
-The actual signals we need to deal with are a subset of the ones listed. See the two structs declared in the _mig_wrapper_ component for the ones we need.
+The actual signals we need to deal with are a subset of the ones listed. See the two structs declared in the _mig_wrapper_ component for the ones we need.
 
-One thing to note is that while the _cmd_ signal (_app_cmd_ in the Xilinx doc) is three bits wide, it only ever has a value of 0 (for write) and 1 (for read). Other values are used in different configurations of the core (for example, with ECC memory).
+One thing to note is that while the _cmd_ signal (_app_cmd_ in the Xilinx doc) is three bits wide, it only ever has a value of 0 (for write) and 1 (for read). Other values are used in different configurations of the core (for example, with ECC memory).
 
-There are really three independent interface bundled together used to deal with the controller.
+There are really three independent interface bundled together used to deal with the controller.
 
-The first is the write FIFO. The controller will store data in a FIFO to be used in subsequent write commands. The signal _wr_rdy_ is 1 when there is space in the buffer. You can write to the buffer by supplying data on _wr_data_ and setting _we_en_ to 1.
+The first is the write FIFO. The controller will store data in a FIFO to be used in subsequent write commands. The signal _wr_rdy_ is 1 when there is space in the buffer. You can write to the buffer by supplying data on _wr_data_ and setting _we_en_ to 1.
 
-The signal _wr_mask_ can be used to ignore bytes in _wr_data_. A 1 means to ignore the corresponding byte. To write the full 16 bytes (128 bits) set _wr_mask_ to 0.
+The signal _wr_mask_ can be used to ignore bytes in _wr_data_. A 1 means to ignore the corresponding byte. To write the full 16 bytes (128 bits) set _wr_mask_ to 0.
 
-Note that this mask doesn't change which bytes are sent to the DDR3 chip. It is used to control the _DM_ lines which tell the DDR3 chip to ignore certain bytes. If you set _wr_mask_ to 16hFFFF and perform a write, the full 128 bits will still be sent to the DDR3 but nothing will happen.
+Note that this mask doesn't change which bytes are sent to the DDR3 chip. It is used to control the _DM_ lines which tell the DDR3 chip to ignore certain bytes. If you set _wr_mask_ to 16hFFFF and perform a write, the full 128 bits will still be sent to the DDR3 but nothing will happen.
 
 With data in the FIFO, you can issue a write command.
 
-The command interface can be used when the signal _rdy_ is 1.
+The command interface can be used when the signal _rdy_ is 1.
 
-To issue a command, set _cmd_ to 0 for a write or 1 for a read, supply the related address on _addr_ and set _en_ to 1.
+To issue a command, set _cmd_ to 0 for a write or 1 for a read, supply the related address on _addr_ and set _en_ to 1.
 
 If you issue a write command, the first value written to the write FIFO will be used as data.
 
 If you issue a read command, once it has been performed, the value will be returned on the read interface.
 
-The read interface consists of _rd_valid_, which is 1 when there is new data, and _rd_data_, which is the data. After sending a read command, you wait for _rd_valid_ to be 1 which means the data you requested is on _rd_data_.
+The read interface consists of _rd_valid_, which is 1 when there is new data, and _rd_data_, which is the data. After sending a read command, you wait for _rd_valid_ to be 1 which means the data you requested is on _rd_data_.
 
 The reason for the three independent interfaces it efficiency. The command interface may be ready to accept more commands before the read data is fully ready. The write FIFO may also be willing to accept data while a read is being performed.
 
-It is also possible to setup the core to allow it to reorder the execution of commands to improve efficiency. In this case you may be issuing many commands while waiting for the first read command to finish. However, to keep things simple, our interface configuration uses strict ordering (commands executed in the order given).
+It is also possible to setup the core to allow it to reorder the execution of commands to improve efficiency. In this case you may be issuing many commands while waiting for the first read command to finish. However, to keep things simple, our interface configuration uses strict ordering (commands executed in the order given).
 
-# Write and read example
+# Write and read example
 
 In this next section, we will create a small state machine that first initializes the DDR3 to have sequential values stored and then reads them back displaying them on the LEDs.
 
@@ -478,15 +478,15 @@ module au_top (
 }
 ```
 
-First notice that we used the signal _mig.ui_clk_ in the _.clk_ block for our dffs and fsm. This is the clock that the user interface of the memory interface is synchronized to. If you need to use a different clock for the rest of your design, you'll have to implement some clock domain crossing scheme. It is easiest if you can make your design work at the 81.25MHz of this clock.
+First notice that we used the signal _mig.ui_clk_ in the _.clk_ block for our dffs and fsm. This is the clock that the user interface of the memory interface is synchronized to. If you need to use a different clock for the rest of your design, you'll have to implement some clock domain crossing scheme. It is easiest if you can make your design work at the 81.25MHz of this clock.
 
-If you look a little lower in the _always_ block, you'll see the default values we assign to the _mem_in_ struct on the _mig_ module. The _wr_mask_ signal is active low, meaning a 0 enables the byte. Since we will be writing all the bytes we can fix it to 0.
+If you look a little lower in the _always_ block, you'll see the default values we assign to the _mem_in_ struct on the _mig_ module. The _wr_mask_ signal is active low, meaning a 0 enables the byte. Since we will be writing all the bytes we can fix it to 0.
 
 The other values we don't care about when the enable signals are 0 so they are set to x.
 
-The state machine is simple, it starts in _WRITE_DATA_ where it writes a value to the write FIFO. Once the value is written, which is noted by _wr_en_ and _wr_rdy_ both being 1, it switches to the _WRITE_CMD_ state.
+The state machine is simple, it starts in _WRITE_DATA_ where it writes a value to the write FIFO. Once the value is written, which is noted by _wr_en_ and _wr_rdy_ both being 1, it switches to the _WRITE_CMD_ state.
 
-In this state, it sends the write command. One thing to note is that the address associated with the write is the **DDR native address**. This means that the first three bits should always be 0 since each DDR entry is 16 bits (the DDR3 on the Au has a 16 bit bus) and each read/write we preform is on 128 bit blocks.
+In this state, it sends the write command. One thing to note is that the address associated with the write is the **DDR native address**. This means that the first three bits should always be 0 since each DDR entry is 16 bits (the DDR3 on the Au has a 16 bit bus) and each read/write we preform is on 128 bit blocks.
 
 This is easy to do by concatenating three 0's onto the end of our address.
 
@@ -498,21 +498,21 @@ The 128 bit operation size isn't configurable. Xillinx's memory interface uses b
 
 The burst operation is actually supported by the DDR3 chip itself. The address you give the memory interface is sent directly the the DDR3 chip. If you don't set the last three bits to 0 weird things happen. For writes, these bits are ignored and everything works as if they were 0.
 
-For reads, the same 16 bit words in the burst will be read from same 128 bit block but in a different order. For example, if the last three bits are 0, then they are read in the expected order, 0, 1, 2, 3, 4, 5, 6, and 7. However, if you set the last three bits to 2 then it will read them in the order 2, 3, 0, 1, 6, 7, 4, and 5. See page 145 of [this document](https://media-www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr3/2gb_1_35v_ddr3l.pdf) for the full behavior. The memory controller is setup to use the sequential burst type.
+For reads, the same 16 bit words in the burst will be read from same 128 bit block but in a different order. For example, if the last three bits are 0, then they are read in the expected order, 0, 1, 2, 3, 4, 5, 6, and 7. However, if you set the last three bits to 2 then it will read them in the order 2, 3, 0, 1, 6, 7, 4, and 5. See page 145 of [this document](https://media-www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr3/2gb_1_35v_ddr3l.pdf) for the full behavior. The memory controller is setup to use the sequential burst type.
 
 It is generally best to just ensure these bits are always 0. The reason this feature exists is so that you can get a specific 16 bit value as soon as possible while still reading in a burst of 8.
 
 Note that we are writing the address' value to each address. In other words, address 0 gets value 0, address 1 gets value 1, and so on. This means when we read these back in order, it'll look like a counter.
 
-Once all 256 addresses have been written, it switches to reading. The _READ_CMD_ state issues the read command and then transitions to the _WAIT_READ_ state.
+Once all 256 addresses have been written, it switches to reading. The _READ_CMD_ state issues the read command and then transitions to the _WAIT_READ_ state.
 
-In the _WAIT_READ_ state, it waits for _rd_valid_ to be 1. It then uses the read value to set the LED's state.
+In the _WAIT_READ_ state, it waits for _rd_valid_ to be 1. It then uses the read value to set the LED's state.
 
-Finally, it goes into the _DELAY_ state to waste some time so we can see the LED value before it loops to _READ_CMD_ again.
+Finally, it goes into the _DELAY_ state to waste some time so we can see the LED value before it loops to _READ_CMD_ again.
 
 It will continue reading the first 256 addresses of the DDR3 over and over.
 
-If you change what value is written in the _WRITE_DATA_ state, it'll change what the LEDs show.
+If you change what value is written in the _WRITE_DATA_ state, it'll change what the LEDs show.
 
 With this you should be able to build the project and load it onto your board to see the LEDs counting.
 
@@ -520,13 +520,13 @@ With this you should be able to build the project and load it onto your board to
 
 You may have noticed that this example is incredibly wasteful. We are reading and writing full 128 bit blocks of data when we are only using the first 8 bits.
 
-This could be fixed if we just combined 16 values into 128 bit blocks and wrote those to a single address. When we read them we could then store a while line and iterate over each byte before reading in another line.
+This could be fixed if we just combined 16 values into 128 bit blocks and wrote those to a single address. When we read them we could then store a while line and iterate over each byte before reading in another line.
 
 For our trivial example, it wouldn't be too hard to implement this directly. However, for more complex read/write patterns, this could be very difficult to do efficiently.
 
-Luckily, there is a component in the _component library_ that can help us with this.
+Luckily, there is a component in the _component library_ that can help us with this.
 
-Go to **Project->Add Components** and under _Memory_ select _LRU Cache_.
+Go to **Project->Add Components** and under _Memory_ select _LRU Cache_.
 
 ```lucid,short
 module lru_cache #(
@@ -855,23 +855,23 @@ module lru_cache #(
 }
 ```
 
-This component is pretty complicated but it can take the memory interface from the _MIG Wrapper_ component and give you efficient read and write interfaces of selectable word sizes.
+This component is pretty complicated but it can take the memory interface from the _MIG Wrapper_ component and give you efficient read and write interfaces of selectable word sizes.
 
-This cache is lazy and will only access the RAM when it needs to. That means you can read and write to entries in the cache as much as you want without hitting the memory. It will only access values in the external memory when it needs to free up a cache line or if you try to read values that aren't in the cache.
+This cache is lazy and will only access the RAM when it needs to. That means you can read and write to entries in the cache as much as you want without hitting the memory. It will only access values in the external memory when it needs to free up a cache line or if you try to read values that aren't in the cache.
 
 The cache presents independant read and write interfaces. This comes in handy when you have one section of your design doing only reads and another doing only writes. If you read and write the same address in the same cycle, you will read the old value.
 
-You can configure the cache to have multiple entries (AKA cache lines). This can save a ton of IO for certain memory access patterns. For example, in our GPU demo project the rasterizer reads values from the Z buffer sequentially and writes values back sequentially at a slightly delayed time down the pipeline. This cache was used with two entries so that the reads and writes would each have their own cache lines to minimize fighting.
+You can configure the cache to have multiple entries (AKA cache lines). This can save a ton of IO for certain memory access patterns. For example, in our GPU demo project the rasterizer reads values from the Z buffer sequentially and writes values back sequentially at a slightly delayed time down the pipeline. This cache was used with two entries so that the reads and writes would each have their own cache lines to minimize fighting.
 
-This cache attempts to approximate a LRU (**L**east **R**ecently **U**sed) cache policy. This means that when a new cache line is needed, the least recently used (AKA oldest) entry will be evicted.
+This cache attempts to approximate a LRU (**L**east **R**ecently **U**sed) cache policy. This means that when a new cache line is needed, the least recently used (AKA oldest) entry will be evicted.
 
 The age of each entry is kept track of by adding 1 to its age counter every time a read/write is performed to any entry. The age counter can saturate if it isn't accessed in a long time.
 
 Each time an entry is accessed, its age counter is reset.
 
-The maximum age can be set with the _AGE_BITS_ parameter. The default value is 3, which gives a maximum age of 7. This way of keeping track of age isn't perfect and if _AGE_BITS_ is too small, in some cases the cache may not act as a perfect LRU. However, this typically isn't an issue as it will always evict the oldest or a max age cache line.
+The maximum age can be set with the _AGE_BITS_ parameter. The default value is 3, which gives a maximum age of 7. This way of keeping track of age isn't perfect and if _AGE_BITS_ is too small, in some cases the cache may not act as a perfect LRU. However, this typically isn't an issue as it will always evict the oldest or a max age cache line.
 
-Setting _AGE_BITS_ to a large value will ensure that the oldest cache line is more likely to be removed but will incur a performance penalty.
+Setting _AGE_BITS_ to a large value will ensure that the oldest cache line is more likely to be removed but will incur a performance penalty.
 
 ## Cache interface
 
@@ -879,19 +879,19 @@ The interface to the cache is pretty simple.
 
 The addresses used are word address. This means you don't need to worry about zero padding anything.
 
-You can set the size of the data word with the _WORD_SIZE_ parameter. This can be set to 8, 16, 32, 64, or 128. 
+You can set the size of the data word with the _WORD_SIZE_ parameter. This can be set to 8, 16, 32, 64, or 128. 
 
-To write, you simply check _wr_ready_. If this signal is 1, you can specify a value on _wr_data_, an address on _wr_addr_, and set _wr_valid_ to 1. 
+To write, you simply check _wr_ready_. If this signal is 1, you can specify a value on _wr_data_, an address on _wr_addr_, and set _wr_valid_ to 1. 
 
-To read, you check if _rd_ready_ is 1. If it is, you set _rd_addr_ to the address to read and _rd_cmd_valid_ to 1.
+To read, you check if _rd_ready_ is 1. If it is, you set _rd_addr_ to the address to read and _rd_cmd_valid_ to 1.
 
-You then wait for _rd_data_valid_ to be 1. When it is, _rd_data_ has your data.
+You then wait for _rd_data_valid_ to be 1. When it is, _rd_data_ has your data.
 
-When you perform reads, _rd_data_valid_ is guaranteed to take at least one cycle from the request to go high. However, _rd_ready_ may stay high if it is a cache hit. That means you can stream multiple reads back to back with each result delayed a single cycle if they are all hits.
+When you perform reads, _rd_data_valid_ is guaranteed to take at least one cycle from the request to go high. However, _rd_ready_ may stay high if it is a cache hit. That means you can stream multiple reads back to back with each result delayed a single cycle if they are all hits.
 
-Cache misses will take longer for _rd_data_valid_ to go high since it will need to actually fetch the value from the RAM.
+Cache misses will take longer for _rd_data_valid_ to go high since it will need to actually fetch the value from the RAM.
 
-If you have a cache in your design and are also reading values from another piece of your design, you may need to occasionally flush the cache to ensure that the values are actually written to the DDR3. For this, you can use the ﻿_flush_﻿ signal. When ﻿_flush_﻿ and ﻿_flush_ready_﻿ are high, the cache will write all dirty entries to the DDR3 memory.
+If you have a cache in your design and are also reading values from another piece of your design, you may need to occasionally flush the cache to ensure that the values are actually written to the DDR3. For this, you can use the ﻿_flush_﻿ signal. When ﻿_flush_﻿ and ﻿_flush_ready_﻿ are high, the cache will write all dirty entries to the DDR3 memory.
 
 ## Cache example
 
@@ -1014,15 +1014,15 @@ module au_top (
 
 This new design performs exactly the same as before, but now we are using the DDR3 more efficiently. We are using 1/16th the memory as we were before without having to complicate our design. It actually simplifies the design since the writes don't require separate operations to write the data and command.
 
-Note that _ENTRIES_ is set to 1 since our access pattern is super simple and having more entries won't increase the number of cache hits we have (unless _ENTRIES_ was set to 16 which would mean everything would fit in the cache).
+Note that _ENTRIES_ is set to 1 since our access pattern is super simple and having more entries won't increase the number of cache hits we have (unless _ENTRIES_ was set to 16 which would mean everything would fit in the cache).
 
-We also set _AGE_BITS_ to 1 since there isn't much of a choice which entry to evict with there is only 1.
+We also set _AGE_BITS_ to 1 since there isn't much of a choice which entry to evict with there is only 1.
 
 In this super basic use case, the cache component is overkill. However, the tools will optimize a lot of the logic out keeping it fairly efficient.
 
 # Multiple devices
 
-It is common to want to interface multiple parts of your design with the one memory interface. To make this easy there is a component in the _Components LIbrary_ called _DDR Arbiter_ under the _Memory_ section.
+It is common to want to interface multiple parts of your design with the one memory interface. To make this easy there is a component in the _Components LIbrary_ called _DDR Arbiter_ under the _Memory_ section.
 
 ```lucid,short
 module ddr_arbiter #(
@@ -1124,7 +1124,7 @@ module ddr_arbiter #(
 }
 ```
 
-This module can be hooked up to the memory interface via the _master_in_ and _master_out_ signals. You then get _DEVICES_ number of similar interfaces on the _device_in_ and _device_out_ arrays that can be hooked up to different parts of your design.
+This module can be hooked up to the memory interface via the _master_in_ and _master_out_ signals. You then get _DEVICES_ number of similar interfaces on the _device_in_ and _device_out_ arrays that can be hooked up to different parts of your design.
 
 For example, in our GPU project, we have a section that writes frames and another that reads the buffer to display the frames on the LCD.
 

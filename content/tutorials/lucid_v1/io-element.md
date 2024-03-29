@@ -148,23 +148,23 @@ Because `io_led` is a 2D array, when we set all the LEDs to 0, we have a little 
 io_led = 3x{{8h00}};    // turn LEDs off
 ```
 
-We need the dimensions of our constant to match `io_led`. In this case, `io_led` is a 3 by 8 array. We use `8h00` as the base constant which is a single dimensional array of width 8. The `x{}` syntax takes the outermost dimension and duplicates it. If we wrote `3x{8h00}`, we would end up with `24h000000` since the outer most dimension is 8. This isn't what we want as it is still a 1D array. Instead, we need to first create a 1 by 8 array and duplicate it three times. To do this we use the array building syntax, `{}`. The value `{8h00}` is a 1 by 8 2D array. We then use `3x{{8h00}}` to get a 3 by 8 array of all zeros. Note that we could have also written `{8h00, 8h00, 8h00}`, but the duplication syntax is a bit cleaner.
+We need the dimensions of our constant to match `io_led`. In this case, `io_led` is a 3 by 8 array. We use `8h00` as the base constant which is a single dimensional array of width 8. The `x{}` syntax takes the outermost dimension and duplicates it. If we wrote `3x{8h00}`, we would end up with `24h000000` since the outer most dimension is 8. This isn't what we want as it is still a 1D array. Instead, we need to first create a 1 by 8 array and duplicate it three times. To do this we use the array building syntax, `{}`. The value `{8h00}` is a 1 by 8 2D array. We then use `3x{{8h00}}` to get a 3 by 8 array of all zeros. Note that we could have also written `{8h00, 8h00, 8h00}`, but the duplication syntax is a bit cleaner.
 
-`io_seg` and `io_sel` are used to control the 4 seven-segment LED displays. They are active low (0 = on, 1 = off) and they will be covered in more detail later.
+`io_seg` and `io_sel` are used to control the 4 seven-segment LED displays. They are active low (0 = on, 1 = off) and they will be covered in more detail later.
 
-`io_button` is simply the 5 push buttons. `io_button[0]` is up, `io_button[1]` is center, `io_button[2]` is down, `io_button[3]` is left, and `io_button[4]` is right.
+`io_button` is simply the 5 push buttons. `io_button[0]` is up, `io_button[1]` is center, `io_button[2]` is down, `io_button[3]` is left, and `io_button[4]` is right.
 
-Finally, `io_dip` is the 24 DIP switches. This is arranged in a 2D array exactly the same way as `io_led`.
+Finally, `io_dip` is the 24 DIP switches. This is arranged in a 2D array exactly the same way as `io_led`.
 
 ### Faking Pull-downs on the Cu
 
-If you are using a Cu then you may have noticed your top module looks a little different than the Au. There are two modules, `pull_down` and `pull_down_2d,` instantiated and the `io_button` and `io_dip` signals are of type `inout` not `input`.
+If you are using a Cu then you may have noticed your top module looks a little different than the Au. There are two modules, `pull_down` and `pull_down_2d,` instantiated and the `io_button` and `io_dip` signals are of type `inout` not `input`.
 
-These module fakes pull-down resistors on the DIP switches and buttons by pulling the pin low for a very short amount of time, releasing it, waiting a short period, then sampling the input. 
+These module fakes pull-down resistors on the DIP switches and buttons by pulling the pin low for a very short amount of time, releasing it, waiting a short period, then sampling the input. 
 
 This is done because the Io Element was originally designed to use the pull-down resistors embedded in the FPGA. However, the FPGA on the Cu only has internal pull-up resistors.
 
-If you take a look at the [schematic](https://cdn.alchitry.com/boards/alchitry_io_sch.pdf), you'll see that the buttons and DIP switches are connected to +3.3V via a 330 ohm resistor. This will prevent any damage to the FPGA if the button or DIP switch is active and it tries to pull the pin to 0V.
+If you take a look at the [schematic](https://cdn.alchitry.com/boards/alchitry_io_sch.pdf), you'll see that the buttons and DIP switches are connected to +3.3V via a 330 ohm resistor. This will prevent any damage to the FPGA if the button or DIP switch is active and it tries to pull the pin to 0V.
 
 This method of faking the pull-down resistor works because there is some amount of capacitance on each input pin. Some of it is internal to the FPGA and some is from the board. When the switch isn't active, the pin is normally floating (not being pulled to specific voltage). The FPGA the forces it to 0V and releases it. Since nothing is trying to move it, the only sources to change the voltage are small amounts of leakage in the FPGA and noise. These both take much longer than a couple clock cycles (30ns) to significantly affect it. Therefore, when we read the state of the pin right after pulling it down, it will still be 0 if nothing tried to change it.
 
@@ -174,13 +174,13 @@ By repeating this process over and over, we can simulate having a normal pull-do
 
 Thanks to this module, you can ignore that any of this is even happening and simply use its output as you would the input with a pull-down.
 
-The only difference is instead of using `io_dip` or `io_button` you use `dip_pd.out` and `button_pd.out` respectively.
+The only difference is instead of using `io_dip` or `io_button` you use `dip_pd.out` and `button_pd.out` respectively.
 
 ## Logic Gates
 
-The first example we will work though is connecting a few DIP switches to the LEDs through logic gates. If you aren't familiar with what logic gates (AND, OR, NOT, XOR) are, you should take a look at the [digital logic tutorial](@/tutorials/background/digital-logic.md).
+The first example we will work though is connecting a few DIP switches to the LEDs through logic gates. If you aren't familiar with what logic gates (AND, OR, NOT, XOR) are, you should take a look at the [digital logic tutorial](@/tutorials/background/digital-logic.md).
 
-In this example we are going to start by making the first LED light up when switch 0 **and** 1 are turned on.
+In this example we are going to start by making the first LED light up when switch 0 **and** 1 are turned on.
 
 {% fenced_code_tab(tabs=["Au", "Cu", "Mojo"]) %}
 ```lucid
@@ -243,13 +243,13 @@ Take a look at the last line. First we need to index the first LED. The first LE
 >io_led[0][0] = dip_pd.out[0][0] & dip_pd.out[0][1];
 >```
 
-Notice that I didn't change the line where we assigned all LEDs a value of 0. This is because the assignment to the first LED will simply be overruled by our second assignment. It's good to remember that while `always` blocks have a sequential order of precedence, they aren't actually sequential. This means that `io_led[0][0]` will **only** have the value of the second assignment and it as if the first assignment never happened. The tools will simply wire an AND gate to the two switch inputs and the led output.
+Notice that I didn't change the line where we assigned all LEDs a value of 0. This is because the assignment to the first LED will simply be overruled by our second assignment. It's good to remember that while `always` blocks have a sequential order of precedence, they aren't actually sequential. This means that `io_led[0][0]` will **only** have the value of the second assignment and it as if the first assignment never happened. The tools will simply wire an AND gate to the two switch inputs and the led output.
 
 Go ahead and build/load the project onto your board. Try playing with the first two switches. If either switch is off, the LED should be off. Only when both switches are on should the LED turn on.
 
-You can now go back and replace the **&** operator with the operators for OR, **|**, XOR, **^**, and XNOR, **~^**. Play with the switches and make sure you understand the different operators.
+You can now go back and replace the **&** operator with the operators for OR, **|**, XOR, **^**, and XNOR, **~^**. Play with the switches and make sure you understand the different operators.
 
-**Practice:** Add two more lines to the `always` block so that the first LED of the first group lights up as before, the first LED of the second group lights up when either (OR) of the first two switches in the second group are on, and the first LED of the last group lights up only when exactly one (XOR) switch of the first two switches in the last group are on.
+**Practice:** Add two more lines to the `always` block so that the first LED of the first group lights up as before, the first LED of the second group lights up when either (OR) of the first two switches in the second group are on, and the first LED of the last group lights up only when exactly one (XOR) switch of the first two switches in the last group are on.
 
 ## Bit-wise
 
@@ -271,7 +271,7 @@ io_led[0] = io_dip[0] & io_dip[1];
 ```
 {% end %}
 
-Note that `io_led[0]` is an array of width 8, and so is `io_dip[0]` and `io_dip[1]`. This single statement will create 8 individual AND gates.
+Note that `io_led[0]` is an array of width 8, and so is `io_dip[0]` and `io_dip[1]`. This single statement will create 8 individual AND gates.
 
 You can again use the OR, XOR, and XNOR operators in the same way.
 
@@ -291,17 +291,17 @@ io_led[0] = io_dip[0] & io_dip[1] & io_dip[2];
 ```
 {% end %}
 
-Bit-wise operators are evaluated from left to right so in this case `io_dip[0]` will be ANDed with `io_dip[1]` and the result will then be ANDed with `io_dip[2]`. In the case of AND gates, the order actually doesn't matter. However, if you start mixing and matching operators the order can matter. You can also use parenthesis to make the order you want things evaluated explicit.
+Bit-wise operators are evaluated from left to right so in this case `io_dip[0]` will be ANDed with `io_dip[1]` and the result will then be ANDed with `io_dip[2]`. In the case of AND gates, the order actually doesn't matter. However, if you start mixing and matching operators the order can matter. You can also use parenthesis to make the order you want things evaluated explicit.
 
-**Practice:** Use two bit-wise operators so that the LEDs in the first group light up when the corresponding switch in the third group is on or both switches in the first two groups are on.
+**Practice:** Use two bit-wise operators so that the LEDs in the first group light up when the corresponding switch in the third group is on or both switches in the first two groups are on.
 
 ## Reduction Operators
 
-Reduction operators are similar to the bit-wise operators but they work on a single input array and always output one bit. You could say they `reduce` an array to a single bit. 
+Reduction operators are similar to the bit-wise operators but they work on a single input array and always output one bit. You could say they `reduce` an array to a single bit. 
 
 You can think of these operators as one huge logic gate with many inputs. The number of inputs is equal to the size of the array the operator is used on.
 
-In our example, we want to turn the first LED on only if every switch in the first group is turned on. To do this we can use the **&** reduction operator.
+In our example, we want to turn the first LED on only if every switch in the first group is turned on. To do this we can use the **&** reduction operator.
 
 {% fenced_code_tab(tabs=["Au", "Cu", "Mojo"]) %}
 ```lucid
@@ -335,7 +335,7 @@ io_led[0][0] = io_dip[0][0] & io_dip[0][1] & io_dip[0][2] & io_dip[0][3] & io_di
 
 However, as you can tell, the reduction operator is much more compact.
 
-It is even possible to use the reduction operators on multi-dimensional arrays. For example, if we want the LED to turn on when **any** switch is on we could use the following.
+It is even possible to use the reduction operators on multi-dimensional arrays. For example, if we want the LED to turn on when **any** switch is on we could use the following.
 
 {% fenced_code_tab(tabs=["Au", "Cu", "Mojo"]) %}
 ```lucid
@@ -353,13 +353,13 @@ io_led[0][0] = |io_dip;
 
 I tend to use the AND version to easily detect if a signal is at its maximum value (all 1's). The OR version basically tells you if the value is not 0 and the XOR version will tell you if there is an odd number of 1's.
 
-Each of these operators can also be negated with the bit-wise negate operator, **~**. You can simply place this in front of the expression to get the NAND, NOR, and XNOR equivalents.
+Each of these operators can also be negated with the bit-wise negate operator, **~**. You can simply place this in front of the expression to get the NAND, NOR, and XNOR equivalents.
 
-**Practice:** Using your newly acquired bit-wise and reduction operator skills, make the first LED light up when any switch in the third group is on, or all the switches in the second group are on and the first group has an odd number of switches on. This is a fairly tricky challenge but everything you need has been mentioned in this tutorial. If you get stuck feel free to head over to the [forum](http://forum.alchitry.com/) for some help.
+**Practice:** Using your newly acquired bit-wise and reduction operator skills, make the first LED light up when any switch in the third group is on, or all the switches in the second group are on and the first group has an odd number of switches on. This is a fairly tricky challenge but everything you need has been mentioned in this tutorial. If you get stuck feel free to head over to the [forum](http://forum.alchitry.com/) for some help.
 
 ## Math
 
-This part of the tutorial we will look at addition, subtraction, and multiplication. We will be performing different operations using the DIP switches as our number inputs. This means everything will be in binary, so if you aren't familiar with binary check out the [encodings tutorial](@/tutorials/background/encodings.md).
+This part of the tutorial we will look at addition, subtraction, and multiplication. We will be performing different operations using the DIP switches as our number inputs. This means everything will be in binary, so if you aren't familiar with binary check out the [encodings tutorial](@/tutorials/background/encodings.md).
 
 Let's start with some addition. We will add the binary values from the first and second groups of DIP switches.
 
@@ -426,19 +426,19 @@ always {
 ```
 {% end %}
 
-Because the result of many of our operations will be more than 8 bits, we can create a signal, `result`, to hold the value. You can think of signals (**sig**) simply as wires. They don't add any cost to your design as they simply define the connection from something to something else.
+Because the result of many of our operations will be more than 8 bits, we can create a signal, `result`, to hold the value. You can think of signals (**sig**) simply as wires. They don't add any cost to your design as they simply define the connection from something to something else.
 
 We set result to be the output of our addition. The addition of two 8 bit numbers results in a 9 bit result. This is because an 8 bit number has the range 0-255 so adding two of them together will have the range 0-510, which requires 9 bits to represent.
 
-We then take result and connect it to the LEDs so that we can see all 24 bits. However, this requires the use of the helper function `$build()`. This function takes a 1D array as the first argument and splits it into a multidimensional array. In our case we pass 3 as the second parameter which causes it to split the 24 bits three ways into a 3x8 array.
+We then take result and connect it to the LEDs so that we can see all 24 bits. However, this requires the use of the helper function `$build()`. This function takes a 1D array as the first argument and splits it into a multidimensional array. In our case we pass 3 as the second parameter which causes it to split the 24 bits three ways into a 3x8 array.
 
-You can pass `$build()` more than one dimension to split. For example, `$build(result,3,2)` would create a 3x2x4 array.
+You can pass `$build()` more than one dimension to split. For example, `$build(result,3,2)` would create a 3x2x4 array.
 
-The helper function `$flatten()` does the opposite. It takes a multidimensional array and flattens it into a 1D array.
+The helper function `$flatten()` does the opposite. It takes a multidimensional array and flattens it into a 1D array.
 
 Build and load your project to your board. Congratulations! You've just build a very basic calculator. To make sure everything is working properly, let's calculate 2+2. 2 has the binary representation of 0000 0010. Set both groups of switches to 2. The result on the LEDs should be 4, or 0000 0100.
 
-Now change the **+** to a **-** to subtract the first switch value from the second.
+Now change the **+** to a **-** to subtract the first switch value from the second.
 
 {% fenced_code_tab(tabs=["Au", "Cu", "Mojo"]) %}
 ```lucid
@@ -458,7 +458,7 @@ What happens when you set the second switch to 0 and the first to 1 so you're pe
 
 Even though when the number is negative all 24 LEDs light up, you only need 9 bits to represent any 8 bit by 8 bit addition or subtraction. This is because when the value would be negative, dropping the leading 1's doesn't change its value.
 
-Finally, change the **-** to ***** to test out multiplication.
+Finally, change the **-** to ***** to test out multiplication.
 
 {% fenced_code_tab(tabs=["Au", "Cu", "Mojo"]) %}
 ```lucid
@@ -484,15 +484,15 @@ To approximate division, you can first multiply by any number and then shift the
 
 ## Seven-Segment Displays
 
-The Io Element has four seven-segment displays that are multiplexed. This means that we have two groups of signals, the first, `io_seg`, connects to the segments of each display.
+The Io Element has four seven-segment displays that are multiplexed. This means that we have two groups of signals, the first, `io_seg`, connects to the segments of each display.
 
 ![7-seg.png](https://cdn.alchitry.com/lucid_v1/7-seg.png)
 
-Note that even though we call these _seven_-segment displays there are actually 8 LEDs in each one because of the decimal point.
+Note that even though we call these _seven_-segment displays there are actually 8 LEDs in each one because of the decimal point.
 
 All four displays have all their segments connected together. That means if you apply power to segment 0, all four displays segment 0 receive power! This is done to save on the number of pins required to drive the displays. However, it means that we need a way to disable all but one display so that we can show a unique number on each one.
 
-This is where the second group of signals, `io_sel`, comes in handy. These are used to select which digit is active. Typically, only one digit will be active at any time. If you have more than one digit active, all active digits will show exactly the same thing since their segments are wired together.
+This is where the second group of signals, `io_sel`, comes in handy. These are used to select which digit is active. Typically, only one digit will be active at any time. If you have more than one digit active, all active digits will show exactly the same thing since their segments are wired together.
 
 The way we are going to display four unique numbers is by cycling which digit is active really fast. If we can do this fast enough, our eyes can't tell and it looks like all four digits are always on.
 
@@ -502,9 +502,9 @@ However, before we do that, let's play around with the displays a bit to get fam
 
 We are going to setup some modules so that we light one segment at a time. To do this we will be using some of the components built into Alchitry Labs.
 
-Click **Project->Add Components...**. Under **Miscellaneous** check off _Counter_ and _Decoder_. Click **Add** to add them to your project.
+Click **Project->Add Components...**. Under **Miscellaneous** check off _Counter_ and _Decoder_. Click **Add** to add them to your project.
 
-You can now find the source for these components under **Components** in the left project tree in Alchitry Labs. Note that while you are free to look at the source, components are read-only (no editing!). If you ever want to modify a component, simply copy and paste the code into a module of your own.
+You can now find the source for these components under **Components** in the left project tree in Alchitry Labs. Note that while you are free to look at the source, components are read-only (no editing!). If you ever want to modify a component, simply copy and paste the code into a module of your own.
 
 It's always a good idea to check out the source and read the description of the component. Many components have parameters that you can set to customize them for your use. We'll be doing exactly that with these two.
 
@@ -555,17 +555,17 @@ decoder num_to_seg (#WIDTH(3));
 ```
 {% end %}
 
-Here we add the `counter` and `decoder` modules to the top level module. The `counter` component requires both a clock and reset signal so we have it in the nested in both the `.clk` and `.rst` connection blocks. On the other hand, `decoder` doesn't require either, so it is outside of both.
+Here we add the `counter` and `decoder` modules to the top level module. The `counter` component requires both a clock and reset signal so we have it in the nested in both the `.clk` and `.rst` connection blocks. On the other hand, `decoder` doesn't require either, so it is outside of both.
 
 The counter is simply a counter. It will output a value starting from zero and increment to whatever the maximum value you set is. After that it will reset back to zero. It is also possible to configure it to count down from the max value to zero.
 
-The counter has four parameters you can set to get it to operate how you want, but here we only need to change two. `SIZE` dictates how wide the output of the counter is. In this case we need it to count from 0 to 7 for all 8 segments of our displays. Three bits is exactly 0 - 7. If we wanted to count to a value that wasn't conveniently a power of 2 minus one, we could set the parameter `TOP` to control its maximum value.
+The counter has four parameters you can set to get it to operate how you want, but here we only need to change two. `SIZE` dictates how wide the output of the counter is. In this case we need it to count from 0 to 7 for all 8 segments of our displays. Three bits is exactly 0 - 7. If we wanted to count to a value that wasn't conveniently a power of 2 minus one, we could set the parameter `TOP` to control its maximum value.
 
-The `DIV` parameter is used to set how many bits to use to divide the clock. By setting this to 25 (or 24 on the Mojo), the counter will only increment its output every 225, or 33,554,432, clock cycles (16,777,216 on the Mojo). The clock runs at 100MHz (100,000,000 cycles per second) on the Au and Cu and 50MHz (50,000,000 cycles per second) on the Mojo. If the counter incremented every clock cycle it would be way too fast for us to see.
+The `DIV` parameter is used to set how many bits to use to divide the clock. By setting this to 25 (or 24 on the Mojo), the counter will only increment its output every 225, or 33,554,432, clock cycles (16,777,216 on the Mojo). The clock runs at 100MHz (100,000,000 cycles per second) on the Au and Cu and 50MHz (50,000,000 cycles per second) on the Mojo. If the counter incremented every clock cycle it would be way too fast for us to see.
 
-The decoder is a binary to one-hot decoder. If you need a refresher on one-hot representation check out the [encodings tutorial](@/tutorials/background/encodings.md). Basically, the decoder will take our three bits and convert it to eight bits. If the input is 0, then the 0th bit of the output will be 1 and everything else will be 0. If the input is 4, the 4th bit will be 1 and everything else will be 0. This allows us to use the binary counter to light individual LEDs.
+The decoder is a binary to one-hot decoder. If you need a refresher on one-hot representation check out the [encodings tutorial](@/tutorials/background/encodings.md). Basically, the decoder will take our three bits and convert it to eight bits. If the input is 0, then the 0th bit of the output will be 1 and everything else will be 0. If the input is 4, the 4th bit will be 1 and everything else will be 0. This allows us to use the binary counter to light individual LEDs.
 
-Note that the output of the decoder is 2_WIDTH_ bits wide. So in our case, 23 = 8 bits wide.
+Note that the output of the decoder is 2_WIDTH_ bits wide. So in our case, 23 = 8 bits wide.
 
 Now we can hook up the modules.
 
@@ -632,11 +632,11 @@ always {
 ```
 {% end %}
 
-We feed the binary counter value into the decoder and the output of the decoder to `io_seg`. Note that `io_seg` and `io_sel` are both **active low**. This means that when the signal is 0, it is active. To turn only one LED on we need to invert the output of the decoder with the bit-wise inversion, `~`, operator. This will make the signal zero-hot.
+We feed the binary counter value into the decoder and the output of the decoder to `io_seg`. Note that `io_seg` and `io_sel` are both **active low**. This means that when the signal is 0, it is active. To turn only one LED on we need to invert the output of the decoder with the bit-wise inversion, `~`, operator. This will make the signal zero-hot.
 
-Also notice we need to set `io_sel` to 0 so that the LED segments are selected. Setting all of them to 0 will turn them all on.
+Also notice we need to set `io_sel` to 0 so that the LED segments are selected. Setting all of them to 0 will turn them all on.
 
-Build and load your project to your board. You should now see the segments of all 4 displays lighting one at time. Try to light only a single display by setting `io_sel` to `~4h1` instead.
+Build and load your project to your board. You should now see the segments of all 4 displays lighting one at time. Try to light only a single display by setting `io_sel` to `~4h1` instead.
 
 Now what if we wanted to cycle through each digit? We need another counter that increments each time the original counter overflows. That way once each LED of a specific digit is lit, the next digit is selected. However, we don't actually need another counter to do this! We can simply make our existing counter 2 bits wider. By adding extra bits, these will increment only when the lower three bits overflow, creating the behavior we want.
 
@@ -690,7 +690,7 @@ decoder num_to_digit (#WIDTH(2));
 ```
 {% end %}
 
-Here we increase the `SIZE` of `ctr` to 5. We also add another decoder with `WIDTH` of 2. We need 2 since we have 4 digits to select from and an input of 2 bits gives us possible values of 0-3.
+Here we increase the `SIZE` of `ctr` to 5. We also add another decoder with `WIDTH` of 2. We need 2 since we have 4 digits to select from and an input of 2 bits gives us possible values of 0-3.
 
 {% fenced_code_tab(tabs=["Au", "Cu", "Mojo"]) %}
 ```lucid
@@ -758,7 +758,7 @@ always {
 ```
 {% end %}
 
-We can select the lower three bits of `ctr.value` by using the bit selector `[2:0]`. This says we want bits 2 down-to 0 inclusive. We can do the same thing for the upper two bits.
+We can select the lower three bits of `ctr.value` by using the bit selector `[2:0]`. This says we want bits 2 down-to 0 inclusive. We can do the same thing for the upper two bits.
 
 Build and load your project again. This time you should see only one digit and one segment lit at any time. Once each segment of a digit has been lit, the next digit is selected.
 
@@ -770,7 +770,7 @@ Lighting up the segments is super cool and all, but it's much cooler to actually
 
 Before we jump into multiplexing, we need a way to convert a number into the segments that need to be lit to represent that number. To do this we can use a look-up table.
 
-Create a new module called `seven_seg` and add the following.
+Create a new module called `seven_seg` and add the following.
 
 ```lucid
 module seven_seg (
@@ -796,11 +796,11 @@ module seven_seg (
 }
 ```
 
-This module will take a binary number, `char`, and output the segments, `segs`, that need to be on.
+This module will take a binary number, `char`, and output the segments, `segs`, that need to be on.
 
-This modules uses a **case** statement. Case statements are equivalent to a bunch of `if` statements. One of the entries will be selected based on the value of `char`. If `char` is 1, then only the block after the `1:` is used. If none of the blocks match, the `default:` block is used. The default block is optional, but it is generally a good idea to include it even if you think you have all the cases covered.
+This modules uses a **case** statement. Case statements are equivalent to a bunch of `if` statements. One of the entries will be selected based on the value of `char`. If `char` is 1, then only the block after the `1:` is used. If none of the blocks match, the `default:` block is used. The default block is optional, but it is generally a good idea to include it even if you think you have all the cases covered.
 
-If `char` is an invalid number (not 0-9), then all the segments will be off.
+If `char` is an invalid number (not 0-9), then all the segments will be off.
 
 To test out our look-up table, let's connect it to our counter.
 
@@ -851,9 +851,9 @@ seven_seg seg;
 ```
 {% end %}
 
-We need `ctr` to count from 0-9 so we set `TOP` to 9 to cap its value. Also we need to change `SIZE` to 4, as we only need 4 bits to represent 0-9.
+We need `ctr` to count from 0-9 so we set `TOP` to 9 to cap its value. Also we need to change `SIZE` to 4, as we only need 4 bits to represent 0-9.
 
-Because we don't need the decoders anymore, we can remove them and add our `seven_seg` module.
+Because we don't need the decoders anymore, we can remove them and add our `seven_seg` module.
 
 Finally, we need to wire it up the LEDs
 
@@ -920,13 +920,13 @@ always {
 ```
 {% end %}
 
-`io_sel` is set to `~4h1` so that only the right most digit is on.
+`io_sel` is set to `~4h1` so that only the right most digit is on.
 
-Build and load the project onto your board to make sure the first digit is correctly counting from 0 to 9.
+Build and load the project onto your board to make sure the first digit is correctly counting from 0 to 9.
 
 Now we need to make a module that will take four values in and display them on all four digits instead of only using one.
 
-Create a new module called `multi_seven_seg` and add the following code.
+Create a new module called `multi_seven_seg` and add the following code.
 
 ```lucid
 module multi_seven_seg #(
@@ -962,15 +962,15 @@ module multi_seven_seg #(
 
 This module is parameterized so that it could be used to drive more or less than 4 digits, but the defaults are set to work well with our project.
 
-The constant `DIGIT_BITS` is the number of bits we need to cover all `DIGITS` number of digits. We use the function `$clog2()` which computes the ceiling log base 2 of a constant value.
+The constant `DIGIT_BITS` is the number of bits we need to cover all `DIGITS` number of digits. We use the function `$clog2()` which computes the ceiling log base 2 of a constant value.
 
-We only want the counter to count from 0 to `DIGITS-1` so we set the `TOP` parameter accordingly.
+We only want the counter to count from 0 to `DIGITS-1` so we set the `TOP` parameter accordingly.
 
-`DIV` is used so that we don't switch between the digits too fast. If we switch too fast, the transistors that drive the LEDs don't have time to fully turn off and we get bleed between digits.
+`DIV` is used so that we don't switch between the digits too fast. If we switch too fast, the transistors that drive the LEDs don't have time to fully turn off and we get bleed between digits.
 
-The way this module works is `ctr` is used to select the active digit. The value from `values` is then selected, decoded, and sent to the segments of the LEDs displays. The binary value of the active digit is then decoded into a one-hot value as before and used to select which digit is on. Because `ctr` keeps cycling the active digits, all the displays will appear on.
+The way this module works is `ctr` is used to select the active digit. The value from `values` is then selected, decoded, and sent to the segments of the LEDs displays. The binary value of the active digit is then decoded into a one-hot value as before and used to select which digit is on. Because `ctr` keeps cycling the active digits, all the displays will appear on.
 
-We can tweak `DIV`, but if it is set too high, we will start to see the digits flicker. If it is set too low, we will see bleeding between digits.
+We can tweak `DIV`, but if it is set too high, we will start to see the digits flicker. If it is set too low, we will see bleeding between digits.
 
 Let's test out this module by feeding it some constant numbers to show.
 
@@ -1080,7 +1080,7 @@ always {
 ```
 {% end %}
 
-On the line starting with `seg.values`, we feed the values to display into the driver.
+On the line starting with `seg.values`, we feed the values to display into the driver.
 
 Build and load the design to your Mojo to make sure each digit is displaying the correct number.
 
@@ -1090,7 +1090,7 @@ Alright, now that we have a way to show a value on our display, let's make a the
 
 To do this we will create two modules. The first will be a single digit counter and the second will chain these together for a multi-digit counter.
 
-Create a new module called `decimal_counter` with the following code.
+Create a new module called `decimal_counter` with the following code.
 
 ```lucid
 module decimal_counter (
@@ -1120,11 +1120,11 @@ module decimal_counter (
 }
 ```
 
-Our decimal counter has an input `inc` that is used to signal when the value should be increased. When the digit is about to overflow to 0, the flag `ovf` is set to 1. The current value of the counter is output on `value`.
+Our decimal counter has an input `inc` that is used to signal when the value should be increased. When the digit is about to overflow to 0, the flag `ovf` is set to 1. The current value of the counter is output on `value`.
 
 We now need to chain these together to make a multi-digit counter.
 
-Create a new module named `multi_dec_ctr` and add the following code.
+Create a new module named `multi_dec_ctr` and add the following code.
 
 ```lucid
 module multi_dec_ctr #(
@@ -1150,19 +1150,19 @@ module multi_dec_ctr #(
 }
 ```
 
-Here we take `DIGITS` `decimal_counter_s and chain them together. Each counter _inc` signal is connected to the previous counter's _ovf_ signal. This means that once a counter overflows from 9 to 0, the next one will be incremented. Of course, the first counter doesn't have a previous counter's `ovf` signal, so we use an external increment signal instead.
+Here we take `DIGITS` `decimal_counter_s and chain them together. Each counter _inc` signal is connected to the previous counter's _ovf_ signal. This means that once a counter overflows from 9 to 0, the next one will be incremented. Of course, the first counter doesn't have a previous counter's `ovf` signal, so we use an external increment signal instead.
 
-We use the bit selectors `[1+:DIGITS-1]` and `[0+:DIGITS-1]` to select bits from `dctr.inc` and `dctr.ovf`. What `[1+:DIGITS-1]` means is starting from bit 1, select `DIGITS-1` bits going up. This is an easy way to select a specified number of bits given some start index. You can use `-:` instead of `+:` to select bits going down from the given start index instead of going up.
+We use the bit selectors `[1+:DIGITS-1]` and `[0+:DIGITS-1]` to select bits from `dctr.inc` and `dctr.ovf`. What `[1+:DIGITS-1]` means is starting from bit 1, select `DIGITS-1` bits going up. This is an easy way to select a specified number of bits given some start index. You can use `-:` instead of `+:` to select bits going down from the given start index instead of going up.
 
-All that is left now is to generate the `inc` signal and connect the counter to our display driver.
+All that is left now is to generate the `inc` signal and connect the counter to our display driver.
 
-The `inc` signal needs to be a pulse that stays high for only one clock cycle every time we want to increment our counter. To create this we are going to use the counter component as before, but there is a problem with this. If we create a counter that only outputs one bit, the bit will be high for have of the time and not just one cycle at a time. To fix this we will use another component, the _Edge Detector_.
+The `inc` signal needs to be a pulse that stays high for only one clock cycle every time we want to increment our counter. To create this we are going to use the counter component as before, but there is a problem with this. If we create a counter that only outputs one bit, the bit will be high for have of the time and not just one cycle at a time. To fix this we will use another component, the _Edge Detector_.
 
-Go into the component selector and add the _Edge Detector_ to your project. You can find it under **Miscellaneous**.
+Go into the component selector and add the _Edge Detector_ to your project. You can find it under **Miscellaneous**.
 
 This component takes a signal and sends out a pulse when it detects a rising, falling, or either type of edge. You can configure which edges you care about.
 
-Let's add all the modules to `mojo_top`.
+Let's add all the modules to `mojo_top`.
 
 {% fenced_code_tab(tabs=["Au", "Cu", "Mojo"]) %}
 ```lucid
@@ -1217,7 +1217,7 @@ Let's add all the modules to `mojo_top`.
 ```
 {% end %}
 
-For the edge detector, we set `RISE` to 1 and `FALL` to 0. This means we will generate a pulse only on rising edges.
+For the edge detector, we set `RISE` to 1 and `FALL` to 0. This means we will generate a pulse only on rising edges.
 
 We now have the multi-digit driver, the multi-digit counter, and a way to generate a pulse from the counter.
 
@@ -1300,4 +1300,4 @@ This example is fairly complicated, but by breaking down the problem in little c
 
 Now for the moment of truth, build and load the project onto your board! With any luck, you should see the seven-segment display counting!
 
-If you want to make it count slower or faster you can mess with `ctr`'s `DIV` value.
+If you want to make it count slower or faster you can mess with `ctr`'s `DIV` value.

@@ -59,7 +59,7 @@ Going back to those very early days of school, when you add numbers it looks som
  <span style="text-decoration:underline">+22</span>
   41</pre>
 
-But how did we add that second column? We simply added all **three** numbers together, the two inputs 1 from the 19 and 2 from the 22, as well as the carry from the previous addition. That brings us to the truth table for the full adder.
+But how did we add that second column? We simply added all **three** numbers together, the two inputs 1 from the 19 and 2 from the 22, as well as the carry from the previous addition. That brings us to the truth table for the full adder.
 
 |Cin|A|B|Cout|Sum|
 |---|---|---|---|---|
@@ -72,7 +72,7 @@ But how did we add that second column? We simply added all **three** numbers tog
 |1|1|0|1|0|
 |1|1|1|1|1|
 
-We are now adding the three inputs **Cin**, **A**, and **B**.
+We are now adding the three inputs **Cin**, **A**, and **B**.
 
 It would be a good exercise if you took this truth table and created a K-map for each output and used that to derive a circuit.
 
@@ -88,8 +88,8 @@ Here is a circuit that will add two 4 bit numbers.
 
 ![adder.png](https://cdn.alchitry.com/background/adder.png)
 
-You may notice that the output from adding two 4 bit numbers is not a 4 bit number, but actually a 5 bit one! That is because when you add two numbers they can overflow their respective ranges, but when adding only two numbers the sum can't be more than twice the range of the inputs. 
+You may notice that the output from adding two 4 bit numbers is not a 4 bit number, but actually a 5 bit one! That is because when you add two numbers they can overflow their respective ranges, but when adding only two numbers the sum can't be more than twice the range of the inputs. 
 
 Something else worth noting is that a full adder behaves the same as a half adder if you connect the carry in to 0. In the circuit above the half adder could be replaced with a full adder.
 
-This type of circuit is called a **carry chain**. It is important to notice that the last bit must wait for all of the previous bits to be calculated. This makes adding very large numbers take more time than summing small numbers. This is an inherent problem with carry chain circuits.
+This type of circuit is called a **carry chain**. It is important to notice that the last bit must wait for all of the previous bits to be calculated. This makes adding very large numbers take more time than summing small numbers. This is an inherent problem with carry chain circuits.

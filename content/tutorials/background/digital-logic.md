@@ -35,25 +35,25 @@ This is the symbol for an **and** gate.
 
 When **a** **and b** are both true, **c** is true. If either **a** or **b** is false then **c** will be false. You can think of it's output as: _is input a_ **_and_** _input b true?_
 
-For example, if **a** is 1 and **b** is 0, then the output, **c**, will be 0. That is because both inputs are not true, so the output is false.
+For example, if **a** is 1 and **b** is 0, then the output, **c**, will be 0. That is because both inputs are not true, so the output is false.
 ## Or
 
-This is the symbol for an **or** gate.
+This is the symbol for an **or** gate.
 
 ![or.png](https://cdn.alchitry.com/background/or.png)
 
-The output of this gate, **c**, is true when either **a or b** are true. You can think of it's output as: _is input a_ **_or_** _input b true?_
+The output of this gate, **c**, is true when either **a or b** are true. You can think of it's output as: _is input a_ **_or_** _input b true?_
 
-For example, if **a** is 1 and **b** is 0, then the output, **c**, will be 1. That is because at least one of the inputs is true, so the output is true.
+For example, if **a** is 1 and **b** is 0, then the output, **c**, will be 1. That is because at least one of the inputs is true, so the output is true.
 ## Xor
 
-This is the symbol for an **xor** gate.
+This is the symbol for an **xor** gate.
 
 ![xor.png](https://cdn.alchitry.com/background/xor.png)
 
-This gate you usually don't see as often as the other three, but it is none the less important. This gate is true only when either **a** or **b** is true but not when **a** and **b** are true. It is an **exclusive or**. You can think about it as: _is input a_ **_different_** _from input b?_
+This gate you usually don't see as often as the other three, but it is none the less important. This gate is true only when either **a** or **b** is true but not when **a** and **b** are true. It is an **exclusive or**. You can think about it as: _is input a_ **_different_** _from input b?_
 
-Another useful way to look at xor gates it to think about that output as: _is there an_ **_odd_** _number of 1s?_ This way of thinking about it is useful for xor gates that have more than two inputs.
+Another useful way to look at xor gates it to think about that output as: _is there an_ **_odd_** _number of 1s?_ This way of thinking about it is useful for xor gates that have more than two inputs.
 
 For example, if a is 1 and b is 1, then the output, c, will be 0. That is because the inputs are the same so the output is false, or because there are an even number of 1s so the output is false.
 ## Variations

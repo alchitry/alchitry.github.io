@@ -163,23 +163,23 @@ module serial_tx #(
 endmodule
 ```
 
-The parameter **CLK_PER_BIT** is used to set the baud rate. To calculate the correct value for **CLK_PER_BIT** use **CLK_PER_BIT** = Mojo Frequency / Baud Rate.
+The parameter **CLK_PER_BIT** is used to set the baud rate. To calculate the correct value for **CLK_PER_BIT** use **CLK_PER_BIT** = Mojo Frequency / Baud Rate.
 
-If you open up **avr_interface.v** you will notice that **CLK_PER_BIT** is set to automatically calculated for you. The baud rate is set to 500,000 bits/sec. The AVR expects this baud rate regardless of what you set the baud rate on your computer for the USB to serial device. You will notice that this is not a standard baud rate! This rate was used since it divides evenly allowing for a high baud rates with 0% error. 
+If you open up **avr_interface.v** you will notice that **CLK_PER_BIT** is set to automatically calculated for you. The baud rate is set to 500,000 bits/sec. The AVR expects this baud rate regardless of what you set the baud rate on your computer for the USB to serial device. You will notice that this is not a standard baud rate! This rate was used since it divides evenly allowing for a high baud rates with 0% error. 
 
-If you wanted a baud rate of 19200, you would use 50MHz / 19200 = 2604 for **CLK_PER_BIT**. Notice that 19200 doesn't divide evenly into 50MHz. It's usually ok to just round to the nearest value. You can check your error by calculating the real baud rate (50MHz / 2604 = 19201.228...) and using the percent error formula, difference / desired (1.228... / 19200 = 6.4*10^-5 or 6.4*10^-3%).
+If you wanted a baud rate of 19200, you would use 50MHz / 19200 = 2604 for **CLK_PER_BIT**. Notice that 19200 doesn't divide evenly into 50MHz. It's usually ok to just round to the nearest value. You can check your error by calculating the real baud rate (50MHz / 2604 = 19201.228...) and using the percent error formula, difference / desired (1.228... / 19200 = 6.4*10^-5 or 6.4*10^-3%).
 
-The parameter **CTR_SIZE** should be the minimum number of bits needed to hold the value **CLK_PER_BIT**. In other words ceiling(Log2(**CLK_PER_BIT**)). This is also calculated automatically for you using the built in function **$clog2**.
+The parameter **CTR_SIZE** should be the minimum number of bits needed to hold the value **CLK_PER_BIT**. In other words ceiling(Log2(**CLK_PER_BIT**)). This is also calculated automatically for you using the built in function **$clog2**.
 
-The input **block** is used by the AVR to tell the Mojo not to send any more data as it's buffer is full. If you don't need **block** you can set it to 0, or remove it from the module.
+The input **block** is used by the AVR to tell the Mojo not to send any more data as it's buffer is full. If you don't need **block** you can set it to 0, or remove it from the module.
 
-The way this module works is pretty simple. When it is told to send a byte of data it sends out the start bit. Each bit lasts for **CLK_PER_BIT** number of clock cycles. After the start bit, the data bits are sent out LSB first. The transmission is finally ended with a stop bit.
+The way this module works is pretty simple. When it is told to send a byte of data it sends out the start bit. Each bit lasts for **CLK_PER_BIT** number of clock cycles. After the start bit, the data bits are sent out LSB first. The transmission is finally ended with a stop bit.
 
-This is a more realistic example of using state machines than the state machine introduced in the [metastability and debouncing tutorial](@/tutorials/verilog/mojo/metastability-and-debouncing.md).
+This is a more realistic example of using state machines than the state machine introduced in the [metastability and debouncing tutorial](@/tutorials/verilog/mojo/metastability-and-debouncing.md).
 
 ### The Receiver
 
-The receiver code can be found in the **serial_rx.v** file in the [Mojo Base Project](https://github.com/embmicro/mojo-base-project/archive/master.zip).
+The receiver code can be found in the **serial_rx.v** file in the [Mojo Base Project](https://github.com/embmicro/mojo-base-project/archive/master.zip).
 
 ```verilog,short
 module serial_rx #(
@@ -280,4 +280,4 @@ endmodule
 
 The parameters for this module are the same as the ones from the TX module.
 
-This module will sit in the **IDLE** state until it detects that the **rx** signal is low. That signals the beginning of the start bit. It then waits for **half** the number of clock cycles as **CLK_PER_BIT**. This is to make sure that the data bits are sampled near their centers, which is important for reliably receiving the data.
+This module will sit in the **IDLE** state until it detects that the **rx** signal is low. That signals the beginning of the start bit. It then waits for **half** the number of clock cycles as **CLK_PER_BIT**. This is to make sure that the data bits are sampled near their centers, which is important for reliably receiving the data.

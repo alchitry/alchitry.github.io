@@ -68,15 +68,15 @@ The signals that are important right now are **tx_data**, **new_tx_data**, **tx_
 
 **tx_data** is the data (one byte) that you want to send over the virtual serial port. When you have a new byte you want to send, you need to check **tx_busy** to make sure the module is not busy in anyway. The busy flag can be set for a number of reasons which include, the module is currently sending a byte, **cclk** has not signaled the AVR is ready for data, or the AVR can't accept new data because it's buffer is full.
 
-If the **tx_busy** flag is not set, you can set **new_tx_data** high for one clock cycle to indicate you want the byte present on **tx_data** to be sent. 
+If the **tx_busy** flag is not set, you can set **new_tx_data** high for one clock cycle to indicate you want the byte present on **tx_data** to be sent. 
 
-To make this clearer, we will implement the classic _Hello World!_ example.
+To make this clearer, we will implement the classic _Hello World!_ example.
 
 ### ROMs
 
-Since we want to send the string _Hello World!_ through the serial port we need to store it somewhere that is easy to access. This is where a **ROM** (**R**ead **O**nly **M**emory) comes in handy.
+Since we want to send the string _Hello World!_ through the serial port we need to store it somewhere that is easy to access. This is where a **ROM** (**R**ead **O**nly **M**emory) comes in handy.
 
-Here is the ROM we will use. Create a new file named **message_rom.v** and add the following code.
+Here is the ROM we will use. Create a new file named **message_rom.v** and add the following code.
 
 ```verilog,short
 module message_rom (
@@ -123,7 +123,7 @@ endmodule
 A ROM generally just consists of a few ports, in our case three. The way a ROM works is you specify an address, **addr**, and on the next clock cycle the corresponding data appears at it's output port, **data**.
 
 ```verilog,linenos,linenostart=7
-wire [7:0] rom_data [13:0];
+wire [7:0] rom_data [13:0];
 ```
 
 This line is worth mentioning because it is the first time we needed a 2D array. For whatever reason, in Verilog when you want a multi-dimensional array, you specify the extra dimensions after the name of your array.
@@ -131,12 +131,12 @@ This line is worth mentioning because it is the first time we needed a 2D array.
 A 3D array could look like this.
 
 ```verilog,linenos,linenostart=7
-wire [7:0] rom_data [13:0][7:0];
+wire [7:0] rom_data [13:0][7:0];
 ```
 
 One thing to note, you aren't allowed to use multi-dimensional arrays in port declarations.
 
-To address into our array of data we use the 4 bit wide value from **addr,** which can have a value from 0-15. However, our array only has indexes up to 13! To compensate for this we use the if statement to provide a default value for the out-of-bounds case.
+To address into our array of data we use the 4 bit wide value from **addr,** which can have a value from 0-15. However, our array only has indexes up to 13! To compensate for this we use the if statement to provide a default value for the out-of-bounds case.
 
 ### State Machines
 
@@ -146,7 +146,7 @@ So what is a state machine? For the FPGA, it's basically a circuit that has vari
 
 The text-book example is a traffic light. The light has a few states, red, yellow, green, and it will transition between these states when certain events happen like a car waiting for a green, or a certain amount of time has elapsed.
 
-In our example, our state machine is very simple and it has only two states, **IDLE** and **PRINT_MESSAGE**. As the names suggest, the **IDLE** state just waits for a signal to transition to the **PRINT_MESSAGE** state. The **PRINT_MESSAGE** state will print out our _Hello World!_ message then return to the **IDLE** state.
+In our example, our state machine is very simple and it has only two states, **IDLE** and **PRINT_MESSAGE**. As the names suggest, the **IDLE** state just waits for a signal to transition to the **PRINT_MESSAGE** state. The **PRINT_MESSAGE** state will print out our _Hello World!_ message then return to the **IDLE** state.
 
 ```verilog,linenos,short
 module message_printer (
@@ -211,19 +211,19 @@ module message_printer (
 endmodule
 ```
 
-Add a new file named **message_printer.v** and add this code.
+Add a new file named **message_printer.v** and add this code.
 
-It is good practice to use **localparams** to declare the states in your state machine. That makes it not only easier to read, but a lot easier to add or remove states.
+It is good practice to use **localparams** to declare the states in your state machine. That makes it not only easier to read, but a lot easier to add or remove states.
 
-For this example, I decided it would be a good idea to wait for an **_h_** before printing _Hello World!_. Once an **_h_** is detected, the state changes to **PRINT_MESSAGE**. It then uses **addr_d**/**_q** to increment through the ROM sending each character.
+For this example, I decided it would be a good idea to wait for an **_h_** before printing _Hello World!_. Once an **_h_** is detected, the state changes to **PRINT_MESSAGE**. It then uses **addr_d**/**_q** to increment through the ROM sending each character.
 
-One important thing to notice is the first three lines in the combinational always block. It's important to always give **regs** a value. If it is possible to run through the always block without assigning a value to every **reg** you can end up with something known as a **latch**. Without going into detail, latches are bad! They can make things behave very unpredictably when actually loaded on the FPGA (although you may not notice it in simulation)! ISE will throw warnings when it detects a latch so you should always check for those.
+One important thing to notice is the first three lines in the combinational always block. It's important to always give **regs** a value. If it is possible to run through the always block without assigning a value to every **reg** you can end up with something known as a **latch**. Without going into detail, latches are bad! They can make things behave very unpredictably when actually loaded on the FPGA (although you may not notice it in simulation)! ISE will throw warnings when it detects a latch so you should always check for those.
 
-The easy solution is to just assign every **reg** a default value in the beginning of your always block.
+The easy solution is to just assign every **reg** a default value in the beginning of your always block.
 
 ### Case Statements
 
-To implement state machines, you usually use a **case** statement. If you've ever programmed in C/C++ or Java this should be pretty familiar (it's basically a switch statement).
+To implement state machines, you usually use a **case** statement. If you've ever programmed in C/C++ or Java this should be pretty familiar (it's basically a switch statement).
 
 The first line
 
@@ -231,15 +231,15 @@ The first line
 case (state_q)
 ```
 
-sets up the case statement and says we are going to be looking at the value of **state_q**.
+sets up the case statement and says we are going to be looking at the value of **state_q**.
 
-Each of the following blocks of code is only used in the case that **state_q** matches the value stated. So the first part is used when **state_q** is **IDLE** and the second is used when it is **PRINT_MESSAGE**. 
+Each of the following blocks of code is only used in the case that **state_q** matches the value stated. So the first part is used when **state_q** is **IDLE** and the second is used when it is **PRINT_MESSAGE**. 
 
-It is important to always have a **default** entry in your case statement that will bring you back to a known state. You may be thinking that you don't need one since it should be impossible to have any other state than the two we defined. You may be surprised to find out that this is not the case. If the state is encoded with just 1 bit then it is true that it is impossible to be anything else because 1 bit only has 2 values. However, when your design gets synthesized the tools will generally optimize the encoding used by your states and it may make **state_q** actually 2 bits! You may be thinking that this shouldn't change anything because no where in your design do you specify a change to an unknown state. There is however, a small chance that the value a register holds gets flipped randomly putting you in an unknown state! This can be caused by a number of events including radiation. Providing a default case makes sure that if this happens your design will still have predictable behavior. 
+It is important to always have a **default** entry in your case statement that will bring you back to a known state. You may be thinking that you don't need one since it should be impossible to have any other state than the two we defined. You may be surprised to find out that this is not the case. If the state is encoded with just 1 bit then it is true that it is impossible to be anything else because 1 bit only has 2 values. However, when your design gets synthesized the tools will generally optimize the encoding used by your states and it may make **state_q** actually 2 bits! You may be thinking that this shouldn't change anything because no where in your design do you specify a change to an unknown state. There is however, a small chance that the value a register holds gets flipped randomly putting you in an unknown state! This can be caused by a number of events including radiation. Providing a default case makes sure that if this happens your design will still have predictable behavior. 
 
 ### The Top Module
 
-Here is the code for **mojo_top.v**
+Here is the code for **mojo_top.v**
 
 ```verilog,short
 module mojo_top(
@@ -310,8 +310,8 @@ module mojo_top(
 endmodule
 ```
 
-Here we just instantiate the two modules. Notice the **assign** statements that used to be at the top were removed since we are now using those ports.
+Here we just instantiate the two modules. Notice the **assign** statements that used to be at the top were removed since we are now using those ports.
 
-You should now be able to synthesize your project and load it onto your Mojo. I tested this using **minicom** on Linux, but any serial terminal program should work. It doesn't matter the parameters you specify for the serial port as they are ignored. 
+You should now be able to synthesize your project and load it onto your Mojo. I tested this using **minicom** on Linux, but any serial terminal program should work. It doesn't matter the parameters you specify for the serial port as they are ignored. 
 
-When you send **_h_** over the serial port the Mojo should respond with _Hello World!_.
+When you send **_h_** over the serial port the Mojo should respond with _Hello World!_.

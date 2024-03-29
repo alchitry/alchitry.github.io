@@ -3,15 +3,15 @@ title = "Serial Peripheral Interface (SPI)"
 weight = 15
 +++
 
-**S**erial **P**eripheral **I**nterface, or **SPI**, is a very common communication protocol used for two-way communication between two devices. A standard SPI bus consists of 4 signals, **M**aster **O**ut **S**lave **I**n (**MOSI**), **M**aster **I**n **S**lave **O**ut (**MISO**), the clock (**SCK**), and **S**lave **S**elect (**SS**). Unlike an [asynchronous serial interface](@/tutorials/verilog/mojo/asynchronous-serial.md), SPI is not symmetric. An SPI bus has one **master** and one or more **slaves**. The master can talk to any slave on the bus, but each slave can only talk to the master. Each slave on the bus must have it's own unique slave select signal. The master uses the slave select signals to _select_ which _slave_ it will be talking to. Since SPI also includes a clock signal, both devices don't need to agree on a data rate before hand. The only requirement is that the clock is lower than the maximum frequency for all devices involved.
+**S**erial **P**eripheral **I**nterface, or **SPI**, is a very common communication protocol used for two-way communication between two devices. A standard SPI bus consists of 4 signals, **M**aster **O**ut **S**lave **I**n (**MOSI**), **M**aster **I**n **S**lave **O**ut (**MISO**), the clock (**SCK**), and **S**lave **S**elect (**SS**). Unlike an [asynchronous serial interface](@/tutorials/verilog/mojo/asynchronous-serial.md), SPI is not symmetric. An SPI bus has one **master** and one or more **slaves**. The master can talk to any slave on the bus, but each slave can only talk to the master. Each slave on the bus must have it's own unique slave select signal. The master uses the slave select signals to _select_ which _slave_ it will be talking to. Since SPI also includes a clock signal, both devices don't need to agree on a data rate before hand. The only requirement is that the clock is lower than the maximum frequency for all devices involved.
 
 ### Example SPI Transfer
 
-When the master of the SPI bus wants to initiate a transfer, it must first pull the **SS** signal low for the slave it wants to communicate with. Once the **SS** signal is low, that slave will be _listening_ on the bus. The master is then free to start sending data.
+When the master of the SPI bus wants to initiate a transfer, it must first pull the **SS** signal low for the slave it wants to communicate with. Once the **SS** signal is low, that slave will be _listening_ on the bus. The master is then free to start sending data.
 
-There are 4 different SPI bus standards that all have to do with the **SCK** signal. The 4 modes are broken down into two parameters, **CPOL** and **CPHA**. **CPOL** stands for **C**lock **POL**arity and designates the default value (high/low) of the **SCK** signal when the bus is idle. **CPHA** stands for **C**lock **PHA**se and determines which edge of the clock data is sampled (rising/falling). The data sheet for any device will specify these parameters so you can adjust accordingly. The most common settings are **CPOL**=0 (idle low) and **CPHA**=0 (sample rising edge).
+There are 4 different SPI bus standards that all have to do with the **SCK** signal. The 4 modes are broken down into two parameters, **CPOL** and **CPHA**. **CPOL** stands for **C**lock **POL**arity and designates the default value (high/low) of the **SCK** signal when the bus is idle. **CPHA** stands for **C**lock **PHA**se and determines which edge of the clock data is sampled (rising/falling). The data sheet for any device will specify these parameters so you can adjust accordingly. The most common settings are **CPOL**=0 (idle low) and **CPHA**=0 (sample rising edge).
 
-Here is an example transfer with **CPOL**=0 and **CPHA**=0.
+Here is an example transfer with **CPOL**=0 and **CPHA**=0.
 
 ![spi.png](https://cdn.alchitry.com/verilog/mojo/spi.png)
 
@@ -19,15 +19,15 @@ The bits in a SPI transmission are sent LSB first.
 
 Any SPI transmission is controlled solely by the master. The master generates the clock and controls the slave select signal(s). This means that the slave has no way of sending data to the master on its own!
 
-Each SPI transfer is **full-duplex**, meaning that data is sent from the master to the slave and from the slave to the master at the same time. There is no way for a slave to opt-out of sending data when the master makes a transfer, however, devices will send dummy bytes (usually all 1's or all 0's) when communication should be one way. If the master is reading data in for a slave, the slave will know to ignore the data being sent by the master.
+Each SPI transfer is **full-duplex**, meaning that data is sent from the master to the slave and from the slave to the master at the same time. There is no way for a slave to opt-out of sending data when the master makes a transfer, however, devices will send dummy bytes (usually all 1's or all 0's) when communication should be one way. If the master is reading data in for a slave, the slave will know to ignore the data being sent by the master.
 
-Devices that use SPI typically will send/receive multiple bytes each time the **SS** signal goes low. This way the **SS** signal acts as a way to frame a transmission. For example, if you had a flash memory that had an SPI bus and you want to read some data, the **SS** signal would go low, the master would send the command to read memory at a certain address, and as long as the master kept **SS** low and toggling **SCK** the flash memory would keep sending out data. Once **SS** returned high the flash memory knows to end the read command.
+Devices that use SPI typically will send/receive multiple bytes each time the **SS** signal goes low. This way the **SS** signal acts as a way to frame a transmission. For example, if you had a flash memory that had an SPI bus and you want to read some data, the **SS** signal would go low, the master would send the command to read memory at a certain address, and as long as the master kept **SS** low and toggling **SCK** the flash memory would keep sending out data. Once **SS** returned high the flash memory knows to end the read command.
 
-Since the **MISO** signal can be connected to multiple devices, each device will only drive the line when its **SS** signal is low. This is shown by the grey area.
+Since the **MISO** signal can be connected to multiple devices, each device will only drive the line when its **SS** signal is low. This is shown by the grey area.
 
 ### SPI Slave
 
-In the [Mojo Base Project](https://github.com/embmicro/mojo-base-project/archive/master.zip), the file **spi_slave.v** contains the SPI module used to interface with the AVR. The AVR, in this case, is the master and the FPGA is the slave. The reason the AVR is the master is because the SPI bus is used to transfer data from the analog pins. Since the FPGA has no way of knowing when the data would be available, the FPGA would have to keep asking the AVR if it had any data. By making the AVR the master, it allows it to send the data right when it's ready.
+In the [Mojo Base Project](https://github.com/embmicro/mojo-base-project/archive/master.zip), the file **spi_slave.v** contains the SPI module used to interface with the AVR. The AVR, in this case, is the master and the FPGA is the slave. The reason the AVR is the master is because the SPI bus is used to transfer data from the analog pins. Since the FPGA has no way of knowing when the data would be available, the FPGA would have to keep asking the AVR if it had any data. By making the AVR the master, it allows it to send the data right when it's ready.
 
 ```verilog,short
 module spi_slave(
@@ -110,13 +110,13 @@ module spi_slave(
 endmodule
 ```
 
-This is module assumes **CPOL** = 0 and **CPHA** = 0.
+This is module assumes **CPOL** = 0 and **CPHA** = 0.
 
-It waits for **SS** to go low. Once **SS** is low, it starts shifting data into the **data_d/_q** register. Once eight bits have been shifted in it signals that it has new data on **dout**. On the falling edges of the clock, it shifts out the data that was provided by **din** at the beginning of the transmission.
+It waits for **SS** to go low. Once **SS** is low, it starts shifting data into the **data_d/_q** register. Once eight bits have been shifted in it signals that it has new data on **dout**. On the falling edges of the clock, it shifts out the data that was provided by **din** at the beginning of the transmission.
 
 ### SPI Master
 
-Our Clock/Visualizer Shield, uses a **R**eal-**T**ime **C**lock (**RTC**) device that provides the Mojo with the current time. The RTC is connected to the Mojo through an SPI bus. In this case, the FPGA on the Mojo is the master and the RTC is the slave.
+Our Clock/Visualizer Shield, uses a **R**eal-**T**ime **C**lock (**RTC**) device that provides the Mojo with the current time. The RTC is connected to the Mojo through an SPI bus. In this case, the FPGA on the Mojo is the master and the RTC is the slave.
 
 ```verilog,short
 module spi #(parameter CLK_DIV = 2)(
@@ -218,6 +218,6 @@ module spi #(parameter CLK_DIV = 2)(
 endmodule
 ```
 
-In this case **CPOL** = 0 and **CPHA** = 1.
+In this case **CPOL** = 0 and **CPHA** = 1.
 
-The overall idea is the same, however, the FPGA now needs to generate the **SCK** signal. The parameter **CLK_DIV** is used to specify how much the FPGA's clock should be divided. The default value is 2, which means that the frequency of **SCK** will be 1/4th (2^2 = 4 clock cycles) of that of the FPGA. If **CLK_DIV** was set to 3, **SCK** would be 1/8th (2^3 = 8 clock cycles) the frequency of the FPGA's clock.
+The overall idea is the same, however, the FPGA now needs to generate the **SCK** signal. The parameter **CLK_DIV** is used to specify how much the FPGA's clock should be divided. The default value is 2, which means that the frequency of **SCK** will be 1/4th (2^2 = 4 clock cycles) of that of the FPGA. If **CLK_DIV** was set to 3, **SCK** would be 1/8th (2^3 = 8 clock cycles) the frequency of the FPGA's clock.

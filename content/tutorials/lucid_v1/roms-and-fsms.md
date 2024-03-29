@@ -73,7 +73,7 @@ The parameters for this module are more or less the same as before with the smal
 
 ## Using the Modules
 
-We now can add _uart_tx_ and _uart_rx_ to our top level module.
+We now can add _uart_tx_ and _uart_rx_ to our top level module.
 
 ```lucid
 module cu_top (
@@ -115,7 +115,7 @@ module cu_top (
 
 All of the external signals are already defined for us in the Base Project. We simply connect them up.
 
-We can actually make the instantiation of these two modules a bit cleaner. Both _uart_tx_ and _uart_rx_ have the same parameters and we want their values to be the same. This means we can group them in to a connection block just like we do for _clk_ and _rst_.
+We can actually make the instantiation of these two modules a bit cleaner. Both _uart_tx_ and _uart_rx_ have the same parameters and we want their values to be the same. This means we can group them in to a connection block just like we do for _clk_ and _rst_.
 
 ```lucid
 .clk(clk) {
@@ -132,21 +132,21 @@ We can actually make the instantiation of these two modules a bit cleaner. Both�
 }
 ```
 
-We could have also combined these with the _.rst(rst)_ assignment, but we will be adding another module to that block later so it is nice to have them separate.
+We could have also combined these with the _.rst(rst)_ assignment, but we will be adding another module to that block later so it is nice to have them separate.
 
 Currently we are ignoring any data from the receiver and never sending data on the transmitter.
 
-All inputs to modules need to be assigned a value. However, since we are setting _tx.new_data_ to 0, we really don't care what value gets assigned to _tx.data_ since it will never be used. In cases like this, the value of 'x' is helpful. There isn't really a value associated with 'x'. Instead, this tells the synthesizer that we don't care what value it uses. This gives it freedom to optimize our design instead of being forced to use an arbitrary useless value like 0.
+All inputs to modules need to be assigned a value. However, since we are setting _tx.new_data_ to 0, we really don't care what value gets assigned to _tx.data_ since it will never be used. In cases like this, the value of 'x' is helpful. There isn't really a value associated with 'x'. Instead, this tells the synthesizer that we don't care what value it uses. This gives it freedom to optimize our design instead of being forced to use an arbitrary useless value like 0.
 
 We will now create two new modules that will actually deal with all these signals to send "Hello World!" when an "h" is received.
 
 ## ROMs
 
-Before we get too deep into generating and handling these signals, we need to create a ROM (**R**ead **O**nly **M**emory).
+Before we get too deep into generating and handling these signals, we need to create a ROM (**R**ead **O**nly **M**emory).
 
 Our ROM will hold the message we want to send, in our case "Hello World!".
 
-Create a new module named _hello_world_rom_ and add the following to it.
+Create a new module named _hello_world_rom_ and add the following to it.
 
 ```lucid
 module hello_world_rom (
@@ -162,7 +162,7 @@ module hello_world_rom (
 }
 ```
 
-We have a single input, _address_, and a single output, _letter_. We want to output the first letter, "H", when address is 0 and the second letter, "e", when address is 1. This continues for each letter in our message.
+We have a single input, _address_, and a single output, _letter_. We want to output the first letter, "H", when address is 0 and the second letter, "e", when address is 1. This continues for each letter in our message.
 
 This is actually pretty simple to do. First we need an array of the data we want to send. This is done in the following line.
 
@@ -174,10 +174,10 @@ Here we are using a string to represent our data. Strings of more than one lette
 
 Note that the text is reversed. This is because we want, as the comment says, for "H" to be the first letter. Also note that "\n" and "\r" are actually single characters each. That means when we reversed the text we didn't write "n\r\" which would be wrong. These characters will make sure the text is on a new line each time it is sent. "\n" goes to the next line and "\r" returns the cursor to the beginning of the new line.
 
-Next, we simply need to set _letter_ to the correct value in _TEXT_ based on the given _address_. We do that on line 9.
+Next, we simply need to set _letter_ to the correct value in _TEXT_ based on the given _address_. We do that on line 9.
 
 ```lucid
-letter = TEXT[address]; // address indexes 8 bit blocks of TEXT
+letter = TEXT[address]; // address indexes 8 bit blocks of TEXT
 ```
 
 Since the text is reversed, we can simply output the corresponding letter.
@@ -188,7 +188,7 @@ This wraps up the ROM!
 
 This is where we will talk to the UART modules to actually send and receive data.
 
-Create a new module named _greeter_ and fill it with the following.
+Create a new module named _greeter_ and fill it with the following.
 
 ```lucid,linenos
 module greeter (
@@ -236,23 +236,23 @@ module greeter (
 }
 ```
 
-The inputs and outputs should look a little familiar. They will connect to the _uart_tx_ and _uart_rx_ modules in our top level.
+The inputs and outputs should look a little familiar. They will connect to the _uart_tx_ and _uart_rx_ modules in our top level.
 
-We are using the constant _NUM_LETTERS_ to specify how big the ROM is. In our case, we have 14 letters to send (this includes the new line characters).
+We are using the constant _NUM_LETTERS_ to specify how big the ROM is. In our case, we have 14 letters to send (this includes the new line characters).
 
 ### FSMs
 
 On line 15 we instantiate an FSM.
 
 ```lucid,linenos,linenostart=15
-fsm state = {IDLE, GREET};
+fsm state = {IDLE, GREET};
 ```
 
-**fsm** is similar to **dff** in that they both have _.clk_, _.rst_, and _.d_ inputs and a _.q_ output. They behave much the same way, with one important exception. FSMs are used to store a state, not a value.
+**fsm** is similar to **dff** in that they both have _.clk_, _.rst_, and _.d_ inputs and a _.q_ output. They behave much the same way, with one important exception. FSMs are used to store a state, not a value.
 
-In this example, our FSM can have one of two states, _IDLE_ or _GREET_. In a more complicated example we could add more states to our FSM simply by adding them to the list.
+In this example, our FSM can have one of two states, _IDLE_ or _GREET_. In a more complicated example we could add more states to our FSM simply by adding them to the list.
 
-To access a state, we can use _state.IDLE_ or _state.GREET_. This is done in the case statement (covered below) as well as when we assign a new state to _state_.
+To access a state, we can use _state.IDLE_ or _state.GREET_. This is done in the case statement (covered below) as well as when we assign a new state to _state_.
 
 ### Functions
 
@@ -260,15 +260,15 @@ To access a state, we can use _state.IDLE_ or _state.GREET_. This is done in 
 dff count[$clog2(NUM_LETTERS)]; // min bits to store NUM_LETTERS - 1
 ```
 
-Here we are declaring a counter that will be use to keep track of what letter we are on. That means we need the counter to be able to count from 0 to _NUM_LETTERS_ - 1. How do we know how many bits we will need when _NUM_LETTERS_ is a constant? We could simply compute this by hand and type in the value. However, this is fragile since it would be easy to change _NUM_LETTERS_ and forget to change the counter size. This is where the function _$clog2()_ comes in handy. This function will compute the ceiling log base 2 of the value passed to it. This happens to be the number of bits you need to store the values from 0 to one minus the argument. How convenient! Just what we needed.
+Here we are declaring a counter that will be use to keep track of what letter we are on. That means we need the counter to be able to count from 0 to _NUM_LETTERS_ - 1. How do we know how many bits we will need when _NUM_LETTERS_ is a constant? We could simply compute this by hand and type in the value. However, this is fragile since it would be easy to change _NUM_LETTERS_ and forget to change the counter size. This is where the function _$clog2()_ comes in handy. This function will compute the ceiling log base 2 of the value passed to it. This happens to be the number of bits you need to store the values from 0 to one minus the argument. How convenient! Just what we needed.
 
 It is important to note that this function can only be used with constants or constant expressions. This is because the tools will compute the value during synthesis. Your circuit isn't doing anything fancy here. Computing this function in hardware would be far too complicated for a single line to properly handle.
 
 ### Saying Hello
 
-We instantiate a copy of our _hello_world_rom_ and call it _rom_ so we know what data to send.
+We instantiate a copy of our _hello_world_rom_ and call it _rom_ so we know what data to send.
 
-Since we are only going to be sending the letters from the ROM, we can wire them up directly to _tx_data_.
+Since we are only going to be sending the letters from the ROM, we can wire them up directly to _tx_data_.
 
 ```lucid
 hello_world_rom rom;
@@ -282,9 +282,9 @@ We also can set the ROM's address to simply be the output of our counter since t
 
 ### Case Statements
 
-**Case statements** are an easy way to do a bunch of different things depending on the value of something. You could always use a bunch of **if statements** but this can be way more compact and easier to read.
+**Case statements** are an easy way to do a bunch of different things depending on the value of something. You could always use a bunch of **if statements** but this can be way more compact and easier to read.
 
-The general syntax for a **case statement** is below.
+The general syntax for a **case statement** is below.
 
 ```lucid
 case (expr) {
@@ -315,23 +315,23 @@ case (state.q) {
 }
 ```
 
-When _state.q_ is _state.IDLE_, we only look at the lines 30-32. However, when _state.q_ is _state.GREET_ we only look at lines 35-40.
+When _state.q_ is _state.IDLE_, we only look at the lines 30-32. However, when _state.q_ is _state.GREET_ we only look at lines 35-40.
 
 ### Putting it all Together
 
-So how does it all work? Since _IDLE_ was the first state we listed, it is, by default, the default state. You can specify an alternate default state by using the parameter _#INIT(STATE_NAME)_.
+So how does it all work? Since _IDLE_ was the first state we listed, it is, by default, the default state. You can specify an alternate default state by using the parameter _#INIT(STATE_NAME)_.
 
-Because we start in the idle state, the counter is set to 0 and we do nothing until we see "h". To wait for "h" we wait for _new_rx_ to be high and _rx_data_ to be "h".
+Because we start in the idle state, the counter is set to 0 and we do nothing until we see "h". To wait for "h" we wait for _new_rx_ to be high and _rx_data_ to be "h".
 
-Once we receive an "h", we change states to _state.GREET_
+Once we receive an "h", we change states to _state.GREET_
 
-Here we wait for _tx_busy_ to be low to signal we can send data. We then increment the counter for next time and signal we have a new letter to send by setting _new_tx_ high. Remember we already set _tx_data_ as the output of our ROM.
+Here we wait for _tx_busy_ to be low to signal we can send data. We then increment the counter for next time and signal we have a new letter to send by setting _new_tx_ high. Remember we already set _tx_data_ as the output of our ROM.
 
 Once we are out of letters, we return to the idle state to wait for another "h".
 
 ## Adding the Greeter to the Top Module
 
-Finally we need to add the _greeter_ module to our top module.
+Finally we need to add the _greeter_ module to our top module.
 
 First, let's add an instance of it.
 

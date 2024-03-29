@@ -54,7 +54,7 @@ You don't really have to really worry about this protocol since the example code
 
 ### Defining the addresses
 
-All the address definitions are in the the module **reg_ctrl**. Open up **reg_ctrl.v** and take a look.
+All the address definitions are in the the module **reg_ctrl**. Open up **reg_ctrl.v** and take a look.
 
 The demo code only has one valid address, address 0. That address is used to read the write values to the LEDs.
 
@@ -71,15 +71,15 @@ if (new_req) begin
   end
 ```
 
-This block of code is what actually makes address 0 correspond to the LEDs. There is a group of flip-flops **led_d/q** that are connected to the LEDs. When the address is 0 and it's a write, the value of this flip-flop is updated with the **write_value**. When the address is 0 and it's a read, the **read_value_d/q** flip-flops are set to the value of **led_q**. Those flip-flops provide the data for the next SPI transfer. Since the FPGA is clocked at 50MHz and the SPI bus is substantially slower at 4MHz, the FPGA has a few clock cycles to prepare the read data before it is needed. This can be helpful if your read can't be done instantly, unlike this case.
+This block of code is what actually makes address 0 correspond to the LEDs. There is a group of flip-flops **led_d/q** that are connected to the LEDs. When the address is 0 and it's a write, the value of this flip-flop is updated with the **write_value**. When the address is 0 and it's a read, the **read_value_d/q** flip-flops are set to the value of **led_q**. Those flip-flops provide the data for the next SPI transfer. Since the FPGA is clocked at 50MHz and the SPI bus is substantially slower at 4MHz, the FPGA has a few clock cycles to prepare the read data before it is needed. This can be helpful if your read can't be done instantly, unlike this case.
 
 ## The Arduino side of things
 
 In the Arduino project, the code for the demo is pretty short and simple.
 
-First take a look at the **registers.h** file. In this file I defined **LED_REG** to be the address of the LEDs, or 0x00. Using this file to define all the address in your design will make it much easier if you ever need to move things around.
+First take a look at the **registers.h** file. In this file I defined **LED_REG** to be the address of the LEDs, or 0x00. Using this file to define all the address in your design will make it much easier if you ever need to move things around.
 
-Now take a look at **fpga_interface** as shown below.
+Now take a look at **fpga_interface** as shown below.
 
 ```c
 void writeReg(uint8_t addr, uint8_t value){
@@ -100,7 +100,7 @@ uint8_t readReg(uint8_t addr){
 
 These two functions implement the basic protocol outlined earlier. They only allow for transfers of a single byte and don't use the auto-inc signal at all. If you need to read or write many addresses you should add your own functions in this file that can effienctly interface with your FPGA design.
 
-Now for the brains of the operation. Take a look at the main file, **mojo_mem_map**. Most of the code in this file is just used for loading the FPGA, however, the functions **userLoop()** and **userInit()** are your's to mess with. It's important to try and keep the **userLoop()** execution time low (no while(1) loops) so that the Mojo Loader can get the Mojo's attention before it times out. If it does timeout, a quick retry usually will be enough to get it to work.
+Now for the brains of the operation. Take a look at the main file, **mojo_mem_map**. Most of the code in this file is just used for loading the FPGA, however, the functions **userLoop()** and **userInit()** are your's to mess with. It's important to try and keep the **userLoop()** execution time low (no while(1) loops) so that the Mojo Loader can get the Mojo's attention before it times out. If it does timeout, a quick retry usually will be enough to get it to work.
 
 ```c,linenos,linenostart=30
 void userLoop() {
@@ -123,13 +123,13 @@ void userLoop() {
 }
 ```
 
-This demo code simply reads the value of the LED address and adds one to it. That new value is written back to the LED address. This happens every 100ms thanks the **millis()** function. The **delay()** function isn't used because that would block execution and delay the Mojo from entering loading mode when requested. In this case a 100ms delay really wouldn't hurt anything, but this is shown as a best practice.
+This demo code simply reads the value of the LED address and adds one to it. That new value is written back to the LED address. This happens every 100ms thanks the **millis()** function. The **delay()** function isn't used because that would block execution and delay the Mojo from entering loading mode when requested. In this case a 100ms delay really wouldn't hurt anything, but this is shown as a best practice.
 
 If you load the FPGA and the Arduino with the demo code, the LEDs should start counting up.
 
 ### AVR Flags
 
-There are four signals named **avr_flags** that are just general purpose pins that connect the FPGA and AVR. These are great when the AVR is waiting for the FPGA to do something, or for the FPGA to get the AVR's attention. They are configured as inputs to the AVR (outputs of the FPGA) in the demo project.
+There are four signals named **avr_flags** that are just general purpose pins that connect the FPGA and AVR. These are great when the AVR is waiting for the FPGA to do something, or for the FPGA to get the AVR's attention. They are configured as inputs to the AVR (outputs of the FPGA) in the demo project.
 
 They can be hooked up anywhere in your design to signal the status of some process.
 
@@ -142,8 +142,8 @@ if (flags & 0x01) {
 }
 ```
 
-**flags** holds the value of all four flags so you can test for each one individually or some combination.
+**flags** holds the value of all four flags so you can test for each one individually or some combination.
 
 ### Conclusion
 
-So what can you use this for? You can basically turn the FPGA into any peripheral you can imagine for your Arduino projects. For a more advanced example on how to use this in your own projects, check out the [hexapod](@/tutorials/projects/hexapod.md) which uses this extensively. The FPGA in this project basically becomes a servo controller and a blob detection sensor. The Arduino code doesn't have to know anything about the camera, it just receives blobs that are detected in the images.
+So what can you use this for? You can basically turn the FPGA into any peripheral you can imagine for your Arduino projects. For a more advanced example on how to use this in your own projects, check out the [hexapod](@/tutorials/projects/hexapod.md) which uses this extensively. The FPGA in this project basically becomes a servo controller and a blob detection sensor. The Arduino code doesn't have to know anything about the camera, it just receives blobs that are detected in the images.
