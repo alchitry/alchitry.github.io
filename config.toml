@@ -55,7 +55,6 @@ navigation = [
 ]
 
 home_title = "Alchitry"
-home_content = "Welcome to the new Alchitry website! It is currently a work in progress..."
 social_icons = [
     { url = "https://github.com/alchitry", title = "GitHub", icon = "github" },
     { url = "https://youtube.com/c/alchitry", title = "YouTube", icon = "youtube" },

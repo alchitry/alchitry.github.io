@@ -102,3 +102,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+.first-entry.home-info {
+    margin: 0;
+}
