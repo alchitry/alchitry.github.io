@@ -59,4 +59,4 @@ If you are building with iCEcube2 for the Cu, you will need to point the IDE to 
 
 You can also use the open source project [IceStorm](http://www.clifford.at/icestorm/) to build for the Cu.
 
-To build for the Mojo you need to install [ISE](https://alchitry.com/pages/installing-ise).
+To build for the Mojo you need to install [ISE](@/tutorials/setup/ise.md).
