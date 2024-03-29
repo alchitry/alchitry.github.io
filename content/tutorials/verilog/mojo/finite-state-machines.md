@@ -275,6 +275,6 @@ These are fed to two servo modules (see the [servos tutorial](@/tutorials/veril
 
 Now check out the FSM in action!
 
-<div class="container"><iframe class="video" src="https://www.youtube.com/embed/eqGPOE-J_CU?si=FoF80eUCaDhFixnF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+{{ youtube(id="eqGPOE-J_CU?si=FoF80eUCaDhFixnF") }}
 
 You can download the full project code [here](https://cdn.embeddedmicro.com/fsm/Mojo-FSM.zip).

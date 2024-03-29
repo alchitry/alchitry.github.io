@@ -3,9 +3,7 @@ title = "Digital Logic"
 weight=0
 +++
 
-<div class="container">  
-<iframe class="video" src="https://www.youtube.com/embed/Aw53UIwnJqU?si=vCHwPU4e9bXF4An0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+{{ youtube(id="Aw53UIwnJqU?si=vCHwPU4e9bXF4An0") }}
 
 What is digital logic? As you may or may not already know digital systems are based on two logic levels which are usually represented as 1's and 0's.
 

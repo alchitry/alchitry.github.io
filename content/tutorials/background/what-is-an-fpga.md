@@ -3,7 +3,7 @@ title = "What is an FPGA?"
 weight=2
 +++
 
-<div class="container"><iframe class="video" src="https://www.youtube.com/embed/8POZhFHxBLs?si=TRCqJNoPlz9CPw2K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+{{ youtube(id="8POZhFHxBLs?si=TRCqJNoPlz9CPw2K") }}
 
 So what exactly is an FPGA? You may have heard the term thrown around, or maybe you have no idea what I'm talking about. Either way, FPGAs (**F**ield **P**rogrammable **G**ate **A**rrays) are amazing devices that now allow the average person to create their very own digital circuits. The cost has come down enough that you don't have to be a huge company to get your hands dirty.
 

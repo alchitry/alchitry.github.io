@@ -35,7 +35,7 @@ contexts:
     - match: '\b\d+\.\d+\b'
       scope: constant.real.lucid
 
-    - match: '\b\d+(?!\.)|\d*(?!\.)b([01XzZ]|(x(?!{)))+|\d*(?!\.)d\d+|\d*(?!\.)h([a-fA-F0-9XzZ]|(x(?!{)))+\gm'
+    - match: '\b(\d*(?!\.)b([01XzZ]|(x(?!{)))+|\d*(?!\.)d\d+|\d*(?!\.)h([a-fA-F0-9XzZ]|(x(?!{)))+|\d+(?!\.))\b'
       scope: constant.numeric.lucid
 
     - match: '\b[A-Z][A-Z0-9_]*([a-wyz]|(c(?!{)))([a-wyzA-Z0-9_]|(x(?!{)))*'
