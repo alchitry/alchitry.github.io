@@ -82,7 +82,7 @@ always {
 }
 ```
 
-On lines 28 and 29, we connect the external input and output to our two modules. 
+On lines 28 and 29, we connect the external input and output to our two modules. 
 
 On lines 31 and 32, we connect the _rx_ module's outputs to the _tx_ module's inputs. 
 

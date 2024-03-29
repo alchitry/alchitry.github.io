@@ -36,7 +36,7 @@ Now if we want to change the duty cycle of our signal all we need to do is vary 
 
 ![pwm_66.png](https://cdn.alchitry.com/verilog/mojo/pwm_66.png)
 
-You can see that by simply raising the value of **Compare** to 2/3 of **Max** our duty cycle became 66%!
+You can see that by simply raising the value of **Compare** to 2/3 of **Max** our duty cycle became 66%!
 
 To implement this in Verilog is pretty simple and only requires a few modifications to the blinker code.
 

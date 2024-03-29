@@ -104,7 +104,7 @@ dff hello_count[$clog2(HELLO_TEXT.WIDTH[0])]; // HELLO_TEXT is 2D so WIDTH[0] ge
 dff prompt_count[$clog2(PROMPT_TEXT.WIDTH[0])];
 ```
 
-Let us take a look at _hello_count_. We need it to be wide enough so that we can index all the letters in HELLO_TEXT. We can get how many letters there are in the string by using the _WIDTH_ attribute. Because _HELLO_TEXT_ is a multi-dimensional array (2D in this case), _WIDTH_ will be a 2D array. The first index of _WIDTH_ is the number of indices in the first dimension of _HELLO_TEXT_. This is the number of letters. So we simply use _HELLO_TEXT.WIDTH[0]_. Note that the second dimension has a width of 8 since each letter is 8 bits wide.
+Let us take a look at _hello_count_. We need it to be wide enough so that we can index all the letters in HELLO_TEXT. We can get how many letters there are in the string by using the _WIDTH_ attribute. Because _HELLO_TEXT_ is a multi-dimensional array (2D in this case), _WIDTH_ will be a 2D array. The first index of _WIDTH_ is the number of indices in the first dimension of _HELLO_TEXT_. This is the number of letters. So we simply use _HELLO_TEXT.WIDTH[0]_. Note that the second dimension has a width of 8 since each letter is 8 bits wide.
 
 We can then use the _$clog2()_ function as before to make sure it is large enough to store values from 0 to _HELLO_TEXT.WIDTH[0]_-1.
 

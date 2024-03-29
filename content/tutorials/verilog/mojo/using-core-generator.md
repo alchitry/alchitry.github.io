@@ -33,7 +33,7 @@ If you look at the bottom of the window you will see **< Back** and **Next >** b
 
 On the same page there are also options to tell CoreGen what to optimize when generating your RAM. We have **Minimum Area** selected, which is the most important constraint in most cases.
 
-As you go through the configuration settings, you'll find settings for each port's **width** and **depth**. The **width** of a RAM is how many bits belong to each address. In this case, we use 16 bits as our width since the audio samples are 16 bits wide. The **depth** is how many address the RAM will have. While you don't strictly need to use a power of two for this, it can make life simpler because then you don't have any invalid addresses.
+As you go through the configuration settings, you'll find settings for each port's **width** and **depth**. The **width** of a RAM is how many bits belong to each address. In this case, we use 16 bits as our width since the audio samples are 16 bits wide. The **depth** is how many address the RAM will have. While you don't strictly need to use a power of two for this, it can make life simpler because then you don't have any invalid addresses.
 
 Once you configure a core how you want, just click the **Generate** button to get CoreGen to generate the core.
 

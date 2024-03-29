@@ -69,7 +69,7 @@ module uart_rx #(
 
 This module is responsible for receiving data on the _rx_ input and sending it out as bytes on _data_. The value of _data_ is valid only when _new_data_ is 1.
 
-The parameters for this module are more or less the same as before with the small exception that _BAUD_ is constrained to a quarter of _CLK_FREQ_ instead of half. This is due to the internal working of the module. Once it detects new incoming data, it waits half a cycle so that it will be sampling the data in the middle of the bit instead of the edge for reliability.
+The parameters for this module are more or less the same as before with the small exception that _BAUD_ is constrained to a quarter of _CLK_FREQ_ instead of half. This is due to the internal working of the module. Once it detects new incoming data, it waits half a cycle so that it will be sampling the data in the middle of the bit instead of the edge for reliability.
 
 ## Using the Modules
 

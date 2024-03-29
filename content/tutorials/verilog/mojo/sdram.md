@@ -43,7 +43,7 @@ The second fundamental flaw of DRAM, and the reason it is called **dynamic** RAM
 
 The fix to this problem is to periodically **refresh** each row. A refresh consists of simply reading a row then writing it back into the array. This process ensures that the capacitors retain their charge.
 
-The amount of time a row can go between refreshes depends on the DRAM. However, the SDRAM chip on the SDRAM Shield, must be refreshed every **64ms**.
+The amount of time a row can go between refreshes depends on the DRAM. However, the SDRAM chip on the SDRAM Shield, must be refreshed every **64ms**.
 
 Generally, SDRAM will be able to perform the refresh operation for you. However, you still must tell it when to refresh.
 

@@ -80,7 +80,7 @@ assign b = a[0] & a[1] & a[2] & a[3];
 |Arithmetic Shift Right|>>>|
 |Arithmetic Shift Left|<<<|
 
-The shift operators in Verilog are very similar to the ones in other languages. They simply _shift_ the bits in a value over that many times to the right of left.
+The shift operators in Verilog are very similar to the ones in other languages. They simply _shift_ the bits in a value over that many times to the right of left.
 
 The basic shift operators are **zero-filling** meaning that bits that don't have a value shifted into them are replaced with zeros. Take a look at the following example.
 

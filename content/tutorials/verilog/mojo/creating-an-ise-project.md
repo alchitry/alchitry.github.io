@@ -114,7 +114,7 @@ It is possible to do [8:1] or [0:7], but unless you have a **very very** good re
 This brings us to the first line after the port declaration. 
 
 ```verilog,linenos,linenostart=23
-wire rst = ~rst_n;
+wire rst = ~rst_n;
 ```
 
 In this line we are declaring a new wire called rst and assigning it a value.

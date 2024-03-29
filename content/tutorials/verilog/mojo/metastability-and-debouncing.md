@@ -7,7 +7,7 @@ In this tutorial we will cover some of the pit falls that can happen when having
 
 ## Metastability
 
-To understand metastability, you first need a little background on the timing requirements of the [flip-flop](@/tutorials/verilog/mojo/synchronous-logic.md). As we discussed before, a flip-flop will copy the value at the **D** side to the **Q** side at the positive edge of the clock and hold the value steady until the next positive edge. What we didn't  cover was what is known as the **setup** and **hold** timing constraints.
+To understand metastability, you first need a little background on the timing requirements of the [flip-flop](@/tutorials/verilog/mojo/synchronous-logic.md). As we discussed before, a flip-flop will copy the value at the **D** side to the **Q** side at the positive edge of the clock and hold the value steady until the next positive edge. What we didn't  cover was what is known as the **setup** and **hold** timing constraints.
 
 This tutorial will not go into too much detail on what causes these constraints and what their actual values are. All that is important right now, is to know that the **setup** constraint tells you how long before the positive edge of the clock the value on the **D** side must be stable. The **hold** time tells you how long after the positive edge of the clock the **D** side must continue to be stable. 
 

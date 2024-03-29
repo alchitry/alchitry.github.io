@@ -3,4 +3,4 @@ title = "Synchronous Logic"
 weight = 1
 +++
 
-TODO: [Visit the old page until this is ported](https://old.alchitry.com/synchronous-logic)
+This is now part of [the Alchitry version](@/tutorials/lucid_v1/synchronous-logic.md).

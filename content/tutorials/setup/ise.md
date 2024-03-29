@@ -63,7 +63,7 @@ The 64bit version of ISE doesn't work correctly in Windows 8. Every time it trie
 
 First navigate to C:\Xilinx\14.7\ISE_DS\ISE\bin
 
-The **nt** folders contain the executables. Right now any shortcuts you have and file associations point to the 64bit version. Move into the **nt** folder.
+The **nt** folders contain the executables. Right now any shortcuts you have and file associations point to the 64bit version. Move into the **nt** folder.
 
 Copy the file **ise**. Move back to the **bin** folder and into the **nt64** folder. Rename the current **ise** file to **ise64** and paste the 32bit version of the **ise** file. This will make sure you use the 32bit version.
 

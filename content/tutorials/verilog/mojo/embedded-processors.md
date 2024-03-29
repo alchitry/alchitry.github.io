@@ -29,7 +29,7 @@ In the first tab, **MCS**, change the **Input Clock Frequency** to 50 since we w
 
 Take note of the **Instance Hierarchical Design Name,** it is very important later on. For now we'll just leave it at the default **mcs_0**.
 
-Set **Memory Size** to **16KB**. The absolute minimum required for this project is **8KB**, but if you add any extra code, you will want a little more.
+Set **Memory Size** to **16KB**. The absolute minimum required for this project is **8KB**, but if you add any extra code, you will want a little more.
 
 The **Memory Size** option is important because it dictates how much memory the processors has to store your code and variables. You will want to use a little memory as possible that will still fit your program since it uses valuable block RAM inside the FPGA.
 

@@ -48,7 +48,7 @@ A Karnaugh map is basically just a reorganization of the truth table.
 
 ![kmap.png](https://cdn.alchitry.com/background/kmap.png)
 
-The important thing to notice here is how the table is setup. It is crucial that when moving to any adjacent box only **one** input can change. For example, if you look at the box where **ab** = 01 and **cd** = 01, you can see that moving up changes **d**, moving down changes **c**, moving left changes **b**, and moving right changes **a**.
+The important thing to notice here is how the table is setup. It is crucial that when moving to any adjacent box only **one** input can change. For example, if you look at the box where **ab** = 01 and **cd** = 01, you can see that moving up changes **d**, moving down changes **c**, moving left changes **b**, and moving right changes **a**.
 
 The lines on the sides are there just to help make it more clear. The boxes where the lines are are where the input is 1. For example, in the bottom right four boxes, where the **c** and **a** sections overlap, **c** and **a** are both 1.
 

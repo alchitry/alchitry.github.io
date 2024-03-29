@@ -44,7 +44,7 @@ What will this circuit do? If the input to the gate is 1, then it's output is 0.
 
 ![](https://cdn.alchitry.com/lucid_v1/image-asset.png)
 
-What will this circuit do? Well, for now lets just assume that _Q_ is 0. That means that _D_ is 1 (because it went through the not gate). On the next rising edge of the clock _Q_ will copy what _D_ is, so _Q_ becomes 1. Once _Q_ becomes 1, _D_ becomes 0. You can follow the pattern to realize that every time there is a rising edge on the clock the output of the flip flop toggles.
+What will this circuit do? Well, for now lets just assume that _Q_ is 0. That means that _D_ is 1 (because it went through the not gate). On the next rising edge of the clock _Q_ will copy what _D_ is, so _Q_ becomes 1. Once _Q_ becomes 1, _D_ becomes 0. You can follow the pattern to realize that every time there is a rising edge on the clock the output of the flip flop toggles.
 
 What about the initial condition though? If we just built this circuit how do we know if _Q_ is 0 or 1? The truth is that we don't and in some cases it may be 1 while others it may be 0. That is where the _rst_ signal comes in. This signal is used to reset the flip flop to a known state. In FPGAs this signal is generally very flexible and allows you to reset the flip flop to a 1 or 0 when the signal is high or low (your choice, not both). In Lucid, _dffs_ use active high resets. That means when the _rst_ signal is 1, the flip flop is held in reset.
 

@@ -3,4 +3,4 @@ title = "Hello YOUR_NAME_HERE"
 weight = 5
 +++
 
-TODO: [Visit the old page until this is ported](https://old.alchitry.com/hello-your_name_here)
+This is now part of [the Alchitry version](@/tutorials/lucid_v1/hello-your-name-here.md).

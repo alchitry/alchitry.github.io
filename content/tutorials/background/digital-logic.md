@@ -33,7 +33,7 @@ This is the symbol for an **and** gate.
 
 ![and.png](https://cdn.alchitry.com/background/and.png)
 
-When **a** **and b** are both true, **c** is true. If either **a** or **b** is false then **c** will be false. You can think of it's output as: _is input a_ **_and_** _input b true?_
+When **a** **and b** are both true, **c** is true. If either **a** or **b** is false then **c** will be false. You can think of it's output as: _is input a_ **_and_** _input b true?_
 
 For example, if **a** is 1 and **b** is 0, then the output, **c**, will be 0. That is because both inputs are not true, so the output is false.
 ## Or

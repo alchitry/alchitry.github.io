@@ -49,7 +49,7 @@ If you are using **Ubuntu** and you installed it via the Software Center or the 
 
 Once you find the Arduino files, open the **hardware** folder, then open the **arduino** folder.
 
-You should now see the **boards.txt** file. Use the **boards.txt** file from the zip you downloaded earlier to replace the Arduino one.
+You should now see the **boards.txt** file. Use the **boards.txt** file from the zip you downloaded earlier to replace the Arduino one.
 
 The new file contains the declaration of the Mojo telling the Arduino IDE how to handle it.
 

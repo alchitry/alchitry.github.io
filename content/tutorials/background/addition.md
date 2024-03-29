@@ -59,7 +59,7 @@ Going back to those very early days of school, when you add numbers it looks som
  <span style="text-decoration:underline">+22</span>
   41</pre>
 
-But how did we add that second column? We simply added all **three** numbers together, the two inputs 1 from the 19 and 2 from the 22, as well as the carry from the previous addition. That brings us to the truth table for the full adder.
+But how did we add that second column? We simply added all **three** numbers together, the two inputs 1 from the 19 and 2 from the 22, as well as the carry from the previous addition. That brings us to the truth table for the full adder.
 
 |Cin|A|B|Cout|Sum|
 |---|---|---|---|---|

@@ -104,7 +104,7 @@ Windows may or may not find the driver for your Mojo. If it doesn't, open the De
 
 ![bootloader-no-driver.png](https://cdn.alchitry.com/mojo/bootloader-no-driver.png)
 
-Right click on the **ATm32U4DFU** or **ATm16U4DFU**, depending on your Mojo, and click **Update Driver Software...** 
+Right click on the **ATm32U4DFU** or **ATm16U4DFU**, depending on your Mojo, and click **Update Driver Software...** 
 
 Then choose **Browse my computer for driver software** and fill in the path to where you installed FLIP. Select the sub-folder **usb**.
 

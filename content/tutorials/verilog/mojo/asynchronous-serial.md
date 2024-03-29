@@ -163,7 +163,7 @@ module serial_tx #(
 endmodule
 ```
 
-The parameter **CLK_PER_BIT** is used to set the baud rate. To calculate the correct value for **CLK_PER_BIT** use **CLK_PER_BIT** = Mojo Frequency / Baud Rate.
+The parameter **CLK_PER_BIT** is used to set the baud rate. To calculate the correct value for **CLK_PER_BIT** use **CLK_PER_BIT** = Mojo Frequency / Baud Rate.
 
 If you open up **avr_interface.v** you will notice that **CLK_PER_BIT** is set to automatically calculated for you. The baud rate is set to 500,000 bits/sec. The AVR expects this baud rate regardless of what you set the baud rate on your computer for the USB to serial device. You will notice that this is not a standard baud rate! This rate was used since it divides evenly allowing for a high baud rates with 0% error. 
 

@@ -68,7 +68,7 @@ The signals that are important right now are **tx_data**, **new_tx_data**, **tx_
 
 **tx_data** is the data (one byte) that you want to send over the virtual serial port. When you have a new byte you want to send, you need to check **tx_busy** to make sure the module is not busy in anyway. The busy flag can be set for a number of reasons which include, the module is currently sending a byte, **cclk** has not signaled the AVR is ready for data, or the AVR can't accept new data because it's buffer is full.
 
-If the **tx_busy** flag is not set, you can set **new_tx_data** high for one clock cycle to indicate you want the byte present on **tx_data** to be sent. 
+If the **tx_busy** flag is not set, you can set **new_tx_data** high for one clock cycle to indicate you want the byte present on **tx_data** to be sent. 
 
 To make this clearer, we will implement the classic _Hello World!_ example.
 

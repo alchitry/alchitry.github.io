@@ -48,7 +48,7 @@ You can open up **avr_interface** to checkout how the register interface is impl
 
 The transfer starts by the AVR pulling **CS** (**C**hip **S**elect) low. The first byte sent specifies what type of transfer (read or write), if the address is auto-incremented, and the address. The following bytes are the values that are read or written to the corresponding addresses. If **inc** is 1, B1 is from **addr**, B2 is from **addr + 1**, and Bn is from **addr + n - 1**. If **inc** is 0, then the same address is read or written multiple times. If the transfer is for a single address, **inc** doesn't make a difference. A transfer is terminated by **CS** going high.
 
-For example, to write 0xAA to address 0x00, we would send 0x80 (write address 0) followed by 0xAA. To write 0xAA to address 0 and 0xBB to address 1, we would send 0xC0 (write, auto-inc, address 0), 0xAA, 0xBB. It's the same pattern for reads except the values are read on **MISO** instead of written to **MOSI**.
+For example, to write 0xAA to address 0x00, we would send 0x80 (write address 0) followed by 0xAA. To write 0xAA to address 0 and 0xBB to address 1, we would send 0xC0 (write, auto-inc, address 0), 0xAA, 0xBB. It's the same pattern for reads except the values are read on **MISO** instead of written to **MOSI**.
 
 You don't really have to really worry about this protocol since the example code covers both ends of the communication. You simply specify the address and values. However, it is useful to know so you can write your own mutli-byte transfer functions using auto-inc for efficiency.
 

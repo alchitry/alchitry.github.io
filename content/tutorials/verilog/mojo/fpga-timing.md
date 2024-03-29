@@ -37,7 +37,7 @@ There is another invalid assumption we need to correct. We assumed that the outp
 
 That means for the time between the **contamination delay** and **propagation delay** of our combinational logic, its output is unpredictable and possibly invalid.
 
-We now have to make sure that the **contamination delay** does not violate the hold time, and that the **combinational logic propogation delay** does not violate the setup time.
+We now have to make sure that the **contamination delay** does not violate the hold time, and that the **combinational logic propogation delay** does not violate the setup time.
 
 If we let the combinational logic propagation delay **= CLPD** and the contamination delay = **CD** the the following new formulas capture our constraints.
 
