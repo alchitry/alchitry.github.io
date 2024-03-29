@@ -9,7 +9,7 @@ The process is fairly long, but it shouldn't be too tricky if you follow these i
 
 A quick note for Windows 10. Xilinx doesn't officially support Windows 10 but with a simple work around it should run just fine. They recently released a "Windows 10" version that is really just the Linux version bundled with a virtual machine to run on Windows. This version won't work with the Mojo IDE. I highly recommend using the older version which is now labeled as "Windows 7" even on Windows 10. There is a simple workaround explained in the "Windows 10 64bit" section below that makes this version work.
 
-First [click here](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive-ise.html) to go to the Xilinx downloads page. Under "Version" select 14.7. **Do not select "14.7 (Windows 10)" even if you are using Windows 10.** Scroll down a bit until you see **ISE Design Suite**. Under that header you should see full installers for Windows and Linux. Choose the one for the system you are installing ISE on.
+First [click here](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive-ise.html) to go to the Xilinx downloads page. Under "Version" select 14.7. **Do not select "14.7 (Windows 10)" even if you are using Windows 10.** Scroll down a bit until you see **ISE Design Suite**. Under that header you should see full installers for Windows and Linux. Choose the one for the system you are installing ISE on.
 
 You will then be prompted to login. If you don't have an account, create one. Once you have logged in the download should start.
 
@@ -17,13 +17,13 @@ If you have Java installed, you may be prompted to use their "Download Manager",
 
 The file is big, about 6.5GB, so make sure you have plenty of space! (Also, the installation requires a further 16GB of space.)
 
-Once the file is downloaded you need to decompress it. The file is a tar file so if you are on Windows you will need to install something like [7-Zip](http://www.7-zip.org/download.html). Some tar extractors fail to properly extact this archive. 7-Zip is known to work so if you have trouble with the installer, try extracting it with 7-Zip.
+Once the file is downloaded you need to decompress it. The file is a tar file so if you are on Windows you will need to install something like [7-Zip](http://www.7-zip.org/download.html). Some tar extractors fail to properly extact this archive. 7-Zip is known to work so if you have trouble with the installer, try extracting it with 7-Zip.
 
-For Windows, just open the folder and double click on **xsetup** to start the installation.
+For Windows, just open the folder and double click on **xsetup** to start the installation.
 
-For Linux, you will need to open up a terminal and cd into the directory where you extracted the files. Then run the setup with **sudo ./xsetup**.
+For Linux, you will need to open up a terminal and cd into the directory where you extracted the files. Then run the setup with **sudo ./xsetup**.
 
-Once in the setup, accept all the license agreements. Once you are on the page that asks which edition to install, choose the **ISE WebPACK** option and click next.
+Once in the setup, accept all the license agreements. Once you are on the page that asks which edition to install, choose the **ISE WebPACK** option and click next.
 
 ![win_select.jpg](https://cdn.alchitry.com/setup/win_select.jpg)
 
@@ -33,15 +33,15 @@ You are then prompted to select what you would like to install. You only need to
 
 Once the install is done you should be prompted to get a license.
 
-Choose the **Get Free ISE WebPack License** option and click next.
+Choose the **Get Free ISE WebPack License** option and click next.
 
-If you are using Windows clicking **Connect Now** should open up a webpage for you. If you are on Linux you will probably be shown the same prompt, but if clicking **Connect Now** doesn't work you can go to [http://www.xilinx.com/getlicense](http://www.xilinx.com/getlicense).
+If you are using Windows clicking **Connect Now** should open up a webpage for you. If you are on Linux you will probably be shown the same prompt, but if clicking **Connect Now** doesn't work you can go to [http://www.xilinx.com/getlicense](http://www.xilinx.com/getlicense).
 
-From that page login and select **ISE Design Suite: WebPACK License**. Click on the button in the bottom left labeled **Generate Node-Locked License**.
+From that page login and select **ISE Design Suite: WebPACK License**. Click on the button in the bottom left labeled **Generate Node-Locked License**.
 
 Click next twice and you should be emailed your license! Open up your email and download the .lic file.
 
-Now go back to the installation window. Under the **Manage Xilinx Licenses** tab click **Copy License...** and select your .lic file. If you are on Windows 8, clicking **Copy License...** will crash the license manager. See below how to get your license setup in Windows 8.
+Now go back to the installation window. Under the **Manage Xilinx Licenses** tab click **Copy License...** and select your .lic file. If you are on Windows 8, clicking **Copy License...** will crash the license manager. See below how to get your license setup in Windows 8.
 
 Once it finishes copying the license file you can close the window. ISE is now installed and ready to use!
 
@@ -49,11 +49,11 @@ If you are a Windows user you can stop here. However, if you are using Linux the
 
 ## Windows 8.1/10
 
-Xilinx has released a guide for overcoming the common problems with Windows 8.1 and 10. [Check out the guide here.](http://www.xilinx.com/support/answers/62380.html)
+Xilinx has released a guide for overcoming the common problems with Windows 8.1 and 10. [Check out the guide here.](http://www.xilinx.com/support/answers/62380.html)
 
 ## Windows 10 64bit
 
-The latest updates to Windows 10 seem to break PlanAhead. The second part of [this post](https://www.eevblog.com/forum/microcontrollers/guide-getting-xilinx-ise-to-work-with-windows-8-64-bit/) titled "Fixing PlanAhead not opening from 64-bit Project Navigator" seemed to fix the issue.
+The latest updates to Windows 10 seem to break PlanAhead. The second part of [this post](https://www.eevblog.com/forum/microcontrollers/guide-getting-xilinx-ise-to-work-with-windows-8-64-bit/) titled "Fixing PlanAhead not opening from 64-bit Project Navigator" seemed to fix the issue.
 
 ## Windows 8 64bit
 
@@ -63,7 +63,7 @@ The 64bit version of ISE doesn't work correctly in Windows 8. Every time it trie
 
 First navigate to C:\Xilinx\14.7\ISE_DS\ISE\bin
 
-The **nt** folders contain the executables. Right now any shortcuts you have and file associations point to the 64bit version. Move into the **nt** folder.
+The **nt** folders contain the executables. Right now any shortcuts you have and file associations point to the 64bit version. Move into the **nt** folder.
 
 Copy the file **ise**. Move back to the **bin** folder and into the **nt64** folder. Rename the current **ise** file to **ise64** and paste the 32bit version of the **ise** file. This will make sure you use the 32bit version.
 

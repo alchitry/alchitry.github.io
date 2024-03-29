@@ -3,31 +3,31 @@ title = "Embedded Processors"
 weight = 19
 +++
 
-This tutorial is an advanced topic and is not recommend for beginners. If you want to write software in your design we recommend using the microcontroller on the Mojo before trying to embed a processor as the tools and setup can be very messy. Checkout [this tutorial](@/tutorials/verilog/mojo/memory-mapping.md) for more information.
+This tutorial is an advanced topic and is not recommend for beginners. If you want to write software in your design we recommend using the microcontroller on the Mojo before trying to embed a processor as the tools and setup can be very messy. Checkout [this tutorial](@/tutorials/verilog/mojo/memory-mapping.md) for more information.
 
-This tutorial will outline how to add a **MicroBlaze MCS** to your project. The **MicroBlazeMCS** is a 32bit microprocessor core provided by Xilinx. It will allow you to write **C/C++** code that will interact with the rest of your design. While this can be very helpful in many projects, setting it up can be a bit confusing. This tutorial will hopefully demystify the process.
+This tutorial will outline how to add a **MicroBlaze MCS** to your project. The **MicroBlazeMCS** is a 32bit microprocessor core provided by Xilinx. It will allow you to write **C/C++** code that will interact with the rest of your design. While this can be very helpful in many projects, setting it up can be a bit confusing. This tutorial will hopefully demystify the process.
 
-Like most tutorials here, the first step is downloading the [Mojo Base Project](https://github.com/embmicro/mojo-base-project/archive/master.zip).
+Like most tutorials here, the first step is downloading the [Mojo Base Project](https://github.com/embmicro/mojo-base-project/archive/master.zip).
 
 ### Generating the core
 
-Go ahead and open up your fresh project in **ISE**.
+Go ahead and open up your fresh project in **ISE**.
 
-Right click on somewhere in the **Hierarchy** panel on the left and select **New Source...**
+Right click on somewhere in the **Hierarchy** panel on the left and select **New Source...**
 
-Select **IP (CORE Generator & Architecture Wizard)** and set the **File Name** to **microblaze_mcs** and click **Next**.
+Select **IP (CORE Generator & Architecture Wizard)** and set the **File Name** to **microblaze_mcs** and click **Next**.
 
-Expand **Embedded Processing** and **Processor** to find **MicroBlaze MCS**. Choose that and click **Next**.
+Expand **Embedded Processing** and **Processor** to find **MicroBlaze MCS**. Choose that and click **Next**.
 
-Click **Finish**.
+Click **Finish**.
 
 The configuration wizard should now show up.
 
 ![coregen_microblaze.resized.png](https://cdn.alchitry.com/verilog/mojo/coregen_microblaze.resized.png)
 
-In the first tab, **MCS**, change the **Input Clock Frequency** to 50 since we will be running the core at 50MHz.
+In the first tab, **MCS**, change the **Input Clock Frequency** to 50 since we will be running the core at 50MHz.
 
-Take note of the **Instance Hierarchical Design Name,** it is very important later on. For now we'll just leave it at the default **mcs_0**.
+Take note of the **Instance Hierarchical Design Name,** it is very important later on. For now we'll just leave it at the default **mcs_0**.
 
 Set **Memory Size** to **16KB**. The absolute minimum required for this project is **8KB**, but if you add any extra code, you will want a little more.
 

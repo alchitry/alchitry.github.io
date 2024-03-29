@@ -9,7 +9,7 @@ In this tutorial we are going to setup an interface to the DDR3 memory with the 
 
 **Before starting, you need to have Alchitry Labs 1.1.6 and Vivado 2019.1 or newer.**
 
-The first step is to setup your project. Open [Alchitry Labs](@/alchitry-labs.md), and go to **Project->New Project**. From here, make a new project based on the _Base Project_. We called ours _DDR Demo_, but feel free to name yours whatever you want.
+The first step is to setup your project. Open [Alchitry Labs](@/alchitry-labs.md), and go to **Project->New Project**. From here, make a new project based on the _Base Project_. We called ours _DDR Demo_, but feel free to name yours whatever you want.
 
 Also make sure that the project is for the Alchitry Au. The Alchitry Cu and Mojo don't have DDR memory on board so this tutorial is only for the Alchitry Au.
 
@@ -19,7 +19,7 @@ There is special hardware on the Artix 7 FPGA that is used for interfacing with 
 
 Customizing this IP requires full knowledge of the DDR3 chip being used and the board pinout. While you can find all the information you need to set this up for the Alchitry Au, we have drastically simplified it for you in Alchitry Labs.
 
-To invoke the commands needed to add the Xilinx memory interface to your project with everything already setup, go to **Project->Add Memory Controller**. Note that this option is only visible if your project is for the Alchitry Au board.
+To invoke the commands needed to add the Xilinx memory interface to your project with everything already setup, go to **Project->Add Memory Controller**. Note that this option is only visible if your project is for the Alchitry Au board.
 
 Once you click this, Alchitry Labs will add a Vivado IP Project to your project and invoke the necessary commands to add the memory interface.
 
@@ -27,11 +27,11 @@ Once you click this, Alchitry Labs will add a Vivado IP Project to your project 
 
 The initial setup can take a couple minutes since it actually builds the core. Once it is done it should look like the above screen shot.
 
-If you open the **Cores** section of the project tree, you should see the _mig_7series_0_ core. Under its heading you can find the stub file. This is an empty Verilog file that defines all the connections to the core.
+If you open the **Cores** section of the project tree, you should see the _mig_7series_0_ core. Under its heading you can find the stub file. This is an empty Verilog file that defines all the connections to the core.
 
 ## Adapting to Lucid
 
-You can use this core directly in your design if you want, but it is generally more convenient to wrap it. Go to **Project->Add Components** and under **Memory** select the **MIG Wrapper**. Click **Add** to add it to your project.
+You can use this core directly in your design if you want, but it is generally more convenient to wrap it. Go to **Project->Add Components** and under **Memory** select the **MIG Wrapper**. Click **Add** to add it to your project.
 
 ```lucid,short
 global Memory {
@@ -124,13 +124,13 @@ module mig_wrapper (
 }
 ```
 
-This component wraps the _mig_7series_0_ core you previously generated and defines two global structures to make hooking up other modules to it easier.
+This component wraps the _mig_7series_0_ core you previously generated and defines two global structures to make hooking up other modules to it easier.
 
-If you look at the module declaration of the wrapper, you will see a bunch of inouts and outputs that start with _ddr3__. These are all top level signals that need to connect to the DDR3 chip.
+If you look at the module declaration of the wrapper, you will see a bunch of inouts and outputs that start with _ddr3__. These are all top level signals that need to connect to the DDR3 chip.
 
-These names are actually important since the pins they connect to are defined in the _mig_7series_0_ core. You don't need to specify a pinout for them in your constraints file.
+These names are actually important since the pins they connect to are defined in the _mig_7series_0_ core. You don't need to specify a pinout for them in your constraints file.
 
-## Hooking up the wrapper
+## Hooking up the wrapper
 
 We can copy/paste these connections to our top level module and hook them up.
 
@@ -195,23 +195,23 @@ module au_top (
 }
 ```
 
-Note that you'll get an error on the _mig_ instantiation since we haven't hooked up the user interface yet.
+Note that you'll get an error on the _mig_ instantiation since we haven't hooked up the user interface yet.
 
-Again, it is important you don't change the names of these signals since they are used in the constraint file included with the _mig_7series_0_ core. If you change the names, the tools won't know what pins they need to connect to on the FPGA.
+Again, it is important you don't change the names of these signals since they are used in the constraint file included with the _mig_7series_0_ core. If you change the names, the tools won't know what pins they need to connect to on the FPGA.
 
 ## Setting up the clock
 
 The memory interface requires both a 100MHz and a 200MHz clock. Since the Alchitry Au only has a 100MHz clock, we need to synthesize the 200MHz one.
 
-We can do this using the _Vivado IP Catalog_. Go to **Project->Vivado IP Catalog** to launch it.
+We can do this using the _Vivado IP Catalog_. Go to **Project->Vivado IP Catalog** to launch it.
 
 After a few seconds, a window should open that looks likes this.
 
 ![Screenshot_from_2019-09-16_10-08-09.png](https://cdn.alchitry.com/lucid_v1/Screenshot_from_2019-09-16_10-08-09.png)
 
-Note that there is already a core in our project, the _mig_7series_0_.
+Note that there is already a core in our project, the _mig_7series_0_.
 
-In the right **IP Catalog** panel, navigate to **FPGA Features and Design->Clocking->Clocking Wizard** and double click on **Clocking Wizard**.
+In the right **IP Catalog** panel, navigate to **FPGA Features and Design->Clocking->Clocking Wizard** and double click on **Clocking Wizard**.
 
 This will open a new dialog to customize the IP.
 
@@ -219,7 +219,7 @@ This will open a new dialog to customize the IP.
 
 The defaults on the first page are all fine. However, by default, it is set to output only a single 100MHz clock.
 
-Go to the **Output Clocks** tab and check the **clk_out2** box.
+Go to the **Output Clocks** tab and check the **clk_out2** box.
 
 Under **Output Freq (MHz) Requested**, enter 200.
 

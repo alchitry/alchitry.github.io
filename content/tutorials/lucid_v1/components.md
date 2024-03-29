@@ -3,33 +3,33 @@ title = "Components"
 weight = 3
 +++
 
-In this tutorial we will use the USB port and create a project that will echo back all the data sent to the Au or Cu. [Click here for a tutorial for the Mojo.](@/tutorials/lucid_v1/mojo/components.md)
+In this tutorial we will use the USB port and create a project that will echo back all the data sent to the Au or Cu. [Click here for a tutorial for the Mojo.](@/tutorials/lucid_v1/mojo/components.md)
 
 This will teach you how to use components in your projects.
 
 ## Getting Started
 
-Like before, we will start by creating a new project. Go to **File->New Project...** and create a new Lucid project. I'm calling mine _Serial Port Echo_. It is from the _Base Project_ example.
+Like before, we will start by creating a new project. Go to **File->New Project...** and create a new Lucid project. I'm calling mine _Serial Port Echo_. It is from the _Base Project_ example.
 
-Great! Now we have a bare-bones project. The Au's and Cu's USB port is accessible to the FPGA through the FTDI USB<->serial bridge. Serial is often called **UART** (**U**niversal **A**synchronous **R**eceiver **T**ransmitter) and this is the name of the components we will need.
+Great! Now we have a bare-bones project. The Au's and Cu's USB port is accessible to the FPGA through the FTDI USB<->serial bridge. Serial is often called **UART** (**U**niversal **A**synchronous **R**eceiver **T**ransmitter) and this is the name of the components we will need.
 
 ## Components
 
-Components are prewritten modules that you will likely need to use in many of your projects. For this tutorial, we need to add two components to our project. One to receive data and one to send data.
+Components are prewritten modules that you will likely need to use in many of your projects. For this tutorial, we need to add two components to our project. One to receive data and one to send data.
 
-Launch the _Component Selector_ by going to **Project->Add Components...**
+Launch the _Component Selector_ by going to **Project->Add Components...**
 
-Under _Protocols_ you will find the components _UART TX_ and _UART RX_. Click the checkboxes next to each one.
+Under _Protocols_ you will find the components _UART TX_ and _UART RX_. Click the checkboxes next to each one.
 
 ![Screenshot_from_2019-04-23_10-52-59.png](https://cdn.alchitry.com/lucid_v1/Screenshot_from_2019-04-23_10-52-59.png)
 
-You can click each component for a short description of what it does. 
+You can click each component for a short description of what it does. 
 
 Feel free to explore the other categories to see what's available. The list of components grows over time with new releases of Alchitry Labs.
 
-Click **Add** to copy the components into your project.
+Click **Add** to copy the components into your project.
 
-Notice that there is a new category called _Components_.
+Notice that there is a new category called _Components_.
 
 ![Screenshot_from_2019-04-23_10-57-40.png](https://cdn.alchitry.com/lucid_v1/Screenshot_from_2019-04-23_10-57-40.png)
 
@@ -54,13 +54,13 @@ We are going make some changes in the top file.
 }
 ```
 
-This will create instances of _uart_rx_ and _uart_tx_ named _rx_ and _tx_ respectively.
+This will create instances of _uart_rx_ and _uart_tx_ named _rx_ and _tx_ respectively.
 
-We need to specify two parameters for each one. The _BAUD_ parameter is the number of bits per second it should send. The important thing is that you match this rate to the one you set on your computer. The serial port monitor in Alchitry Labs uses 1M baud so that is what we specify here.
+We need to specify two parameters for each one. The _BAUD_ parameter is the number of bits per second it should send. The important thing is that you match this rate to the one you set on your computer. The serial port monitor in Alchitry Labs uses 1M baud so that is what we specify here.
 
-The other parameter, ﻿_CLK_FREQ_﻿, is the frequency of the clock. This is used to calculate how many clock cycles are required per bit.
+The other parameter, ﻿_CLK_FREQ_﻿, is the frequency of the clock. This is used to calculate how many clock cycles are required per bit.
 
-If you only do this, you will actually get some errors. These errors are because some of the inputs to the modules were never assigned.
+If you only do this, you will actually get some errors. These errors are because some of the inputs to the modules were never assigned.
 
 We are going to hook the modules up to each other so that when data is received, it is promptly sent back.
 

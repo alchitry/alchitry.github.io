@@ -3,13 +3,13 @@ title = "Asynchronous Serial"
 weight = 14
 +++
 
-Asynchronous serial communication, often shortened to just **serial**, is one of the easiest ways to communicate between two different devices. In it's simplest form, it consists of just two connections. One line for sending data and the other for receiving data. 
+Asynchronous serial communication, often shortened to just **serial**, is one of the easiest ways to communicate between two different devices. In it's simplest form, it consists of just two connections. One line for sending data and the other for receiving data. 
 
 There are many variations on the classic serial bus, but this tutorial will cover just the basics. You should be able to communicate with most serial devices including a computer.
 
 ### Baud Rate
 
-As the name implies, this protocol is **asynchronous**. All that means is that there is no shared clock. To get around not having a clock, both devices need to agree to the rate that data can be transmitted. The rate that data is sent is known as the **baud rate**. The unit for baud rate is **bits/sec** and this indirectly sets the width of each bit.
+As the name implies, this protocol is **asynchronous**. All that means is that there is no shared clock. To get around not having a clock, both devices need to agree to the rate that data can be transmitted. The rate that data is sent is known as the **baud rate**. The unit for baud rate is **bits/sec** and this indirectly sets the width of each bit.
 
 In theory, you can use any baud rate that you like. However, to make it easier to setup devices, there are a handful of standard baud rates. In most cases you will be using one of the following rates.
 
@@ -33,23 +33,23 @@ In theory, you can use any baud rate that you like. However, to make it easier t
 
 Another side effect of not having a clock is the need for start and stops bits. A serial port typically sends data out in packets of 8 bits, or a byte. Since it is asynchronous, you never know when the other device will send a byte!
 
-To let the receiver know you are going to send a byte, a **start bit** is sent. This is simply a single bit with the value of **0**. 
+To let the receiver know you are going to send a byte, a **start bit** is sent. This is simply a single bit with the value of **0**. 
 
-Similarly, after the byte has been sent out, a **stop bit** is sent. Typically one stop bit is sent, but sometimes two are sent. Stop bits have the value of **1**.
+Similarly, after the byte has been sent out, a **stop bit** is sent. Typically one stop bit is sent, but sometimes two are sent. Stop bits have the value of **1**.
 
 To better understand what goes on, take a look at this example transmission.
 
 ![serial.png](https://cdn.alchitry.com/verilog/mojo/serial.png)
 
-This is a transmission of the character **'a'** which has an [ASCII](http://en.wikipedia.org/wiki/ASCII) value of 97, or a binary value of 01100001.
+This is a transmission of the character **'a'** which has an [ASCII](http://en.wikipedia.org/wiki/ASCII) value of 97, or a binary value of 01100001.
 
-The serial line idles **high**, meaning when nothing is being sent it is held at the value **1**. This is why the start bit is 0, so the line transitions from high to low. This gives an indication that the line is active.
+The serial line idles **high**, meaning when nothing is being sent it is held at the value **1**. This is why the start bit is 0, so the line transitions from high to low. This gives an indication that the line is active.
 
-You may have noticed that order of the bits is reversed. That is because the **LSB** (least-significant bit) is typically transmitted first. 
+You may have noticed that order of the bits is reversed. That is because the **LSB** (least-significant bit) is typically transmitted first. 
 
 ### The Transmitter
 
-If you download the [Mojo Base Project](https://github.com/embmicro/mojo-base-project/archive/master.zip), in the source directory you will find a file named **serial_tx.v**. This is the serial transmitter used by the Mojo to communicate with the AVR. 
+If you download the [Mojo Base Project](https://github.com/embmicro/mojo-base-project/archive/master.zip), in the source directory you will find a file named **serial_tx.v**. This is the serial transmitter used by the Mojo to communicate with the AVR. 
 
 ```verilog,short
 module serial_tx #(
@@ -163,7 +163,7 @@ module serial_tx #(
 endmodule
 ```
 
-The parameter **CLK_PER_BIT** is used to set the baud rate. To calculate the correct value for **CLK_PER_BIT** use **CLK_PER_BIT** = Mojo Frequency / Baud Rate.
+The parameter **CLK_PER_BIT** is used to set the baud rate. To calculate the correct value for **CLK_PER_BIT** use **CLK_PER_BIT** = Mojo Frequency / Baud Rate.
 
 If you open up **avr_interface.v** you will notice that **CLK_PER_BIT** is set to automatically calculated for you. The baud rate is set to 500,000 bits/sec. The AVR expects this baud rate regardless of what you set the baud rate on your computer for the USB to serial device. You will notice that this is not a standard baud rate! This rate was used since it divides evenly allowing for a high baud rates with 0% error. 
 

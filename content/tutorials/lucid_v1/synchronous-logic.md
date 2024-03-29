@@ -6,7 +6,7 @@ inline_language = "lucid"
 
 {{ youtube(id="kOE1GXge11k?si=nZOT0nboMJxjkcVl") }}
 
-Synchronous logic is a fundamental building block for just about any digital design. It allows you to create much more complex systems that accomplish something over a series of steps. It also gives you the ability to save states or other information. In this tutorial you will be introduced to the **D flip flop** and how you can use these to make an LED blink.
+Synchronous logic is a fundamental building block for just about any digital design. It allows you to create much more complex systems that accomplish something over a series of steps. It also gives you the ability to save states or other information. In this tutorial you will be introduced to the **D flip flop** and how you can use these to make an LED blink.
 
 ## The Problem
 
@@ -20,9 +20,9 @@ A clock is just a signal that toggles between 0 and 1 over and over again. It lo
 
 ![clock_1ef62072-d7ac-411c-ad74-9a9bd8d77bf7.png](https://cdn.alchitry.com/lucid_v1/clock_1ef62072-d7ac-411c-ad74-9a9bd8d77bf7.png)
 
-The important thing is the rate at which it toggles. The clock on the Au and Cu is a 100MHz clock (the Mojo has a 50MHz clock). That means that it toggles 100 million times per second!
+The important thing is the rate at which it toggles. The clock on the Au and Cu is a 100MHz clock (the Mojo has a 50MHz clock). That means that it toggles 100 million times per second!
 
-The clock has two edges, the **rising edge** and the **falling edge**. I drew the rising edges with little arrows. The rising edge is usually the important one.
+The clock has two edges, the **rising edge** and the **falling edge**. I drew the rising edges with little arrows. The rising edge is usually the important one.
 
 ## D Flip-Flops
 
@@ -30,9 +30,9 @@ This is one of the most important circuit elements you will be using. Lucky for 
 
 ![dff_783f7c84-8d1f-4bdf-b1b0-c8a45cde2a9a.png](https://cdn.alchitry.com/lucid_v1/dff_783f7c84-8d1f-4bdf-b1b0-c8a45cde2a9a.png)
 
-This image shows all the signals that a flip flop could have, but in practice, the only required signals are _D_, _Q_, and _clk_. For now, forget about _rst_ and _en_.
+This image shows all the signals that a flip flop could have, but in practice, the only required signals are _D_, _Q_, and _clk_. For now, forget about _rst_ and _en_.
 
-So what exactly does this thing do? All it does is copy the signal at _D_ to _Q_ whenever there is a rising edge on the _clk_ input. That means _Q_ will keep it's value between rising edges of the clock. Since the flip flop _remembers_ what the input was at _D_, it is actually one of the most basic memory elements.
+So what exactly does this thing do? All it does is copy the signal at _D_ to _Q_ whenever there is a rising edge on the _clk_ input. That means _Q_ will keep it's value between rising edges of the clock. Since the flip flop _remembers_ what the input was at _D_, it is actually one of the most basic memory elements.
 
 ## Loops
 
@@ -44,7 +44,7 @@ What will this circuit do? If the input to the gate is 1, then it's output is 0.
 
 ![](https://cdn.alchitry.com/lucid_v1/image-asset.png)
 
-What will this circuit do? Well, for now lets just assume that _Q_ is 0. That means that _D_ is 1 (because it went through the not gate). On the next rising edge of the clock _Q_ will copy what _D_ is, so _Q_ becomes 1. Once _Q_ becomes 1, _D_ becomes 0. You can follow the pattern to realize that every time there is a rising edge on the clock the output of the flip flop toggles.
+What will this circuit do? Well, for now lets just assume that _Q_ is 0. That means that _D_ is 1 (because it went through the not gate). On the next rising edge of the clock _Q_ will copy what _D_ is, so _Q_ becomes 1. Once _Q_ becomes 1, _D_ becomes 0. You can follow the pattern to realize that every time there is a rising edge on the clock the output of the flip flop toggles.
 
 What about the initial condition though? If we just built this circuit how do we know if _Q_ is 0 or 1? The truth is that we don't and in some cases it may be 1 while others it may be 0. That is where the _rst_ signal comes in. This signal is used to reset the flip flop to a known state. In FPGAs this signal is generally very flexible and allows you to reset the flip flop to a 1 or 0 when the signal is high or low (your choice, not both). In Lucid, _dffs_ use active high resets. That means when the _rst_ signal is 1, the flip flop is held in reset.
 

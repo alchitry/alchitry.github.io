@@ -4,19 +4,19 @@ weight = 4
 inline_language = "verilog"
 +++
 
-**P**ulse-**W**idth **M**odulation, or **PWM** is a very common technique that varies the width of the pulses in a pulse-train. PWM has a few applications, the main ones are for controlling things like servos and speed controllers and limiting the effective power for things like motors and LEDs. This tutorial will cover how to use PWM to change the brightness of an LED. 
+**P**ulse-**W**idth **M**odulation, or **PWM** is a very common technique that varies the width of the pulses in a pulse-train. PWM has a few applications, the main ones are for controlling things like servos and speed controllers and limiting the effective power for things like motors and LEDs. This tutorial will cover how to use PWM to change the brightness of an LED. 
 
 ### Pulse-Trains
 
-A **pulse-train** is just the name given to a series of pulses that come after one another. A simple pulse train could look like this one.
+A **pulse-train** is just the name given to a series of pulses that come after one another. A simple pulse train could look like this one.
 
 ![pulse_train.png](https://cdn.alchitry.com/verilog/mojo/pulse_train.png)
 
-As time goes by the signal alternates between high (1) and low (0). Each pulse comes one after another in a very ordered fashion. In this example the pulse is high for 1/3 of the time. That means that the signal has a **duty cycle** of 33%. If the signal had a duty cycle of 50% then the signal would be high and low for equal amounts of time.
+As time goes by the signal alternates between high (1) and low (0). Each pulse comes one after another in a very ordered fashion. In this example the pulse is high for 1/3 of the time. That means that the signal has a **duty cycle** of 33%. If the signal had a duty cycle of 50% then the signal would be high and low for equal amounts of time.
 
 ### Creating a Pulse-Train
 
-In the [synchronous logic tutorial](@/tutorials/verilog/mojo/synchronous-logic.md) we created a circuit that could blinked an LED. What we really created was a circuit that created a pulse-train with a 50% duty cycle!  Because we used such a large counter the period (the time between the beginning of two pulses) was very long we could easily see the LED turn on and off.
+In the [synchronous logic tutorial](@/tutorials/verilog/mojo/synchronous-logic.md) we created a circuit that could blinked an LED. What we really created was a circuit that created a pulse-train with a 50% duty cycle!  Because we used such a large counter the period (the time between the beginning of two pulses) was very long we could easily see the LED turn on and off.
 
 What would happen if instead of using a 25 bit counter we used an 8 bit counter? The LED would blink at 50MHz / 2^8 = 195,313 Hz or 195,313 times per second. There is no way our eyes are fast enough to see it blink that fast. Since we can't see it blink what would it look like? It would not look like a whole lot, it would just appear to always be on! However, the interesting part is that since it is only on for half of the time our eye averages the light and the LED appears to be dimmer than if it was on the entire time!
 
@@ -30,13 +30,13 @@ Here is an example where we want to create the same 33% duty cycle signal shown 
 
 ![](https://cdn.alchitry.com/verilog/mojo/pwm_33.png)
 
-The graph on the bottom is the value of our counter over time. You can see the **Compare** value is set to 1/3 of the **Max** value. If we output a 1 whenever the value of the counter is less than **Compare** and a 0 otherwise you can see we create a pulse-train with a 33% duty cycle!
+The graph on the bottom is the value of our counter over time. You can see the **Compare** value is set to 1/3 of the **Max** value. If we output a 1 whenever the value of the counter is less than **Compare** and a 0 otherwise you can see we create a pulse-train with a 33% duty cycle!
 
-Now if we want to change the duty cycle of our signal all we need to do is vary the value of **Compare** and everything will take care of itself. Here's another example, but now with a 66% duty cycle.
+Now if we want to change the duty cycle of our signal all we need to do is vary the value of **Compare** and everything will take care of itself. Here's another example, but now with a 66% duty cycle.
 
 ![pwm_66.png](https://cdn.alchitry.com/verilog/mojo/pwm_66.png)
 
-You can see that by simply raising the value of **Compare** to 2/3 of **Max** our duty cycle became 66%!
+You can see that by simply raising the value of **Compare** to 2/3 of **Max** our duty cycle became 66%!
 
 To implement this in Verilog is pretty simple and only requires a few modifications to the blinker code.
 

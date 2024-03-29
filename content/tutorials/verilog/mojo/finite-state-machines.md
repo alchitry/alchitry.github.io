@@ -11,13 +11,13 @@ Before we get into the nitty gritty of how to actually implement this, it's impo
 
 ### What's an FSM?
 
-An FSM, in its most general form, is a set of flipflops that hold only the current state, and a block of combinational logic that determines the the next state given the current state and some inputs. The output is determined by what the current state is. 
+An FSM, in its most general form, is a set of flipflops that hold only the current state, and a block of combinational logic that determines the the next state given the current state and some inputs. The output is determined by what the current state is. 
 
 Take a look at the following diagram.
 
 ![generic_fsm.png](https://cdn.alchitry.com/verilog/mojo/generic_fsm.png)
 
-This is what an FSM looks like in hardware. The only storage it has is for the current state. Since the main block of logic is combinational, there can't be any flip-flops inside of it. Remember, **combinational logic** will produce the same outputs given the same set of inputs at any time. 
+This is what an FSM looks like in hardware. The only storage it has is for the current state. Since the main block of logic is combinational, there can't be any flip-flops inside of it. Remember, **combinational logic** will produce the same outputs given the same set of inputs at any time. 
 
 This is all very abstract. Let's now look at how to actually design an FSM.
 
@@ -31,7 +31,7 @@ First, the robot has two contact switches mounted on the front of it as shown be
 
 ![robot_wiskers.jpg](https://cdn.alchitry.com/verilog/mojo/robot_wiskers.jpg)
 
-These are wired up so that when they are not being pressed, the signal line is connected to ground, but when pressed, it get connected to +5V. Remember, the Mojo's IO pins are not 5V tolerant, however, because this robot is using the Servo Shield, this is exactly what we want.
+These are wired up so that when they are not being pressed, the signal line is connected to ground, but when pressed, it get connected to +5V. Remember, the Mojo's IO pins are not 5V tolerant, however, because this robot is using the Servo Shield, this is exactly what we want.
 
 By using these switches, the robot can realize when it runs into something. For some basic object avoidance, we will make the robot back up when it hits something then turn right if the left switch was pressed or turn left if the right switch was pressed. When the robot hasn't hit anything it will just drive forward.
 
@@ -43,7 +43,7 @@ This leads us to five states.
 - **BACKUP_LEFT
 - **TURN_LEFT
 
-Notice that there are two versions of the **BACKUP** state, **BACKUP_RIGHT** and **BACKUP_LEFT**. This is because we need to encode in the states which one will turn right after it backs up and which will turn left. If we didn't have separate states, we would have to read the state of the switch after it backed up and at that point the switch would not be pressed anymore.
+Notice that there are two versions of the **BACKUP** state, **BACKUP_RIGHT** and **BACKUP_LEFT**. This is because we need to encode in the states which one will turn right after it backs up and which will turn left. If we didn't have separate states, we would have to read the state of the switch after it backed up and at that point the switch would not be pressed anymore.
 
 Take a look at the basic flow of states to help clear this up.
 
@@ -53,13 +53,13 @@ Take a look at the basic flow of states to help clear this up.
 
 We now need to figure out under what conditions we would like the state to change.
 
-The first one is easy, when the FSM is in the **FORWARD** state it should change to the **BACKUP_RIGHT** state when the left switch is pressed, or to the **BACKUP_LEFT** state when the right switch is pressed.
+The first one is easy, when the FSM is in the **FORWARD** state it should change to the **BACKUP_RIGHT** state when the left switch is pressed, or to the **BACKUP_LEFT** state when the right switch is pressed.
 
 The next ones are a little different. We want them to just flow to the next state, but we can't just have them flow immediately to the next state otherwise the robot won't have any time to backup or turn! It will happen so fast that it will appear that nothing happened.
 
 To keep the state the same for a longer amount of time, we need to introduce a counter.
 
-The counter **can't** be part of the FSM because a counter requires some flip-flops to store the counter value! Instead, the counter is part of what is known as the **data path**. The FSM portion of circuit simply supplies signals to reset the counter and the data path provides signals like the counter has reached a certain value.
+The counter **can't** be part of the FSM because a counter requires some flip-flops to store the counter value! Instead, the counter is part of what is known as the **data path**. The FSM portion of circuit simply supplies signals to reset the counter and the data path provides signals like the counter has reached a certain value.
 
 This naming convention is a bit arbitrary and you shouldn't worry about it too much when designing your own FSMs. If it seems to make your circuit a lot simpler if you break some rules, you probably should.
 
@@ -187,7 +187,7 @@ localparam FORWARD = 0,
 reg [STATE_SIZE-1:0] state_d, state_q;
 ```
 
-Here we declare the various states we will use in a human readable way. By using **STATE_SIZE** it makes it easy to add or remove states if we change the design later.
+Here we declare the various states we will use in a human readable way. By using **STATE_SIZE** it makes it easy to add or remove states if we change the design later.
 
 All the stuff with **sl_d**, **sl_q**, **sr_d**, and **sr_q**, are used to prevent meta-stability when reading the switches. Be sure to check out the [metastability and debouncing tutorial](@/tutorials/verilog/mojo/metastability-and-debouncing.md) if you need a refresher. 
 

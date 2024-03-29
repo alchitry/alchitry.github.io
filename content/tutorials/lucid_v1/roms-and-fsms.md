@@ -9,11 +9,11 @@ In this tutorial we will create a project that will send "Hello World!" over the
 
 As with all the tutorials, we first need to create a new project based on the Base Project. I called mine "Hello World" but you are free to choose whatever name you want.
 
-With the new empty project, we now need to add the _uart_tx_ and _uart_rx_ components. This will be used to talk to the FTDI chip and send data over the USB port.
+With the new empty project, we now need to add the _uart_tx_ and _uart_rx_ components. This will be used to talk to the FTDI chip and send data over the USB port.
 
-You should know how to add a component to your project from the last tutorial. If you need a refresher, [click here](@/tutorials/lucid_v1/components.md).
+You should know how to add a component to your project from the last tutorial. If you need a refresher, [click here](@/tutorials/lucid_v1/components.md).
 
-The components we need to add are the _UART TX_ and _UART RX_ components and they can be found under _Protocols_.
+The components we need to add are the _UART TX_ and _UART RX_ components and they can be found under _Protocols_.
 
 ## UART Tx
 
@@ -36,13 +36,13 @@ module uart_tx #(
 
 We will only be looking at the interfaces to the modules since we don't need to know how it all works to use it properly (the magic of components).
 
-This module is responsible for transmitting data. When we have a byte to send, we first need to check that _busy_ is 0. When this signal is 1, any data we provide will be ignored. Assuming _busy_ is 0, we then provide the data to send on _data_ and signal that the data is valid by setting _new_data_ to 1. This will cause the module to transmit the byte one bit at a time over _tx_.
+This module is responsible for transmitting data. When we have a byte to send, we first need to check that _busy_ is 0. When this signal is 1, any data we provide will be ignored. Assuming _busy_ is 0, we then provide the data to send on _data_ and signal that the data is valid by setting _new_data_ to 1. This will cause the module to transmit the byte one bit at a time over _tx_.
 
-The input _block_ is used when you have some way of knowing that the device receiving the data upstream (the FTDI chip in this case) is busy. When _block_ is 1, the module won't transmit data. Since we don't have a way to tell when the FTDI can't hold more data and it isn't a concern when the data is being read by an application on the PC side, we can set this permanently to 0.
+The input _block_ is used when you have some way of knowing that the device receiving the data upstream (the FTDI chip in this case) is busy. When _block_ is 1, the module won't transmit data. Since we don't have a way to tell when the FTDI can't hold more data and it isn't a concern when the data is being read by an application on the PC side, we can set this permanently to 0.
 
-This module has two parameters you need to set in order to get it to work properly. The first one _CLK_FREQ_ is simply the frequency of the clock you are providing it. If you are using the default clock on the Au or Cu, this will be 100000000, or 100MHz.
+This module has two parameters you need to set in order to get it to work properly. The first one _CLK_FREQ_ is simply the frequency of the clock you are providing it. If you are using the default clock on the Au or Cu, this will be 100000000, or 100MHz.
 
-The second parameter, _BAUD_ is used to set the rate of bits per second to send. Alchitry Labs' serial monitor expects to use 1M baud so we will set this to 1000000 later.
+The second parameter, _BAUD_ is used to set the rate of bits per second to send. Alchitry Labs' serial monitor expects to use 1M baud so we will set this to 1000000 later.
 
 When a parameter is declared for a module, you only need to specify a name. However, you can also specify a default value and some value constraints.
 
@@ -50,7 +50,7 @@ The default value is set by using the equals sign.
 
 Constrains on the parameter's value can be set with a boolean statement after a colon. This expression will be evaluated when the module is instantiated and an error will be thrown when it fails (has a value of 0). It is recommend to add these constraints if you make any assumptions about the parameter values.
 
-For both _CLK_FREQ_ and _BAUD_ it makes sense that they are not negative. For the module to work, the clock frequency needs to be at least twice the baud rate. Note that the closer you get to this limit, the more careful you need to be with choosing your baud rate. If the clock frequency isn't divisible by the baud rate then it will approximate the baud rate with the closest higher value.
+For both _CLK_FREQ_ and _BAUD_ it makes sense that they are not negative. For the module to work, the clock frequency needs to be at least twice the baud rate. Note that the closer you get to this limit, the more careful you need to be with choosing your baud rate. If the clock frequency isn't divisible by the baud rate then it will approximate the baud rate with the closest higher value.
 
 ## UART Rx
 
@@ -67,9 +67,9 @@ module uart_rx #(
   ) {
 ```
 
-This module is responsible for receiving data on the _rx_ input and sending it out as bytes on _data_. The value of _data_ is valid only when _new_data_ is 1.
+This module is responsible for receiving data on the _rx_ input and sending it out as bytes on _data_. The value of _data_ is valid only when _new_data_ is 1.
 
-The parameters for this module are more or less the same as before with the small exception that _BAUD_ is constrained to a quarter of _CLK_FREQ_ instead of half. This is due to the internal working of the module. Once it detects new incoming data, it waits half a cycle so that it will be sampling the data in the middle of the bit instead of the edge for reliability.
+The parameters for this module are more or less the same as before with the small exception that _BAUD_ is constrained to a quarter of _CLK_FREQ_ instead of half. This is due to the internal working of the module. Once it detects new incoming data, it waits half a cycle so that it will be sampling the data in the middle of the bit instead of the edge for reliability.
 
 ## Using the Modules
 

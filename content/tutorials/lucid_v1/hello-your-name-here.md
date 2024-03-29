@@ -3,15 +3,15 @@ title = "Hello YOUR_NAME_HERE"
 weight = 5
 +++
 
-In this tutorial we will be making some modifications to the Hello World! project from the last tutorial so make sure you have read the [ROMs and FSMs tutorial](@/tutorials/lucid_v1/roms-and-fsms.md) first. We will be personalizing the greeter so that it first asks for your name and then prints "Hello NAME" where NAME is the name you entered. To do this we will need some form of memory and in this case we will use a single port RAM.
+In this tutorial we will be making some modifications to the Hello World! project from the last tutorial so make sure you have read the [ROMs and FSMs tutorial](@/tutorials/lucid_v1/roms-and-fsms.md) first. We will be personalizing the greeter so that it first asks for your name and then prints "Hello NAME" where NAME is the name you entered. To do this we will need some form of memory and in this case we will use a single port RAM.
 
-With the project open from the last tutorial, you can make a copy to edit for this tutorial by going to **File->Clone Project**. Enter a new name in the dialog that pops up and click **Create**.
+With the project open from the last tutorial, you can make a copy to edit for this tutorial by going to **File->Clone Project**. Enter a new name in the dialog that pops up and click **Create**.
 
 ## The RAM
 
-We need to add the RAM component to our project. Go to **Project->Add Components...** and under _Memory_ check off _Simple RAM_.
+We need to add the RAM component to our project. Go to **Project->Add Components...** and under _Memory_ check off _Simple RAM_.
 
-Go ahead and open up **simple_ram.v**.
+Go ahead and open up **simple_ram.v**.
 
 ```lucid
 module simple_ram #(
@@ -39,13 +39,13 @@ endmodule
 
 Note that this component is written in Verilog instead of Lucid. This is because the tools that actually build your project can be very picky when it comes to deciding if something is a block of RAM or not. By using this module we can ensure that our RAM is properly recognized as RAM. This is important because FPGAs actually have dedicated block RAM (also known as BRAM). If your RAM is big enough, the tools will use BRAM to implement it instead of the FPGA fabric. Using BRAM is both substantially faster and smaller than the FPGA fabric.
 
-A single port RAM like this works much the same as the ROM from the last tutorial. However, we now have the option to write to an address instead of only reading. To write to an address, we simply supply the address and data to write then set _write_en_ to 1. The data at that address will then be updated to whatever _write_data_ is.
+A single port RAM like this works much the same as the ROM from the last tutorial. However, we now have the option to write to an address instead of only reading. To write to an address, we simply supply the address and data to write then set _write_en_ to 1. The data at that address will then be updated to whatever _write_data_ is.
 
-The parameters _SIZE_ and _DEPTH_ are used to specify how big we want the RAM to be. _SIZE_ specifies how big each entry is. In our case we will be storing letters and a letter is 8 bits wide so SIZE will be set to 8. _DEPTH_ is used to specify how many entries we want. This will be the maximum name length we can accept.
+The parameters _SIZE_ and _DEPTH_ are used to specify how big we want the RAM to be. _SIZE_ specifies how big each entry is. In our case we will be storing letters and a letter is 8 bits wide so SIZE will be set to 8. _DEPTH_ is used to specify how many entries we want. This will be the maximum name length we can accept.
 
 ## The Greeter (revisited)
 
-Just like the last tutorial we will have a _greeter_ module. The interface to this module is exactly the same as before but it is now a bit more mannered and will greet you personally.
+Just like the last tutorial we will have a _greeter_ module. The interface to this module is exactly the same as before but it is now a bit more mannered and will greet you personally.
 
 Like most tutorials, I'll post the entire module here and then break it down.
 
@@ -87,15 +87,15 @@ const HELLO_TEXT = $reverse("\r\nHello @!\r\n"); // reverse so index 0 is the le
 const PROMPT_TEXT = $reverse("Please type your name: ");
 ```
 
-Here we are using a function called _$reverse()_. This function takes some constant expression and reverse the order of the top most dimension of the array. Since strings are 2D arrays with the top most dimension being the letter order, this is exactly the same as typing the string backwards like we did in the last tutorial. This is just a little bit cleaner and easier to deal with.
+Here we are using a function called _$reverse()_. This function takes some constant expression and reverse the order of the top most dimension of the array. Since strings are 2D arrays with the top most dimension being the letter order, this is exactly the same as typing the string backwards like we did in the last tutorial. This is just a little bit cleaner and easier to deal with.
 
-Because strings are 2D arrays, we can simply use _HELLO_TEXT[i]_ to access the _i_th letter of it.
+Because strings are 2D arrays, we can simply use _HELLO_TEXT[i]_ to access the _i_th letter of it.
 
 Note that we are using the @ symbol in place of a name. This will signal to our design where to insert the name that was recorded.
 
 ### Modules and DFFs
 
-Just like before we have an FSM _state_. This will store the current state of our module. _IDLE_ is where we will start and it will initialize everything. _PROMPT_ will print the prompt asking for your name. _LISTEN_ will listen to you type your name and echo it back. Finally, _HELLO_ will greet you personally.
+Just like before we have an FSM _state_. This will store the current state of our module. _IDLE_ is where we will start and it will initialize everything. _PROMPT_ will print the prompt asking for your name. _LISTEN_ will listen to you type your name and echo it back. Finally, _HELLO_ will greet you personally.
 
 We need counters to keep track of what letter in each ROM we are currently positioned.
 

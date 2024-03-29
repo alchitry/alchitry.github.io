@@ -5,9 +5,9 @@ weight = 1
 
 This tutorial is to get you familiar with how to create a project and the very basics of Verilog.
 
-Before starting this tutorial, make sure you have setup Vivado by following this [tutorial](@/tutorials/setup/vivado.md). You'll need to install the [Alchitry Loader](@/alchitry-labs.md) as well.
+Before starting this tutorial, make sure you have setup Vivado by following this [tutorial](@/tutorials/setup/vivado.md). You'll need to install the [Alchitry Loader](@/alchitry-labs.md) as well.
 
-You will need to download the base project available [here](https://github.com/alchitry/Au-Base-Project/archive/master.zip), or check it out from [GitHub](https://github.com/alchitry/Au-Base-Project).
+You will need to download the base project available [here](https://github.com/alchitry/Au-Base-Project/archive/master.zip), or check it out from [GitHub](https://github.com/alchitry/Au-Base-Project).
 
 Extract that file to where you want to keep your projects. It is a good starting point for any project created for the Alchitry Au.
 
@@ -19,7 +19,7 @@ The file structure is as follows.
 - au_base_project.src - _where you put all the files you write_
 - au_base_project.xpr - _the Vivado project file_
 
-Open up Vivado and click Open Project under the Quick Start menu and find the au_base_project.xpr file you extracted.
+Open up Vivado and click Open Project under the Quick Start menu and find the au_base_project.xpr file you extracted.
 
 ![Screenshot_from_2019-07-02_09-58-48.png](https://cdn.alchitry.com/verilog/mojo/Screenshot_from_2019-07-02_09-58-48.png)
 
@@ -27,9 +27,9 @@ It should now look something like this.
 
 ![](https://cdn.alchitry.com/verilog/mojo/Screenshot_from_2019-07-02_09-59-39.png)
 
-For your very first project, we are simply going to wire up the reset button to one of the LEDs on the board. We will make it so the LED will turn on when you push the button. 
+For your very first project, we are simply going to wire up the reset button to one of the LEDs on the board. We will make it so the LED will turn on when you push the button. 
 
-Go ahead and double click on the left where it says **au-top (au-top.v)** under the Sources panel. The file should open on the right and you should see the following code.
+Go ahead and double click on the left where it says **au-top (au-top.v)** under the Sources panel. The file should open on the right and you should see the following code.
 
 ```verilog,linenos
 module au_top(
@@ -65,9 +65,9 @@ module au_top(
     );
 ```
 
-This is the **port declaration**. This tells what signals are going in and out of the module. Remember we are designing circuits, not writing code, so it is good to think of each module as a block that has some inputs and generates some outputs. For now we only are interested in the **rst_n** input and the **led** outputs.
+This is the **port declaration**. This tells what signals are going in and out of the module. Remember we are designing circuits, not writing code, so it is good to think of each module as a block that has some inputs and generates some outputs. For now we only are interested in the **rst_n** input and the **led** outputs.
 
-In Verilog there are two data types, **wire** and **reg**. The default in a port declaration is a wire. For now, we will only be working with wires and regs will be covered in the next tutorial. 
+In Verilog there are two data types, **wire** and **reg**. The default in a port declaration is a wire. For now, we will only be working with wires and regs will be covered in the next tutorial. 
 
 You may have noticed this line.
 
@@ -75,13 +75,13 @@ You may have noticed this line.
 output[7:0]led,
 ```
 
-This is not a single output but actually 8! You can create an array of wires (or regs)  by using those brackets. What **[7:0]** actually means is that led will be an array of eight wires that have an index from 7 down to 0, inclusive. 
+This is not a single output but actually 8! You can create an array of wires (or regs)  by using those brackets. What **[7:0]** actually means is that led will be an array of eight wires that have an index from 7 down to 0, inclusive. 
 
-It is possible to do [8:1] or [0:7], but unless you have a **very very** good reason for doing that then you should stick to the convention. Mixing what you used as a base index and the order can create major headaches.
+It is possible to do [8:1] or [0:7], but unless you have a **very very** good reason for doing that then you should stick to the convention. Mixing what you used as a base index and the order can create major headaches.
 
 ### Declaring a wire
 
-This brings us to the first line after the port declaration. 
+This brings us to the first line after the port declaration. 
 
 ```verilog,linenos,linenostart=9
 wire rst;
@@ -92,7 +92,7 @@ In this line we are declaring a new wire called rst.
 In this case, we are declaring a one bit wire. However, you can declare an array of wires (sometimes also called an n-bit wire where n is the width of the array) with the following line.
 
 ```verilog
-wire [9:0] array;
+wire [9:0] array;
 ```
 
 In this case, we would now have a 10-bit wire called array.
@@ -100,10 +100,10 @@ In this case, we would now have a 10-bit wire called array.
 You could also assign the wire a value when declaring it like the following.
 
 ```verilog,linenos,linenostart=9
-wire rst = ~rst_n;
+wire rst = ~rst_n;
 ```
 
-It is a common convention to name signals that are active low (meaning a 0 is active) by appending **_n** to the end of their name. Following that convention, **rst_n** is active low, but we want an active high signal. To make **rst** an active high version of **rst_n** we can just invert **rst_n**. The **~** operator is the **not** operator. 
+It is a common convention to name signals that are active low (meaning a 0 is active) by appending **_n** to the end of their name. Following that convention, **rst_n** is active low, but we want an active high signal. To make **rst** an active high version of **rst_n** we can just invert **rst_n**. The **~** operator is the **not** operator. 
 
 However, we don't really want to do this since we need to condition our reset signal. This is because the reset signal comes from an external source and isn't synchronized with our clock. Don't worry about this for now. It'll be covered later.
 

@@ -3,39 +3,39 @@ title = "FPGA Timing"
 weight = 8
 +++
 
-**Timing** is a term used in digital circuits to refer to the time it takes a signal to propagate from one flip-flop, through some combinational logic, to the next flip-flop.
+**Timing** is a term used in digital circuits to refer to the time it takes a signal to propagate from one flip-flop, through some combinational logic, to the next flip-flop.
 
 Take a look at the following diagram.
 
 ![](https://cdn.alchitry.com/verilog/mojo/timing_circuit.png)
 
-It is very important to understand that combinational logic is not instantaneous. It takes time for the signal to propagate. The reason for this is that digital circuits actually look like a bunch of [RC circuits](http://en.wikipedia.org/wiki/RC_circuit). MOSFETs, a type of transistor, are the transistors of choice for digital circuits. The gate (switch part) of a MOSFET acts much like a capacitor and takes a small amount of time to charge and discharge (turn on and off the transistor). The more transistors you need to turn on and off, the longer it takes.
+It is very important to understand that combinational logic is not instantaneous. It takes time for the signal to propagate. The reason for this is that digital circuits actually look like a bunch of [RC circuits](http://en.wikipedia.org/wiki/RC_circuit). MOSFETs, a type of transistor, are the transistors of choice for digital circuits. The gate (switch part) of a MOSFET acts much like a capacitor and takes a small amount of time to charge and discharge (turn on and off the transistor). The more transistors you need to turn on and off, the longer it takes.
 
 For the scope of this tutorial, it's not important to understand exactly why it takes a certain amount of time for a signal to propagate through combination logic, just that it does and the more logic you have the longer it will take.
 
-Since each flip-flop will copy the value of **D** to **Q** at the rising edge of each clock, that means that we have a single clock cycle for the output of the first flip-flop to propagate through our combinational logic and make it to the input of the second flip-flop.
+Since each flip-flop will copy the value of **D** to **Q** at the rising edge of each clock, that means that we have a single clock cycle for the output of the first flip-flop to propagate through our combinational logic and make it to the input of the second flip-flop.
 
 ![setup_hold.png](https://cdn.alchitry.com/verilog/mojo/setup_hold.png)
 
-If you recall from the [metastability and debouncing tutorial](@/tutorials/verilog/mojo/metastability-and-debouncing.md), flip-flops require their inputs to be stable for a certain amount of time before and after the rising edge of the clock. These times are known as the **setup** and **hold** times respectively. These parameters constrain our circuit even more because now we have to ensure that the delay of our combinational logic is short enough that the signal will get there in a clock period minus the setup time. However, it can't be too fast that it violates the hold time!
+If you recall from the [metastability and debouncing tutorial](@/tutorials/verilog/mojo/metastability-and-debouncing.md), flip-flops require their inputs to be stable for a certain amount of time before and after the rising edge of the clock. These times are known as the **setup** and **hold** times respectively. These parameters constrain our circuit even more because now we have to ensure that the delay of our combinational logic is short enough that the signal will get there in a clock period minus the setup time. However, it can't be too fast that it violates the hold time!
 
-The last flip-flop parameter we'll be concerned about here is the **clock-to-Q propagation delay**.
+The last flip-flop parameter we'll be concerned about here is the **clock-to-Q propagation delay**.
 
 ![clock-to-q.png](https://cdn.alchitry.com/verilog/mojo/clock-to-q.png)
 
-In past tutorials, we have assumed that the moment the rising edge of the clock happens, the value of **D** showed up at **Q**. However, like all things, there is a slight delay. The **clock-to-Q propagation delay** specifies the amount of time after the rising edge of the clock that **Q** outputs the new value. This delay cuts into the time we have for the combinational logic since the input to the combinational logic is delayed!
+In past tutorials, we have assumed that the moment the rising edge of the clock happens, the value of **D** showed up at **Q**. However, like all things, there is a slight delay. The **clock-to-Q propagation delay** specifies the amount of time after the rising edge of the clock that **Q** outputs the new value. This delay cuts into the time we have for the combinational logic since the input to the combinational logic is delayed!
 
 To summarize, the time it take for the signal to propagate through the combinational logic must be shorter than the clock period minus the clock-to-Q propagation delay minus the setup time. The combinational logic delay must also be greater than the hold time minus the clock-to-Q propagation delay.
 
-If we let the combinational logic delay = **CLD**, clock period = **CLK**, setup time = **ST**, hold time = **HT**, clock-to-Q propagation delay = **CQ**, then the following formula shows our constraints.
+If we let the combinational logic delay = **CLD**, clock period = **CLK**, setup time = **ST**, hold time = **HT**, clock-to-Q propagation delay = **CQ**, then the following formula shows our constraints.
 
 **HT - CQ < CLD < CLK - CQ - ST**
 
 ### Contamination and Propagation Delays
 
-There is another invalid assumption we need to correct. We assumed that the output of our combinational logic was constant until the correct value showed up. This is not true. While the correct value is propagating, the output of the combinational logic can change multiple times before settling on the correct value. There are two important parameters that capture this behavior. The first, **contamination delay**, is the amount of time the output of the combinational logic will stay constant after it's inputs are changed. After that delay the outputs are _contaminated_. The second, **combinational logic propagation delay**, is the time that it takes for the output to be valid after the input changes.
+There is another invalid assumption we need to correct. We assumed that the output of our combinational logic was constant until the correct value showed up. This is not true. While the correct value is propagating, the output of the combinational logic can change multiple times before settling on the correct value. There are two important parameters that capture this behavior. The first, **contamination delay**, is the amount of time the output of the combinational logic will stay constant after it's inputs are changed. After that delay the outputs are _contaminated_. The second, **combinational logic propagation delay**, is the time that it takes for the output to be valid after the input changes.
 
-That means for the time between the **contamination delay** and **propagation delay** of our combinational logic, its output is unpredictable and possibly invalid.
+That means for the time between the **contamination delay** and **propagation delay** of our combinational logic, its output is unpredictable and possibly invalid.
 
 We now have to make sure that the **contamination delay** does not violate the hold time, and that the **combinational logic propogation delay** does not violate the setup time.
 

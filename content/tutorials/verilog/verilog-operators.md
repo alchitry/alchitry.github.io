@@ -27,17 +27,17 @@ assign b = 4'b1100;
 assign c = a & b;
 ```
 
-**c** will now have the value 4'b1000. This is because the most-significant bits of **a** and **b** are the only ones that are both 1.
+**c** will now have the value 4'b1000. This is because the most-significant bits of **a** and **b** are the only ones that are both 1.
 
-When you perform a bitwise operator on multi-bit values like above, you are essentially using multiple gates to perform the bitwise operation. In this case, we need four **AND** gates to _and_ each bit of **a** and **b** together. The results of each **AND** gate is the value **c**.
+When you perform a bitwise operator on multi-bit values like above, you are essentially using multiple gates to perform the bitwise operation. In this case, we need four **AND** gates to _and_ each bit of **a** and **b** together. The results of each **AND** gate is the value **c**.
 
-All of these operators are used on two values except the **NOT** (**~**) operator which only takes one value. Take a look at this example where we replace the last line of the previous example.
+All of these operators are used on two values except the **NOT** (**~**) operator which only takes one value. Take a look at this example where we replace the last line of the previous example.
 
 ```verilog
 assign c = ~a;
 ```
 
- Now **c** will have the value 4'b0101. Again, this is because each bit of **a** is individually inverted and assigned to **c**.
+ Now **c** will have the value 4'b0101. Again, this is because each bit of **a** is individually inverted and assigned to **c**.
 
 If the two values used by a bitwise operator are different in length, the shorter one is filled with zeros to make the lengths match.
 
@@ -52,7 +52,7 @@ If the two values used by a bitwise operator are different in length, the shorte
 | XOR      | ^          |
 | XNOR     | \~^ or ^\~ |
 
-Reduction operators are very similar to the bitwise operators, except they are performed on all the bits of a single value. They are used to **reduce** the number of bits to one by performing the specified function on every bit.
+Reduction operators are very similar to the bitwise operators, except they are performed on all the bits of a single value. They are used to **reduce** the number of bits to one by performing the specified function on every bit.
 
 Take a look at this example.
 
@@ -63,13 +63,13 @@ assign a = 4'b1010;
 assign b = &a;
 ```
 
- In this example **b** will be 0. This is because each bit of **a** is anded with each other. In other words, it is equivalent to the following.
+ In this example **b** will be 0. This is because each bit of **a** is anded with each other. In other words, it is equivalent to the following.
 
 ```verilog
 assign b = a[0] & a[1] & a[2] & a[3];
 ```
 
- This essentially synthesizes a large single logic gate with enough inputs to fit the input value. In this case, a four input **AND** gate would be synthesized.
+ This essentially synthesizes a large single logic gate with enough inputs to fit the input value. In this case, a four input **AND** gate would be synthesized.
 
 ### Shift Operators
 
@@ -80,7 +80,7 @@ assign b = a[0] & a[1] & a[2] & a[3];
 |Arithmetic Shift Right|>>>|
 |Arithmetic Shift Left|<<<|
 
-The shift operators in Verilog are very similar to the ones in other languages. They simply _shift_ the bits in a value over that many times to the right of left.
+The shift operators in Verilog are very similar to the ones in other languages. They simply _shift_ the bits in a value over that many times to the right of left.
 
 The basic shift operators are **zero-filling** meaning that bits that don't have a value shifted into them are replaced with zeros. Take a look at the following example.
 

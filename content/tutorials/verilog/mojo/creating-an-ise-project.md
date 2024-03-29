@@ -5,11 +5,11 @@ weight = 2
 
 This tutorial is to get you familiar with how to create a project and the very basics of Verilog.
 
-Before starting this tutorial, make sure you have installed [Alchitry Labs](@/alchitry-labs.md) and [ISE](https://alchitry.com/pages/installing-ise).
+Before starting this tutorial, make sure you have installed [Alchitry Labs](@/alchitry-labs.md) and [ISE](https://alchitry.com/pages/installing-ise).
 
-First you will need to download the base project available [here](https://github.com/embmicro/mojo-base-project/archive/master.zip), or check it out from [GitHub](https://github.com/embmicro/mojo-base-project).
+First you will need to download the base project available [here](https://github.com/embmicro/mojo-base-project/archive/master.zip), or check it out from [GitHub](https://github.com/embmicro/mojo-base-project).
 
-Note that this is the starter code for any project. It is not specific to this tutorial and without modifications does **nothing**. You must follow the tutorial and make the necessary modifications to the code to get it to work.
+Note that this is the starter code for any project. It is not specific to this tutorial and without modifications does **nothing**. You must follow the tutorial and make the necessary modifications to the code to get it to work.
 
 Extract that file to where you want to keep your projects. It is a good starting point for any project created for the Mojo.
 
@@ -28,9 +28,9 @@ It should now look something like this.
 
 ![ise_open.jpg](https://cdn.alchitry.com/verilog/mojo/ise_open.jpg)
 
-For your very first project, we are simply going to wire up the reset button to one of the LEDs on the board. We will make it so the LED will turn on when you push the button. 
+For your very first project, we are simply going to wire up the reset button to one of the LEDs on the board. We will make it so the LED will turn on when you push the button. 
 
-Go ahead and double click on the left side where it says **mojo-top (mojo-top.v)** under the hierarchy panel. The file should open and you should see the following code.
+Go ahead and double click on the left side where it says **mojo-top (mojo-top.v)** under the hierarchy panel. The file should open and you should see the following code.
 
 ```verilog
 module mojo_top(
@@ -95,9 +95,9 @@ module mojo_top(
   );
 ```
 
-This is the **port declaration**. This tells what signals are going in and out of the module. Remember we are designing circuits, not writing code, so it is good to think of each module as a block that has some inputs and generates some outputs. For now we only are interested in the **rst_n** input and the **led** outputs.
+This is the **port declaration**. This tells what signals are going in and out of the module. Remember we are designing circuits, not writing code, so it is good to think of each module as a block that has some inputs and generates some outputs. For now we only are interested in the **rst_n** input and the **led** outputs.
 
-In Verilog there are two data types, **wire** and **reg**. The default in a port declaration is a wire. For now, we will only be working with wires and regs will be covered in the next tutorial. 
+In Verilog there are two data types, **wire** and **reg**. The default in a port declaration is a wire. For now, we will only be working with wires and regs will be covered in the next tutorial. 
 
 You may have noticed this line.
 
@@ -105,13 +105,13 @@ You may have noticed this line.
 output[7:0] led,
 ```
 
-This is not a single output but actually 8! You can create an array of wires (or regs)  by using those brackets. What **[7:0]** actually means is that led will be an array of eight wires that have an index from 7 down to 0, inclusive. 
+This is not a single output but actually 8! You can create an array of wires (or regs)  by using those brackets. What **[7:0]** actually means is that led will be an array of eight wires that have an index from 7 down to 0, inclusive. 
 
-It is possible to do [8:1] or [0:7], but unless you have a **very very** good reason for doing that then you should stick to the convention. Mixing what you used as a base index and the order can create major headaches.
+It is possible to do [8:1] or [0:7], but unless you have a **very very** good reason for doing that then you should stick to the convention. Mixing what you used as a base index and the order can create major headaches.
 
 ### Declaring a wire
 
-This brings us to the first line after the port declaration. 
+This brings us to the first line after the port declaration. 
 
 ```verilog,linenos,linenostart=23
 wire rst = ~rst_n;

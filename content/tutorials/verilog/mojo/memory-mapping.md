@@ -3,19 +3,19 @@ title = "Memory Mapping"
 weight = 17
 +++
 
-This tutorial covers a common technique for interfacing a peripheral to a processor known as **memory mapping**. Memory mapping is were you break out a set of functions or settings and map them to a set of values that are selected by a given address. Typically the master is able to read and write these values however it chooses much like a block of RAM. However, these values aren't just blocks of memory, they effect some external device. Because this is used for interfacing it is sometimes called **memory mapped IO**.
+This tutorial covers a common technique for interfacing a peripheral to a processor known as **memory mapping**. Memory mapping is were you break out a set of functions or settings and map them to a set of values that are selected by a given address. Typically the master is able to read and write these values however it chooses much like a block of RAM. However, these values aren't just blocks of memory, they effect some external device. Because this is used for interfacing it is sometimes called **memory mapped IO**.
 
 ### Memory mapped IO in processors
 
 The most common place you see memory mapped IO is inside a processor. Actually, if you've ever programmed an Arduino or other microcontroller, chances are you have already been exposed to this technique.
 
-A great example is the **PORT** registers of an ATmega microcontroller (the ones used by Arduino). When you write code for these processors you can write something like the following.
+A great example is the **PORT** registers of an ATmega microcontroller (the ones used by Arduino). When you write code for these processors you can write something like the following.
 
 ```c
 PORTB = 0xAA;
 ```
 
-This will set the 8 IO pins designated to **PORTB** to the value 0xAA. However, in your code **PORTB** is actually just a macro and is really a pointer to a special memory address. This address in memory doesn't simply map to RAM but also maps to an IO peripheral that takes the value and outputs it to the IO pins.
+This will set the 8 IO pins designated to **PORTB** to the value 0xAA. However, in your code **PORTB** is actually just a macro and is really a pointer to a special memory address. This address in memory doesn't simply map to RAM but also maps to an IO peripheral that takes the value and outputs it to the IO pins.
 
 Without memory mapped IO, the microcontroller would have no way to input or output any data!
 
@@ -36,19 +36,19 @@ This tutorial is a little bit different from the rest of the tutorials in that t
 
 ## The FPGA side of things
 
-In the FPGA project, open up **mojo_top.v** and take a look at the basic setup. There are two modules instantiated, **avr_interface** and **reg_ctrl**.
+In the FPGA project, open up **mojo_top.v** and take a look at the basic setup. There are two modules instantiated, **avr_interface** and **reg_ctrl**.
 
-**avr_interface** is responsible for all the communications with the Arduino (AVR, ATmega, and Arduino are basically the same in this context). This is a modified version of the module found in the base project. It has been modified to provide a basic register interface over SPI instead of allowing the FPGA to read the ADC ports. You should also note that the pins that used to be **adc_channel** are now **avr_flags**. These will be covered in detail more later.
+**avr_interface** is responsible for all the communications with the Arduino (AVR, ATmega, and Arduino are basically the same in this context). This is a modified version of the module found in the base project. It has been modified to provide a basic register interface over SPI instead of allowing the FPGA to read the ADC ports. You should also note that the pins that used to be **adc_channel** are now **avr_flags**. These will be covered in detail more later.
 
-You can open up **avr_interface** to checkout how the register interface is implemented. The basic protocol is as follows.
+You can open up **avr_interface** to checkout how the register interface is implemented. The basic protocol is as follows.
 
 ![mem_map_write.png](https://cdn.alchitry.com/verilog/mojo/mem_map_write.png)
 
 ![mem_map_read.png](https://cdn.alchitry.com/verilog/mojo/mem_map_read.png)
 
-The transfer starts by the AVR pulling **CS** (**C**hip **S**elect) low. The first byte sent specifies what type of transfer (read or write), if the address is auto-incremented, and the address. The following bytes are the values that are read or written to the corresponding addresses. If **inc** is 1, B1 is from **addr**, B2 is from **addr + 1**, and Bn is from **addr + n - 1**. If **inc** is 0, then the same address is read or written multiple times. If the transfer is for a single address, **inc** doesn't make a difference. A transfer is terminated by **CS** going high.
+The transfer starts by the AVR pulling **CS** (**C**hip **S**elect) low. The first byte sent specifies what type of transfer (read or write), if the address is auto-incremented, and the address. The following bytes are the values that are read or written to the corresponding addresses. If **inc** is 1, B1 is from **addr**, B2 is from **addr + 1**, and Bn is from **addr + n - 1**. If **inc** is 0, then the same address is read or written multiple times. If the transfer is for a single address, **inc** doesn't make a difference. A transfer is terminated by **CS** going high.
 
-For example, to write 0xAA to address 0x00, we would send 0x80 (write address 0) followed by 0xAA. To write 0xAA to address 0 and 0xBB to address 1, we would send 0xC0 (write, auto-inc, address 0), 0xAA, 0xBB. It's the same pattern for reads except the values are read on **MISO** instead of written to **MOSI**.
+For example, to write 0xAA to address 0x00, we would send 0x80 (write address 0) followed by 0xAA. To write 0xAA to address 0 and 0xBB to address 1, we would send 0xC0 (write, auto-inc, address 0), 0xAA, 0xBB. It's the same pattern for reads except the values are read on **MISO** instead of written to **MOSI**.
 
 You don't really have to really worry about this protocol since the example code covers both ends of the communication. You simply specify the address and values. However, it is useful to know so you can write your own mutli-byte transfer functions using auto-inc for efficiency.
 

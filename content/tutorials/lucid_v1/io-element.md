@@ -4,15 +4,15 @@ weight = 2
 inline_language = "lucid"
 +++
 
-This tutorial will introduce the [Io Element](@/boards/io.md) and walk through some basic examples to get your feet wet. If you haven't already, I highly recommend reading through the [Your First FPGA Project](@/tutorials/lucid_v1/your-first-fpga-project.md) and [synchronous logic](@/tutorials/lucid_v1/synchronous-logic.md) tutorials before continuing.
+This tutorial will introduce the [Io Element](@/boards/io.md) and walk through some basic examples to get your feet wet. If you haven't already, I highly recommend reading through the [Your First FPGA Project](@/tutorials/lucid_v1/your-first-fpga-project.md) and [synchronous logic](@/tutorials/lucid_v1/synchronous-logic.md) tutorials before continuing.
 
 ## Create the Project
 
-In Alchitry Labs, open the new project dialog (File->New Project...) and name it whatever you want. I named mine _Io Element Demo_. Before you click _Create_, select _IO Element Base_ from the _From Example_ drop-down menu. This will give you a bare bones base to start working with the element.
+In Alchitry Labs, open the new project dialog (File->New Project...) and name it whatever you want. I named mine _Io Element Demo_. Before you click _Create_, select _IO Element Base_ from the _From Example_ drop-down menu. This will give you a bare bones base to start working with the element.
 
-The only difference between this project and the standard base project is that this has the connections to the Io Element already defined for you.
+The only difference between this project and the standard base project is that this has the connections to the Io Element already defined for you.
 
-Let's take a look at the top file. You can use the tabs to select the version for your board.
+Let's take a look at the top file. You can use the tabs to select the version for your board.
 
 {% fenced_code_tab(tabs=["Au", "Cu", "Mojo"]) %}
 ```lucid
@@ -138,17 +138,17 @@ module mojo_top (
 ```
 {% end %}
 
-You can see we have a handful of inputs and outputs named `io_*`. These are the Io Element specific signals.
+You can see we have a handful of inputs and outputs named `io_*`. These are the Io Element specific signals.
 
-`io_led` connects to the 24 LEDs. This signal is organized as a 2D array to make it easier to access the three groups of 8 LEDs. For example, if you want to get the first group of LEDs you would use `io_led[0]` and if you wanted to get the third LED in the first group, you would use `io_led[0][2]`.
+`io_led` connects to the 24 LEDs. This signal is organized as a 2D array to make it easier to access the three groups of 8 LEDs. For example, if you want to get the first group of LEDs you would use `io_led[0]` and if you wanted to get the third LED in the first group, you would use `io_led[0][2]`.
 
-Because `io_led` is a 2D array, when we set all the LEDs to 0, we have a little fancy syntax.
+Because `io_led` is a 2D array, when we set all the LEDs to 0, we have a little fancy syntax.
 
 ```lucid
-io_led = 3x{{8h00}};    // turn LEDs off
+io_led = 3x{{8h00}};    // turn LEDs off
 ```
 
-We need the dimensions of our constant to match `io_led`. In this case, `io_led` is a 3 by 8 array. We use `8h00` as the base constant which is a single dimensional array of width 8. The `x{}` syntax takes the outermost dimension and duplicates it. If we wrote `3x{8h00}`, we would end up with `24h000000` since the outer most dimension is 8. This isn't what we want as it is still a 1D array. Instead, we need to first create a 1 by 8 array and duplicate it three times. To do this we use the array building syntax, `{}`. The value `{8h00}` is a 1 by 8 2D array. We then use `3x{{8h00}}` to get a 3 by 8 array of all zeros. Note that we could have also written `{8h00, 8h00, 8h00}`, but the duplication syntax is a bit cleaner.
+We need the dimensions of our constant to match `io_led`. In this case, `io_led` is a 3 by 8 array. We use `8h00` as the base constant which is a single dimensional array of width 8. The `x{}` syntax takes the outermost dimension and duplicates it. If we wrote `3x{8h00}`, we would end up with `24h000000` since the outer most dimension is 8. This isn't what we want as it is still a 1D array. Instead, we need to first create a 1 by 8 array and duplicate it three times. To do this we use the array building syntax, `{}`. The value `{8h00}` is a 1 by 8 2D array. We then use `3x{{8h00}}` to get a 3 by 8 array of all zeros. Note that we could have also written `{8h00, 8h00, 8h00}`, but the duplication syntax is a bit cleaner.
 
 `io_seg` and `io_sel` are used to control the 4 seven-segment LED displays. They are active low (0 = on, 1 = off) and they will be covered in more detail later.
 

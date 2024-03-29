@@ -3,19 +3,19 @@ title = "Hello World!"
 weight = 10
 +++
 
-**The serial interface has changed on April 10, 2015. If you are having trouble, make sure you have the** [latest firmware](@/tutorials/mojo/update-the-mojo.md) **and Mojo Base Project!**
+**The serial interface has changed on April 10, 2015. If you are having trouble, make sure you have the** [latest firmware](@/tutorials/mojo/update-the-mojo.md) **and Mojo Base Project!**
 
 One of the cool features of the Mojo is that there is a microcontroller on-board that is used to configure the FPGA. However, once the FPGA is configured, the microcontroller is free to help out the FPGA! There are two main functions you can use the microcontroller for without modifying the code yourself. The first is an analog to digital convert and the other, which we are covering here, is a USB to serial converter.
 
-This allows you to use the USB port on the Mojo to send data to your computer. The protocol used to send data isn't too complicated at it's core, but luckily for you we already wrote that part of the design for you! 
+This allows you to use the USB port on the Mojo to send data to your computer. The protocol used to send data isn't too complicated at it's core, but luckily for you we already wrote that part of the design for you! 
 
-If you grab a copy of the [Mojo Base Project](https://github.com/embmicro/mojo-base-project/archive/master.zip), all the source for this is included. Make sure you download a fresh copy for this tutorial.
+If you grab a copy of the [Mojo Base Project](https://github.com/embmicro/mojo-base-project/archive/master.zip), all the source for this is included. Make sure you download a fresh copy for this tutorial.
 
 ### AVR Interface
 
-The main module you need to worry about is the **avr_interface** module. **AVR** is the type of microcontroller on the Mojo. This module is the only one you need to directly interface with. 
+The main module you need to worry about is the **avr_interface** module. **AVR** is the type of microcontroller on the Mojo. This module is the only one you need to directly interface with. 
 
-As you've probably noticed in other tutorials, out **mojo_top** module had a lot of extra inputs and outputs that weren't being used. Those are all used to interface with the AVR and should be connected to the **avr_interface** module.
+As you've probably noticed in other tutorials, out **mojo_top** module had a lot of extra inputs and outputs that weren't being used. Those are all used to interface with the AVR and should be connected to the **avr_interface** module.
 
 ```verilog
 module avr_interface #(
@@ -60,13 +60,13 @@ module avr_interface #(
 );
 ```
 
-Here is the port declaration of the module.  Many of the signals are named the same as the top level ports. The few exceptions are **tx** which connects to **avr_rx**, **rx** which connects to **avr_tx**, and **tx_block** which connects to **avr_rx_busy**. 
+Here is the port declaration of the module.  Many of the signals are named the same as the top level ports. The few exceptions are **tx** which connects to **avr_rx**, **rx** which connects to **avr_tx**, and **tx_block** which connects to **avr_rx_busy**. 
 
-For now forget about the **channel** and **sample** signals, they are used to interface with the ADC and will be covered in another tutorial.
+For now forget about the **channel** and **sample** signals, they are used to interface with the ADC and will be covered in another tutorial.
 
-The signals that are important right now are **tx_data**, **new_tx_data**, **tx_busy**, **rx_data**, **new_rx_data**.
+The signals that are important right now are **tx_data**, **new_tx_data**, **tx_busy**, **rx_data**, **new_rx_data**.
 
-**tx_data** is the data (one byte) that you want to send over the virtual serial port. When you have a new byte you want to send, you need to check **tx_busy** to make sure the module is not busy in anyway. The busy flag can be set for a number of reasons which include, the module is currently sending a byte, **cclk** has not signaled the AVR is ready for data, or the AVR can't accept new data because it's buffer is full.
+**tx_data** is the data (one byte) that you want to send over the virtual serial port. When you have a new byte you want to send, you need to check **tx_busy** to make sure the module is not busy in anyway. The busy flag can be set for a number of reasons which include, the module is currently sending a byte, **cclk** has not signaled the AVR is ready for data, or the AVR can't accept new data because it's buffer is full.
 
 If the **tx_busy** flag is not set, you can set **new_tx_data** high for one clock cycle to indicate you want the byte present on **tx_data** to be sent. 
 

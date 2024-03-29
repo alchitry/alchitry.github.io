@@ -3,15 +3,15 @@ title = "SDRAM"
 weight = 18
 +++
 
-This tutorial will cover how **DRAM** (**D**ynamic **R**andom **A**ccess **M**emory), or more specifically **SDRAM** (**S**ynchronized **DRAM**), works and how you can use it in your FPGA projects.
+This tutorial will cover how **DRAM** (**D**ynamic **R**andom **A**ccess **M**emory), or more specifically **SDRAM** (**S**ynchronized **DRAM**), works and how you can use it in your FPGA projects.
 
 ### What is RAM?
 
-It is first important to understand what **RAM** is in general before diving into a specific type. RAM is simply a large block of memory that you can access more or less at random very quickly. It provides temporary storage for your design for things like images, video, or sampled data. In some applications it can even be used to store the instructions and data for a processor.
+It is first important to understand what **RAM** is in general before diving into a specific type. RAM is simply a large block of memory that you can access more or less at random very quickly. It provides temporary storage for your design for things like images, video, or sampled data. In some applications it can even be used to store the instructions and data for a processor.
 
-Notice the word **temporary** I used. This is because RAM is a volatile form of memory. That means without power, the contents of the memory will be lost.
+Notice the word **temporary** I used. This is because RAM is a volatile form of memory. That means without power, the contents of the memory will be lost.
 
-RAM is organized into banks, rows, and columns. I like to think of RAM as a set of notebooks where each notebook is a _bank_, each page is a _row_, and each line is a _column_. Each bank, or notebook, can be accessed independently of the other banks. Each bank is comprised of many rows and each row has many columns. To access a specific piece of data you must specify all three pieces of information, the bank, row, and column.
+RAM is organized into banks, rows, and columns. I like to think of RAM as a set of notebooks where each notebook is a _bank_, each page is a _row_, and each line is a _column_. Each bank, or notebook, can be accessed independently of the other banks. Each bank is comprised of many rows and each row has many columns. To access a specific piece of data you must specify all three pieces of information, the bank, row, and column.
 
 The actual protocol required to access data depends on the type of RAM being used. However, all RAM breaks our a very similar interface. You generally have an address input, which specifies the row and column, a bank select input, which specifies the bank, a data input/output, which is used for reading and writing data, and a few control signals.
 
@@ -27,21 +27,21 @@ The basic cell in DRAM looks like the following.
 
 There is simply a capacitor that stores a charge, and a transistor that allows charge to either be put into the capacitor or taken out.
 
-These cells are arranged into a large 2D array of _rows_ and _columns_. These are the same rows and columns from before.
+These cells are arranged into a large 2D array of _rows_ and _columns_. These are the same rows and columns from before.
 
 When you write data to DRAM, charge is placed on capacitors that should have a value of 1, but no charge is placed on capacitors that have a value of 0.
 
-When you read data from DRAM, the charge on the capacitor is measured using a circuit called a **sense amplifier**. If the sense amplifier detected charge on the capacitor then it outputs a 1, otherwise it assumes the cell was a 0.
+When you read data from DRAM, the charge on the capacitor is measured using a circuit called a **sense amplifier**. If the sense amplifier detected charge on the capacitor then it outputs a 1, otherwise it assumes the cell was a 0.
 
-There are a two main problems to the fundamental design of DRAM. First, to read the charge from the capacitor, the charge must be drained. This causes all reads to be destructive. Once you read a piece of data from DRAM, the value is no longer being stored in the memory array. To deal with this, the data **must** be written back into the array when you are done with it. This is called **precharging**.
+There are a two main problems to the fundamental design of DRAM. First, to read the charge from the capacitor, the charge must be drained. This causes all reads to be destructive. Once you read a piece of data from DRAM, the value is no longer being stored in the memory array. To deal with this, the data **must** be written back into the array when you are done with it. This is called **precharging**.
 
-To make the interface to DRAM a bit more efficient, an entire row is read into a buffer in the DRAM. The process of reading a row into that buffer is referred to as **opening** or **activating** the row. Once a row is open, data can be read or written to any columns in that row without having to open it again.
+To make the interface to DRAM a bit more efficient, an entire row is read into a buffer in the DRAM. The process of reading a row into that buffer is referred to as **opening** or **activating** the row. Once a row is open, data can be read or written to any columns in that row without having to open it again.
 
-However, only one row per bank can be open at a time. To read from a different row in the same bank, you must first **precharge** the current row, then **open** the new row.
+However, only one row per bank can be open at a time. To read from a different row in the same bank, you must first **precharge** the current row, then **open** the new row.
 
-The second fundamental flaw of DRAM, and the reason it is called **dynamic** RAM, is that capacitors _leak_ charge. That means that once a charge is stored on a capacitor, it will start losing that charge. This happens either through the transistor connected to it, or through the capacitor itself. What this means for your data is that, if neglected, the values stored will be lost.
+The second fundamental flaw of DRAM, and the reason it is called **dynamic** RAM, is that capacitors _leak_ charge. That means that once a charge is stored on a capacitor, it will start losing that charge. This happens either through the transistor connected to it, or through the capacitor itself. What this means for your data is that, if neglected, the values stored will be lost.
 
-The fix to this problem is to periodically **refresh** each row. A refresh consists of simply reading a row then writing it back into the array. This process ensures that the capacitors retain their charge.
+The fix to this problem is to periodically **refresh** each row. A refresh consists of simply reading a row then writing it back into the array. This process ensures that the capacitors retain their charge.
 
 The amount of time a row can go between refreshes depends on the DRAM. However, the SDRAM chip on the SDRAM Shield, must be refreshed every **64ms**.
 

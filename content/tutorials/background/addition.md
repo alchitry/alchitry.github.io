@@ -36,21 +36,21 @@ It is easy to see now that if we only output one bit then when you add 1 and 1 t
 
 Notice that these two truth tables are exactly the same as two of the logic gates we've covered!
 
-For **Out[0]** you can see that it is only 1 when **the inputs are different**. In other words **Out[0]** is **A** xor **B**.
+For **Out[0]** you can see that it is only 1 when **the inputs are different**. In other words **Out[0]** is **A** xor **B**.
 
-For **Out[1]** you can see that it is only 1 when **the inputs are both 1**. In other words **Out[1]** is **A** and **B**.
+For **Out[1]** you can see that it is only 1 when **the inputs are both 1**. In other words **Out[1]** is **A** and **B**.
 
 Let's now use that to draw up a circuit.
 
 ![half_adder.png](https://cdn.alchitry.com/background/half_adder.png)
 
-This circuit is known as the **half adder**.
+This circuit is known as the **half adder**.
 
-You can see the outputs are renamed from **Out[0]** and **Out[1]** to **Sum** and **Cout**. That is because it is better to think of them in these terms later. **Cout** stands for **carry out**. Just like when you learned to do addition of big numbers you had to carry any overflow to the next addition, the same is done with binary addition.
+You can see the outputs are renamed from **Out[0]** and **Out[1]** to **Sum** and **Cout**. That is because it is better to think of them in these terms later. **Cout** stands for **carry out**. Just like when you learned to do addition of big numbers you had to carry any overflow to the next addition, the same is done with binary addition.
 
 ## The Full Adder
 
-So we can now add two one bit numbers, but let's be honest, that's really not very useful. We need to be able to add any arbitrary sized number. This is where the full adder comes in handy. When we created the circuit for the half adder we assumed we only had two inputs, the two numbers we were adding. However, our circuit output a **carry bit**!
+So we can now add two one bit numbers, but let's be honest, that's really not very useful. We need to be able to add any arbitrary sized number. This is where the full adder comes in handy. When we created the circuit for the half adder we assumed we only had two inputs, the two numbers we were adding. However, our circuit output a **carry bit**!
 
 Going back to those very early days of school, when you add numbers it looks something like this
 
@@ -59,7 +59,7 @@ Going back to those very early days of school, when you add numbers it looks som
  <span style="text-decoration:underline">+22</span>
   41</pre>
 
-But how did we add that second column? We simply added all **three** numbers together, the two inputs 1 from the 19 and 2 from the 22, as well as the carry from the previous addition. That brings us to the truth table for the full adder.
+But how did we add that second column? We simply added all **three** numbers together, the two inputs 1 from the 19 and 2 from the 22, as well as the carry from the previous addition. That brings us to the truth table for the full adder.
 
 |Cin|A|B|Cout|Sum|
 |---|---|---|---|---|

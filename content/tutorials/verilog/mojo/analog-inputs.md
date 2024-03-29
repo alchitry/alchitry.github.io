@@ -5,11 +5,11 @@ weight = 12
 
 The Mojo has eight analog inputs that you can use to read voltages from 0-3.3V. In this tutorial we will make the Mojo read the voltage on input A0 and adjust the brightness of the LEDs depending on the value.
 
-This tutorial uses the **PWM module** from the [pulse-width modulation tutorial](@/tutorials/verilog/mojo/pulse-width-modulation.md), so make sure you understand how that works before getting started. Also like the other tutorials, you will need a fresh copy of the [Mojo Base Project](https://github.com/embmicro/mojo-base-project/archive/master.zip).
+This tutorial uses the **PWM module** from the [pulse-width modulation tutorial](@/tutorials/verilog/mojo/pulse-width-modulation.md), so make sure you understand how that works before getting started. Also like the other tutorials, you will need a fresh copy of the [Mojo Base Project](https://github.com/embmicro/mojo-base-project/archive/master.zip).
 
 ### AVR Interface
 
-Just like in the Hello World! tutorial we are going to use the **AVR Interface** module that is included in the base project. If you open up **avr_interface.v** you can check out its inputs and outputs. For reading the analog inputs, there are four relevant signals.
+Just like in the Hello World! tutorial we are going to use the **AVR Interface** module that is included in the base project. If you open up **avr_interface.v** you can check out its inputs and outputs. For reading the analog inputs, there are four relevant signals.
 
 ```verilog
 input [3:0] channel,
@@ -18,11 +18,11 @@ output [9:0] sample,
 output [3:0] sample_channel,
 ```
 
-You only need to specify one parameter, **channel**. **Channel** is used to specify the analog input you want to sample. Valid values are 0,1,4,5,6,7,8,9. Those correspond to the Ax labels on the Mojo board, where x is the channel number. If you specify an invalid channel number the ADC will be disabled. This is useful when you don't need to use the ADC and would like to have lower latency and higher throughput on the serial port.
+You only need to specify one parameter, **channel**. **Channel** is used to specify the analog input you want to sample. Valid values are 0,1,4,5,6,7,8,9. Those correspond to the Ax labels on the Mojo board, where x is the channel number. If you specify an invalid channel number the ADC will be disabled. This is useful when you don't need to use the ADC and would like to have lower latency and higher throughput on the serial port.
 
-For this tutorial, we are going to just set **channel** to 0 as we will only be sampling the one channel.
+For this tutorial, we are going to just set **channel** to 0 as we will only be sampling the one channel.
 
-The values on **sample** and **sample_channel** are only valid when **new_sample** is high. Each sample from the ADC is 10bits wide and is available at the **sample** output. When you receive a new sample you need to check **sample_channel** to find what channel the sample belongs to. When you change the **channel**, you can't assume the next sample will be from the new channel. This is because the ADC values are buffered in a FIFO before being sent to the FPGA. There may still be some old values that need to get sent out before the new samples come in. If you are just reading one channel, like we are in this case, you should be safe to ignore **sample_channel**, but it's good practice not to.
+The values on **sample** and **sample_channel** are only valid when **new_sample** is high. Each sample from the ADC is 10bits wide and is available at the **sample** output. When you receive a new sample you need to check **sample_channel** to find what channel the sample belongs to. When you change the **channel**, you can't assume the next sample will be from the new channel. This is because the ADC values are buffered in a FIFO before being sent to the FPGA. There may still be some old values that need to get sent out before the new samples come in. If you are just reading one channel, like we are in this case, you should be safe to ignore **sample_channel**, but it's good practice not to.
 
 ### Sample Capture
 
@@ -71,7 +71,7 @@ module input_capture(
 endmodule
 ```
 
-This module just waits for a new valid sample and updates the register **sample_d/_q** with the new value. That value is fed directly into the PWM module. The output of the PWM module is fed to the **led** output. The **pwm** signal is duplicated eight times so all the LEDs will light up together.
+This module just waits for a new valid sample and updates the register **sample_d/_q** with the new value. That value is fed directly into the PWM module. The output of the PWM module is fed to the **led** output. The **pwm** signal is duplicated eight times so all the LEDs will light up together.
 
 ### Top Level
 
@@ -141,10 +141,10 @@ module mojo_top(
 endmodule
 ```
 
-Here is the top level module, **mojo_top.v**. The only modifications were made to instantiate the **avr_interface** module and our **input_capture** module.
+Here is the top level module, **mojo_top.v**. The only modifications were made to instantiate the **avr_interface** module and our **input_capture** module.
 
 Don't forget to also add the PWM module from the PWM tutorial to your project.
 
 ### Try it out!
 
-You should now be able to synthesize your project. Connect something like a potentiometer to A0 and watch the LEDs as you vary the voltage. When you apply 0V to A0 they should be off and when you apply 3.3V they should be fully on. Be careful not to connect your potentiometer to the **RAW** power supply as you can damage the AVR by feeding too high of a voltage to the analog pins.
+You should now be able to synthesize your project. Connect something like a potentiometer to A0 and watch the LEDs as you vary the voltage. When you apply 0V to A0 they should be off and when you apply 3.3V they should be fully on. Be careful not to connect your potentiometer to the **RAW** power supply as you can damage the AVR by feeding too high of a voltage to the analog pins.

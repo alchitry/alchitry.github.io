@@ -5,21 +5,21 @@ weight = 0
 
 All new Mojo's are shipping with a new bootloader that is Arduino compatible. That means that if you want to modify the code that ships on the Mojo, you can from the comfort of the Arduino IDE.
 
-If your Mojo shipped to you in a small custom printed box (shipping since Jan 2014), it is already Arduino compatible. However, if you ordered a Mojo V3 before or have a Mojo V2, you can visit the [Flashing the Bootloader](@/tutorials/mojo/mojo-bootloader.md) page after installing the Arduino IDE for instructions on upgrading.
+If your Mojo shipped to you in a small custom printed box (shipping since Jan 2014), it is already Arduino compatible. However, if you ordered a Mojo V3 before or have a Mojo V2, you can visit the [Flashing the Bootloader](@/tutorials/mojo/mojo-bootloader.md) page after installing the Arduino IDE for instructions on upgrading.
 
 Please note that if you have a Mojo V2, you need to use the Arduino IDE version 1.6.5.
 
-Note, you do not need to use the Arduino IDE or code at all to use the Mojo. This is only for people who want to program **BOTH** the FPGA and the microcontroller. If you only want to program the FPGA jump into the [FPGA tutorials](@/tutorials/_index.md).
+Note, you do not need to use the Arduino IDE or code at all to use the Mojo. This is only for people who want to program **BOTH** the FPGA and the microcontroller. If you only want to program the FPGA jump into the [FPGA tutorials](@/tutorials/_index.md).
 
 ## Arduino IDE 1.6.5
 
-Arduino has recently released version 1.6.5 of their IDE which makes third part extensions much easier. If you are using version 1.6.5, download the [Arduino Mojo Plugin](https://cdn.embeddedmicro.com/arduino/arduino-mojo-plugin.zip).
+Arduino has recently released version 1.6.5 of their IDE which makes third part extensions much easier. If you are using version 1.6.5, download the [Arduino Mojo Plugin](https://cdn.embeddedmicro.com/arduino/arduino-mojo-plugin.zip).
 
-Extract the zip into your sketchbook (typically **C:\Users\YOURNAME\Arduino** for Windows or **/home/YOURNAME/Arduino** for Linux).
+Extract the zip into your sketchbook (typically **C:\Users\YOURNAME\Arduino** for Windows or **/home/YOURNAME/Arduino** for Linux).
 
-Under **Arduino/hardware/embeddedmicro/avr/** you should see a handful of folders and the **boards.txt** and **platform.txt** files.
+Under **Arduino/hardware/embeddedmicro/avr/** you should see a handful of folders and the **boards.txt** and **platform.txt** files.
 
-You can now fire up the IDE and jump down to the **Getting Started** section of this tutorial.
+You can now fire up the IDE and jump down to the **Getting Started** section of this tutorial.
 
 ## Arduino IDE 1.0.5
 
@@ -27,29 +27,29 @@ You can now fire up the IDE and jump down to the **Getting Started** section o
 
 The first step of this process is to to just download and install the Arduino IDE!
 
-Head over to the [Arduino website](http://arduino.cc/en/Main/Software) and download version **1.0.5** of the IDE.
+Head over to the [Arduino website](http://arduino.cc/en/Main/Software) and download version **1.0.5** of the IDE.
 
 If you are running Ubuntu you can install the IDE directly from the Ubuntu Software Center, or by entering the following command in the terminal.
 
 ```bash
-sudo apt-get install arduino
+sudo apt-get install arduino
 ```
 
 ### Adding the Mojo
 
 Once the IDE is installed, you will need to edit some files to make it work with the Mojo.
 
-Download all the files you will need [here](https://cdn.embeddedmicro.com/arduino/arduinoMod.zip) and extract the zip somewhere you can find it.
+Download all the files you will need [here](https://cdn.embeddedmicro.com/arduino/arduinoMod.zip) and extract the zip somewhere you can find it.
 
 You now need to find where the files for the Arduino IDE live.
 
-If you are using **Windows** and you installed it via their installer, the files most likely live at **C:\Program Files (x86)\Arduino**.
+If you are using **Windows** and you installed it via their installer, the files most likely live at **C:\Program Files (x86)\Arduino**.
 
-If you are using **Ubuntu** and you installed it via the Software Center or the terminal, the files most likely live at **/usr/share/arduino**. You will need to edit some files here so you will need to open a file browser with root privileges. Press **alt+F2** and type in **gksu nautilus**. Hit enter and type in your password. **Be careful because in this file browser you will be able to delete system files!**
+If you are using **Ubuntu** and you installed it via the Software Center or the terminal, the files most likely live at **/usr/share/arduino**. You will need to edit some files here so you will need to open a file browser with root privileges. Press **alt+F2** and type in **gksu nautilus**. Hit enter and type in your password. **Be careful because in this file browser you will be able to delete system files!**
 
-Once you find the Arduino files, open the **hardware** folder, then open the **arduino** folder.
+Once you find the Arduino files, open the **hardware** folder, then open the **arduino** folder.
 
-You should now see the **boards.txt** file. Use the **boards.txt** file from the zip you downloaded earlier to replace the Arduino one.
+You should now see the **boards.txt** file. Use the **boards.txt** file from the zip you downloaded earlier to replace the Arduino one.
 
 The new file contains the declaration of the Mojo telling the Arduino IDE how to handle it.
 

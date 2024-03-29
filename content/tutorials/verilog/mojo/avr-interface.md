@@ -7,7 +7,7 @@ The Mojo doesn't just have an FPGA, but it also has a microcontroller (AVR). Whi
 
 ### CCLK
 
-When the FPGA is first configured, the AVR may not be ready for the FPGA to set some of it's pins as outputs. This is because the pins that are used to talk to the AVR are also used to configure the FPGA! It is important for the FPGA to wait until the **CCLK** signal is high for at least 512 cycles before taking control of it's outputs. The modules **avr_interface.v** and **cclk_detector.v** included in the [base project](https://github.com/embmicro/mojo-base-project/archive/master.zip) do just that.
+When the FPGA is first configured, the AVR may not be ready for the FPGA to set some of it's pins as outputs. This is because the pins that are used to talk to the AVR are also used to configure the FPGA! It is important for the FPGA to wait until the **CCLK** signal is high for at least 512 cycles before taking control of it's outputs. The modules **avr_interface.v** and **cclk_detector.v** included in the [base project](https://github.com/embmicro/mojo-base-project/archive/master.zip) do just that.
 
 ### USB->Serial
 
@@ -35,7 +35,7 @@ These are the signals used to read the analog pins.
 
 The AVR is the master of the SPI bus and only sends data to the FPGA when there are new samples.
 
-The **spi_channel** lines specify which channel should be sampled. Valid channels are 0, 1, 4, 5, 6, 7, 8, 9. Those correspond to A0, A1, A4-A9 on the Mojo board respectively. Selecting an invalid channel will disable the ADC.
+The **spi_channel** lines specify which channel should be sampled. Valid channels are 0, 1, 4, 5, 6, 7, 8, 9. Those correspond to A0, A1, A4-A9 on the Mojo board respectively. Selecting an invalid channel will disable the ADC.
 
 Once the ADC is enabled by selecting a valid channel, it runs in free-running mode which means it will automatically sample that channel as fast as it can. The samples from the ADC are buffered and sent over the SPI bus when the AVR has time to do so. This means that the rate samples are sent over the SPI bus does not necessarily equal the rate or time they were sampled. However, it is safe to assume that the samples are evenly spaced in time.
 
@@ -57,7 +57,7 @@ Once a valid channel is selected and samples are being sent of the SPI port, you
 |---|---|---|---|
 |XX|AREF Select [1:0]|High Power Mode|Pre-Scaler [2:0]|
 
-Information on what these mean can be found in the [datasheet for the ATmega32U4](https://www.microchip.com/en-us/product/atmega16u4?tab=documents) on pages 307-312.
+Information on what these mean can be found in the [datasheet for the ATmega32U4](https://www.microchip.com/en-us/product/atmega16u4?tab=documents) on pages 307-312.
 
 The default values are, pre-scaler = 5 (divide by 32), high-power mode is enabled, AREF = AVcc.
 
@@ -65,8 +65,8 @@ You should not set the pre-scaler lower than 5. If you need higher accuracy you 
 
 ### Included FPGA Modules
 
-The [Mojo base project](https://github.com/embmicro/mojo-base-project/archive/master.zip) includes the **avr_interface.v** module and all the supporting modules to interface with the AVR. It handles all the low level SPI and serial buses. It breaks out an interface which is much easier to use.
+The [Mojo base project](https://github.com/embmicro/mojo-base-project/archive/master.zip) includes the **avr_interface.v** module and all the supporting modules to interface with the AVR. It handles all the low level SPI and serial buses. It breaks out an interface which is much easier to use.
 
-For the ADC, you can simply supply which channel you want to read in the **channel** input and when a new sample comes in **new_sample** goes high for one clock cycle. The sample is available on the signals **sample** and **sample_channel** for the corresponding channel.
+For the ADC, you can simply supply which channel you want to read in the **channel** input and when a new sample comes in **new_sample** goes high for one clock cycle. The sample is available on the signals **sample** and **sample_channel** for the corresponding channel.
 
-For the serial port, you supply data to **tx_data** and pulse **new_tx_data** high for one clock cycle when you have data to send. You must first check that **tx_busy** is low. Data from the AVR is supplied through the **rx_data** signal and **new_rx_data** signals when the data is valid.
+For the serial port, you supply data to **tx_data** and pulse **new_tx_data** high for one clock cycle when you have data to send. You must first check that **tx_busy** is low. Data from the AVR is supplied through the **rx_data** signal and **new_rx_data** signals when the data is valid.

@@ -3,13 +3,13 @@ title = "Writing Test Benches"
 weight = 5
 +++
 
-**Test benches** are used to simulate your design without the need of any physical hardware. The biggest benefit of this is that you can actually inspect every signal that is in your design. This definitely can be a time saver when your alternatives are staring at the code, or loading it onto the FPGA and probing the few signals brought out to the external pins. However, you don't get this all for free. Before you can simulate your design you must first write a **test bench**.
+**Test benches** are used to simulate your design without the need of any physical hardware. The biggest benefit of this is that you can actually inspect every signal that is in your design. This definitely can be a time saver when your alternatives are staring at the code, or loading it onto the FPGA and probing the few signals brought out to the external pins. However, you don't get this all for free. Before you can simulate your design you must first write a **test bench**.
 
 ### What is a Test Bench
 
-What exactly is a **test bench**? A test bench is actually just another Verilog file! However, the Verilog you write in a test bench is not quite the same as the Verilog you write in your designs. This is because all the Verilog you plan on using in your hardware design **must be** synthesizable, meaning it has a hardware equivalent. The Verilog you write in a test bench does not need to be synthesizable because you will only ever simulate it!
+What exactly is a **test bench**? A test bench is actually just another Verilog file! However, the Verilog you write in a test bench is not quite the same as the Verilog you write in your designs. This is because all the Verilog you plan on using in your hardware design **must be** synthesizable, meaning it has a hardware equivalent. The Verilog you write in a test bench does not need to be synthesizable because you will only ever simulate it!
 
-Let us assume we have a module called **basic_and** that looks like this.
+Let us assume we have a module called **basic_and** that looks like this.
 
 ```verilog
 module basic_and #(parameter WIDTH = 1)(
@@ -23,11 +23,11 @@ module basic_and #(parameter WIDTH = 1)(
 endmodule
 ```
 
-The functionality of this module should be fairly apparent. It takes two inputs, **a** and **b**, of width **WIDTH** and **ands** them together for the output, **out**.
+The functionality of this module should be fairly apparent. It takes two inputs, **a** and **b**, of width **WIDTH** and **ands** them together for the output, **out**.
 
-If we want to now test this module to make sure it is actually doing what we think it is, we can write a test bench! It is best practice to name the test bench associated with a module the same as the module with **_tb** appended. For example, the test bench for **basic_and** is named **basic_and_tb**. 
+If we want to now test this module to make sure it is actually doing what we think it is, we can write a test bench! It is best practice to name the test bench associated with a module the same as the module with **_tb** appended. For example, the test bench for **basic_and** is named **basic_and_tb**. 
 
-Take a look at what a test bench for **basic_and** could look like.
+Take a look at what a test bench for **basic_and** could look like.
 
 ```verilog,linenos
 module basic_and_tb();
@@ -65,7 +65,7 @@ endmodule
 
 A test bench starts off with a module declaration, just like any other Verilog file you've seen before. However, it is important to notice the test bench module does not have any inputs or outputs. It is entirely self contained.
 
-After we declare our variables, we instantiate the module we will be testing. In this case it's the **basic_and** module. Notice the name is **DUT**. DUT is a very common name for the module to be tested in a test bench and it stands for **D**evice **U**nder **T**est.
+After we declare our variables, we instantiate the module we will be testing. In this case it's the **basic_and** module. Notice the name is **DUT**. DUT is a very common name for the module to be tested in a test bench and it stands for **D**evice **U**nder **T**est.
 
 ```verilog,linenos,linenostart=12
 initial begin

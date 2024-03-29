@@ -6,7 +6,7 @@ inline_language = "verilog"
 
 {{ youtube(id="kOE1GXge11k?si=nZOT0nboMJxjkcVl") }}
 
-Synchronous logic if a fundamental building block for just about any digital design. It allows you to create much more complex systems that accomplish something over a series of steps. It also gives you the ability to save states or other information. In this tutorial you will be introduced to the **D flip flop** and how you can use these to make an LED blink.
+Synchronous logic if a fundamental building block for just about any digital design. It allows you to create much more complex systems that accomplish something over a series of steps. It also gives you the ability to save states or other information. In this tutorial you will be introduced to the **D flip flop** and how you can use these to make an LED blink.
 
 ### The Problem
 
@@ -22,7 +22,7 @@ A clock is just a signal that toggles between 0 and 1 over and over again. It lo
 
 The important thing is the rate at which it toggles. The clock on the Mojo is a 50MHz clock. That means that it toggles 50 million times per second!
 
-The clock has two edges, the **rising edge** and the **falling edge**. I drew the rising edges with little arrows. The rising edge is usually the important one.
+The clock has two edges, the **rising edge** and the **falling edge**. I drew the rising edges with little arrows. The rising edge is usually the important one.
 
 ### D Flip-Flops
 
@@ -30,9 +30,9 @@ This is one of the most important circuit elements you will be using. Lucky for 
 
 ![dff.png](https://cdn.alchitry.com/verilog/mojo/dff.png)
 
-This image shows all the signals that a flip flop could have, but in practice, the only required signals are **D**, **Q**, and **clk**. For now, forget about **rst** and **en**.
+This image shows all the signals that a flip flop could have, but in practice, the only required signals are **D**, **Q**, and **clk**. For now, forget about **rst** and **en**.
 
-So what exactly does this thing do? All it does is copy the signal at **D** to **Q** whenever there is a rising edge on the **clk** input. That means **Q** will keep it's value between rising edges of the clock. Since the flip flop _remembers_ what the input was at **D**, it is actually one of the most basic memory elements. 
+So what exactly does this thing do? All it does is copy the signal at **D** to **Q** whenever there is a rising edge on the **clk** input. That means **Q** will keep it's value between rising edges of the clock. Since the flip flop _remembers_ what the input was at **D**, it is actually one of the most basic memory elements. 
 
 ### Loops
 
@@ -44,7 +44,7 @@ What will this circuit do? If the input to the gate is 1, then it's output is 0.
 
 ![dffnot.png](https://cdn.alchitry.com/verilog/mojo/dffnot.png)
 
-What will this circuit do? Well, for now lets just assume that **Q** is 0. That means that **D** is 1 (because it went through the not gate). On the next rising edge of the clock **Q** will copy what **D** is, so **Q** becomes 1. Once **Q** becomes 1, **D** becomes 0! You can follow the pattern to realize that every time there is a rising edge on the clock the output of the flip flop toggles.
+What will this circuit do? Well, for now lets just assume that **Q** is 0. That means that **D** is 1 (because it went through the not gate). On the next rising edge of the clock **Q** will copy what **D** is, so **Q** becomes 1. Once **Q** becomes 1, **D** becomes 0! You can follow the pattern to realize that every time there is a rising edge on the clock the output of the flip flop toggles.
 
 What about the initial condition though? If we just built this circuit how do we know if **Q** is 0 or 1? The truth is that we don't and in some cases it may be 1 while others it may be 0. That is where the **rst** signal comes in. This signal is used to reset the flip flop to a known state. In FPGAs this signal is generally very flexible and allows you to reset the flip flop to a 1 or 0 when the signal is high or low (your choice, not both). I personally like to use an **active high** reset. That means when the **rst** signal is 1, the flip flop is held in reset.
 

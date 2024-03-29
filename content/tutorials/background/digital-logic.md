@@ -11,29 +11,29 @@ An interesting thing to note before we get too far in is that digital circuits a
 
 So what is a 1? What is a 0? If you've ever worked with microcontroller, you know a lot of them run off 5V so we will use 5V in this example. If you were designing a system and it had an input that ranged from 0V to 5V what would you call a 0 or a 1? The most obvious answer is just split it in half. Anything 2.5V or less is a 0 and anything from 2.5V to 5V is a 1. That is what these circuits try to do, however, what happens when you are at 2.5V? Is that a 0 or a 1? Due to variations in the parts, temperature changes, power supply fluctuations, and an almost infinite number of causes it could end up being either!
 
-Because of this uncertainty when between states we will call this region _no man's land_. Digital circuits are designed not to operate with voltages near this region. In fact digital circuits will have specifications that tell you the minimum voltage to be considered a 1 and the maximum voltage that will considered a 0 reliably. For now we won't worry about this since most of the time the circuits are designed to avoid this for us.
+Because of this uncertainty when between states we will call this region _no man's land_. Digital circuits are designed not to operate with voltages near this region. In fact digital circuits will have specifications that tell you the minimum voltage to be considered a 1 and the maximum voltage that will considered a 0 reliably. For now we won't worry about this since most of the time the circuits are designed to avoid this for us.
 ## True or false?
 
-Digital circuits are all based around these things called **logic gates**. Before we get into what the gates actually are, you need to know that they are all based on the idea that a **1 is true** and that a **0 is false**. This is known as **boolean logic**.
+Digital circuits are all based around these things called **logic gates**. Before we get into what the gates actually are, you need to know that they are all based on the idea that a **1 is true** and that a **0 is false**. This is known as **boolean logic**.
 
-Digital logic circuits are often convenient to draw out with symbols. Each symbol represents some logic function that has at least one input and at least one output. In general the inputs are shown on the left and the outputs are shown on the right. That way the signals in the circuit flow from left to right.
+Digital logic circuits are often convenient to draw out with symbols. Each symbol represents some logic function that has at least one input and at least one output. In general the inputs are shown on the left and the outputs are shown on the right. That way the signals in the circuit flow from left to right.
 
 ## Not
 
-This is the symbol for a **not** gate.
+This is the symbol for a **not** gate.
 
 ![not.png](https://cdn.alchitry.com/background/not.png)
 
-All that it does is output the opposite of **a**. So if **a** is true **b** is false. You can think of it's output as: _is the input_ **_not_** _true?_
+All that it does is output the opposite of **a**. So if **a** is true **b** is false. You can think of it's output as: _is the input_ **_not_** _true?_
 
-For example, if **a** is 1, then **b** wil output 0.
+For example, if **a** is 1, then **b** wil output 0.
 ## And
 
-This is the symbol for an **and** gate.
+This is the symbol for an **and** gate.
 
 ![and.png](https://cdn.alchitry.com/background/and.png)
 
-When **a** **and b** are both true, **c** is true. If either **a** or **b** is false then **c** will be false. You can think of it's output as: _is input a_ **_and_** _input b true?_
+When **a** **and b** are both true, **c** is true. If either **a** or **b** is false then **c** will be false. You can think of it's output as: _is input a_ **_and_** _input b true?_
 
 For example, if **a** is 1 and **b** is 0, then the output, **c**, will be 0. That is because both inputs are not true, so the output is false.
 ## Or
