@@ -98,7 +98,7 @@ For this simple example, we are going to ignore _tx.busy_. This should not be a 
 
 The next tutorial will handle this more gracefully by actually respecting this flag. 
 
-You should now be able to build your project and load it on the board. You can then go to **Tools->Serial Port Monitor** in Alchitry Labs to launch the monitor. From here, choose the virtual serial port the board connected to and you should be able to type data into the monitor. Whatever you type should be shown.
+You should now be able to build your project and load it on the board. You can then go to **Tools->Serial Port Monitor** in Alchitry Labs to launch the monitor. The monitor should automatically detect the serial port of your board. If you have an Alchitry board (not a Mojo) it'll ask for the baud rate (enter 1000000). You should then be able to type data into the monitor. Whatever you type should be shown.
 
 ## Capturing Data
 
