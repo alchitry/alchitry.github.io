@@ -2,7 +2,6 @@
 title = "Lucid V1 to V2"
 date = "2024-04-01"
 inline_language = "lucid"
-weight = 0
 +++
 
 This post was created for people who are already familiar with Lucid V1 to get up to speed with what's new/different in Lucid V2.

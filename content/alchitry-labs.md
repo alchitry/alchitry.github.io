@@ -7,6 +7,8 @@ weight = 0
 
 [Download the V2 preview.](https://alchitry.com/Alchitry-Labs-V2/download.html)
 
+[![GitHub Release](https://img.shields.io/github/v/release/alchitry/Alchitry-Labs-V2)](https://github.com/alchitry/Alchitry-Labs-V2)
+
 A full rewrite of Alchitry Labs is currently underway. You can download the latest version at the link above.
 
 This is a preview and things are likely to change/break between updates.
