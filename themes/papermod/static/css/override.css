@@ -106,3 +106,7 @@
 .first-entry.home-info {
     margin: 0;
 }
+
+.img-left img {
+    margin: 1rem 0;
+}
