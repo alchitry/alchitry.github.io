@@ -1,9 +1,13 @@
 {% set meta = [] %}
 
 {% if page.date %}
-{% set formatted_date_long = page.date | date(format="%Y-%m-%d %H:%M:%S %z") %}
 {% set formatted_date_short = page.date | date(format=config.extra.papermod.date_format) %}
-{% set meta = meta | concat(with='<span title="' ~ formatted_date_long ~ '">' ~ formatted_date_short ~ '</span>') %}
+{% set meta = meta | concat(with='<span>' ~ formatted_date_short ~ '</span>') %}
+{% endif %}
+
+{% if page.updated %}
+{% set formatted_updated_short = page.updated | date(format=config.extra.papermod.date_format) %}
+{% set meta = meta | concat(with='<span>Updated: ' ~ formatted_updated_short ~ '</span>') %}
 {% endif %}
 
 {% if config.extra.papermod.show_reading_time and config.extra.papermod.show_reading_time == true %}

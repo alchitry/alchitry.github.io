@@ -53,7 +53,7 @@ contexts:
     - match: '\b(signed|default)\b'
       scope: keyword.signed.lucid
 
-    - match: '(([*!~+#\-\/:@|{}?^=><\]\[,();]+)|(c\{|x\{)|(\&(gt|lt|amp);))+'
+    - match: '(([*!~+#\-\/:@|{}?^=><&\]\[,();]+)|(c\{|x\{)|(\&(gt|lt|amp);))+'
       scope: operator.lucid
 
     - match: '\$\w*'
