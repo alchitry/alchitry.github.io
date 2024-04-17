@@ -2,6 +2,7 @@
 .post-content pre code {
     border-radius: var(--radius);
 }
+
 .post-content pre code > table {
     margin: 0px auto;
     border-radius: var(--radius);
@@ -10,6 +11,7 @@
     table-layout: fixed;
     width: 100%;
 }
+
 .post-content pre code > table td {
     min-width: 0;
     vertical-align: top;
@@ -17,6 +19,7 @@
     margin: 0;
     border: 0;
 }
+
 .post-content pre code > table td:first-child {
     white-space: pre;
     user-select: none;
@@ -27,6 +30,7 @@
     display: table-cell;
     max-width: 10%;
 }
+
 .post-content pre code > table td:nth-child(2) {
     width: 92%;
 }
@@ -38,6 +42,7 @@
     padding-bottom: 56.25%;
     margin-bottom: 2em;
 }
+
 .video {
     position: absolute;
     top: 0;
@@ -115,16 +120,31 @@
     border-radius: var(--radius);
     padding: 12px 20px 12px 20px;
     margin: auto 0 var(--content-gap);
-    border-left: 15px solid;
+    border-left: 8px solid;
     display: flex;
     align-items: center;
 }
 
 .callout-icon {
-    display: inline-block;
-    height: 48px;
-    width: 48px;
+    display: block;
+    height: 36px;
+    width: 36px;
+    min-width: 36px;
     margin-right: var(--content-gap);
+    background-size: cover;
+}
+
+
+@media screen and (min-width: 1100px) {
+    .callout-icon {
+        height: 48px;
+        width: 48px;
+        min-width: 48px;
+    }
+
+    .callout-box {
+        border-left: 15px solid;
+    }
 }
 
 .callout-content {
@@ -140,8 +160,8 @@
     border-color: rgb(49 97 183);
 }
 
-.callout-info .callout-icon:before {
-    content: url("/info.svg");
+.callout-info .callout-icon {
+    background-image: url("/info.svg");
 }
 
 .callout-warning {
@@ -149,8 +169,8 @@
     border-color: rgb(229 212 41);
 }
 
-.callout-warning .callout-icon:before {
-    content: url("/warning.svg");
+.callout-warning .callout-icon {
+    background-image: url("/warning.svg");
 }
 
 .callout-error {
@@ -158,8 +178,8 @@
     border-color: rgb(213 47 47);
 }
 
-.callout-error .callout-icon:before {
-    content: url("/error.svg");
+.callout-error .callout-icon {
+    background-image: url("/error.svg");
 }
 
 .callout-danger {
@@ -167,6 +187,6 @@
     border-color: rgb(213 47 47);
 }
 
-.callout-danger .callout-icon:before {
-    content: url("/danger.svg");
+.callout-danger .callout-icon {
+    background-image: url("/danger.svg");
 }

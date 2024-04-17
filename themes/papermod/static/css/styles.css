@@ -680,7 +680,7 @@ pre:hover .copy-code {
 .post-content table th,
 .post-content table td {
   min-width: 80px;
-  padding: 12px 8px;
+  padding:5px 8px;
   line-height: 1.5;
   border-bottom: 1px solid var(--border);
 }
