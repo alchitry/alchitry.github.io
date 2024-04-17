@@ -1,0 +1,6 @@
+<div {% if type %}class="callout-box callout-{{type}}" {% else %}class="callout-box callout-info" {% endif %}>
+    <div class="callout-icon"></div>
+    <div class="callout-content">
+        {{ body | markdown | safe }}
+    </div>
+</div>

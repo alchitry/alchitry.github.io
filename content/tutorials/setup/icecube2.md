@@ -3,6 +3,10 @@ title = "iCEcube2 Setup"
 weight=1
 +++
 
+{% callout(type="warning") %}
+Lattice has replaced the free license for iCEcube2 with an expensive subscription! [Click here for more info!](@/news/icecube2-no-longer-free.md)
+{% end %}
+
 The first step to setting up your environment is to install iCEcube2. iCEcube2 is a program provided by Lattice (the manufacture of the FPGA on the Cu) that is used to build your projects. It holds all the secret sauce that converts your text into an FPGA configuration file (bin file).
 
 Head over to Lattice's website and download the [latest version of iCEcube2 here](http://www.latticesemi.com/iCEcube2).

@@ -110,3 +110,63 @@
 .img-left img {
     margin: 1rem 0;
 }
+
+.callout-box {
+    border-radius: var(--radius);
+    padding: 12px 20px 12px 20px;
+    margin: auto 0 var(--content-gap);
+    border-left: 15px solid;
+    display: flex;
+    align-items: center;
+}
+
+.callout-icon {
+    display: inline-block;
+    height: 48px;
+    width: 48px;
+    margin-right: var(--content-gap);
+}
+
+.callout-content {
+    display: inline-block;
+}
+
+.callout-content > :last-child {
+    margin-bottom: 0;
+}
+
+.callout-info {
+    background: rgb(49 57 71);
+    border-color: rgb(49 97 183);
+}
+
+.callout-info .callout-icon:before {
+    content: url("/info.svg");
+}
+
+.callout-warning {
+    background: rgb(73 71 40);
+    border-color: rgb(229 212 41);
+}
+
+.callout-warning .callout-icon:before {
+    content: url("/warning.svg");
+}
+
+.callout-error {
+    background: rgb(83 49 49);
+    border-color: rgb(213 47 47);
+}
+
+.callout-error .callout-icon:before {
+    content: url("/error.svg");
+}
+
+.callout-danger {
+    background: rgb(83 49 49);
+    border-color: rgb(213 47 47);
+}
+
+.callout-danger .callout-icon:before {
+    content: url("/danger.svg");
+}
