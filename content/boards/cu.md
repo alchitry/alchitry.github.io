@@ -3,6 +3,10 @@ title = "Alchitry Cu"
 weight = 1
 +++
 
+{% callout(type="warning") %}
+Lattice has replaced the free license for iCEcube2 with an expensive subscription! [Click here for more info!](@/news/icecube2-no-longer-free.md)
+{% end %}
+
 Dive into the world of programmable hardware with the Alchitry Cu. This board features a Lattice iCE40 HX FPGA with 79 IO pins broken out!
 
 ![Cu](https://cdn.alchitry.com/boards/cu.jpg)
