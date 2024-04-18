@@ -1180,7 +1180,7 @@ fun functionName(argumentList) {
 
 `functionName` is the name of the function. It must start with a lowercase letter and be followed by letters, numbers, and underscores. By convention, it is `camelCase`.
 
-The `argumentList` is an optional list of arguments. They act the same as read-only [signals](#sig) and have a width of 1 bit if a width isn't provided.
+The `argumentList` is an optional list of arguments. They act the same as read-only [signals](#sig) and have a width of 1 bit if a width isn't provided. They may also be marked as [signed](#signed) using the `signed` keyword.
 
 To call a function, you use the syntax `$functionName(arg, ...)`.
 
