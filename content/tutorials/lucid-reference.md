@@ -2,15 +2,13 @@
 title = "Lucid Reference"
 weight = 0
 inline_language = "lucid"
-date = "2024-04-17"
+date = "2024-04-18"
 +++
-
-This page is still being worked on.
 
 This page is a reference to the Lucid V2 language.
 # Lucid File Contents
 
-Every Lucid file (.luc extension) can contain  `module`, `testBench`, and/or `global` declarations. [^1]
+Every Lucid file (.luc extension) can contain  [module](#modules), [testBench](#test-benches), and/or [global](#globals) declarations. [^1]
 
 ## Modules
 
@@ -85,8 +83,10 @@ Note that this differs from the [parameter list](#parameters) in that opening sy
 Each port declaration takes the following form.
 
 ```lucid
-direction portName portSize
+signed direction portName portSize
 ```
+
+`signed` optionally marks the port to be interpreted as [signed](#signed).
 
 The `direction` is one of `input`, `output`, or `inout`. The details of these are below.
 
@@ -361,6 +361,8 @@ test testName {
 
 The `test` keyword is followed by the name of the test, `testName`, which must start with a lowercase letter and can be followed by letters, numbers, or underscores.
 
+The `testStatements` can be any statements described in the [statements](#always-test-block-statements) section.
+
 # Comments
 
 Comments can appear anywhere and are ignored by the Lucid parser. They share the same format as C/Java comments.
@@ -517,10 +519,12 @@ Each `sig` must have a single driver. Something that provides a value at all tim
 Declaring a `sig` takes the following form.
 
 ```lucid
-sig sigName sigSize = expression
+signed sig sigName sigSize = expression
 ```
 
 Everything other than the `sig` keyword and `sigName` are optional.
+
+`signed` optionally marks the `sig` to be interpreted as [signed](#signed).
 
 `sigName` is the name of the signal and it must start with a lowercase letter. It can then contain letters, numbers, and underscores. By convention, it is `camelCase`.
 
@@ -618,8 +622,10 @@ FPGAs are fully initialized when programmed regardless if the `dff` has a `rst` 
 The format to declare a `dff` looks like the following.
 
 ```lucid
-dff dffName dffSize (portsAndParams)
+signed dff dffName dffSize (portsAndParams)
 ```
+
+`signed` optionally marks the `dff` to be interpreted as [signed](#signed).
 
 The `dffName` is the name of the dff and it must start with a lowercase letter. It can then contain letters, numbers, and underscores. By convention, it is `camelCase`.
 
@@ -641,7 +647,7 @@ It starts with the `const` keyword followed by `CONST_NAME`, the name of your co
 
 The value of the constant is provided by `constExpr`. This can be any [expression](@expressions) that evaluates to a constant value.
 
-The width of the `const` is inferred from the `constExpr`.
+The width and [sign](#signed) of the `const` is inferred from the `constExpr`.
 
 For example, if you need a constant of an 8-bit number you could use the following.
 
@@ -689,7 +695,22 @@ For example, the [multiply and divide](#multiply-and-divide) section comes befor
 
 The simplest expression is a value.
 
-This can be a [constant value](#values), a [signal](#signals), or a [constant](#const).
+This can be a [literal value](#literals), a [signal](#signals), or a [constant](#const).
+### Signed
+
+When a value is `signed`, it means that it will be interpreted as a 2's complement number and can represent negative and positive numbers instead of simply positive. 
+
+An unsigned value can represent values from 0 to 2<sup>b</sup> -1 where b is the number of bits.
+
+A signed value can represent  values from -2<sup>b-1</sup>  to 2<sup>b-1</sup> -1 where b is the number of bits.
+
+The `signed` keyword can be applied as a prefix to most [types](#types) to mark them as `signed`.
+
+The [functions](#built-in) `$signed()` and `$unsigned()` can be used to explicitly mark an expression as one or the other.
+
+Expression that operate on numbers assume the values are unsigned binary numbers unless all of the arguments are marked as `signed`. In that case, they are all treated as 2's complement signed numbers.
+
+It's common to see something like `$signed(a) * $signed(5)` to ensure that the [multiplication](#multiply-and-divide) is `signed`.
 ## Group
 
 The group expression takes the form `( expr )` where `expr` is an expression.
@@ -915,27 +936,204 @@ The result has the same width of `trueExpr` and `falseExpr`, which must match.
 When `selector` is _true_ the result is `trueExpr` otherwise it is `falseExpr`.
 # Always/Test Block Statements
 
+This section contains the statements that can appear inside [always](#always-blocks) and [test](#test-blocks) blocks.
 ## Assignments
 
+The most common statement is the assignment statement. These allow you to write a value to a signal.
+
+They take the following form.
+
+```lucid
+signal = expression
+```
+
+Where `signal` is the writable signal to have the value of `expression` written to it.
+
+The `signal` doesn't necessarily have to be the entire width of the signal and [signal selectors](#signal-selection) can be used to assign a value to only part of the signal.
+
+Here is an example.
+
+```lucid
+sig mySig[16]
+
+always {
+    mySig[7:0] = 8haa
+    mySig[15:8] = 8hbb
+}
+```
+
+If any portion of a signal is driven inside an `always` block then all of the signal must be driven somewhere in the block. In the above example, removing either assignment would result in an error since that `always` block would have a value for only half of the signal.
 ## if
 
+An `if` statement allows you to conditionally consider a block of statements.
+
+They take the following form.
+
+```lucid
+if (condition) {
+    statements
+} else {
+    statements
+}
+```
+
+If `condition` is _true_, meaning non-zero, then the statements in the first `statements` section are considered. If it is _false_, meaning zero, then the statements in the second `statements` section are considered.
+
+The `else` portion is optional.
+
+The brackets can be omitted if there is only one statement in `statements`.
 ## case
 
+The `case` statement provides a way to cleanly write a group of conditional statements that depend on the value of a single expression.
+
+It takes the following form.
+
+```lucid
+case (condition) {
+    VALUE_1:
+        statements
+    VALUE_2:
+        statements
+    ...
+    default:
+        statements
+}
+```
+
+The `condition` expression is evaluated and compared against the provided values (`VALUE_1`, `VALUE_2`, etc) inside the `case` block.
+
+If one of the values match `condition`, then its corresponding group of `statements` are considered. If none of the values match, an optional `default` branch's `statements` are considered.
+
+Unlike some programming languages, there is no `break` keyword and the branches don't fall through to the next condition without one.
+
+You often see these used in conjunction with [enums](#enum) where the condition is a [dff](#dff) that holds the current state and each branch is one of the `enum`'s values.
 ## repeat
+
+The `repeat` statement allows for a block of statements to be considered multiple times.
+
+They take the following form.
+
+```lucid
+repeat(count, var) {
+    statements
+}
+```
+
+Here `count` is a constant expression indicating how many times the block of `statements` should be considered.
+
+The `var` argument is an optional variable name that can be used inside the `repeat` block. It will contain the values `0` to `count - 1` indicating the current iteration of the loop. It must start with a lowercase letter and can contain letters, numbers, and underscores. By convention, it is `camelCase`.
+
+The `count` value can be an expression depending on outer loops `var` in the case of nested `repeat` blocks.
+
+Here is an example.
+
+```lucid
+repeat(3, i) {
+    repeat(i+1, j) {
+        $print("(i, j) = (%d, %d)", i, j)
+    }
+}
+```
+
+This would print the following (in a simulation).
+
+```
+(i, j) = (0, 0)
+(i, j) = (1, 0)
+(i, j) = (1, 1)
+(i, j) = (2, 0)
+(i, j) = (2, 1)
+(i, j) = (2, 2)
+```
+
+{% callout() %}
+While it may seem like `repeat` works like `for` loops in many programming languages, it is important to remember that `always` blocks are only a conveniently abstraction for describing a circuit's behavior. When your design is synthesized it must be converted to hardware.
+
+This means that all loops must be _unrolled_. A `repeat` block is identical to simply copy-pasting the contents over and over and replacing the loop variable with a different value for each one.
+{% end %}
 
 ## Function call
 
-# Values
+In [test blocks](#test-blocks), you can call [simulation functions](#simulation-only) as a statement.
+
+These are used to control the simulator or produce output like `$print()` used in the [repeat](#repeat) example.
+
+# Literals
 
 ## Numbers
 
-### Signed
+Numbers can be represented in decimal, binary, or hexadecimal. In each case you can choose to explicitly specify the number of bits.
+
+| Format                | Radix        | Width                 |
+| --------------------- | ------------ | --------------------- |
+| `0123456789`          | 10 (decimal) | Minimum bits required |
+| `d0123456789`         | 10 (decimal) | Minimum bits required |
+| `b01xz`               | 2 (binary)   | Number of digits      |
+| `h0123456789ABCDEFxz` | 16 (hex)     | Number of digits \* 4 |
+
+Decimal numbers can be written as a stand-alone number. For example, `12` will have the expected value of `12`. They can also be prefixed with a `d` to specify that it is a decimal number like `d12`. In both of these cases, the value will have the minimum number of bits required, 4.
+
+Binary numbers are written with the `b` prefix. After that, they can have the digits `0`, `1`, `x`, and `z`. 
+
+Hex numbers are written with the `h` prefix. After that, they can have the digits `0` through `9`, `A` through `F`, `x`, and `z`.
+
+The value of `x` means either _don't care_ or _unknown_ depending on the context.
+
+It is impossible for hardware to realize the value `x` so outside of simulations these are actually `0` or `1`. You can assign something `x` if you don't care what the value is and this will give the tools the freedom to choose whatever value is most efficient.
+
+The value of `z` means _high-impedance_ and is covered in the [ports](#ports) section.
+
+FPGAs don't have the hardware internally to realize `z` values so they can only be used on top-level [outputs](#output) and [inouts](#inout).
+
+To explicitly specify the width of a number, you add the number of bits before the radix prefix.
+
+For example, `8d10` will have the value `10` and be 8 bits wide.
+
+If the explicit width is wider than the minimum required width, the value is padded with `0` unless the most-significant (left-most) digit is either `x` or `z`. In that case, it will be padded with `x` or `z` respectively.
+
+For example, `12hx0` has the value `12bxxxxxxxx0000`.
+
+If the explicit width is less than the minimum required width, the value will be truncated and a warning will be shown.
+## Arrays
+
+Literal arrays can be constructed using other literals and the [array builder](#array-builder) expression.
+
+Here is an example of an array of 4, 8 bit values.
+
+```lucid
+{8d4, 8d3, 8d2, 8d1}
+```
 
 ## Strings
 
-## Arrays
+Strings are just an easy way of creating an array of 8 bit values that correspond to text.
+
+They take the form of text enclosed by quotation marks like `"this example"`.
+
+The left-most character is index 0 in the resulting array.
+
+For example, `"Hi"` is equal to `{8h69, 8h48}` (`h69` is the code for _i_ and `h48` is _H_).
 
 ## Structs
+
+Struct types are covered in the [struct section](#struct).
+
+To create a literal of a `struct`, you use the following syntax.
+
+```lucid
+<structType>(.elementName(constValue), ...)
+```
+
+Here `structType` is a previously defined `struct` type.
+
+The following comma separated list must contain every element in `structType`. The `elementName` is the name of element in the `structType` and `constValue` is the constant value to assign to the element.
+
+Here is an example.
+
+```lucid
+struct color { red[8], green[8], blue[8] }
+const ALCHITRY_GOLD = <color>(.red(250), .green(172), .blue(31))
+```
 
 # Functions
 
@@ -972,6 +1170,34 @@ These functions are only available during simulations. In other words, inside [t
 | `$print(format, exprs...)` | `format` is a [string literal](#strings) and `exprs` is a variable number of expressions depending on the `format` | Prints the string `format` with the values of the provided `exprs` replaced where applicable. Valid format flags are `%d` for decimal, `%h` for hex, `%b` for binary, `%nf` for fractional where `n` is the number of fractional bits. |
 ## User Created
 
+Inside of [test benches](#test-benches), you can create your own functions using the following syntax.
+
+```lucid
+fun functionName(argumentList) {
+    functionBody
+}
+```
+
+`functionName` is the name of the function. It must start with a lowercase letter and be followed by letters, numbers, and underscores. By convention, it is `camelCase`.
+
+The `argumentList` is an optional list of arguments. They act the same as read-only [signals](#sig) and have a width of 1 bit if a width isn't provided.
+
+To call a function, you use the syntax `$functionName(arg, ...)`.
+
+Here is an example function with an argument.
+
+```lucid
+fun tickClock(times[32]) {
+    repeat(times) {
+        clk = 1
+        $tick()
+        clk = 0
+        $tick()
+    }
+}
+```
+
+This could be called using something like `$tickClock(20)`.
 
 # Footnotes
 
