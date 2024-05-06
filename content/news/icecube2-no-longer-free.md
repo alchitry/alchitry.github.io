@@ -1,7 +1,12 @@
 +++
 title = "iCEcube2 No Longer Free"
 date = 2024-04-17
+updated = 2024-05-06
 +++
+
+{% callout(type="info") %}
+Lattice has since added a note about free licenses for "hobbyists, enthusiasts, community educators & start-up companies." See the Licensing section at the bottom of [this page](https://www.latticesemi.com/iCEcube2).
+{% end %}
 
 It appears that Lattice Semiconductors, the manufacture of the FPGA used in the [Cu](@/boards/cu.md), has decided to pull a fast one and silently change the license required to use [iCEcube2](@/tutorials/setup/icecube2.md) from free to an __expensive__ subscription.
 

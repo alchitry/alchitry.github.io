@@ -107,7 +107,7 @@ Signals inside an FPGA don't have a mechanism for realizing `bz` so this can't b
 
 Inouts provide a way to create a bi-directional signal.
 
-These can't be used internally in the FPGA and are only valid to be connected directly to a top-level inout (pin on the FPGA).
+These can't be used internally in the FPGA and are only valid to be connected directly to a top-level `inout` (pin on the FPGA).
 
 When an `inout` is written, the value will dictate if the pin's driver is enabled. If it anything other than `bz` the driver will be enabled. A value of `bz` will disable the driver and leave the pin floating to be driven externally.
 
@@ -833,7 +833,7 @@ There are four versions of the shifting operator.
 | `expr <<< amount` | Arithmetic left shift  |
 | `expr >>> amount` | Arithmetic right shift |
 
-`amount` must be a constant expression and `expr` must be a 1-D array or bit.
+`amount` and `expr` must be 1-D arrays or bits.
 
 Logical shifts always use `0` for the bits shifted in.
 
