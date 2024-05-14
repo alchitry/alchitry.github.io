@@ -9,7 +9,7 @@ weight = 0
 
 <div class="img-left">
 
-[![GitHub Release](https://img.shields.io/github/v/release/alchitry/Alchitry-Labs-V2)](https://github.com/alchitry/Alchitry-Labs-V2)
+[<img src="https://img.shields.io/github/v/release/alchitry/Alchitry-Labs-V2" height="40px" />](https://github.com/alchitry/Alchitry-Labs-V2)
 
 </div>
 

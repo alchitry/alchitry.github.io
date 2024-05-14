@@ -1014,22 +1014,26 @@ The `repeat` statement allows for a block of statements to be considered multipl
 They take the following form.
 
 ```lucid
-repeat(count, var) {
+repeat(i, count, start = 0, step = 1) {
     statements
 }
 ```
 
 Here `count` is a constant expression indicating how many times the block of `statements` should be considered.
 
-The `var` argument is an optional variable name that can be used inside the `repeat` block. It will contain the values `0` to `count - 1` indicating the current iteration of the loop. It must start with a lowercase letter and can contain letters, numbers, and underscores. By convention, it is `camelCase`.
+The arguments `start` and `step` are optional and have default values of `0` and `1` respectively.
+
+The `i` argument is an optional variable name that can be used inside the `repeat` block. It will start with the value `start` and increment by `step` each iteration of the loop to a final value of `start + step * (count - 1)`. It must start with a lowercase letter and can contain letters, numbers, and underscores. By convention, it is `camelCase`.
+
+If `i` is omitted, then only `count` should be provided making it take the form `repeat(count)`.
 
 The `count` value can be an expression depending on outer loops `var` in the case of nested `repeat` blocks.
 
 Here is an example.
 
 ```lucid
-repeat(3, i) {
-    repeat(i+1, j) {
+repeat(i, 3) {
+    repeat(j, i+1) {
         $print("(i, j) = (%d, %d)", i, j)
     }
 }

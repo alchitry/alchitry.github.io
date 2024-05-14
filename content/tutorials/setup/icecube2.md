@@ -9,8 +9,7 @@ Head over to Lattice's website and download the [latest version of iCEcube2 here
 
 The download links are at the bottom of the page.
 
-You will need to create an account to download the software and create a (free) license file for it.
-
+You will need to create an account to download the software and acquire a license file for it.
 ## Getting a License
 
 Before launching the installer, you should get a license file.
