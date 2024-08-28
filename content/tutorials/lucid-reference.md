@@ -8,8 +8,7 @@ date = "2024-04-18"
 This page is a reference to the Lucid V2 language.
 # Lucid File Contents
 
-Every Lucid file (.luc extension) can contain  [module](#modules), [testBench](#test-benches), and/or [global](#globals) declarations. [^1]
-
+Every Lucid file (.luc extension) can contain  [module](#modules), [testBench](#test-benches), and/or [global](#globals) declarations.
 ## Modules
 
 Modules are the core of any Lucid project. They are where you define a block of functionality.
@@ -70,6 +69,14 @@ An example full declaration could look like this.
     BAUD = 1000000 : BAUD > 0 && BAUD <= CLK_FREQ/4 // desired baud rate
 )
 ```
+
+If a parameter has a `defaultValue` provided, then any value assigned to the module during instantiation, must be compatible with the width of `defaultValue`.
+
+For a width to be _compatible_ all of its dimensions except the outermost dimension must match.
+
+For example, if a parameter was declared as `PARAM = {8d1, 8d2, 8d3}` then any value assigned to `PARAM` must has the width of `[x][8]` where `x` can be anything.
+
+If the parameter is a simple number, or `defaultValue` is omitted, then the width of the parameter is assumed to be a simple (1D) array.
 ### Ports
 
 Ports are how modules connect to the outside world.
@@ -1114,10 +1121,11 @@ Strings are just an easy way of creating an array of 8 bit values that correspon
 
 They take the form of text enclosed by quotation marks like `"this example"`.
 
-The left-most character is index 0 in the resulting array.
+The right-most character is index 0 in the resulting array.
 
-For example, `"Hi"` is equal to `{8h69, 8h48}` (`h69` is the code for _i_ and `h48` is _H_).
+For example, `"Hi"` is equal to `{8h48, 8h69}` (`h48` is the code for _H_ and `h69` is _i_).
 
+You will often see strings used in conjunction with [`$reverse()`](#built-in) to make index 0 be the left-most letter.
 ## Structs
 
 Struct types are covered in the [struct section](#struct).
@@ -1160,6 +1168,7 @@ In the table below, the argument type of _Value_ means a 1-D array or bit. In ot
 | `$fixedPoint(real, width, fractional)`  | `real` is a real number, `width` and `fractional` are  constant values | Calculates the nearest fixed-point representation of `real` using a total width of `width` and `fractional` fractional bits. For example, `$fixedPoint(3.14, 8, 4)` produces `8d50`.                                                                                                                                                                                     |
 | `$cFixedPoint(real, width, fractional)` | `real` is a real number, `width` and `fractional` are  constant values | Calculates the smallest fixed-point representation of `real`  that is still larger than it using a total width of `width` and `fractional` fractional bits. For example, `$cFixedPoint(3.14, 8, 4)` produces `8d51`.                                                                                                                                                     |
 | `$fFixedPoint(real, width, fractional)` | `real` is a real number, `width` and `fractional` are  constant values | Calculates the largest fixed-point representation of `real`  that is still smaller than it using a total width of `width` and `fractional` fractional bits. For example, `$fFixedPoint(3.14, 8, 4)` produces `8d50`.                                                                                                                                                     |
+| `$isSim()`                              | None                                                                   | Evaluates to `1b1` during interactive simulations and `1b0` otherwise.                                                                                                                                                                                                                                                                                                   |
 
 ### Simulation Only
 
@@ -1202,8 +1211,3 @@ fun tickClock(times[32]) {
 ```
 
 This could be called using something like `$tickClock(20)`.
-
-# Footnotes
-
-[^1]: The current version of Alchitry Labs restricts files to contain at most one `module`. This restriction may be lifted in a future update.
-
