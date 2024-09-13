@@ -3,9 +3,9 @@ title = "Alchitry Labs"
 weight = 0
 +++
 
-## Version 2.0.x Preview
+## Version 2.0.x Beta
 
-[Download the V2 preview.](https://alchitry.com/Alchitry-Labs-V2/download.html)
+[Download the V2 beta.](https://alchitry.com/Alchitry-Labs-V2/download.html)
 
 <div class="img-left">
 
@@ -15,7 +15,7 @@ weight = 0
 
 A full rewrite of Alchitry Labs is currently underway. You can download the latest version at the link above.
 
-This is a preview and things are likely to change/break between updates.
+This is now in beta! Give it try and report any issues to the [issues page](https://github.com/alchitry/Alchitry-Labs-V2/issues).
 
 V2 supports Windows, Linux, and **Macs**.
 
@@ -28,9 +28,11 @@ On Macs, you can only build for the [Cu](@/boards/cu.md) using the included open
 - [Windows Files](https://cdn.alchitry.com/labs/alchitry-labs-1.2.7-windows.zip)
 - [Linux](https://cdn.alchitry.com/labs/alchitry-labs-1.2.7-linux.tgz)
 
+A JDK (Java) with version 1.8.0 or later is required to run Alchitry Labs V1.
+
 ### Alchitry Loader
 
-Alchitry Labs now includes the Alchitry Loader as part of the install to make things simpler. This tool can be used to load .bin files directly to your board from a third-party tool.
+Alchitry Labs now includes the Alchitry Loader as part of the installation to make things simpler. This tool can be used to load .bin files directly to your board from a third-party tool.
 ### Drivers
 
 Alchitry Labs now supports both the open source library libusb, the FTDI proprietary drivers, and direct COM port drivers (for the Mojo).
