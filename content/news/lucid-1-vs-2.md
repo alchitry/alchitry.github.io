@@ -69,14 +69,6 @@ struct myStruct {
 }
 ```
 
-## One Module Per File
-
-As the heading says, only one module per file is now allowed.
-
-This probably doesn't change anything for most people but it helps keeps things more organized.
-
-You can still have a `global` declaration and a `module` declaration in the same file.
-
 # No More `.WIDTH`
 
 Something that always felt kind of out of place to me was the `.WIDTH` attribute attached to "all" signals in Lucid V1.
@@ -105,7 +97,10 @@ For loops were replaced with the new `repeat` loop.
 
 Lucid V1 used _C_ style for loop that were easy to write in a way that would be impossible to implement in hardware.
 
-The new `repeat` loop has the simple syntax of `repeat(count, i) {}` where `count` is a constant expression and `i` is an optional loop variable that will have the values `0` to `count - 1`.
+The new `repeat` loop has the simple syntax of `repeat(i, count, start = 0, step = 1) {}` where `i` is an optional loop variable.
+`count` is a constant expression.
+`start` and `step` are also constant expressions but are optional.
+The loop will repeat `count` times and `i` will be set from `start` to `start + step * (count - 1)`.
 
 This syntax makes it impossible to write a loop with a variable number of iterations (which hardware can't accommodate). 
 
