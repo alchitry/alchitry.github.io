@@ -152,8 +152,8 @@ To make this clear, lets looks at an example.
 
 ```lucid
 always {
-  led = 8h00;             // turn LEDs off
-  led = 8hFF;             // turn LEDs on
+  led = 8h00             // turn LEDs off
+  led = 8hFF             // turn LEDs on
 }
 ```
 I know we haven't covered numbers yet, but `8h00` just means an 8-bit wide hex number of 00.
