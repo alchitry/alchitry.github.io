@@ -23,7 +23,7 @@ Using the Cu has never been easier. Alchitry Labs 2 now ships with the  [open so
 
 The best part is that these even run on Macs (none of the proprietary tools do).
 
-You can still choose to use Lattice's propriety toolchain, [iCEcube2](@/tutorials/setup/icecube2.md).
+You can still choose to use Lattice's propriety toolchain, [iCEcube2](@/tutorials/setup/icecube2.md), which is more work but can often offer more optimized designs.
 ## Mojo
 
 The Mojo is no longer actively supported and requires Alchitry Labs V1 and the abandoned [ISE](@/tutorials/setup/ise.md) tool from Xilinx. 
