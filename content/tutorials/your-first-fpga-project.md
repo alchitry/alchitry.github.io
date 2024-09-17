@@ -120,8 +120,15 @@ It'll all be covered in a later tutorial.
 
 # Always Blocks
 
-Let's jump back to the `alchitryTop` module and then down to the `always` block.
-We will come back to the stuff in between in the next tutorial.
+Let's jump back to the `alchitryTop` module.
+
+The first line declares a `sig` named `rst`. 
+The `sig` type (short for signal) acts like a wire to connect things.
+They don't actually _store_ any value and really just act like an alias for what is assigned to them.
+
+Next a `resetConditioner` module is instantiated.
+This is covered in the next tutorial, and we are going to skip it for now.
+Jump down to the `always` block.
 
 Always blocks are a concept, that again, exists in all HDLs.
 They are where you describe the vast majority of your design's logic.

@@ -212,6 +212,10 @@ If we wanted to assign different values to each one, they would need to be assig
 ```lucid
 moduleType myModule[8](#PARAM_NAME({8d0, 8d1, 8d2, 8d3, 8d4, 8d5, 8d6, 8d7}))
 ```
+
+This does not apply to the `dff`. 
+The `clk` and `rst` inputs are always 1 bit and the `INIT` parameter always applies to the full `dff`.
+
 #### Always Blocks
 
 Always blocks provide a way to describe complex behavior in a way that resembles traditional programming.
