@@ -385,7 +385,7 @@ It is very common to want to index something based on the width of the signal.
 For that, and other cases, we have the `$width()` function.
 
 The `$width()` function takes any signal as an argument and returns its width. 
-See the [reference page](@/tutorials/lucid-reference.md#build-in) for more details.
+See the [reference page](@/tutorials/lucid-reference.md#built-in) for more details.
 
 We can rewrite the indexing of the MSB of `counter.q` from `counter.q[$isSim() ? 8 : 24]` to `counter.q[$width(counter.q) - 1]`.
 This way no matter what size `counter.q` is, we will always be indexing the last bit.
