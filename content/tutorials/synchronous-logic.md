@@ -354,7 +354,7 @@ module blinker (
 ```
 
 We can clean this up using the `$isSim()` function.
-This function evaluates to `0` unless you are running an interactive simulation, then it is `1`.
+This function evaluates to `1` if you are running an interactive simulation, and `0` otherwise.
 
 Using this and the ternary operator we can update the code to work in both cases.
 
