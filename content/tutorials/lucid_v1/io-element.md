@@ -565,7 +565,7 @@ The `DIV` parameter is used to set how many bits to use to divide the clock. By 
 
 The decoder is a binary to one-hot decoder. If you need a refresher on one-hot representation check out the [encodings tutorial](@/tutorials/background/encodings.md). Basically, the decoder will take our three bits and convert it to eight bits. If the input is 0, then the 0th bit of the output will be 1 and everything else will be 0. If the input is 4, the 4th bit will be 1 and everything else will be 0. This allows us to use the binary counter to light individual LEDs.
 
-Note that the output of the decoder is 2_WIDTH_ bits wide. So in our case, 23 = 8 bits wide.
+Note that the output of the decoder is 2^_WIDTH_ bits wide. So in our case, 2^3 = 8 bits wide.
 
 Now we can hook up the modules.
 
@@ -798,7 +798,7 @@ module seven_seg (
 
 This module will take a binary number, `char`, and output the segments, `segs`, that need to be on.
 
-This modules uses a **case** statement. Case statements are equivalent to a bunch of `if` statements. One of the entries will be selected based on the value of `char`. If `char` is 1, then only the block after the `1:` is used. If none of the blocks match, the `default:` block is used. The default block is optional, but it is generally a good idea to include it even if you think you have all the cases covered.
+This module uses a **case** statement. Case statements are equivalent to a bunch of `if` statements. One of the entries will be selected based on the value of `char`. If `char` is 1, then only the block after the `1:` is used. If none of the blocks match, the `default:` block is used. The default block is optional, but it is generally a good idea to include it even if you think you have all the cases covered.
 
 If `char` is an invalid number (not 0-9), then all the segments will be off.
 
@@ -851,7 +851,7 @@ seven_seg seg;
 ```
 {% end %}
 
-We need `ctr` to count from 0-9 so we set `TOP` to 9 to cap its value. Also we need to change `SIZE` to 4, as we only need 4 bits to represent 0-9.
+We need `ctr` to count from 0-9 so we set `TOP` to 9 to cap its value. Also, we need to change `SIZE` to 4, as we only need 4 bits to represent 0-9.
 
 Because we don't need the decoders anymore, we can remove them and add our `seven_seg` module.
 
@@ -966,7 +966,7 @@ The constant `DIGIT_BITS` is the number of bits we need to cover all `DIGITS` nu
 
 We only want the counter to count from 0 to `DIGITS-1` so we set the `TOP` parameter accordingly.
 
-`DIV` is used so that we don't switch between the digits too fast. If we switch too fast, the transistors that drive the LEDs don't have time to fully turn off and we get bleed between digits.
+`DIV` is used so that we don't switch between the digits too fast. If we switch too fast, the transistors that drive the LEDs don't have time to fully turn off, and we get bleed between digits.
 
 The way this module works is `ctr` is used to select the active digit. The value from `values` is then selected, decoded, and sent to the segments of the LEDs displays. The binary value of the active digit is then decoded into a one-hot value as before and used to select which digit is on. Because `ctr` keeps cycling the active digits, all the displays will appear on.
 
@@ -1086,7 +1086,7 @@ Build and load the design to your Mojo to make sure each digit is displaying the
 
 ## Decimal Counters
 
-Alright, now that we have a way to show a value on our display, let's make a the display count! For this we need a decimal counter. We could use a regular counter and convert the binary value into four decimal values, but that's a bit trickier. Instead, we will create a special counter that counts in base 10.
+Alright, now that we have a way to show a value on our display, let's make the display count! For this we need a decimal counter. We could use a regular counter and convert the binary value into four decimal values, but that's a bit trickier. Instead, we will create a special counter that counts in base 10.
 
 To do this we will create two modules. The first will be a single digit counter and the second will chain these together for a multi-digit counter.
 
@@ -1150,7 +1150,7 @@ module multi_dec_ctr #(
 }
 ```
 
-Here we take `DIGITS` `decimal_counter_s and chain them together. Each counter _inc` signal is connected to the previous counter's _ovf_ signal. This means that once a counter overflows from 9 to 0, the next one will be incremented. Of course, the first counter doesn't have a previous counter's `ovf` signal, so we use an external increment signal instead.
+Here we take `DIGITS` `decimal_counter` modules and chain them together. Each counter `inc` signal is connected to the previous counter's _ovf_ signal. This means that once a counter overflows from 9 to 0, the next one will be incremented. Of course, the first counter doesn't have a previous counter's `ovf` signal, so we use an external increment signal instead.
 
 We use the bit selectors `[1+:DIGITS-1]` and `[0+:DIGITS-1]` to select bits from `dctr.inc` and `dctr.ovf`. What `[1+:DIGITS-1]` means is starting from bit 1, select `DIGITS-1` bits going up. This is an easy way to select a specified number of bits given some start index. You can use `-:` instead of `+:` to select bits going down from the given start index instead of going up.
 
@@ -1294,7 +1294,7 @@ always {
 
 The value from the counter is fed into the edge detector. The pulse from the edge detector is fed into the decimal counter. The decimals from the decimal counter are sent to the multi-digit driver. Finally, the multi-digit driver is connected to the actual display.
 
-This is what is so cool about FPGAs. Each one of these modules operates completely independently from one another since they all exist in hardware!
+This is what is so cool about FPGAs. Each one of these modules operates completely independently of one another since they all exist in hardware!
 
 This example is fairly complicated, but by breaking down the problem in little chunks (modules) we were able to create a design that is relatively easy to understand and flexible for future upgrades.
 
