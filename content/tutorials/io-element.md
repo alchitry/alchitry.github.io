@@ -474,6 +474,13 @@ This is effectively multiplying by 0.333328, but 16 bit multiplication is signif
 If you need real division, you can try to use the `/` operator directly.
 If you are using an Au, you can also use the _Vivado IP Catalog_ to generate an optimized divider.
 
+Go ahead and try out division.
+Note that dividing by `0` technically produces the value `bx` which means the tools what do whatever they want.
+With Vivado and Yosys, dividing by 0 produced `24hFFFFFF`.
+With iCEcube2, dividing by 0 produced `24h0000FF`.
+
+If you divide by 0 in the simulator, the LEDs will turn red indicating a `bx` value.
+
 # Seven-Segment Displays
 
 The Io Element has four seven-segment displays that are multiplexed. This means that we have two groups of signals, the first, `ioSeg`, connects to the segments of each display.
