@@ -16,6 +16,8 @@ In Alchitry Labs, open the new project dialog (Alchitry Logo->New Project...) an
 I named mine _Io Element Demo_. 
 Before you click _Create_, select _Io Base_ from the _Template_ drop-down menu. This will give you a bare-bones base to start working with the element.
 
+The only difference between this project and the standard base project is that this has the connections to the Io Element already defined for you.
+
 {% callout(type="warning") %}
 If you have a Cu with an older Io Element, you should use the _Io Base Fake Pull-downs_ template instead.
 
@@ -45,8 +47,6 @@ By repeating this process over and over, we can simulate having a normal pull-do
 Thanks to this module, you can ignore that any of this is even happening and simply use its output as you would the input with a pull-down.
 The only difference is instead of using `ioDip` or `ioButton` you use `dipPd.out` and `buttonPd.out` respectively.
 {% end %}
-
-The only difference between this project and the standard base project is that this has the connections to the Io Element already defined for you.
 
 Let's take a look at the top file.
 
