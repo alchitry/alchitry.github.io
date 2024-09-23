@@ -47,7 +47,7 @@ contexts:
     - match: '\b(input|output|inout|var|sig|dff|fsm|const|struct|enum)\b'
       scope: keyword.type.lucid
 
-    - match: '\b(module|global|testBench)\b'
+    - match: '\b(module|global|testbench)\b'
       scope: keyword.namespace.lucid
 
     - match: '\b(signed|default)\b'

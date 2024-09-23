@@ -2,13 +2,13 @@
 title = "Lucid Reference"
 weight = 0
 inline_language = "lucid"
-date = "2024-04-18"
+date = "2024-09-23"
 +++
 
 This page is a reference to the Lucid V2 language.
 # Lucid File Contents
 
-Every Lucid file (.luc extension) can contain  [module](#modules), [testBench](#test-benches), and/or [global](#globals) declarations.
+Every Lucid file (.luc extension) can contain  [module](#modules), [testbench](#testbenches), and/or [global](#globals) declarations.
 ## Modules
 
 Modules are the core of any Lucid project. They are where you define a block of functionality.
@@ -16,7 +16,7 @@ Modules are the core of any Lucid project. They are where you define a block of 
 A `module` declaration takes the following form.
 
 ```lucid
-module moduleName #(
+module module_name #(
     // optional parameter list
 )(
     // port list
@@ -38,28 +38,30 @@ It is optional and can be completely omitted.
 Each parameter declaration takes the following form.
 
 ```lucid
-PARAM_NAME = defaultValue : testCondition
+PARAM_NAME = default_value : test_condition
 ```
 
 or
 
 ```lucid
-PARAM_NAME ~ testValue : testCondition
+PARAM_NAME ~ test_value : test_condition
 ```
 
-Here, `PARAM_NAME` is the name of the parameter. Parameter names, like [constants](#const), must be made up of only capital letters and underscores.
+Here, `PARAM_NAME` is the name of the parameter. 
+Parameter names, like [constants](#const), must be made up of only capital letters and underscores.
 
 Everything besides `PARAM_NAME` is optional.
 
-In the first example, `= defaultValue`, will provide a default value for the parameter. If a default value is provided, when the module is [instantiated](#module-instances) the parameter can be omitted.
+In the first example, `= default_value`, will provide a default value for the parameter. If a default value is provided, when the module is [instantiated](#module-instances) the parameter can be omitted.
 
-If you want to require a value to be provided when the module in [instantiated](#module-instances) then you can use the form in the second example of `~ testValue`. With this form, `testValue` is used as an example value to test your module in a stand-alone fashion by Alchitry Labs. However, it won't be used when the module is instantiated.
+If you want to require a value to be provided when the module in [instantiated](#module-instances) then you can use the form in the second example of `~ test_value`. 
+With this form, `test_value` is used as an example value to test your module in a stand-alone fashion by Alchitry Labs. However, it won't be used when the module is instantiated.
 
-The `testValue` and `defaultValue` can be omitted but this will hinder the amount of error checking Alchitry Labs can perform on your module until it is instantiated.
+The `test_value` and `default_value` can be omitted but this will hinder the amount of error checking Alchitry Labs can perform on your module until it is instantiated.
 
-The last piece, `: testCondition` provides a condition to test the parameter against. If it is false (evaluates to 0), then an error is thrown when the module is [instantiated](#module-instances). 
+The last piece, `: test_condition` provides a condition to test the parameter against. If it is false (evaluates to 0), then an error is thrown when the module is [instantiated](#module-instances). 
 
-The `testCondition` can be any [expression](#expressions) that evaluates to a number and references only this parameter or any previously declared parameters (ones that appear before this one in the list).
+The `test_condition` can be any [expression](#expressions) that evaluates to a number and references only this parameter or any previously declared parameters (ones that appear before this one in the list).
 
 An example full declaration could look like this.
 
@@ -70,13 +72,13 @@ An example full declaration could look like this.
 )
 ```
 
-If a parameter has a `defaultValue` provided, then any value assigned to the module during instantiation, must be compatible with the width of `defaultValue`.
+If a parameter has a `default_value` provided, then any value assigned to the module during instantiation, must be compatible with the width of `default_value`.
 
 For a width to be _compatible_ all of its dimensions except the outermost dimension must match.
 
 For example, if a parameter was declared as `PARAM = {8d1, 8d2, 8d3}` then any value assigned to `PARAM` must has the width of `[x][8]` where `x` can be anything.
 
-If the parameter is a simple number, or `defaultValue` is omitted, then the width of the parameter is assumed to be a simple (1D) array.
+If the parameter is a simple number, or `default_value` is omitted, then the width of the parameter is assumed to be a simple (1D) array.
 ### Ports
 
 Ports are how modules connect to the outside world.
@@ -90,19 +92,25 @@ Note that this differs from the [parameter list](#parameters) in that opening sy
 Each port declaration takes the following form.
 
 ```lucid
-signed direction portName portSize
+signed direction port_name port_size
 ```
 
 `signed` optionally marks the port to be interpreted as [signed](#signed).
 
 The `direction` is one of `input`, `output`, or `inout`. The details of these are below.
 
-The `portName` is the name of the port and must start with a lowercase letter. It can then be followed by letters, numbers, and underscores.  It is convention for it to be `camelCase`.
+The `port_name` is the name of the port and must start with a lowercase letter. 
+It can then be followed by letters, numbers, and underscores.  
+It is convention for it to be `snake_case`.
 
-The port can have an optional `portSize`. This follows the format defined in [sizing](#sizing). If it is omitted, then the port is a single bit wide.
+The port can have an optional `port_size`. 
+This follows the format defined in [sizing](#sizing). 
+If it is omitted, then the port is a single bit wide.
+
 #### input
 
 Inputs are read-only signals passed into the module. 
+
 #### output
 
 Outputs are write-only signals passed out of module.
@@ -110,13 +118,16 @@ Outputs are write-only signals passed out of module.
 Typically, they will have a value of `b0` or `b1`. However, if they connect directly to a top-level output (pin on the FPGA) they can also have the value `bz` meaning high-impedance (not driven).
 
 Signals inside an FPGA don't have a mechanism for realizing `bz` so this can't be used internally.
+
 #### inout
 
-Inouts provide a way to create a bi-directional signal.
+Inouts provide a way to create a bidirectional signal.
 
 These can't be used internally in the FPGA and are only valid to be connected directly to a top-level `inout` (pin on the FPGA).
 
-When an `inout` is written, the value will dictate if the pin's driver is enabled. If it anything other than `bz` the driver will be enabled. A value of `bz` will disable the driver and leave the pin floating to be driven externally.
+When an `inout` is written, the value will dictate if the pin's driver is enabled. 
+If it is anything other than `bz` the driver will be enabled. 
+A value of `bz` will disable the driver and leave the pin floating to be driven externally.
 
 When an `inout` is read, the value at the actual pin is read. The value will never be `bz`.
 
@@ -136,32 +147,33 @@ A module can contain sub-modules. When you use a module, that is called _instant
 A module instantiation takes the following form.
 
 ```lucid
-moduleType moduleInstanceName optionalArraySize ( portAndParamConnections )
+module_type module_instance_name optional_array_size ( port_and_param_connections )
 ```
 
-The `moduleType` is the name of a previously defined module to be instantiated.
+The `module_type` is the name of a previously defined module to be instantiated.
 
-The `moduleInstanceName` is the name of this particular _instance_. It must start with a lowercase letter. It can then be followed by letters, numbers, and underscores. It is convention for it to be `camelCase`.
+The `module_instance_name` is the name of this particular _instance_. It must start with a lowercase letter. It can then be followed by letters, numbers, and underscores. 
+It is convention for it to be `snake_case`.
 
-The `optionalArraySize` follows the format defined in the [sizing](#sizing) section for arrays. Structs are not supported for module instances.
+The `optional_array_size` follows the format defined in the [sizing](#sizing) section for arrays. Structs are not supported for module instances.
 
-If `optionalArraySize` is omitted, a single instance of the module is created.
+If `optional_array_size` is omitted, a single instance of the module is created.
 
-If `optionalArraySize` is provided, an instance of the module will be created for every index in the specified size. Each port of every instance is concatenated into a single multi-dimensional port.
+If `optional_array_size` is provided, an instance of the module will be created for every index in the specified size. Each port of every instance is concatenated into a single multidimensional port.
 
-For example, if the module, `moduleType`, had an output named `out` that was 1 bit wide and we instantiated 8 copies it with the following, then `moduleInstanceName.out` would be an 8-bit wide array with each index corresponding to each copy.
+For example, if the module, `module_type`, had an output named `out` that was 1 bit wide and we instantiated 8 copies it with the following, then `module_instance_name.out` would be an 8-bit wide array with each index corresponding to each copy.
 
 ```lucid
-moduleType moduleInstanceName[8]
+module_type module_instance_name[8]
 ```
 
-If `out` was already an array then `moduleInstanceName.out` would be a 2-D array of size `[8][n]` where `n` is the size of a single `out`.
+If `out` was already an array then `module_instance_name.out` would be a 2-D array of size `[8][n]` where `n` is the size of a single `out`.
 
-Finally, `porAndParamConnections` are a comma separated list of connections to ports and parameters.
+Finally, `port_and_param_connections` are a comma separated list of connections to ports and parameters.
 
-Port connections take the form `.portName(portValue)` where `portName` is the name of the port and `portValue` is the value to connect to it. `portValue` can be an [expression](#expressions) of matching width.
+Port connections take the form `.port_name(port_value)` where `port_name` is the name of the port and `port_value` is the value to connect to it. `port_value` can be an [expression](#expressions) of matching width.
 
-Parameter connections take the form `#PARAM_NAME(paramValue)` where `PARAM_NAME` is the name of the parameter and `paramValue` is the value to assign to it. `paramValue` must be a constant [expression](#expressions) that can be evaluated during synthesis.
+Parameter connections take the form `#PARAM_NAME(param_value)` where `PARAM_NAME` is the name of the parameter and `param_value` is the value to assign to it. `param_value` must be a constant [expression](#expressions) that can be evaluated during synthesis.
 
 Port and parameter connections can be presented in any order. Convention is to list all parameters first.
 #### Connection Blocks
@@ -173,12 +185,12 @@ Connection blocks allow you to define a connection to a port or parameter for al
 Connection blocks take the following format. 
 
 ```lucid
-connectionList {
-	declarationOrConnectionBlock
+connection_list {
+	declaration_or_connection_block
 }
 ```
 
-The `connectionList` is a comma separated list of port and parameter connections with the same format used during a typical [module instantiation](#module-instances).
+The `connection_list` is a comma separated list of port and parameter connections with the same format used during a typical [module instantiation](#module-instances).
 
 Inside the block, you can instantiate modules or [DFFs](#dff). You can also nest other connection blocks.
 
@@ -187,9 +199,9 @@ A common use case is to have two nested connection blocks. The outer one for the
 ```lucid
 .clk(clk) {
     .rst(rst) {
-        dff withReset
+        dff with_reset
     }
-    dff withoutReset
+    dff without_reset
 }
 ```
 
@@ -201,16 +213,16 @@ This can be helpful if you have an array modules and want to use the same parame
 
 ```lucid
 #PARAM_NAME(10) {
-    moduleType myModule[8]
+    module_type my_module[8]
 }
 ```
 
-In the above example, all eight instances of `moduleType` will have their parameter, `PARAM_NAME` set to `10`.
+In the above example, all eight instances of `module_type` will have their parameter, `PARAM_NAME` set to `10`.
 
 If we wanted to assign different values to each one, they would need to be assigned inline as an array.
 
 ```lucid
-moduleType myModule[8](#PARAM_NAME({8d0, 8d1, 8d2, 8d3, 8d4, 8d5, 8d6, 8d7}))
+module_type my_module[8](#PARAM_NAME({8d0, 8d1, 8d2, 8d3, 8d4, 8d5, 8d6, 8d7}))
 ```
 
 This does not apply to the `dff`. 
@@ -224,11 +236,11 @@ An `always` block takes the following format.
 
 ```lucid
 always {
-    alwaysStatements
+    always_statements
 }
 ```
 
-`alwaysStatements` are defined in the [block statements](#always-test-block-statements) section.
+`always_statements` are defined in the [block statements](#always-test-block-statements) section.
 
 The `always` block can contain any number of these separated by new lines or semicolons.
 
@@ -255,22 +267,22 @@ For example, this is not allowed.
 
 ```lucid
 always {
-    if (buttonPressed) {
-        mySig = 1
+    if (button_pressed) {
+        my_sig = 1
     }
 }
 ```
 
-In the case that `buttonPressed` is false, `mySig` won't have a value.
+In the case that `button_pressed` is false, `my_sig` won't have a value.
 
 This could be remedied by adding an `else` clause or by assigning a value before the `if`.
 
 ```lucid
 always {
-    if (buttonPressed) {
-        mySig = 1
+    if (button_pressed) {
+        my_sig = 1
     } else {
-        mySig = 0
+        my_sig = 0
     }
 }
 ```
@@ -278,10 +290,10 @@ always {
 ```lucid
 
 always {
-    mySig = 0 // default value
+    my_sig = 0 // default value
     
-    if (buttonPressed) {
-        mySig = 1
+    if (button_pressed) {
+        my_sig = 1
     }
 }
 ```
@@ -296,17 +308,17 @@ An exception to this rule is for [DFFs](#dff). The `.d` input of a `dff` doesn't
 
 If the `.d` input isn't assigned, then the value of the `dff` won't change.
 
-Here is an example where the `dff` will only increment when `buttonPressed` is true.
+Here is an example where the `dff` will only increment when `button_pressed` is true.
 
 ```lucid
 always {
-   if (buttonPressed) {
-       myDff.d = myDff.q + 1
+   if (button_pressed) {
+       my_dff.d = my_dff.q + 1
    }
 }
 ```
 
-At the beginning of the `always` block `myDff.d = myDff.q` is implicitly added making this valid.
+At the beginning of the `always` block `my_dff.d = my_dff.q` is implicitly added making this valid.
 
 If an `always` block writes a signal, it is the driver for that signal meaning it can't be driven else where. In other words, a signal can be written in only one `always` block.
 ## Globals
@@ -321,7 +333,7 @@ global GlobalName {
 }
 ```
 
-`GlobalName` is the name of the `global` namespace. All the definitions in it are accessed by using `GlobalName.declarationName`. It must start with a capital letter and contain at least one lowercase letter. Convention is to use `UpperCamelCase`.
+`GlobalName` is the name of the `global` namespace. All the definitions in it are accessed by using `GlobalName.declaration_name`. It must start with a capital letter and contain at least one lowercase letter. Convention is to use `UpperCamelCase`.
 
 `GlobalName` must be unique across the entire project.
 
@@ -333,26 +345,28 @@ Here's an example.
 global MyGlobal {
     const CLK_FREQ = 100000000
     enum States { IDLE, RUN, STOP }
-    struct colorStruct { red[8], green[8], blue[8] }
+    struct color_struct { red[8], green[8], blue[8] }
 }
 ```
 
-These can be accessed later with `MyGlobal.CLK_FREQ`, `MyGlobal.States`, and `MyGlobal.colorStruct`.
-## Test Benches
+These can be accessed later with `MyGlobal.CLK_FREQ`, `MyGlobal.States`, and `MyGlobal.color_struct`.
+## Testbenches
 
-Test benches look very similar to [modules](#modules) but they serve as a way to run simulations.
+Testbenches look very similar to [modules](#modules), but they serve as a way to run simulations.
 
 The basic format is as follows.
 
 ```lucid
-testBench testBenchName {
-    testBenchBody
+testbench testbench_name {
+    testbench_body
 }
 ```
 
-The `testBenchName` follows the same conventions as module names. It must start with a lower case letter and can be followed by letters, numbers, or underscores. It is `camelCase` by convention.
+The `testbench_name` follows the same conventions as module names. 
+It must start with a lower case letter and can be followed by letters, numbers, or underscores. 
+It is `snake_case` by convention.
 
-`testBenchBody` is basically the same as the [module body](#modules) in the way can instantiate modules and DFFs or declare constants, enums, and structs.
+`testbench_body` is basically the same as the [module body](#modules) in the way can instantiate modules and DFFs or declare constants, enums, and structs.
 
 However, instead of `always` blocks you have `test` blocks. You can also declare [functions](#user-created).
 
@@ -365,14 +379,14 @@ The simulation will run each line in the `test` block line by line. Special test
 A test block takes the following format.
 
 ```lucid
-test testName {
-    testStatements
+test test_name {
+    test_statements
 }
 ```
 
-The `test` keyword is followed by the name of the test, `testName`, which must start with a lowercase letter and can be followed by letters, numbers, or underscores.
+The `test` keyword is followed by the name of the test, `test_name`, which must start with a lowercase letter and can be followed by letters, numbers, or underscores.
 
-The `testStatements` can be any statements described in the [statements](#always-test-block-statements) section.
+The `test_statements` can be any statements described in the [statements](#always-test-block-statements) section.
 
 # Comments
 
@@ -414,11 +428,11 @@ Basically any named value in Lucid can be thought of as a signal. This includes 
 When declaring a type, you can specify the width of that type with any number of [array](#arrays)  dimensions followed by an optional [struct](#struct) type with the following format.
 
 ```lucid
-[a]...[b]<structType>
+[a]...[b]<struct_type>
 ```
 
 
-After the array sizes, you can specify a struct type using the syntax `<structType>` where `structType` is some previously declared [struct](#struct). 
+After the array sizes, you can specify a struct type using the syntax `<struct_type>` where `struct_type` is some previously declared [struct](#struct). 
 
 The only exception to this is module instances don't support structs.
 
@@ -428,10 +442,10 @@ If you declare something with both, you will have an array of that struct. Here 
 
 ```lucid
 struct color { r[8], g[8], b[8] }
-sig aFewColors[16]<color>
+sig a_few_colors[16]<color>
 ```
 
-A component of `aFewColors` could be accessed like `aFewColors[9].r`. To get the least significant bit of green for index 2 we could use `aFewColors[2].g[0]`
+A component of `a_few_colors` could be accessed like `a_few_colors[9].r`. To get the least significant bit of green for index 2 we could use `a_few_colors[2].g[0]`
 ### Arrays
 
 An array is a list consisting of elements of all the same size.
@@ -448,24 +462,24 @@ Unlike an array that requires each element to be identical in size, in a struct,
 The syntax of a `struct` declaration looks like the following.
 
 ```lucid
-struct structName {
-    structElements
+struct struct_name {
+    struct_elements
 }
 ```
 
-The `structName` is the name of the struct. It must start with a lowercase letter and can be followed by letters, numbers, or underscores. By convention, it is `camelCase`.
+The `struct_name` is the name of the struct. It must start with a lowercase letter and can be followed by letters, numbers, or underscores. By convention, it is `snake_case`.
 
-The `structElements` are a comma separated list of elements. Each element takes the following format.
+The `struct_elements` are a comma separated list of elements. Each element takes the following format.
 
 ```lucid
-signed elementName signalWidth
+signed element_name signal_width
 ```
 
-The `signed` keyword is optional and will mark this element to be treated as a [signed](#signed) value. If the `signalWidth` has a struct component to it, this does nothing.
+The `signed` keyword is optional and will mark this element to be treated as a [signed](#signed) value. If the `signal_width` has a struct component to it, this does nothing.
 
-`elementName` is the name of the element. It must start with a lowercase letter and can be followed by letters, numbers, or underscores. By convention, it is `camelCase`. It must be unique inside this struct.
+`element_name` is the name of the element. It must start with a lowercase letter and can be followed by letters, numbers, or underscores. By convention, it is `snake_case`. It must be unique inside this struct.
 
-`signalWidth` is an optional width for the element as specified in the [sizing](#sizing) section.
+`signal_width` is an optional width for the element as specified in the [sizing](#sizing) section.
 
 An example struct for holding a 24 bit color could look like this.
 
@@ -473,7 +487,7 @@ An example struct for holding a 24 bit color could look like this.
 struct color { red[8], green[8], blue[8] }
 ```
 
-Components of the struct are accessed via the `.elementName` syntax.
+Components of the struct are accessed via the `.element_name` syntax.
 ## Signal Selection
 
 When reading or writing a signal, if it isn't a single bit, you may need access only part of it. How you do this depends on the width of the signal.
@@ -515,9 +529,9 @@ The reason for this is so that the resulting selection is always a fixed width.
 
 ### Struct Selection
 
-If a signal is a [struct](#struct) then to select an element from it you use the syntax `myStructSignal.elementName`.
+If a signal is a [struct](#struct) then to select an element from it you use the syntax `my_struct_signal.element_name`.
 
-This assumes the signal `myStructSignal` is of a `struct` type that has an element named `elementName`.
+This assumes the signal `my_struct_signal` is of a `struct` type that has an element named `element_name`.
 
 # Types
 
@@ -530,43 +544,43 @@ Each `sig` must have a single driver. Something that provides a value at all tim
 Declaring a `sig` takes the following form.
 
 ```lucid
-signed sig sigName sigSize = expression
+signed sig sig_name sig_size = expression
 ```
 
-Everything other than the `sig` keyword and `sigName` are optional.
+Everything other than the `sig` keyword and `sig_name` are optional.
 
 `signed` optionally marks the `sig` to be interpreted as [signed](#signed).
 
-`sigName` is the name of the signal and it must start with a lowercase letter. It can then contain letters, numbers, and underscores. By convention, it is `camelCase`.
+`sig_name` is the name of the signal and it must start with a lowercase letter. It can then contain letters, numbers, and underscores. By convention, it is `snake_case`.
 
-`sigSize` is the optional array/struct size of the signal. See [sizing](#sizing) for details.
+`sig_size` is the optional array/struct size of the signal. See [sizing](#sizing) for details.
 
 A signal can have an `expression` attached to it. This `expression` is considered to be the driver of the signal and it can't be written elsewhere if provided.
 
 If the `= expression` portion is present, it behaves exactly the same as the following.
 
 ```lucid
-sig sigName
+sig sig_name
 
 always {
-    sigName = expression
+    sig_name = expression
 }
 ```
 
-A `sig` can be read and written inside of an `always` block. The value that is read is always the last value written.
+A `sig` can be read and written inside an `always` block. The value that is read is always the last value written.
 
 If a `sig` is read in the same `always` block that it is written, then it must be written before it is read.
 
 Here's an example.
 
 ```lucid
-sig mySig[8] // 8-bit wide signal
+sig my_sig[8] // 8-bit wide signal
 
 always {
-    if (mySig == 4) { // ERROR mySig was read before being written
-        mySig = 2
+    if (my_sig == 4) { // ERROR my_sig was read before being written
+        my_sig = 2
     }
-    mySig = 3
+    my_sig = 3
 }
 ```
 
@@ -586,23 +600,23 @@ always {
 As mentioned before, inside an `always` block, the value of a `sig` is always the last value written to it.
 
 ```lucid
-sig mySig[8]
+sig my_sig[8]
 always {
-    mySig = 4
-    if (mySig == 5) {
+    my_sig = 4
+    if (my_sig == 5) {
         // never reached
     }
-    if (buttonPressed) {
-        mySig = 5
+    if (button_pressed) {
+        my_sig = 5
     }
-    if (mySig == 5) {
-        // only reached if buttonPressed is true
+    if (my_sig == 5) {
+        // only reached if button_pressed is true
     }
-    mySig = 1
+    my_sig = 1
 }
 ```
 
-Outside of the `always` block that drives the `sig`, only the final value will ever be seen. In the previous example, the final line `mySig = 1` means that anything reading `mySig` outside of that `always` block will always see the value `1`.
+Outside the `always` block that drives the `sig`, only the final value will ever be seen. In the previous example, the final line `my_sig = 1` means that anything reading `my_sig` outside of that `always` block will always see the value `1`.
 
 ## dff
 
@@ -633,16 +647,16 @@ FPGAs are fully initialized when programmed regardless if the `dff` has a `rst` 
 The format to declare a `dff` looks like the following.
 
 ```lucid
-signed dff dffName dffSize (portsAndParams)
+signed dff dff_name dff_size (ports_and_params)
 ```
 
 `signed` optionally marks the `dff` to be interpreted as [signed](#signed).
 
-The `dffName` is the name of the dff and it must start with a lowercase letter. It can then contain letters, numbers, and underscores. By convention, it is `camelCase`.
+The `dff_name` is the name of the dff and it must start with a lowercase letter. It can then contain letters, numbers, and underscores. By convention, it is `snake_case`.
 
-`dffSize`  is the optional array/struct size of the signal. See [sizing](#sizing) for details.
+`dff_size`  is the optional array/struct size of the signal. See [sizing](#sizing) for details.
 
-The `portsAndParams` portion is a comma separated list of port and parameter connections. See [module instances](#module-instances) for details.
+The `ports_and_params` portion is a comma separated list of port and parameter connections. See [module instances](#module-instances) for details.
 
 ## const
 
@@ -651,14 +665,14 @@ The `const` type provides a way to name constant values. This allows you to set 
 The form for a `const` declaration looks the the following.
 
 ```lucid
-const CONST_NAME = constExpr
+const CONST_NAME = const_expr
 ```
 
 It starts with the `const` keyword followed by `CONST_NAME`, the name of your constant. The name must start with an uppercase letter and be followed by uppercase setters and underscores. By convention, it is `UPPER_SNAKE_CASE`.
 
-The value of the constant is provided by `constExpr`. This can be any [expression](@expressions) that evaluates to a constant value.
+The value of the constant is provided by `const_expr`. This can be any [expression](@expressions) that evaluates to a constant value.
 
-The width and [sign](#signed) of the `const` is inferred from the `constExpr`.
+The width and [sign](#signed) of the `const` is inferred from the `const_expr`.
 
 For example, if you need a constant of an 8-bit number you could use the following.
 
@@ -748,7 +762,7 @@ c{4b1111, 4b0000} // result is 8b11110000
 
 Duplication provides a way to concatenate a single value many times with itself.
 
-It takes the form `constExpr x{ expr }` where `constExpr` is a constant expression indicating how many times to duplicate `expr`.
+It takes the form `const_expr x{ expr }` where `const_expr` is a constant expression indicating how many times to duplicate `expr`.
 
 The value `expr` must be an array (or bit).
 
@@ -937,14 +951,14 @@ The ternary operator allows you select between two identically sized expressions
 It takes the following form.
 
 ```lucid
-selector ? trueExpr : falseExpr
+selector ? true_expr : false_expr
 ```
 
 The `selector` is considered to be _true_ if it isn't `0` and _false_ only when it equals `0`.
 
-The result has the same width of `trueExpr` and `falseExpr`, which must match.
+The result has the same width of `true_expr` and `false_expr`, which must match.
 
-When `selector` is _true_ the result is `trueExpr` otherwise it is `falseExpr`.
+When `selector` is _true_ the result is `true_expr` otherwise it is `false_expr`.
 # Always/Test Block Statements
 
 This section contains the statements that can appear inside [always](#always-blocks) and [test](#test-blocks) blocks.
@@ -965,11 +979,11 @@ The `signal` doesn't necessarily have to be the entire width of the signal and [
 Here is an example.
 
 ```lucid
-sig mySig[16]
+sig my_sig[16]
 
 always {
-    mySig[7:0] = 8haa
-    mySig[15:8] = 8hbb
+    my_sig[7:0] = 8haa
+    my_sig[15:8] = 8hbb
 }
 ```
 
@@ -1034,7 +1048,7 @@ Here `count` is a constant expression indicating how many times the block of `st
 
 The arguments `start` and `step` are optional and have default values of `0` and `1` respectively.
 
-The `i` argument is an optional variable name that can be used inside the `repeat` block. It will start with the value `start` and increment by `step` each iteration of the loop to a final value of `start + step * (count - 1)`. It must start with a lowercase letter and can contain letters, numbers, and underscores. By convention, it is `camelCase`.
+The `i` argument is an optional variable name that can be used inside the `repeat` block. It will start with the value `start` and increment by `step` each iteration of the loop to a final value of `start + step * (count - 1)`. It must start with a lowercase letter and can contain letters, numbers, and underscores. By convention, it is `snake_case`.
 
 If `i` is omitted, then only `count` should be provided making it take the form `repeat(count)`.
 
@@ -1062,7 +1076,7 @@ This would print the following (in a simulation).
 ```
 
 {% callout() %}
-While it may seem like `repeat` works like `for` loops in many programming languages, it is important to remember that `always` blocks are only a conveniently abstraction for describing a circuit's behavior. When your design is synthesized it must be converted to hardware.
+While it may seem like `repeat` works like `for` loops in many programming languages, it is important to remember that `always` blocks are only a convenient abstraction for describing a circuit's behavior. When your design is synthesized it must be converted to hardware.
 
 This means that all loops must be _unrolled_. A `repeat` block is identical to simply copy-pasting the contents over and over and replacing the loop variable with a different value for each one.
 {% end %}
@@ -1137,12 +1151,12 @@ Struct types are covered in the [struct section](#struct).
 To create a literal of a `struct`, you use the following syntax.
 
 ```lucid
-<structType>(.elementName(constValue), ...)
+<struct_type>(.element_name(const_value), ...)
 ```
 
-Here `structType` is a previously defined `struct` type.
+Here `struct_type` is a previously defined `struct` type.
 
-The following comma separated list must contain every element in `structType`. The `elementName` is the name of element in the `structType` and `constValue` is the constant value to assign to the element.
+The following comma separated list must contain every element in `struct_type`. The `element_name` is the name of element in the `struct_type` and `const_value` is the constant value to assign to the element.
 
 Here is an example.
 
@@ -1157,54 +1171,54 @@ const ALCHITRY_GOLD = <color>(.red(250), .green(172), .blue(31))
 
 In the table below, the argument type of _Value_ means a 1-D array or bit. In other words, something that can represent a number.
 
-| Function                                | Argument Type                                                          | Purpose                                                                                                                                                                                                                                                                                                                                                                  |
-| --------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `$width(expr)`                          | Array                                                                  | Provides the width of `expr`. This is a single value if `expr` is a 1-D array or bit. If `expr` is a multi-dimensional array, the result is an array of values with each index corresponding to the width of a dimension. For example, `$width({4b0,4b0})` is equal to `{4, 2}`.                                                                                         |
-| `$signed(expr)`                         | Value                                                                  | Marks the value to be interpreted as signed without changing the underlying bits.                                                                                                                                                                                                                                                                                        |
-| `$unsigned(expr)`                       | Value                                                                  | Marks the value to be interpreted as unsigned without changing the underlying bits.                                                                                                                                                                                                                                                                                      |
-| `$clog2(expr)`                          | Constant value                                                         | Calculates ceiling log base 2 of `expr`.                                                                                                                                                                                                                                                                                                                                 |
-| `$cdiv(numer, denom)`                   | Constant value                                                         | Calculates the ceiling of `numer` / `denom`                                                                                                                                                                                                                                                                                                                              |
-| `$pow(expr, expo)`                      | Constant values                                                        | Calculates `expr` to the power of `expo`.                                                                                                                                                                                                                                                                                                                                |
-| `$reverse(expr)`                        | Constant array                                                         | Reverses the indices of the outer most dimension of `expr`.                                                                                                                                                                                                                                                                                                              |
-| `$flatten(expr)`                        | Anything                                                               | Returns a 1-D array of all the bits in `expr`. Arrays are concatenated in order and structs are in the order their elements were declared.                                                                                                                                                                                                                               |
-| `$build(expr, dims...)`                 | `expr` is a value and `dims` are constant values                       | Converts a 1-D array into a multi-dimensional array based on the `dims` passed in. Each `dim` corresponds to how many times it should be split. For example, `$build(b111000, 2)` will split it into 2 becoming `{b111, b000}`. More than one `dim` can be supplied to build more dimensions. For example, `$build(b11001001, 2, 2)` becomes `{{b11, b00}, {b10, b01}}`. |
-| `$resize(expr, size)`                   | `expr` is a value and `size` is a constant values                      | Resizes a value either smaller or wider. If `expr` is signed, it will be sign extended.                                                                                                                                                                                                                                                                                  |
-| `$fixedPoint(real, width, fractional)`  | `real` is a real number, `width` and `fractional` are  constant values | Calculates the nearest fixed-point representation of `real` using a total width of `width` and `fractional` fractional bits. For example, `$fixedPoint(3.14, 8, 4)` produces `8d50`.                                                                                                                                                                                     |
-| `$cFixedPoint(real, width, fractional)` | `real` is a real number, `width` and `fractional` are  constant values | Calculates the smallest fixed-point representation of `real`  that is still larger than it using a total width of `width` and `fractional` fractional bits. For example, `$cFixedPoint(3.14, 8, 4)` produces `8d51`.                                                                                                                                                     |
-| `$fFixedPoint(real, width, fractional)` | `real` is a real number, `width` and `fractional` are  constant values | Calculates the largest fixed-point representation of `real`  that is still smaller than it using a total width of `width` and `fractional` fractional bits. For example, `$fFixedPoint(3.14, 8, 4)` produces `8d50`.                                                                                                                                                     |
-| `$isSim()`                              | None                                                                   | Evaluates to `1b1` during interactive simulations and `1b0` otherwise.                                                                                                                                                                                                                                                                                                   |
+| Function                                  | Argument Type                                                          | Purpose                                                                                                                                                                                                                                                                                                                                                                  |
+|-------------------------------------------| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `$width(expr)`                            | Array                                                                  | Provides the width of `expr`. This is a single value if `expr` is a 1-D array or bit. If `expr` is a multi-dimensional array, the result is an array of values with each index corresponding to the width of a dimension. For example, `$width({4b0,4b0})` is equal to `{4, 2}`.                                                                                         |
+| `$signed(expr)`                           | Value                                                                  | Marks the value to be interpreted as signed without changing the underlying bits.                                                                                                                                                                                                                                                                                        |
+| `$unsigned(expr)`                         | Value                                                                  | Marks the value to be interpreted as unsigned without changing the underlying bits.                                                                                                                                                                                                                                                                                      |
+| `$clog2(expr)`                            | Constant value                                                         | Calculates ceiling log base 2 of `expr`.                                                                                                                                                                                                                                                                                                                                 |
+| `$cdiv(numer, denom)`                     | Constant value                                                         | Calculates the ceiling of `numer` / `denom`                                                                                                                                                                                                                                                                                                                              |
+| `$pow(expr, expo)`                        | Constant values                                                        | Calculates `expr` to the power of `expo`.                                                                                                                                                                                                                                                                                                                                |
+| `$reverse(expr)`                          | Constant array                                                         | Reverses the indices of the outer most dimension of `expr`.                                                                                                                                                                                                                                                                                                              |
+| `$flatten(expr)`                          | Anything                                                               | Returns a 1-D array of all the bits in `expr`. Arrays are concatenated in order and structs are in the order their elements were declared.                                                                                                                                                                                                                               |
+| `$build(expr, dims...)`                   | `expr` is a value and `dims` are constant values                       | Converts a 1-D array into a multi-dimensional array based on the `dims` passed in. Each `dim` corresponds to how many times it should be split. For example, `$build(b111000, 2)` will split it into 2 becoming `{b111, b000}`. More than one `dim` can be supplied to build more dimensions. For example, `$build(b11001001, 2, 2)` becomes `{{b11, b00}, {b10, b01}}`. |
+| `$resize(expr, size)`                     | `expr` is a value and `size` is a constant values                      | Resizes a value either smaller or wider. If `expr` is signed, it will be sign extended.                                                                                                                                                                                                                                                                                  |
+| `$fixed_point(real, width, fractional)`   | `real` is a real number, `width` and `fractional` are  constant values | Calculates the nearest fixed-point representation of `real` using a total width of `width` and `fractional` fractional bits. For example, `$fixed_point(3.14, 8, 4)` produces `8d50`.                                                                                                                                                                                     |
+| `$c_fixed_point(real, width, fractional)` | `real` is a real number, `width` and `fractional` are  constant values | Calculates the smallest fixed-point representation of `real`  that is still larger than it using a total width of `width` and `fractional` fractional bits. For example, `$c_fixed_point(3.14, 8, 4)` produces `8d51`.                                                                                                                                                     |
+| `$f_fixed_point(real, width, fractional)` | `real` is a real number, `width` and `fractional` are  constant values | Calculates the largest fixed-point representation of `real`  that is still smaller than it using a total width of `width` and `fractional` fractional bits. For example, `$f_fixed_point(3.14, 8, 4)` produces `8d50`.                                                                                                                                                     |
+| `$is_sim()`                               | None                                                                   | Evaluates to `1b1` during interactive simulations and `1b0` otherwise.                                                                                                                                                                                                                                                                                                   |
 
 ### Simulation Only
 
 These functions are only available during simulations. In other words, inside [test blocks](#test-blocks) or [test functions](#user-created).
 
-| Function                   | Argument Type                                                                                                      | Purpose                                                                                                                                                                                                                                |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$tick()`                  | None                                                                                                               | Propagates all signal changes and captures the state.                                                                                                                                                                                  |
-| `$silentTick()`            | None                                                                                                               | Propagates all signal changes.                                                                                                                                                                                                         |
-| `$assert(expr)`            | Any expression, typically a [comparison](#comparison).                                                             | Checks that `expr` is non-zero (true). If it is zero the simulation is halted and an error is printed indicating the failed assert.                                                                                                    |
-| `$print(expr)`             | Any expression                                                                                                     | Prints the value of `expr`. If `expr` is a [string literal](#strings), it prints the string. Otherwise, it prints `expr = value` where `expr` is the text and `value` is the actual value.                                             |
-| `$print(format, exprs...)` | `format` is a [string literal](#strings) and `exprs` is a variable number of expressions depending on the `format` | Prints the string `format` with the values of the provided `exprs` replaced where applicable. Valid format flags are `%d` for decimal, `%h` for hex, `%b` for binary, `%nf` for fractional where `n` is the number of fractional bits. |
+| Function                    | Argument Type                                                                                                      | Purpose                                                                                                                                                                                                                                |
+|-----------------------------| ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$tick()`                   | None                                                                                                               | Propagates all signal changes and captures the state.                                                                                                                                                                                  |
+| `$silent_tick()`            | None                                                                                                               | Propagates all signal changes.                                                                                                                                                                                                         |
+| `$assert(expr)`             | Any expression, typically a [comparison](#comparison).                                                             | Checks that `expr` is non-zero (true). If it is zero the simulation is halted and an error is printed indicating the failed assert.                                                                                                    |
+| `$print(expr)`              | Any expression                                                                                                     | Prints the value of `expr`. If `expr` is a [string literal](#strings), it prints the string. Otherwise, it prints `expr = value` where `expr` is the text and `value` is the actual value.                                             |
+| `$print(format, exprs...)`  | `format` is a [string literal](#strings) and `exprs` is a variable number of expressions depending on the `format` | Prints the string `format` with the values of the provided `exprs` replaced where applicable. Valid format flags are `%d` for decimal, `%h` for hex, `%b` for binary, `%nf` for fractional where `n` is the number of fractional bits. |
 ## User Created
 
-Inside of [test benches](#test-benches), you can create your own functions using the following syntax.
+Inside [testbenches](#testbenches), you can create your own functions using the following syntax.
 
 ```lucid
-fun functionName(argumentList) {
-    functionBody
+fun function_name(argument_list) {
+    function_body
 }
 ```
 
-`functionName` is the name of the function. It must start with a lowercase letter and be followed by letters, numbers, and underscores. By convention, it is `camelCase`.
+`function_name` is the name of the function. It must start with a lowercase letter and be followed by letters, numbers, and underscores. By convention, it is `snake_case`.
 
-The `argumentList` is an optional list of arguments. They act the same as read-only [signals](#sig) and have a width of 1 bit if a width isn't provided. They may also be marked as [signed](#signed) using the `signed` keyword.
+The `argument_list` is an optional list of arguments. They act the same as read-only [signals](#sig) and have a width of 1 bit if a width isn't provided. They may also be marked as [signed](#signed) using the `signed` keyword.
 
-To call a function, you use the syntax `$functionName(arg, ...)`.
+To call a function, you use the syntax `$function_name(arg, ...)`.
 
 Here is an example function with an argument.
 
 ```lucid
-fun tickClock(times[32]) {
+fun tick_clock(times[32]) {
     repeat(times) {
         clk = 1
         $tick()
@@ -1214,4 +1228,4 @@ fun tickClock(times[32]) {
 }
 ```
 
-This could be called using something like `$tickClock(20)`.
+This could be called using something like `$tick_clock(20)`.
