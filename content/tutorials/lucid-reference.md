@@ -1123,6 +1123,9 @@ If the explicit width is wider than the minimum required width, the value is pad
 For example, `12hx0` has the value `12bxxxxxxxx0000`.
 
 If the explicit width is less than the minimum required width, the value will be truncated and a warning will be shown.
+
+Underscores can be added anywhere in the value portion of a number to help with readability.
+For example, `100_000_000` or `8b1010_1100`.
 ## Arrays
 
 Literal arrays can be constructed using other literals and the [array builder](#array-builder) expression.
