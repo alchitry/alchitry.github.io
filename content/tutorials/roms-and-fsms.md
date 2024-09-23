@@ -13,9 +13,9 @@ This will help teach you how to use finite state machines (FSM).
 # Setup
 
 We first need to create a new project based on the Base Project. 
-I called mine _Hello World_ but you are free to choose whatever name you want.
+I called mine _Hello World,_ but you are free to choose whatever name you want.
 
-With the new empty project, we now need to add the `uartTx` and `uartRx` components. 
+With the new empty project, we now need to add the `uart_tx` and `uart_rx` components. 
 These will be used to talk to the FTDI chip and send data over the USB port.
 
 You should know how to add a component to your project from the last tutorial. 
@@ -30,9 +30,9 @@ The components we need to add are the _UART Tx_ and _UART Rx_ components, and th
 Let's first take a look at what the module looks like.
 
 ```lucid
-module uartTx #(
-    CLK_FREQ ~ 100000000 : CLK_FREQ > 0,            // clock frequency
-    BAUD ~ 1000000 : BAUD > 0 && BAUD <= CLK_FREQ/2 // desired baud rate
+module uart_tx #(
+    CLK_FREQ ~ 100_000_000 : CLK_FREQ > 0,            // clock frequency
+    BAUD ~ 1_000_000 : BAUD > 0 && BAUD <= CLK_FREQ/2 // desired baud rate
 )(
     input clk,          // clock
     input rst,          // reset active high
@@ -40,7 +40,7 @@ module uartTx #(
     input block,        // block transmissions
     output busy,        // module is busy when 1
     input data[8],      // data to send
-    input newData       // flag for new data
+    input new_data      // flag for new data
 ) {
 ```
 
@@ -49,7 +49,7 @@ We will only be looking at the interfaces to the modules since we don't need to 
 This module is responsible for transmitting data. 
 When we have a byte to send, we first need to check that `busy` is `0`. 
 When this signal is `1`, any data we provide will be ignored. 
-Assuming `busy` is `0`, we then provide the data to send on `data` and signal that the data is valid by setting `newData` to `1`. 
+Assuming `busy` is `0`, we then provide the data to send on `data` and signal that the data is valid by setting `new_data` to `1`. 
 This will cause the module to transmit the byte one bit at a time over `tx`.
 
 The input `block` is used when you have some way of knowing that the device receiving the data upstream (the FTDI chip in this case) is busy. 
@@ -87,20 +87,20 @@ If the clock frequency isn't divisible by the baud rate then it will approximate
 # UART Rx
 
 ```lucid
-module uartRx #(
-    CLK_FREQ ~ 100000000 : CLK_FREQ > 0,            // clock frequency
-    BAUD = 1000000 : BAUD > 0 && BAUD <= CLK_FREQ/4 // desired baud rate
+module uart_rx #(
+    CLK_FREQ ~ 100_000_000 : CLK_FREQ > 0,            // clock frequency
+    BAUD = 1_000_000 : BAUD > 0 && BAUD <= CLK_FREQ/4 // desired baud rate
 )(
-    input clk,      // clock input
-    input rst,      // reset active high
-    input rx,       // UART rx input
-    output data[8], // received data
-    output newData  // new data flag (1 = new data)
+    input clk,       // clock input
+    input rst,       // reset active high
+    input rx,        // UART rx input
+    output data[8],  // received data
+    output new_data  // new data flag (1 = new data)
 ) {
 ```
 
 This module is responsible for receiving data on the `rx` input and sending it out as bytes on `data`. 
-The value of `data` is valid only when `newData` is 1.
+The value of `data` is valid only when `new_data` is 1.
 
 The parameters for this module are more or less the same as before with the small exception that `BAUD` is constrained to a quarter of `CLK_FREQ` instead of half. 
 This is due to the internal working of the module. 
@@ -108,15 +108,15 @@ Once it detects new incoming data, it waits half a cycle so that it will be samp
 
 # Using the Modules
 
-We now can add `uartTx` and `uartRx` to our top level module.
+We now can add `uart_tx` and `uart_rx` to our top level module.
 
 ```lucid,linenos
-module alchitryTop (
+module alchitry_top (
     input clk,              // 100MHz clock
     input rst_n,            // reset button (active low)
     output led[8],          // 8 user controllable LEDs
-    input usbRx,            // USB->Serial input
-    output usbTx            // USB->Serial output
+    input usb_rx,           // USB->Serial input
+    output usb_tx           // USB->Serial output
 ) {
     
     sig rst                 // reset signal
@@ -124,26 +124,26 @@ module alchitryTop (
     .clk(clk) {
         // The reset conditioner is used to synchronize the reset signal to the FPGA
         // clock. This ensures the entire FPGA comes out of reset at the same time.
-        resetConditioner resetCond
+        reset_conditioner reset_cond
         
         .rst(rst) {
-            uartRx rx(#BAUD(1_000_000), #CLK_FREQ(100_000_000))
-            uartTx tx(#BAUD(1_000_000), #CLK_FREQ(100_000_000))
+            uart_rx rx(#BAUD(1_000_000), #CLK_FREQ(100_000_000))
+            uart_tx tx(#BAUD(1_000_000), #CLK_FREQ(100_000_000))
         }
     }
     
     always {
-        resetCond.in = ~rst_n  // input raw inverted reset signal
-        rst = resetCond.out    // conditioned reset
+        reset_cond.in = ~rst_n  // input raw inverted reset signal
+        rst = reset_cond.out    // conditioned reset
         
-        led = 8h00             // turn LEDs off
+        led = 8h00              // turn LEDs off
         
-        rx.rx = usbRx          // connect rx input
-        usbTx = tx.tx          // connect tx output
+        rx.rx = usb_rx          // connect rx input
+        usb_tx = tx.tx          // connect tx output
         
-        tx.newData = 0         // no new data by default
-        tx.data = 8bx          // don't care when newData is 0
-        tx.block = 0           // no flow control, do not block
+        tx.new_data = 0         // no new data by default
+        tx.data = 8bx           // don't care when new_data is 0
+        tx.block = 0            // no flow control, do not block
     }
 }
 ```
@@ -152,19 +152,19 @@ All the external signals are already defined for us in the Base Project.
 We simply connect them up.
 
 We can actually make the instantiation of these two modules a bit cleaner. 
-Both `uartTx` and `uartRx` have the same parameters, and we want their values to be the same. 
+Both `uart_tx` and `uart_rx` have the same parameters, and we want their values to be the same. 
 This means we can group them in to a connection block just like we do for `clk` and `rst`.
 
 ```lucid,linenos,linenostart=11
     .clk(clk) {
         // The reset conditioner is used to synchronize the reset signal to the FPGA
         // clock. This ensures the entire FPGA comes out of reset at the same time.
-        resetConditioner resetCond
+        reset_conditioner reset_cond
         
         .rst(rst) {
             #BAUD(1_000_000), #CLK_FREQ(100_000_000) {
-                uartRx rx
-                uartTx tx
+                uart_rx rx
+                uart_tx tx
             }
         }
     }
@@ -175,7 +175,7 @@ We could have also combined these with the `.rst(rst)` assignment, but we will b
 Currently, we are ignoring any data from the receiver and never sending data on the transmitter.
 
 All inputs to modules need to be assigned a value. 
-However, since we are setting `tx.newData` to 0, we really don't care what value gets assigned to `tx.data` since it will never be used. 
+However, since we are setting `tx.new_data` to 0, we really don't care what value gets assigned to `tx.data` since it will never be used. 
 In cases like this, the value of `bx` is helpful. 
 There isn't really a value associated with `bx`. 
 Instead, this tells the synthesizer that we don't care what value it uses. 
@@ -189,10 +189,10 @@ Before we get too deep into generating and handling these signals, we need to cr
 
 Our ROM will hold the message we want to send, in our case `"Hello World!"`.
 
-Create a new module named _helloWorldRom_ and add the following to it.
+Create a new module named `hello_world_rom` and add the following to it.
 
 ```lucid,linenos
-module helloWorldRom (
+module hello_world_rom (
     input address[4], // ROM address
     output letter[8]  // ROM output
 ) {
@@ -247,13 +247,13 @@ Create a new module named `greeter` and fill it with the following.
 
 ```lucid,linenos
 module greeter (
-    input clk,        // clock
-    input rst,        // reset
-    input newRx,      // new RX flag
-    input rxData[8],  // RX data
-    output newTx,     // new TX flag
-    output txData[8], // TX data
-    input txBusy      // TX is busy flag
+    input clk,         // clock
+    input rst,         // reset
+    input new_rx,      // new RX flag
+    input rx_data[8],  // RX data
+    output new_tx,     // new TX flag
+    output tx_data[8], // TX data
+    input tx_busy      // TX is busy flag
 ) {
     const NUM_LETTERS = 14
     
@@ -266,24 +266,24 @@ module greeter (
         dff count[$clog2(NUM_LETTERS)] // min bits to store NUM_LETTERS - 1
     }
     
-    helloWorldRom rom
+    hello_world_rom rom
     
     always {
         rom.address = count.q
-        txData = rom.letter
+        tx_data = rom.letter
         
-        newTx = 0 // default to 0
+        new_tx = 0 // default to 0
         
         case (state.q) {
             States.IDLE:
                 count.d = 0
-                if (newRx && rxData == "h")
+                if (new_rx && rx_data == "h")
                     state.d = States.GREET
             
             States.GREET:
-                if (!txBusy) {
+                if (!tx_busy) {
                     count.d = count.q + 1
-                    newTx = 1
+                    new_tx = 1
                     if (count.q == NUM_LETTERS - 1)
                         state.d = States.IDLE
                 }
@@ -292,7 +292,7 @@ module greeter (
 }
 ```
 
-The inputs and outputs should look a little familiar. They will connect to the `uartTx` and `uartRx` modules in our top level.
+The inputs and outputs should look a little familiar. They will connect to the `uart_tx` and `uart_rx` modules in our top level.
 
 We are using the constant `NUM_LETTERS` to specify how big the ROM is. 
 In our case, we have 14 letters to send (this includes the new line characters).
@@ -345,16 +345,16 @@ Computing this function in hardware would be far too complicated for a single li
 
 ## Saying Hello
 
-We instantiate a copy of our `helloWorldRom` and call it `rom` so we know what data to send.
+We instantiate a copy of our `hello_world_rom` and call it `rom` so we know what data to send.
 
-Since we are only going to be sending the letters from the ROM, we can wire them up directly to _txData_.
+Since we are only going to be sending the letters from the ROM, we can wire them up directly to `tx_data`.
 
 ```lucid,linenos,linenostart=21
-helloWorldRom rom
+hello_world_rom rom
 
 always {
     rom.address = count.q
-    txData = rom.letter
+    tx_data = rom.letter
 ```
 
 We also can set the ROM's address to simply be the output of our counter since that's what the counter is for!
@@ -382,13 +382,13 @@ It sounds way more complicated than it is. Let's look at our example.
 case (state.q) {
     States.IDLE:
         count.d = 0
-        if (newRx && rxData == "h")
+        if (new_rx && rx_data == "h")
             state.d = States.GREET
     
     States.GREET:
-        if (!txBusy) {
+        if (!tx_busy) {
             count.d = count.q + 1
-            newTx = 1
+            new_tx = 1
             if (count.q == NUM_LETTERS - 1)
                 state.d = States.IDLE
         }
@@ -404,13 +404,13 @@ Since `IDLE` was the first state we listed, it is, by default, the default state
 You can specify an alternate default state by using the parameter `#INIT(STATE_NAME)` on the `dff`.
 
 Because we start in the idle state, the counter is set to `0`, and we do nothing until we see `"h"`. 
-To wait for `"h"` we wait for `newRx` to be high and `rxData` to be `"h"`.
+To wait for `"h"` we wait for `new_rx` to be high and `rx_data` to be `"h"`.
 
 Once we receive an `"h"`, we change states to `States.GREET`.
 
-Here we wait for `txBusy` to be low to signal we can send data. 
-We then increment the counter for next time and signal we have a new letter to send by setting `newTx` high. 
-Remember we already set `txData` as the output of our ROM.
+Here we wait for `tx_busy` to be low to signal we can send data. 
+We then increment the counter for next time and signal we have a new letter to send by setting `new_tx` high. 
+Remember we already set `tx_data` as the output of our ROM.
 
 Once we are out of letters, we return to the idle state to wait for another `"h"`.
 
@@ -424,12 +424,12 @@ First, let's add an instance of it.
     .clk(clk) {
         // The reset conditioner is used to synchronize the reset signal to the FPGA
         // clock. This ensures the entire FPGA comes out of reset at the same time.
-        resetConditioner resetCond
+        reset_conditioner reset_cond
         
         .rst(rst) {
             #BAUD(1_000_000), #CLK_FREQ(100_000_000) {
-                uartRx rx
-                uartTx tx
+                uart_rx rx
+                uart_tx tx
             }
             
             greeter greeter
@@ -441,20 +441,20 @@ Next, we need to connect it up.
 
 ```lucid,linenos,linenostart=26
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
     
-    led = 8h00             // turn LEDs off
+    led = 8h00              // turn LEDs off
     
-    rx.rx = usbRx          // connect rx input
-    usbTx = tx.tx          // connect tx output
+    rx.rx = usb_rx          // connect rx input
+    usb_tx = tx.tx          // connect tx output
     
-    greeter.newRx = rx.newData
-    greeter.rxData = rx.data
-    tx.newData = greeter.newTx
-    tx.data = greeter.txData
-    greeter.txBusy = tx.busy
-    tx.block = 0           // no flow control, do not block
+    greeter.new_rx = rx.new_data
+    greeter.rx_data = rx.data
+    tx.new_data = greeter.new_tx
+    tx.data = greeter.tx_data
+    greeter.tx_busy = tx.busy
+    tx.block = 0            // no flow control, do not block
 }
 ```
 

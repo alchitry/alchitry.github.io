@@ -60,15 +60,15 @@ If you use the same module twice, you will have two independent copies of that c
 
 ## Ports
 
-Let's take a look at the module declaration for `alchitryTop`.
+Let's take a look at the module declaration for `alchitry_top`.
 
 ```lucid
-module alchitryTop (
+module alchitry_top (
     input clk,              // 100MHz clock
     input rst_n,            // reset button (active low)
     output led[8],          // 8 user controllable LEDs
-    input usbRx,            // USB->Serial input
-    output usbTx            // USB->Serial output
+    input usb_rx,           // USB->Serial input
+    output usb_tx           // USB->Serial output
 ) {
 ```
 
@@ -81,7 +81,7 @@ All the signals here are 1-bit wide except `led` which is declared as an 8-bit w
 The reason `led` is 8 bits wide is because the Alchitry boards have 8 LEDs on them.
 One bit for each LED.
 
-The `alchitryTop` module is what's known as the _top-level_ module in our design.
+The `alchitry_top` module is what's known as the _top-level_ module in our design.
 That means that its ports connect to physical pin on the FPGA.
 
 What pins these actually connect to is defined in the _alchitry.acf_ constraint file.
@@ -100,8 +100,8 @@ pin led[5] LED5
 pin led[6] LED6
 pin led[7] LED7
 
-pin usbRx USB_RX
-pin usbTx USB_TX
+pin usb_rx USB_RX
+pin usb_tx USB_TX
 ```
 
 The syntax here is `pin SIGNAL_NAME PYSICAL_PIN`.
@@ -120,13 +120,13 @@ It'll all be covered in a later tutorial.
 
 # Always Blocks
 
-Let's jump back to the `alchitryTop` module.
+Let's jump back to the `alchitry_top` module.
 
 The first line declares a `sig` named `rst`. 
 The `sig` type (short for signal) acts like a wire to connect things.
 They don't actually _store_ any value and really just act like an alias for what is assigned to them.
 
-Next a `resetConditioner` module is instantiated.
+Next a `reset_conditioner` module is instantiated.
 This is covered in the next tutorial, and we are going to skip it for now.
 Jump down to the `always` block.
 
@@ -139,16 +139,16 @@ The tools will take that description and replicate it in hardware.
 It is important to remember that you are creating a description of behavior.
 You are **not** writing instructions as if it was a program even though it looks a lot like that.
 
-Let's take a look at the `always` block in `alchitryTop`.
+Let's take a look at the `always` block in `alchitry_top`.
 
 ```lucid
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
 
-    led = 8h00             // turn LEDs off
+    led = 8h00              // turn LEDs off
 
-    usbTx = usbRx          // echo the serial data
+    usb_tx = usb_rx         // echo the serial data
 }
 ```
 
@@ -193,13 +193,13 @@ For example, `9`.
 Sometimes it’s easier to specify a number with a different radix than 10 (the implied default).
 Lucid supports three different radix, 10 (decimal), 16 (hexadecimal), and 2 (binary).
 To specify the radix, prepend d, h, or b to specify decimal, hexadecimal, or binary respectively.
-For example, `hFF` has the decimal value `255` and `b100` has the decimal value `4`.
+For example, `h_ff` has the decimal value `255` and `b100` has the decimal value `4`.
 If you don’t append a radix indicator, decimal is assumed.
 
 It is important to remember that all number will be represented as bits in your circuit.
 When you specify a number this way, the width of the number will be the minimum number of bits required to represent that value for decimal. 
 For binary, it is simply the number of digits and for hexadecimal it is four times the number of digits. 
-For example, the value `7` will be three bits wide (`b111`), `b1010` will be four bits wide, and `hACB` will be 12 bits wide.
+For example, the value `7` will be three bits wide (`b111`), `b1010` will be four bits wide, and `h_acb` will be 12 bits wide.
 
 Sometimes you need more control over the exact width of a number.
 In those cases you can specify the number of bits by prepending the number of bits and radix to the value. 
@@ -227,7 +227,7 @@ This means that it is effectively disconnected.
 Note that FPGAs can't realize high-impedance signals internally. 
 The only time you should use z is for `output` or `inout` ports of the top-level module or a module feeding directly to a top-level port.
 
-Back to our always block, the first two lines connect the input `rst_n` to the input of the `resetCond` module. 
+Back to our always block, the first two lines connect the input `rst_n` to the input of the `reset_cond` module. 
 Modules can be nested which makes it possible to reuse them and helps make your project manageable. 
 This is all covered later in more detail so don't get hung up over this yet. 
 The only important thing to know about these two lines, is that the `rst_n` signal is active low (0 when the button is pressed, 1 otherwise) while the `rst` signal is active high.
@@ -248,7 +248,7 @@ turns on.
 To do this we need to modify line 21, where `led` is assigned.
 
 ```lucid,linenos,linenostart=21
-led = c{7h00, rst}     // connect rst to the first LED
+led = c{7h00, rst}      // connect rst to the first LED
 ```
 
 The output `led` is an 8 bit array. That means when you assign it a value you need to provide an 8 bit array. 
@@ -297,12 +297,12 @@ On Linux, _/opt/Xilinx/Vivado/YEAR.MONTH_ is assumed.
 For the Cu, if you're using the open source tools, make sure that is selected.
 Click the Alchitry logo and check _Settings->Cu Toolchain->Yosys (open source)_ is selected.
 
-If you want to use iCEcube2, make sure it is selected in _Settings->Cu Toolchain_.
-You will also have to set the location of the _lscc/iCEcube2_ folder with _Settings->Set iCEcube2 Location_ and the license file with _Settings->Set iCEcube2 License Location_.
+If you want to use i_cecube2, make sure it is selected in _Settings->Cu Toolchain_.
+You will also have to set the location of the _lscc/iCEcube2_ folder with _Settings->Set i_cecube2 Location_ and the license file with _Settings->Set i_cecube2 License Location_.
 
-On Windows, the default is _C:\lscc\iCEcube2.2020.12_.
+On Windows, the default is _C:\lscc\i_cecube2.2020.12_.
 
-On Linux, _~/lscc/iCEcube2.2020.12_ is assumed.
+On Linux, _~/lscc/i_cecube2.2020.12_ is assumed.
 
 There is no default for the license file location.
 
@@ -362,10 +362,10 @@ However, an FPGA is different.
 With this design (note I said design and not code), the button input is directly connected to the LED output. 
 You can imagine a physical wire bridging the input to the output inside the FPGA. 
 In reality, it's not a wire but a set of switches (multiplexers) that are set to route the signal directly to the output.
-Well, this is only partially true since the `resetConditioner` is there which does some stuff to clean up the reset signal.
+Well, this is only partially true since the `reset_conditioner` is there which does some stuff to clean up the reset signal.
 
 Since the signal doesn’t have to wait for a processor to read it, it will travel as fast as possible through the silicon to light the LED. 
-This is almost instant (again, forget about the `resetConditioner`)! 
+This is almost instant (again, forget about the `reset_conditioner`)! 
 The best part is that if you wire the button the LED then go on to create some crazy design with the rest of the FPGA, this will not slow down. 
 This is because the circuits will operate independently as they both simply _exist_. 
 It is this parallelism where FPGAs get their real power.

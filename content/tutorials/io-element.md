@@ -27,7 +27,7 @@ If you have a Cu with an older Io Element, you should use the _Io Base Fake Pull
 If your Io Element says "Built by: SparkFun" on the back with a little "V2" towards the end, you can use the normal version.
 If your board doesn't say "Built by: SparkFun", or is missing the "V2", you need to use the fake pull-downs version.
 
-The _Fake Pull-downs_ version connects the `fakePullDown` and `fakePullDown2D` components to the buttons and dip switches.
+The _Fake Pull-downs_ version connects the `fake_pull_down` and `fake_pull_down_2d` components to the buttons and dip switches.
 The older Io Element didn't have pull down resistors and the FPGA on the Cu doesn't have internal ones so we instead fake them.
 These module fakes pull-down resistors on the DIP switches and buttons by pulling the pin low for a very short amount of time, releasing it, waiting a short period, then sampling the input.
 
@@ -48,24 +48,24 @@ This is why we wait for 30ns before sampling the pin.
 By repeating this process over and over, we can simulate having a normal pull-down resistor.
 
 Thanks to this module, you can ignore that any of this is even happening and simply use its output as you would the input with a pull-down.
-The only difference is instead of using `ioDip` or `ioButton` you use `dipPd.out` and `buttonPd.out` respectively.
+The only difference is instead of using `io_dip` or `io_button` you use `dip_pd.out` and `button_pd.out` respectively.
 {% end %}
 
 Let's take a look at the top file.
 
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
-module alchitryTop (
+module alchitry_top (
     input clk,              // 100MHz clock
     input rst_n,            // reset button (active low)
     output led[8],          // 8 user controllable LEDs
-    input usbRx,            // USB->Serial input
-    output usbTx,           // USB->Serial output
-    output ioLed[3][8],     // LEDs on IO Shield
-    output ioSeg[8],        // 7-segment LEDs on IO Shield
-    output ioSel[4],        // Digit select on IO Shield
-    input ioButton[5],      // 5 buttons on IO Shield
-    input ioDip[3][8]       // DIP switches on IO Shield
+    input usb_rx,           // USB->Serial input
+    output usb_tx,          // USB->Serial output
+    output io_led[3][8],    // LEDs on IO Shield
+    output io_segment[8],   // 7-segment LEDs on IO Shield
+    output io_select[4],    // Digit select on IO Shield
+    input io_button[5],     // 5 buttons on IO Shield
+    input io_dip[3][8]      // DIP switches on IO Shield
 ) {
     
     sig rst                 // reset signal
@@ -73,36 +73,36 @@ module alchitryTop (
     .clk(clk) {
         // The reset conditioner is used to synchronize the reset signal to the FPGA
         // clock. This ensures the entire FPGA comes out of reset at the same time.
-        resetConditioner resetCond
+        reset_conditioner reset_cond
     }
     
     always {
-        resetCond.in = ~rst_n  // input raw inverted reset signal
-        rst = resetCond.out    // conditioned reset
+        reset_cond.in = ~rst_n  // input raw inverted reset signal
+        rst = reset_cond.out    // conditioned reset
         
         led = 8h00             // turn LEDs off
         
-        usbTx = usbRx          // loop serial port
+        usb_tx = usb_rx          // loop serial port
         
-        ioLed = 3x{{8h00}}
-        ioSeg = 8hFF
-        ioSel = 4hF
+        io_led = 3x{{8h00}}
+        io_segment = 8hFF
+        io_select = 4hF
     }
 }
 ```
 ---
 ```lucid
-module alchitryTop (
+module alchitry_top (
     input clk,              // 100MHz clock
     input rst_n,            // reset button (active low)
     output led[8],          // 8 user controllable LEDs
-    input usbRx,            // USB->Serial input
-    output usbTx,           // USB->Serial output
-    output ioLed[3][8],     // LEDs on IO Shield
-    output ioSeg[8],        // 7-segment LEDs on IO Shield
-    output ioSel[4],        // Digit select on IO Shield
-    inout ioButton[5],      // 5 buttons on IO Shield
-    inout ioDip[3][8]       // DIP switches on IO Shield
+    input usb_rx,           // USB->Serial input
+    output usb_tx,          // USB->Serial output
+    output io_led[3][8],    // LEDs on IO Shield
+    output io_segment[8],   // 7-segment LEDs on IO Shield
+    output io_select[4],    // Digit select on IO Shield
+    inout io_button[5],     // 5 buttons on IO Shield
+    inout io_dip[3][8]      // DIP switches on IO Shield
 ) {
     
     sig rst                 // reset signal
@@ -110,23 +110,23 @@ module alchitryTop (
     .clk(clk) {
         // The reset conditioner is used to synchronize the reset signal to the FPGA
         // clock. This ensures the entire FPGA comes out of reset at the same time.
-        resetConditioner resetCond
+        reset_conditioner reset_cond
         
-        fakePullDown buttonPd(#SIZE(5), .in(ioButton))
-        fakePullDown2D dipPd(#DIM_1(8), #DIM_2(3), .in(ioDip))
+        fake_pull_down button_pd(#SIZE(5), .in(io_button))
+        fake_pull_down_2d dip_pd(#DIM_1(8), #DIM_2(3), .in(io_dip))
     }
     
     always {
-        resetCond.in = ~rst_n  // input raw inverted reset signal
-        rst = resetCond.out    // conditioned reset
+        reset_cond.in = ~rst_n  // input raw inverted reset signal
+        rst = reset_cond.out    // conditioned reset
         
-        led = 8h00             // turn LEDs off
+        led = 8h00              // turn LEDs off
         
-        usbTx = usbRx          // loop serial port
+        usb_tx = usb_rx         // loop serial port
         
-        ioLed = 3x{{8h00}}
-        ioSeg = 8hFF
-        ioSel = 4hF
+        io_led = 3x{{8h00}}
+        io_segment = 8hFF
+        io_select = 4hF
     }
 }
 ```
@@ -135,18 +135,18 @@ module alchitryTop (
 You can see we have a handful of inputs and outputs named `io*`. 
 These are the Io Element specific signals.
 
-`ioLed` connects to the 24 LEDs. 
+`io_led` connects to the 24 LEDs. 
 This signal is organized as a 2D array to make it easier to access the three groups of 8 LEDs. 
-For example, if you want to get the first group of LEDs you would use `ioLed[0]` and if you wanted to get the third LED in the first group, you would use `ioLed[0][2]`.
+For example, if you want to get the first group of LEDs you would use `io_led[0]` and if you wanted to get the third LED in the first group, you would use `io_led[0][2]`.
 
-Because `ioLed` is a 2D array, when we set all the LEDs to 0, we have to use a little fancy syntax.
+Because `io_led` is a 2D array, when we set all the LEDs to 0, we have to use a little fancy syntax.
 
 ```lucid
-ioLed = 3x{{8h00}}
+io_led = 3x{{8h00}}
 ```
 
-We need the dimensions of our constant to match `ioLed`. 
-In this case, `ioLed` is a 3 by 8 array. We use `8h00` as the base constant which is a single dimensional array of width 8. 
+We need the dimensions of our constant to match `io_led`. 
+In this case, `io_led` is a 3 by 8 array. We use `8h00` as the base constant which is a single dimensional array of width 8. 
 The `x{}` syntax takes the outermost dimension and duplicates it. 
 If we wrote `3x{8h00}`, we would end up with `24h000000` since the outermost dimension is 8. 
 This isn't what we want as it is still a 1D array. 
@@ -157,12 +157,12 @@ The value `{8h00}` is a 1 by 8 2D array.
 We then use `3x{{8h00}}` to get a 3 by 8 array of all zeros. 
 Note that we could have also written `{8h00, 8h00, 8h00}`, but the duplication syntax is a bit cleaner.
 
-`ioSeg` and `ioSel` are used to control the 4 seven-segment LED displays. 
+`io_segment` and `io_select` are used to control the 4 seven-segment LED displays. 
 They are active low (0 = on, 1 = off) and they will be covered in more detail later.
 
-`ioButton` is simply the 5 push buttons. `ioButton[0]` is up, `ioButton[1]` is center, `ioButton[2]` is down, `ioButton[3]` is left, and `ioButton[4]` is right.
+`io_button` is simply the 5 push buttons. `io_button[0]` is up, `io_button[1]` is center, `io_button[2]` is down, `io_button[3]` is left, and `io_button[4]` is right.
 
-Finally, `ioDip` is the 24 DIP switches. This is arranged in a 2D array exactly the same way as `ioLed`.
+Finally, `io_dip` is the 24 DIP switches. This is arranged in a 2D array exactly the same way as `io_led`.
 
 # Logic Gates
 
@@ -174,35 +174,35 @@ In this example we are going to start by making the first LED light up when swit
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
     
-    led = 8h00             // turn LEDs off
+    led = 8h00              // turn LEDs off
     
-    usbTx = usbRx          // loop serial port
+    usb_tx = usb_rx         // loop serial port
     
-    ioLed = 3x{{8h00}}
-    ioSeg = 8hFF
-    ioSel = 4hF
+    io_led = 3x{{8h00}}
+    io_segment = 8hFF
+    io_select = 4hF
     
-    ioLed[0][0] = ioDip[0][0] & ioDip[0][1]
+    io_led[0][0] = io_dip[0][0] & io_dip[0][1]
 }
 ```
 ---
 ```lucid
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
     
-    led = 8h00             // turn LEDs off
+    led = 8h00              // turn LEDs off
     
-    usbTx = usbRx          // loop serial port
+    usb_tx = usb_rx         // loop serial port
     
-    ioLed = 3x{{8h00}}
-    ioSeg = 8hFF
-    ioSel = 4hF
+    io_led = 3x{{8h00}}
+    io_segment = 8hFF
+    io_select = 4hF
     
-    ioLed[0][0] = dipPd.out[0][0] & dipPd.out[0][1]
+    io_led[0][0] = dip_pd.out[0][0] & dip_pd.out[0][1]
 }
 ```
 {% end %}
@@ -216,7 +216,7 @@ Finally, we use the `&` operator to _AND_ the bits together. `&` is the bit-wise
 Notice that I didn't change the line where we assigned all LEDs a value of 0. 
 This is because the assignment to the first LED will simply be overruled by our second assignment. 
 It's good to remember that while `always` blocks have a sequential order of precedence, they aren't actually sequential. 
-This means that `ioLed[0][0]` will _only_ have the value of the second assignment and it as if the first assignment never happened. 
+This means that `io_led[0][0]` will _only_ have the value of the second assignment and it as if the first assignment never happened. 
 The tools will simply wire an AND gate to the two switch inputs and the LED output.
 
 Go ahead and build/load the project onto your board or click the bug to start the simulator. 
@@ -239,15 +239,15 @@ For example, if we want to light up the LED in the first group only when the cor
 
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
-ioLed[0] = ioDip[0] & ioDip[1]
+io_led[0] = io_dip[0] & io_dip[1]
 ```
 ---
 ```lucid
-ioLed[0] = dipPd.out[0] & dipPd.out[1]
+io_led[0] = dip_pd.out[0] & dip_pd.out[1]
 ```
 {% end %}
 
-Note that `ioLed[0]` is an array of width 8. So is `ioDip[0]` and `ioDip[1]`. 
+Note that `io_led[0]` is an array of width 8. So is `io_dip[0]` and `io_dip[1]`. 
 This single statement will create 8 individual AND gates.
 
 You can again use the OR and XOR operators in the same way.
@@ -257,16 +257,16 @@ For example, what if we want the LED to light only when the corresponding switch
 
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
-ioLed[0] = ioDip[0] & ioDip[1] & ioDip[2]
+io_led[0] = io_dip[0] & io_dip[1] & io_dip[2]
 ```
 ---
 ```lucid
-ioLed[0] = dipPd.out[0] & dipPd.out[1] & dipPd.out[2]
+io_led[0] = dip_pd.out[0] & dip_pd.out[1] & dip_pd.out[2]
 ```
 {% end %}
 
 Bit-wise operators are evaluated from left to right.
-In this case, `ioDip[0]` will be ANDed with `ioDip[1]` and the result will then be ANDed with `ioDip[2]`. 
+In this case, `io_dip[0]` will be ANDed with `io_dip[1]` and the result will then be ANDed with `io_dip[2]`. 
 In the case of AND gates, the order actually doesn't matter. 
 However, if you start mixing and matching operators the order can matter. 
 You can also use parenthesis to make the order you want things evaluated explicit.
@@ -287,11 +287,11 @@ To do this we can use the `&` reduction operator.
 
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
-ioLed[0][0] = &ioDip[0]
+io_led[0][0] = &io_dip[0]
 ```
 ---
 ```lucid
-ioLed[0][0] = &dipPd.out[0]
+io_led[0][0] = &dip_pd.out[0]
 ```
 {% end %}
 
@@ -299,11 +299,11 @@ This is equivalent to ANDing each bit individually as shown below.
 
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
-ioLed[0][0] = ioDip[0][0] & ioDip[0][1] & ioDip[0][2] & ioDip[0][3] & ioDip[0][4] & ioDip[0][5] & ioDip[0][6] & ioDip[0][7]
+io_led[0][0] = io_dip[0][0] & io_dip[0][1] & io_dip[0][2] & io_dip[0][3] & io_dip[0][4] & io_dip[0][5] & io_dip[0][6] & io_dip[0][7]
 ```
 ---
 ```lucid
-ioLed[0][0] = dipPd.out[0][0] & dipPd.out[0][1] & dipPd.out[0][2] & dipPd.out[0][3] & dipPd.out[0][4] & dipPd.out[0][5] & dipPd.out[0][6] & dipPd.out[0][7]
+io_led[0][0] = dip_pd.out[0][0] & dip_pd.out[0][1] & dip_pd.out[0][2] & dip_pd.out[0][3] & dip_pd.out[0][4] & dip_pd.out[0][5] & dip_pd.out[0][6] & dip_pd.out[0][7]
 ```
 {% end %}
 
@@ -314,11 +314,11 @@ For example, if we want the LED to turn on when _any_ switch is on we could use 
 
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
-ioLed[0][0] = |ioDip
+io_led[0][0] = |io_dip
 ```
 ---
 ```lucid
-ioLed[0][0] = |dipPd.out
+io_led[0][0] = |dip_pd.out
 ```
 {% end %}
 
@@ -343,44 +343,44 @@ Let's start with some addition. We will add the binary values from the first and
 
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
-sig result[24]             // result of our operations
+sig result[24]              // result of our operations
 
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
     
-    led = 8h00             // turn LEDs off
+    led = 8h00              // turn LEDs off
     
-    usbTx = usbRx          // loop serial port
+    usb_tx = usb_rx         // loop serial port
     
-    ioLed = 3x{{8h00}}
-    ioSeg = 8hFF
-    ioSel = 4hF
+    io_led = 3x{{8h00}}
+    io_segment = 8hFF
+    io_select = 4hF
     
-    result = ioDip[1] + ioDip[0] // add the switch values
+    result = io_dip[1] + io_dip[0] // add the switch values
     
-    ioLed = $build(result, 3) // convert result from a 24-bit array to a 3x8 array
+    io_led = $build(result, 3) // convert result from a 24-bit array to a 3x8 array
 }
 ```
 ---
 ```lucid
-sig result[24]             // result of our operations
+sig result[24]              // result of our operations
 
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
     
-    led = 8h00             // turn LEDs off
+    led = 8h00              // turn LEDs off
     
-    usbTx = usbRx          // loop serial port
+    usb_tx = usb_rx         // loop serial port
     
-    ioLed = 3x{{8h00}}
-    ioSeg = 8hFF
-    ioSel = 4hF
+    io_led = 3x{{8h00}}
+    io_segment = 8hFF
+    io_select = 4hF
     
-    result = dipPd.out[1] + dipPd.out[0] // add the switch values
+    result = dip_pd.out[1] + dip_pd.out[0] // add the switch values
     
-    ioLed = $build(result, 3) // convert result from a 24-bit array to a 3x8 array
+    io_led = $build(result, 3) // convert result from a 24-bit array to a 3x8 array
 }
 ```
 {% end %}
@@ -419,11 +419,11 @@ Now change the `+` to a `-` to subtract the first switch value from the second.
 
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
-result = ioDip[1] - ioDip[0] // subtract the switch values
+result = io_dip[1] - io_dip[0] // subtract the switch values
 ```
 ---
 ```lucid
-result = dipPd.out[1] - dipPd.out[0] // subtract the switch values
+result = dip_pd.out[1] - dip_pd.out[0] // subtract the switch values
 ```
 {% end %}
 
@@ -441,11 +441,11 @@ Finally, change the `-` to `*` to test out multiplication.
 
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
-result = ioDip[1] * ioDip[0] // multiply the switch values
+result = io_dip[1] * io_dip[0] // multiply the switch values
 ```
 ---
 ```lucid
-result = dipPd.out[1] * dipPd.out[0] // multiply the switch values
+result = dip_pd.out[1] * dip_pd.out[0] // multiply the switch values
 ```
 {% end %}
 
@@ -480,13 +480,13 @@ If you are using an Au, you can also use the _Vivado IP Catalog_ to generate an 
 Go ahead and try out division.
 Note that dividing by `0` technically produces the value `bx` which means the tools what do whatever they want.
 With Vivado and Yosys, dividing by 0 produced `24hFFFFFF`.
-With iCEcube2, dividing by 0 produced `24h0000FF`.
+With i_cecube2, dividing by 0 produced `24h0000FF`.
 
 If you divide by 0 in the simulator, the LEDs will turn red indicating a `bx` value.
 
 # Seven-Segment Displays
 
-The Io Element has four seven-segment displays that are multiplexed. This means that we have two groups of signals, the first, `ioSeg`, connects to the segments of each display.
+The Io Element has four seven-segment displays that are multiplexed. This means that we have two groups of signals, the first, `io_segment`, connects to the segments of each display.
 
 ![7 Segment Digit](https://cdn.alchitry.com/tutorials/io-element/7-seg.svg)
 
@@ -497,7 +497,7 @@ That means if you apply power to segment 0, all four displays segment 0 receive 
 This is done to save on the number of pins required to drive the displays. 
 However, it means that we need a way to disable all but one display so that we can show a unique number on each one.
 
-This is where the second group of signals, `ioSel`, comes in handy. 
+This is where the second group of signals, `io_select`, comes in handy. 
 These are used to select which digit is active. 
 Typically, only one digit will be active at any time. 
 If you have more than one digit active, all active digits will show exactly the same thing since their segments are wired together.
@@ -536,31 +536,31 @@ We'll be doing exactly that with these two.
 .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
-    resetConditioner resetCond
+    reset_conditioner reset_cond
     
     .rst(rst) {
-        counter ctr(#SIZE(3), #DIV($isSim() ? 9 : 25))
+        counter ctr(#SIZE(3), #DIV($is_sim() ? 9 : 25))
     }
 }
 
-decoder numToSeg(#WIDTH(3))
+decoder num_to_seg(#WIDTH(3))
 ```
 ---
 ```lucid
 .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
-    resetConditioner resetCond
+    reset_conditioner reset_cond
     
-    fakePullDown buttonPd(#SIZE(5), .in(ioButton))
-    fakePullDown2D dipPd(#DIM_1(8), #DIM_2(3), .in(ioDip))
+    fake_pull_down button_pd(#SIZE(5), .in(io_button))
+    fake_pull_down_2d dip_pd(#DIM_1(8), #DIM_2(3), .in(io_dip))
     
     .rst(rst) {
-        counter ctr(#SIZE(3), #DIV($isSim() ? 9 : 25))
+        counter ctr(#SIZE(3), #DIV($is_sim() ? 9 : 25))
     }
 }
 
-decoder numToSeg(#WIDTH(3))
+decoder num_to_seg(#WIDTH(3))
 ```
 {% end %}
 
@@ -600,55 +600,55 @@ Now we can hook up the modules.
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
     
-    led = 8h00             // turn LEDs off
+    led = 8h00              // turn LEDs off
     
-    usbTx = usbRx          // loop serial port
+    usb_tx = usb_rx         // loop serial port
     
-    numToSeg.in = ctr.value
+    num_to_seg.in = ctr.value
     
-    ioSeg = !numToSeg.out
-    ioSel = 4h0
+    io_segment = !num_to_seg.out
+    io_select = 4h0
     
-    result = ioDip[1] * ioDip[0]
-    ioLed = $build(result, 3)
+    result = io_dip[1] * io_dip[0]
+    io_led = $build(result, 3)
 }
 ```
 ---
 ```lucid
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
     
-    led = 8h00             // turn LEDs off
+    led = 8h00              // turn LEDs off
     
-    usbTx = usbRx          // loop serial port
+    usb_tx = usb_rx         // loop serial port
     
-    numToSeg.in = ctr.value
+    num_to_seg.in = ctr.value
     
-    ioSeg = !numToSeg.out
-    ioSel = 4h0
+    io_segment = !num_to_seg.out
+    io_select = 4h0
     
-    result = dipPd.out[1] * dipPd.out[0]
-    ioLed = $build(result, 3)
+    result = dip_pd.out[1] * dip_pd.out[0]
+    io_led = $build(result, 3)
 }
 ```
 {% end %}
 
-We feed the binary counter value into the decoder and the output of the decoder to `ioSeg`. 
-Note that `ioSeg` and `ioSel` are both _active low_. 
+We feed the binary counter value into the decoder and the output of the decoder to `io_segment`. 
+Note that `io_segment` and `io_select` are both _active low_. 
 This means that when the signal is 0, it is active. 
 To turn only one LED on we need to invert the output of the decoder with the bit-wise inversion, `~`, operator. 
 This will make the signal zero-hot.
 
-Also notice we need to set `ioSel` to 0 to enable a digit. 
+Also notice we need to set `io_select` to 0 to enable a digit. 
 Setting all of them to 0 will turn them all on.
 
 Build and load your project to your board or fire up the simulator. 
 You should now see the segments of all 4 displays lighting one at time. 
-Try to light only a single display by setting `ioSel` to `~4h1` instead.
+Try to light only a single display by setting `io_select` to `~4h1` instead.
 
 Now what if we wanted to cycle through each digit? 
 We need another counter that increments each time the original counter overflows. 
@@ -661,33 +661,33 @@ By adding extra bits, these will increment only when the lower three bits overfl
 .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
-    resetConditioner resetCond
+    reset_conditioner reset_cond
     
     .rst(rst) {
-        counter ctr(#SIZE(5), #DIV($isSim() ? 9 : 25))
+        counter ctr(#SIZE(5), #DIV($is_sim() ? 9 : 25))
     }
 }
 
-decoder numToSeg(#WIDTH(3))
-decoder numToDigit(#WIDTH(2))
+decoder num_to_seg(#WIDTH(3))
+decoder num_to_digit(#WIDTH(2))
 ```
 ---
 ```lucid
 .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
-    resetConditioner resetCond
+    reset_conditioner reset_cond
     
-    fakePullDown buttonPd(#SIZE(5), .in(ioButton))
-    fakePullDown2D dipPd(#DIM_1(8), #DIM_2(3), .in(ioDip))
+    fake_pull_down button_pd(#SIZE(5), .in(io_button))
+    fake_pull_down_2d dip_pd(#DIM_1(8), #DIM_2(3), .in(io_dip))
     
     .rst(rst) {
-        counter ctr(#SIZE(5), #DIV($isSim() ? 9 : 25))
+        counter ctr(#SIZE(5), #DIV($is_sim() ? 9 : 25))
     }
 }
 
-decoder numToSeg(#WIDTH(3))
-decoder numToDigit(#WIDTH(2))
+decoder num_to_seg(#WIDTH(3))
+decoder num_to_digit(#WIDTH(2))
 ```
 {% end %}
 
@@ -698,41 +698,41 @@ We need 2 since we have 4 digits to select from and an input of 2 bits gives us 
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
     
-    led = 8h00             // turn LEDs off
+    led = 8h00              // turn LEDs off
     
-    usbTx = usbRx          // loop serial port
+    usb_tx = usb_rx         // loop serial port
     
-    numToSeg.in = ctr.value[2:0]   // lower three bits used for segments
-    numToDigit.in = ctr.value[4:3] // upper two bits used for digits
+    num_to_seg.in = ctr.value[2:0]   // lower three bits used for segments
+    num_to_digit.in = ctr.value[4:3] // upper two bits used for digits
     
-    ioSeg = ~numToSeg.out    // connect segments to counter
-    ioSel = ~numToDigit.out  // connect digit select to counter
+    io_segment = ~num_to_seg.out     // connect segments to counter
+    io_select = ~num_to_digit.out    // connect digit select to counter
     
-    result = ioDip[1] * ioDip[0]
-    ioLed = $build(result, 3)
+    result = io_dip[1] * io_dip[0]
+    io_led = $build(result, 3)
 }
 ```
 ---
 ```lucid
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n   // input raw inverted reset signal
+    rst = reset_cond.out     // conditioned reset
     
-    led = 8h00             // turn LEDs off
+    led = 8h00               // turn LEDs off
     
-    usbTx = usbRx          // loop serial port
+    usb_tx = usb_rx          // loop serial port
     
-    numToSeg.in = ctr.value[2:0]   // lower three bits used for segments
-    numToDigit.in = ctr.value[4:3] // upper two bits used for digits
+    num_to_seg.in = ctr.value[2:0]   // lower three bits used for segments
+    num_to_digit.in = ctr.value[4:3] // upper two bits used for digits
     
-    ioSeg = ~numToSeg.out    // connect segments to counter
-    ioSel = ~numToDigit.out  // connect digit select to counter
+    io_segment = ~num_to_seg.out     // connect segments to counter
+    io_select = ~num_to_digit.out    // connect digit select to counter
     
-    result = dipPd.out[1] * dipPd.out[0]
-    ioLed = $build(result, 3)
+    result = dip_pd.out[1] * dip_pd.out[0]
+    io_led = $build(result, 3)
 }
 ```
 {% end %}
@@ -756,10 +756,10 @@ Lighting up the segments is super cool and all, but it's much cooler to actually
 Before we jump into multiplexing, we need a way to convert a number into the segments that need to be lit to represent that number. 
 To do this we can use a look-up table.
 
-Create a new module called `sevenSeg` and add the following.
+Create a new module called `seven_seg` and add the following.
 
 ```lucid
-module sevenSeg (
+module seven_seg (
     input char[4],
     output segs[7]
 ) {
@@ -799,93 +799,93 @@ To test out our look-up table, let's connect it to our counter.
 .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
-    resetConditioner resetCond
+    reset_conditioner reset_cond
     
     .rst(rst) {
-        counter ctr(#SIZE(4), #TOP(9), #DIV($isSim() ? 9 : 25))
+        counter ctr(#SIZE(4), #TOP(9), #DIV($is_sim() ? 9 : 25))
     }
 }
 
-sevenSeg seg
+seven_seg seg
 ```
 ---
 ```lucid
 .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
-    resetConditioner resetCond
+    reset_conditioner reset_cond
     
-    fakePullDown buttonPd(#SIZE(5), .in(ioButton))
-    fakePullDown2D dipPd(#DIM_1(8), #DIM_2(3), .in(ioDip))
+    fake_pull_down button_pd(#SIZE(5), .in(io_button))
+    fake_pull_down_2d dip_pd(#DIM_1(8), #DIM_2(3), .in(io_dip))
     
     .rst(rst) {
-        counter ctr(#SIZE(4), #TOP(9), #DIV($isSim() ? 9 : 25))
+        counter ctr(#SIZE(4), #TOP(9), #DIV($is_sim() ? 9 : 25))
     }
 }
 
-sevenSeg seg
+seven_seg seg
 ```
 {% end %}
 
 We need `ctr` to count from 0-9 so we set `TOP` to 9 to cap its value. 
 Also, we need to change `SIZE` to 4, as we only need 4 bits to represent 0-9.
 
-Because we don't need the decoders anymore, we can remove them and add our `sevenSeg` module.
+Because we don't need the decoders anymore, we can remove them and add our `seven_seg` module.
 
 Finally, we need to wire it up the LEDs
 
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
     
-    led = 8h00             // turn LEDs off
+    led = 8h00              // turn LEDs off
     
-    usbTx = usbRx          // loop serial port
+    usb_tx = usb_rx         // loop serial port
     
     seg.char = ctr.value
   
-    ioSeg = ~seg.segs      // connect segments to counter
-    ioSel = ~4h1           // first digit only
+    io_segment = ~seg.segs  // connect segments to counter
+    io_select = ~4h1        // first digit only
     
-    result = ioDip[1] * ioDip[0]
-    ioLed = $build(result, 3)
+    result = io_dip[1] * io_dip[0]
+    io_led = $build(result, 3)
 }
 ```
 ---
 ```lucid
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
     
-    led = 8h00             // turn LEDs off
+    led = 8h00              // turn LEDs off
     
-    usbTx = usbRx          // loop serial port
+    usb_tx = usb_rx         // loop serial port
     
     seg.char = ctr.value
   
-    ioSeg = ~seg.segs      // connect segments to counter
-    ioSel = ~4h1           // first digit only
+    io_segment = ~seg.segs  // connect segments to counter
+    io_select = ~4h1        // first digit only
     
-    result = dipPd.out[1] * dipPd.out[0]
-    ioLed = $build(result, 3)
+    result = dip_pd.out[1] * dip_pd.out[0]
+    io_led = $build(result, 3)
 }
 ```
 {% end %}
 
-`ioSel` is set to `~4h1` so that only the right most digit is on.
+`io_select` is set to `~4h1` so that only the right most digit is on.
 
 Build and load the project onto your board to make sure the first digit is correctly counting from 0 to 9.
 
 Now we need to make a module that will take four values in and display them on all four digits instead of only using one.
 
-Create a new module called `multiSevenSeg` and add the following code.
+Create a new module called `multi_seven_seg` and add the following code.
 
 ```lucid
-module multiSevenSeg #(
+module multi_seven_seg #(
     DIGITS = 4 : DIGITS > 0,
-    DIV = $isSim() ? 0 : 16 : DIV >= 0
+    DIV = $is_sim() ? 0 : 16 : DIV >= 0
 )(
     input clk,                // clock
     input rst,                // reset
@@ -901,15 +901,15 @@ module multiSevenSeg #(
         counter ctr (#DIV(DIV), #SIZE(DIGIT_BITS), #TOP(DIGITS-1)) 
     }
     
-    sevenSeg segDec                        // segment decoder
-    decoder digitDec(#WIDTH(DIGIT_BITS))   // digit decoder
+    seven_seg seg_dec                       // segment decoder
+    decoder digit_dec(#WIDTH(DIGIT_BITS))   // digit decoder
     
     always {
-        segDec.char = values[ctr.value]    // select the value for the active digit
-        seg = segDec.segs                  // output the decoded value
+        seg_dec.char = values[ctr.value]    // select the value for the active digit
+        seg = seg_dec.segs                  // output the decoded value
         
-        digitDec.in = ctr.value            // decode active digit to one-hot
-        sel = digitDec.out                 // output the active digit
+        digit_dec.in = ctr.value            // decode active digit to one-hot
+        sel = digit_dec.out                 // output the active digit
     }
 }
 ```
@@ -938,10 +938,10 @@ Let's test out this module by feeding it some constant numbers to show.
 .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
-    resetConditioner resetCond
+    reset_conditioner reset_cond
     
     .rst(rst) {
-        multiSevenSeg seg
+        multi_seven_seg seg
     }
 }
 ```
@@ -950,56 +950,56 @@ Let's test out this module by feeding it some constant numbers to show.
 .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
-    resetConditioner resetCond
+    reset_conditioner reset_cond
     
-    fakePullDown buttonPd(#SIZE(5), .in(ioButton))
-    fakePullDown2D dipPd(#DIM_1(8), #DIM_2(3), .in(ioDip))
+    fake_pull_down button_pd(#SIZE(5), .in(io_button))
+    fake_pull_down_2d dip_pd(#DIM_1(8), #DIM_2(3), .in(io_dip))
     
     .rst(rst) {
-        multiSevenSeg seg
+        multi_seven_seg seg
     }
 }
 ```
 {% end %}
 
-We don't need the counter or the `sevenSeg` modules from before, but we need the `multiSevenSeg` module now.
+We don't need the counter or the `seven_seg` modules from before, but we need the `multi_seven_seg` module now.
 
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n // input raw inverted reset signal
+    rst = reset_cond.out   // conditioned reset
     
     led = 8h00             // turn LEDs off
     
-    usbTx = usbRx          // loop serial port
+    usb_tx = usb_rx        // loop serial port
     
     seg.values = {4h8,4h5,4h3,4h1}
   
-    ioSeg = ~seg.seg       // connect segments to the driver
-    ioSel = ~seg.sel       // connect digit select to the driver
+    io_segment = ~seg.seg  // connect segments to the driver
+    io_select = ~seg.sel   // connect digit select to the driver
     
-    result = ioDip[1] * ioDip[0]
-    ioLed = $build(result, 3)
+    result = io_dip[1] * io_dip[0]
+    io_led = $build(result, 3)
 }
 ```
 ---
 ```lucid
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
     
-    led = 8h00             // turn LEDs off
+    led = 8h00              // turn LEDs off
     
-    usbTx = usbRx          // loop serial port
+    usb_tx = usb_rx         // loop serial port
     
     seg.values = {4h8,4h5,4h3,4h1}
   
-    ioSeg = ~seg.seg       // connect segments to the driver
-    ioSel = ~seg.sel       // connect digit select to the driver
+    io_segment = ~seg.seg   // connect segments to the driver
+    io_select = ~seg.sel    // connect digit select to the driver
     
-    result = dipPd.out[1] * dipPd.out[0]
-    ioLed = $build(result, 3)
+    result = dip_pd.out[1] * dip_pd.out[0]
+    io_led = $build(result, 3)
 }
 ```
 {% end %}
@@ -1017,10 +1017,10 @@ Instead, we will create a special counter that counts in base 10.
 
 To do this we will create two modules. The first will be a single digit counter and the second will chain these together for a multi-digit counter.
 
-Create a new module called `decimalCounter` with the following code.
+Create a new module called `decimal_counter` with the following code.
 
 ```lucid
-module decimalCounter (
+module decimal_counter (
     input clk,      // clock
     input rst,      // reset
     input inc,      // increment the counter
@@ -1052,10 +1052,10 @@ The current value of the counter is output on `value`.
 
 We now need to chain these together to make a multi-digit counter.
 
-Create a new module named `multiDecimalCounter` and add the following code.
+Create a new module named `multi_decimal_counter` and add the following code.
 
 ```lucid
-module multiDecimalCounter #(
+module multi_decimal_counter #(
     DIGITS = 4 : DIGITS >= 2  // number of digits
 ) (
     input clk,                // clock
@@ -1064,7 +1064,7 @@ module multiDecimalCounter #(
     output digits[DIGITS][4]  // digit values
 ) {
     .clk(clk), .rst(rst) {
-        decimalCounter dctr[DIGITS] // digit counters
+        decimal_counter dctr[DIGITS] // digit counters
     }
     
     always {
@@ -1100,21 +1100,21 @@ Go into the _Component Library_ and add the _Edge Detector_ to your project. You
 This component takes a signal and sends out a pulse when it detects a rising, falling, or either type of edge. 
 You can configure which edges you care about.
 
-Let's add all the modules to `alchitryTop`.
+Let's add all the modules to `alchitry_top`.
 
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
 .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
-    resetConditioner resetCond
+    reset_conditioner reset_cond
     
-    edgeDetector edgeDetector(#RISE(1), #FALL(0))
+    edge_detector edge_detector(#RISE(1), #FALL(0))
     
     .rst(rst) {
-        multiSevenSeg seg
-        multiDecimalCounter decCtr
-        counter ctr(#SIZE(1), #DIV($isSim() ? 8 : 24))
+        multi_seven_seg seg
+        multi_decimal_counter dec_ctr
+        counter ctr(#SIZE(1), #DIV($is_sim() ? 8 : 24))
     }
 }
 ```
@@ -1123,17 +1123,17 @@ Let's add all the modules to `alchitryTop`.
 .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
-    resetConditioner resetCond
+    reset_conditioner reset_cond
     
-    fakePullDown buttonPd(#SIZE(5), .in(ioButton))
-    fakePullDown2D dipPd(#DIM_1(8), #DIM_2(3), .in(ioDip))
+    fake_pull_down button_pd(#SIZE(5), .in(io_button))
+    fake_pull_down_2d dip_pd(#DIM_1(8), #DIM_2(3), .in(io_dip))
     
-    edgeDetector edgeDetector(#RISE(1), #FALL(0))
+    edge_detector edge_detector(#RISE(1), #FALL(0))
     
     .rst(rst) {
-        multiSevenSeg seg
-        multiDecimalCounter decCtr
-        counter ctr(#SIZE(1), #DIV($isSim() ? 8 : 24))
+        multi_seven_seg seg
+        multi_decimal_counter dec_ctr
+        counter ctr(#SIZE(1), #DIV($is_sim() ? 8 : 24))
     }
 }
 ```
@@ -1149,43 +1149,43 @@ Let's wire them all up!
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
     
-    led = 8h00             // turn LEDs off
+    led = 8h00              // turn LEDs off
     
-    usbTx = usbRx          // loop serial port
+    usb_tx = usb_rx         // loop serial port
     
-    edgeDetector.in = ctr.value
-    decCtr.inc = edgeDetector.out
-    seg.values = decCtr.digits
+    edge_detector.in = ctr.value
+    dec_ctr.inc = edge_detector.out
+    seg.values = dec_ctr.digits
   
-    ioSeg = ~seg.seg       // connect segments to the driver
-    ioSel = ~seg.sel       // connect digit select to the driver
+    io_segment = ~seg.seg   // connect segments to the driver
+    io_select = ~seg.sel    // connect digit select to the driver
     
-    result = ioDip[1] * ioDip[0]
-    ioLed = $build(result, 3)
+    result = io_dip[1] * io_dip[0]
+    io_led = $build(result, 3)
 }
 ```
 ---
 ```lucid
 always {
-    resetCond.in = ~rst_n  // input raw inverted reset signal
-    rst = resetCond.out    // conditioned reset
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
     
-    led = 8h00             // turn LEDs off
+    led = 8h00              // turn LEDs off
     
-    usbTx = usbRx          // loop serial port
+    usb_tx = usb_rx         // loop serial port
     
-    edgeDetector.in = ctr.value
-    decCtr.inc = edgeDetector.out
-    seg.values = decCtr.digits
+    edge_detector.in = ctr.value
+    dec_ctr.inc = edge_detector.out
+    seg.values = dec_ctr.digits
   
-    ioSeg = ~seg.seg       // connect segments to the driver
-    ioSel = ~seg.sel       // connect digit select to the driver
+    io_segment = ~seg.seg   // connect segments to the driver
+    io_select = ~seg.sel    // connect digit select to the driver
     
-    result = dipPd.out[1] * dipPd.out[0]
-    ioLed = $build(result, 3)
+    result = dip_pd.out[1] * dip_pd.out[0]
+    io_led = $build(result, 3)
 }
 ```
 {% end %}

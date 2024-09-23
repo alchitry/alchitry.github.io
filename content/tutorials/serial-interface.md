@@ -59,16 +59,16 @@ We are going make some changes in the top file.
 .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
-    resetConditioner resetCond
+    reset_conditioner reset_cond
     
     .rst(rst) {
-        uartRx rx(#BAUD(1_000_000), #CLK_FREQ(100_000_000))
-        uartTx tx(#BAUD(1_000_000), #CLK_FREQ(100_000_000))
+        uart_rx rx(#BAUD(1_000_000), #CLK_FREQ(100_000_000))
+        uart_tx tx(#BAUD(1_000_000), #CLK_FREQ(100_000_000))
     }
 }
 ```
 
-This will create instances of `uartRx` and `uartTx` named `rx` and `tx` respectively.
+This will create instances of `uart_rx` and `uart_tx` named `rx` and `tx` respectively.
 
 We need to specify two parameters for each one. 
 The `BAUD` parameter is the number of bits per second it should send. 
@@ -89,19 +89,19 @@ We are going to hook the modules up to each other so that when data is received,
 Change the always block to look the following.
 
 ```lucid,linenos,linenostart=22
-    always {
-        resetCond.in = ~rst_n  // input raw inverted reset signal
-        rst = resetCond.out    // conditioned reset
+always {
+    reset_cond.in = ~rst_n  // input raw inverted reset signal
+    rst = reset_cond.out    // conditioned reset
 
-        led = 8h00             // turn LEDs off
-        
-        rx.rx = usbRx          // connect rx input
-        usbTx = tx.tx          // connect tx output
+    led = 8h00              // turn LEDs off
+    
+    rx.rx = usb_rx          // connect rx input
+    usb_tx = tx.tx          // connect tx output
 
-        tx.newData = rx.newData
-        tx.data = rx.data
-        tx.block = 0           // no flow control, do not block
-    }
+    tx.new_data = rx.new_data
+    tx.data = rx.data
+    tx.block = 0            // no flow control, do not block
+}
 ```
 
 On lines 28 and 29, we connect the external input and output to our two modules. 
@@ -109,19 +109,19 @@ On lines 28 and 29, we connect the external input and output to our two modules.
 On lines 31 and 32, we connect the `rx` module's outputs to the `tx` module's inputs. 
 
 On line 33, we set the `block` input of `tx` to `0`. 
-When this value is `1`, the `uartTx` component won't send any data out. 
+When this value is `1`, the `uart_tx` component won't send any data out. 
 This is useful if you have some way to tell that the receiver is busy. 
 With the USB<->serial converter, we just assume the data is being read from the computer in a timely manner to keep the FTDI's buffer from overflowing. 
 This is a reasonable assumption as long as there is some program actually reading the data.
 
 # Sending and Receiving Data
 
-When new data arrives, the signal `rx.newData` goes high. 
+When new data arrives, the signal `rx.new_data` goes high. 
 This tells you that the data on `rx.data` is valid. 
-Normally you would want to wait for `rx.newData` to go high and then do something with the data.
+Normally you would want to wait for `rx.new_data` to go high and then do something with the data.
 
 Writing data to the serial port follows the same idea. 
-We set `tx.data` to the byte to send, and we set `tx.newData` high. 
+We set `tx.data` to the byte to send, and we set `tx.new_data` high. 
 However, there is one more signal to look out for. 
 That is `tx.busy`. 
 If this signal is high, the transmitter is busy for some reason, either it is currently sending a byte or block is high. 
@@ -169,7 +169,7 @@ These lines go at the end of the `always` block.
 You can also remove the previous assignment of `0` to `led`.
 
 ```lucid,linenos,linenostart=35
-if (rx.newData) {      // new byte received
+if (rx.new_data) {      // new byte received
     data.d = rx.data   // save it
 }
 
@@ -179,19 +179,19 @@ led = data.q           // output the data
 On the last line, we connect the LEDs to the output of the `dff`.
 
 If you don't assign a `dff` a value, then it will retain the last value it had.
-Since we are only assigning it a value when `rx.newData` is high, it will hold the last byte until the next one comes in.
+Since we are only assigning it a value when `rx.new_data` is high, it will hold the last byte until the next one comes in.
 
 Now, if you build and load your project, when you fire up a serial terminal you should not only see the text you send back in the monitor, but the LEDs on the board should also change depending on the character you last sent.
 
 The full module looks like this.
 
 ```lucid
-module alchitryTop (
+module alchitry_top (
     input clk,              // 100MHz clock
     input rst_n,            // reset button (active low)
     output led[8],          // 8 user controllable LEDs
-    input usbRx,            // USB->Serial input
-    output usbTx            // USB->Serial output
+    input usb_rx,           // USB->Serial input
+    output usb_tx           // USB->Serial output
 ) {
 
     sig rst                 // reset signal
@@ -199,32 +199,32 @@ module alchitryTop (
     .clk(clk) {
         // The reset conditioner is used to synchronize the reset signal to the FPGA
         // clock. This ensures the entire FPGA comes out of reset at the same time.
-        resetConditioner resetCond
+        reset_conditioner reset_cond
         
         dff data[8]            // flip-flops to store last character
         
         .rst(rst) {
-            uartRx rx(#BAUD(1_000_000), #CLK_FREQ(100_000_000))
-            uartTx tx(#BAUD(1_000_000), #CLK_FREQ(100_000_000))
+            uart_rx rx(#BAUD(1_000_000), #CLK_FREQ(100_000_000))
+            uart_tx tx(#BAUD(1_000_000), #CLK_FREQ(100_000_000))
         }
     }
 
     always {
-        resetCond.in = ~rst_n  // input raw inverted reset signal
-        rst = resetCond.out    // conditioned reset
+        reset_cond.in = ~rst_n  // input raw inverted reset signal
+        rst = reset_cond.out    // conditioned reset
         
-        rx.rx = usbRx          // connect rx input
-        usbTx = tx.tx          // connect tx output
+        rx.rx = usb_rx          // connect rx input
+        usb_tx = tx.tx          // connect tx output
 
-        tx.newData = rx.newData
+        tx.new_data = rx.new_data
         tx.data = rx.data
-        tx.block = 0           // no flow control, do not block
+        tx.block = 0            // no flow control, do not block
         
-        if (rx.newData) {      // new byte received
-            data.d = rx.data   // save it
+        if (rx.new_data) {      // new byte received
+            data.d = rx.data    // save it
         }
         
-        led = data.q           // output the data
+        led = data.q            // output the data
     }
 }
 ```

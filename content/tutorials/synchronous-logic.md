@@ -9,7 +9,7 @@ In this tutorial you will be introduced to the *D flip-flop* and how you can use
 
 <!-- more -->
 
-{{ youtube(id="kOE1GXge11k?si=nZOT0nboMJxjkcVl") }}
+{{ youtube(id="k_oe_1gxge11k?si=n_zot0nbo_mjxjkc_vl") }}
 
 Synchronous logic is a fundamental building block for just about any digital design. 
 It allows you to create much more complex systems that accomplish something over a series of steps. 
@@ -289,12 +289,12 @@ Now that we have a blinker module we need to add it to our top level module.
 Open up the top file and make the edits so it looks the same as below.
 
 ```lucid,linenos
-module alchitryTop (
+module alchitry_top (
     input clk,              // 100MHz clock
     input rst_n,            // reset button (active low)
     output led[8],          // 8 user controllable LEDs
-    input usbRx,            // USB->Serial input
-    output usbTx            // USB->Serial output
+    input usb_rx,           // USB->Serial input
+    output usb_tx           // USB->Serial output
 ) {
     
     sig rst                 // reset signal
@@ -302,29 +302,29 @@ module alchitryTop (
     .clk(clk) {
         // The reset conditioner is used to synchronize the reset signal to the FPGA
         // clock. This ensures the entire FPGA comes out of reset at the same time.
-        resetConditioner resetCond
+        reset_conditioner reset_cond
         
         .rst(rst) {
-            blinker myBlinker
+            blinker my_blinker
         }
     }
     
     always {
-        resetCond.in = ~rst_n     // input raw inverted reset signal
-        rst = resetCond.out       // conditioned reset
+        reset_cond.in = ~rst_n     // input raw inverted reset signal
+        rst = reset_cond.out       // conditioned reset
         
-        led = 8x{myBlinker.blink} // blink LEDs
+        led = 8x{my_blinker.blink} // blink LEDs
         
-        usbTx = usbRx             // echo the serial data
+        usb_tx = usb_rx            // echo the serial data
     }
 }
 ```
 
-In the nested `.clk(clk)` and `.rst(rst)` blocks, I instantiated the blinker module and named it `myBlinker`. 
+In the nested `.clk(clk)` and `.rst(rst)` blocks, I instantiated the blinker module and named it `my_blinker`. 
 Notice I'm using the batch way of connecting the `clk` and `rst` inputs this time. 
 This is because you will likely want to add more modules to your top level module so it can be nice to set it up beforehand.
 
-In the always block, we connect the `blink` output of `myBlinker` to the eight LEDs using the duplication syntax covered in the previous tutorial.
+In the always block, we connect the `blink` output of `my_blinker` to the eight LEDs using the duplication syntax covered in the previous tutorial.
 
 You should now be able to build and load the project. All 8 LEDs should blink about two times per second.
 
@@ -353,7 +353,7 @@ module blinker (
 }
 ```
 
-We can clean this up using the `$isSim()` function.
+We can clean this up using the `$is_sim()` function.
 This function evaluates to `1` if you are running an interactive simulation, and `0` otherwise.
 
 Using this and the ternary operator we can update the code to work in both cases.
@@ -365,10 +365,10 @@ module blinker (
     output blink // output to LED
 ) {
     
-    dff counter[$isSim() ? 9 : 25](.clk(clk), .rst(rst))
+    dff counter[$is_sim() ? 9 : 25](.clk(clk), .rst(rst))
     
     always {
-        blink = counter.q[$isSim() ? 8 : 24]
+        blink = counter.q[$is_sim() ? 8 : 24]
         counter.d = counter.q + 1
     }
 }
@@ -387,12 +387,12 @@ For that, and other cases, we have the `$width()` function.
 The `$width()` function takes any signal as an argument and returns its width. 
 See the [reference page](@/tutorials/lucid-reference.md#built-in) for more details.
 
-We can rewrite the indexing of the MSB of `counter.q` from `counter.q[$isSim() ? 8 : 24]` to `counter.q[$width(counter.q) - 1]`.
+We can rewrite the indexing of the MSB of `counter.q` from `counter.q[$is_sim() ? 8 : 24]` to `counter.q[$width(counter.q) - 1]`.
 This way no matter what size `counter.q` is, we will always be indexing the last bit.
 
 # The Reset Conditioner
 
-Now that we have actually used the reset signal for what it was intended for, we can talk about the `resetConditioner` module. 
+Now that we have actually used the reset signal for what it was intended for, we can talk about the `reset_conditioner` module. 
 The signal `rst_n` comes from outside the FPGA. 
 Signals from outside the FPGA are UNCLEAN! 
 
