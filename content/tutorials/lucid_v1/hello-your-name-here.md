@@ -108,7 +108,7 @@ Let us take a look at _hello_count_. We need it to be wide enough so that we can
 
 We can then use the _$clog2()_ function as before to make sure it is large enough to store values from 0 to _HELLO_TEXT.WIDTH[0]_-1.
 
-Next take a look at _name_count_. This will be used to index into the RAM. We can set this width to be whatever we want, but the size of the RAM will grow exponentially with it. I set it to 5 which will allow for a name of 25, or 32 letters long. We will play with this towards the end of the tutorial.
+Next take a look at _name_count_. This will be used to index into the RAM. We can set this width to be whatever we want, but the size of the RAM will grow exponentially with it. I set it to 5 which will allow for a name of 2<sup>5</sup>, or 32 letters long. We will play with this towards the end of the tutorial.
 
 We need the size of the RAM to match the size of _name_count_.
 
@@ -116,7 +116,7 @@ We need the size of the RAM to match the size of _name_count_.
 simple_ram ram (#WIDTH(8), #DEPTH($pow(2,name_count.WIDTH)));
 ```
 
-Here we are using the function _$pow()_ which takes two constants and returns the first to the power of the second. In this case, _name_count.WIDTH_ is 5, so 25 is 32. By using _name_count.WIDTH_ instead of typing in 5 or 32 directly, we ensure that if we change the width of _name_count_ then everything will still work.
+Here we are using the function _$pow()_ which takes two constants and returns the first to the power of the second. In this case, _name_count.WIDTH_ is 5, so 2<sup>5</sup> is 32. By using _name_count.WIDTH_ instead of typing in 5 or 32 directly, we ensure that if we change the width of _name_count_ then everything will still work.
 
 ### The FSM
 
