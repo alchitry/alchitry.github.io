@@ -24,15 +24,15 @@
   --accent: rgb(250,172,31);
 }
 .dark {
-  --theme: rgb(51, 51, 51);
-  --entry: rgb(40, 40, 40);
+  --theme: rgb(31, 31, 31);
+  --entry: rgb(19, 19, 19);
   --primary: rgb(218, 218, 219);
   --secondary: rgb(155, 156, 157);
   --tertiary: rgb(65, 66, 68);
-  --content: rgb(196, 196, 197);
+  --content: rgb(196, 196, 196);
   --hljs-bg: rgb(40, 40, 40);
   --code-bg: rgb(40, 40, 40);
-  --border: rgb(51, 51, 51);
+  --border: rgb(19, 19, 19);
 }
 .list {
   background: var(--code-bg);
