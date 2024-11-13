@@ -5,13 +5,13 @@ weight = 0
 
 # Version 2.0.x
 
-[Download the V2 beta.](https://alchitry.com/Alchitry-Labs-V2/download.html)
-
-<div class="img-left">
-
-[<img src="https://img.shields.io/github/v/release/alchitry/Alchitry-Labs-V2" height="30px" />](https://github.com/alchitry/Alchitry-Labs-V2)
-
+<div class="img-left" >
+<a style="display: flex; align-items: center;" href="https://alchitry.com/Alchitry-Labs-V2/download.html">
+<div style="margin-right: 14px;">Download the latest:</div><img style="display:inline;" src="https://img.shields.io/github/v/release/alchitry/Alchitry-Labs-V2" height="30px" />
+</a>
 </div>
+
+[GitHub Source Code](https://github.com/alchitry/Alchitry-Labs-V2)
 
 A full rewrite of Alchitry Labs is currently underway. You can download the latest version at the link above.
 
