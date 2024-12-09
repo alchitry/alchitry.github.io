@@ -6,7 +6,7 @@ inline_language = "lucid"
 
 The Alchitry Platinum (Pt), is in the early stages of design. 
 This version will most likely be based on the XC7A100T-2FGG484C FPGA.
-
+<!-- more -->
 This is the same FPGA as the Au+ but in a bigger package with more IO.
 The major selling point of this package is the addition of 6.25 Gbps GTP transceivers.
 These open up the possibility of much higher interfaces such as PCIe 2.0.

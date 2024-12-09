@@ -4,6 +4,7 @@ date = "2024-11-13"
 +++
 
 It's official, all the boards are being redesigned into a new form factor.
+<!-- more -->
 If you saw [the last post](@/news/alchitry-platinum-v2.md), then you'll know the Alchitry Pt is in the works and requires faster connectors.
 
 ![Au V2 Render](https://cdn.alchitry.com/boards/AuV2Render.jpg)
