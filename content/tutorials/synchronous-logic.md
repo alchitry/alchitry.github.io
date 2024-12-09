@@ -9,7 +9,7 @@ In this tutorial you will be introduced to the *D flip-flop* and how you can use
 
 <!-- more -->
 
-{{ youtube(id="k_oe_1gxge11k?si=n_zot0nbo_mjxjkc_vl") }}
+{{ youtube(id="kOE1GXge11k?si=nZOT0nboMJxjkcVl") }}
 
 Synchronous logic is a fundamental building block for just about any digital design. 
 It allows you to create much more complex systems that accomplish something over a series of steps. 
