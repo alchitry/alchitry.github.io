@@ -11,6 +11,8 @@ weight = 0
 </a>
 </div>
 
+Or get it from the [Microsoft Store](https://apps.microsoft.com/detail/9mvzrn9dbj3c).
+
 [GitHub Source Code](https://github.com/alchitry/Alchitry-Labs-V2)
 
 A full rewrite of Alchitry Labs is currently underway. You can download the latest version at the link above.

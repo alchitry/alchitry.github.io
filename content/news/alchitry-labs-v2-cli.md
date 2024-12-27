@@ -9,7 +9,7 @@ It has been a while since I last wrote about the progress on Alchitry Labs V2 an
 
 I've spent a good amount of time working on building out the Gradle build script so that the deployment process will be much easier than it was for Alchitry Labs V1.
 
-When I was looking for a way to create the Window's installer, I discovered that [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/tree/master) has a built in [packaging tool](https://github.com/JetBrains/compose-multiplatform/blob/master/tutorials/Native_distributions_and_local_execution/README.md)!
+When I was looking for a way to create the Window's installer, I discovered that [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/tree/master) has a built-in [packaging tool](https://github.com/JetBrains/compose-multiplatform/blob/master/tutorials/Native_distributions_and_local_execution/README.md)!
 
 It turns out that this still has the major downside of needing to be running on the OS that you want to package for. This means you can't build an installer for Windows from Linux. Bummer, but not the end of the world.
 
