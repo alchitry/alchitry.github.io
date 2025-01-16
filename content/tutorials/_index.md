@@ -10,6 +10,8 @@ Depending on your background, you may find these [Background Tutorials](@/tutori
 
 These are the latest Lucid V2 tutorials. 
 
+For information on Alchitry V1 boards, see [Legacy Boards](@/boards/_index.md).
+
 For legacy Lucid tutorials, see [Lucid V1](@/tutorials/lucid_v1/_index.md).
 
 For legacy Verilog tutorials, see [Verilog](@/tutorials/verilog/_index.md).

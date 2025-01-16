@@ -46,12 +46,11 @@ edit_post_url = "https://github.com/alchitry/alchitry.github.io/tree/master"
 copyright = "Alchitry"
 date_format = "%Y-%m-%d"
 navigation = [
-    { url = "https://shop.alchitry.com/collections/all", title = "Boards" },
+    { url = "https://shop.alchitry.com/collections/products", title = "Boards" },
     { url = "$BASE_URL/news", title = "News" },
     { url = "$BASE_URL/tutorials", title = "Tutorials" },
     { url = "$BASE_URL/alchitry-labs", title = "Alchitry Labs" },
-    { url = "https://forum.alchitry.com", title = "Forum" },
-    { url = "https://www.sparkfun.com/categories/tags/alchitry", title = "SparkFun", is_external = true },
+    { url = "https://forum.alchitry.com", title = "Forum" }
 ]
 
 home_title = "Alchitry"

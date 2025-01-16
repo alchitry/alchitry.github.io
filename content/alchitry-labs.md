@@ -3,7 +3,7 @@ title = "Alchitry Labs"
 weight = 0
 +++
 
-# Version 2.0.x
+# Version 2
 
 <div class="img-left" >
 <a style="display: flex; align-items: center;" href="https://alchitry.com/Alchitry-Labs-V2/download.html">
@@ -13,7 +13,7 @@ weight = 0
 
 Or get it from the [Microsoft Store](https://apps.microsoft.com/detail/9mvzrn9dbj3c).
 
-[GitHub Source Code](https://github.com/alchitry/Alchitry-Labs-V2)
+Check out the source code here: [GitHub Source Code](https://github.com/alchitry/Alchitry-Labs-V2).
 
 A full rewrite of Alchitry Labs is currently underway. You can download the latest version at the link above.
 
