@@ -527,6 +527,20 @@ The value used for `width` must be constant. However, the value used for `start`
 
 The reason for this is so that the resulting selection is always a fixed width.
 
+#### Negative Indices
+
+The indices for the selectors can also be negative.
+When an index is negative, it wraps around to the highest value. 
+
+For example, if you had an 8 bit wide signal then index `[-1]` would be the same as `[7]`.
+An index of `[-2]` would be the same as `[6]` and so on.
+An index of `[-8]` would be out of bounds and invalid.
+
+The actual index used is essentially the negative value plus the width of the signal.
+
+Many times a signal's width is defined by a [constant](#const) or a [parameter](#parameters) to allow it to be easily changed.
+Negative indices makes it easy to access the MSB of a signal regardless of its width.
+
 ### Struct Selection
 
 If a signal is a [struct](#struct) then to select an element from it you use the syntax `my_struct_signal.element_name`.
@@ -616,7 +630,8 @@ always {
 }
 ```
 
-Outside the `always` block that drives the `sig`, only the final value will ever be seen. In the previous example, the final line `my_sig = 1` means that anything reading `my_sig` outside of that `always` block will always see the value `1`.
+Outside the `always` block that drives the `sig`, only the final value will ever be seen. 
+In the previous example, the final line `my_sig = 1` means that anything reading `my_sig` outside of that `always` block will always see the value `1`.
 
 ## dff
 
@@ -624,7 +639,7 @@ The `dff` is the building block of any sequential logic. It is the only type to 
 
 You can think of the `dff` as a single bit of memory.
 
-The `dff` acts a lot like a [module instance](@module-instances) in that is has ports and parameters.
+The `dff` acts a lot like a [module instance](#module-instances) in that it has ports and parameters.
 
 It has three inputs, one output, and one parameter.
 
@@ -633,10 +648,22 @@ The `.d` input is the data input. This is used to update the value of the `dff`.
 The `.clk` input is the clock input. Whenever this transitions from 0 to 1, a rising edge, the `.d` input is saved. 
 
 {% callout(type="warning") %}
-Generally, the `.clk` of every `dff` should all connect to the same system clock. You shouldn't drive this signal with other logic. FPGAs have special dedicated clock routing resources to efficiently distribute a clock signal to the entire (or large portions) of the FPGA. Messing with this can cause your design to simulate fine but fail in the real world.
+Generally, the `.clk` of every `dff` should all connect to the same system clock. 
+You shouldn't drive this signal with other logic. 
+FPGAs have special dedicated clock routing resources to efficiently distribute a clock signal to the entire (or large portions) of the FPGA. 
+Messing with this can cause your design to simulate fine but fail in the real world.
 {% end %}
 
-The `.rst` input is the reset input. This is used to force the `dff` into a known state (0 or 1). If a reset isn't needed, this input can be left unconnected. You should only use this when a reset is actually needed as omitting it will reduce the routing complexity of your design.
+The `.rst` input is the reset input. 
+This is used to force the `dff` into a known state (0 or 1). 
+If a reset isn't needed, this input can be left unconnected. 
+You should only use this when a reset is actually needed as omitting it will reduce the routing complexity of your design.
+
+A complementary `.arst` input can be used as an asynchronous reset.
+This input works the same as the `.rst` input, but it doesn't wait for a rising edge of the clock to reset the `.q` value.
+This is typically not desired and should be used with caution as it may lead to timing issues.
+
+Only `.rst` _or_ `.arst` can be used at once.
 
 The `.q` output is the current value of the `dff`.
 
@@ -670,7 +697,7 @@ const CONST_NAME = const_expr
 
 It starts with the `const` keyword followed by `CONST_NAME`, the name of your constant. The name must start with an uppercase letter and be followed by uppercase setters and underscores. By convention, it is `UPPER_SNAKE_CASE`.
 
-The value of the constant is provided by `const_expr`. This can be any [expression](@expressions) that evaluates to a constant value.
+The value of the constant is provided by `const_expr`. This can be any [expression](#expressions) that evaluates to a constant value.
 
 The width and [sign](#signed) of the `const` is inferred from the `const_expr`.
 
@@ -835,7 +862,7 @@ A simple trick you can often use is to multiply the numerator by something then 
 The addition and subtraction operators allow you to add or subtract two expressions.
 
 | Operator      | Function    |
-| ------------- | ----------- |
+|---------------|-------------|
 | `expr + expr` | Addition    |
 | `expr - expr` | Subtraction |
 
@@ -885,7 +912,7 @@ $signed(4b1100) >> 1 // 4b1110
 Bitwise operators allow you to perform the boolean operations _and_, _or_, and _xor_ on a bit-by-bit basis of two expressions with matching widths.
 
 | Operator                                                                                                                         | Function |
-| -------------------------------------------------------------------------------------------------------------------------------- | -------- |
+|----------------------------------------------------------------------------------------------------------------------------------|----------|
 | `expr & expr`                                                                                                                    | AND      |
 | <code class="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">\|</span><span> expr</span></code> | OR       |
 | `expr ^ expr`                                                                                                                    | XOR      |
@@ -898,7 +925,7 @@ The result has the same width as `expr`.
 Reduction operators allow you to perform the boolean operations _and_, _or_, and _xor_ on all the bits in an expression with all the other bits.
 
 | Operator                                                                                                       | Function |
-| -------------------------------------------------------------------------------------------------------------- | -------- |
+|----------------------------------------------------------------------------------------------------------------|----------|
 | `& expr`                                                                                                       | AND      |
 | <code class="language-lucid" data-lang="lucid"><span style="color:#ed4343;">\|</span><span> expr</span></code> | OR       |
 | `^ expr`                                                                                                       | XOR      |
@@ -916,7 +943,7 @@ The `^` operator is `1` if there are an odd number of `1` bits in `expr` and `0`
 The comparison operators allow you to compare the values of two 1-D arrays or bits.
 
 | Operator       | Function              |
-| -------------- | --------------------- |
+|----------------|-----------------------|
 | `expr < expr`  | Less than             |
 | `expr > expr`  | Greater than          |
 | `expr == expr` | Equality              |
@@ -932,7 +959,7 @@ For a comparison to be [signed](#signed), both `expr` must be signed. If either 
 Logical operators allow you to perform the boolean operations _and_ and _or_ on two logical values.
 
 | Operator                                                                                                                           | Function |
-| ---------------------------------------------------------------------------------------------------------------------------------- | -------- |
+|------------------------------------------------------------------------------------------------------------------------------------|----------|
 | `expr && expr`                                                                                                                     | AND      |
 | <code class="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">\|\|</span><span> expr</span></code> | OR       |
 
