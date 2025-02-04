@@ -2,10 +2,10 @@
 title = "Lucid Reference"
 weight = 0
 inline_language = "lucid"
-date = "2024-09-23"
+date = "2025-02-04"
 +++
 
-This page is a reference to the Lucid V2 language.
+This page is a reference for the Lucid V2 language.
 # Lucid File Contents
 
 Every Lucid file (.luc extension) can contain  [module](#modules), [testbench](#testbenches), and/or [global](#globals) declarations.
