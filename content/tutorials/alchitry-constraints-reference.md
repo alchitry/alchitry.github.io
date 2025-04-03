@@ -228,7 +228,7 @@ The [Pt](https://shop.alchitry.com/products/alchitry-pt) has two more on the bot
 
 The V1 boards have four banks, A, B, C, and D on top.
 
-Check the schmatic for the [Cu V1](https://cdn.alchitry.com/docs/alchitry_cu_sch.pdf), [Au V1](https://cdn.alchitry.com/docs/alchitry_au_sch.pdf), [Cu V2](https://cdn.alchitry.com/docs/Cu-V2/CuSchematic.pdf) or [Au V2](https://cdn.alchitry.com/docs/Au-V2/AuSchematic.pdf) for what pins are populated on the connectors.
+Check the schematic for the [Cu V1](https://cdn.alchitry.com/docs/alchitry_cu_sch.pdf), [Au V1](https://cdn.alchitry.com/docs/alchitry_au_sch.pdf), [Cu V2](https://cdn.alchitry.com/docs/Cu-V2/CuSchematic.pdf) or [Au V2](https://cdn.alchitry.com/docs/Au-V2/AuSchematic.pdf) for what pins are populated on the connectors.
 
 In addition to the pins on the connectors, there are some special internal pin names.
 
