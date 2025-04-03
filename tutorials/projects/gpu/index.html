@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>GPU</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;projects&#x2F;gpu&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://alchitry.com/css/includes/scroll-bar.css">
+<link rel="stylesheet" href="https://alchitry.com/css/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/css/override.css">
+
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <ul id="menu" class="desktop-nav">
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                    <span>Boards</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                    <span>News</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                    <span>Tutorials</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                    <span>Alchitry Labs</span>
+                    
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                    <span>Forum</span>
+                    
+                </a>
+            </li>
+            
+        </ul>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;projects&#x2F;">Projects</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;projects&#x2F;gpu&#x2F;">GPU</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">GPU</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+13 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;projects&#x2F;gpu.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#design-your-own-gpu" aria-label="Design Your Own GPU">Design Your Own GPU</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#basic-architecture" aria-label="Basic Architecture">Basic Architecture</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#the-pipeline" aria-label="The Pipeline">The Pipeline</a>
+                            
+                            <ul>
+                                
+                                <li>
+                                    <a href="#stage-1-generate-the-model-matrix" aria-label="Stage 1 - Generate the Model Matrix">Stage 1 - Generate the Model Matrix</a>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a href="#stage-2-triangle-assembly" aria-label="Stage 2 - Triangle Assembly">Stage 2 - Triangle Assembly</a>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a href="#stage-3-the-transformation" aria-label="Stage 3 - The Transformation">Stage 3 - The Transformation</a>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a href="#stage-4-the-shader" aria-label="Stage 4 - The Shader">Stage 4 - The Shader</a>
+                                    
+                                </li>
+                                
+                            </ul>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <video loop muted autoplay style="width:100%"><source src="https:&#x2F;&#x2F;cdn.alchitry.com&#x2F;projects&#x2F;gpu&#x2F;gpu.mp4" type="video/mp4"></video><h1 id="design-your-own-gpu">Design Your Own GPU</h1>
+<p>This project has been a long time coming. For quite a while I was waiting until I finished some Alchitry Labs features that would allow me to embed the entire project as an example project, but, those features have been on the back burner for too long! It was time to just get this project out there!</p>
+<p>This is by far the most complicated project/tutorial I’ll ever have created. On this first page I’ll be giving a rough overview of the main pieces and in later pages I’ll be diving deep into how each one works.</p>
+<p>Without further ado, you can download the <a href="https://cdn.alchitry.com/projects/gpu/GPU%20Demo.zip">entire project by clicking here</a>.</p>
+<p>The project is an Alchitry Labs project and is for the <a href="https://alchitry.com/boards/au/">Alchitry Au</a>. In those files, I also included the Blender file for the Suzanne (the monkey) model and the Java program I wrote to convert the .ply Blender export to multiple Lucid ROMs. I build it with Vivado 2020.2. If you use a newer version of Vivado you may need to regenerate the IP Cores.</p>
+<p>The LCD I used is <a href="https://www.adafruit.com/product/2050">this 3.5” 320x480 model</a> from Adafruit. The actual output you use isn’t particularly important and the project could be modified to output the stream to just about anything. This LCD was nice as it allows you to write directly to the GRAM and Adafruit’s board made it easy to hook up. If you buy this board and wire it to a Br element as outlined in the lcd.acf constraint file, you should be able to just build and load the project to get the demo running.</p>
+<h2 id="basic-architecture">Basic Architecture</h2>
+<p>Before getting into any FPGA specific details, we need to go over what our goal is and what has to happen to get there.</p>
+<p>The goal of this GPU is to take a 3D model and render it onto a 2D frame. When you put it like that it doesn’t sound so bad. There are a few minor other details to consider first though…</p>
+<p>Graphics in general rely heavily on linear algebra. If you aren’t familiar with vectors and matrices, now would be a good time to freshen up. There are tons of tutorials out there about it. For most of this tutorial, you really only need to know how to multiply a vector by a matrix.</p>
+<p>Our GPU will accept a few parameters.</p>
+<p>First, we need something to draw. Our GPU, like every good GPU, will draw triangles. We will specify the triangles with two ROMs. The first ROM contains all the vertices (and colors of those vertices). The second ROM contains the faces. That is, the list of three vertices that make up a triangle.</p>
+<p>While manually coming up with and typing out hundreds of vertices and faces sounds fun, this is where Blender and the Java code mentioned above come in handy. A model created in Blender can be exported and converted into these ROM files so our GPU can draw anything pretty easily.</p>
+<p>Second, we need a model transformation matrix. This matrix is responsible for moving around objects. By multiplying our model’s 3D points by this matrix, we can rotate, translate, and scale the model however we want. Most render’s will have two of these. One for the model and one for the camera (viewpoint into the scene). To keep things a bit simpler, our pipeline will only have one. Our camera will be stationary but you could make it seem like it is moving by transforming the entire scene.</p>
+<p>By using a matrix to specify the transformations, our GPU only needs to perform basic matrix multiplication instead of trig to rotate points! The trig functions still need to be calculated but only once (per object) to produce the matrix.</p>
+<p>We also need some kind of lighting. We could have no lighting and just color every triangle its specified color but this significantly reduces the perceived details of the model. There are huge numbers of ways to calculate lighting in a scene with the holy grail being ray tracing. That is where you simulate the actual rays of light and calculate how they bounce and interact with the objects in the scene. This is what you can get with a modern GPU and is not what we will be doing.</p>
+<p>Instead, we will be taking a much simpler approach. Our GPU will accept a single light vector. That is, the direction light is coming from. We will then calculate the angle between each triangle and the light vector and use that to calculate the color. This method has no concept of shadows which are substantially more complicated. It still produces a nice effect where we can make it look like things are illuminated from above.</p>
+<p>Finally we need a projection matrix for converting 3D points to 2D points. This matrix is setup in such a way that when a 3D point is multiplied by it, we will get the 2D coordinate of it. We will be using a fixed frustum style projection. This project works in such a way that further objects appear smaller. At the core of it, you basically just divide the X and Y coordinates by their Z coordinate. Larger Z (further away) means the X and Y get pulled more into the center of the frame.</p>
+<h2 id="the-pipeline">The Pipeline</h2>
+<h3 id="stage-1-generate-the-model-matrix">Stage 1 - Generate the Model Matrix</h3>
+<p>I wouldn’t necessarily consider this part of the GPU’s job as this matrix would generally be provided to the GPU. However, our pipeline is self contained and this matrix is the first thing needed for producing a frame.</p>
+<p>As mentioned above, this matrix is responsible for all the translations, rotations, and scaling, we want to apply to our model.</p>
+<p>The <em>matrix_generator</em> module is responsible for creating the matrix.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> matrix_generator </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> matrix</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> stall</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> valid
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span>   
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">N_PI </span><span style="color:#ed4343;">= -</span><span style="color:#a269dc;">10d402</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">PI </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">10d402</span><span style="color:#ed4343;">;
+</span><span>   
+</span><span>  cordic cordic </span><span style="color:#ed4343;">(</span><span>.aclk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">));
+</span><span>   
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#0a8dbf;">dff</span><span> angle</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">] (#</span><span style="color:#d45ada;">INIT</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">N_PI</span><span style="color:#ed4343;">));
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>   
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> cos</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">],</span><span> sin</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">];
+</span><span>   
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    cordic.s_axis_phase_tdata </span><span style="color:#ed4343;">=</span><span> angle.q</span><span style="color:#ed4343;">;
+</span><span>    cordic.s_axis_phase_tvalid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>cordic.s_axis_phase_tready</span><span style="color:#ed4343;">) {
+</span><span>      angle.d </span><span style="color:#ed4343;">=</span><span> angle.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">;
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>angle.q</span><span style="color:#ed4343;">) &gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">PI </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">))
+</span><span>        angle.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">N_PI</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>     
+</span><span>    cordic.m_axis_dout_tready </span><span style="color:#ed4343;">= !</span><span>stall</span><span style="color:#ed4343;">;
+</span><span>    sin </span><span style="color:#ed4343;">=</span><span> cordic.m_axis_dout_tdata</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">25</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">];
+</span><span>    cos </span><span style="color:#ed4343;">=</span><span> cordic.m_axis_dout_tdata</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span>    valid </span><span style="color:#ed4343;">=</span><span> cordic.m_axis_dout_tvalid</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    matrix </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">x{{</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">x{{</span><span style="color:#a269dc;">10b0</span><span style="color:#ed4343;">}}}};
+</span><span>     
+</span><span>    </span><span style="color:#969696;">/*
+</span><span style="color:#969696;">    // Rotate Z
+</span><span style="color:#969696;">    matrix[0][0] = cos;
+</span><span style="color:#969696;">    matrix[0][1] = -sin;
+</span><span style="color:#969696;">    matrix[1][0] = sin;
+</span><span style="color:#969696;">    matrix[1][1] = cos;
+</span><span style="color:#969696;">    matrix[2][2] = 10h100; // 1
+</span><span style="color:#969696;">    */
+</span><span>     
+</span><span>    </span><span style="color:#969696;">/*
+</span><span style="color:#969696;">    // Rotate Y
+</span><span style="color:#969696;">    matrix[0][0] = cos;
+</span><span style="color:#969696;">    matrix[0][2] = sin;
+</span><span style="color:#969696;">    matrix[1][1] = 10h100; // 1
+</span><span style="color:#969696;">    matrix[2][0] = -sin;
+</span><span style="color:#969696;">    matrix[2][2] = cos;
+</span><span style="color:#969696;">    */
+</span><span>     
+</span><span>     
+</span><span>    </span><span style="color:#969696;">// Rotate X
+</span><span>    matrix</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">10h100</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 1
+</span><span>    matrix</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> cos</span><span style="color:#ed4343;">;
+</span><span>    matrix</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] = -</span><span>sin</span><span style="color:#ed4343;">;
+</span><span>    matrix</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> sin</span><span style="color:#ed4343;">;
+</span><span>    matrix</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] =</span><span> cos</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>     
+</span><span>    matrix</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">400</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>For the demo, the matrix will rotate the model along a given axis. The default is X. To perform any rotations, we need to calculate the sin and cos values for the angle we want to rotate.</p>
+<p>We can calculate these on the FPGA by using the CORDIC core from Xilinx. CORDIC is a clever algorithm that can be used to calculate a few things, including sin and cos, efficiently in hardware. Checkout the <a href="https://en.wikipedia.org/wiki/CORDIC">Wikipedia page</a> for the nitty gritty. All we care about here is Xilinx provides a module that uses this algorithm and we can use it get sin and cos values for an input angle.</p>
+<p>We set up the CORDIC core to accept a radian angle input in 3.7 fixed point format. This means the input value is 10 bits wide but the lower 7 bits are fractional. For example, 10b0010000000 is equal to 1 and 10b0001000000 is equal to 0.5.</p>
+<p>We want to input values from -Pi to Pi. To get the value of Pi in 3.7 fixed point, we can multiply it by 2^7. Pi * 2^7 ≈ 402.</p>
+<p>The output of the CORDIC is in 2.8 fixed point as the values are bound to +/-1. To keep things simple, our matrix will also be in 2.8 fixed point with a minor exception.</p>
+<p>You may have noticed the matrix is 3x4 and not 3x3. Each row has an extra dimension. This dimension is used for translating. Technically, a linear transformation can only rotate and scale the input vector. However, by working in four dimensions instead of 3, we can effectively translate in the 3rd dimension. If we force the 4th (aka <em>W</em>) value of each input vector to always be 1, we effectively just add the <em>W</em> value of the matrix to it.</p>
+<p>This is what happens on the last line of the module where the <em>Z</em> row’s <em>W</em> column is set to 400. This pushes the object 400 units away. The <em>W</em> values are 10.0 fixed point, meaning they are standard numbers without a fractional component.</p>
+<h3 id="stage-2-triangle-assembly">Stage 2 - Triangle Assembly</h3>
+<p>Now that we have a matrix to apply to our model, we need to start generating triangles. The ROMs that our model is stored in consist of vertices and faces. Each face is three numbers that point to a vertex in the vertex ROM. That means we first need to fetch the face entry and then use its contents to fetch each vertex to build the entire triangle.</p>
+<p>The vertex data itself is in 16.16 fixed point. This is the format used through most of the pipeline.</p>
+<p>This is all done in the <em>model_provider</em> module.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> model_provider </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> draw</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> stall</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> idle</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> valid</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Geo</span><span>.p3d</span><span style="color:#ed4343;">&gt;</span><span> triangle</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> color</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">]
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span>   
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    suzanne_face_rom face</span><span style="color:#ed4343;">;
+</span><span>    suzanne_vert_rom vert</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WAIT_FACE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">GV1</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">GV2</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">GV3</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">GV4</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">};
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>     
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> face_addr</span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#da5a8c;">FaceRom</span><span>.</span><span style="color:#d45ada;">FACES</span><span style="color:#ed4343;">)];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Geo</span><span>.p3d</span><span style="color:#ed4343;">&gt;</span><span> t</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> c</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">];
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>   
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    vert.addr </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bx</span><span style="color:#ed4343;">;
+</span><span>    face.addr </span><span style="color:#ed4343;">=</span><span> face_addr.q</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    color </span><span style="color:#ed4343;">=</span><span> c.q</span><span style="color:#ed4343;">;
+</span><span>    triangle </span><span style="color:#ed4343;">=</span><span> t.q</span><span style="color:#ed4343;">;
+</span><span>    valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;   
+</span><span>     
+</span><span>    idle </span><span style="color:#ed4343;">=</span><span> state.q </span><span style="color:#ed4343;">==</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state.q</span><span style="color:#ed4343;">) {
+</span><span>      state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">:
+</span><span>        face_addr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>draw</span><span style="color:#ed4343;">) {
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_FACE</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>      state.</span><span style="color:#d45ada;">WAIT_FACE</span><span style="color:#ed4343;">:
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">GV1</span><span style="color:#ed4343;">;
+</span><span>      state.</span><span style="color:#d45ada;">GV1</span><span style="color:#ed4343;">:
+</span><span>        vert.addr </span><span style="color:#ed4343;">=</span><span> face.face</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">GV2</span><span style="color:#ed4343;">;
+</span><span>      state.</span><span style="color:#d45ada;">GV2</span><span style="color:#ed4343;">:
+</span><span>        vert.addr </span><span style="color:#ed4343;">=</span><span> face.face</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">];
+</span><span>        t.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> vert.vert</span><span style="color:#ed4343;">;
+</span><span>        c.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> vert.color</span><span style="color:#ed4343;">;
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">GV3</span><span style="color:#ed4343;">;
+</span><span>      state.</span><span style="color:#d45ada;">GV3</span><span style="color:#ed4343;">:
+</span><span>        vert.addr </span><span style="color:#ed4343;">=</span><span> face.face</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">];
+</span><span>        t.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> vert.vert</span><span style="color:#ed4343;">;
+</span><span>        c.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> vert.color</span><span style="color:#ed4343;">;
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">GV4</span><span style="color:#ed4343;">;
+</span><span>      state.</span><span style="color:#d45ada;">GV4</span><span style="color:#ed4343;">:
+</span><span>        t.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] =</span><span> vert.vert</span><span style="color:#ed4343;">;
+</span><span>        c.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] =</span><span> vert.color</span><span style="color:#ed4343;">;
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">;
+</span><span>      state.</span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>stall</span><span style="color:#ed4343;">) {
+</span><span>          valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>face_addr.q </span><span style="color:#ed4343;">== </span><span style="color:#da5a8c;">FaceRom</span><span>.</span><span style="color:#d45ada;">FACES</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) {
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_FACE</span><span style="color:#ed4343;">;
+</span><span>            face_addr.d </span><span style="color:#ed4343;">=</span><span> face_addr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This module is pretty simple and is just an FSM that waits for a draw command, fetches a face, fetches each vertex, and then waits for the pipeline to not be stalled.</p>
+<p>This is as good a time as any to talk about stalling and back pressure.</p>
+<p>This GPU is architected as a pipeline. That means that there are many stages that work separately and concurrently from one another with each feeding into the next. This architecture allows as much work to be done on each clock cycle as possible but it has one big caveat. Each stage in the pipeline doesn’t take the same amount of time to complete.</p>
+<p>For example, it is way faster to fetch a triangle from the ROMs than it is to rasterize it pixel by pixel.</p>
+<p>To compensate for this, we need our pipeline to support back pressure. This means that later stages can stall previous stages until they are ready for more data. This back pressure needs to flow back up through the entire pipeline to prevent lost data and keep everything flowing well.</p>
+<p>So when the <em>stall</em> signal is 1, we <strong>must</strong> wait to output the face and move onto the next one.</p>
+<p>It’s worth noting that each vertex has its own color. Currently, only the first color is used for the entire triangle, but without too much extra work, each vertex color could be blended across the triangle.</p>
+<p>These two stages are packed into the pretty simple <em>model_drawer</em> module. This module is kind of like the client of our GPU. It makes the requests of what to draw.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> model_drawer </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> draw</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> busy</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Geo</span><span>.p3d</span><span style="color:#ed4343;">&gt;</span><span> m</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> color</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> model_matrix</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> valid</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> stall
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span>   
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      model_provider model</span><span style="color:#ed4343;">;
+</span><span>      matrix_generator mat_gen</span><span style="color:#ed4343;">;
+</span><span>       
+</span><span>      </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">GEN_MAT</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">DRAW</span><span style="color:#ed4343;">};
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>     
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> matrix</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">];
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>   
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    m </span><span style="color:#ed4343;">=</span><span> model.triangle</span><span style="color:#ed4343;">;
+</span><span>    color </span><span style="color:#ed4343;">=</span><span> model.color</span><span style="color:#ed4343;">;
+</span><span>    model_matrix </span><span style="color:#ed4343;">=</span><span> matrix.q</span><span style="color:#ed4343;">;
+</span><span>    valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    busy </span><span style="color:#ed4343;">=</span><span> state.q </span><span style="color:#ed4343;">!=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    mat_gen.stall </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>    model.draw </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    model.stall </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state.q</span><span style="color:#ed4343;">) {
+</span><span>      state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>draw</span><span style="color:#ed4343;">) {
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">GEN_MAT</span><span style="color:#ed4343;">;
+</span><span>          model.draw </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>      state.</span><span style="color:#d45ada;">GEN_MAT</span><span style="color:#ed4343;">:
+</span><span>        mat_gen.stall </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>mat_gen.valid</span><span style="color:#ed4343;">) {
+</span><span>          matrix.d </span><span style="color:#ed4343;">=</span><span> mat_gen.matrix</span><span style="color:#ed4343;">;
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">DRAW</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>      state.</span><span style="color:#d45ada;">DRAW</span><span style="color:#ed4343;">:
+</span><span>        model.stall </span><span style="color:#ed4343;">=</span><span> stall</span><span style="color:#ed4343;">;
+</span><span>        valid </span><span style="color:#ed4343;">=</span><span> model.valid</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>model.idle</span><span style="color:#ed4343;">) {
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<h3 id="stage-3-the-transformation">Stage 3 - The Transformation</h3>
+<p>The next stage in the pipeline is the model transformation. This stage takes the triangle and multiplies each coordinate by the model matrix.</p>
+<p>This is done in the <em>model_transform</em> module.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> model_transform </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Geo</span><span>.p3d</span><span style="color:#ed4343;">&gt;</span><span> m</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> color_in</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> model_matrix</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Geo</span><span>.p3d</span><span style="color:#ed4343;">&gt;</span><span> t</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> color_out</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> valid</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> stall</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> draw</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> busy
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span>   
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">P1</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">P2</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">P3</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">P4</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">P5</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">P6</span><span style="color:#ed4343;">};
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>     
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> products</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> matrix</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Geo</span><span>.p3d</span><span style="color:#ed4343;">&gt;</span><span> pt</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Geo</span><span>.p3d</span><span style="color:#ed4343;">&gt;</span><span> opt</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Geo</span><span>.p3d</span><span style="color:#ed4343;">&gt;</span><span> tri</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Geo</span><span>.p3d</span><span style="color:#ed4343;">&gt;</span><span> model</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> color</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">];
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>   
+</span><span>  </span><span style="color:#0abfbf;">signed </span><span style="color:#0a8dbf;">sig</span><span> tmp</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">48</span><span style="color:#ed4343;">];
+</span><span>  </span><span style="color:#0a8dbf;">var</span><span> i</span><span style="color:#ed4343;">;
+</span><span>   
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    t </span><span style="color:#ed4343;">=</span><span> tri.q</span><span style="color:#ed4343;">;
+</span><span>    color_out </span><span style="color:#ed4343;">=</span><span> color.q</span><span style="color:#ed4343;">;
+</span><span>    valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    busy </span><span style="color:#ed4343;">=</span><span> state.q </span><span style="color:#ed4343;">!=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>      tmp </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>matrix.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]) * </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>pt.q.x</span><span style="color:#ed4343;">);
+</span><span>      products.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> tmp</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">+:</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">];
+</span><span>       
+</span><span>      tmp </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>matrix.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]) * </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>pt.q.y</span><span style="color:#ed4343;">);
+</span><span>      products.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> tmp</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">+:</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">];
+</span><span>       
+</span><span>      tmp </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>matrix.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">]) * </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>pt.q.z</span><span style="color:#ed4343;">);
+</span><span>      products.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] =</span><span> tmp</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">+:</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>     
+</span><span>    opt.d.x </span><span style="color:#ed4343;">=</span><span> products.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] +</span><span> products.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] +</span><span> products.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] + c{</span><span>matrix.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">], </span><span style="color:#a269dc;">16b0</span><span style="color:#ed4343;">};
+</span><span>    opt.d.y </span><span style="color:#ed4343;">=</span><span> products.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] +</span><span> products.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] +</span><span> products.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] + c{</span><span>matrix.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">], </span><span style="color:#a269dc;">16b0</span><span style="color:#ed4343;">};
+</span><span>    opt.d.z </span><span style="color:#ed4343;">=</span><span> products.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] +</span><span> products.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] +</span><span> products.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] + c{</span><span>matrix.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">], </span><span style="color:#a269dc;">16b0</span><span style="color:#ed4343;">};
+</span><span>     
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state.q</span><span style="color:#ed4343;">) {
+</span><span>      state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>draw</span><span style="color:#ed4343;">) {
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">P1</span><span style="color:#ed4343;">;
+</span><span>          matrix.d </span><span style="color:#ed4343;">=</span><span> model_matrix</span><span style="color:#ed4343;">;
+</span><span>          model.d </span><span style="color:#ed4343;">=</span><span> m</span><span style="color:#ed4343;">;
+</span><span>          pt.d </span><span style="color:#ed4343;">=</span><span> m</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span>          color.d </span><span style="color:#ed4343;">=</span><span> color_in</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>      state.</span><span style="color:#d45ada;">P1</span><span style="color:#ed4343;">:
+</span><span>        pt.d </span><span style="color:#ed4343;">=</span><span> model.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">];
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">P2</span><span style="color:#ed4343;">;
+</span><span>      state.</span><span style="color:#d45ada;">P2</span><span style="color:#ed4343;">:
+</span><span>        pt.d </span><span style="color:#ed4343;">=</span><span> model.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">];
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">P3</span><span style="color:#ed4343;">;
+</span><span>      state.</span><span style="color:#d45ada;">P3</span><span style="color:#ed4343;">:
+</span><span>        tri.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> opt.q</span><span style="color:#ed4343;">;
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">P4</span><span style="color:#ed4343;">;
+</span><span>      state.</span><span style="color:#d45ada;">P4</span><span style="color:#ed4343;">:
+</span><span>        tri.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> opt.q</span><span style="color:#ed4343;">;
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">P5</span><span style="color:#ed4343;">;
+</span><span>      state.</span><span style="color:#d45ada;">P5</span><span style="color:#ed4343;">:
+</span><span>        tri.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] =</span><span> opt.q</span><span style="color:#ed4343;">;
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">P6</span><span style="color:#ed4343;">;
+</span><span>      state.</span><span style="color:#d45ada;">P6</span><span style="color:#ed4343;">:
+</span><span>        valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>stall</span><span style="color:#ed4343;">)
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>When a triangle is fed into the module, each vertex is multiplied by the model matrix. This is done in three steps, assign the <em>pt</em> <em>dff</em> the vertex values, calculate the intermediate products of the multiplication, and finally sum them into the next vertex in <em>opt</em>.</p>
+<p>Note that the <em>W</em> coordinate of the matrix is added directly with the products since the <em>W</em> coordinate of each vertex is implicitly 1 and can skip being multiplied by 1. It is also shifted 16 bits to the left to convert the 10.0 fixed point format to 10.16 which can be added to the other 16.16 values.</p>
+<p>The first three cycles of the FSM feed the values into the pipe and the next three catch the results as they come out. Once all three vertices have been transformed, it attempts to output the new triangle.</p>
+<p>Note that color data is passed in and out of this module but nothing is done to it. This is done just to ensure that the color data associated with this triangle stays with this triangle.</p>
+<h3 id="stage-4-the-shader">Stage 4 - The Shader</h3>
+<p>Coming soon…</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;projects&#x2F;clock-clock&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Clock Clock</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2025 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z"/>
+    </svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+            }
+            ;
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+
+    
+</body>
+</html>
