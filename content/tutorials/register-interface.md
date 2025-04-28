@@ -216,7 +216,7 @@ First, we need to instantiate the modules in the `alchitry_top` module.
 ```
 
 Here I used connection blocks for the parameters `CLK_FREQ` and `BAUD` to easily set them for all the modules that need them.
-This is optional but I like to do it this way to guarantee they are all the same.
+This is optional, but I like to do it this way to guarantee they are all the same.
 
 I also added the `dff led_reg` that we will use to save the value written to the LEDs.
 
@@ -243,7 +243,7 @@ In the `always` block, we can connect up the modules.
 
 We now need to deal with incoming requests.
 This is done through the `reg_out` and `reg_in` ports of the `register_interface` module.
-These ports use `struct` to bundle a bunch of signals together.
+These ports use [structs](@/tutorials/lucid-reference.md#struct) to bundle a bunch of signals together.
 
 The `struct` for each one is defined in the `global` block in the same file.
 These are available anywhere in your design by using the designations `Register.request` and `Register.response`.
