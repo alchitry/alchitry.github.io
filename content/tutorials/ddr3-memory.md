@@ -1,6 +1,6 @@
 +++
 title = "DDR3 Memory"
-weight = 7
+weight = 10
 inline_language = "lucid"
 date = "2024-09-23"
 +++
