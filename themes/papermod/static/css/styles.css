@@ -1004,7 +1004,7 @@ img.in-text {
 }
 ::-webkit-scrollbar-thumb {
   background: var(--tertiary);
-  border: 5px solid var(--theme);
+  border: 5px solid transparent;
   border-radius: var(--radius);
 }
 .list:not(.dark)::-webkit-scrollbar-thumb {

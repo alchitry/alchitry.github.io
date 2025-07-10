@@ -17,6 +17,9 @@ taxonomies = [
 generate_feed = true
 feed_filename = "atom.xml"
 
+[search]
+index_format = "elasticlunr_json"
+
 [markdown]
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola

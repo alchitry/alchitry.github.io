@@ -34,28 +34,37 @@
             </a>
         </div>
         {% if config.extra.papermod.navigation %}
-        <ul id="menu" class="desktop-nav">
-            {% for item in config.extra.papermod.navigation %}
-            {% set url = item.url | replace(from='$BASE_URL', to=config.base_url) %}
-            {% set is_active_link = current_url and url | trim_end_matches(pat="/") == current_url |
-            trim_end_matches(pat="/") %}
-            <li>
-                <a href="{{ url }}" title="{{ item.title }}">
-                    <span{% if is_active_link %} class="active"{% endif %}>{{ item.title }}</span>
-                    {% if item.is_external and item.is_external == true %}
-                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
-                         stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
-                        <path d="M15 3h6v6"></path>
-                        <path d="M10 14L21 3"></path>
-                    </svg>
-                    {% endif %}
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-        <div id="overlayNavOpen">
-            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        <div class="nav-search">
+            <ul id="menu" class="desktop-nav">
+                {% for item in config.extra.papermod.navigation %}
+                {% set url = item.url | replace(from='$BASE_URL', to=config.base_url) %}
+                {% set is_active_link = current_url and url | trim_end_matches(pat="/") == current_url |
+                trim_end_matches(pat="/") %}
+                <li>
+                    <a href="{{ url }}" title="{{ item.title }}">
+                        <span{% if is_active_link %} class="active"{% endif %}>{{ item.title }}</span>
+                        {% if item.is_external and item.is_external == true %}
+                        <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                             stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                            <path d="M15 3h6v6"></path>
+                            <path d="M10 14L21 3"></path>
+                        </svg>
+                        {% endif %}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="🔎 Search" autocomplete="off">
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+            <div id="overlayNavOpen">
+                <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+            </div>
         </div>
         {% endif %}
     </nav>
