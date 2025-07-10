@@ -67,8 +67,7 @@ a:hover {
 }
 
 body {
-  font-family: Ubuntu, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Oxygen,
-    Cantarell, open sans, helvetica neue, sans-serif;
+  font-family: Ubuntu, open sans, helvetica neue, sans-serif;
   font-size: 18px;
   line-height: 1.6;
   word-break: break-word;

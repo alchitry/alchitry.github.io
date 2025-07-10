@@ -210,7 +210,7 @@
     background: var(--code-bg);
     height: 2em;
     margin: 0 1em 0 1em;
-    padding: 0.5em 1em 0.5em 1em;
+    padding: 0.5em 1em 0.5em 2.25em;
     border-radius: 1em;
     color: var(--content);
     width: calc(100% - 1em);
@@ -305,4 +305,12 @@
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.25em;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
 }
