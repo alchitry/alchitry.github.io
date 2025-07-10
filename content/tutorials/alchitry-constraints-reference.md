@@ -108,7 +108,7 @@ There are a handful of different attributes currently supported.
 
 ### PINOUT
 
-This attribute is either `V2`, `V1`, or not specified.
+This attribute is either `V2`, `V1`, `PT_ALPHA`, or not specified.
 
 When it is specified, it says that the pinout used for that pin should use that version's pin mapping.
 
@@ -121,6 +121,24 @@ However, if a `V1` pinout is specified when using a `V2` board, then the tools a
 In this case, the tools will translate the pinout to the adapter's pinout.
 
 If a `V2` version is used with a `V1` board an error is thrown.
+
+The value `PT_ALPHA` is specifically for the first batch of Pt boards that had a pinout error.
+It is only valid when [`SIDE`](#side) is set to `TOP`.
+The bottom pinout of the alpha boards should use a `PINOUT` of `V2`.
+
+### SIDE
+
+Most boards only have ports on the top side.
+However, the [Pt](https://shop.alchitry.com/products/alchitry-pt) has pins on both sides.
+
+To distinguish between the top and bottom, the `SIDE` attribute was added.
+
+`SIDE` can have a value of `TOP` or `BOTTOM`.
+It defaults to `TOP`.
+
+On the Pt, the top and bottom connectors both have banks A and B, and the pin names are identical.
+This means that a constraint file that works for the top of the board can be simply wrapped in a `SIDE(BOTTOM)` attribute
+block to use the board with the bottom connectors.
 
 ### STANDARD
 
@@ -216,6 +234,18 @@ For standards that support a slew rate, the valid values are `FAST` or `SLOW` wi
 Using a `FAST` slew rate may help with high speed signals but may also cause more power consumption and noise if not 
 used carefully.
 
+### DIFF_TERM
+
+The `DIFF_TERM` attribute specifies if internal differential termination should be enabled.
+It can have a value of `TRUE` or `FALSE` and defaults to `FALSE`.
+
+It is only available with some [`STANDARD`](#standard) values on the Au and Pt.
+See [UG471](https://docs.amd.com/v/u/en-US/ug471_7Series_SelectIO) for details on which ones.
+
+It is most often used with `LVDS_25` on the tri-voltage pins.
+Using internal termination requires that VCCO be set to 2.5V for the pins using it.
+Failing to set the tri-voltage pins correctly could damage the FPGA.
+
 # Pinouts
 
 The available pins vary depending on your board, but they follow a standard format.
@@ -224,7 +254,8 @@ The pins broken out on the connectors are named by the bank letter followed by t
 For example, pin 2 on bank A is `A2`.
 
 The V2 boards have two banks on top, A and B.
-The [Pt](https://shop.alchitry.com/products/alchitry-pt) has two more on the bottom, C and D.
+The [Pt](https://shop.alchitry.com/products/alchitry-pt) has two more on the bottom. 
+They're also called A and B but distinguished via the 
 
 The V1 boards have four banks, A, B, C, and D on top.
 
@@ -239,7 +270,56 @@ The Cu (V1 and V2) also have `SPI_MOSI`, `SPI_MISO`, `SPI_SCK`, and `SPI_SS` tha
 The Au (V1, V1+, and V2) and Pt also have `SPI_D0`-`SPI_D3`, `SPI_SCK`, and `SPI_SS` that connect to the configuration flash.
 There is also `VP` and `VN` which are special analog inputs.
 
+The Pt also has `C29` - `C36` that connect to where the LED signals on the Au and Cu are broken out on the control connector.
+The LED signals aren't broken out on the Pt.
+
+The Pt also has `USB_D2` - `USB_D7`, `USB_RXF`, `USB_TXE`, `USB_RD`, `USB_WR`, and `USB_SIWUI` for using the FIFO-based 
+interface with the FTDI chip.
+Note that what would be `USB_D0` is `USB_RX` and `USB_D1` is `USB_TX`.
+
 Finally, there are `DDR_DQ0`-`DDR_DQ15`, `DDR_DQS0_P`, `DDR_DQS0_N`, `DDR_DQS1_P`, `DDR_DQS1_N`, `DDR_DM0`, `DDR_DM1`,
 `DDR_ODT`, `DDR_RESET`, `DDR_BA0`-`DDR_BA2`, `DDR_CK_P`, `DDR_CK_N`, `DDR_CKE`, `DDR_CS`, `DDR_RAS`, `DDR_CAS`, `DDR_WE`,
 `DDR_A0`-`DDR_A13` for interfacing with the DDR3.
 You generally shouldn't specify these directly as the [MIG core](@/tutorials/ddr3-memory.md) does it for you.
+
+# Native Constraints
+
+Sometimes you may need to do something more advanced that isn't directly supported within the Alchitry Constraint Format.
+For those cases, you can use a `native` block.
+
+The `native` block takes the following form.
+
+```acf
+native {
+  // Native constraints here
+}
+```
+
+The text inside the block will be inserted into the final constraint file mostly as is.
+This allows you to write [XDC](https://docs.amd.com/r/en-US/ug903-vivado-using-constraints/About-XDC-Constraints) constraints
+for the Au or Pt and SDC constraints for the Cu.
+
+Inside the `native` block, you have access to two helper functions. `acf_pin()` and `acf_port()`.
+
+## `acf_pin()`
+
+The `acf_pin()` function allows you to access the Alchitry pin converter inside the native block.
+This lets you use the names of the pins on the connectors instead of the FPGA's pin.
+
+For example, `acf_pin(A3)`, when used with the Au, will be replaced by `N6` (the name of the FPGA pin).
+
+If the native block is wrapped in an attribute block specifying a `PINOUT` or `SIDE`, that is taken into account
+during the translation.
+
+## `acf_port()`
+
+The `acf_port()` function allows you to get the name of a top-level port.
+The name of the port in Lucid isn't always exactly the same in the translated files, and this function ensures you use
+the correct name.
+
+For example, `acf_port(clk)` will be replaced with the name of the `clk` signal (most likely just `clk`).
+
+The port should also include all the indexing.
+This is where translation often differs from Lucid to the final name.
+
+For example, `acf_port(led[4])` will be replaced with the correct port name for the `led[4]` signal.

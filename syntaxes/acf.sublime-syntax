@@ -28,7 +28,7 @@ contexts:
     # strings in YAML. When using single quoted strings, only single quotes
     # need to be escaped: this is done by using two single quotes next to each
     # other.
-    - match: '\b(always|if|else|case|for|repeat|test|fun)\b'
+    - match: '\b(always|if|else|case|for|repeat|test|fun|native|acf_pin|acf_port)\b'
       scope: keyword.control.acf
 
     # Numbers
