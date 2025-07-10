@@ -129,19 +129,9 @@ function formatSearchResultItem(item, terms) {
 }
 
 function initSearch() {
-    var $searchInput = document.getElementById("search");
-    var $searchResults = document.querySelector(".search-results");
-    var $searchResultsItems = document.querySelector(".search-results__items");
-    var MAX_ITEMS = 10;
-
-    var options = {
-        bool: "AND",
-        expand: true,
-        fields: {
-            title: {boost: 2},
-            body: {boost: 1},
-        }
-    };
+    // Select all search boxes
+    const searchBoxes = document.querySelectorAll('.search');
+    const MAX_ITEMS = 10;
     var currentTerm = "";
     var index;
 
@@ -158,38 +148,60 @@ function initSearch() {
         return res;
     }
 
-    $searchInput.addEventListener("keyup", debounce(async function() {
-        var term = $searchInput.value.trim();
-        if (term === currentTerm) {
-            return;
-        }
-        $searchResults.style.display = term === "" ? "none" : "block";
-        $searchResultsItems.innerHTML = "";
-        currentTerm = term;
-        if (term === "") {
-            return;
-        }
+    // Add event listeners to all search boxes
+    searchBoxes.forEach(searchBox => {
+        searchBox.addEventListener("keyup", debounce(async function(e) {
+            const term = e.target.value.trim();
+            if (term === currentTerm) {
+                return;
+            }
 
-        var results = (await initIndex()).search(term, options);
-        if (results.length === 0) {
-            $searchResults.style.display = "none";
-            return;
-        }
+            // Find the closest search results container to this search box
+            const searchContainer = e.target.closest('.search-container');
+            const searchResults = searchContainer.querySelector('.search-results');
+            const searchResultsItems = searchContainer.querySelector('.search-results__items');
 
-        for (var i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
-            var item = document.createElement("li");
-            item.innerHTML = formatSearchResultItem(results[i], term.split(" "));
-            $searchResultsItems.appendChild(item);
-        }
-    }, 150));
+            searchResults.style.display = term === "" ? "none" : "block";
+            searchResultsItems.innerHTML = "";
+            currentTerm = term;
 
+            if (term === "") {
+                return;
+            }
+
+            var options = {
+                bool: "AND",
+                expand: true,
+                fields: {
+                    title: {boost: 2},
+                    body: {boost: 1},
+                }
+            };
+
+            var results = (await initIndex()).search(term, options);
+            if (results.length === 0) {
+                searchResults.style.display = "none";
+                return;
+            }
+
+            for (var i = 0; i < Math.min(results.length, MAX_ITEMS); i++) {
+                var item = document.createElement("li");
+                item.innerHTML = formatSearchResultItem(results[i], term.split(" "));
+                searchResultsItems.appendChild(item);
+            }
+        }, 150));
+    });
+
+    // Close search results when clicking outside
     window.addEventListener('click', function(e) {
-        if ($searchResults.style.display == "block" && !$searchResults.contains(e.target)) {
-            $searchResults.style.display = "none";
-        }
+        const searchResults = document.querySelectorAll('.search-results');
+        searchResults.forEach(results => {
+            if (results.style.display == "block" && !results.contains(e.target)) {
+                results.style.display = "none";
+            }
+        });
     });
 }
-
 
 if (document.readyState === "complete" ||
     (document.readyState !== "loading" && !document.documentElement.doScroll)

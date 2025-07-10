@@ -318,9 +318,6 @@ img {
 
 /* Position the close button (top right corner) */
 .overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
   font-size: 60px;
 }
 
@@ -334,7 +331,7 @@ img {
   }
 }
 
-#menu {
+#nav-search {
   display: none;
 }
 
@@ -349,7 +346,7 @@ img {
 }
 
 @media screen and (min-width: 1100px) {
-  #menu {
+  #nav-search {
     display: flex;
   }
   #overlayNavOpen{
@@ -389,6 +386,7 @@ body:not(.dark) #sun {
   word-break: keep-all;
   overflow-x: auto;
   white-space: nowrap;
+  display: flex;
 }
 #menu li + li {
   margin-inline-start: var(--gap);

@@ -34,7 +34,7 @@
             </a>
         </div>
         {% if config.extra.papermod.navigation %}
-        <div class="nav-search">
+        <div id="nav-search">
             <ul id="menu" class="desktop-nav">
                 {% for item in config.extra.papermod.navigation %}
                 {% set url = item.url | replace(from='$BASE_URL', to=config.base_url) %}
@@ -56,15 +56,15 @@
                 {% endfor %}
             </ul>
             <div class="search-container">
-                <input id="search" type="search" placeholder="🔎 Search" autocomplete="off">
+                <input class="search" type="search" placeholder="🔎 Search" autocomplete="off">
 
                 <div class="search-results">
                     <div class="search-results__items"></div>
                 </div>
             </div>
-            <div id="overlayNavOpen">
-                <span onclick="openNav()" class="material-symbols-outlined">menu</span>
-            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
         </div>
         {% endif %}
     </nav>
@@ -72,7 +72,17 @@
 
 {% if config.extra.papermod.navigation %}
 <div id="overlayNav" class="overlay">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="🔎 Search" autocomplete="off">
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
     <div class="overlay-content">
         {% for item in config.extra.papermod.navigation %}
         {% set url = item.url | replace(from='$BASE_URL', to=config.base_url) %}
