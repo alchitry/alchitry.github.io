@@ -5,6 +5,8 @@ weight=4
 
 Up until now we have only talked about discreet 0s and 1s. For many cases a single bit is all you need, however, many times you need to be able to encode numbers. The far most common way to do this is to use binary encoding. This encoding is the most obvious way to do things, and it is the closest to what you are already familiar with.
 
+{{ youtube(id="Kchi9M6_OtU?si=yP271IvhnWKSnWJ3") }}
+
 ## Binary
 
 Binary numbers are not very different from the decimal numbers you know. The right most digit, or the LSB (**L**east **S**ignificant **B**it), is the bit of lowest value, while the left most digit, or the MSB (**M**ost **S**ignificant **B**it), is the bit of highest value.

@@ -301,7 +301,7 @@ for the Au or Pt and SDC constraints for the Cu.
 
 Inside the `native` block, you have access to two helper functions. `acf_pin()` and `acf_port()`.
 
-## `acf_pin()`
+## acf_pin()
 
 The `acf_pin()` function allows you to access the Alchitry pin converter inside the native block.
 This lets you use the names of the pins on the connectors instead of the FPGA's pin.
@@ -311,7 +311,7 @@ For example, `acf_pin(A3)`, when used with the Au, will be replaced by `N6` (the
 If the native block is wrapped in an attribute block specifying a `PINOUT` or `SIDE`, that is taken into account
 during the translation.
 
-## `acf_port()`
+## acf_port()
 
 The `acf_port()` function allows you to get the name of a top-level port.
 The name of the port in Lucid isn't always exactly the same in the translated files, and this function ensures you use
