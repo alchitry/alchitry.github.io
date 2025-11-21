@@ -7,6 +7,8 @@ date = "2025-02-04"
 
 This page is a reference for Alchitry Constraints V2.
 
+{{ youtube(id="dnk6_uN5UyE?si=eKinloydxoEf2rXi") }}
+
 # Alchitry Constraints File Contents
 
 An Alchitry Constraints File (.acf extension) contains a list of [pin constraints](#pin-constraints).
