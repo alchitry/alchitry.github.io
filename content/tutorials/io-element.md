@@ -137,7 +137,7 @@ These are the Io Element specific signals.
 
 `io_led` connects to the 24 LEDs. 
 This signal is organized as a 2D array to make it easier to access the three groups of 8 LEDs. 
-For example, if you want to get the first group of LEDs you would use `io_led[0]` and if you wanted to get the third LED in the first group, you would use `io_led[0][2]`.
+For example, if you want to get the first group (rightmost) of LEDs you would use `io_led[0]` and if you wanted to get the third LED in the first group, you would use `io_led[0][2]`.
 
 Because `io_led` is a 2D array, when we set all the LEDs to 0, we have to use a little fancy syntax.
 
@@ -609,7 +609,7 @@ always {
     
     num_to_seg.in = ctr.value
     
-    io_segment = !num_to_seg.out
+    io_segment = ~num_to_seg.out
     io_select = 4h0
     
     result = io_dip[1] * io_dip[0]
@@ -628,7 +628,7 @@ always {
     
     num_to_seg.in = ctr.value
     
-    io_segment = !num_to_seg.out
+    io_segment = ~num_to_seg.out
     io_select = 4h0
     
     result = dip_pd.out[1] * dip_pd.out[0]
