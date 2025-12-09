@@ -155,7 +155,7 @@ always {
 When the tools evaluate an always block, statements that appear lower in the block have high priority than previous statements.
 This makes it feel like things are running sequentially from top to bottom but that is just an abstraction to make it easier to describe complex logic.
 
-To make this clear, lets looks at an example.
+To make this clear, let's look at an example.
 
 ```lucid
 always {
@@ -170,10 +170,10 @@ The first line assigns all bits of `led` to 0 and the second line sets them all 
 
 What would you expect to happen if we built this and loaded it onto the board?
 If you have a programming background, you may be tempted to think that the LEDs would continuously turn on and off. 
-You're not in Kansas anymore Dorthy, this isn't programming and that's not what happens. 
+You're not in Kansas anymore Dorothy, this isn't programming and that's not what happens. 
 Remember, there is no processor to run code (that is unless you explicitly make one, like a boss). 
 When the tools see this block, they completely ignore the first line. 
-This is because the second line has higher priory. 
+This is because the second line has higher priority. 
 If you were to synthesize this design, the tools would hard-wire `led` to `8hFF` (all 1s).
 
 Back to our design, we are assigning four signals a value. 
@@ -227,7 +227,7 @@ This means that it is effectively disconnected.
 Note that FPGAs can't realize high-impedance signals internally. 
 The only time you should use z is for `output` or `inout` ports of the top-level module or a module feeding directly to a top-level port.
 
-Back to our always block, the first two lines connect the input `rst_n` to the input of the `reset_cond` module. 
+Back to our `always` block, the first two lines connect the input `rst_n` to the input of the `reset_cond` module. 
 Modules can be nested which makes it possible to reuse them and helps make your project manageable. 
 This is all covered later in more detail so don't get hung up over this yet. 
 The only important thing to know about these two lines, is that the `rst_n` signal is active low (0 when the button is pressed, 1 otherwise) while the `rst` signal is active high.
