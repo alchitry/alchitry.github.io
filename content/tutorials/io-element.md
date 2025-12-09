@@ -792,7 +792,7 @@ The default block is optional, but it is generally a good idea to include it eve
 
 If `char` is an invalid number (not 0-9), then all the segments will be off.
 
-To test out our look-up table, let's connect it to our counter.
+To test out our look-up table, let's connect it to our counter in our top file.
 
 {% fenced_code_tab(tabs=["Standard", "Fake Pull-downs"]) %}
 ```lucid
