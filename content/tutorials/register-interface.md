@@ -292,8 +292,8 @@ If you then click _Read_ it'll read it back.
 You should see your board's first two LEDs turn on.
 Try writing a few other values just to make sure it's working as expected.
 
-_Don't forget to disconnect from the board when you are done.
-You won't be able to program it while connected._  (disconnect in the interface)
+Don't forget to disconnect the register interface by clicking the chain icon.
+You won't be able to program it while connected.
 
 If you try to read from an address other than 0, you'll get an error along the lines of 
 "Read failed: Read 0 but expected 4 bytes!"
