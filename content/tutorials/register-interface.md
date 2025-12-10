@@ -35,7 +35,9 @@ Enough theoretical, let's jump into the actual interface.
 
 # The Register Interface Component
 
-In Alchitry Labs, open the _Component Library_ and add the _Register Interface_ (under _Interfaces_) to your project.
+In Alchitry Labs, open a New Project using the base template and name it whatever you want.
+I'm calling mine _Register Interface Demo_. 
+Now, open the _Component Library_ and add the _Register Interface_ (under _Interfaces_) to your project.
 You will also likely want to add the _UART Rx_ and _UART Tx_ components if you plan to use the interface with the 
 built-in USB port.
 
@@ -237,7 +239,6 @@ In the `always` block, we can connect up the modules.
         tx.data = reg.tx_data
         tx.new_data = reg.new_tx_data
         reg.tx_busy = tx.busy
-        tx.block = 0 // never block
     }
 ```
 
@@ -291,8 +292,8 @@ If you then click _Read_ it'll read it back.
 You should see your board's first two LEDs turn on.
 Try writing a few other values just to make sure it's working as expected.
 
-Don't forget to disconnect from the board when you are done.
-You won't be able to program it while connected.
+_Don't forget to disconnect from the board when you are done.
+You won't be able to program it while connected._  (disconnect in the interface)
 
 If you try to read from an address other than 0, you'll get an error along the lines of 
 "Read failed: Read 0 but expected 4 bytes!"
@@ -373,7 +374,6 @@ module alchitry_top (
         tx.data = reg.tx_data
         tx.new_data = reg.new_tx_data
         reg.tx_busy = tx.busy
-        tx.block = 0 // never block
         
         // default value
         reg.reg_in = <Register.response>(.data(32bx), .drdy(0))
