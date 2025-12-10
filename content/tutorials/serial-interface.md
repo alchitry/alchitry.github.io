@@ -53,7 +53,7 @@ However, for this tutorial we will be using them as a black box.
 
 Now that the components we need are in our project, we need to use them.
 
-We are going make some changes in the top file.
+We are going to make some changes in the top file.
 
 ```lucid,linenos,linenostart=11
 .clk(clk) {
@@ -100,7 +100,6 @@ always {
 
     tx.new_data = rx.new_data
     tx.data = rx.data
-    tx.block = 0            // no flow control, do not block
 }
 ```
 
@@ -108,11 +107,6 @@ On lines 28 and 29, we connect the external input and output to our two modules.
 
 On lines 31 and 32, we connect the `rx` module's outputs to the `tx` module's inputs. 
 
-On line 33, we set the `block` input of `tx` to `0`. 
-When this value is `1`, the `uart_tx` component won't send any data out. 
-This is useful if you have some way to tell that the receiver is busy. 
-With the USB<->serial converter, we just assume the data is being read from the computer in a timely manner to keep the FTDI's buffer from overflowing. 
-This is a reasonable assumption as long as there is some program actually reading the data.
 
 # Sending and Receiving Data
 
@@ -134,7 +128,7 @@ The next tutorial will handle this more gracefully by actually respecting this f
 
 You should now be able to build your project and load it on the board. 
 
-Click the terminal icon in the toolbar and select _Serial Terminal_ from the dropdown.
+Click the terminal icon labeled "Tools" in the toolbar and select _Serial Terminal_ from the dropdown.
 
 The _Device_ dropdown shows all the detected boards.
 Make sure your board is plugged in and selected.
@@ -218,7 +212,6 @@ module alchitry_top (
 
         tx.new_data = rx.new_data
         tx.data = rx.data
-        tx.block = 0            // no flow control, do not block
         
         if (rx.new_data) {      // new byte received
             data.d = rx.data    // save it
