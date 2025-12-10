@@ -70,6 +70,7 @@ Just like the last tutorial we will have a `greeter` module.
 The interface to this module is exactly the same as before but it is now a bit more mannered and will greet you personally.
 
 Like most tutorials, I'll post the entire module here and then break it down.
+Feel free to copy and paste this into our old 'greeter' module and follow along.
 
 ```lucid,short,linenos
 module greeter (
@@ -126,7 +127,7 @@ module greeter (
                         state.d = States.LISTEN           // change states
                 }
 
-            // LISTEN: Listen to the user as they type his/her name.
+            // LISTEN: Listen to the user as they type his/her/their name.
             States.LISTEN:
                 if (new_rx) { // wait for a new byte
                     ram.write_data = rx_data        // write the received letter to RAM
@@ -280,7 +281,7 @@ If you wanted to make this more robust you would need to buffer the received let
 The if statement is used to know when to stop. 
 We have two conditions to stop on. 
 The first is if we simply run out of space. 
-To check of this we use `&name_count.q`. 
+To check this, we use `&name_count.q`. 
 The `&` operator here **and**s all the bits of `name_count.q` together into a single bit. 
 This tells us if all the bits of `name_count.q` are `1`. 
 The second condition is that the user pressed the enter key. 
@@ -317,7 +318,7 @@ States.HELLO:
     }
 ```
 
-In this state, we are going to use two counters, `hello_count` and `name_count`. 
+In the `HELLO` state, we are going to use two counters, `hello_count` and `name_count`. 
 First we will start by sending each letter of `HELLO_TEXT`. 
 However, once we hit the `"@"` letter we will send all the letters in our RAM. 
 Once that is done, we will finish sending the rest of `HELLO_TEXT`.
@@ -369,7 +370,7 @@ module alchitry_top (
         tx.new_data = greeter.new_tx
         tx.data = greeter.tx_data
         greeter.tx_busy = tx.busy
-        tx.block = 0            // no flow control, do not block
+
     }
 }
 ```
