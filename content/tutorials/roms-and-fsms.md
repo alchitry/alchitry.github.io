@@ -75,7 +75,7 @@ If you want to accept a multidimensional array, you need to specify the dimensio
 Parameters without a default or test value are assumed to be a simple number.
 See the [reference guide](@/tutorials/lucid-reference.md#parameters) for more info.
 
-Constrains on the parameter's value can be set with a boolean statement after a colon. 
+Constraints on the parameter's value can be set with a boolean statement after a colon. 
 This expression will be evaluated when the module is instantiated and an error will be thrown when it fails (has a value of 0). 
 It is recommended to add these constraints if you make any assumptions about the parameter values.
 
@@ -143,7 +143,6 @@ module alchitry_top (
         
         tx.new_data = 0         // no new data by default
         tx.data = 8bx           // don't care when new_data is 0
-        tx.block = 0            // no flow control, do not block
     }
 }
 ```
@@ -454,10 +453,9 @@ always {
     tx.new_data = greeter.new_tx
     tx.data = greeter.tx_data
     greeter.tx_busy = tx.busy
-    tx.block = 0            // no flow control, do not block
 }
 ```
 
 That's it! 
 Go ahead, build your project and load it on your board. 
-You can then fire up a serial terminal and send `"h"` to your board to be nicely greeted!
+You can then fire up a serial terminal, connect, and send `"h"` to your board to be nicely greeted!
