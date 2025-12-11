@@ -104,24 +104,51 @@
         }
 
         copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
             if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
+                navigator.clipboard.writeText(codeText);
                 copyingDone();
                 return;
             }
 
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
             try {
                 document.execCommand('copy');
                 copyingDone();
             } catch (e) {
+                console.error('Copy failed', e);
             }
-            ;
-            selection.removeRange(range);
+            document.body.removeChild(textArea);
         });
 
         if (container.classList.contains("highlight")) {
