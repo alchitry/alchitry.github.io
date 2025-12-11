@@ -678,7 +678,7 @@ pre:hover .copy-code {
   min-width: 80px;
   padding:5px 8px;
   line-height: 1.5;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--accent);
 }
 .post-content table th {
   font-size: 14px;
