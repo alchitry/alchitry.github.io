@@ -274,11 +274,11 @@ module cpu (
             Inst.EQ:
                 reg.d[dest] = reg.q[arg1] == reg.q[arg2]  // equals comparison
             Inst.BEQ:
-                if (reg.q[dest] == constant)               // if R[dest] == constant
-                    reg.d[0] = reg.q[0] + 2                 // skip next instruction
+                if (reg.q[dest] == constant)              // if R[dest] == constant
+                    reg.d[0] = reg.q[0] + 2               // skip next instruction
             Inst.BNEQ:
-                if (reg.q[dest] != constant)               // if R[dest] != constant
-                    reg.d[0] = reg.q[0] + 2                 // skip next instruction
+                if (reg.q[dest] != constant)              // if R[dest] != constant
+                    reg.d[0] = reg.q[0] + 2               // skip next instruction
             Inst.ADD:
                 reg.d[dest] = reg.q[arg1] + reg.q[arg2]   // addition
             Inst.SUB:
@@ -411,11 +411,11 @@ The other four signals are just the common names for the different parts of the 
             Inst.EQ:
                 reg.d[dest] = reg.q[arg1] == reg.q[arg2]  // equals comparison
             Inst.BEQ:
-                if (reg.q[dest] == constant)               // if R[dest] == constant
-                    reg.d[0] = reg.q[0] + 2                 // skip next instruction
+                if (reg.q[dest] == constant)              // if R[dest] == constant
+                    reg.d[0] = reg.q[0] + 2               // skip next instruction
             Inst.BNEQ:
-                if (reg.q[dest] != constant)               // if R[dest] != constant
-                    reg.d[0] = reg.q[0] + 2                 // skip next instruction
+                if (reg.q[dest] != constant)              // if R[dest] != constant
+                    reg.d[0] = reg.q[0] + 2               // skip next instruction
             Inst.ADD:
                 reg.d[dest] = reg.q[arg1] + reg.q[arg2]   // addition
             Inst.SUB:
@@ -532,8 +532,6 @@ module alchitry_top (
             if (cpu.read)
                 cpu.din = led_reg.q  // let the CPU read the LED value
         }
-        
-        led = led_reg.q          // connect LEDs to led_reg
     }
 }
 ```
