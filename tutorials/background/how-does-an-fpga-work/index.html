@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>How does an FPGA work?</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;how-does-an-fpga-work&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://alchitry.com/css/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/css/override.css">
+
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;">Background</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;how-does-an-fpga-work&#x2F;">How does an FPGA work?</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">How does an FPGA work?</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+6 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;background&#x2F;how-does-an-fpga-work.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#look-up-tables" aria-label="Look-Up Tables">Look-Up Tables</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#luts-in-the-mojo" aria-label="LUTs in the Mojo">LUTs in the Mojo</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#flip-flops-and-slices" aria-label="Flip-flops and Slices">Flip-flops and Slices</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-routing-matrix" aria-label="The Routing Matrix">The Routing Matrix</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#more-info" aria-label="More Info">More Info</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>This tutorial will cover how an FPGA can implement so many different logic circuits simply by being reprogrammed.</p>
+<p>When explaining what an FPGA is to someone, I commonly tell them that there are basically a bunch of logic gates in the FPGA that can be connected however you want to create your circuit. While this is a good way to explain it to someone with little prior knowledge on digital design, it's not actually how it works. An FPGA has three main elements, <strong>L</strong>ook-<strong>U</strong>p <strong>T</strong>ables (<strong>LUT</strong>), flip-flops, and the routing matrix, that all work together to create a very flexible device.</p>
+<h2 id="look-up-tables">Look-Up Tables</h2>
+<p>Look-up tables are how your logic actually gets implemented. A LUT consists of some number of inputs and one output. What makes a LUT powerful is that you can <strong>program</strong> what the output should be for every single possible input.</p>
+<p>A LUT consists of a block of RAM that is indexed by the LUT's inputs. The output of the LUT is whatever value is in the indexed location in it's RAM. </p>
+<p>As an example let's look at a 2-input LUT.</p>
+<p><img src="https://cdn.alchitry.com/background/lut2.png" alt="lut2.png" /></p>
+<p>Since the RAM in the LUT can be set to anything, a 2 input LUT can become any logic gate!</p>
+<p>For example, if we want to implement an AND gate the contents of the RAM would look like this.</p>
+<table><thead><tr><th>Address (In[1:0])</th><th>Value (Out)</th></tr></thead><tbody>
+<tr><td>00</td><td>0</td></tr>
+<tr><td>01</td><td>0</td></tr>
+<tr><td>10</td><td>0</td></tr>
+<tr><td>11</td><td>1</td></tr>
+</tbody></table>
+<p>It's important to understand that the column <strong>Value (Out)</strong> could be set to anything! It doesn't have to model a single logic gate. If the value for address 01 was a 1, then the LUT would still perform as expected but the equivalent logic circuit would require more than one gate to implement. This is why the metric of equivalent gate count for an FPGA is a confusing and poor metric! It is tricky to specify how complicated of a circuit you can implement in a given FPGA because of all the variables. </p>
+<h2 id="luts-in-the-mojo">LUTs in the Mojo</h2>
+<p>In the Spartan 6 used by the Mojo, each LUT is a 6-input LUT. However, it isn't a true 6-input LUT but rather two 5-input LUTs connected together by a multiplexer (MUX).</p>
+<p><img src="https://cdn.alchitry.com/background/lut6.png" alt="lut6.png" /></p>
+<p>The reason the LUT is designed this way is because it can either be used as a single 6-input LUT, or two 5-input LUTs. The only restriction is that both 5-input LUTs must share the same inputs. When it is configured as two 5-input LUTs, <strong>In[5]</strong> is set to 0.</p>
+<h2 id="flip-flops-and-slices">Flip-flops and Slices</h2>
+<p>Each LUT's output can be optionally connected to a flip-flop. Groups of LUTs and flip-flops are called <strong>slices</strong>. In the Spartan 6 used by the Mojo, a slice has 4 LUT6 and 8 flip-flops. These flip-flops are typically configurable allowing the type of reset (asynchronous vs synchronous) and the reset level (high vs low) to be specified. Some of the flip-flops can actually be configured as latches instead of flip-flops, although latches typically aren't good practice to use as they can lead to timing problems.</p>
+<p>The FPGA used by the Mojo has 1,430 slices in it for a total of 5,720 LUTs!</p>
+<p>All slices are not created equal, however. In the Mojo's FPGA there are three types of slices, <strong>SLICEX</strong>, <strong>SLICEL</strong>, and <strong>SLICEM</strong>. The SLICEX is the most basic type of slice and just consists of the four LUT6's and the eight flip-flops. A SLICEL is the same as a SLICEX except it contains extra hardware for a ripple-carry chain used in arithmetic circuits. These help speed up circuits like addition and multiplication. A SLICEM is the same as a SLICEL except the LUTs can be used as 64bits of RAM or a shift register up to 32bits long. The break down of the slices is roughly SLICEX 50%, SLICEL 25% and SLICEM 25%.</p>
+<h2 id="the-routing-matrix">The Routing Matrix</h2>
+<p>The next size block in the FPGA is the <strong>C</strong>omplex <strong>L</strong>ogic <strong>B</strong>lock (<strong>CLB</strong>) and each CLB consists of two slices. Each CLB connects to a <strong>switch matrix</strong> that is responsible for connecting the CLB to the rest of the FPGA. The switch matrix can connect the inputs and outputs of the CLB to the <strong>general routing matrix</strong> or to each other. That way the output from one LUT can feed into the input of another LUT without having to travel far.</p>
+<p>The routing resources in an FPGA are pretty complicated, but they are essentially a bunch of multiplexers and wires that are used to define what CLBs and other FPGA resources are connected to each other. These connections are again defined in RAM which is why the FPGA must be reconfigured every time the power is cycled (in the Mojo this is taken care of by the AVR).</p>
+<p>There are also special routing resources available on the FPGA. The most notable are the clock routing resources. When you have a clock being used in your design, it is very important that the clock signal be distributed as evenly as possible throughout the FPGA so all the flip-flops will flip at roughly the same time. If you were to try and use the general routing resources for this, the clock signal would have large propagation delays from traveling through all the multiplexers. To solve this problem there are global and local routing resources dedicated to clocks. These are basically wires that connect through the entire chip (for global) or sections of the chip (for local) with very little propagation delay. Only inputs from certain pins on the FPGA are allowed to drive a signal on the global clock routing resources. These inputs are labeled GCLK in the Mojo schematic.</p>
+<p>All of these resources are used in an FPGA to make them very flexible slow things down. This is why you will never be able to clock an FPGA at speeds comparable to a dedicated chip. An ASIC design can reach speeds faster than 4GHz, while an FPGA is very fast if it's running at 450MHz. This is also why FPGAs consume considerably more power than their ASIC counterparts. An FPGA will require an order of magnitude more power to run than an 8bit microcontroller, like an AVR. However, they still have the huge advantage of being low-cost for small runs (or hobbyists) and re-configurable virtually unlimited times.</p>
+<h2 id="more-info">More Info</h2>
+<p>If you want to know more details about the FPGA used in the Mojo, <a href="https://docs.amd.com/v/u/en-US/ug384">this document</a> has everything.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;what-is-an-fpga&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>What is an FPGA?</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;encodings&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Encodings</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2025 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z"/>
+    </svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+    
+</body>
+</html>
