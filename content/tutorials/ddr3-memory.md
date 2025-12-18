@@ -522,7 +522,7 @@ If you don't set the last three bits to 0, weird things happen.
 
 For writes, these bits are ignored and everything works as if they were 0.
 
-For reads, the same 16-bit words in the burst will be read from same 128-bit block but in a different order. 
+For reads, the same 16-bit words in the burst will be read from the same 128-bit block, but in a different order. 
 For example, if the last three bits are 0, then they are read in the expected order, 0, 1, 2, 3, 4, 5, 6, and 7. 
 However, if you set the last three bits to 2, then it will read them in the order 2, 3, 0, 1, 6, 7, 4, and 5. 
 See page 145 of [this document](https://media-www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr3/2gb_1_35v_ddr3l.pdf) for the full behavior. 
