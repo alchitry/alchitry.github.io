@@ -11,7 +11,7 @@ You can then go brag to all your friends about how cool you are.
 # What is a CPU?
 
 If you are reading this, there is an excellent chance you already have a decent idea what a CPU is. 
-However, since we are going to be making one, we need to have a clear idea of exactly we are going to be making.
+However, since we are going to be making one, we need to have a clear idea of exactly what we are going to be making.
 
 In its most abstract form, a CPU is a circuit whose behavior is determined by the code it is fed. 
 This way, the same circuit can perform a completely different task simply by changing some values in a ROM. 
@@ -65,7 +65,7 @@ For now, know that we have internal memory called registers, and we will have a 
 
 We now need a way to encode the instructions for our CPU. 
 We are going to fit each instruction into 16 bits. 
-The first four bits will be to encode what the operation is (since we will have 16 operations), 
+The first four bits will be used to encode what the operation is (since we will have 16 operations), 
 and the remaining 12 bits will be unique to each operation. 
 
 The four bits that encode the type of operation are known as the **opcode**.
@@ -347,7 +347,7 @@ We use a 2D array of 16 by 8 since we want 16 registers with a width of 8 bits.
     instRom instRom  // program ROM
 ```
 
-We can't forget out program ROM! 
+We can't forget our program ROM! 
 We will cover the actual ROM in a bit. 
 However, it has only two ports, `address` and `inst`. 
 
@@ -541,7 +541,7 @@ When the CPU writes to address `128`, we can save the value in the `dff` and con
 This way, the CPU can directly control the LEDs by writing to this address!
 
 Why use address `128`? 
-In practice could have chosen any address, but the reason we used `128` instead of, say `0`, 
+In practice, we could have chosen any address, but the reason we used `128` instead of, say `0`, 
 is because the first half of the address space is typically reserved for RAM. 
 
 Our CPU doesn't currently have access to RAM, but we _could_ hook it up to some. 
@@ -614,7 +614,7 @@ A label is simply a name followed by a `:`.
 These act as constants that will be replaced with the line number of the instruction following it. 
 
 For example, the label `begin` in the above code will have value `0` since it is before the first instruction. 
-These make it easy to reference instructions without having to relay on fixed numbers (to avoid the insert problem).
+These make it easy to reference instructions without having to rely on fixed numbers (to avoid the insert problem).
 
 Instructions consist of the name of the _opcode_ followed by a list of comma-separated arguments. 
 
@@ -648,7 +648,7 @@ In our case, we cheat a little bit and set `R15` to the beginning of our loop in
 This is just a little more efficient.
 
 We can use the `SET` instruction with `R0` to jump to anywhere in our program. 
-There is where labels are really helpful since we don't care what the actual instruction number is as the label will get replaced with the proper value.
+This is where labels are really helpful since we don't care what the actual instruction number is as the label will get replaced with the proper value.
 
 The delay function uses `R11`, `R12`, and `R13` to count from 0 to 16,777,215. 
 This takes a decent amount of time so we can actually see the LEDs change.
