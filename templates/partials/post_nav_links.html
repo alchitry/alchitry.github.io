@@ -1,0 +1,38 @@
+{% set posts_section = get_section(path=page.ancestors | last) %}
+{% set num_posts = posts_section | length %}
+{% set reverse = posts_section.extra["reverse"] | default(value=false) %}
+{% if num_posts > 1 %}
+<nav class="paginav">
+    {% if reverse %}
+        {% if page.higher %}
+        <a class="prev" href="{{ page.higher.permalink }}">
+            <span class="title">« Prev</span>
+            <br>
+            <span>{{ page.higher.title }}</span>
+        </a>
+        {% endif %}
+        {% if page.lower %}
+        <a class="next" href="{{ page.lower.permalink }}">
+            <span class="title">Next »</span>
+            <br>
+            <span>{{ page.lower.title }}</span>
+        </a>
+        {% endif %}
+    {% else %}
+        {% if page.lower %}
+        <a class="prev" href="{{ page.lower.permalink }}">
+            <span class="title">« Prev</span>
+            <br>
+            <span>{{ page.lower.title }}</span>
+        </a>
+        {% endif %}
+        {% if page.higher %}
+        <a class="next" href="{{ page.higher.permalink }}">
+            <span class="title">Next »</span>
+            <br>
+            <span>{{ page.higher.title }}</span>
+        </a>
+        {% endif %}
+    {% endif %}
+</nav>
+{% endif %}
