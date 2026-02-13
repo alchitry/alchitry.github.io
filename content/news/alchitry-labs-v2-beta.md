@@ -4,7 +4,7 @@ date = "2024-09-16"
 inline_language = "lucid"
 +++
 
-Alchitry Labs V2.0.14 is now released and with it the status of the project changes from preview to beta!
+Alchitry Labs V2.0.14 is now released, and with it the status of the project changes from preview to beta!
 
 ![Alchitry Labs V2.0.14 Beta](https://cdn.alchitry.com/labs-v2/alchitry-labs-2.0.14-beta.png)
 
@@ -17,7 +17,7 @@ Before getting into the technical details of V2, lets look at the fun stuff, wha
 The first thing you're likely to notice is the UI has been revamped. 
 It is based on a modern UI toolkit that allows for easy animations, Sublime-style scroll bars, interactive virtual boards, and drag-and-drop window splitting.
 
-Alchitry Labs V2 supports the new [Lucid V2](@/tutorials/lucid-reference.md).
+Alchitry Labs V2 supports the new [Lucid V2](@/tutorials/references/lucid-reference.md).
 See the [V1 vs V2 blog post](@/news/lucid-1-vs-2.md) for a summary of what has changed. 
 
 Support for Lucid V2 is so much deeper than Lucid V1 ever was. 

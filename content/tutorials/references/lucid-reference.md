@@ -3,6 +3,7 @@ title = "Lucid Reference"
 weight = 0
 inline_language = "lucid"
 date = "2025-02-04"
+aliases = ["tutorials/lucid-reference"]
 +++
 
 This page is a reference for the Lucid V2 language.

@@ -3,6 +3,7 @@ title = "Register Interface"
 weight = 7
 inline_language = "lucid"
 date = "2025-04-28"
+aliases = ["tutorials/register-interface"]
 +++
 
 This tutorial will introduce you to the _Register Interface_ component and how you can use it to easily implement
@@ -12,7 +13,7 @@ complex interfaces in your designs.
 
 # Introduction
 
-Sometimes dealing with an interface, like the [serial interface](@/tutorials/serial-interface.md), directly can become
+Sometimes dealing with an interface, like the [serial interface](@/tutorials/lucid_v2/serial-interface.md), directly can become
 quite complicated depending on what you are trying to implement.
 The _Register Interface_ component provides an abstraction on top of a basic interface (usually the USB<->Serial port,
 but it doesn't have to be).
@@ -193,7 +194,7 @@ module register_interface #(
 ```
 
 I'm not going to dive into too much detail on _how_ it all works but mostly go over what it does and how to use it.
-It is essentially just a large FSM (see [the FSM tutorial](@/tutorials/roms-and-fsms.md) for background).
+It is essentially just a large FSM (see [the FSM tutorial](@/tutorials/lucid_v2/roms-and-fsms.md) for background).
 Check out [The API](#the-api) section for info on the actual protocol.
 
 For now, we will dive into using it.
@@ -244,7 +245,7 @@ In the `always` block, we can connect up the modules.
 
 We now need to deal with incoming requests.
 This is done through the `reg_out` and `reg_in` ports of the `register_interface` module.
-These ports use [structs](@/tutorials/lucid-reference.md#struct) to bundle a bunch of signals together.
+These ports use [structs](@/tutorials/references/lucid-reference.md#struct) to bundle a bunch of signals together.
 
 The `struct` for each one is defined in the `global` block in the same file.
 These are available anywhere in your design by using the designations `Register.request` and `Register.response`.
@@ -269,7 +270,7 @@ We can connect up these signals to respond to read/write requests to address 0 w
         }
 ```
 
-Notice on line 45 I used the [struct literal syntax](@/tutorials/lucid-reference.md#structs) to assign a constant value
+Notice on line 45 I used the [struct literal syntax](@/tutorials/references/lucid-reference.md#structs) to assign a constant value
 to every element in the struct.
 
 You can now build your project and load it onto your board.

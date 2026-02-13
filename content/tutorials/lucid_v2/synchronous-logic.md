@@ -3,6 +3,7 @@ title = "Synchronous Logic"
 weight = 2
 inline_language = "lucid"
 date = "2024-09-17"
+aliases = ["tutorials/synchronous-logic"]
 +++
 
 In this tutorial you will be introduced to the *D flip-flop* and how you can use these to make an LED blink.
@@ -12,8 +13,8 @@ In this tutorial you will be introduced to the *D flip-flop* and how you can use
 {{ youtube(id="kOE1GXge11k?si=nZOT0nboMJxjkcVl") }}
 
 Synchronous logic is a fundamental building block for just about any digital design. 
-It allows you to create much more complex systems that accomplish something over a series of steps. 
-It also gives you the ability to save states and other information.
+It allows you to create much more complex systems that achieve something over a series of steps. 
+It also allows you to save states and other information.
 
 # The Problem
 
@@ -275,7 +276,7 @@ Connections to module arrays made directly connect to the array as a whole.
 Connections made with a connection block are connected to each individual instance.
 
 This allows you to easily specify a clock to be distributed to all instances but still connect up unique values directly.
-See [the reference guide](@/tutorials/lucid-reference.md#connection-blocks) for more details.
+See [the reference guide](@/tutorials/references/lucid-reference.md#connection-blocks) for more details.
 
 If you specify an input in an always block, you can specify the input to each element separately. 
 In this example, the `clk` signal is one bit, but it is getting copied to 25 one bit flip-flops. 
@@ -385,7 +386,7 @@ It is very common to want to index something based on the width of the signal.
 For that, and other cases, we have the `$width()` function.
 
 The `$width()` function takes any signal as an argument and returns its width. 
-See the [reference page](@/tutorials/lucid-reference.md#built-in) for more details.
+See the [reference page](@/tutorials/references/lucid-reference.md#built-in) for more details.
 
 We can rewrite the indexing of the MSB of `counter.q` from `counter.q[$is_sim() ? 8 : 24]` to `counter.q[$width(counter.q) - 1]`.
 This way no matter what size `counter.q` is, we will always be indexing the last bit.

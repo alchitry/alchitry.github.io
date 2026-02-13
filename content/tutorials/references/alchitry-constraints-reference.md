@@ -3,6 +3,7 @@ title = "Alchitry Constraints Reference"
 weight = 1
 inline_language = "acf"
 date = "2025-02-04"
+aliases = ["tutorials/alchitry-constraints-reference"]
 +++
 
 This page is a reference for Alchitry Constraints V2.
@@ -15,7 +16,7 @@ An Alchitry Constraints File (.acf extension) contains a list of [pin constraint
 
 ## Comments
 
-Comments take the same form as in [Lucid](@/tutorials/lucid-reference.md#comments).
+Comments take the same form as in [Lucid](@/tutorials/references/lucid-reference.md#comments).
 
 Use `//` for a single line comment and `/*    */` for a multi-line comment.
 
@@ -31,7 +32,7 @@ pin port_name PIN_NAME OPTIONAL_ATTRIBUTE_LIST
 ```
 
 Here, `port_name` corresponds to a port of your top-level module.
-If the port is an array, then it should also include [array selectors](@/tutorials/lucid-reference.md#array-selection)
+If the port is an array, then it should also include [array selectors](@/tutorials/references/lucid-reference.md#array-selection)
 to select only a single bit.
 
 The `PIN_NAME` is the name of the physical pin to connect to `port_name`.
@@ -44,7 +45,7 @@ Finally, the `OPTIONAL_ATTRIBUTE_LIST` is a list of [attributes](#attributes) th
 
 Specifying attributes for every single pin constraint would often become very tedious as many pins will share the same attribute values.
 This is where attribute blocks come into play.
-They take a very similar form to the [connection blocks](@/tutorials/lucid-reference.md#connection-blocks) in Lucid.
+They take a very similar form to the [connection blocks](@/tutorials/references/lucid-reference.md#connection-blocks) in Lucid.
 
 ```acf
 ATTRIBUTES_LIST {
@@ -282,7 +283,7 @@ Note that what would be `USB_D0` is `USB_RX` and `USB_D1` is `USB_TX`.
 Finally, there are `DDR_DQ0`-`DDR_DQ15`, `DDR_DQS0_P`, `DDR_DQS0_N`, `DDR_DQS1_P`, `DDR_DQS1_N`, `DDR_DM0`, `DDR_DM1`,
 `DDR_ODT`, `DDR_RESET`, `DDR_BA0`-`DDR_BA2`, `DDR_CK_P`, `DDR_CK_N`, `DDR_CKE`, `DDR_CS`, `DDR_RAS`, `DDR_CAS`, `DDR_WE`,
 `DDR_A0`-`DDR_A13` for interfacing with the DDR3.
-You generally shouldn't specify these directly as the [MIG core](@/tutorials/ddr3-memory.md) does it for you.
+You generally shouldn't specify these directly as the [MIG core](@/tutorials/lucid_v2/ddr3-memory.md) does it for you.
 
 # Native Constraints
 

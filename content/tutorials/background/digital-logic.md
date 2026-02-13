@@ -5,7 +5,7 @@ weight=0
 
 {{ youtube(id="Aw53UIwnJqU?si=vCHwPU4e9bXF4An0") }}
 
-What is digital logic? As you may or may not already know digital systems are based on two logic levels which are usually represented as 1's and 0's.
+What is digital logic? As you may or may not already know, digital systems are based on two logic levels which are usually represented as 1's and 0's.
 
 An interesting thing to note before we get too far in is that digital circuits are really made of the same stuff as any analog circuit. They have real voltages, with real currents, and those are never exact. The idea behind a digital system is that you simply design it so that there are two main stable states. That way even if you introduce noise it will remain close to that state. This makes digital circuits very robust and noise tolerant. It also allows up to abstract away what the actually voltages are and to just work with 0s and 1s.
 
@@ -26,14 +26,14 @@ This is the symbol for a **not** gate.
 
 All that it does is output the opposite of **a**. So if **a** is true **b** is false. You can think of it's output as: _is the input_ **_not_** _true?_
 
-For example, if **a** is 1, then **b** wil output 0.
+For example, if **a** is 1, then **b** will output 0.
 ## And
 
 This is the symbol for an **and** gate.
 
 ![and.png](https://cdn.alchitry.com/background/and.png)
 
-When **a** **and b** are both true, **c** is true. If either **a** or **b** is false then **c** will be false. You can think of it's output as: _is input a_ **_and_** _input b true?_
+When **a** **and b** are both true, **c** is true. If either **a** or **b** is false, then **c** will be false. You can think of it's output as: _is input a_ **_and_** _input b true?_
 
 For example, if **a** is 1 and **b** is 0, then the output, **c**, will be 0. That is because both inputs are not true, so the output is false.
 ## Or
@@ -51,7 +51,7 @@ This is the symbol for an **xor** gate.
 
 ![xor.png](https://cdn.alchitry.com/background/xor.png)
 
-This gate you usually don't see as often as the other three, but it is none the less important. This gate is true only when either **a** or **b** is true but not when **a** and **b** are true. It is an **exclusive or**. You can think about it as: _is input a_ **_different_** _from input b?_
+This gate you usually don't see as often as the other three, but it is nonetheless important. This gate is true only when either **a** or **b** is true but not when **a** and **b** are true. It is an **exclusive or**. You can think about it as: _is input a_ **_different_** _from input b?_
 
 Another useful way to look at xor gates it to think about that output as: _is there an_ **_odd_** _number of 1s?_ This way of thinking about it is useful for xor gates that have more than two inputs.
 

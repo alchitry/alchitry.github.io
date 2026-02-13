@@ -3,6 +3,7 @@ title = "Your First FPGA Project"
 weight = 1
 inline_language = "lucid"
 date = "2024-09-16"
+aliases = ["tutorials/your-first-fpga-project"]
 +++
 
 This tutorial will walk you through creating your first project in Alchitry Labs and making the onboard LED light up when you press the
@@ -25,7 +26,7 @@ You should then get a new dialog window for creating your project.
 
 You can enter whatever you like for the _Project Name_. 
 The _Workspace_ is the parent folder you want to store all your Alchitry projects in.
-I'm on a Linux system so your path will look different on Windows.
+I'm on a Linux system, so your path will look different on Windows.
 
 For _Board_, select the Alchitry board you have from the dropdown.
 I'll be using the [Au](@/boards/au.md), but everything in this tutorial is the same for any board.

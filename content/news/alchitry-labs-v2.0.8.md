@@ -8,9 +8,9 @@ inline_language = "lucid"
 
 Yesterday version 2.0.8 of [Alchitry Labs](@/alchitry-labs.md) was released.
 
-It's been a while since 2.0.7 was released so I'll do my best not to miss any import updates.
+It's been a while since 2.0.7 was released, so I'll do my best not to miss any import updates.
 
-First off, there is now an official [Lucid V2 Reference](@/tutorials/lucid-reference.md). This page should be able to answer any questions you have about the details of Lucid V2.
+First off, there is now an official [Lucid V2 Reference](@/tutorials/references/lucid-reference.md). This page should be able to answer any questions you have about the details of Lucid V2.
 
 # Known Values
 

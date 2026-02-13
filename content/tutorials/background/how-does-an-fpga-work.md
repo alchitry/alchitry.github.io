@@ -32,15 +32,15 @@ It's important to understand that the column **Value (Out)** could be set to any
 
 ## LUTs in the Mojo
 
-In the Spartan 6 used by the Mojo, each LUT is a 6-input LUT. However, it isn't a true 6-input LUT but rather two 5-input LUTs connected together by a multiplexer (MUX).
+In the Spartan 6 used by the Mojo, each LUT is a 6-input LUT. However, it isn't a true 6-input LUT but rather two 5-input LUTs connected by a multiplexer (MUX).
 
 ![lut6.png](https://cdn.alchitry.com/background/lut6.png)
 
-The reason the LUT is designed this way is because it can either be used as a single 6-input LUT, or two 5-input LUTs. The only restriction is that both 5-input LUTs must share the same inputs. When it is configured as two 5-input LUTs, **In[5]** is set to 0.
+The reason the LUT is designed this way is that it can either be used as a single 6-input LUT, or two 5-input LUTs. The only restriction is that both 5-input LUTs must share the same inputs. When it is configured as two 5-input LUTs, **In[5]** is set to 0.
 
 ## Flip-flops and Slices
 
-Each LUT's output can be optionally connected to a flip-flop. Groups of LUTs and flip-flops are called **slices**. In the Spartan 6 used by the Mojo, a slice has 4 LUT6 and 8 flip-flops. These flip-flops are typically configurable allowing the type of reset (asynchronous vs synchronous) and the reset level (high vs low) to be specified. Some of the flip-flops can actually be configured as latches instead of flip-flops, although latches typically aren't good practice to use as they can lead to timing problems.
+Each LUT's output can be optionally connected to a flip-flop. Groups of LUTs and flip-flops are called **slices**. In the Spartan 6 used by the Mojo, a slice has 4 LUT6 and eight flip-flops. These flip-flops are typically configurable allowing the type of reset (asynchronous vs synchronous) and the reset level (high vs low) to be specified. Some of the flip-flops can actually be configured as latches instead of flip-flops, although latches typically aren't good practice to use as they can lead to timing problems.
 
 The FPGA used by the Mojo has 1,430 slices in it for a total of 5,720 LUTs!
 

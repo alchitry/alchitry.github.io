@@ -3,6 +3,7 @@ title = "DDR3 Memory"
 weight = 11
 inline_language = "lucid"
 date = "2024-09-23"
+aliases = ["tutorials/ddr3-memory"]
 +++
 
 In this tutorial we are going to set up an interface to the DDR3 memory with the FPGA on the Alchitry Au/Au+.

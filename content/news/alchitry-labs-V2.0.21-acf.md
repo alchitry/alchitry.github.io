@@ -6,7 +6,7 @@ inline_language = "acf"
 
 [Alchitry Labs V2.0.21-BETA](@/alchitry-labs.md) just dropped with support for the new [Alchitry V2 boards](https://shop.alchitry.com/collections/all).
 
-To properly support the new boards, the format for Alchitry Constraint Files (ACF) were updated. <!-- more -->
+To properly support the new boards, the format for Alchitry Constraint Files (ACF) was updated. <!-- more -->
 The format for every constraint now has the following format.
 
 ```acf
@@ -49,7 +49,7 @@ However, if you're using any version of the Au, then there are many more options
 The Xilinx document [UG471](https://docs.amd.com/v/u/en-US/ug471_7Series_SelectIO) goes into a lot of detail about the various options.
 Not every option in that document is supported, however.
 
-Each IO standard has its requirements in order to use it.
+Each IO standard has its requirements to use it.
 The biggest constraint on these is the required VCCO.
 VCCO is the voltage used to power that bank of IO pins.
 Most banks on the Au are powered by 3.3V.
@@ -116,7 +116,7 @@ Using `FAST` may be a good choice for some high speed signals but may lead to re
 It is common to want to apply the same attribute value to a bunch of pins.
 This is where attribute blocks come in!
 
-These take the same form of [connection blocks](@/tutorials/lucid-reference.md#connection-blocks) in Lucid.
+These take the same form of [connection blocks](@/tutorials/references/lucid-reference.md#connection-blocks) in Lucid.
 That is, a comma seperated list of attributes followed by a block of constraints enclosed in braces.
 
 Here's the constraint file for the Io V1 with pulldowns enabled.
@@ -202,4 +202,4 @@ The `io_dip` and `io_button` signals all also have their pulldowns enabled via t
 
 Just like in Lucid, these attribute blocks can be nested.
 
-This update add quite a bit of capability to the ACF format which will allow native support for more projects like HDMI signals on the [Hd](https://shop.alchitry.com/products/alchitry-hd).
+This update adds quite a bit of capability to the ACF format which will allow native support for more projects like HDMI signals on the [Hd](https://shop.alchitry.com/products/alchitry-hd).

@@ -3,6 +3,7 @@ title = "Serial Interface"
 weight = 4
 inline_language = "lucid"
 date = "2024-09-19"
+aliases = ["tutorials/serial-interface"]
 +++
 
 In this tutorial we will use the USB port and create a project that will echo back all the data sent to the Alchitry board.

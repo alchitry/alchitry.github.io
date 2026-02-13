@@ -3,6 +3,7 @@ title = "ROMs and FSMs"
 weight = 5
 inline_language = "lucid"
 date = "2024-09-19"
+aliases = ["tutorials/roms-and-fsms"]
 +++
 
 In this tutorial we will create a project that will send "Hello World!" over the USB (serial) port when the letter "h" is received. 
@@ -19,7 +20,7 @@ With the new empty project, we now need to add the `uart_tx` and `uart_rx` compo
 These will be used to talk to the FTDI chip and send data over the USB port.
 
 You should know how to add a component to your project from the last tutorial. 
-If you need a refresher, [click here](@/tutorials/serial-interface.md).
+If you need a refresher, [click here](@/tutorials/lucid_v2/serial-interface.md).
 
 The components we need to add are the _UART Tx_ and _UART Rx_ components, and they can be found under _Interfaces_.
 
@@ -73,7 +74,7 @@ A test value is used when checking the module for errors but will still force a 
 Typically, parameters are just numbers, but they can be more complex values like arrays.
 If you want to accept a multidimensional array, you need to specify the dimensions with the default or test value.
 Parameters without a default or test value are assumed to be a simple number.
-See the [reference guide](@/tutorials/lucid-reference.md#parameters) for more info.
+See the [reference guide](@/tutorials/references/lucid-reference.md#parameters) for more info.
 
 Constraints on the parameter's value can be set with a boolean statement after a colon. 
 This expression will be evaluated when the module is instantiated and an error will be thrown when it fails (has a value of 0). 
@@ -335,7 +336,7 @@ This happens to be the number of bits you need to store the values from `0` to o
 How convenient! 
 Just what we needed.
 
-You can check out the [reference guide](@/tutorials/lucid-reference.md#built-in) for more functions.
+You can check out the [reference guide](@/tutorials/references/lucid-reference.md#built-in) for more functions.
 
 It is important to note that this function can only be used with constants or constant expressions. 
 This is because the tools will compute the value during synthesis. 
