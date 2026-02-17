@@ -5,7 +5,7 @@ paginate_by = 10
 weight = 0
 +++
 
-Depending on your board you will need to install different software to work with it. Find the section below and follow the guides for setting up your board.
+Depending on your board, you will need to install different software to work with it. Find the section below and follow the guides for setting up your board.
 
 ## Every Board
 
