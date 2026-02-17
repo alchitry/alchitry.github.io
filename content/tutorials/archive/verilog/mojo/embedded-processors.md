@@ -1,6 +1,7 @@
 +++
 title = "Embedded Processors"
 weight = 19
+aliases = ["tutorials/verilog/mojo/embedded-processors.md"]
 +++
 
 This tutorial is an advanced topic and is not recommend for beginners. If you want to write software in your design we recommend using the microcontroller on the Mojo before trying to embed a processor as the tools and setup can be very messy. Checkout [this tutorial](@/tutorials/archive/verilog/mojo/memory-mapping.md) for more information.

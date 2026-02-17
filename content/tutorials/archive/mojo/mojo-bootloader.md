@@ -1,6 +1,7 @@
 +++
 title = "Flashing the Bootloader"
 weight = 1
+aliases = ["tutorials/mojo/mojo-bootloader.md"]
 +++
 
 This tutorial will walk you through how to upgrade your Mojo's bootloader to the new Arduino compatible bootloader. To do this you will need an ISP programmer. We recommend the **AVRISP mkII**, but any ISP programmer should work. You can even use an Arduino to program the Mojo if you have one.

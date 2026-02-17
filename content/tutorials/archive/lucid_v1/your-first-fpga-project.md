@@ -2,6 +2,7 @@
 title = "Your First FPGA Project"
 weight = 0
 inline_language = "lucid"
+aliases = ["tutorials/lucid_v1/your-first-fpga-project.md"]
 +++
 
 This tutorial will walk you through creating your first project and making the onboard LED light up when you press the

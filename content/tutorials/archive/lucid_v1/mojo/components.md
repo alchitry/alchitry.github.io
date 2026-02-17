@@ -1,6 +1,7 @@
 +++
 title = "Components"
 weight = 3
+aliases = ["tutorials/lucid_v1/mojo/components.md"]
 +++
 
 In this tutorial we will use the USB port and create a project that will echo back all the data sent to the Mojo.

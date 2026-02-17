@@ -1,6 +1,7 @@
 +++
 title = "Hello World!"
 weight = 10
+aliases = ["tutorials/verilog/mojo/hello-world.md"]
 +++
 
 **The serial interface has changed on April 10, 2015. If you are having trouble, make sure you have the** [latest firmware](@/tutorials/archive/mojo/update-the-mojo.md) **and Mojo Base Project!**

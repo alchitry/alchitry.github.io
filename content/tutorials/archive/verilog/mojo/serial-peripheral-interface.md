@@ -1,6 +1,7 @@
 +++
 title = "Serial Peripheral Interface (SPI)"
 weight = 15
+aliases = ["tutorials/verilog/mojo/serial-peripheral-interface.md"]
 +++
 
 **S**erial **P**eripheral **I**nterface, or **SPI**, is a very common communication protocol used for two-way communication between two devices. A standard SPI bus consists of 4 signals, **M**aster **O**ut **S**lave **I**n (**MOSI**), **M**aster **I**n **S**lave **O**ut (**MISO**), the clock (**SCK**), and **S**lave **S**elect (**SS**). Unlike an [asynchronous serial interface](@/tutorials/archive/verilog/mojo/asynchronous-serial.md), SPI is not symmetric. An SPI bus has one **master** and one or more **slaves**. The master can talk to any slave on the bus, but each slave can only talk to the master. Each slave on the bus must have it's own unique slave select signal. The master uses the slave select signals to _select_ which _slave_ it will be talking to. Since SPI also includes a clock signal, both devices don't need to agree on a data rate before hand. The only requirement is that the clock is lower than the maximum frequency for all devices involved.

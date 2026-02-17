@@ -1,6 +1,7 @@
 +++
 title = "Basic CPU"
 weight = 9
+aliases = ["tutorials/lucid_v1/mojo/basic-cpu.md"]
 +++
 
 In this tutorial we will create a super basic CPU that you can then write some assembly for. You can then go brag to all your friends what a badass you are.

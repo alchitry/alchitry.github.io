@@ -2,6 +2,7 @@
 title = "Servos"
 weight = 11
 inline_language = "verilog"
+aliases = ["tutorials/verilog/mojo/servos.md"]
 +++
 
 Servos come in handy in all sorts of projects from robots to electronic locks. This tutorial will cover how to control servos with the Mojo.

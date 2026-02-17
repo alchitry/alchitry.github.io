@@ -1,6 +1,7 @@
 +++
 title = "Register Interface"
 weight = 10
+aliases = ["tutorials/lucid_v1/mojo/register-interface.md"]
 +++
 
 This tutorial will introduce you to the register interface component and how it can be used to create easy and reliable interfaces to your designs.

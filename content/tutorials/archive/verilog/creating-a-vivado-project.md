@@ -1,6 +1,7 @@
 +++
 title = "Creating a Vivado Project"
 weight = 1
+aliases = ["tutorials/verilog/creating-a-vivado-project.md"]
 +++
 
 This tutorial is to get you familiar with how to create a project and the very basics of Verilog.

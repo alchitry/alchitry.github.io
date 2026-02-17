@@ -1,6 +1,7 @@
 +++
 title = "HDMI"
 weight = 13
+aliases = ["tutorials/lucid_v1/mojo/hdmi.md"]
 +++
 
 This tutorial covers the basis of using the HDMI Shield. There are a few components bundled in the Mojo IDE that make encoding and decoding HDMI streams easier. This tutorial gives a basic example for each one.

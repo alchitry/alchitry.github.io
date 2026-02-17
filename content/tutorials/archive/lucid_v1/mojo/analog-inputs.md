@@ -1,6 +1,7 @@
 +++
 title = "Analog Inputs"
 weight = 7
+aliases = ["tutorials/lucid_v1/mojo/analog-inputs.md"]
 +++
 
 Welcome to the Analog Inputs Tutorial! In this tutorial, you will learn how to read the analog inputs on the Mojo. To demo this, we will modify the _AVR Interface Project_ so that the analog values are displayed on the LEDs.

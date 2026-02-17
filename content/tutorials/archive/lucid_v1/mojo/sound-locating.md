@@ -1,6 +1,7 @@
 +++
 title = "Sound Locating"
 weight = 14
+aliases = ["tutorials/lucid_v1/mojo/sound-locating.md"]
 +++
 
 In this tutorial we will use the Microphone Shield to locate the direction that sound comes from. This is a fairly advanced tutorial that pushes the limits of what you can do with the Mojo.

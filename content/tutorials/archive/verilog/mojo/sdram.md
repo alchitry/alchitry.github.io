@@ -1,6 +1,7 @@
 +++
 title = "SDRAM"
 weight = 18
+aliases = ["tutorials/verilog/mojo/sdram.md"]
 +++
 
 This tutorial will cover how **DRAM** (**D**ynamic **R**andom **A**ccess **M**emory), or more specifically **SDRAM** (**S**ynchronized **DRAM**), works and how you can use it in your FPGA projects.

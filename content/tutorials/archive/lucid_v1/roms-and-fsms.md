@@ -1,6 +1,7 @@
 +++
 title = "ROMs and FSMs"
 weight = 4
+aliases = ["tutorials/lucid_v1/roms-and-fsms.md"]
 +++
 
 In this tutorial we will create a project that will send "Hello World!" over the USB (serial) port when the letter "h" is received. This will help teach you how to use finite state machines (FSM).

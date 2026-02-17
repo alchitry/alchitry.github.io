@@ -1,6 +1,7 @@
 +++
 title = "Setting up the Arduino IDE"
 weight = 0
+aliases = ["tutorials/mojo/arduino-setup.md"]
 +++
 
 All new Mojo's are shipping with a new bootloader that is Arduino compatible. That means that if you want to modify the code that ships on the Mojo, you can from the comfort of the Arduino IDE.

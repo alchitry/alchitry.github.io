@@ -2,6 +2,7 @@
 title = "Synchronous Logic"
 weight = 3
 inline_language = "verilog"
+aliases = ["tutorials/verilog/mojo/synchronous-logic.md"]
 +++
 
 {{ youtube(id="kOE1GXge11k?si=nZOT0nboMJxjkcVl") }}

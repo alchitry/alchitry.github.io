@@ -1,6 +1,7 @@
 +++
 title = "Finite State Machines"
 weight = 9
+aliases = ["tutorials/verilog/mojo/finite-state-machines.md"]
 +++
 
 **F**inite **S**tate **M**achines, or **FSM**s, are an incredibly powerful tool when designing digital circuits. This tutorial will teach what an FSM is through example. We will use a basic FSM to control a very simple robot.

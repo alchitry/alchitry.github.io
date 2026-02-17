@@ -2,6 +2,7 @@
 title = "Pulse Width Modulation"
 weight = 4
 inline_language = "verilog"
+aliases = ["tutorials/verilog/mojo/pulse-width-modulation.md"]
 +++
 
 **P**ulse-**W**idth **M**odulation, or **PWM** is a very common technique that varies the width of the pulses in a pulse-train. PWM has a few applications, the main ones are for controlling things like servos and speed controllers and limiting the effective power for things like motors and LEDs. This tutorial will cover how to use PWM to change the brightness of an LED. 

@@ -1,6 +1,7 @@
 +++
 title = "DDR3 Memory"
 weight = 6
+aliases = ["tutorials/lucid_v1/ddr3-memory.md"]
 +++
 
 In this tutorial we are going to setup an interface to the DDR3 memory with the FPGA on the Alchitry Au.

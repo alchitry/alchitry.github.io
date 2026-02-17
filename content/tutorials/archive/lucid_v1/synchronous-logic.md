@@ -2,6 +2,7 @@
 title = "Synchronous Logic"
 weight = 1
 inline_language = "lucid"
+aliases = ["tutorials/lucid_v1/synchronous-logic.md"]
 +++
 
 {{ youtube(id="kOE1GXge11k?si=nZOT0nboMJxjkcVl") }}

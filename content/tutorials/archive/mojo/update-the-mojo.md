@@ -1,6 +1,7 @@
 +++
 title = "Updating the Mojo"
 weight = 2
+aliases = ["tutorials/mojo/update-the-mojo.md"]
 +++
 
 Mojos shipped in 2014 or later have the Arduino compatible bootloader. If your Mojo does not have the Arduino compatible bootloader, we recommend upgrading it. Please visit [this page for more instructions](@/tutorials/archive/mojo/mojo-bootloader.md).

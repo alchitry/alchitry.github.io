@@ -1,6 +1,7 @@
 +++
 title = "External IO"
 weight = 6
+aliases = ["tutorials/lucid_v1/mojo/external-io.md"]
 +++
 
 This tutorial will cover how to connect your design to the IO pins on the Mojo as well as some of the dangers that can arise when interfacing your digital design with the external world.

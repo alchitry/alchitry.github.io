@@ -1,6 +1,7 @@
 +++
 title = "Using Core Generator"
 weight = 16
+aliases = ["tutorials/verilog/mojo/using-core-generator.md"]
 +++
 
 Core Generator (also called **CoreGen**) is a powerful tool provided by Xilinx to help easily and efficiently accomplish some common functions. It allows you to generate modules for things like RAMs, ROMs, clock synthesis, complicated math functions, and even basic processor cores.

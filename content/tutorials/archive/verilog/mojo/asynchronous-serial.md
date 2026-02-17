@@ -1,6 +1,7 @@
 +++
 title = "Asynchronous Serial"
 weight = 14
+aliases = ["tutorials/verilog/mojo/asynchronous-serial.md"]
 +++
 
 Asynchronous serial communication, often shortened to just **serial**, is one of the easiest ways to communicate between two different devices. In it's simplest form, it consists of just two connections. One line for sending data and the other for receiving data. 

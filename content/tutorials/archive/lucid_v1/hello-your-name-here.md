@@ -1,6 +1,7 @@
 +++
 title = "Hello YOUR_NAME_HERE"
 weight = 5
+aliases = ["tutorials/lucid_v1/hello-your-name-here.md"]
 +++
 
 In this tutorial we will be making some modifications to the Hello World! project from the last tutorial so make sure you have read the [ROMs and FSMs tutorial](@/tutorials/archive/lucid_v1/roms-and-fsms.md) first. We will be personalizing the greeter so that it first asks for your name and then prints "Hello NAME" where NAME is the name you entered. To do this we will need some form of memory and in this case we will use a single port RAM.

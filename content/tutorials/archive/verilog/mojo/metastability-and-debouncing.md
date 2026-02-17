@@ -1,6 +1,7 @@
 +++
 title = "Metastability and Debouncing"
 weight = 7
+aliases = ["tutorials/verilog/mojo/metastability-and-debouncing.md"]
 +++
 
 In this tutorial we will cover some of the pit falls that can happen when having asynchronous inputs to the Mojo. The more general case is **metastability**, but we will also cover **debouncing** of buttons. These are both important if you want to reliably detect when a button is being pressed or interface with anything that is not synchronized to the Mojo's clock.

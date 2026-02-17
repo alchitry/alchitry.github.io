@@ -1,6 +1,7 @@
 +++
 title = "FPGA Timing"
 weight = 8
+aliases = ["tutorials/verilog/mojo/fpga-timing.md"]
 +++
 
 **Timing** is a term used in digital circuits to refer to the time it takes a signal to propagate from one flip-flop, through some combinational logic, to the next flip-flop.

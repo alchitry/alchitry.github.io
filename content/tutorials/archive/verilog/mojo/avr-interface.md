@@ -1,6 +1,7 @@
 +++
 title = "AVR Interface"
 weight = 13
+aliases = ["tutorials/verilog/mojo/avr-interface.md"]
 +++
 
 The Mojo doesn't just have an FPGA, but it also has a microcontroller (AVR). While you normally won't program the microcontroller yourself, it offers some functionality to the FPGA. The two main functions the microcontroller performs are USB->serial conversion and an analog to digital conversion (ADC). This allows your design to send and receive data over the USB port and read the voltages on the analog input pins once the FPGA has been configured.

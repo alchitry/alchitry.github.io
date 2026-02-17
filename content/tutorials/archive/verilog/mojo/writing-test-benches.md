@@ -1,6 +1,7 @@
 +++
 title = "Writing Test Benches"
 weight = 5
+aliases = ["tutorials/verilog/mojo/writing-test-benches.md"]
 +++
 
 **Test benches** are used to simulate your design without the need of any physical hardware. The biggest benefit of this is that you can actually inspect every signal that is in your design. This definitely can be a time saver when your alternatives are staring at the code, or loading it onto the FPGA and probing the few signals brought out to the external pins. However, you don't get this all for free. Before you can simulate your design you must first write a **test bench**.

@@ -2,6 +2,7 @@
 title = "Io Element"
 weight = 2
 inline_language = "lucid"
+aliases = ["tutorials/lucid_v1/io-element.md"]
 +++
 
 This tutorial will introduce the [Io Element](@/boards/io.md) and walk through some basic examples to get your feet wet. If you haven't already, I highly recommend reading through the [Your First FPGA Project](@/tutorials/archive/lucid_v1/your-first-fpga-project.md) and [synchronous logic](@/tutorials/archive/lucid_v1/synchronous-logic.md) tutorials before continuing.

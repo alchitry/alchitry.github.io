@@ -1,6 +1,7 @@
 +++
 title = "Analog Inputs"
 weight = 12
+aliases = ["tutorials/verilog/mojo/analog-inputs.md"]
 +++
 
 The Mojo has eight analog inputs that you can use to read voltages from 0-3.3V. In this tutorial we will make the Mojo read the voltage on input A0 and adjust the brightness of the LEDs depending on the value.

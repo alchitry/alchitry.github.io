@@ -1,6 +1,7 @@
 +++
 title = "External IO"
 weight = 6
+aliases = ["tutorials/verilog/mojo/external-io.md"]
 +++
 
 So far the tutorials have only used the signals defined already for you in the [base project](https://github.com/embmicro/mojo-base-project/archive/master.zip). This tutorial a very short example on how you can define your own inputs and outputs in your top level module and have them connect to the IO headers on the Mojo.

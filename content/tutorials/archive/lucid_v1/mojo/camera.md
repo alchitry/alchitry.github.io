@@ -1,6 +1,7 @@
 +++
 title = "Camera"
 weight = 11
+aliases = ["tutorials/lucid_v1/mojo/camera.md"]
 +++
 
 In this tutorial we will go over how to use the Camera Shield and SDRAM Shield to capture images, but first, let me take a selfie!

@@ -1,6 +1,7 @@
 +++
 title = "Creating an ISE Project"
 weight = 2
+aliases = ["tutorials/verilog/mojo/creating-an-ise-project.md"]
 +++
 
 This tutorial is to get you familiar with how to create a project and the very basics of Verilog.

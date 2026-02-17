@@ -1,6 +1,7 @@
 +++
 title = "Memory Mapping"
 weight = 17
+aliases = ["tutorials/verilog/mojo/memory-mapping.md"]
 +++
 
 This tutorial covers a common technique for interfacing a peripheral to a processor known as **memory mapping**. Memory mapping is were you break out a set of functions or settings and map them to a set of values that are selected by a given address. Typically the master is able to read and write these values however it chooses much like a block of RAM. However, these values aren't just blocks of memory, they effect some external device. Because this is used for interfacing it is sometimes called **memory mapped IO**.

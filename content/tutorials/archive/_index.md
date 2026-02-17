@@ -8,4 +8,4 @@ For legacy Lucid tutorials, see [Lucid V1](@/tutorials/archive/lucid_v1/_index.m
 
 For legacy Verilog tutorials, see [Verilog](@/tutorials/archive/verilog/_index.md).
 
-For legacy Mojo tutorials, see [Mojo](@/tutorials/archive/mojo/_index.md).
+For legacy Mojo setup tutorials, see [Mojo](@/tutorials/archive/mojo/_index.md).

@@ -2,6 +2,7 @@
 title = "Verilog Operators"
 weight = 0
 inline_language = "verilog"
+aliases = ["tutorials/verilog/verilog-operators.md"]
 +++
 
 This tutorial covers the various operators available in Verilog. If you have programmed in C/C++ or Java, then many of these operators will be familiar. However, there are a few new usages that are handy for dealing with hardware.

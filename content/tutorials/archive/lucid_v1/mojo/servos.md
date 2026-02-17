@@ -1,6 +1,7 @@
 +++
 title = "Servos"
 weight = 8
+aliases = ["tutorials/lucid_v1/mojo/servos.md"]
 +++
 
 This tutorial will explain how servos work and how to use them in your Lucid projects. We will be using a pre-written module (found in the Components Library in the Mojo IDE) but the module will be fully explained. Enjoy!
