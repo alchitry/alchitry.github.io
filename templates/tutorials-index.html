@@ -1,0 +1,31 @@
+{% extends "section.html" %}
+
+{% block section_content %}
+
+
+<div class="tutorials-page">
+
+    <div class="home-top-layout-container">
+        <div class="main">
+
+        </div>
+        <a href="{{ get_url(path='@/tutorials/setup/_index.md') }}" class="card-1 accent-card">
+            <h1>Setup</h1>
+        </a>
+        <a href="{{ get_url(path='@/tutorials/background/_index.md') }}" class="card-2 accent-card">
+            <h1>Background</h1>
+        </a>
+        <a href="{{ get_url(path='@/tutorials/references/lucid-reference.md') }}" class="card-3 accent-card">
+            <h1>Background</h1>
+        </a>
+        <a href="{{ get_url(path='@/tutorials/references/alchitry-constraints-reference.md') }}" class="card-4 accent-card">
+            <h1>Background</h1>
+        </a>
+        <a href="{{ get_url(path='@/tutorials/archive/_index.md') }}" class="card-5 accent-card">
+            <h1>Archive</h1>
+        </a>
+    </div>
+
+</div>
+
+{% endblock section_content %}

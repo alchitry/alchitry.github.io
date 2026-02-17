@@ -92,11 +92,11 @@ ODDR2 #(
   );
 ```
 
-This is used to drive the clock signal xclk out to the camera. In the FPGA clock signals can't be routed like data signals so you have to use an **ODDR** (**O**utput **D**ouble **D**ata **R**ate) block. Typically these blocks are used to output data on the rising and falling edges of a clock (hence _double_ data rate). However, here we fix the data as 1 and 0 so that it toggles with the clock. This same trick was used with the [SDRAM controller](@/tutorials/lucid_v1/mojo/sdram.md).
+This is used to drive the clock signal xclk out to the camera. In the FPGA clock signals can't be routed like data signals so you have to use an **ODDR** (**O**utput **D**ouble **D**ata **R**ate) block. Typically these blocks are used to output data on the rising and falling edges of a clock (hence _double_ data rate). However, here we fix the data as 1 and 0 so that it toggles with the clock. This same trick was used with the [SDRAM controller](@/tutorials/archive/lucid_v1/mojo/sdram.md).
 
-The clock **xclk** is generated in **mojo_top.v** by the module **sdram_clk_gen**. This module was generated using [CoreGen](@/tutorials/verilog/mojo/using-core-generator.md)  and it takes the 50MHz clock from the on board crystal and generates a 100MHz clock and a 20MHz clock. The 100MHz clock is used as the general system clock as well as the clock for the SDRAM (hence the name of the module). The 20MHz clock is only used to feed the camera and is actually not used for anything else.
+The clock **xclk** is generated in **mojo_top.v** by the module **sdram_clk_gen**. This module was generated using [CoreGen](@/tutorials/archive/verilog/mojo/using-core-generator.md)  and it takes the 50MHz clock from the on board crystal and generates a 100MHz clock and a 20MHz clock. The 100MHz clock is used as the general system clock as well as the clock for the SDRAM (hence the name of the module). The 20MHz clock is only used to feed the camera and is actually not used for anything else.
 
-The second piece of possibly new code is used because the camera outputs data with its own internal clock. The camera takes that 20MHz clock and boosts it to around 30MHz and uses that to output data. That means the FPGA can't simply clock data in using its internal clock because of possible [meta-stability problems](@/tutorials/verilog/mojo/metastability-and-debouncing.md).
+The second piece of possibly new code is used because the camera outputs data with its own internal clock. The camera takes that 20MHz clock and boosts it to around 30MHz and uses that to output data. That means the FPGA can't simply clock data in using its internal clock because of possible [meta-stability problems](@/tutorials/archive/verilog/mojo/metastability-and-debouncing.md).
 
 ```verilog
 camera_fifo camera_fifo (

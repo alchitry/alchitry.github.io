@@ -30,5 +30,5 @@ Because you need access to the top of this board, other boards can’t be stacke
 
 # Documents
 
-- [Io Tutorial](@/tutorials/lucid_v1/io-element.md)
+- [Io Tutorial](@/tutorials/archive/lucid_v1/io-element.md)
 - [Schematic](https://cdn.alchitry.com/docs/alchitry_io_sch.pdf)
