@@ -283,7 +283,7 @@ Note that what would be `USB_D0` is `USB_RX` and `USB_D1` is `USB_TX`.
 Finally, there are `DDR_DQ0`-`DDR_DQ15`, `DDR_DQS0_P`, `DDR_DQS0_N`, `DDR_DQS1_P`, `DDR_DQS1_N`, `DDR_DM0`, `DDR_DM1`,
 `DDR_ODT`, `DDR_RESET`, `DDR_BA0`-`DDR_BA2`, `DDR_CK_P`, `DDR_CK_N`, `DDR_CKE`, `DDR_CS`, `DDR_RAS`, `DDR_CAS`, `DDR_WE`,
 `DDR_A0`-`DDR_A13` for interfacing with the DDR3.
-You generally shouldn't specify these directly as the [MIG core](@/tutorials/lucid_v2/ddr3-memory.md) does it for you.
+You generally shouldn't specify these directly as the [MIG core](@/tutorials/advanced/ddr3-memory.md) does it for you.
 
 # Native Constraints
 

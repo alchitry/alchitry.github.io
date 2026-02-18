@@ -109,30 +109,41 @@
   border-right: 1px solid;
   border-bottom: 1px solid;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .callout-icon {
   display: block;
-  height: 36px;
-  width: 36px;
-  min-width: 36px;
-  margin-right: var(--content-gap);
+  visibility: hidden;
+  margin-right: 5px;
   background-size: cover;
 }
 
+@media screen and (min-width: 400px) {
+  .callout-box {
+    padding: 12px 20px 12px 5px;
+  }
+
+  .callout-icon {
+    visibility: visible;
+    height: 64px;
+    width: 64px;
+    min-width: 64px;
+  }
+}
 
 @media screen and (min-width: 1100px) {
   .callout-icon {
-    height: 48px;
-    width: 48px;
-    min-width: 48px;
+    height: 96px;
+    width: 96px;
+    min-width: 96px;
   }
 
   .callout-box {
     border-left: 15px solid;
   }
 }
+
 
 .callout-content {
   display: inline-block;
@@ -142,13 +153,22 @@
   margin-bottom: 0;
 }
 
+.callout-success {
+  /* background: rgb(49 57 71); */
+  border-color: #79c05f;
+}
+
+.callout-success .callout-icon {
+  background-image: url("/icons/al_success.svg");
+}
+
 .callout-info {
   /* background: rgb(49 57 71); */
   border-color: rgb(49 97 183);
 }
 
 .callout-info .callout-icon {
-  background-image: url("/info.svg");
+  background-image: url("/icons/al_info.svg");
 }
 
 .callout-warning {
@@ -157,7 +177,7 @@
 }
 
 .callout-warning .callout-icon {
-  background-image: url("/warning.svg");
+  background-image: url("/icons/al_warning.svg");
 }
 
 .callout-error {
@@ -175,7 +195,7 @@
 }
 
 .callout-danger .callout-icon {
-  background-image: url("/danger.svg");
+  background-image: url("/icons/al_danger.svg");
 }
 
 .nav-search {
@@ -315,6 +335,112 @@
   height: 100%;
 }
 
+.basic-card {
+  background: var(--entry);
+  border-radius: 16px;
+
+  color: white;
+
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  width: 100%;
+
+
+  img {
+    width: 15%;
+    height: auto;
+    margin-right: 5%;
+  }
+
+  > div {
+    width: 80%
+  }
+}
+
+.accent-card {
+  --bg-image: url('images/au_background.jpg');
+
+  background-image: linear-gradient(140deg, rgba(0, 0, 0, 0.5) 40%, rgba(136, 84, 21, 0.9) 110%),
+  var(--bg-image);
+
+  /* Center the image and make it cover the entire card area */
+  background-position: center;
+  background-size: cover;
+
+  border-radius: 16px;
+  color: white;
+
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 3;
+
+  h1 {
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.main-card {
+  background-image: url('images/grid_background.svg'),
+  linear-gradient(160deg, var(--entry) 40%, rgba(136, 84, 21, 0.7) 110%);
+  background-position: center bottom, 0 0;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 150%, cover;
+  grid-area: main;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4em;
+  position: relative;
+
+  overflow: visible;
+
+  > div {
+    z-index: 1;
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    ul {
+      display: contents;
+      list-style: none;
+      padding: 0;
+      font-size: 1.3rem;
+    }
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    li::before {
+      content: "•";
+      padding-right: 12px;
+      flex-shrink: 0;
+    }
+  }
+}
+
+.main-card .main-card-alchemist {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 30%;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* HOME PAGE STYLES */
 .home-page {
   .video-container {
@@ -322,6 +448,7 @@
   }
 
   .home-top-layout-container {
+    overflow: visible;
     display: grid;
     gap: 20px;
 
@@ -345,60 +472,6 @@
     "card2"
     "card3"
     "main";
-  }
-
-  .basic-card {
-    background: var(--entry);
-    border-radius: 16px;
-    overflow: hidden;
-    color: white;
-
-    padding: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: 100%;
-    width: 100%;
-
-
-    img {
-      width: 15%;
-      height: auto;
-      margin-right: 5%;
-    }
-
-    > div {
-      width: 80%
-    }
-  }
-
-  .accent-card {
-    --bg-image: url('images/au_background.jpg');
-
-    background-image: linear-gradient(140deg, rgba(0, 0, 0, 0.5) 40%, rgba(136, 84, 21, 0.9) 110%),
-    var(--bg-image);
-
-    /* Center the image and make it cover the entire card area */
-    background-position: center;
-    background-size: cover;
-
-    border-radius: 16px;
-    overflow: hidden;
-    color: white;
-
-    padding: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: 100%;
-    width: 100%;
-    aspect-ratio: 3;
-
-    h1 {
-      text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-    }
   }
 
   .video-box {
@@ -426,47 +499,6 @@
 
   .forum-card {
     grid-area: card3;
-  }
-
-  .main-card {
-    background-image: url('images/al_thinking.svg'),
-    url('images/grid_background.svg'),
-    linear-gradient(160deg, var(--entry) 40%, rgba(136, 84, 21, 0.7) 110%);
-    background-position: 100% 100%, center bottom, 0 0;
-    background-repeat: no-repeat, no-repeat, no-repeat;
-    background-size: 30%, 150%, cover;
-    grid-area: main;
-    aspect-ratio: 1.9 !important;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 4em;
-
-    > div {
-      width: 75%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      ul {
-        display: contents;
-        list-style: none;
-        padding: 0;
-        font-size: 1.3rem;
-      }
-
-      li {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 10px;
-      }
-
-      li::before {
-        content: "•";
-        padding-right: 12px;
-        flex-shrink: 0;
-      }
-    }
   }
 
   @media (min-width: 650px) {
@@ -500,18 +532,30 @@
     .accent-card {
       aspect-ratio: unset;
     }
-  }
-
-  @media (max-width: 870px) {
     .main-card {
-      aspect-ratio: unset !important;
-      padding: 2em;
-      background-image: linear-gradient(160deg, var(--entry) 40%, rgba(136, 84, 21, 0.7) 110%);
-      background-position: 0 0;
-      background-repeat: no-repeat;
-      background-size: cover;
-      > div {
-        width: 100%;
+      aspect-ratio: 1.9 !important;
+    }
+    @media (max-width: 1300px) {
+      .main-card {
+        padding: 2em;
+      }
+    }
+
+    @media (max-width: 870px) {
+      .main-card {
+        aspect-ratio: unset !important;
+        background-image: linear-gradient(160deg, var(--entry) 40%, rgba(136, 84, 21, 0.7) 110%);
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        > div {
+          width: 100%;
+        }
+      }
+
+      .main-card .main-card-alchemist {
+        visibility: hidden;
       }
     }
   }
@@ -544,5 +588,327 @@
       line-height: 1;
       margin-left: 15px;
     }
+  }
+}
+
+/* TUTORIAL PAGE STYLES */
+.tutorials-page {
+  --starter-color: #64ff2e;
+  --intermediate-color: #42b5ff;
+  --advanced-color: var(--accent);
+  --projects-color: #ff4bb4;
+
+  .main-card {
+    aspect-ratio: unset;
+
+    > div h1 {
+      margin-bottom: 0.7em;
+    }
+  }
+
+  .basic-card {
+    font-size: min(3.8vw, 1em);
+  }
+
+  .tutorial-button-container {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px 0;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  /* shared button look */
+  .tutorial-button-container > a {
+    --c: var(--starter-color); /* default/fallback */
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 34px;
+    border-radius: 18px;
+    color: #fff;
+    font-weight: 800;
+    font-size: min(6vw, 1em);
+    line-height: 1;
+    background: rgba(0, 0, 0, 0.35);
+    border: 2px solid var(--c); /* also avoids color-mix support issues */
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6) inset,
+    0 10px 24px rgba(0, 0, 0, 0.35);
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  /* icon */
+  .tutorial-button-container > a::before {
+    content: "";
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    background: var(--c);
+  }
+
+  /* per-button colors (more specific than the shared rule) */
+  .tutorial-button-container > .starter-button, .starter-tutorials {
+    --c: var(--starter-color);
+  }
+
+  .tutorial-button-container > .intermediate-button, .intermediate-tutorials {
+    --c: var(--intermediate-color);
+  }
+
+  .tutorial-button-container > .advanced-button, .advanced-tutorials {
+    --c: var(--advanced-color);
+  }
+
+  .tutorial-button-container > .projects-button, .project-tutorials {
+    --c: var(--projects-color);
+  }
+
+  .tutorial-button-container > .starter-button::before,
+  .starter-tutorials h1::before {
+    border-radius: 50%;
+  }
+
+  .tutorial-button-container > .intermediate-button::before,
+  .intermediate-tutorials h1::before {
+    border-radius: 3px;
+  }
+
+  .tutorial-button-container > .advanced-button::before,
+  .advanced-tutorials h1::before {
+    width: 22px;
+    height: 22px;
+    transform: rotate(45deg);
+  }
+
+  .tutorial-button-container > .projects-button::before,
+  .project-tutorials h1::before {
+    width: 0;
+    height: 0;
+    background: transparent;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 26px solid var(--c);
+  }
+
+  .tutorial-button-container > a:hover {
+    background: rgba(0, 0, 0, 0.65);
+  }
+
+  .tutorial-section {
+    > p {
+      margin-bottom: 1em;
+    }
+
+    h1 {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 30px 0 30px 0;
+      font-size: min(40px, 6vw);
+    }
+
+    /* Default icon box */
+    h1::before {
+      content: "";
+      width: 26px;
+      height: 26px;
+      margin: 14px;
+      display: inline-block;
+      background: var(--c);
+    }
+
+    &.setup-tutorials h1::before,
+    &.background-tutorials h1::before,
+    &.reference-tutorials h1::before,
+    &.archive-tutorials h1::before {
+      width: 54px;
+      height: 54px;
+      margin: 0;
+      background-size: contain;
+    }
+
+    &.setup-tutorials h1::before {
+      background-image: url("/icons/glasses.svg");
+    }
+
+    &.background-tutorials h1::before {
+      background-image: url("/icons/brain.svg");
+    }
+
+    &.reference-tutorials h1::before {
+      background-image: url("/icons/alchitry_beaker.svg");
+    }
+
+    &.archive-tutorials h1::before {
+      background-image: url("/icons/tome.svg");
+    }
+
+    .post-entry {
+      margin-bottom: 0;
+    }
+
+    .tutorials {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr;
+
+      .post-entry {
+        --pc: var(--accent);
+        position: relative;
+        overflow: hidden; /* so the overlay respects rounded corners */
+        border-radius: var(--radius);
+
+        background-image: linear-gradient(
+                        160deg,
+                        var(--entry) 50%,
+                        #{'color-mix(in srgb, var(--pc) 40%, transparent)'} 150%
+        );
+      }
+
+      /* overlay gradient that fades in on hover */
+      .post-entry::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+
+        background-image: linear-gradient(
+                        160deg,
+                        var(--entry) 50%,
+                        #{'color-mix(in srgb, var(--pc) 60%, transparent)'} 150%
+        );
+
+        opacity: 0;
+        transition: opacity 200ms ease;
+        z-index: 0;
+      }
+
+      .post-entry:hover::after {
+        opacity: 1;
+      }
+
+      .post-entry > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .post-entry > .entry-link {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+      }
+    }
+  }
+
+  .starter-tutorials .tutorials > .post-entry {
+    --pc: var(--starter-color);
+  }
+
+  .intermediate-tutorials .tutorials > .post-entry {
+    --pc: var(--intermediate-color);
+  }
+
+  .advanced-tutorials .tutorials > .post-entry {
+    --pc: var(--advanced-color);
+  }
+
+  .project-tutorials .tutorials > .post-entry {
+    --pc: var(--projects-color);
+  }
+
+  @media (max-width: 850px) {
+    .main-card {
+      padding: 2em;
+
+      > img {
+        visibility: hidden;
+      }
+
+      > div {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (min-width: 850px) and (max-width: 1449px) {
+    .main-card::before {
+      content: "";
+      float: left;
+      padding-top: calc(100% / 3.5); /* width / 2.3 */
+    }
+
+    .main-card::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .main-card {
+      > div {
+        width: 75%;
+      }
+
+      .main-card-alchemist {
+        width: 25%;
+      }
+    }
+
+    .tutorial-button-container {
+      flex-direction: row;
+    }
+    .tutorial-section {
+      .tutorials {
+        gap: 20px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  }
+
+  @media (min-width: 1450px) {
+    .main-card {
+      aspect-ratio: unset !important;
+      > div {
+        width: 73%;
+      }
+      .main-card-alchemist {
+        width: 27%;
+      }
+    }
+
+    .tutorial-button-container {
+      flex-direction: row;
+    }
+
+    .tutorial-section {
+      .tutorials {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  }
+
+  .card1 {
+    grid-area: card1;
+  }
+
+  .card2 {
+    grid-area: card2;
+  }
+
+  .card3 {
+    grid-area: card3;
+  }
+
+  .card4 {
+    grid-area: card4;
+  }
+
+  .card5 {
+    grid-area: card5;
   }
 }

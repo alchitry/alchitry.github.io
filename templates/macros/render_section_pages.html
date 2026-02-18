@@ -1,0 +1,18 @@
+{% macro render_section_pages(section) %}
+{% for page in section.pages %}
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>{{ page.title }}</h2>
+    </header>
+    {% if page.summary %}
+    <div class="entry-content">
+        <p>{{ page.summary | safe }}</p>
+    </div>
+    {% endif %}
+    <footer class="entry-footer">
+        {% include "partials/post_card_meta.html" %}
+    </footer>
+    <a class="entry-link" aria-label="post link to {{ page.title }}" href="{{ page.permalink }}"></a>
+</article>
+{% endfor %}
+{% endmacro render_section_pages %}

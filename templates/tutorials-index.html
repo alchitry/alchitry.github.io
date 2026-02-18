@@ -1,29 +1,106 @@
 {% extends "section.html" %}
+{% import "macros/render_section_pages.html" as m %}
 
 {% block section_content %}
 
-
 <div class="tutorials-page">
-
-    <div class="home-top-layout-container">
-        <div class="main">
-
+    <div class="accent-card main-card">
+        <img class="main-card-alchemist" src="/images/al_flask.svg" alt="">
+        <div>
+            <h1>Getting Started</h1>
+            <ul>
+                <li><p>Make sure to <a href="{{ get_url(path='@/tutorials/setup/_index.md') }}">set up your software</a>
+                </p></li>
+                <li><p><a href="{{ get_url(path='@/tutorials/background/_index.md') }}">Background information</a> is
+                    available to make sure
+                    you have the fundamentals down
+                </p></li>
+                <li><p><a href="{{ get_url(path='@/tutorials/references/_index.md') }}">References</a> for Lucid and Alchitry Constraints
+                    are available</p></li>
+                <li><p>Looking for something old? See the <a href="#archive">Archive</a></p></li>
+            </ul>
+            <div class="tutorial-button-container">
+                <a href="#starter-tutorials" class="starter-button">Starter</a>
+                <a href="#intermediate-tutorials" class="intermediate-button">Intermediate</a>
+                <a href="#advanced-tutorials" class="advanced-button">Advanced</a>
+                <a href="#projects" class="projects-button">Projects</a>
+            </div>
         </div>
-        <a href="{{ get_url(path='@/tutorials/setup/_index.md') }}" class="card-1 accent-card">
-            <h1>Setup</h1>
-        </a>
-        <a href="{{ get_url(path='@/tutorials/background/_index.md') }}" class="card-2 accent-card">
-            <h1>Background</h1>
-        </a>
-        <a href="{{ get_url(path='@/tutorials/references/lucid-reference.md') }}" class="card-3 accent-card">
-            <h1>Background</h1>
-        </a>
-        <a href="{{ get_url(path='@/tutorials/references/alchitry-constraints-reference.md') }}" class="card-4 accent-card">
-            <h1>Background</h1>
-        </a>
-        <a href="{{ get_url(path='@/tutorials/archive/_index.md') }}" class="card-5 accent-card">
-            <h1>Archive</h1>
-        </a>
+    </div>
+
+    <div class="setup-tutorials tutorial-section" id="setup-tutorials">
+        {% set section = get_section(path="tutorials/setup/_index.md") %}
+        <h1>Setup</h1>
+        <div class="tutorials">
+            {{ m::render_section_pages(section=section) }}
+        </div>
+    </div>
+
+    <div class="reference-tutorials tutorial-section" id="reference-tutorials">
+        {% set section = get_section(path="tutorials/references/_index.md") %}
+        <h1>References</h1>
+        <div class="tutorials">
+            {{ m::render_section_pages(section=section) }}
+        </div>
+    </div>
+
+    <div class="background-tutorials tutorial-section" id="background-tutorials">
+        {% set section = get_section(path="tutorials/background/_index.md") %}
+        <h1>Background</h1>
+        <div class="tutorials">
+            {{ m::render_section_pages(section=section) }}
+        </div>
+    </div>
+
+    <div class="starter-tutorials tutorial-section" id="starter-tutorials">
+        {% set section = get_section(path="tutorials/starter/_index.md") %}
+        <h1>Starter Tutorials</h1>
+        <p>These tutorials are designed to be followed in order. Each one assumes you have the knowledge from the
+            previous ones.</p>
+        <div class="tutorials">
+            {{ m::render_section_pages(section=section) }}
+        </div>
+    </div>
+
+    <div class="intermediate-tutorials tutorial-section" id="intermediate-tutorials">
+        {% set section = get_section(path="tutorials/intermediate/_index.md") %}
+        <h1>Intermediate Tutorials</h1>
+        <p>These tutorials you can pick and choose what interests you. They assume you have the knowledge from the
+            starter tutorials.</p>
+        <div class="tutorials">
+            {{ m::render_section_pages(section=section) }}
+        </div>
+    </div>
+
+    <div class="advanced-tutorials tutorial-section" id="advanced-tutorials">
+        {% set section = get_section(path="tutorials/advanced/_index.md") %}
+        <h1>Advanced Tutorials</h1>
+        <p>These tutorials cover advanced topics. You should be fairly comfortable working FPGAs before diving
+            in.</p>
+        <div class="tutorials">
+            {{ m::render_section_pages(section=section) }}
+        </div>
+    </div>
+
+    <div class="project-tutorials tutorial-section" id="projects">
+        {% set section = get_section(path="tutorials/projects/_index.md") %}
+        <h1>Projects</h1>
+        <div class="tutorials">
+            {{ m::render_section_pages(section=section) }}
+        </div>
+    </div>
+
+    <div class="archive-tutorials tutorial-section" id="archive">
+        {% set section = get_section(path="tutorials/archive/_index.md") %}
+        <h1>Archive</h1>
+        {% if section.content %}
+        <div class="post-content">
+            {{ section.content | safe }}
+        </div>
+        {% endif %}
+        <div class="tutorials">
+            {{ m::render_section_pages(section=section) }}
+        </div>
     </div>
 
 </div>

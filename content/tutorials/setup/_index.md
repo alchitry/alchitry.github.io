@@ -13,9 +13,9 @@ No matter what board you have, you will need to install [Alchitry Labs](@/alchit
 
 It is now bundled with the Alchitry Loader. If you don’t want to use the Alchitry Labs IDE, you still need the Alchitry Loader to get the .bin files onto your board.
 
-## Au and Au+
+## Au and Pt
 
-Both the Au and Au+ require [Vivado](@/tutorials/setup/vivado.md) to build projects. This is software supplied by Xilinx. The install is fairly straightforward but does require you to make an account.
+Both the Au and Pt require [Vivado](@/tutorials/setup/vivado.md) to build projects. This is software supplied by Xilinx. The install is fairly straightforward but does require you to make an account.
 
 ## Cu
 

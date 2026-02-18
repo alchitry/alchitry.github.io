@@ -13,7 +13,7 @@ complex interfaces in your designs.
 
 # Introduction
 
-Sometimes dealing with an interface, like the [serial interface](@/tutorials/lucid_v2/serial-interface.md), directly can become
+Sometimes dealing with an interface, like the [serial interface](@/tutorials/starter/serial-interface.md), directly can become
 quite complicated depending on what you are trying to implement.
 The _Register Interface_ component provides an abstraction on top of a basic interface (usually the USB<->Serial port,
 but it doesn't have to be).
@@ -194,7 +194,7 @@ module register_interface #(
 ```
 
 I'm not going to dive into too much detail on _how_ it all works but mostly go over what it does and how to use it.
-It is essentially just a large FSM (see [the FSM tutorial](@/tutorials/lucid_v2/roms-and-fsms.md) for background).
+It is essentially just a large FSM (see [the FSM tutorial](@/tutorials/starter/roms-and-fsms.md) for background).
 Check out [The API](#the-api) section for info on the actual protocol.
 
 For now, we will dive into using it.

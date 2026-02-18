@@ -12,7 +12,7 @@ If you don't own an Io Element, you can still follow along using the simulator.
 
 <!-- more -->
 
-If you haven't already, I highly recommend reading through the [Your First FPGA Project](@/tutorials/lucid_v2/your-first-fpga-project.md) and [synchronous logic](@/tutorials/lucid_v2/synchronous-logic.md) tutorials before continuing.
+If you haven't already, I highly recommend reading through the [Your First FPGA Project](@/tutorials/starter/your-first-fpga-project.md) and [synchronous logic](@/tutorials/starter/synchronous-logic.md) tutorials before continuing.
 
 # Create the Project
 

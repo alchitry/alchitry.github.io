@@ -1,5 +1,5 @@
 +++
-title = "Lucid V2"
+title = "Starter Tutorials"
 sort_by = "weight"
 paginate_by = 10
 +++

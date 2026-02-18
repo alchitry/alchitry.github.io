@@ -11,7 +11,7 @@ To do this we will need some form of memory and in this case we will use a singl
 
 <!-- more -->
 
-We will be continuing the project from the last tutorial so make sure you have read the [ROMs and FSMs tutorial](@/tutorials/lucid_v2/roms-and-fsms.md) first.
+We will be continuing the project from the last tutorial so make sure you have read the [ROMs and FSMs tutorial](@/tutorials/starter/roms-and-fsms.md) first.
 
 With the project open from the last tutorial, you can make a copy to edit for this tutorial by going to _Alchitry Icon->Save Project As..._. 
 Enter a new name in the dialog that pops up and click _Create Project_.

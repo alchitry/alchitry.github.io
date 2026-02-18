@@ -245,7 +245,7 @@ When it is configured as two 5-input LUTs, _In\[5]_ is set to 0.
 
 ## Flip-flops and Slices
 
-Each LUT's output can be optionally connected to a [flip-flop](@/tutorials/lucid_v2/synchronous-logic.md). 
+Each LUT's output can be optionally connected to a [flip-flop](@/tutorials/starter/synchronous-logic.md). 
 Groups of LUTs and flip-flops are called _slices_. 
 In the Artix 7, a slice has 4 LUT6 and eight flip-flops. 
 These flip-flops are configurable, allowing the type of reset (asynchronous vs. synchronous) and the reset level (high vs. low) to be specified. 

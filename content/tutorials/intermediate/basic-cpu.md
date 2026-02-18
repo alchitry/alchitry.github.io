@@ -56,7 +56,7 @@ Our CPU will only be able to perform operations directly on its registers.
 
 So if all the work happens on these registers, how do we process outside data? 
 We need a way to load data into a register and output the value of a register. 
-The interface we will use will be basically the same as the RAM interface in the [Hello YOUR_NAME_HERE](@/tutorials/lucid_v2/hello-your-name-here.md) tutorial. 
+The interface we will use will be basically the same as the RAM interface in the [Hello YOUR_NAME_HERE](@/tutorials/starter/hello-your-name-here.md) tutorial. 
 We will specify an address and data (for a write) or an address, and we will receive data (for a read). 
 This will be covered a bit more later. 
 

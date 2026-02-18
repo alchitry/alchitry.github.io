@@ -20,7 +20,7 @@ With the new empty project, we now need to add the `uart_tx` and `uart_rx` compo
 These will be used to talk to the FTDI chip and send data over the USB port.
 
 You should know how to add a component to your project from the last tutorial. 
-If you need a refresher, [click here](@/tutorials/lucid_v2/serial-interface.md).
+If you need a refresher, [click here](@/tutorials/starter/serial-interface.md).
 
 The components we need to add are the _UART Tx_ and _UART Rx_ components, and they can be found under _Interfaces_.
 
