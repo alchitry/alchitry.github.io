@@ -364,7 +364,8 @@
 .accent-card {
   --bg-image: url('images/au_background.jpg');
 
-  background-image: linear-gradient(140deg, rgba(0, 0, 0, 0.5) 40%, rgba(136, 84, 21, 0.9) 110%),
+  background-image: linear-gradient(140deg, transparent 40%, rgba(136, 84, 21, 0.9) 110%),
+  linear-gradient(140deg, rgb(0 0 0 / 0.5), rgb(0 0 0 / 0.5)),
   var(--bg-image);
 
   /* Center the image and make it cover the entire card area */
@@ -388,6 +389,42 @@
   }
 }
 
+.accent-card{
+  position: relative;
+  overflow: hidden;        /* keep overlay inside rounded corners */
+  border-radius: 16px;     /* ensure pseudo element matches */
+}
+
+/* stronger gradient overlay that fades in */
+.accent-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: inherit;
+  pointer-events:none;
+
+  /* “stronger” version of your gradient */
+  background-image: linear-gradient(
+                  140deg,
+                  transparent 40%,
+                  rgba(136, 84, 21, 0.9) 110%
+  );
+
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+/* show overlay on hover */
+.accent-card:hover::after{
+  opacity: 0.5;
+}
+
+/* keep card content above the overlay */
+.accent-card > *{
+  position: relative;
+  z-index: 1;
+}
+
 .main-card {
   background-image: url('images/grid_background.svg'),
   linear-gradient(160deg, var(--entry) 40%, rgba(136, 84, 21, 0.7) 110%);
@@ -399,8 +436,12 @@
   justify-content: flex-start;
   padding: 4em;
   position: relative;
-
+  border-radius: 16px;     /* ensure pseudo element matches */
   overflow: visible;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  color: white;
 
   > div {
     z-index: 1;
@@ -570,6 +611,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 24px;
+  margin-top: 1em;
 
   width: fit-content;
 
