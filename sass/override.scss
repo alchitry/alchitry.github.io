@@ -109,7 +109,7 @@
   border-right: 1px solid;
   border-bottom: 1px solid;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 .callout-icon {
@@ -117,6 +117,7 @@
   visibility: hidden;
   margin-right: 5px;
   background-size: cover;
+  align-self: flex-start;
 }
 
 @media screen and (min-width: 400px) {
@@ -147,6 +148,7 @@
 
 .callout-content {
   display: inline-block;
+  align-self: center;
 }
 
 .callout-content > :last-child {
@@ -505,6 +507,8 @@
     display: grid;
     gap: 20px;
     padding-bottom: 2em;
+
+    margin-top: 20px;
 
     grid-template-columns: 1fr;
 
