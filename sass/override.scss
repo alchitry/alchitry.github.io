@@ -512,6 +512,10 @@
 
   }
 
+  .main-card {
+    aspect-ratio: 2;
+  }
+
   @media (min-width: 1000px) {
     .home-top-layout-container {
       grid-template-columns: 2fr 1fr;
@@ -533,61 +537,61 @@
       aspect-ratio: unset;
     }
     .main-card {
-      aspect-ratio: 1.9 !important;
+      aspect-ratio: unset !important;
     }
-    @media (max-width: 1300px) {
-      .main-card {
-        padding: 2em;
-      }
-    }
-
-    @media (max-width: 870px) {
-      .main-card {
-        aspect-ratio: unset !important;
-        background-image: linear-gradient(160deg, var(--entry) 40%, rgba(136, 84, 21, 0.7) 110%);
-        background-position: 0 0;
-        background-repeat: no-repeat;
-        background-size: cover;
-
-        > div {
-          width: 100%;
-        }
-      }
-
-      .main-card .main-card-alchemist {
-        visibility: hidden;
-      }
+  }
+  @media (max-width: 1300px) {
+    .main-card {
+      padding: 2em;
     }
   }
 
-  .fpga-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 24px;
+  @media (max-width: 870px) {
+    .main-card {
+      aspect-ratio: unset !important;
+      background-image: linear-gradient(160deg, var(--entry) 40%, rgba(136, 84, 21, 0.7) 110%);
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      background-size: cover;
 
-    width: fit-content;
-
-    border: 1px solid var(--accent);
-    color: var(--accent);
-
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 1.5rem;
-    text-decoration: none;
-
-    transition: color 0.2s ease, opacity 0.2s ease, border 0.2s ease;
-
-    &:hover {
-      color: rgba(var(--accent-rgb), 0.1);
-      border-color: rgba(var(--accent-rgb), 0.1);
+      > div {
+        width: 100%;
+      }
     }
 
-    .arrow {
-      font-size: 3rem;
-      line-height: 1;
-      margin-left: 15px;
+    .main-card .main-card-alchemist {
+      visibility: hidden;
     }
+  }
+}
+
+.fpga-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+
+  width: fit-content;
+
+  border: 1px solid var(--accent);
+  color: var(--accent);
+
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-decoration: none;
+
+  transition: color 0.2s ease, opacity 0.2s ease, border 0.2s ease;
+
+  &:hover {
+    color: rgba(var(--accent-rgb), 0.1);
+    border-color: rgba(var(--accent-rgb), 0.1);
+  }
+
+  .arrow {
+    font-size: 3rem;
+    line-height: 1;
+    margin-left: 15px;
   }
 }
 
@@ -871,9 +875,11 @@
   @media (min-width: 1450px) {
     .main-card {
       aspect-ratio: unset !important;
+
       > div {
         width: 73%;
       }
+
       .main-card-alchemist {
         width: 27%;
       }
