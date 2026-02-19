@@ -1,4 +1,11 @@
-{% macro render_section_pages(section) %}
+{% macro render_tutorial_section(section) %}
+<h1>{{ section.title }}</h1>
+{% if section.content %}
+<div class="post-content">
+    {{ section.content | safe }}
+</div>
+{% endif %}
+<div class="tutorials">
 {% for page in section.pages %}
 <article class="post-entry">
     <header class="entry-header">
@@ -15,4 +22,5 @@
     <a class="entry-link" aria-label="post link to {{ page.title }}" href="{{ page.permalink }}"></a>
 </article>
 {% endfor %}
-{% endmacro render_section_pages %}
+</div>
+{% endmacro render_tutorial_section %}
