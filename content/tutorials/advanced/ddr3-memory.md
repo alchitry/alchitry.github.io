@@ -6,7 +6,7 @@ date = "2024-09-23"
 aliases = ["tutorials/ddr3-memory"]
 +++
 
-In this tutorial we are going to set up an interface to the DDR3 memory with the FPGA on the Alchitry Au/Au+.
+In this tutorial we are going to set up an interface to the DDR3 memory with the FPGA on the Alchitry Au or Pt.
 
 <!-- more -->
 
@@ -22,7 +22,7 @@ This project temple is a bit special in that it includes some _Vivado IP Cores_.
 The cores themselves aren't included in the temple but scripts for their creation are.
 These are fired off when the project is created.
 
-Make sure to have Vivado setup correctly before creating the project or the IP cores will fail to generate, and you'll have to delete your project and start fresh.
+Make sure to have Vivado setup correctly before creating the project, or the IP cores will fail to generate, and you'll have to delete your project and start fresh.
 {% end %}
 
 When the project first opens, there will be some errors reported in `alchitry_top` and the `mig_wrapper`.
@@ -243,7 +243,7 @@ If you need 100MHz somewhere else, you need to get it from the `clk_wiz_0`.
 
 The FPGA can actually synthesize a lot of different frequencies.
 You can check out the wizard by opening the _Vivado IP Catalog_.
-Click the three block icon in the toolbar and select _Vivado IP Catalog_ from the dropdown.
+Click the three-block icon in the toolbar and select _Vivado IP Catalog_ from the dropdown.
 
 After a few seconds, a window should open that looks like this.
 
@@ -256,7 +256,7 @@ Feel free to poke around the tabs to get an idea of the options available for fu
 
 ![Clock Wizard](https://cdn.alchitry.com/tutorials/ddr3/customize-ip.png)
 
-Since this was already setup how we need, click _Cancel_ for now and close the IP catalog.
+Since this was already set up how we need, click _Cancel_ for now and close the IP catalog.
 
 Back in Alchitry Labs, you should see some text in the console about looking for cores. 
 Everytime the _Vivado IP Catalog_ is closed, Alchitry Labs does a sweep of the cores folder to see what changed.
@@ -287,7 +287,7 @@ This works since the `locked` output of the clock wizard goes low when it is res
 The `locked` output goes high when it isn't being reset and the clocks are stable. 
 If you don't hold your circuit in reset when this input isn't high, you risk running into glitches as the clocks may be doing weird things.
 
-With all of that we are now fully setup to use the core!
+With all of that we are now fully set up to use the core!
 
 # The User Interface
 
@@ -352,7 +352,7 @@ If you issue a read command, once it has been performed, the value will be retur
 The read interface consists of `rd_valid`, which is `1` when there is new data, and `rd_data`, which is the data. 
 After sending a read command, you wait for `rd_valid` to be `1` which means the data you requested is on `rd_data`.
 
-The reason for the three independent interfaces it efficiency. 
+The reason for the three independent interfaces is efficiency. 
 The command interface may be ready to accept more commands before the read data is fully ready. 
 The write FIFO may also be willing to accept data while a read is being performed.
 
@@ -928,7 +928,7 @@ Setting `AGE_BITS` to a large value will ensure that the oldest cache line is mo
 
 ## Cache Interface
 
-The interface to the cache is pretty simple.
+The interface to the cache is pretty straightforward.
 
 The addresses used are word address. 
 This means you don't need to worry about zero padding anything.
@@ -1081,15 +1081,15 @@ It actually simplifies the design since the writes don't require separate operat
 
 Note that `ENTRIES` is set to `1` since our access pattern is super simple and having more entries won't increase the number of cache hits we have (unless `ENTRIES` was set to 16 which would mean everything would fit in the cache).
 
-We also set `AGE_BITS` to `1` since there isn't much of a choice which entry to evict when there is only one.
+We also set `AGE_BITS` to `1` since there is little choice which entry to evict when there is only one.
 
 In this super basic use case, the cache component is overkill. 
 However, the tools will optimize a lot of the logic out keeping it fairly efficient.
 
 # Multiple devices
 
-It is common to want to interface multiple parts of your design with the one memory interface. 
-To make this easy there is a component in the _Components Library_ called _DDR Arbiter_ under the _Memory_ section.
+It is common to want to interface multiple parts of your design with the one-memory interface. 
+To make this easy, there is a component in the _Components Library_ called _DDR Arbiter_ under the _Memory_ section.
 
 ```lucid,short
 module ddr_arbiter #(
