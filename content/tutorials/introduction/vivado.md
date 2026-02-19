@@ -1,7 +1,8 @@
 +++
 title = "Vivado Setup"
 date = "2025-07-29"
-weight=0
+weight=3
+aliases = ["tutorials/setup/vivado"]
 +++
 
 The first step to setting up your environment is to install Vivado. Vivado is a program provided by Xilinx (the manufacture of the FPGA on the Au) that is used to build your projects. It holds all the secret sauce that converts your text into an FPGA configuration file (bin file).

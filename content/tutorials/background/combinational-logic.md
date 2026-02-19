@@ -1,6 +1,6 @@
 +++
 title = "Combinational Logic"
-weight=1
+weight=2
 +++
 
 There are two main types of digital circuits. The first, and the one we are covering here, is called combinational logic. For a circuit to be considered combinational, it's output must be the same for a given input no matter when that input is applied. An example of this is an addition circuit. No matter when you apply the inputs 2 and 4 the output will always be 6. Because of this requirement, combinational circuits almost never have feedback. 

@@ -8,4 +8,4 @@ aliases = ["tutorials/verilog/mojo/_index.md"]
 
 These are the legacy Verilog tutorials for the Mojo.
 
-These were written before the Mojo IDE (now [Alchitry Labs](@/alchitry-labs.md)) or Lucid were created and are based around using [ISE](@/tutorials/setup/ise.md).
+These were written before the Mojo IDE (now [Alchitry Labs](@/alchitry-labs.md)) or Lucid were created and are based around using [ISE](@/tutorials/archive/mojo/ise.md).

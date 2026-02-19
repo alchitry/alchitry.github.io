@@ -10,7 +10,7 @@ This tutorial will walk you through creating your first project in Alchitry Labs
 reset button.
 <!-- more -->
 
-Before diving in, you will need to have the correct tools installed. See the [setup tutorial](@/tutorials/setup/_index.md) for details.
+Before diving in, you will need to have the correct tools installed. See the [setup tutorial](@/tutorials/introduction/_index.md) for details.
 
 # Creating a New Project
 

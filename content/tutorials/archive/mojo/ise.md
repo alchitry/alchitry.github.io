@@ -1,6 +1,7 @@
 +++
 title = "ISE Setup"
 weight=2
+aliases = ["tutorials/setup/ise"]
 +++
 
 ISE is a program created by Xilinx to support their FPGAs. It includes a bunch of other tools that will be useful for creating your projects. ISE is required to do any work because it is what actually synthesizes your designs into bit files that can be loaded onto the Mojo.

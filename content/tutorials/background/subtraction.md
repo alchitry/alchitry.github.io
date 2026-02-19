@@ -1,6 +1,6 @@
 +++
 title = "Subtraction"
-weight=7
+weight=6
 +++
 
 Subtraction almost doesn't need its own page. That is because if you remember your basic math you never actually need to subtract anything! Subtraction is really just an easy way to write _add the opposite_. When we subtract we are really not performing a special operation, but really we are just adding the opposite of the second operand.

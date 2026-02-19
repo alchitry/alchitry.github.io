@@ -10,7 +10,7 @@ reset button.
 <!-- more -->
 
 Before you start you need to have your environment setup.
-Head over to the [setup tutorial](@/tutorials/setup/_index.md) if you haven’t already.
+Head over to the [setup tutorial](@/tutorials/introduction/_index.md) if you haven’t already.
 
 ## Creating a New Project
 

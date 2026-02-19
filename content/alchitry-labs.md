@@ -27,7 +27,7 @@ This means that building for the [Au](@/boards/au.md) is not possible.
 
 ## Builders
 
-See the [Setup Page](@/tutorials/setup/_index.md) for information on the other software required for your board.
+See the [Setup Page](@/tutorials/introduction/_index.md) for information on the other software required for your board.
 
 # Version 1.2.7
 
@@ -82,4 +82,4 @@ If you are building with iCEcube2 for the Cu, you will need to point the IDE to 
 
 You can also use the open source project [IceStorm](http://www.clifford.at/icestorm/) to build for the Cu.
 
-To build for the Mojo you need to install [ISE](@/tutorials/setup/ise.md).
+To build for the Mojo you need to install [ISE](@/tutorials/archive/mojo/ise.md).

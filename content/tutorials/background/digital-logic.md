@@ -1,6 +1,6 @@
 +++
 title = "Digital Logic"
-weight=0
+weight=1
 +++
 
 {{ youtube(id="Aw53UIwnJqU?si=vCHwPU4e9bXF4An0") }}

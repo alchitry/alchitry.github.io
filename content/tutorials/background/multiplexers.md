@@ -1,6 +1,6 @@
 +++
 title = "Multiplexers"
-weight=5
+weight=4
 +++
 
 A multiplexer is a circuit that allows you to **select** one of many inputs to be it's output. The output mirrors the selected input, so when that input is 0 the output is 0, when it is 1 the output is 1.

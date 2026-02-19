@@ -1,6 +1,6 @@
 +++
 title = "Addition"
-weight=6
+weight=5
 +++
 
 Addition is a very important function that allows for the basis of a lot of designs. In order to add two numbers, we first need to decide what number encoding to use. Since the most common is binary, we will be using that.

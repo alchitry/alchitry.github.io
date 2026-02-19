@@ -1,5 +1,5 @@
 +++
-title = "Setup"
+title = "Introduction"
 sort_by = "weight"
 paginate_by = 10
 weight = 0
@@ -15,7 +15,7 @@ It is now bundled with the Alchitry Loader. If you don’t want to use the Alchi
 
 ## Au and Pt
 
-Both the Au and Pt require [Vivado](@/tutorials/setup/vivado.md) to build projects. This is software supplied by Xilinx. The install is fairly straightforward but does require you to make an account.
+Both the Au and Pt require [Vivado](@/tutorials/introduction/vivado.md) to build projects. This is software supplied by Xilinx. The installation is fairly straightforward but does require you to make an account.
 
 ## Cu
 
@@ -23,9 +23,10 @@ Using the Cu has never been easier. Alchitry Labs 2 now ships with the  [open so
 
 The best part is that these even run on Macs (none of the proprietary tools do).
 
-You can still choose to use Lattice's propriety toolchain, [iCEcube2](@/tutorials/setup/icecube2.md), which is more work but can often offer more optimized designs.
+You can still choose to use Lattice's propriety toolchain, [iCEcube2](@/tutorials/introduction/icecube2.md), which is more work but can often offer more optimized designs.
+
 ## Mojo
 
-The Mojo is no longer actively supported and requires Alchitry Labs V1 and the abandoned [ISE](@/tutorials/setup/ise.md) tool from Xilinx. 
+The Mojo is no longer actively supported and requires Alchitry Labs V1 and the abandoned [ISE](@/tutorials/archive/mojo/ise.md) tool from Xilinx. 
 
-Installing this on Windows 10 or newer can be a bit finicky. We have a detailed guide to help but with ISE being no longer maintained it is recommended to upgrade to an Au which uses supported tools.
+Installing this on Windows 10 or newer can be a bit finicky. We have a detailed guide to help, but with ISE being no longer maintained, it is recommended to upgrade to an Au which uses supported tools.

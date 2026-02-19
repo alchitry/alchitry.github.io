@@ -9,7 +9,7 @@
         <div>
             <h1>Getting Started</h1>
             <ul>
-                <li><p>Make sure to <a href="{{ get_url(path='@/tutorials/setup/_index.md') }}">set up your software</a>
+                <li><p>Make sure to <a href="{{ get_url(path='@/tutorials/introduction/_index.md') }}">set up your software</a>
                 </p></li>
                 <li><p><a href="{{ get_url(path='@/tutorials/background/_index.md') }}">Background information</a> is
                     available to make sure
@@ -29,8 +29,8 @@
     </div>
 
     <div class="setup-tutorials tutorial-section" id="setup-tutorials">
-        {% set section = get_section(path="tutorials/setup/_index.md") %}
-        <h1>Setup</h1>
+        {% set section = get_section(path="tutorials/introduction/_index.md") %}
+        <h1>Introduction</h1>
         <div class="tutorials">
             {{ m::render_section_pages(section=section) }}
         </div>
@@ -39,14 +39,6 @@
     <div class="reference-tutorials tutorial-section" id="reference-tutorials">
         {% set section = get_section(path="tutorials/references/_index.md") %}
         <h1>References</h1>
-        <div class="tutorials">
-            {{ m::render_section_pages(section=section) }}
-        </div>
-    </div>
-
-    <div class="background-tutorials tutorial-section" id="background-tutorials">
-        {% set section = get_section(path="tutorials/background/_index.md") %}
-        <h1>Background</h1>
         <div class="tutorials">
             {{ m::render_section_pages(section=section) }}
         </div>
@@ -85,6 +77,14 @@
     <div class="project-tutorials tutorial-section" id="projects">
         {% set section = get_section(path="tutorials/projects/_index.md") %}
         <h1>Projects</h1>
+        <div class="tutorials">
+            {{ m::render_section_pages(section=section) }}
+        </div>
+    </div>
+
+    <div class="background-tutorials tutorial-section" id="background-tutorials">
+        {% set section = get_section(path="tutorials/background/_index.md") %}
+        <h1>Background</h1>
         <div class="tutorials">
             {{ m::render_section_pages(section=section) }}
         </div>

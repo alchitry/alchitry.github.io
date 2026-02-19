@@ -6,7 +6,7 @@ aliases = ["tutorials/verilog/mojo/creating-an-ise-project.md"]
 
 This tutorial is to get you familiar with how to create a project and the very basics of Verilog.
 
-Before starting this tutorial, make sure you have installed [Alchitry Labs](@/alchitry-labs.md) and [ISE](@/tutorials/setup/ise.md).
+Before starting this tutorial, make sure you have installed [Alchitry Labs](@/alchitry-labs.md) and [ISE](@/tutorials/archive/mojo/ise.md).
 
 First you will need to download the base project available [here](https://github.com/embmicro/mojo-base-project/archive/master.zip), or check it out from [GitHub](https://github.com/embmicro/mojo-base-project).
 

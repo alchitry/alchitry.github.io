@@ -1,6 +1,7 @@
 +++
 title = "iCEcube2 Setup"
-weight=1
+weight=4
+aliases = ["tutorials/setup/icecube2"]
 +++
 
 The first step to setting up your environment is to install iCEcube2. iCEcube2 is a program provided by Lattice (the manufacture of the FPGA on the Cu) that is used to build your projects. It holds all the secret sauce that converts your text into an FPGA configuration file (bin file).

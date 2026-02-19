@@ -3,7 +3,7 @@ title = "Tutorials"
 template = "tutorials-index.html"
 +++
 
-Before you begin, make sure you check out the [Setup Tutorials](@/tutorials/setup/_index.md).
+Before you begin, make sure you check out the [Setup Tutorials](@/tutorials/introduction/_index.md).
 
 Depending on your background, you may find these [Background Tutorials](@/tutorials/background/_index.md) helpful.
 

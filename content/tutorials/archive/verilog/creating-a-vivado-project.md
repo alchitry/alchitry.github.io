@@ -6,7 +6,7 @@ aliases = ["tutorials/verilog/creating-a-vivado-project.md"]
 
 This tutorial is to get you familiar with how to create a project and the very basics of Verilog.
 
-Before starting this tutorial, make sure you have setup Vivado by following this [tutorial](@/tutorials/setup/vivado.md). You'll need to install the [Alchitry Loader](@/alchitry-labs.md) as well.
+Before starting this tutorial, make sure you have setup Vivado by following this [tutorial](@/tutorials/introduction/vivado.md). You'll need to install the [Alchitry Loader](@/alchitry-labs.md) as well.
 
 You will need to download the base project available [here](https://github.com/alchitry/Au-Base-Project/archive/master.zip), or check it out from [GitHub](https://github.com/alchitry/Au-Base-Project).
 

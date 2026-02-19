@@ -1,6 +1,6 @@
 +++
 title = "Encodings"
-weight=4
+weight=3
 +++
 
 Up until now we have only talked about discreet 0s and 1s. For many cases a single bit is all you need, however, many times you need to be able to encode numbers. The far most common way to do this is to use binary encoding. This encoding is the most obvious way to do things, and it is the closest to what you are already familiar with.
