@@ -32,7 +32,7 @@ Parameters provide a way for a module to be customized when it is [instantiated]
 
 All parameters must be constant as they are replaced during synthesis (build time).
 
-Parameters are defined in list of comma separated parameter declarations between `#(` and `)`.
+Parameters are defined in a list of comma separated parameter declarations between `#(` and `)`.
 
 It is optional and can be completely omitted.
 
