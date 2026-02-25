@@ -1325,3 +1325,84 @@ img.in-text {
 }
 .chroma .w {
 }
+
+.pinout-table-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.pinout-table-container {
+  --c-gnd:  #111;
+  --c-io: #18e6e6;
+  --c-io-diff: #197fc5;
+  --c-analog: #007539;
+  --c-clock: #ffae00;
+  --c-multi: #9e51dd;
+  --c-3v3: #fade43;
+  --c-vdd: #ec2f2f;
+  --c-config: #ff79c6;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .pin-table{
+    border-collapse: collapse;
+    color: var(--text);
+    table-layout: fixed;
+  }
+  .pin-table td{
+    border: 1px solid var(--grid);
+    padding: 3px 8px;
+    vertical-align: middle;
+    min-width: 70px;
+  }
+
+  /* column sizing */
+  .pin-table td.outer-left .pill,
+  .pin-table td.outer-right .pill{
+    display: block;      /* instead of inline-block */
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  /* center numeric columns */
+  .pin-table td.num{
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* outer columns: align pills toward the table edge */
+  .pin-table td.outer-left  { text-align: left;  }
+  .pin-table td.outer-right { text-align: right; }
+
+  /* ---- Pill bubbles ---- */
+  .pill{
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    font-weight: 700;
+    letter-spacing: .2px;
+    line-height: 1;
+    white-space: nowrap;
+
+    /* set by color classes below */
+    background: var(--pill-bg, #eee);
+    color: var(--pill-fg, var(--pill-text-light));
+  }
+
+  /* ---- Color mapping (easy to extend) ---- */
+  .c-gnd   { --pill-bg: var(--c-gnd);   --pill-fg: white; }
+  .c-io  { --pill-bg: var(--c-io);  --pill-fg: black; }
+  .c-io-diff  { --pill-bg: var(--c-io-diff);  --pill-fg: black; }
+  .c-analog { --pill-bg: var(--c-analog); --pill-fg: black; }
+  .c-clock { --pill-bg: var(--c-clock); --pill-fg: black; }
+  .c-multi { --pill-bg: var(--c-multi); --pill-fg: black; }
+  .c-3v3 { --pill-bg: var(--c-3v3); --pill-fg: black; }
+  .c-vdd { --pill-bg: var(--c-vdd); --pill-fg: black; }
+  .c-config { --pill-bg: var(--c-config); --pill-fg: black; }
+}
