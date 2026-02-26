@@ -22,6 +22,11 @@
   --code-bg: rgb(245, 245, 245);
   --border: rgb(238, 238, 238);
   --accent: rgb(250, 172, 31);
+
+  --md-sys-color-primary: var(--accent);
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-outline: #717171;
+  --md-sys-color-surface-container-highest: #dde4e3;
 }
 
 .dark {
@@ -1669,21 +1674,18 @@ img.in-text {
     min-width: 70px;
   }
 
-  /* column sizing */
   .pin-table td.outer .pill {
-    display: block; /* instead of inline-block */
+    display: block;
     width: 100%;
     box-sizing: border-box;
     text-align: center;
   }
 
-  /* center numeric columns */
-  .pin-table td.num {
+  .pin-table td {
     text-align: center;
     font-variant-numeric: tabular-nums;
   }
 
-  /* ---- Pill bubbles ---- */
   .pill {
     display: inline-block;
     padding: 6px 12px;
@@ -1693,12 +1695,10 @@ img.in-text {
     line-height: 1;
     white-space: nowrap;
 
-    /* set by color classes below */
     background: var(--pill-bg, #eee);
     color: var(--pill-fg, var(--pill-text-light));
   }
 
-  /* ---- Color mapping (easy to extend) ---- */
   .c-gnd {
     --pill-bg: var(--c-gnd);
     --pill-fg: white;
@@ -1790,5 +1790,23 @@ img.in-text {
   .callout-box {
     margin-top: 2em;
     width: calc(100% - 60px);
+  }
+
+  .table-toggles {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    md-switch {
+      margin-left: 1em;
+    }
+  }
+
+  table[data-show-optional="0"] .optional {
+    display: none;
+    min-width: 0;
+    width: 0;
   }
 }
