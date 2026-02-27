@@ -1663,6 +1663,7 @@ img.in-text {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: scroll;
   }
 
   .pin-table {
@@ -1675,7 +1676,7 @@ img.in-text {
     border: 1px solid var(--grid);
     padding: 3px 8px;
     vertical-align: middle;
-    min-width: 70px;
+    min-width: min(70px, 10vw);
   }
 
   .pin-table td.outer .pill {
