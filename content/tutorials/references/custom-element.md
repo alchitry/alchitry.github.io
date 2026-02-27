@@ -53,9 +53,7 @@ See below for the full pinouts.
 
 # PCB Layout
 
-* [Connector Positions](https://cdn.alchitry.com/docs/Au-V2/AuDrawing.pdf)
-* [Au Trace Lengths](https://docs.google.com/spreadsheets/d/1WxeS5YJ1MgcgeiRLXJ_PuZC4l7f2cVPHpaNJcFdKyg8/edit?gid=731807636#gid=731807636)
-* [Pt Trace Lengths](https://docs.google.com/spreadsheets/d/1t2A2apBwaQrpOtj8-f1AKn4eQP6NPnVamPfEwm4tclc/edit?gid=731807636#gid=731807636)
+<img src="https://cdn.alchitry.com/elements/AU_v2_Banks_Measurements_Labeled.svg" alt="Alchitry V2 Connector Positions" style="width: min(100%, 900px);" />
 
 ## Alchitry V2 Element Libraries
 

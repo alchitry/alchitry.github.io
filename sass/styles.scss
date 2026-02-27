@@ -1653,6 +1653,10 @@ img.in-text {
 
   .pinout-legend {
     padding: 0 30px;
+
+    .pin-table td {
+      text-align: left;
+    }
   }
 
   .pinout-table-container {
