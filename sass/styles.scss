@@ -1652,10 +1652,16 @@ img.in-text {
   }
 
   .pinout-legend {
-    padding: 0 30px;
+    padding: 0 min(30px, 2.5vw);
 
     .pin-table td {
       text-align: left;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .pinout-legend {
+      padding: 0;
     }
   }
 
