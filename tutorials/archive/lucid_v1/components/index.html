@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Components</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;components&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;">Lucid V1</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;components&#x2F;">Components</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Components</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+7 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;components.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#getting-started" aria-label="Getting Started">Getting Started</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#components" aria-label="Components">Components</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#instantiating-the-component" aria-label="Instantiating the Component">Instantiating the Component</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#sending-and-receiving-data" aria-label="Sending and Receiving Data">Sending and Receiving Data</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#capturing-data" aria-label="Capturing Data">Capturing Data</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>In this tutorial we will use the USB port and create a project that will echo back all the data sent to the Au or Cu. <a href="https://alchitry.com/tutorials/archive/lucid_v1/mojo/components/">Click here for a tutorial for the Mojo.</a></p>
+<p>This will teach you how to use components in your projects.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>Like before, we will start by creating a new project. Go to <strong>File-&gt;New Project...</strong> and create a new Lucid project. I'm calling mine <em>Serial Port Echo</em>. It is from the <em>Base Project</em> example.</p>
+<p>Great! Now we have a bare-bones project. The Au's and Cu's USB port is accessible to the FPGA through the FTDI USB&lt;-&gt;serial bridge. Serial is often called <strong>UART</strong> (<strong>U</strong>niversal <strong>A</strong>synchronous <strong>R</strong>eceiver <strong>T</strong>ransmitter) and this is the name of the components we will need.</p>
+<h2 id="components">Components</h2>
+<p>Components are prewritten modules that you will likely need to use in many of your projects. For this tutorial, we need to add two components to our project. One to receive data and one to send data.</p>
+<p>Launch the <em>Component Selector</em> by going to <strong>Project-&gt;Add Components...</strong></p>
+<p>Under <em>Protocols</em> you will find the components <em>UART TX</em> and <em>UART RX</em>. Click the checkboxes next to each one.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/Screenshot_from_2019-04-23_10-52-59.png" alt="Screenshot_from_2019-04-23_10-52-59.png" /></p>
+<p>You can click each component for a short description of what it does. </p>
+<p>Feel free to explore the other categories to see what's available. The list of components grows over time with new releases of Alchitry Labs.</p>
+<p>Click <strong>Add</strong> to copy the components into your project.</p>
+<p>Notice that there is a new category called <em>Components</em>.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/Screenshot_from_2019-04-23_10-57-40.png" alt="Screenshot_from_2019-04-23_10-57-40.png" /></p>
+<p>You can open any of the components you want to take a look at how they work. However, for this tutorial we will be using them as a black box.</p>
+<h2 id="instantiating-the-component">Instantiating the Component</h2>
+<p>Now that the components we need are in our project, we need to use them.</p>
+<p>We are going make some changes in the top file.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>.clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>  </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>  </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>  reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>    uart_rx rx </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">BAUD</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1000000</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100000000</span><span style="color:#ed4343;">)); </span><span style="color:#969696;">// serial receiver
+</span><span>    uart_tx tx </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">BAUD</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1000000</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100000000</span><span style="color:#ed4343;">)); </span><span style="color:#969696;">// serial transmitter
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This will create instances of <em>uart_rx</em> and <em>uart_tx</em> named <em>rx</em> and <em>tx</em> respectively.</p>
+<p>We need to specify two parameters for each one. The <em>BAUD</em> parameter is the number of bits per second it should send. The important thing is that you match this rate to the one you set on your computer. The serial port monitor in Alchitry Labs uses 1M baud so that is what we specify here.</p>
+<p>The other parameter, ﻿_CLK_FREQ_﻿, is the frequency of the clock. This is used to calculate how many clock cycles are required per bit.</p>
+<p>If you only do this, you will actually get some errors. These errors are because some of the inputs to the modules were never assigned.</p>
+<p>We are going to hook the modules up to each other so that when data is received, it is promptly sent back.</p>
+<p>Change the always block to look the following.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>  reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>  rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span><span> 
+</span><span>  led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8h00</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs off
+</span><span> 
+</span><span>  rx.rx </span><span style="color:#ed4343;">=</span><span> usb_rx</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// connect rx input
+</span><span>  usb_tx </span><span style="color:#ed4343;">=</span><span> tx.tx</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// connect tx output
+</span><span> 
+</span><span>  tx.new_data </span><span style="color:#ed4343;">=</span><span> rx.new_data</span><span style="color:#ed4343;">;
+</span><span>  tx.data </span><span style="color:#ed4343;">=</span><span> rx.data</span><span style="color:#ed4343;">;         
+</span><span>  tx.block </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// no flow control, do not block
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>On lines 28 and 29, we connect the external input and output to our two modules. </p>
+<p>On lines 31 and 32, we connect the <em>rx</em> module's outputs to the <em>tx</em> module's inputs. </p>
+<p>On line 33, we set the <em>block</em> input of <em>tx</em> to 0. When this value is 1, the <em>uart_tx</em> component won't send any data out. This is useful if you have some way to tell that the receiver is busy. With the Au and Cu, we just assume the data is being read from the computer in a timely manner to keep the FTDI's buffer from overflowing. This is a reasonable assumption as long as there is some program actually reading the data.</p>
+<h3 id="sending-and-receiving-data">Sending and Receiving Data</h3>
+<p>When new data arrives, the signal <em>rx.new_data</em> goes high. This tells you that the data on <em>rx.data</em> is valid. Normally you would want to wait for <em>rx.new_data</em> to go high and then do something with the data.</p>
+<p>Writing data to the serial port follows the same idea. We set <em>tx.data</em> to the byte to send and we set <em>tx.new_data</em> high. However, there is one more signal to look out for. That is <em>tx.busy</em>. If this signal is high, the transmitter is busy for some reason, either it is currently sending a byte or block is high. Either way, if you try to send data when this is high, it will be ignored.</p>
+<p>For this simple example, we are going to ignore <em>tx.busy</em>. This should not be a problem since we never block and the bytes coming in arrive at the same rate we can send them out.</p>
+<p>The next tutorial will handle this more gracefully by actually respecting this flag. </p>
+<p>You should now be able to build your project and load it on the board. You can then go to <strong>Tools-&gt;Serial Port Monitor</strong> in Alchitry Labs to launch the monitor. The monitor should automatically detect the serial port of your board. If you have an Alchitry board (not a Mojo) it'll ask for the baud rate (enter 1000000). You should then be able to type data into the monitor. Whatever you type should be shown.</p>
+<h2 id="capturing-data">Capturing Data</h2>
+<p>Before we wrap up, let's do a little more with the incoming data. We are going to save the last byte received and display it on the LEDs.</p>
+<p>To do this this, we need an 8 bit dff. The following line goes inside the <em>.clk(clk)</em> block but outside the <em>.rsr(rst)</em> block. It could go inside the <em>.rst(rst)</em> block but it really doesn't need a reset.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span><span> data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];            </span><span style="color:#969696;">// flip-flops to store last character
+</span></code></pre>
+<p>We can then write to the <em>dff</em> when we have new data. These lines go at the end of the <em>always</em> block. You can also remove the previous assignment of 0 to <em>led</em>.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rx.new_data</span><span style="color:#ed4343;">)        </span><span style="color:#969696;">// new byte received
+</span><span>  data.d </span><span style="color:#ed4343;">=</span><span> rx.data</span><span style="color:#ed4343;">;     </span><span style="color:#969696;">// save it
+</span><span> 
+</span><span>led </span><span style="color:#ed4343;">=</span><span> data.q</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// output the data
+</span></code></pre>
+<p>On the last line, we connect the LEDs to the output of the <em>dff</em>.</p>
+<p>If you don't assign a <em>dff</em> a value, then it will retain the last value it had. Since we are only assigning it a value when <em>rx.new_data</em> is high, it will hold the last byte until the next one comes in.</p>
+<p>Now, if you build and load your project, when you fire up a serial port monitor you should not only see the text you send back in the monitor, but the LEDs on the board should also changed depending on the character you sent.</p>
+<p>The full module looks like this.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> cu_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 100MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> usb_rx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// USB-&gt;Serial input
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> usb_tx           </span><span style="color:#969696;">// USB-&gt;Serial output
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      uart_rx rx </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">BAUD</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1000000</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100000000</span><span style="color:#ed4343;">));
+</span><span>      uart_tx tx </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">BAUD</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1000000</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100000000</span><span style="color:#ed4343;">));
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];            </span><span style="color:#969696;">// flip-flops to store last character
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span><span> 
+</span><span>    rx.rx </span><span style="color:#ed4343;">=</span><span> usb_rx</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// connect rx input
+</span><span>    usb_tx </span><span style="color:#ed4343;">=</span><span> tx.tx</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// connect tx output
+</span><span> 
+</span><span>    tx.new_data </span><span style="color:#ed4343;">=</span><span> rx.new_data</span><span style="color:#ed4343;">;
+</span><span>    tx.data </span><span style="color:#ed4343;">=</span><span> rx.data</span><span style="color:#ed4343;">;         
+</span><span>    tx.block </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// no flow control, do not block
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rx.new_data</span><span style="color:#ed4343;">)        </span><span style="color:#969696;">// new byte received
+</span><span>      data.d </span><span style="color:#ed4343;">=</span><span> rx.data</span><span style="color:#ed4343;">;     </span><span style="color:#969696;">// save it
+</span><span> 
+</span><span>    led </span><span style="color:#ed4343;">=</span><span> data.q</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// output the data
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;io-element&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Io Element</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;roms-and-fsms&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>ROMs and FSMs</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

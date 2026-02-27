@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>SDRAM</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;sdram&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;">Verilog</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;sdram&#x2F;">SDRAM</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">SDRAM</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+18 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;sdram.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#what-is-ram" aria-label="What is RAM?">What is RAM?</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#how-dram-works" aria-label="How DRAM works">How DRAM works</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#dram-vs-sdram" aria-label="DRAM vs SDRAM">DRAM vs SDRAM</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#dram-vs-sram" aria-label="DRAM vs SRAM">DRAM vs SRAM</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#sdram-controllers" aria-label="SDRAM Controllers">SDRAM Controllers</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#diving-deep" aria-label="Diving deep">Diving deep</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#dealing-with-the-hardware" aria-label="Dealing with the hardware">Dealing with the hardware</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>This tutorial will cover how <strong>DRAM</strong> (<strong>D</strong>ynamic <strong>R</strong>andom <strong>A</strong>ccess <strong>M</strong>emory), or more specifically <strong>SDRAM</strong> (<strong>S</strong>ynchronized <strong>DRAM</strong>), works and how you can use it in your FPGA projects.</p>
+<h3 id="what-is-ram">What is RAM?</h3>
+<p>It is first important to understand what <strong>RAM</strong> is in general before diving into a specific type. RAM is simply a large block of memory that you can access more or less at random very quickly. It provides temporary storage for your design for things like images, video, or sampled data. In some applications it can even be used to store the instructions and data for a processor.</p>
+<p>Notice the word <strong>temporary</strong> I used. This is because RAM is a volatile form of memory. That means without power, the contents of the memory will be lost.</p>
+<p>RAM is organized into banks, rows, and columns. I like to think of RAM as a set of notebooks where each notebook is a <em>bank</em>, each page is a <em>row</em>, and each line is a <em>column</em>. Each bank, or notebook, can be accessed independently of the other banks. Each bank is comprised of many rows and each row has many columns. To access a specific piece of data you must specify all three pieces of information, the bank, row, and column.</p>
+<p>The actual protocol required to access data depends on the type of RAM being used. However, all RAM breaks our a very similar interface. You generally have an address input, which specifies the row and column, a bank select input, which specifies the bank, a data input/output, which is used for reading and writing data, and a few control signals.</p>
+<h3 id="how-dram-works">How DRAM works</h3>
+<p>So now you know that any type of RAM is used to store large amount of data, how does it actually store this data?</p>
+<p>The basic storage element behind DRAM is the capacitor. Just as a basic refresher, a capacitor is a device that is able to store a charge. You can think of them much like a balloon. Just as you can fill a balloon with some air, you can fill a capacitor with some charge.</p>
+<p>The basic cell in DRAM looks like the following.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/sdram_cell.png" alt="sdram_cell.png" /></p>
+<p>There is simply a capacitor that stores a charge, and a transistor that allows charge to either be put into the capacitor or taken out.</p>
+<p>These cells are arranged into a large 2D array of <em>rows</em> and <em>columns</em>. These are the same rows and columns from before.</p>
+<p>When you write data to DRAM, charge is placed on capacitors that should have a value of 1, but no charge is placed on capacitors that have a value of 0.</p>
+<p>When you read data from DRAM, the charge on the capacitor is measured using a circuit called a <strong>sense amplifier</strong>. If the sense amplifier detected charge on the capacitor then it outputs a 1, otherwise it assumes the cell was a 0.</p>
+<p>There are a two main problems to the fundamental design of DRAM. First, to read the charge from the capacitor, the charge must be drained. This causes all reads to be destructive. Once you read a piece of data from DRAM, the value is no longer being stored in the memory array. To deal with this, the data <strong>must</strong> be written back into the array when you are done with it. This is called <strong>precharging</strong>.</p>
+<p>To make the interface to DRAM a bit more efficient, an entire row is read into a buffer in the DRAM. The process of reading a row into that buffer is referred to as <strong>opening</strong> or <strong>activating</strong> the row. Once a row is open, data can be read or written to any columns in that row without having to open it again.</p>
+<p>However, only one row per bank can be open at a time. To read from a different row in the same bank, you must first <strong>precharge</strong> the current row, then <strong>open</strong> the new row.</p>
+<p>The second fundamental flaw of DRAM, and the reason it is called <strong>dynamic</strong> RAM, is that capacitors <em>leak</em> charge. That means that once a charge is stored on a capacitor, it will start losing that charge. This happens either through the transistor connected to it, or through the capacitor itself. What this means for your data is that, if neglected, the values stored will be lost.</p>
+<p>The fix to this problem is to periodically <strong>refresh</strong> each row. A refresh consists of simply reading a row then writing it back into the array. This process ensures that the capacitors retain their charge.</p>
+<p>The amount of time a row can go between refreshes depends on the DRAM. However, the SDRAM chip on the SDRAM Shield, must be refreshed every <strong>64ms</strong>.</p>
+<p>Generally, SDRAM will be able to perform the refresh operation for you. However, you still must tell it when to refresh.</p>
+<h3 id="dram-vs-sdram">DRAM vs SDRAM</h3>
+<p>The difference between these two types of RAM is that SDRAM is <strong>synchronous</strong> and DRAM is not. All this means is that the SDRAM uses a clock while DRAM does not. The benefits to SDRAM are that inputs and outputs are synchronized to whatever it is connected to, in our case the FPGA, as well as some speed benefits due to pipelining.</p>
+<p>SDRAM is much more common than plain DRAM.</p>
+<p>It is also worth noting that <strong>DDR</strong> (<strong>D</strong>ouble <strong>D</strong>ata <strong>R</strong>ate) RAM, usually heard in the context of computers, is a form of SDRAM.</p>
+<h3 id="dram-vs-sram">DRAM vs SRAM</h3>
+<p>The difference between DRAM and SRAM is a bit more interesting. SRAM operates fundamentally differently than DRAM. It doesn't store data on capacitors, but instead uses two inverters back to back.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/sram_cell.png" alt="sram_cell.png" /></p>
+<p>This solves the two problems discussed earlier about destructive reads and forgetting the value. However, this comes at a price, literally. SRAM is much more expensive than DRAM due to the fact that the technology is much less dense. Each cell in SRAM is much larger than each cell of DRAM, meaning you can't pack nearly as many into the same area.</p>
+<p>SRAM is, however, faster and uses less power than DRAM. Because of this, it is still used frequently in digital systems for things like caches. Modern CPUs have something like 8-16MB of very fast SRAM cache, but the computer can have 1000x that much (8+GB) DRAM.</p>
+<h3 id="sdram-controllers">SDRAM Controllers</h3>
+<p>Dealing with downsides to SDRAM is too much effort to have to think about whenever you need to read or write a some data. Wouldn't it be nice if it was all abstracted away and you could just say &quot;what is the data in bank 0, column 4, row 12&quot; with the result returned momentarily? Luckily for you, you're not alone. This is where the <strong>SDRAM controller</strong> comes in.</p>
+<p>The controller's job is to deal with all the ugly parts of SDRAM and to break out a simple interface. This interface generally consists of an address input, a data input, a data output, and some control signals to specify a read/write, to tell when data is ready, and if the RAM is busy. That's it. No banks, no rows, no precharge, no opening, no hassle.</p>
+<p>If this sounds wonderful and you just want to forget about all the inner workings of SDRAM, go ahead and download the <a href="http://cdn.embeddedmicro.com/sdram-shield/SDRAM-example-project.zip">example project</a> for the SDRAM shield which has the SDRAM controller (<strong>sdram.v</strong>) in it.</p>
+<p>This is all fine and dandy, but if you are the kind of person who wants to know how this is all accomplished, read on.</p>
+<p>You should download the <a href="https://cdn.alchitry.com/emb/sdram-shield/SDRAM-example-project.zip">example project</a> and take a look at <strong>sdram.v</strong> since the file is a bit long to paste here in it's entirety. Instead, we will break it apart looking at each piece individually.</p>
+<p>First let's take a look at the interface.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#faac1f;">module</span><span> sdram </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// these signals go directly to the IO pins
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> sdram_clk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> sdram_cle</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> sdram_cs</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> sdram_cas</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> sdram_ras</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> sdram_we</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> sdram_dqm</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> sdram_ba</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">12</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> sdram_a</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">inout </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> sdram_dq</span><span style="color:#ed4343;">,
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// User interface
+</span><span>    </span><span style="color:#0a8dbf;">input </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">22</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> addr</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// address to read/write
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rw</span><span style="color:#ed4343;">,               </span><span style="color:#969696;">// 1 = write, 0 = read
+</span><span>    </span><span style="color:#0a8dbf;">input </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">31</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> data_in</span><span style="color:#ed4343;">,   </span><span style="color:#969696;">// data from a read
+</span><span>    </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">31</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> data_out</span><span style="color:#ed4343;">, </span><span style="color:#969696;">// data for a write
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> busy</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// controller is busy when high
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> in_valid</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// pulse high to initiate a read/write
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> out_valid        </span><span style="color:#969696;">// pulses high when data from read is valid
+</span><span>  </span><span style="color:#ed4343;">);
+</span></code></pre>
+<p>The first set of signals connect right to the SDRAM. It's important that they do as I'll explain a bit later.</p>
+<p>The interesting part here is the <strong>user interface</strong> signals. These are the ones you'll need to worry about when using this controller in your own projects.</p>
+<p>You may notice that the data ports are <strong>32bits</strong> wide, while, if you look at the SDRAM connections carefully, you may notice the SDRAM only has an <strong>8bit</strong> wide bus (<strong>sdram_dq</strong>). This is because each read or write the user does actually performs four read or writes to the SDRAM. This is done for efficiency (especially for reads).</p>
+<p>The way you use this module is by first checking <strong>busy</strong> is 0 then setting <strong>addr</strong> to be the address you want, <strong>data_in</strong> to be your data, <strong>rw</strong> to be 1 (write), and <strong>in_valid</strong> to be 1 for one clock cycle to write some data. The following cycle, <strong>busy</strong> will be 1 letting you know the controller is doing something. Once the controller is ready to take another command, <strong>busy</strong> will be 0 again. At that point you can then set <strong>addr</strong> to be your address, <strong>rw</strong> to be 0 (read), and <strong>in_valid</strong> to be 1. After a few cycles, <strong>out_valid</strong> will be 1. During that clock cycle, you can read <strong>data_out</strong> for the data at the address you specified. That's the entire protocol.</p>
+<p>It's worth noting that the number of cycles between when you ask for data and when you get the data will vary. This is also true for the number of cycles <strong>busy</strong> will be 1 between commands. It is also possible for <strong>busy</strong> to be 0 before you get your data from a read. This is because the controller buffers a single command and is only <em>busy</em> when the buffer is full.</p>
+<h3 id="diving-deep">Diving deep</h3>
+<p>Now would be a great time to download the <a href="http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf">datasheet</a> for the SDRAM and take a look at it.</p>
+<p>The following <strong>localparams</strong> are used to define the various commands the SDRAM will accept.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>38</td><td><span style="color:#969696;">// Commands for the SDRAM
+</span></td></tr><tr><td>39</td><td><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> CMD_UNSELECTED    </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b1000</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>40</td><td><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> CMD_NOP           </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b0111</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>41</td><td><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> CMD_ACTIVE        </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b0011</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>42</td><td><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> CMD_READ          </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b0101</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>43</td><td><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> CMD_WRITE         </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b0100</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>44</td><td><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> CMD_TERMINATE     </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b0110</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>45</td><td><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> CMD_PRECHARGE     </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b0010</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>46</td><td><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> CMD_REFRESH       </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b0001</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>47</td><td><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> CMD_LOAD_MODE_REG </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b0000</span><span style="color:#ed4343;">;
+</span></td></tr></tbody></table></code></pre>
+<p>If you take a look at the output assignments, you can see that these bits correspond to <strong>CS</strong>, <strong>RAS</strong>, <strong>CAS</strong>, and <strong>WE</strong>.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>134</td><td><span style="font-weight:bold;color:#0abfbf;">assign</span><span> sdram_cs </span><span style="color:#ed4343;">=</span><span> cmd_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">];
+</span></td></tr><tr><td>135</td><td><span style="font-weight:bold;color:#0abfbf;">assign</span><span> sdram_ras </span><span style="color:#ed4343;">=</span><span> cmd_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">];
+</span></td></tr><tr><td>136</td><td><span style="font-weight:bold;color:#0abfbf;">assign</span><span> sdram_cas </span><span style="color:#ed4343;">=</span><span> cmd_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">];
+</span></td></tr><tr><td>137</td><td><span style="font-weight:bold;color:#0abfbf;">assign</span><span> sdram_we </span><span style="color:#ed4343;">=</span><span> cmd_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span></td></tr></tbody></table></code></pre>
+<p>For now, don't worry about these too much. Just know that they are used to specify commands for the SDRAM. You can look these commands up in the datasheet (page 31) if you want.</p>
+<p>To manage the complexity of all the operations the controller does, it uses a <strong>FSM</strong>. If you aren't familiar with <strong>F</strong>inite <strong>S</strong>tate <strong>M</strong>achines, make sure to check out the <a href="https://alchitry.com/tutorials/archive/verilog/mojo/finite-state-machines/">FSM Tutorial</a>. The states for the FSM are defined below.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>49</td><td><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> STATE_SIZE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>50</td><td><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> INIT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>51</td><td><span>  WAIT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>52</td><td><span>  PRECHARGE_INIT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>53</td><td><span>  REFRESH_INIT_1 </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>54</td><td><span>  REFRESH_INIT_2 </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>55</td><td><span>  LOAD_MODE_REG </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>56</td><td><span>  IDLE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>57</td><td><span>  REFRESH </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>58</td><td><span>  ACTIVATE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>59</td><td><span>  READ </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>60</td><td><span>  READ_RES </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>61</td><td><span>  WRITE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">11</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>62</td><td><span>  PRECHARGE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">12</span><span style="color:#ed4343;">;
+</span></td></tr></tbody></table></code></pre>
+<p>The flow of these states is shown in the diagram below (excluding the WAIT stage for clarity).</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/sdram_controller.png" alt="sdram_controller.png" /></p>
+<p>When the board is powered on (or reset) the FSM starts in the <strong>INIT</strong> state. SDRAM requires a bit of initialization before you can read and write to it. This is also covered in the datasheet (page 42) for those curious.</p>
+<p>After the board is initialized, it sits in the <strong>IDLE</strong> state until one of two things happen, either it's time to perform a refresh or there is a pending operation.</p>
+<p>First, let's talk about the refresh. To manage the refreshing, there is a timer that tells the controller to send another refresh operation. The SDRAM requires 8,192 refresh commands to be sent every 64ms. That means you can either send a refresh command every 7.813µs or all 8,192 commands in a batch every 64ms. To provide a more uniform interface, this controller sends the refresh commands evenly spaced. This limits the maximum amount of time the controller will be busy doing refreshes. In some applications where you need very fast burst speeds, but have some known down time, performing burst refreshing can be better.</p>
+<p>When a read or write command is pending, the controller first checks to see if the row is open. If the requested row is already open, life is great, it simply reads or writes to the row. If the row isn't open then it first opens the row before performing the operation. The worst case is if there is already another row open. In this case the other row must be precharged, before the controller can open the new row and perform the operation.</p>
+<p>Each of these operations has some number of cycles the SDRAM requires to complete (the reason for the <strong>WAIT</strong> state). These sometimes vary with the clock frequency (in other words, they have a set amount of real time). This controller assumes a clock rate of 100MHz. This is important for other reasons as well that will be discussed a little later. All of these delays and timing specifications can be found in the datasheet (many of them are on pages 27-28).</p>
+<p>This mostly sums up how the controller works. If you want an even deeper understanding, you need to take a look at the rest of the code in the controller as well as the SDRAM datasheet.</p>
+<p>However, there is some advanced voodoo magic going on in the controller code that is worth mentioning.</p>
+<h3 id="dealing-with-the-hardware">Dealing with the hardware</h3>
+<p>There are a few sections of code in the controller that you probably haven't seen code like before unless you have done a lot of FPGA programming. This code is required simply because the SDRAM is an <strong>external</strong> chip and we are talking to it at a decently high clock speed.</p>
+<p>First let's take a look at the code that is responsible for outputting the clock.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>66</td><td><span style="color:#969696;">// This is used to drive the SDRAM clock
+</span></td></tr><tr><td>67</td><td><span style="color:#fac863;">ODDR2 </span><span style="font-weight:bold;color:#0abfbf;">#</span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>68</td><td><span>  .DDR_ALIGNMENT</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;NONE&quot;</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>69</td><td><span>  .INIT</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>70</td><td><span>  .SRTYPE</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;SYNC&quot;</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>71</td><td><span style="color:#ed4343;">)</span><span> ODDR2_inst </span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>72</td><td><span>  .Q</span><span style="color:#ed4343;">(</span><span>sdram_clk_ddr</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// 1-bit DDR output data
+</span></td></tr><tr><td>73</td><td><span>  .C0</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// 1-bit clock input
+</span></td></tr><tr><td>74</td><td><span>  .C1</span><span style="color:#ed4343;">(~</span><span>clk</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// 1-bit clock input
+</span></td></tr><tr><td>75</td><td><span>  .CE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// 1-bit clock enable input
+</span></td></tr><tr><td>76</td><td><span>  .D0</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// 1-bit data input (associated with C0)
+</span></td></tr><tr><td>77</td><td><span>  .D1</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// 1-bit data input (associated with C1)
+</span></td></tr><tr><td>78</td><td><span>  .R</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// 1-bit reset input
+</span></td></tr><tr><td>79</td><td><span>  .S</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">) </span><span style="color:#969696;">// 1-bit set input
+</span></td></tr><tr><td>80</td><td><span style="color:#ed4343;">);
+</span></td></tr></tbody></table></code></pre>
+<p>This is the instantiation of a <strong>ODDR2</strong> module. If you look the project files, you will notice there is no <strong>ODDR2.v</strong> file. This is because this isn't really a module, but rather an <strong>FPGA primitive</strong>. ODDR2 or <strong>O</strong>utput <strong>D</strong>ouble <strong>D</strong>ata <strong>R</strong>ate 2, is a primitive that is generally used to output data on both the rising and falling edges of the clock (hence, <em>double</em> data rate). However, in this case we are using the ODDR2 to simply output our clock signal. You can't output the clock signal directly due to how the FPGA is structured internally. So instead, you can use the ODDR with the data pins wired to 0 or 1.</p>
+<p>When <strong>C0</strong> has a rising edge, <strong>D0</strong> is output until <strong>C1</strong> has a rising edge. At that point <strong>D1</strong> is output. Notice that in our case <strong>C1</strong> is actually just the clock inverted. That means <strong>D0</strong> is output when the clock rises and <strong>D1</strong> is output when the clock falls.</p>
+<p>You may be thinking now &quot;Ok... but if <strong>D0</strong> is output when the clock <em>rises</em>, shouldn't <strong>D0</strong> be 1 and <strong>D1</strong> be 0&quot;? Very good my young padawan. That is exactly right <em>if</em> you wanted to output to be the same as the clock. However, we <strong>don't</strong> want this. We want the output clock to be our clock inverted!</p>
+<p>Why the *&amp;^$# would we want the clock to be inverted? Wouldn't that mean that the SDRAM would read it's inputs and change it's outputs on our falling edge? Oh wait... that's exactly what we want! We want this because that gives both devices half a clock cycle for their output to become stable before the other device. This all has to do with satisfying <strong>setup</strong> and <strong>hold</strong> times of both devices. If you don't know what the means, check out the <a href="https://alchitry.com/tutorials/archive/verilog/mojo/fpga-timing/">FPGA Timing Tutorial</a>.</p>
+<p>There are two more pieces of code that are used to make sure timing is met.</p>
+<p>Take a look at the following other FPGA primitive, the <strong>IODELAY2</strong>.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>82</td><td><span style="color:#fac863;">IODELAY2 </span><span style="font-weight:bold;color:#0abfbf;">#</span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>83</td><td><span>  .IDELAY_VALUE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>84</td><td><span>  .IDELAY_MODE</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;NORMAL&quot;</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>85</td><td><span>  .ODELAY_VALUE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// value of 100 seems to work at 100MHz
+</span></td></tr><tr><td>86</td><td><span>  .IDELAY_TYPE</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;FIXED&quot;</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>87</td><td><span>  .DELAY_SRC</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;ODATAIN&quot;</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>88</td><td><span>  .DATA_RATE</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;SDR&quot;</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>89</td><td><span style="color:#ed4343;">)</span><span> IODELAY_inst </span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>90</td><td><span>  .IDATAIN</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>91</td><td><span>  .T</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>92</td><td><span>  .ODATAIN</span><span style="color:#ed4343;">(</span><span>sdram_clk_ddr</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>93</td><td><span>  .CAL</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>94</td><td><span>  .IOCLK0</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>95</td><td><span>  .IOCLK1</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>96</td><td><span>  .CLK</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>97</td><td><span>  .INC</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>98</td><td><span>  .CE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>99</td><td><span>  .RST</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>100</td><td><span>  .BUSY</span><span style="color:#ed4343;">(),
+</span></td></tr><tr><td>101</td><td><span>  .DATAOUT</span><span style="color:#ed4343;">(),
+</span></td></tr><tr><td>102</td><td><span>  .DATAOUT2</span><span style="color:#ed4343;">(),
+</span></td></tr><tr><td>103</td><td><span>  .TOUT</span><span style="color:#ed4343;">(),
+</span></td></tr><tr><td>104</td><td><span>  .DOUT</span><span style="color:#ed4343;">(</span><span>sdram_clk</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>105</td><td><span style="color:#ed4343;">);
+</span></td></tr></tbody></table></code></pre>
+<p>As you may have guessed from the name, the <strong>IODELAY2</strong> block provides a delay to inputs and outputs. In this case we are using it to delay the clock being output to the SDRAM. There are a lot of features of these primitives that aren't being used here. However if you want t check them out in their full glory, take a look at the <a href="http://www.xilinx.com/support/documentation/user_guides/ug381.pdf">UG381</a> document from Xilinx (ODDR2 starts on page 62 and IODELAY2 starts on page 74).</p>
+<p>We need the delay because simply inverting the clock doesn't quite ensure timing is met. We need to shift it a little more.</p>
+<p>The important values here are <strong>DELAY_SRC</strong> is set to make the <strong>IODELAY2</strong> delay an output and <strong>ODELAY_VALUE</strong> is how much we want to delay the signal.</p>
+<p>The actual amount of delay that is given per step of <strong>ODELAY_VALUE</strong> is a bit fuzzy and will actually vary over temperature and voltage in the Spartan 6 chip. However, with a 100MHz clock, using a delay of 100 (maximum is 255) ensures that the setup and hold times are being met. This delay was found empirically by running lots of tests checking for read/write errors (this is actually what the example project does).</p>
+<p>The last piece to the puzzle is making sure that the input and output registers are packed into <strong>IOBs</strong>, or <strong>I</strong>nput <strong>O</strong>utput <strong>B</strong>uffers.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>115</td><td><span style="color:#969696;">// We want the output/input registers to be embedded in the
+</span></td></tr><tr><td>116</td><td><span style="color:#969696;">// IO buffers so we set IOB to &quot;TRUE&quot;. This is to ensure all
+</span></td></tr><tr><td>117</td><td><span style="color:#969696;">// the signals are sent and received at the same time.
+</span></td></tr><tr><td>118</td><td><span style="color:#ed4343;">(*</span><span> IOB </span><span style="color:#ed4343;">= </span><span style="color:#77bf0a;">&quot;TRUE&quot; </span><span style="color:#ed4343;">*)
+</span></td></tr><tr><td>119</td><td><span style="color:#0a8dbf;">reg</span><span> cle_q</span><span style="color:#ed4343;">,</span><span> dqm_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>120</td><td><span style="color:#ed4343;">(*</span><span> IOB </span><span style="color:#ed4343;">= </span><span style="color:#77bf0a;">&quot;TRUE&quot; </span><span style="color:#ed4343;">*)
+</span></td></tr><tr><td>121</td><td><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> cmd_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>122</td><td><span style="color:#ed4343;">(*</span><span> IOB </span><span style="color:#ed4343;">= </span><span style="color:#77bf0a;">&quot;TRUE&quot; </span><span style="color:#ed4343;">*)
+</span></td></tr><tr><td>123</td><td><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> ba_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>124</td><td><span style="color:#ed4343;">(*</span><span> IOB </span><span style="color:#ed4343;">= </span><span style="color:#77bf0a;">&quot;TRUE&quot; </span><span style="color:#ed4343;">*)
+</span></td></tr><tr><td>125</td><td><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">12</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> a_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>126</td><td><span style="color:#ed4343;">(*</span><span> IOB </span><span style="color:#ed4343;">= </span><span style="color:#77bf0a;">&quot;TRUE&quot; </span><span style="color:#ed4343;">*)
+</span></td></tr><tr><td>127</td><td><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> dq_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>128</td><td><span style="color:#ed4343;">(*</span><span> IOB </span><span style="color:#ed4343;">= </span><span style="color:#77bf0a;">&quot;TRUE&quot; </span><span style="color:#ed4343;">*)
+</span></td></tr><tr><td>129</td><td><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> dqi_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>130</td><td><span style="color:#0a8dbf;">reg</span><span> dq_en_d</span><span style="color:#ed4343;">,</span><span> dq_en_q</span><span style="color:#ed4343;">;
+</span></td></tr></tbody></table></code></pre>
+<p>This is done by setting the <strong>IOB</strong> constraint to <strong>&quot;TRUE&quot;</strong>. This tells the tools that we want these in <strong>IOBs</strong>.</p>
+<p>What the heck is an IOB? An IOB is simply a flip-flop that is embedded in the pin of the FPGA. They aren't in the typical FPGA fabric, but rather right at the inputs and outputs.</p>
+<p>We want to make sure these registers are packed into IOBs to ensure that there are no additional delays due to the signal needing to propagate through the FPGA.</p>
+<p>To make sure these registers are actually packed into the IOB, their output/input can't connect to anything other than the top level output/input. If you tried to read these signals in some other part of your design, the tools would be forced to pull the flip-flop out of the IOB, possibly messing up timing. This is why it is important that these signals go directly to the top level inputs/outputs.</p>
+<p>If you've made it this far through the tutorial, you should now have a pretty decent understanding of SDRAM and how complicated designing a controller can be. The controller that is in the example project is pretty good, but it is not the fastest controller possible. A more complex controller would allow for read commands to overlap, reads to be canceled, it would reorder operations to improve throughput (minimize open/precharge operations), and many more possible tricks. These are left for you to implement.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;memory-mapping&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Memory Mapping</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;embedded-processors&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Embedded Processors</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

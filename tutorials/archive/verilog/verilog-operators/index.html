@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Verilog Operators</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;verilog-operators&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;">Verilog</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;verilog-operators&#x2F;">Verilog Operators</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Verilog Operators</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+9 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;verilog&#x2F;verilog-operators.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#bitwise-operators" aria-label="Bitwise Operators">Bitwise Operators</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#reduction-operators" aria-label="Reduction Operators">Reduction Operators</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#shift-operators" aria-label="Shift Operators">Shift Operators</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#concatenation-and-replication-operators" aria-label="Concatenation and Replication Operators">Concatenation and Replication Operators</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#arithmetic-operators" aria-label="Arithmetic Operators">Arithmetic Operators</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#comparison-operators" aria-label="Comparison Operators">Comparison Operators</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#logical-operators" aria-label="Logical Operators">Logical Operators</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#conditional-operator" aria-label="Conditional Operator">Conditional Operator</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>This tutorial covers the various operators available in Verilog. If you have programmed in C/C++ or Java, then many of these operators will be familiar. However, there are a few new usages that are handy for dealing with hardware.</p>
+<h3 id="bitwise-operators">Bitwise Operators</h3>
+<table><thead><tr><th>Function</th><th>Operator</th></tr></thead><tbody>
+<tr><td>NOT</td><td>~</td></tr>
+<tr><td>AND</td><td>&amp;</td></tr>
+<tr><td>OR</td><td>|</td></tr>
+<tr><td>XOR</td><td>^</td></tr>
+<tr><td>XNOR</td><td>~^ or ^~</td></tr>
+</tbody></table>
+<p>These operators are called bitwise operators because they operate on each bit individually. These are used to perform basic logic functions and they get synthesized into their equivalent logic gate.</p>
+<p>Take a look at the following example.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> a</span><span style="color:#ed4343;">,</span><span>b</span><span style="color:#ed4343;">,</span><span>c</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> a </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b1010</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> b </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b1100</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> c </span><span style="color:#ed4343;">=</span><span> a </span><span style="color:#ed4343;">&amp;</span><span> b</span><span style="color:#ed4343;">;
+</span></code></pre>
+<p><strong>c</strong> will now have the value 4'b1000. This is because the most-significant bits of <strong>a</strong> and <strong>b</strong> are the only ones that are both 1.</p>
+<p>When you perform a bitwise operator on multi-bit values like above, you are essentially using multiple gates to perform the bitwise operation. In this case, we need four <strong>AND</strong> gates to <em>and</em> each bit of <strong>a</strong> and <strong>b</strong> together. The results of each <strong>AND</strong> gate is the value <strong>c</strong>.</p>
+<p>All of these operators are used on two values except the <strong>NOT</strong> (<strong>~</strong>) operator which only takes one value. Take a look at this example where we replace the last line of the previous example.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#0abfbf;">assign</span><span> c </span><span style="color:#ed4343;">= ~</span><span>a</span><span style="color:#ed4343;">;
+</span></code></pre>
+<p>Now <strong>c</strong> will have the value 4'b0101. Again, this is because each bit of <strong>a</strong> is individually inverted and assigned to <strong>c</strong>.</p>
+<p>If the two values used by a bitwise operator are different in length, the shorter one is filled with zeros to make the lengths match.</p>
+<h3 id="reduction-operators">Reduction Operators</h3>
+<table><thead><tr><th>Function</th><th>Operator</th></tr></thead><tbody>
+<tr><td>AND</td><td>&amp;</td></tr>
+<tr><td>NAND</td><td>~&amp;</td></tr>
+<tr><td>OR</td><td>|</td></tr>
+<tr><td>NOR</td><td>~|</td></tr>
+<tr><td>XOR</td><td>^</td></tr>
+<tr><td>XNOR</td><td>~^ or ^~</td></tr>
+</tbody></table>
+<p>Reduction operators are very similar to the bitwise operators, except they are performed on all the bits of a single value. They are used to <strong>reduce</strong> the number of bits to one by performing the specified function on every bit.</p>
+<p>Take a look at this example.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> a</span><span style="color:#ed4343;">;
+</span><span style="color:#0a8dbf;">wire</span><span> b</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> a </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b1010</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> b </span><span style="color:#ed4343;">= &amp;</span><span>a</span><span style="color:#ed4343;">;
+</span></code></pre>
+<p>In this example <strong>b</strong> will be 0. This is because each bit of <strong>a</strong> is anded with each other. In other words, it is equivalent to the following.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#0abfbf;">assign</span><span> b </span><span style="color:#ed4343;">=</span><span> a</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] &amp;</span><span> a</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] &amp;</span><span> a</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] &amp;</span><span> a</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">];
+</span></code></pre>
+<p>This essentially synthesizes a large single logic gate with enough inputs to fit the input value. In this case, a four input <strong>AND</strong> gate would be synthesized.</p>
+<h3 id="shift-operators">Shift Operators</h3>
+<table><thead><tr><th>Function</th><th>Operator</th></tr></thead><tbody>
+<tr><td>Shift Right</td><td>&gt;&gt;</td></tr>
+<tr><td>Shift Left</td><td>&lt;&lt;</td></tr>
+<tr><td>Arithmetic Shift Right</td><td>&gt;&gt;&gt;</td></tr>
+<tr><td>Arithmetic Shift Left</td><td>&lt;&lt;&lt;</td></tr>
+</tbody></table>
+<p>The shift operators in Verilog are very similar to the ones in other languages. They simply <em>shift</em> the bits in a value over that many times to the right of left.</p>
+<p>The basic shift operators are <strong>zero-filling</strong> meaning that bits that don't have a value shifted into them are replaced with zeros. Take a look at the following example.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> a</span><span style="color:#ed4343;">,</span><span>b</span><span style="color:#ed4343;">,</span><span>c</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> a </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">5&#39;b10100</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> b </span><span style="color:#ed4343;">=</span><span> a </span><span style="color:#ed4343;">&lt;&lt; </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> c </span><span style="color:#ed4343;">=</span><span> a </span><span style="color:#ed4343;">&gt;&gt; </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">;
+</span></code></pre>
+<p>In this example <strong>b</strong> will have the value <code class ="language-verilog" data-lang="verilog"><span style="color:#a269dc;">5&#39;b10000</span></code> and <strong>c</strong> will have the value <code class ="language-verilog" data-lang="verilog"><span style="color:#a269dc;">5&#39;b00101</span></code>. You can see with <strong>b</strong> the top two bits of <strong>a</strong> are lost, and with <strong>c</strong> the bottom two bits are lost.</p>
+<p>Now let's take a look at the arithmetic shift operators. These vary from the basic shift operators because they perform <strong>sign-extended</strong> shifts. When shifting left, it performs exactly the same as the basic shift operator, but when shifting to the right,  the most-significant bit (the <strong>sign</strong> <strong>bit</strong>) plays a role.</p>
+<p>If the sign bit is 0, then the arithmetic shift operator acts the same way as the basic shift operator. However, if the sign bit is 1, the shift will fill the left side with ones.</p>
+<p>Take a look at this example.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> a</span><span style="color:#ed4343;">,</span><span>b</span><span style="color:#ed4343;">,</span><span>c</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> a </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">5&#39;b10100</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> b </span><span style="color:#ed4343;">=</span><span> a </span><span style="color:#ed4343;">&lt;&lt;&lt; </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> c </span><span style="color:#ed4343;">=</span><span> a </span><span style="color:#ed4343;">&gt;&gt;&gt; </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">;
+</span></code></pre>
+<p>Now <strong>b</strong> will have the value <code class ="language-verilog" data-lang="verilog"><span style="color:#a269dc;">5&#39;b10000</span></code> just like before, but <strong>c</strong> will have the value <code class ="language-verilog" data-lang="verilog"><span style="color:#a269dc;">5&#39;b11101</span></code>.</p>
+<p>Why would you ever want to fill the left side with the most-significant bit? The reason is because shifting bits is a very cheap way to perform multiplication and division by powers of two. Take the value 6 (4'b0110). If we shift it to the left one bit we get <code class ="language-verilog" data-lang="verilog"><span style="color:#a269dc;">4&#39;b1100</span></code> or <code class ="language-verilog" data-lang="verilog"><span style="color:#a269dc;">12</span></code> and if we shift it to the right one bit we get 4'b0011 or 3. Now what about the value -4 (4'b1100)? If we shift it to the left one bit we get 4'b1000 or -8. However if we shift it to the right one bit we get 4'b0110 or 6! This is because we need to use the arithmetic shift. If we use the arithmetic shift we get 4'b1110 or -2!</p>
+<p>Shift operations are very cheap! This is because they are essentially just a signal renaming.</p>
+<h3 id="concatenation-and-replication-operators">Concatenation and Replication Operators</h3>
+<table><thead><tr><th>Function</th><th>Operator</th></tr></thead><tbody>
+<tr><td>Concatenation</td><td>{ , }</td></tr>
+<tr><td>Replication</td><td>{ { } }</td></tr>
+</tbody></table>
+<p>These are two very useful operators for manipulating bits.</p>
+<p>The <strong>concatenation</strong> operator is used to merge two values together into a wider value. </p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> a</span><span style="color:#ed4343;">,</span><span>b</span><span style="color:#ed4343;">;
+</span><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> c</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> a </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b1100</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> b </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b1010</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> c </span><span style="color:#ed4343;">= {</span><span>a</span><span style="color:#ed4343;">,</span><span>b</span><span style="color:#ed4343;">};
+</span></code></pre>
+<p>In this example <strong>c</strong> has the value <code class ="language-verilog" data-lang="verilog"><span style="color:#a269dc;">8&#39;b11001010</span></code>. You can concatenate as many signals together as you want by adding them to the comma-separated list.</p>
+<p>The <strong>replication</strong> operator is used to duplicate a value multiple times.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> a</span><span style="color:#ed4343;">;
+</span><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> b</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> a </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b10</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> b </span><span style="color:#ed4343;">= {</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">{</span><span>a</span><span style="color:#ed4343;">}};
+</span></code></pre>
+<p>In this example <strong>a</strong> is replicated 4 times making the value of <strong>b</strong> be 8'b10101010.</p>
+<h3 id="arithmetic-operators">Arithmetic Operators</h3>
+<table><thead><tr><th>Function</th><th>Operator</th></tr></thead><tbody>
+<tr><td>Addition</td><td>+</td></tr>
+<tr><td>Subtraction</td><td>-</td></tr>
+<tr><td>Multiply</td><td>*</td></tr>
+<tr><td>Divide</td><td>/</td></tr>
+<tr><td>Modulus</td><td>%</td></tr>
+<tr><td>Power</td><td>**</td></tr>
+</tbody></table>
+<p>Verilog provides these six basic arithmetic operators to make basic math simpler. However, it is important to remember when using these operators how they will be implemented in hardware.</p>
+<p>The most important thing to remember is that not all of these operators can be synthesized! Only addition, subtraction, and multiplication are synthesizable! Some synthesizers will allow you to use divide if you are dividing by a power of two, but you should use a shift operator for that anyways. The reason the other three aren't synthesizable is because the circuits required to implement them are quite complicated. There are many trade offs that as a designer you need to make if you need to use divide, modulous, or power, that the synthesizer can't make for you. In most cases these operations will be pipe-lined to provide speed or reduce the amount of hardware used. This is something that the synthesizer can't do for you.</p>
+<p>When using addition and subtraction, the synthesizer will probably synthesize a circuit similar to the one shown in <a href="https://alchitry.com/tutorials/background/addition/">this tutorial</a>. However, the synthesizer is free to make optimizations as long as it adds the two values.</p>
+<p>For multiplication, many FPGAs (including the one used by the Mojo) have special resources dedicated to fast math. If these are available they will be used, however, if you run out of them a multiplication circuit will have to be generated which can be large and slow. Because of this you should never multiply by a power of two, but shift instead. Most synthesizers will be smart enough to do this for you but it is good practice not to rely on that.</p>
+<p>Also note that the <strong>-</strong> operator can be used to negate a number.</p>
+<p>When two N-bit numbers are added or subtracted, an N+1-but number is produced. If you add or subtract two N-bit numbers and store the value in an N-bit number you need to think about overflow. For example, if you have a two bit number 3 (2'b11) and you add it to 2 (2'b10) the result will be 5 (3'b101) but if you store the value in a two bit number you get 1 (2'b01).</p>
+<p>For multiplication of two N-bit numbers, the result will be an N*2-bit number. For example, 7 (3'b111) * 6 (3'b110) = 42 (6'b101010).</p>
+<h3 id="comparison-operators">Comparison Operators</h3>
+<table><thead><tr><th>Function</th><th>Operator</th></tr></thead><tbody>
+<tr><td>Less Than</td><td>&lt;</td></tr>
+<tr><td>Greater Than</td><td>&gt;</td></tr>
+<tr><td>Less Than or Equal</td><td>&lt;=</td></tr>
+<tr><td>Greater Than or Equal</td><td>&gt;=</td></tr>
+<tr><td>Equality</td><td>==</td></tr>
+<tr><td>Inequality</td><td>!=</td></tr>
+<tr><td>Case Equality</td><td>===</td></tr>
+<tr><td>Case Inequality</td><td>!==</td></tr>
+</tbody></table>
+<p>These operators compare two values and produce a single bit to represent the result. A 1 is true and a 0 is false.</p>
+<p>The only strange thing to note is the case version of the equality tests. Bits in Verilog aren't only <strong>0</strong> or <strong>1</strong>, but they can also be <strong>x</strong> or <strong>z</strong>. For the standard equality tests, if either value has an <strong>x</strong> or <strong>z</strong> in it the result will be an <strong>x</strong>. However, for the case equality tests, it will test to see if these are matched in the other value. For example 4'b01x0 == 4'b01x0 produces an <strong>x</strong>, but 4'b01x0 === 4'b01x0 produces a <strong>1</strong>.</p>
+<p>In reality, hardware can't have an <strong>x</strong> value so the case equality tests are not synthesizable but are useful for simulations.</p>
+<h3 id="logical-operators">Logical Operators</h3>
+<table><thead><tr><th>Function</th><th>Operator</th></tr></thead><tbody>
+<tr><td>Logical And</td><td>&amp;&amp;</td></tr>
+<tr><td>Logical Or</td><td>|</td></tr>
+<tr><td>Logical Not</td><td>!</td></tr>
+</tbody></table>
+<p>These operators are used for combining multiple comparison operations. Take a look at this example.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">((</span><span style="color:#a269dc;">4&#39;b1100 </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">4&#39;b1011</span><span style="color:#ed4343;">) &amp;&amp; (</span><span style="color:#a269dc;">4&#39;b0111 </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">4&#39;b0111</span><span style="color:#ed4343;">)) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    ...
+</span><span style="font-weight:bold;color:#0abfbf;">end
+</span></code></pre>
+<p>It is important to note that these operators will produce a single bit value like the comparison operators. Also anything that is not zero is considered to be true while zero is false.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> a</span><span style="color:#ed4343;">,</span><span>b</span><span style="color:#ed4343;">;
+</span><span style="color:#0a8dbf;">wire</span><span> c</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> a </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b1010</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> b </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b1110</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> c </span><span style="color:#ed4343;">=</span><span> a </span><span style="color:#ed4343;">&amp;&amp;</span><span> b</span><span style="color:#ed4343;">;
+</span></code></pre>
+<p>In this example, <strong>c</strong> will have the value 1 because <strong>a</strong> and <strong>b</strong> are both non-zero.</p>
+<h3 id="conditional-operator">Conditional Operator</h3>
+<table><thead><tr><th>Function</th><th>Operator</th></tr></thead><tbody>
+<tr><td>Conditional</td><td>?</td></tr>
+</tbody></table>
+<p>The conditional operator is a way to write compact if statements. It is used to select a value based on a logical value.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> a</span><span style="color:#ed4343;">,</span><span>b</span><span style="color:#ed4343;">,</span><span>c</span><span style="color:#ed4343;">,</span><span>d</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> a </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b1000</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> b </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b0111</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> c </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;b1010</span><span style="color:#ed4343;">;
+</span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> d </span><span style="color:#ed4343;">=</span><span> a </span><span style="color:#ed4343;">&gt;</span><span> b </span><span style="color:#ed4343;">?</span><span> c </span><span style="color:#ed4343;">: </span><span style="color:#a269dc;">4&#39;b0000</span><span style="color:#ed4343;">;
+</span></code></pre>
+<p>In this example <strong>d</strong> will have the value 4'b1010. When the expression on the left of the <strong>?</strong> is true (non-zero) the value on the left of the <strong>:</strong> will be assigned. If the expression is false the value on the right is used. In this case since <strong>a</strong> is greater than <strong>b</strong>, the value of <strong>c</strong> was assigned to <strong>d</strong>.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;creating-a-vivado-project&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Creating a Vivado Project</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

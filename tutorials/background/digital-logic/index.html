@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Digital Logic</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;digital-logic&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;">Background</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;digital-logic&#x2F;">Digital Logic</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Digital Logic</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+5 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;background&#x2F;digital-logic.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#true-or-false" aria-label="True or false?">True or false?</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#not" aria-label="Not">Not</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#and" aria-label="And">And</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#or" aria-label="Or">Or</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#xor" aria-label="Xor">Xor</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#variations" aria-label="Variations">Variations</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <div class="video-container">
+    <iframe class="video" src="https://www.youtube.com/embed/Aw53UIwnJqU?si=vCHwPU4e9bXF4An0"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<p>What is digital logic? As you may or may not already know, digital systems are based on two logic levels which are usually represented as 1's and 0's.</p>
+<p>An interesting thing to note before we get too far in is that digital circuits are really made of the same stuff as any analog circuit. They have real voltages, with real currents, and those are never exact. The idea behind a digital system is that you simply design it so that there are two main stable states. That way even if you introduce noise it will remain close to that state. This makes digital circuits very robust and noise tolerant. It also allows up to abstract away what the actually voltages are and to just work with 0s and 1s.</p>
+<p>So what is a 1? What is a 0? If you've ever worked with microcontroller, you know a lot of them run off 5V so we will use 5V in this example. If you were designing a system and it had an input that ranged from 0V to 5V what would you call a 0 or a 1? The most obvious answer is just split it in half. Anything 2.5V or less is a 0 and anything from 2.5V to 5V is a 1. That is what these circuits try to do, however, what happens when you are at 2.5V? Is that a 0 or a 1? Due to variations in the parts, temperature changes, power supply fluctuations, and an almost infinite number of causes it could end up being either!</p>
+<p>Because of this uncertainty when between states we will call this region <em>no man's land</em>. Digital circuits are designed not to operate with voltages near this region. In fact digital circuits will have specifications that tell you the minimum voltage to be considered a 1 and the maximum voltage that will considered a 0 reliably. For now we won't worry about this since most of the time the circuits are designed to avoid this for us.</p>
+<h2 id="true-or-false">True or false?</h2>
+<p>Digital circuits are all based around these things called <strong>logic gates</strong>. Before we get into what the gates actually are, you need to know that they are all based on the idea that a <strong>1 is true</strong> and that a <strong>0 is false</strong>. This is known as <strong>boolean logic</strong>.</p>
+<p>Digital logic circuits are often convenient to draw out with symbols. Each symbol represents some logic function that has at least one input and at least one output. In general the inputs are shown on the left and the outputs are shown on the right. That way the signals in the circuit flow from left to right.</p>
+<h2 id="not">Not</h2>
+<p>This is the symbol for a <strong>not</strong> gate.</p>
+<p><img src="https://cdn.alchitry.com/background/not.png" alt="not.png" /></p>
+<p>All that it does is output the opposite of <strong>a</strong>. So if <strong>a</strong> is true <strong>b</strong> is false. You can think of it's output as: <em>is the input</em> <strong><em>not</em></strong> <em>true?</em></p>
+<p>For example, if <strong>a</strong> is 1, then <strong>b</strong> will output 0.</p>
+<h2 id="and">And</h2>
+<p>This is the symbol for an <strong>and</strong> gate.</p>
+<p><img src="https://cdn.alchitry.com/background/and.png" alt="and.png" /></p>
+<p>When <strong>a</strong> <strong>and b</strong> are both true, <strong>c</strong> is true. If either <strong>a</strong> or <strong>b</strong> is false, then <strong>c</strong> will be false. You can think of it's output as: <em>is input a</em> <strong><em>and</em></strong> <em>input b true?</em></p>
+<p>For example, if <strong>a</strong> is 1 and <strong>b</strong> is 0, then the output, <strong>c</strong>, will be 0. That is because both inputs are not true, so the output is false.</p>
+<h2 id="or">Or</h2>
+<p>This is the symbol for an <strong>or</strong> gate.</p>
+<p><img src="https://cdn.alchitry.com/background/or.png" alt="or.png" /></p>
+<p>The output of this gate, <strong>c</strong>, is true when either <strong>a or b</strong> are true. You can think of it's output as: <em>is input a</em> <strong><em>or</em></strong> <em>input b true?</em></p>
+<p>For example, if <strong>a</strong> is 1 and <strong>b</strong> is 0, then the output, <strong>c</strong>, will be 1. That is because at least one of the inputs is true, so the output is true.</p>
+<h2 id="xor">Xor</h2>
+<p>This is the symbol for an <strong>xor</strong> gate.</p>
+<p><img src="https://cdn.alchitry.com/background/xor.png" alt="xor.png" /></p>
+<p>This gate you usually don't see as often as the other three, but it is nonetheless important. This gate is true only when either <strong>a</strong> or <strong>b</strong> is true but not when <strong>a</strong> and <strong>b</strong> are true. It is an <strong>exclusive or</strong>. You can think about it as: <em>is input a</em> <strong><em>different</em></strong> <em>from input b?</em></p>
+<p>Another useful way to look at xor gates it to think about that output as: <em>is there an</em> <strong><em>odd</em></strong> <em>number of 1s?</em> This way of thinking about it is useful for xor gates that have more than two inputs.</p>
+<p>For example, if a is 1 and b is 1, then the output, c, will be 0. That is because the inputs are the same so the output is false, or because there are an even number of 1s so the output is false.</p>
+<h2 id="variations">Variations</h2>
+<p>These are only the basic types of these gates. There are many variations of them. The most common variations you will see are combinations of, and, or, xor, with a not gate at the output. Those gates are called nand, nor, and xnor respectively. They are represented the same as their base gate but they have a circle on the output, just like the not gate does.</p>
+<p>The circle represents an inversion (a not gate) and they don't only have to be on the output. They can be on any of the inputs as well. It is just a compact way to draw the schematic so you don't have lots of not gates everywhere.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;combinational-logic&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Combinational Logic</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

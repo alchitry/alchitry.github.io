@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>HDMI</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;hdmi&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;">Lucid V1</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;hdmi&#x2F;">HDMI</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">HDMI</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+15 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;hdmi.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#the-hdmi-shield" aria-label="The HDMI Shield">The HDMI Shield</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#tmds" aria-label="TMDS">TMDS</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#hdmi-encoding" aria-label="HDMI Encoding">HDMI Encoding</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#choosing-a-pixel-clock" aria-label="Choosing a Pixel Clock">Choosing a Pixel Clock</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#generating-a-stream" aria-label="Generating a Stream">Generating a Stream</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#hdmi-decoding" aria-label="HDMI Decoding">HDMI Decoding</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#hdmi-passthru" aria-label="HDMI Passthru">HDMI Passthru</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>This tutorial covers the basis of using the HDMI Shield. There are a few components bundled in the Mojo IDE that make encoding and decoding HDMI streams easier. This tutorial gives a basic example for each one.</p>
+<h3 id="the-hdmi-shield">The HDMI Shield</h3>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/dsc_4259-edit_large.jpg" alt="dsc_4259-edit_large.jpg" /></p>
+<p>This tutorial assumes you are using the HDMI Shield in its default configuration. Out of the box, the HDMI Shield is setup so that the port labeled <em>HDMI 1</em> is a <em>source</em> (output) and <em>HDMI 2</em> is a <em>sink</em> (input). It is possible to change these via solder jumpers.</p>
+<h3 id="tmds">TMDS</h3>
+<p><em>TMDS,</em> or <strong>T</strong>ransition <strong>M</strong>inimized <strong>D</strong>ifferential <strong>S</strong>ignaling, is a type of differential signaling that encodes each byte sent into 10 bits so that the number of edges (transitions from 0-&gt;1 or 1-&gt;0) are minimized to reduce noise and increase signal integrity.</p>
+<p>The details of TMDS aren't really important for this tutorial. However, if you are curious, <a href="https://en.wikipedia.org/wiki/Transition-minimized_differential_signaling">Wikipedia</a> does a good job at outlining the details.</p>
+<h3 id="hdmi-encoding">HDMI Encoding</h3>
+<p>Any projects that incorporate HDMI are going to have slightly complicated clocking. Even in the simplest case of just encoding HDMI data three different clock frequencies are required. These frequencies are synthesized for you in the HDMI components.</p>
+<p>The <em>HDMI Encoder</em> component requires an input clock to synthesize three new clocks. The <em>pixel clock</em> is the frequency of the input clock divided between 1 and 12. The other two clocks are 10x and 2x the pixel clock frequency. These are used to clock out the actual bits. The data for each pixel is 24 bits split across three channels (red, green, blue). The eight bits for each color are converted to 10 bits of TMDS data. These bits are clocked out at 10x the pixel clock. The 2x clock is used by the FPGA's special IO resources to clock data out this fast.</p>
+<p>The Spartan 6 on the Mojo is capable of IO signals up to 945MHz which means a pixel clock of up to 94.5MHz. This is fast enough for 1080p@30Hz or 720p@60Hz.</p>
+<p>Due to the way the FPGA is designed, the clock that is fed into the HDMI encoder can't be used for anything else. Instead you need to use the <em>pclk</em> output of the component to clock the rest of your design. This is the clock that the HDMI data needs to be aligned with.</p>
+<h4 id="choosing-a-pixel-clock">Choosing a Pixel Clock</h4>
+<p>Your pixel clock rate will depend on two things, the video resolution and framerate. The minimum pixel clock is simply <em>width x height x frames per second</em>. For example, 720p@60Hz is <em>1280 x 720 x 60 = 55296000 =&gt; ~55.3MHz</em>. However, this isn't the full story. The width and height of each frame needs padding for the vertical and horizontal sync signals. For for 720p@60Hz, the actual image size is something more <em>1667 x 750</em> which makes for a pixel clock of 75MHz. The padding required is dependent on the device receiving the stream, however in my testing adding at least 15 to the height and 30 to the width seems to work with most devices.</p>
+<p>You can play with the padding to get the pixel clock to be an easy to synthesize value (like the 75Mhz example).</p>
+<p>As you are probably aware, the Mojo has a 50MHz clock input. To get a pixel clock suitable for your design you will likely need to synthesize it. Check out the <a href="https://alchitry.com/tutorials/archive/lucid_v1/mojo/sdram/#generating-the-clock"><em>Generating the Clock</em></a> section from the <em>SDRAM Tutorial</em> for how to do this.</p>
+<h4 id="generating-a-stream">Generating a Stream</h4>
+<p>Now that clocking is out of the way, let's create a simple project that generates a simple test pattern.</p>
+<p>Create a new project based on the <em>Base Project</em>.</p>
+<p>Open the <em>Components Library</em> and under <em>Video</em> select the <em>HDMI Encoder</em>. We also need to add the UCF file for the HDMI Shield. Under <em>Constraints</em> select <em>HDMI Shield</em> and click <em>Add</em>.</p>
+<p>Take a look at the module declaration.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> hdmi_encoder </span><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#d45ada;">PCLK_DIV </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">PCLK_DIV </span><span style="color:#ed4343;">&gt;= </span><span style="color:#a269dc;">1 </span><span style="color:#ed4343;">&amp;&amp; </span><span style="color:#d45ada;">PCLK_DIV </span><span style="color:#ed4343;">&lt; </span><span style="color:#a269dc;">12</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#d45ada;">Y_RES </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">720 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">Y_RES </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#d45ada;">X_RES </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1280 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">X_RES </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#d45ada;">Y_FRAME </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">750 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">Y_FRAME </span><span style="color:#ed4343;">&gt;= </span><span style="color:#d45ada;">Y_RES </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">15</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#d45ada;">X_FRAME </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1667 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">X_FRAME </span><span style="color:#ed4343;">&gt;= </span><span style="color:#d45ada;">X_RES </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">30
+</span><span>  </span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> pclk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> tmds</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> tmdsb</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> active</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> x</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">11</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> y</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> red</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> green</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> blue</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]
+</span><span>  </span><span style="color:#ed4343;">) {
+</span></code></pre>
+<p>The interface to this module is pretty simple. The parameter <em>PCLK_DIV</em> is used to divide the pixel clock by a value between 1 and 12. This is required when you need a pixel clock less than 19MHz. This minimum input frequency restriction is from the <em>PLL_BASE</em> primitive that is used to synthesize the other clocks. For more information see page 98-116 (specifically page 101) of the Xilinx document <a href="https://www.xilinx.com/support/documentation/user_guides/ug382.pdf">UG382</a> and page 57 of <a href="https://www.xilinx.com/support/documentation/data_sheets/ds162.pdf">DS162</a>.</p>
+<p>The other parameters are used to define the stream's resolution. The <em>X/Y_FRAME</em> parameters define the size of each frame while <em>X/Y_RES</em> define the active image resolution.</p>
+<p>The outputs <em>tmds</em> and <em>tmdsb</em> need to be connected directly to the HDMI output pins of the FPGA at the top level. These are the TMDS data streams and are four bits wide for the four channels, red, green, blue, and the clock.</p>
+<p>The module supplies you with a few signals to help you supply the proper colors. The output <em>active</em> tells you that it needs color data and the frame is in an active area. The outputs <em>x</em> and <em>y</em> tell you the pixel coordinate that is about to be sent out and being requested.</p>
+<p>Your job is to simply take these three signals and generate the corresponding <em>red</em>, <em>green</em>, and <em>blue</em> signals.</p>
+<p>To start we will make a static frame where each pixel's color is a function of its location.</p>
+<p>We will make a 720p@60Hz stream which means we need to generate a 75MHz clock.</p>
+<p>Launch <em>CoreGen</em> and the <em>Clocking Wizard</em>.</p>
+<p>I unchecked <em>Phase alignment</em> as it doesn't matter for our design.</p>
+<p>Also change the <em>primary</em> input clock frequency to 50MHz to match the Mojo's clock.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/Screenshot_from_2018-03-19_13-15-36.png" alt="Screenshot_from_2018-03-19_13-15-36.png" /></p>
+<p>On the next page, change the output frequency to 75MHz and click <em>Next</em>.</p>
+<p>On page 3, uncheck <em>RESET</em> and <em>LOCKED</em> as we won't be using them.</p>
+<p>You can now click <em>Generate</em>.</p>
+<p>Once the core is generated it should show up in the Mojo IDE under the <em>Cores</em> section in the project tree. You can close <em>Core Generator</em> now.</p>
+<p>We now have all the components ready. We need to instantiate the clock wizard and HDMI encoder, add the HDMI TMDS outputs, and wire everything up in <em>mojo_top</em>.</p>
+<p>Adding the HDMI TMDS outputs is pretty straightforward. If you look in the <em>hdmi.ucf</em> file we added before you will find the names of the defined signals we can add to <em>mojo_top</em>. For this project we are only using the <em>hdmi1_tmds</em> and <em>hdmi1_tmdsb</em> signals.</p>
+<p>We simply add these two signals as four bit output arrays to the port list in <em>mojo_top</em>.</p>
+<p>To instantiate the <em>clk_wiz_v3_6</em> we simply need to hook up <em>clk</em> to its <em>CLK_IN1</em> input. The output <em>CLK_OUT1</em> will be used to feed the clock of <em>hdmi_encoder</em>.</p>
+<p>For <em>hdmi_encoder,</em> we can connect <em>clk_wiz.CLK_OUT1</em> to the <em>clk</em> input and <em>0</em> for the <em>rst</em> input (we don't need a reset).</p>
+<p>The output <em>hdmi.pclk</em> is the clock we will use for the rest of the design. Change the port connection of <em>.clk(clk)</em> to <em>.clk(hdmi.pclk)</em>.</p>
+<p>Finally, we just need to connect values to the <em>red</em>, <em>green</em>, and <em>blue</em> inputs of <em>hdmi</em> and its <em>TMDS</em> outputs to the corresponding ports.</p>
+<p>For this demo I just used a function of the <em>x</em> and <em>y</em> outputs of <em>hdmi</em> to make a static pattern.</p>
+<p>Take a look at the full <em>mojo_top</em>.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 50MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,             </span><span style="color:#969696;">// configuration clock, AVR ready when high
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// AVR SPI MISO
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR SPI Slave Select
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// AVR SPI MOSI
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR SPI Clock
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_channel </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// AVR general purpose pins (used by default to select ADC channel)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR TX (FPGA RX)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR RX (FPGA TX)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// AVR RX buffer full
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> hdmi1_tmds </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">],  </span><span style="color:#969696;">// HDMI 1 TMDS
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> hdmi1_tmdsb </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">]  </span><span style="color:#969696;">// HDMI 1 TMDSB
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span> 
+</span><span>  clk_wiz_v3_6 clk_wiz </span><span style="color:#ed4343;">(</span><span>.</span><span style="color:#d45ada;">CLK_IN1</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">));
+</span><span>  hdmi_encoder hdmi </span><span style="color:#ed4343;">(</span><span>.clk</span><span style="color:#ed4343;">(</span><span>clk_wiz.</span><span style="color:#d45ada;">CLK_OUT1</span><span style="color:#ed4343;">),</span><span> .rst</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">));
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>hdmi.pclk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span><span> 
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8h00</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs off
+</span><span>    spi_miso </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bz</span><span style="color:#ed4343;">;          </span><span style="color:#969696;">// not using SPI
+</span><span>    spi_channel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bzzzz</span><span style="color:#ed4343;">;    </span><span style="color:#969696;">// not using flags
+</span><span>    avr_rx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bz</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// not using serial port
+</span><span> 
+</span><span>    hdmi1_tmds </span><span style="color:#ed4343;">=</span><span> hdmi.tmds</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// connect the outputs
+</span><span>    hdmi1_tmdsb </span><span style="color:#ed4343;">=</span><span> hdmi.tmdsb</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    hdmi.red </span><span style="color:#ed4343;">=</span><span> hdmi.x</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span>    hdmi.green </span><span style="color:#ed4343;">=</span><span> hdmi.y</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span>    hdmi.blue </span><span style="color:#ed4343;">=</span><span> hdmi.x</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] ^</span><span> hdmi.y</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>You should now be able to build and load this design onto your Mojo. If you plug a monitor into <em>HDMI 1</em> you should see the test pattern shown below.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/MVIMG_20180319_134603_large.jpg" alt="MVIMG_20180319_134603_large.jpg" /></p>
+<p>If you don't see the pattern, You may need to use a different monitor/TV that supports 720p@60Hz or a different HDMI cable. In our testing, various cables didn't work all that reliably.</p>
+<p>We can now modify the design a bit to make the pattern dynamic.</p>
+<p>To do this we need some concept of time. A frame counter is probably the easiest way.</p>
+<p>To check for the end of the frame, we just need to look for the max X and Y values. At 720p these are 1279 and 719. Also note that the coordinate outputs of the HDMI encoder are only valid when the <em>active</em> signal is high so we also need to check for that.</p>
+<p>The modified <em>mojo_top</em> looks like this.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 50MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,             </span><span style="color:#969696;">// configuration clock, AVR ready when high
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// AVR SPI MISO
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR SPI Slave Select
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// AVR SPI MOSI
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR SPI Clock
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_channel </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// AVR general purpose pins (used by default to select ADC channel)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR TX (FPGA RX)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR RX (FPGA TX)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// AVR RX buffer full
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> hdmi1_tmds </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">],  </span><span style="color:#969696;">// HDMI 1 TMDS
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> hdmi1_tmdsb </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">]  </span><span style="color:#969696;">// HDMI 1 TMDSB
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span> 
+</span><span>  clk_wiz_v3_6 clk_wiz </span><span style="color:#ed4343;">(</span><span>.</span><span style="color:#d45ada;">CLK_IN1</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">));
+</span><span>  hdmi_encoder hdmi </span><span style="color:#ed4343;">(</span><span>.clk</span><span style="color:#ed4343;">(</span><span>clk_wiz.</span><span style="color:#d45ada;">CLK_OUT1</span><span style="color:#ed4343;">),</span><span> .rst</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">));
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>hdmi.pclk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> frame</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span><span> 
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8h00</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs off
+</span><span>    spi_miso </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bz</span><span style="color:#ed4343;">;          </span><span style="color:#969696;">// not using SPI
+</span><span>    spi_channel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bzzzz</span><span style="color:#ed4343;">;    </span><span style="color:#969696;">// not using flags
+</span><span>    avr_rx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bz</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// not using serial port
+</span><span> 
+</span><span>    hdmi1_tmds </span><span style="color:#ed4343;">=</span><span> hdmi.tmds</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// connect the outputs
+</span><span>    hdmi1_tmdsb </span><span style="color:#ed4343;">=</span><span> hdmi.tmdsb</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    hdmi.red </span><span style="color:#ed4343;">=</span><span> hdmi.x</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] +</span><span> frame.q</span><span style="color:#ed4343;">;
+</span><span>    hdmi.green </span><span style="color:#ed4343;">=</span><span> hdmi.y</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] + (</span><span>frame.q </span><span style="color:#ed4343;">&lt;&lt; </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">);
+</span><span>    hdmi.blue </span><span style="color:#ed4343;">=</span><span> hdmi.x</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] ^</span><span> hdmi.y</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>hdmi.x </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">1279 </span><span style="color:#ed4343;">&amp;&amp;</span><span> hdmi.y </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">719 </span><span style="color:#ed4343;">&amp;&amp;</span><span> hdmi.active</span><span style="color:#ed4343;">) {
+</span><span>      frame.d </span><span style="color:#ed4343;">=</span><span> frame.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Again you could use <em>frame.q</em> in a different way to change the animation. Here is what this looks like.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/animation_b87f2f67-f787-446a-b35e-6c63ea53a57c.gif" alt="animation_b87f2f67-f787-446a-b35e-6c63ea53a57c.gif" /></p>
+<h3 id="hdmi-decoding">HDMI Decoding</h3>
+<p>HDMI decoding is pretty simple with the <em>HDMI Decoder</em> component. With this component you simply connect the <em>tmds</em> and <em>tmdsb</em> inputs from the HDMI port and it will output the pixel data and a pixel clock. </p>
+<p>The one tricky part with receiving HDMI data is providing something known as the <em>EDID</em> <em>ROM</em>. This is a ROM that contains data detailing about your design's capabilities. When you plug something into an HDMI port it will often read the ROM to make sure the HDMI stream it wants to send is supported. </p>
+<p>The details of the ROM format are outside the scope of this tutorial, but Wikipedia has a decent outline of it <a href="https://en.wikipedia.org/wiki/Extended_Display_Identification_Data">here</a>.</p>
+<p>There is a component in the Component Library that will make the Mojo show up as a 720p@60Hz monitor.</p>
+<p>I don't have a good example project using just HDMI decoding but the next section will cover how to use the decoder and EDID ROM.</p>
+<h3 id="hdmi-passthru">HDMI Passthru</h3>
+<p>In this section we will use both ports on the HDMI Shield. <em>HDMI 2</em> will act as an input and we will modify the stream then output it on <em>HDMI 1</em>. </p>
+<p>To get started, make a new project based on the <em>Base Project</em>.</p>
+<p>Open the Components Library and add <em>HDMI Passthru</em> and <em>EDID ROM</em> from the <em>Video</em> section. In the <em>Constraints</em> section add the <em>HDMI Shield</em> constraints.</p>
+<p>We now need to create another constraint file to specify the max pixel clock we expect to see. Click the <em>New File</em> icon and enter <em>hdmi_clock.ucf</em> as the file name, select <em>User Constraints</em> as the type, and click <em>Create File</em>.</p>
+<p>Open this file and add the following line.</p>
+<pre data-lang="ucf" style="background-color:#282828;color:#ffffff;" class="language-ucf "><code class ="language-ucf" data-lang="ucf"><span>NET &quot;hdmi2_tmds(3)&quot; PERIOD = 80 MHz HIGH 50%;
+</span></code></pre>
+<p>The fourth TMDS pair is the clock. When specifying a clock frequency for a differential pair, you only need to specify it for the positive side of the pair. In our case this is the signal <em>hdmi2_tmds(3)</em>. </p>
+<p>If we didn't add this constraint the tools wouldn't have any idea what timing specs to try and meet.</p>
+<p>In <em>mojo_top</em> we need to add the relevant HDMI signals to our port declaration. These consist of the two sets of TMDS pairs and the I2C signals for the EDID ROM.</p>
+<p>We need to also instantiate the EDID ROM and HDMI Passthru components. The EDID ROM operates independently and we connect it to the main clock input on the Mojo. This is because we know this clock is always running but the pixel clock will only be running when there is a valid HDMI signal. When you plug in the HDMI port, the EDID ROM will be read before HDMI data is sent. If we tried to use the pixel clock, the ROM wouldn't be readable and the stream would never start.</p>
+<p>We then need to connect the TMDS inputs and outputs from the <em>HDMI Passthru</em> component to the top level ports. The only thing left is to connect up the pixel colors.</p>
+<p>The <em>hdmi_passthru</em> module outputs a pixel stream accompanied by the pixel's location and if it is active (valid). The module then accepts color data for pixels at a location delayed by the parameter <em>LATENCY</em>. By default this is set to 1. That means that you get one clock cycle to modify and supply the pixel color data.</p>
+<p>In this first example we are simply going to mirror the stream. This means we need some <em>DFFs</em> to store the color data for this single cycle.</p>
+<p>Putting this all together we get a ﻿_mojo_top_﻿ module that looks like this.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 50MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,             </span><span style="color:#969696;">// configuration clock, AVR ready when high
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// AVR SPI MISO
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR SPI Slave Select
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// AVR SPI MOSI
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR SPI Clock
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_channel </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// AVR general purpose pins (used by default to select ADC channel)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR TX (FPGA RX)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR RX (FPGA TX)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// AVR RX buffer full
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> hdmi1_tmds </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">],  </span><span style="color:#969696;">// HDMI Out
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> hdmi1_tmdsb </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> hdmi2_tmds </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">],   </span><span style="color:#969696;">// HDMI In
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> hdmi2_tmdsb </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> hdmi2_sda</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// EDID Interface
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> hdmi2_scl
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// connect up the edid rom using a clock we know will alway be running
+</span><span>    edid_rom edid </span><span style="color:#ed4343;">(</span><span>.rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">),</span><span> .sda</span><span style="color:#ed4343;">(</span><span>hdmi2_sda</span><span style="color:#ed4343;">),</span><span> .scl</span><span style="color:#ed4343;">(</span><span>hdmi2_scl</span><span style="color:#ed4343;">));
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  hdmi_passthru hdmi </span><span style="color:#ed4343;">(</span><span>.rst</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">)); </span><span style="color:#969696;">// we don&#39;t care about the reset
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// use the pixel clock for the color data
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>hdmi.pclk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> red</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> green</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> blue</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]; 
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span><span> 
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8h00</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs off
+</span><span>    spi_miso </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bz</span><span style="color:#ed4343;">;          </span><span style="color:#969696;">// not using SPI
+</span><span>    spi_channel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bzzzz</span><span style="color:#ed4343;">;    </span><span style="color:#969696;">// not using flags
+</span><span>    avr_rx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bz</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// not using serial port
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// connect HDMI input
+</span><span>    hdmi.tmds_in </span><span style="color:#ed4343;">=</span><span> hdmi2_tmds</span><span style="color:#ed4343;">;
+</span><span>    hdmi.tmdsb_in </span><span style="color:#ed4343;">=</span><span> hdmi2_tmdsb</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// connect HDMI output
+</span><span>    hdmi1_tmds </span><span style="color:#ed4343;">=</span><span> hdmi.tmds_out</span><span style="color:#ed4343;">;
+</span><span>    hdmi1_tmdsb </span><span style="color:#ed4343;">=</span><span> hdmi.tmdsb_out</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// save colors
+</span><span>    red.d </span><span style="color:#ed4343;">=</span><span> hdmi.red_out</span><span style="color:#ed4343;">;
+</span><span>    green.d </span><span style="color:#ed4343;">=</span><span> hdmi.green_out</span><span style="color:#ed4343;">;
+</span><span>    blue.d </span><span style="color:#ed4343;">=</span><span> hdmi.blue_out</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// output colors
+</span><span>    hdmi.red_in </span><span style="color:#ed4343;">=</span><span> red.q</span><span style="color:#ed4343;">;
+</span><span>    hdmi.green_in </span><span style="color:#ed4343;">=</span><span> green.q</span><span style="color:#ed4343;">;
+</span><span>    hdmi.blue_in </span><span style="color:#ed4343;">=</span><span> blue.q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>If you build and load the project now you should be able to plug <em>HDMI 2</em> into an HDMI port on your computer.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/Screenshot_from_2018-03-21_13-21-30.png" alt="Screenshot_from_2018-03-21_13-21-30.png" /></p>
+<p>In the previous image you can see the Mojo showing up on my computer as a 720p monitor.</p>
+<p>If you plug a monitor into <em>HDMI 1</em> then you should be able to use it as a 720p monitor.</p>
+<p>We can have a little more fun than just mirroring the setup. Try swapping the color assignments around when outputting the stream.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">// output colors
+</span><span>hdmi.red_in </span><span style="color:#ed4343;">=</span><span> blue.q</span><span style="color:#ed4343;">;
+</span><span>hdmi.green_in </span><span style="color:#ed4343;">=</span><span> red.q</span><span style="color:#ed4343;">;
+</span><span>hdmi.blue_in </span><span style="color:#ed4343;">=</span><span> green.q</span><span style="color:#ed4343;">;
+</span></code></pre>
+<p>If you build and load the design again the colors from whatever you put on the monitor will now be swapped.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/MVIMG_20180321_132846_large.jpg" alt="MVIMG_20180321_132846_large.jpg" /></p>
+<p>Hey look Facebook is now red!</p>
+<p>You can get more creative with how you modify the stream. Remember if you need more cycles to make your edits you can change the <em>LATENCY</em> parameter.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;sdram&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>SDRAM</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;sound-locating&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Sound Locating</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

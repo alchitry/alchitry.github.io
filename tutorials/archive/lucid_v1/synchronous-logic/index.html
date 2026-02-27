@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Synchronous Logic</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;synchronous-logic&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;">Lucid V1</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;synchronous-logic&#x2F;">Synchronous Logic</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Synchronous Logic</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+15 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;synchronous-logic.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#the-problem" aria-label="The Problem">The Problem</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#clocks" aria-label="Clocks">Clocks</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#d-flip-flops" aria-label="D Flip-Flops">D Flip-Flops</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#loops" aria-label="Loops">Loops</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#creating-the-module" aria-label="Creating the Module">Creating the Module</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#writing-the-blinker" aria-label="Writing the Blinker">Writing the Blinker</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#reset" aria-label="Reset">Reset</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-counter" aria-label="The Counter">The Counter</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#module-connections" aria-label="Module connections">Module connections</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#instantiating-a-module" aria-label="Instantiating a module">Instantiating a module</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-reset-conditioner" aria-label="The Reset Conditioner">The Reset Conditioner</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <div class="video-container">
+    <iframe class="video" src="https://www.youtube.com/embed/kOE1GXge11k?si=nZOT0nboMJxjkcVl"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<p>Synchronous logic is a fundamental building block for just about any digital design. It allows you to create much more complex systems that accomplish something over a series of steps. It also gives you the ability to save states or other information. In this tutorial you will be introduced to the <strong>D flip flop</strong> and how you can use these to make an LED blink.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>In our last tutorial we simply wired a LED to a button. Whenever you pressed the button the LED would turn on. Our design had no concept of time. The goal for this project is to blink an LED. That means we have to create a circuit that can turn itself on and off automatically after a regular interval of time has passed. For this we need the flip flop.</p>
+<h2 id="clocks">Clocks</h2>
+<p>Before I can explain what exactly a flip flop does you need to understand what a clock is.</p>
+<p>A clock is just a signal that toggles between 0 and 1 over and over again. It looks something like this.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/clock_1ef62072-d7ac-411c-ad74-9a9bd8d77bf7.png" alt="clock_1ef62072-d7ac-411c-ad74-9a9bd8d77bf7.png" /></p>
+<p>The important thing is the rate at which it toggles. The clock on the Au and Cu is a 100MHz clock (the Mojo has a 50MHz clock). That means that it toggles 100 million times per second!</p>
+<p>The clock has two edges, the <strong>rising edge</strong> and the <strong>falling edge</strong>. I drew the rising edges with little arrows. The rising edge is usually the important one.</p>
+<h2 id="d-flip-flops">D Flip-Flops</h2>
+<p>This is one of the most important circuit elements you will be using. Lucky for you, it is also fairly straightforward how they work. Take a look at the symbol for the flip flop below.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/dff_783f7c84-8d1f-4bdf-b1b0-c8a45cde2a9a.png" alt="dff_783f7c84-8d1f-4bdf-b1b0-c8a45cde2a9a.png" /></p>
+<p>This image shows all the signals that a flip flop could have, but in practice, the only required signals are <em>D</em>, <em>Q</em>, and <em>clk</em>. For now, forget about <em>rst</em> and <em>en</em>.</p>
+<p>So what exactly does this thing do? All it does is copy the signal at <em>D</em> to <em>Q</em> whenever there is a rising edge on the <em>clk</em> input. That means <em>Q</em> will keep it's value between rising edges of the clock. Since the flip flop <em>remembers</em> what the input was at <em>D</em>, it is actually one of the most basic memory elements.</p>
+<h2 id="loops">Loops</h2>
+<p>Lets take a look at the following example.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/notloop_a227efa4-c9ae-4a79-b9ed-0ea3f240c4d4.png" alt="notloop_a227efa4-c9ae-4a79-b9ed-0ea3f240c4d4.png" /></p>
+<p>What will this circuit do? If the input to the gate is 1, then it's output is 0. However, the output is the input so the output must be 1, but then the input is 1 so the output must be 0? If we assume that the signal can only be 0 or 1 it seems like it would toggle between 0 and 1 infinitely fast. In practice, remember that signals are actually represented by voltages, it may oscillate or it may settle to somewhere in the middle. This is, of course, something we don't want. Designing combinational circuits with feedback can be very tricky to make sure something like this doesn't happen and that the circuit will work how you expect it to. That is why we don't! Instead, we use a circuit like this one.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/image-asset.png" alt="" /></p>
+<p>What will this circuit do? Well, for now lets just assume that <em>Q</em> is 0. That means that <em>D</em> is 1 (because it went through the not gate). On the next rising edge of the clock <em>Q</em> will copy what <em>D</em> is, so <em>Q</em> becomes 1. Once <em>Q</em> becomes 1, <em>D</em> becomes 0. You can follow the pattern to realize that every time there is a rising edge on the clock the output of the flip flop toggles.</p>
+<p>What about the initial condition though? If we just built this circuit how do we know if <em>Q</em> is 0 or 1? The truth is that we don't and in some cases it may be 1 while others it may be 0. That is where the <em>rst</em> signal comes in. This signal is used to reset the flip flop to a known state. In FPGAs this signal is generally very flexible and allows you to reset the flip flop to a 1 or 0 when the signal is high or low (your choice, not both). In Lucid, <em>dffs</em> use active high resets. That means when the <em>rst</em> signal is 1, the flip flop is held in reset.</p>
+<p>There are cases where you don't care what the initial value of the flip flop is, in those cases you don't need to, and shouldn't, use a reset.</p>
+<p>Since the only signal left is <em>en</em>, I'll cover it now just for completeness. There are times when you want the flip flop to ignore the rising edges on the clock and to preserve the contents of <em>Q</em>. That is when you use the <strong>enable</strong> signal. When the <em>en</em> signal is 1, the flip flop operates normally. When it is 0 the contents of <em>Q</em> won't change on the rising edges of the clock. If you see a flip flop without an <em>en</em> signal it is just assumed that the flip flop is always enabled.</p>
+<p>In Lucid, <em>dffs</em> don't have an explicit <em>en</em> signal, but rather will retain their contents if you don't write something new to it.</p>
+<h2 id="creating-the-module">Creating the Module</h2>
+<p>Open Alchitry Labs and create a new project. I'm going to call mine BlinkerDemo.</p>
+<p>With the new project open, click the <em>New File</em> icon (the left most icon in the toolbar) and create a Lucid source file called <em>blinker.luc</em>.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/new_module.png" alt="new_module.png" /></p>
+<p>Click <em>Create File</em> to create the file.</p>
+<p>The file should now be under <em>Source</em> in the project tree and it should automatically open.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/blinker_module.png" alt="blinker_module.png" /></p>
+<h2 id="writing-the-blinker">Writing the Blinker</h2>
+<p>Edit the module so that it looks like the following.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> blinker </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,    </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,    </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> blink  </span><span style="color:#969696;">// output to LED
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">dff</span><span> counter</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">25</span><span style="color:#ed4343;">](</span><span>.clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),</span><span> .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">));
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    blink </span><span style="color:#ed4343;">=</span><span> counter.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">24</span><span style="color:#ed4343;">];
+</span><span>    counter.d </span><span style="color:#ed4343;">=</span><span> counter.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Let's go over what changes were made. First, I simply renamed <em>out</em> to <em>blink</em> to better reflect what our module does.</p>
+<p>Line 7 has the declaration of the flip-flop. Lucid has a type <em>dff</em> for creating flip-flops. The flip-flop I created is called <em>counter</em> and it's 25 bits wide.</p>
+<p>I then connected the <em>clk</em> signal of our module to the <em>clk</em> input of the flip-flop. I did the same with the <em>rst</em> signal. The syntax for connecting these signals is <em>.module_input(signal)</em> where <em>module_input</em> is the name of the input on the module and <em>signal</em> is the signal to connect to it. In this case the module input and signal names are the same.</p>
+<p>In the always block, line 10 simply connects our output, <em>blink</em>, to the most significant bit of <em>counter.q</em>. When you are working with flip-flops, FSMs, or modules, you use the dot syntax to specify which signal you want. In this case, we need to read the <em>q</em> output of the <em>dff</em> so we use <em>counter.q</em>.</p>
+<p>The next line connects the input, <em>d</em>, of the <em>dff</em> to its output, <em>q</em>, plus one. This means that every time <em>clk</em> goes high, <em>counter.q</em> will increase by 1.</p>
+<p>When declaring a <em>dff</em> or <em>fsm</em>, you must connect its <em>clk</em> input and optionally connect <em>rst</em>. These can't be connected later in an always block.</p>
+<h2 id="reset">Reset</h2>
+<p>Notice we connect the <em>rst</em> signal to the counter. What does this do? Whenever the <em>rst</em> signal goes high, the value of <em>counter.q</em> becomes 0. This is also the value that the counter is initialized to when the FPGA first starts.</p>
+<p>If we wanted the counter to initialize and reset to a different value, we can specify the value using the <em>dff</em> parameter <em>#INIT</em>.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span><span> counter</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">25</span><span style="color:#ed4343;">](#</span><span style="color:#d45ada;">INIT</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100</span><span style="color:#ed4343;">),</span><span> .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),</span><span> .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">));
+</span></code></pre>
+<p>The counter will now start with a value of 100 and reset to 100. Zero is the default value if none is specified.</p>
+<p>Notice that parameters are specified with <em>#NAME</em> instead of <em>.name</em>. Parameters are always all capitalized.</p>
+<p>If you don't need to reset a <em>dff</em> for some reason, you can simply not connect anything to the <em>rst</em> input and it won't have a reset. This is recommended if you don't need a reset since it doesn't force the tools to route the reset signal to the flip-flop.</p>
+<p>The <em>dff</em> and <em>fsm</em> (covered later) types are special in that the <em>rst</em> input is optional. All other inputs and all inputs to modules are required.</p>
+<h2 id="the-counter">The Counter</h2>
+<p>Here is what the counter circuit looks like. Keep in mind that there is actually 25 flip-flops (but only one +1 circuit) and the connections are actually 25 wires, or bits, wide. When many flip-flops are used to store a single multi-bit value they are commonly drawn as a single flip-flop.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/counter.png" alt="counter.png" /></p>
+<p>Let's look at what this module will actually do. Right after the <em>rst</em> signal goes low, <em>counter.q</em> will be 0. That means that <em>counter.d</em> will be 1, since our combinational block assigns it <em>counter.q</em> plus 1.</p>
+<p>At the next positive edge of <em>clk</em>, <em>counter.q</em> will be assigned the value of <em>counter.d</em>, or 1. Once <em>counter.q</em> is 1, <em>counter.d</em> must be 2. You should be able to see what will continue to happen. Each clock cycle <em>counter.q</em> will increase by 1. But what happens when <em>counter.q</em> is <em>25b1111111111111111111111111</em> (the max value)?</p>
+<p>Since we are adding a 1 bit number to a 25 bit number, the result can be up to 26 bits, but since we are storing it into a 25 bit <em>dff</em> we lose the last bit. That means that when <em>counter.q</em> is the max value, <em>counter.d</em> is 0 and the process starts all over again.</p>
+<p>Our counter will continuously count from 0 to 33554431 (2^25 - 1).</p>
+<p>How do we make an LED blink from this counter? It's simple once you realize that for half the time the most significant bit is 1 and the other half of the time it's 0. This is because if <em>counter.q</em> is less than 16777216 (2^24), then the 24th bit must be 0 and when it is equal or greater, the MSB must be 1. That means we can just connect the LED to the most significant bit of our counter. If you need to convince yourself this is true try writing out the binary values from 0-7 and look at how the MSB (most significant bit) changes.</p>
+<p>How fast will the LED blink though? We know that the clock frequency is 100MHz, or 100,000,000 clock cycles per second on the Au and Cu. Since our counter takes 2^25 cycles to overflow we can calculate the blinker time, 2^25 / 100,000,000 or about 0.34 seconds (0.67 seconds on the Mojo). The LED will turn on and off every 0.34 seconds. If you wanted to make that time longer, you can just make the counter 26 bits long and the time will double to 0.67 seconds. If you wanted to make it blink faster you can make the counter shorter.</p>
+<h2 id="module-connections">Module connections</h2>
+<p>In Lucid, there are three ways to specify an input into a <em>module</em>, <em>dff</em>, or <em>fsm</em> (from now on I'll just call them all modules). The first way is how we did it in this example.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span><span> counter</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">25</span><span style="color:#ed4343;">](</span><span>.clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),</span><span> .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">));
+</span></code></pre>
+<p>Here we specify the connections in a set of parentheses directly after the name. These connections are only applied to this single module. However, we can use the next method to make the same connections to many modules.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>.clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),</span><span> .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>  </span><span style="color:#0a8dbf;">dff</span><span> counter1</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">12</span><span style="color:#ed4343;">];
+</span><span>  </span><span style="color:#0a8dbf;">dff</span><span> counter2</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">];
+</span><span>  </span><span style="color:#0a8dbf;">dff</span><span> counter3</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>In this example, we connect the <em>clk</em> and <em>rst</em> inputs of all the modules contained in the curly braces. In this case, they contain three <em>dffs</em>. This is convenient since most modules will require a clock and reset signal.</p>
+<p>You can also nest this method.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>.clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>  .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> counter1</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">12</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> counter2</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">];
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#0a8dbf;">dff</span><span> counter3</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Here only <em>counter1</em> and <em>counter2</em> are connected to <em>rst</em>.</p>
+<p>You can also mix this method with the first.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>.clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>  </span><span style="color:#0a8dbf;">dff</span><span> counter1</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">12</span><span style="color:#ed4343;">](</span><span>.rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">));
+</span><span>  </span><span style="color:#0a8dbf;">dff</span><span> counter2</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">];
+</span><span>  </span><span style="color:#0a8dbf;">dff</span><span> counter3</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Here only <em>counter1</em> is connected to <em>rst</em>.</p>
+<p>Finally, the last way to specify an input is simply by not connecting it when declaring the module but rather inside an always block later. This is what we did with <em>counter.d</em>. Note that <em>dffs</em> and <em>fsms</em> require you to specify <em>clk</em> and <em>rst</em> when declaring them and they do not allow you to specify the <em>d</em> input then.</p>
+<p>There is a difference when connecting an input at declaration time or in an always block. The difference only is noticeable for arrays. If you have an array of a module and you specify an input at declaration time, that input will be copied to each element in the array individually.</p>
+<p>If you specify an input in an always block, you can specify the input to each element separately. In this example, the <em>clk</em> signal is one bit, but it is getting copied to 25 one bit flip-flops. However, the <em>d</em> input, which is also one bit, is packed into a 25 bit array to use in the always block. That way we can use the <em>d</em> input as if it is really one big flip-flop (which don’t actually exist).</p>
+<h2 id="instantiating-a-module">Instantiating a module</h2>
+<p>Now that we have a blinker module we need to add it to our top level module.</p>
+<p>Open up the top file and make the edits so it looks the same as below.</p>
+<div class="md-fenced-code-tabs" id="tab-tab-group-1"><input
+name="tab-group-1"
+type="radio"
+id="tab-group-1-0_Au"
+checked="checked"
+class="code-tab"
+data-lang="Au"
+aria-controls="tab-group-1-0_Au-panel"
+aria-hidden="true"
+role="tab"
+>
+<label
+for="tab-group-1-0_Au"
+class="code-tab-label"
+data-lang="Au"
+id="tab-group-1-0_Au-label"
+>Au</label>
+<div
+	class="code-tabpanel"
+	role="tabpanel"
+	data-lang="Au"
+	id="tab-group-1-0_Au-panel"
+	aria-labelledby="tab-group-1-0_Au-label"
+> <pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> au_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 100MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> usb_rx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// USB-&gt;Serial input
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> usb_tx           </span><span style="color:#969696;">// USB-&gt;Serial output
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span>   
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span>   
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      blinker myBlinker</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>   
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">;    </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;      </span><span style="color:#969696;">// conditioned reset
+</span><span>     
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">x{</span><span>myBlinker.blink</span><span style="color:#ed4343;">}; </span><span style="color:#969696;">// blink LEDs
+</span><span>     
+</span><span>    usb_tx </span><span style="color:#ed4343;">=</span><span> usb_rx</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// echo the serial data
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+ </div><input
+name="tab-group-1"
+type="radio"
+id="tab-group-1-1_Cu"
+class="code-tab"
+data-lang="Cu"
+aria-controls="tab-group-1-1_Cu-panel"
+aria-hidden="true"
+role="tab"
+>
+<label
+for="tab-group-1-1_Cu"
+class="code-tab-label"
+data-lang="Cu"
+id="tab-group-1-1_Cu-label"
+>Cu</label>
+<div
+	class="code-tabpanel"
+	role="tabpanel"
+	data-lang="Cu"
+	id="tab-group-1-1_Cu-panel"
+	aria-labelledby="tab-group-1-1_Cu-label"
+> 
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> cu_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 100MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> usb_rx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// USB-&gt;Serial input
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> usb_tx           </span><span style="color:#969696;">// USB-&gt;Serial output
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span>   
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span>   
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      blinker myBlinker</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>   
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">;    </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;      </span><span style="color:#969696;">// conditioned reset
+</span><span>     
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">x{</span><span>myBlinker.blink</span><span style="color:#ed4343;">}; </span><span style="color:#969696;">// blink LEDs
+</span><span>     
+</span><span>    usb_tx </span><span style="color:#ed4343;">=</span><span> usb_rx</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// echo the serial data
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+ </div><input
+name="tab-group-1"
+type="radio"
+id="tab-group-1-2_Mojo"
+class="code-tab"
+data-lang="Mojo"
+aria-controls="tab-group-1-2_Mojo-panel"
+aria-hidden="true"
+role="tab"
+>
+<label
+for="tab-group-1-2_Mojo"
+class="code-tab-label"
+data-lang="Mojo"
+id="tab-group-1-2_Mojo-label"
+>Mojo</label>
+<div
+	class="code-tabpanel"
+	role="tabpanel"
+	data-lang="Mojo"
+	id="tab-group-1-2_Mojo-panel"
+	aria-labelledby="tab-group-1-2_Mojo-label"
+> 
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 50MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,             </span><span style="color:#969696;">// configuration clock, AVR ready when high
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// AVR SPI MISO
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR SPI Slave Select
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// AVR SPI MOSI
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR SPI Clock
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_channel </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// AVR general purpose pins (used by default to select ADC channel)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR TX (FPGA RX)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR RX (FPGA TX)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy       </span><span style="color:#969696;">// AVR RX buffer full
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      blinker myBlinker</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">;    </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;      </span><span style="color:#969696;">// conditioned reset
+</span><span> 
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">x{</span><span>myBlinker.blink</span><span style="color:#ed4343;">}; </span><span style="color:#969696;">// blink LEDs
+</span><span>    spi_miso </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bz</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// not using SPI
+</span><span>    spi_channel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bzzzz</span><span style="color:#ed4343;">;       </span><span style="color:#969696;">// not using flags
+</span><span>    avr_rx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bz</span><span style="color:#ed4343;">;               </span><span style="color:#969696;">// not using serial port
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+ </div>
+</div>
+<p>In the nested <em>.clk(clk)</em> and <em>.rst(rst)</em> blocks, I instantiated the blinker module and named it <em>myBlinker</em>. Notice I'm using the batch way of connecting the <em>clk</em> and <em>rst</em> inputs this time. This is because you will likely want to add more modules to your top level module so it can nice to set it up beforehand.</p>
+<p>In the always block, we connect the <em>blink</em> output of <em>myBlinker</em> to the eight LEDs using the duplication syntax covered in the previous tutorial.</p>
+<p>You should now be able to build and load the project. All 8 LEDs should blink about two times per second.</p>
+<h2 id="the-reset-conditioner">The Reset Conditioner</h2>
+<p>Now that we have actually used the reset signal for what it was intended for, we can talk about the <em>reset_conditioner</em> module. The signal <em>rst_n</em> comes from outside the FPGA. Signals from outside the FPGA are UNCLEAN! What I mean by this is that we don't know how external signals (especially from a button) will change in relation to the clock we are using. If the reset signal goes low really close to the rising edge of the clock, due to internal delays in the FPGA, some flip-flops may come out of reset before the rising edge while others could after. This means some flip-flops may stay reset for a cycle longer than others (NOT GOOD). Even worse, when signals change too close to a rising edge of a clock you run into metastability issues. This is covered later, but it basically means you aren't guaranteed the output of the flip-flop will be 1 or 0. It could be somewhere in between (0.5?) or even oscillate between values (BAD). This is where the reset conditioner comes in. It is a fairly simple circuit that synchronizes the reset signal to the FPGA's clock. This ensures that your entire design will come out of reset at once. If you want to read more than you'll ever want to know about resets, check out <a href="http://www.xilinx.com/support/documentation/white_papers/wp272.pdf">this paper from Xilinx</a>.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;your-first-fpga-project&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Your First FPGA Project</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;io-element&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Io Element</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

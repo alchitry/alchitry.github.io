@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title></title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class="list  dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span class="active">Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span class="active">Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<header class="page-header">
+    <div class="breadcrumbs">
+        <div class="breadcrumb-container">
+            <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com">Home</a>
+            
+            
+                
+                    
+            <span class="breadcrumb-separator">»</span>
+            <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+        </div>
+    </div>
+    <h1 class="post-title">Tutorials
+        <a href="https://alchitry.com/atom.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9"></path>
+        <path d="M4 4a16 16 0 0 1 16 16"></path>
+        <circle cx="5" cy="19" r="1"></circle>
+      </svg>
+    </a>
+  </h1>
+</header>
+
+
+<div class="tutorials-page">
+    <div class="main-card">
+        <img class="main-card-alchemist" src="/images/al_flask.svg" alt="">
+        <div>
+            <h1>Getting Started</h1>
+            <ul>
+                <li><p>Jump right in with our <a
+                        href="https://alchitry.com/tutorials/introduction/getting-started/">getting started
+                    guide</a>
+                </p></li>
+                <li><p><a href="https://alchitry.com/tutorials/background/">Background information</a> is
+                    available to make sure
+                    you have the fundamentals down
+                </p></li>
+                <li><p><a href="https://alchitry.com/tutorials/references/">References</a> for Lucid and
+                    Alchitry Constraints
+                    are available</p></li>
+                <li><p>Looking for something old? See the <a href="#archive">Archive</a></p></li>
+            </ul>
+            <div class="tutorial-button-container">
+                <a href="#starter-tutorials" class="starter-button">Starter</a>
+                <a href="#intermediate-tutorials" class="intermediate-button">Intermediate</a>
+                <a href="#advanced-tutorials" class="advanced-button">Advanced</a>
+                <a href="#projects" class="projects-button">Projects</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="setup-tutorials tutorial-section" id="setup-tutorials">
+        
+        
+<h1>Introduction</h1>
+
+<div class="tutorials">
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Getting Started</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2026-02-19</span>&nbsp;·&nbsp;5 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Getting Started" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;introduction&#x2F;getting-started&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Why Use FPGAs?</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2026-02-11</span>&nbsp;·&nbsp;15 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Why Use FPGAs?" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;introduction&#x2F;why-use-fpgas&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Vivado Setup</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2025-07-29</span>&nbsp;·&nbsp;3 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Vivado Setup" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;introduction&#x2F;vivado&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>iCEcube2 Setup</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+4 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to iCEcube2 Setup" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;introduction&#x2F;icecube2&#x2F;"></a>
+</article>
+
+</div>
+
+    </div>
+
+    <div class="reference-tutorials tutorial-section" id="reference-tutorials">
+        
+        
+<h1>References</h1>
+
+<div class="tutorials">
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Lucid Reference</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2025-02-04</span>&nbsp;·&nbsp;40 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Lucid Reference" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;references&#x2F;lucid-reference&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Alchitry Constraints Reference</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2025-02-04</span>&nbsp;·&nbsp;11 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Alchitry Constraints Reference" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;references&#x2F;alchitry-constraints-reference&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Custom Elements</h2>
+    </header>
+    
+    <div class="entry-content">
+        <p><p>This tutorial goes over all the information you need to create your own custom elements.</p>
+</p>
+    </div>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2025-02-25</span>&nbsp;·&nbsp;2 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Custom Elements" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;references&#x2F;custom-element&#x2F;"></a>
+</article>
+
+</div>
+
+    </div>
+
+    <div class="starter-tutorials tutorial-section" id="starter-tutorials">
+        
+        
+<h1>Starter Tutorials</h1>
+
+<div class="post-content">
+    <p>These tutorials are designed to be followed in order. Each one assumes you have the knowledge from the
+previous ones.</p>
+
+</div>
+
+<div class="tutorials">
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Your First FPGA Project</h2>
+    </header>
+    
+    <div class="entry-content">
+        <p><p>This tutorial will walk you through creating your first project in Alchitry Labs and making the onboard LED light up when you press the
+reset button.</p>
+</p>
+    </div>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2024-09-16</span>&nbsp;·&nbsp;19 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Your First FPGA Project" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;starter&#x2F;your-first-fpga-project&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Synchronous Logic</h2>
+    </header>
+    
+    <div class="entry-content">
+        <p><p>In this tutorial you will be introduced to the <em>D flip-flop</em> and how you can use these to make an LED blink.</p>
+</p>
+    </div>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2024-09-17</span>&nbsp;·&nbsp;16 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Synchronous Logic" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;starter&#x2F;synchronous-logic&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Io Element</h2>
+    </header>
+    
+    <div class="entry-content">
+        <p><p>This tutorial will introduce the <a href="https://alchitry.com/boards/io/">Io Element</a> and walk through some basic examples to get your feet wet.</p>
+<p>If you don't own an Io Element, you can still follow along using the simulator.</p>
+</p>
+    </div>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2024-09-18</span>&nbsp;·&nbsp;37 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Io Element" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;starter&#x2F;io-element&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Serial Interface</h2>
+    </header>
+    
+    <div class="entry-content">
+        <p><p>In this tutorial we will use the USB port and create a project that will echo back all the data sent to the Alchitry board.
+This will teach you how to use the <em>Component Library</em> in your projects.</p>
+</p>
+    </div>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2024-09-19</span>&nbsp;·&nbsp;7 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Serial Interface" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;starter&#x2F;serial-interface&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>ROMs and FSMs</h2>
+    </header>
+    
+    <div class="entry-content">
+        <p><p>In this tutorial we will create a project that will send &quot;Hello World!&quot; over the USB (serial) port when the letter &quot;h&quot; is received. 
+This will help teach you how to use finite state machines (FSM).</p>
+</p>
+    </div>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2024-09-19</span>&nbsp;·&nbsp;14 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to ROMs and FSMs" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;starter&#x2F;roms-and-fsms&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Hello YOUR_NAME_HERE</h2>
+    </header>
+    
+    <div class="entry-content">
+        <p><p>In this tutorial we will be personalizing the greeter so that it first asks for your name and then prints &quot;Hello NAME&quot; where NAME is the name you entered.
+To do this we will need some form of memory and in this case we will use a single port RAM.</p>
+</p>
+    </div>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2024-09-19</span>&nbsp;·&nbsp;13 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Hello YOUR_NAME_HERE" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;starter&#x2F;hello-your-name-here&#x2F;"></a>
+</article>
+
+</div>
+
+    </div>
+
+    <div class="intermediate-tutorials tutorial-section" id="intermediate-tutorials">
+        
+        
+<h1>Intermediate Tutorials</h1>
+
+<div class="post-content">
+    <p>These tutorials you can pick and choose what interests you. They assume you have the knowledge from the
+starter tutorials.</p>
+
+</div>
+
+<div class="tutorials">
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Register Interface</h2>
+    </header>
+    
+    <div class="entry-content">
+        <p><p>This tutorial will introduce you to the <em>Register Interface</em> component and how you can use it to easily implement
+complex interfaces in your designs.</p>
+</p>
+    </div>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2025-04-28</span>&nbsp;·&nbsp;12 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Register Interface" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;intermediate&#x2F;register-interface&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Basic CPU</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2025-12-11</span>&nbsp;·&nbsp;23 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Basic CPU" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;intermediate&#x2F;basic-cpu&#x2F;"></a>
+</article>
+
+</div>
+
+    </div>
+
+    <div class="advanced-tutorials tutorial-section" id="advanced-tutorials">
+        
+        
+<h1>Advanced Tutorials</h1>
+
+<div class="post-content">
+    <p>These tutorials cover advanced topics. You should be fairly comfortable working FPGAs before diving
+in.</p>
+
+</div>
+
+<div class="tutorials">
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>DDR3 Memory</h2>
+    </header>
+    
+    <div class="entry-content">
+        <p><p>In this tutorial we are going to set up an interface to the DDR3 memory with the FPGA on the Alchitry Au or Pt.</p>
+</p>
+    </div>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2024-09-23</span>&nbsp;·&nbsp;28 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to DDR3 Memory" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;advanced&#x2F;ddr3-memory&#x2F;"></a>
+</article>
+
+</div>
+
+    </div>
+
+    <div class="project-tutorials tutorial-section" id="projects">
+        
+        
+<h1>Projects</h1>
+
+<div class="tutorials">
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>GPU</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+31 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to GPU" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;projects&#x2F;gpu&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Clock Clock</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+2 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Clock Clock" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;projects&#x2F;clock-clock&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Hexapod</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+14 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Hexapod" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;projects&#x2F;hexapod&#x2F;"></a>
+</article>
+
+</div>
+
+    </div>
+
+    <div class="background-tutorials tutorial-section" id="background-tutorials">
+        
+        
+<h1>Background</h1>
+
+<div class="post-content">
+    <p>These tutorials may or may not be necessary based on your background. These are more conceptual tutorials and don't require any hardware to follow.</p>
+
+</div>
+
+<div class="tutorials">
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Digital Logic</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+5 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Digital Logic" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;digital-logic&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Combinational Logic</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+5 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Combinational Logic" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;combinational-logic&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Encodings</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+6 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Encodings" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;encodings&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Multiplexers</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+2 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Multiplexers" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;multiplexers&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Addition</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+4 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Addition" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;addition&#x2F;"></a>
+</article>
+
+<article class="post-entry">
+    <header class="entry-header">
+        <h2>Subtraction</h2>
+    </header>
+    
+    <footer class="entry-footer">
+        
+
+
+
+
+
+
+
+
+
+
+3 min
+
+    </footer>
+    <a class="entry-link" aria-label="post link to Subtraction" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;background&#x2F;subtraction&#x2F;"></a>
+</article>
+
+</div>
+
+    </div>
+
+    <div class="archive-tutorials tutorial-section" id="archive">
+        
+        
+<h1>Archive</h1>
+
+<div class="post-content">
+    <p>For legacy Lucid tutorials, see <a href="https://alchitry.com/tutorials/archive/lucid_v1/">Lucid V1</a>.</p>
+<p>For legacy Verilog tutorials, see <a href="https://alchitry.com/tutorials/archive/verilog/">Verilog</a>.</p>
+<p>For legacy Mojo setup tutorials, see <a href="https://alchitry.com/tutorials/archive/mojo/">Mojo</a>.</p>
+
+</div>
+
+<div class="tutorials">
+
+</div>
+
+    </div>
+
+</div>
+
+
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

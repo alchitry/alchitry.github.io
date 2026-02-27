@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Why Use FPGAs?</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;introduction&#x2F;why-use-fpgas&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;introduction&#x2F;">Introduction</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;introduction&#x2F;why-use-fpgas&#x2F;">Why Use FPGAs?</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Why Use FPGAs?</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2026-02-11</span>&nbsp;·&nbsp;15 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;introduction&#x2F;why-use-fpgas.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#processors-vs-fpgas" aria-label="Processors vs FPGAs">Processors vs FPGAs</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#processors-and-fpgas" aria-label="Processors and FPGAs">Processors and FPGAs</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#fpgas-vs-asic" aria-label="FPGAs vs ASIC">FPGAs vs ASIC</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#when-to-use-an-fpga" aria-label="When to Use an FPGA">When to Use an FPGA</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#io" aria-label="IO">IO</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#predictable-latency" aria-label="Predictable Latency">Predictable Latency</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#high-throughput" aria-label="High Throughput">High Throughput</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#how-they-work" aria-label="How They Work">How They Work</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#look-up-tables" aria-label="Look-Up Tables">Look-Up Tables</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#luts-in-the-au-and-pt" aria-label="LUTs in the Au and Pt">LUTs in the Au and Pt</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#flip-flops-and-slices" aria-label="Flip-flops and Slices">Flip-flops and Slices</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#the-routing-matrix" aria-label="The Routing Matrix">The Routing Matrix</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>So you've heard the term <em>FPGA</em> and want to know what they are and why people use them?
+Well, you've come to the right place!</p>
+<p>First, FPGA stands for <strong>F</strong>ield <strong>P</strong>rogrammable <strong>G</strong>ate <strong>A</strong>rray.
+Phew, with that mouthful out of the way, we can get into what that actually means.</p>
+<p>FPGAs belong to a family of devices known as <em>programmable hardware</em>.
+They let you design a digital circuit using text on a computer, similar to writing code.
+However, FPGAs don't <em>run</em> code. 
+Instead, the text is something called a <strong>H</strong>ardware <strong>D</strong>escription <strong>L</strong>anguage (HDL).</p>
+<p>These are languages designed specifically for describing digital circuits.</p>
+<p>The tools on your computer take your HDL and turn it into a configuration file for the FPGA.
+Almost like magic, once loaded onto the FPGA, the FPGA becomes the circuit you described.</p>
+<p>Ok, ok let's get out of the weeds and take a step back.
+While this sounds cool, why bother with it when we have powerful processors we can make do whatever we want with code?</p>
+<h1 id="processors-vs-fpgas">Processors vs FPGAs</h1>
+<p>Let me give a quick analogy for these two systems to give you some intuition on when you might use one or the other.</p>
+<p>Imagine you sell sandwiches.
+You have a small shop with a few sandwiches on the menu, and you even allow customers to create their own custom orders.</p>
+<p>However, you find that the majority of your customers order one of three sandwiches.
+As your business grows, you have a hard time keeping up with demand of these three sandwiches.
+You decide that personally creating hundreds of the exact same three sandwiches every day isn't very efficient.</p>
+<p>Instead, you decide to set up an assembly line.
+You invest in some robots that can cut the bread, place the cheese, spray on condiments, etc.</p>
+<p>While setting up this line was a lot more work than just making a sandwich, you can now pump out way more than you could
+before very efficiently.</p>
+<p>In this scenario, you, a sandwich master chef capable of creating any unique sandwich to order, are like a processor.
+Processors are fantastic at handling a wide variety of complicated tasks and dealing with complicated control flow.
+Someone wants their one sandwich cut into a star shape?
+No problem, you can do that.</p>
+<p>On the other hand, the assembly line is like an FPGA.</p>
+<p>Each piece of the assembly line operates in tandem with every other piece.
+Where you, the processor, do one task at a time, cut the bread, then place the cheese, etc., the assembly line does them all at once.
+Sandwiches flow through the line continuously.
+When one sandwich is having mayo dispensed on it, another is having the cheese placed, and yet another is just being started by slicing bread.</p>
+<p>The individual pieces all work together in parallel.
+This makes the throughput of the assembly line very high.</p>
+<p>The <em>assembly line</em> equivalent in digital design is known as a <em>pipeline</em>.
+You've likely heard that term before, and in this context it describes a circuit where each section processes some data
+in some way before passing to the next section.
+All the sections run in parallel with many pieces of data flowing through the pipeline at any given time in various stages of completeness.</p>
+<p>However, while pipelines are very powerful and common place, FPGAs can implement any digital circuit you want.
+That includes things like processors.</p>
+<h2 id="processors-and-fpgas">Processors <em>and</em> FPGAs</h2>
+<p>While it's common to want to compare FPGAs to processors, it isn't really a strictly fair comparison.
+That's because you can implement processors inside an FPGA.</p>
+<p>Just for reference, processors inside an FPGA are often called <em>soft</em> processors.</p>
+<p>You can imagine a situation on our hypothetical sandwich line where one stage is very complicated to automate or requires immense flexibility.
+In that case, it might be worth hiring someone to fill that role instead.</p>
+<p>That's the power of being able to incorporate a processor directly into an FPGA.</p>
+<p>Inside the FPGA, you can also scale up or down that processor's capabilities depending on the job it needs to perform.
+If all it has to do is cut the sandwich into a funny shape, it doesn't need a PhD in astrophysics.</p>
+<p>There are even some FPGAs that have <em>hard</em> processors (i.e. ones that are fixed) in them to give you both high software
+performance and custom hardware flexibility.
+It's also common to see FPGAs paired with external processors.
+They're often complimentary rather than exclusive.</p>
+<h2 id="fpgas-vs-asic">FPGAs vs ASIC</h2>
+<p>All the benefits I've said up to this point aren't specific to FPGAs. 
+Instead, they're just benefits to creating a custom circuit.</p>
+<p>The term ASIC, or <strong>A</strong>pplication <strong>S</strong>pecific <strong>I</strong>ntegrated <strong>C</strong>ircuit, is used to describe a custom circuit made into a custom chip.</p>
+<p>This is the gold standard when it comes to performance (both speed and power consumption).
+However, it isn't always in reach.</p>
+<p>There are two major downsides to having your design turned into an ASIC.</p>
+<p>First, once you get your chip back from the fab, that's it.
+If you find you made a mistake, even a tiny one, it is baked into the design and requires new chips to be made to fix.</p>
+<p>Second, getting them made a slow and expensive process.
+Typically, you're looking somewhere North of a million USD.</p>
+<p>This is where FPGAs come into play.
+FPGAs allow you to <em>make</em> your digital circuit without having to actually <strong>make</strong> it.</p>
+<p>That flexibility comes at a cost.</p>
+<p>First is the real dollars cost.
+FPGAs aren't cheap.
+While today, you can get a lot for the money, the FPGA itself is rarely less than $10 for the smallest ones and high-end FPGAs
+easily go into five digits with some in the six digit range.
+On top of that, FPGAs generally require quite a bit of extra stuff to make them work like multiple power supplies and external memory.</p>
+<p>The second cost is in performance.
+FPGAs are both slower and more power hungry than an ASIC.
+There is inherent overhead in the circuitry that makes them so flexible.</p>
+<p>So why use them?</p>
+<p>While their per-unit cost is terrible compared to a huge batch of ASICs, there is no NRE (non-recurring engineering) costs associated with production.
+This is a game changer when you have lower volumes or your design is likely to change.
+They're also useful in prototyping designs that will later become ASICs.</p>
+<p>FPGAs also can be reconfigured over and over again making any circuit using them <em>field programmable</em> (hey, that's where the FP part of FPGA came from).
+This is an incredible superpower.</p>
+<h1 id="when-to-use-an-fpga">When to Use an FPGA</h1>
+<p>Given that FPGAs are more expensive and power-hungry than a typical microcontroller, you may be wondering when you should use one.
+There are a handful of places where FPGAs really excel.</p>
+<h2 id="io">IO</h2>
+<p>The first is in anything IO heavy.
+By IO, I mean inputs and outputs of the chip.</p>
+<p>FPGAs often have a ton of pins to connect to the external world.
+On top of that, these pins often have capabilities not seen on microcontrollers.</p>
+<p>For example, on our <a href="https://shop.alchitry.com/products/alchitry-au">Au FPGA development board</a>, most of the IO can be used
+as differential input pairs capable of receiving 1.2 Gbps (1.2 BILLION bits per second).
+This also happens <em>passively</em>.
+That data simply comes into the FPGA and is fed into whatever circuit is designed to handle it.
+The rest of the FPGA is free to do whatever it was designed for.</p>
+<p>Contrast that to a microcontroller where something like a basic Arduino could spend 100% of its CPU time toggling a pin at
+only around 100 thousand times per second (highly dependent on the code and the specific chip).
+And that's leaving <em>zero</em> time for the CPU to do anything else.</p>
+<p>The IO on an FPGA offers unparalleled flexibility.
+For example, with a typical microcontroller you'll have a bunch of different peripherals (extra dedicated circuits) attached to the
+main processors.
+Usually, these include things like timers, UART (serial ports), or other communication protocols.</p>
+<p>Using one of the built-in peripherals for sending and receiving data is basically mandatory as <em>bit-banging</em> it (using the 
+CPU to generate all the signals) is slow and wastes a lot of CPU time.
+However, you have a fixed number of each, and they typically route to specific pins on the chip.</p>
+<p>In an FPGA, for the most part, IO pins are IO pins.
+If you need two of them to be a serial port, connect them to a circuit that knows how to deal with that signal.
+If you need 20 serial ports, duplicate that circuit 20 times.</p>
+<p>If you have some weird custom protocol you need to interface with, no problem!
+Whip up a circuit that can handle it and attach it wherever.</p>
+<p>Check out our <a href="https://www.youtube.com/watch?v=dnk6_uN5UyE">FPGA IO video tutorial</a> for more details!</p>
+<h2 id="predictable-latency">Predictable Latency</h2>
+<p>If we go back to our sandwich shop example, when making sandwiches, you might take 3 minutes per sandwich on average.
+However, sometimes in the middle of making one, the phone rings.
+You answer the phone and deal with that, but now the total time for that sandwich is 8 minutes.</p>
+<p>This is inherent with multitasking.
+A CPU may be doing its main task, but then an interrupt fires and that needs to be dealt with before resuming the main task.
+Usually that's exactly what you want to happen, but in some systems that unpredictability is unacceptable.</p>
+<p>The sandwich assembly line <strong>always</strong> pumps out sandwiches at the same rate.
+Timing when each step happens is straightforward and performance is guaranteed by design.</p>
+<h2 id="high-throughput">High Throughput</h2>
+<p>This point is probably already obvious to you at this point, but the ability to have many small dedicated portions of the 
+FPGA all running in parallel lends itself to processing <em>a lot</em> of data.</p>
+<p>Think things like a <a href="https://alchitry.com/tutorials/projects/gpu/">GPU pipeline</a> or heavy digital-signal processing (filters, Fourier transforms, etc.).</p>
+<p>The parallel nature of an FPGA is seen in breaking down each task into parallelizable chunks and in that every task can be performed independently.
+Adding some extra unrelated functionality to your design does not slow down other parts like it would in a CPU.</p>
+<h1 id="how-they-work">How They Work</h1>
+<p>Being able to just load a configuration file onto the chip and have it transform into whatever digital circuit we want 
+seems a bit magical.
+However, at a high level, FPGAs aren't that complicated to understand.</p>
+<p>You don't need to know how they work to use them, but you may still find this section interesting.
+You will need some <a href="https://alchitry.com/tutorials/background/">background</a> in digital circuits like knowing what a <a href="https://alchitry.com/tutorials/background/multiplexers/">multiplexer</a> is.</p>
+<p>An FPGA has three main elements, <strong>L</strong>ook-<strong>U</strong>p <strong>T</strong>ables (LUT), flip-flops, and the routing matrix.</p>
+<h2 id="look-up-tables">Look-Up Tables</h2>
+<p>Look-up tables are how your logic actually gets implemented. 
+A LUT consists of some number of inputs and one output. 
+What makes a LUT powerful is that you can <em>program</em> what the output should be for every single possible input.</p>
+<p>A LUT consists of a block of RAM (memory) that is indexed by the LUT's inputs. 
+The output of the LUT is whatever value is in the indexed location in its RAM.</p>
+<p>As an example, let's look at a 2-input LUT.</p>
+<p><img src="https://cdn.alchitry.com/background/lut2.png" alt="lut2.png" /></p>
+<p>Since the RAM in the LUT can be set to anything, a 2-input LUT can become any logic gate!</p>
+<p>For example, if we want to implement an AND gate the contents of the RAM would look like this.</p>
+<table><thead><tr><th>Address (In[1:0])</th><th>Value (Out)</th></tr></thead><tbody>
+<tr><td>00</td><td>0</td></tr>
+<tr><td>01</td><td>0</td></tr>
+<tr><td>10</td><td>0</td></tr>
+<tr><td>11</td><td>1</td></tr>
+</tbody></table>
+<p>It's important to understand that the column <em>Value (Out)</em> could be set to anything! 
+It doesn't have to model a single logic gate. 
+If the value for address 01 was a 1, then the LUT would still perform as expected, but the equivalent logic circuit would require more than one gate to implement. 
+This is why the metric of equivalent gate count for an FPGA is a confusing and poor metric! 
+It is tricky to specify how complicated of a circuit you can implement in a given FPGA because of all the variables.</p>
+<h2 id="luts-in-the-au-and-pt">LUTs in the Au and Pt</h2>
+<p>In the Artix 7 used by the <a href="https://shop.alchitry.com/products/alchitry-au">Au</a> and <a href="https://shop.alchitry.com/products/alchitry-pt">Pt</a>, each LUT is a 6-input LUT. 
+However, it isn't a true 6-input LUT but rather two 5-input LUTs connected by a multiplexer (MUX).</p>
+<p><img src="https://cdn.alchitry.com/background/lut6.png" alt="lut6.png" /></p>
+<p>The reason the LUT is designed this way is that it can either be used as a single 6-input LUT, or two 5-input LUTs. 
+The only restriction is that both 5-input LUTs must share the same inputs. 
+When it is configured as two 5-input LUTs, <em>In[5]</em> is set to 0.</p>
+<h2 id="flip-flops-and-slices">Flip-flops and Slices</h2>
+<p>Each LUT's output can be optionally connected to a <a href="https://alchitry.com/tutorials/starter/synchronous-logic/">flip-flop</a>. 
+Groups of LUTs and flip-flops are called <em>slices</em>. 
+In the Artix 7, a slice has 4 LUT6 and eight flip-flops. 
+These flip-flops are configurable, allowing the type of reset (asynchronous vs. synchronous) and the reset level (high vs. low) to be specified. </p>
+<p>The FPGA used by the Au has 5,200 slices in it for a total of 20,800 LUTs.
+The Pt has just about tripled that with 15,850 slices and 63,400 LUTs!</p>
+<p>All slices are not created equal, however. 
+In the Artix 7 FPGAs there are two types of slices, <em>SLICEL</em>, and <em>SLICEM</em>. </p>
+<p>The SLICEL is the basic type of slice and just consists of the four LUT6's and the eight flip-flops plus some extra routing resources.</p>
+<p>A SLICEM is the same as a SLICEL except the LUTs can be used as 64 bits of RAM or a shift register up to 32 bits long. 
+The breakdown of the slices is roughly SLICEL 70%, and SLICEM 30%.</p>
+<h2 id="the-routing-matrix">The Routing Matrix</h2>
+<p>The next size block in the FPGA is the <strong>C</strong>onfigurable <strong>L</strong>ogic <strong>B</strong>lock (CLB) and each CLB consists of two slices. 
+Each CLB connects to a <em>switch matrix</em> that is responsible for connecting the CLB to the rest of the FPGA. 
+The switch matrix can connect the inputs and outputs of the CLB to the <em>general routing matrix</em> or to each other. 
+That way the output from one LUT can feed into the input of another LUT without having to travel far.</p>
+<p>The routing resources in an FPGA are pretty complicated, but they are essentially a bunch of multiplexers and wires 
+that are used to define what CLBs and other FPGA resources are connected to each other. 
+These connections are again defined in RAM, which is why the FPGA must be reconfigured every time the power is cycled 
+(on Alchitry boards this happens automatically via the on-board persistent memory).</p>
+<p>There are also special routing resources available on the FPGA. 
+The most notable are the clock routing resources. 
+When you have a clock being used in your design, it is crucial that the clock signal be distributed as evenly as possible 
+throughout the FPGA so all the flip-flops will flip at roughly the same time. 
+If you were to try and use the general routing resources for this, the clock signal would have large propagation delays 
+from traveling through all the multiplexers. </p>
+<p>To solve this problem, there are global and local routing resources dedicated to clocks. 
+These are basically wires that connect through the entire chip (for global) or sections of the chip (for local) with 
+very little propagation delay. </p>
+<p>Only inputs from certain pins on the FPGA are allowed to drive a signal on the global clock routing resources. 
+These are the MRCC/SRCC pins on the Au and Pt and GBIN pins on the Cu.</p>
+<p>On the Alchitry V2 headers, these are normally connected to pins 41, 42, 47, and 48 of each bank where available.</p>
+<p>All of these resources that are used in an FPGA to make them very flexible also slow things down. 
+This is why you will never be able to clock an FPGA at speeds comparable to a dedicated chip.
+An ASIC design can reach speeds faster than 4GHz, while an FPGA is very fast if it's running at 450MHz (internally, IO can go faster). </p>
+<p>This is also why FPGAs consume considerably more power than their ASIC counterparts. 
+An FPGA will require an order of magnitude more power to run than an 8-bit microcontroller, like an AVR. 
+However, they still have the huge advantage of being low-cost for small runs (or hobbyists) and reconfigurable virtually unlimited times.</p>
+<p>If you're interested in digging into the nitty-gritty, check out the official <a href="https://docs.amd.com/r/en-US/ug474_7Series_CLB">UG474 doc from Xilinx</a>.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;introduction&#x2F;getting-started&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Getting Started</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;introduction&#x2F;vivado&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Vivado Setup</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

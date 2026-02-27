@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Asynchronous Serial</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;asynchronous-serial&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;">Verilog</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;asynchronous-serial&#x2F;">Asynchronous Serial</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Asynchronous Serial</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+7 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;asynchronous-serial.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#baud-rate" aria-label="Baud Rate">Baud Rate</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#start-and-stop-bits" aria-label="Start and Stop Bits">Start and Stop Bits</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-transmitter" aria-label="The Transmitter">The Transmitter</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-receiver" aria-label="The Receiver">The Receiver</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>Asynchronous serial communication, often shortened to just <strong>serial</strong>, is one of the easiest ways to communicate between two different devices. In it's simplest form, it consists of just two connections. One line for sending data and the other for receiving data. </p>
+<p>There are many variations on the classic serial bus, but this tutorial will cover just the basics. You should be able to communicate with most serial devices including a computer.</p>
+<h3 id="baud-rate">Baud Rate</h3>
+<p>As the name implies, this protocol is <strong>asynchronous</strong>. All that means is that there is no shared clock. To get around not having a clock, both devices need to agree to the rate that data can be transmitted. The rate that data is sent is known as the <strong>baud rate</strong>. The unit for baud rate is <strong>bits/sec</strong> and this indirectly sets the width of each bit.</p>
+<p>In theory, you can use any baud rate that you like. However, to make it easier to setup devices, there are a handful of standard baud rates. In most cases you will be using one of the following rates.</p>
+<table><thead><tr><th>Baud Rates (bits/sec)</th></tr></thead><tbody>
+<tr><td>4800</td></tr>
+<tr><td>9600</td></tr>
+<tr><td>14400</td></tr>
+<tr><td>19200</td></tr>
+<tr><td>28800</td></tr>
+<tr><td>38400</td></tr>
+<tr><td>56000</td></tr>
+<tr><td>57600</td></tr>
+<tr><td>115200</td></tr>
+<tr><td>128000</td></tr>
+<tr><td>153600</td></tr>
+<tr><td>230400</td></tr>
+<tr><td>256000</td></tr>
+</tbody></table>
+<h3 id="start-and-stop-bits">Start and Stop Bits</h3>
+<p>Another side effect of not having a clock is the need for start and stops bits. A serial port typically sends data out in packets of 8 bits, or a byte. Since it is asynchronous, you never know when the other device will send a byte!</p>
+<p>To let the receiver know you are going to send a byte, a <strong>start bit</strong> is sent. This is simply a single bit with the value of <strong>0</strong>. </p>
+<p>Similarly, after the byte has been sent out, a <strong>stop bit</strong> is sent. Typically one stop bit is sent, but sometimes two are sent. Stop bits have the value of <strong>1</strong>.</p>
+<p>To better understand what goes on, take a look at this example transmission.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/serial.png" alt="serial.png" /></p>
+<p>This is a transmission of the character <strong>'a'</strong> which has an <a href="http://en.wikipedia.org/wiki/ASCII">ASCII</a> value of 97, or a binary value of 01100001.</p>
+<p>The serial line idles <strong>high</strong>, meaning when nothing is being sent it is held at the value <strong>1</strong>. This is why the start bit is 0, so the line transitions from high to low. This gives an indication that the line is active.</p>
+<p>You may have noticed that order of the bits is reversed. That is because the <strong>LSB</strong> (least-significant bit) is typically transmitted first. </p>
+<h3 id="the-transmitter">The Transmitter</h3>
+<p>If you download the <a href="https://github.com/embmicro/mojo-base-project/archive/master.zip">Mojo Base Project</a>, in the source directory you will find a file named <strong>serial_tx.v</strong>. This is the serial transmitter used by the Mojo to communicate with the AVR. </p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="short language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#faac1f;">module</span><span> serial_tx </span><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#0a8dbf;">parameter</span><span> CLK_PER_BIT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">50
+</span><span>  </span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> tx</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> block</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> busy</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> data</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> new_data
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// clog2 is &#39;ceiling of log base 2&#39; which gives you the number of bits needed to store a value
+</span><span>  </span><span style="color:#0a8dbf;">parameter</span><span> CTR_SIZE </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span>CLK_PER_BIT</span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> STATE_SIZE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> IDLE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2&#39;d0</span><span style="color:#ed4343;">,
+</span><span>    START_BIT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2&#39;d1</span><span style="color:#ed4343;">,
+</span><span>    DATA </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2&#39;d2</span><span style="color:#ed4343;">,
+</span><span>    STOP_BIT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2&#39;d3</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span>CTR_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> ctr_d</span><span style="color:#ed4343;">,</span><span> ctr_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> bit_ctr_d</span><span style="color:#ed4343;">,</span><span> bit_ctr_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> data_d</span><span style="color:#ed4343;">,</span><span> data_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span>STATE_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> state_d</span><span style="color:#ed4343;">,</span><span> state_q </span><span style="color:#ed4343;">=</span><span> IDLE</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg</span><span> tx_d</span><span style="color:#ed4343;">,</span><span> tx_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg</span><span> busy_d</span><span style="color:#ed4343;">,</span><span> busy_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg</span><span> block_d</span><span style="color:#ed4343;">,</span><span> block_q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> tx </span><span style="color:#ed4343;">=</span><span> tx_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> busy </span><span style="color:#ed4343;">=</span><span> busy_q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(*) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    block_d </span><span style="color:#ed4343;">=</span><span> block</span><span style="color:#ed4343;">;
+</span><span>    ctr_d </span><span style="color:#ed4343;">=</span><span> ctr_q</span><span style="color:#ed4343;">;
+</span><span>    bit_ctr_d </span><span style="color:#ed4343;">=</span><span> bit_ctr_q</span><span style="color:#ed4343;">;
+</span><span>    data_d </span><span style="color:#ed4343;">=</span><span> data_q</span><span style="color:#ed4343;">;
+</span><span>    state_d </span><span style="color:#ed4343;">=</span><span> state_q</span><span style="color:#ed4343;">;
+</span><span>    busy_d </span><span style="color:#ed4343;">=</span><span> busy_q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state_q</span><span style="color:#ed4343;">)
+</span><span>      IDLE</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>block_q</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>          busy_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>          tx_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">end else begin
+</span><span>          busy_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span><span>          tx_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>          bit_ctr_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">3&#39;b0</span><span style="color:#ed4343;">;
+</span><span>          ctr_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>new_data</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>            data_d </span><span style="color:#ed4343;">=</span><span> data</span><span style="color:#ed4343;">;
+</span><span>            state_d </span><span style="color:#ed4343;">=</span><span> START_BIT</span><span style="color:#ed4343;">;
+</span><span>            busy_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      START_BIT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>        busy_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>        ctr_d </span><span style="color:#ed4343;">=</span><span> ctr_q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>        tx_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr_q </span><span style="color:#ed4343;">==</span><span> CLK_PER_BIT </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>          ctr_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span><span>          state_d </span><span style="color:#ed4343;">=</span><span> DATA</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      DATA</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>        busy_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>        tx_d </span><span style="color:#ed4343;">=</span><span> data_q</span><span style="color:#ed4343;">[</span><span>bit_ctr_q</span><span style="color:#ed4343;">];
+</span><span>        ctr_d </span><span style="color:#ed4343;">=</span><span> ctr_q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr_q </span><span style="color:#ed4343;">==</span><span> CLK_PER_BIT </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>          ctr_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span><span>          bit_ctr_d </span><span style="color:#ed4343;">=</span><span> bit_ctr_q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>bit_ctr_q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>            state_d </span><span style="color:#ed4343;">=</span><span> STOP_BIT</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      STOP_BIT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>        busy_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>        tx_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>        ctr_d </span><span style="color:#ed4343;">=</span><span> ctr_q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr_q </span><span style="color:#ed4343;">==</span><span> CLK_PER_BIT </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>          state_d </span><span style="color:#ed4343;">=</span><span> IDLE</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      default</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>        state_d </span><span style="color:#ed4343;">=</span><span> IDLE</span><span style="color:#ed4343;">;
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">endcase
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(</span><span style="font-weight:bold;color:#0abfbf;">posedge</span><span> clk</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>      state_q </span><span style="color:#ed4343;">&lt;=</span><span> IDLE</span><span style="color:#ed4343;">;
+</span><span>      tx_q </span><span style="color:#ed4343;">&lt;= </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">end else begin
+</span><span>      state_q </span><span style="color:#ed4343;">&lt;=</span><span> state_d</span><span style="color:#ed4343;">;
+</span><span>      tx_q </span><span style="color:#ed4343;">&lt;=</span><span> tx_d</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span>    block_q </span><span style="color:#ed4343;">&lt;=</span><span> block_d</span><span style="color:#ed4343;">;
+</span><span>    data_q </span><span style="color:#ed4343;">&lt;=</span><span> data_d</span><span style="color:#ed4343;">;
+</span><span>    bit_ctr_q </span><span style="color:#ed4343;">&lt;=</span><span> bit_ctr_d</span><span style="color:#ed4343;">;
+</span><span>    ctr_q </span><span style="color:#ed4343;">&lt;=</span><span> ctr_d</span><span style="color:#ed4343;">;
+</span><span>    busy_q </span><span style="color:#ed4343;">&lt;=</span><span> busy_d</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span style="font-weight:bold;color:#faac1f;">endmodule
+</span></code></pre>
+<p>The parameter <strong>CLK_PER_BIT</strong> is used to set the baud rate. To calculate the correct value for <strong>CLK_PER_BIT</strong> use <strong>CLK_PER_BIT</strong> = Mojo Frequency / Baud Rate.</p>
+<p>If you open up <strong>avr_interface.v</strong> you will notice that <strong>CLK_PER_BIT</strong> is set to automatically calculated for you. The baud rate is set to 500,000 bits/sec. The AVR expects this baud rate regardless of what you set the baud rate on your computer for the USB to serial device. You will notice that this is not a standard baud rate! This rate was used since it divides evenly allowing for a high baud rates with 0% error. </p>
+<p>If you wanted a baud rate of 19200, you would use 50MHz / 19200 = 2604 for <strong>CLK_PER_BIT</strong>. Notice that 19200 doesn't divide evenly into 50MHz. It's usually ok to just round to the nearest value. You can check your error by calculating the real baud rate (50MHz / 2604 = 19201.228...) and using the percent error formula, difference / desired (1.228... / 19200 = 6.4<em>10^-5 or 6.4</em>10^-3%).</p>
+<p>The parameter <strong>CTR_SIZE</strong> should be the minimum number of bits needed to hold the value <strong>CLK_PER_BIT</strong>. In other words ceiling(Log2(<strong>CLK_PER_BIT</strong>)). This is also calculated automatically for you using the built in function <strong>$clog2</strong>.</p>
+<p>The input <strong>block</strong> is used by the AVR to tell the Mojo not to send any more data as it's buffer is full. If you don't need <strong>block</strong> you can set it to 0, or remove it from the module.</p>
+<p>The way this module works is pretty simple. When it is told to send a byte of data it sends out the start bit. Each bit lasts for <strong>CLK_PER_BIT</strong> number of clock cycles. After the start bit, the data bits are sent out LSB first. The transmission is finally ended with a stop bit.</p>
+<p>This is a more realistic example of using state machines than the state machine introduced in the <a href="https://alchitry.com/tutorials/archive/verilog/mojo/metastability-and-debouncing/">metastability and debouncing tutorial</a>.</p>
+<h3 id="the-receiver">The Receiver</h3>
+<p>The receiver code can be found in the <strong>serial_rx.v</strong> file in the <a href="https://github.com/embmicro/mojo-base-project/archive/master.zip">Mojo Base Project</a>.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="short language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#faac1f;">module</span><span> serial_rx </span><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#0a8dbf;">parameter</span><span> CLK_PER_BIT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">50
+</span><span>  </span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rx</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> data</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> new_data
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// clog2 is &#39;ceiling of log base 2&#39; which gives you the number of bits needed to store a value
+</span><span>  </span><span style="color:#0a8dbf;">parameter</span><span> CTR_SIZE </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span>CLK_PER_BIT</span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> STATE_SIZE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> IDLE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2&#39;d0</span><span style="color:#ed4343;">,
+</span><span>    WAIT_HALF </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2&#39;d1</span><span style="color:#ed4343;">,
+</span><span>    WAIT_FULL </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2&#39;d2</span><span style="color:#ed4343;">,
+</span><span>    WAIT_HIGH </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2&#39;d3</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span>CTR_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> ctr_d</span><span style="color:#ed4343;">,</span><span> ctr_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> bit_ctr_d</span><span style="color:#ed4343;">,</span><span> bit_ctr_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> data_d</span><span style="color:#ed4343;">,</span><span> data_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg</span><span> new_data_d</span><span style="color:#ed4343;">,</span><span> new_data_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span>STATE_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> state_d</span><span style="color:#ed4343;">,</span><span> state_q </span><span style="color:#ed4343;">=</span><span> IDLE</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg</span><span> rx_d</span><span style="color:#ed4343;">,</span><span> rx_q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> new_data </span><span style="color:#ed4343;">=</span><span> new_data_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> data </span><span style="color:#ed4343;">=</span><span> data_q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(*) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    rx_d </span><span style="color:#ed4343;">=</span><span> rx</span><span style="color:#ed4343;">;
+</span><span>    state_d </span><span style="color:#ed4343;">=</span><span> state_q</span><span style="color:#ed4343;">;
+</span><span>    ctr_d </span><span style="color:#ed4343;">=</span><span> ctr_q</span><span style="color:#ed4343;">;
+</span><span>    bit_ctr_d </span><span style="color:#ed4343;">=</span><span> bit_ctr_q</span><span style="color:#ed4343;">;
+</span><span>    data_d </span><span style="color:#ed4343;">=</span><span> data_q</span><span style="color:#ed4343;">;
+</span><span>    new_data_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state_q</span><span style="color:#ed4343;">)
+</span><span>      IDLE</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>        bit_ctr_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">3&#39;b0</span><span style="color:#ed4343;">;
+</span><span>        ctr_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rx_q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>          state_d </span><span style="color:#ed4343;">=</span><span> WAIT_HALF</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      WAIT_HALF</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>        ctr_d </span><span style="color:#ed4343;">=</span><span> ctr_q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr_q </span><span style="color:#ed4343;">== (</span><span>CLK_PER_BIT </span><span style="color:#ed4343;">&gt;&gt; </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">)) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>          ctr_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span><span>          state_d </span><span style="color:#ed4343;">=</span><span> WAIT_FULL</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      WAIT_FULL</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>        ctr_d </span><span style="color:#ed4343;">=</span><span> ctr_q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr_q </span><span style="color:#ed4343;">==</span><span> CLK_PER_BIT </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>          data_d </span><span style="color:#ed4343;">= {</span><span>rx_q</span><span style="color:#ed4343;">,</span><span> data_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]};
+</span><span>          bit_ctr_d </span><span style="color:#ed4343;">=</span><span> bit_ctr_q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>          ctr_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>bit_ctr_q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">3&#39;d7</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>            state_d </span><span style="color:#ed4343;">=</span><span> WAIT_HIGH</span><span style="color:#ed4343;">;
+</span><span>            new_data_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      WAIT_HIGH</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rx_q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>          state_d </span><span style="color:#ed4343;">=</span><span> IDLE</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>      default</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>        state_d </span><span style="color:#ed4343;">=</span><span> IDLE</span><span style="color:#ed4343;">;
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">endcase
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(</span><span style="font-weight:bold;color:#0abfbf;">posedge</span><span> clk</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>      ctr_q </span><span style="color:#ed4343;">&lt;= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span><span>      bit_ctr_q </span><span style="color:#ed4343;">&lt;= </span><span style="color:#a269dc;">3&#39;b0</span><span style="color:#ed4343;">;
+</span><span>      new_data_q </span><span style="color:#ed4343;">&lt;= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span><span>      state_q </span><span style="color:#ed4343;">&lt;=</span><span> IDLE</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">end else begin
+</span><span>      ctr_q </span><span style="color:#ed4343;">&lt;=</span><span> ctr_d</span><span style="color:#ed4343;">;
+</span><span>      bit_ctr_q </span><span style="color:#ed4343;">&lt;=</span><span> bit_ctr_d</span><span style="color:#ed4343;">;
+</span><span>      new_data_q </span><span style="color:#ed4343;">&lt;=</span><span> new_data_d</span><span style="color:#ed4343;">;
+</span><span>      state_q </span><span style="color:#ed4343;">&lt;=</span><span> state_d</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span>    rx_q </span><span style="color:#ed4343;">&lt;=</span><span> rx_d</span><span style="color:#ed4343;">;
+</span><span>    data_q </span><span style="color:#ed4343;">&lt;=</span><span> data_d</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span style="font-weight:bold;color:#faac1f;">endmodule
+</span></code></pre>
+<p>The parameters for this module are the same as the ones from the TX module.</p>
+<p>This module will sit in the <strong>IDLE</strong> state until it detects that the <strong>rx</strong> signal is low. That signals the beginning of the start bit. It then waits for <strong>half</strong> the number of clock cycles as <strong>CLK_PER_BIT</strong>. This is to make sure that the data bits are sampled near their centers, which is important for reliably receiving the data.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;avr-interface&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>AVR Interface</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;serial-peripheral-interface&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Serial Peripheral Interface (SPI)</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

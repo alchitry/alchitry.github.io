@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>ROMs and FSMs</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;roms-and-fsms&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;">Lucid V1</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;roms-and-fsms&#x2F;">ROMs and FSMs</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">ROMs and FSMs</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+13 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;roms-and-fsms.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#setup" aria-label="Setup">Setup</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#uart-tx" aria-label="UART Tx">UART Tx</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#uart-rx" aria-label="UART Rx">UART Rx</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#using-the-modules" aria-label="Using the Modules">Using the Modules</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#roms" aria-label="ROMs">ROMs</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-greeter" aria-label="The Greeter">The Greeter</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#fsms" aria-label="FSMs">FSMs</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#functions" aria-label="Functions">Functions</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#saying-hello" aria-label="Saying Hello">Saying Hello</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#case-statements" aria-label="Case Statements">Case Statements</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#putting-it-all-together" aria-label="Putting it all Together">Putting it all Together</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#adding-the-greeter-to-the-top-module" aria-label="Adding the Greeter to the Top Module">Adding the Greeter to the Top Module</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>In this tutorial we will create a project that will send &quot;Hello World!&quot; over the USB (serial) port when the letter &quot;h&quot; is received. This will help teach you how to use finite state machines (FSM).</p>
+<h2 id="setup">Setup</h2>
+<p>As with all the tutorials, we first need to create a new project based on the Base Project. I called mine &quot;Hello World&quot; but you are free to choose whatever name you want.</p>
+<p>With the new empty project, we now need to add the <em>uart_tx</em> and <em>uart_rx</em> components. This will be used to talk to the FTDI chip and send data over the USB port.</p>
+<p>You should know how to add a component to your project from the last tutorial. If you need a refresher, <a href="https://alchitry.com/tutorials/archive/lucid_v1/components/">click here</a>.</p>
+<p>The components we need to add are the <em>UART TX</em> and <em>UART RX</em> components and they can be found under <em>Protocols</em>.</p>
+<h2 id="uart-tx">UART Tx</h2>
+<p>Let's first take a look at what the module looks like.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> uart_tx </span><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#d45ada;">CLK_FREQ </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">50000000 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">CLK_FREQ </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// clock frequency
+</span><span>    </span><span style="color:#d45ada;">BAUD </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">500000 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">BAUD </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0 </span><span style="color:#ed4343;">&amp;&amp; </span><span style="color:#d45ada;">BAUD </span><span style="color:#ed4343;">&lt;= </span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">/</span><span style="color:#a269dc;">2 </span><span style="color:#969696;">// desired baud rate
+</span><span>  </span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// reset active high
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> tx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// TX output
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> block</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// block transmissions
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> busy</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// module is busy when 1
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],      </span><span style="color:#969696;">// data to send
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> new_data      </span><span style="color:#969696;">// flag for new data
+</span><span>  </span><span style="color:#ed4343;">) {
+</span></code></pre>
+<p>We will only be looking at the interfaces to the modules since we don't need to know how it all works to use it properly (the magic of components).</p>
+<p>This module is responsible for transmitting data. When we have a byte to send, we first need to check that <em>busy</em> is 0. When this signal is 1, any data we provide will be ignored. Assuming <em>busy</em> is 0, we then provide the data to send on <em>data</em> and signal that the data is valid by setting <em>new_data</em> to 1. This will cause the module to transmit the byte one bit at a time over <em>tx</em>.</p>
+<p>The input <em>block</em> is used when you have some way of knowing that the device receiving the data upstream (the FTDI chip in this case) is busy. When <em>block</em> is 1, the module won't transmit data. Since we don't have a way to tell when the FTDI can't hold more data and it isn't a concern when the data is being read by an application on the PC side, we can set this permanently to 0.</p>
+<p>This module has two parameters you need to set in order to get it to work properly. The first one <em>CLK_FREQ</em> is simply the frequency of the clock you are providing it. If you are using the default clock on the Au or Cu, this will be 100000000, or 100MHz.</p>
+<p>The second parameter, <em>BAUD</em> is used to set the rate of bits per second to send. Alchitry Labs' serial monitor expects to use 1M baud so we will set this to 1000000 later.</p>
+<p>When a parameter is declared for a module, you only need to specify a name. However, you can also specify a default value and some value constraints.</p>
+<p>The default value is set by using the equals sign.</p>
+<p>Constrains on the parameter's value can be set with a boolean statement after a colon. This expression will be evaluated when the module is instantiated and an error will be thrown when it fails (has a value of 0). It is recommend to add these constraints if you make any assumptions about the parameter values.</p>
+<p>For both <em>CLK_FREQ</em> and <em>BAUD</em> it makes sense that they are not negative. For the module to work, the clock frequency needs to be at least twice the baud rate. Note that the closer you get to this limit, the more careful you need to be with choosing your baud rate. If the clock frequency isn't divisible by the baud rate then it will approximate the baud rate with the closest higher value.</p>
+<h2 id="uart-rx">UART Rx</h2>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> uart_rx </span><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#d45ada;">CLK_FREQ </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">50000000 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">CLK_FREQ </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// clock frequency
+</span><span>    </span><span style="color:#d45ada;">BAUD </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">500000 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">BAUD </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0 </span><span style="color:#ed4343;">&amp;&amp; </span><span style="color:#d45ada;">BAUD </span><span style="color:#ed4343;">&lt;= </span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">/</span><span style="color:#a269dc;">4 </span><span style="color:#969696;">// desired baud rate
+</span><span>  </span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// clock input
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// reset active high
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rx</span><span style="color:#ed4343;">,       </span><span style="color:#969696;">// UART rx input
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// received data
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> new_data </span><span style="color:#969696;">// new data flag (1 = new data)
+</span><span>  </span><span style="color:#ed4343;">) {
+</span></code></pre>
+<p>This module is responsible for receiving data on the <em>rx</em> input and sending it out as bytes on <em>data</em>. The value of <em>data</em> is valid only when <em>new_data</em> is 1.</p>
+<p>The parameters for this module are more or less the same as before with the small exception that <em>BAUD</em> is constrained to a quarter of <em>CLK_FREQ</em> instead of half. This is due to the internal working of the module. Once it detects new incoming data, it waits half a cycle so that it will be sampling the data in the middle of the bit instead of the edge for reliability.</p>
+<h2 id="using-the-modules">Using the Modules</h2>
+<p>We now can add <em>uart_tx</em> and <em>uart_rx</em> to our top level module.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> cu_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 100MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> usb_rx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// USB-&gt;Serial input
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> usb_tx           </span><span style="color:#969696;">// USB-&gt;Serial output
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      uart_rx rx </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">BAUD</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1000000</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100000000</span><span style="color:#ed4343;">));
+</span><span>      uart_tx tx </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">BAUD</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1000000</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100000000</span><span style="color:#ed4343;">));
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span><span> 
+</span><span>    rx.rx </span><span style="color:#ed4343;">=</span><span> usb_rx</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// connect rx input
+</span><span>    usb_tx </span><span style="color:#ed4343;">=</span><span> tx.tx</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// connect tx output
+</span><span> 
+</span><span>    tx.new_data </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// no new data by default
+</span><span>    tx.data </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8bx</span><span style="color:#ed4343;">;          </span><span style="color:#969696;">// don&#39;t care when new_data is 0   
+</span><span>    tx.block </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// no flow control, do not block
+</span><span> 
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8h00</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs off
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>All of the external signals are already defined for us in the Base Project. We simply connect them up.</p>
+<p>We can actually make the instantiation of these two modules a bit cleaner. Both <em>uart_tx</em> and <em>uart_rx</em> have the same parameters and we want their values to be the same. This means we can group them in to a connection block just like we do for <em>clk</em> and <em>rst</em>.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>.clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>  </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>  </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>  reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">BAUD</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1000000</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100000000</span><span style="color:#ed4343;">) {
+</span><span>      uart_rx rx</span><span style="color:#ed4343;">;
+</span><span>      uart_tx tx</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>We could have also combined these with the <em>.rst(rst)</em> assignment, but we will be adding another module to that block later so it is nice to have them separate.</p>
+<p>Currently we are ignoring any data from the receiver and never sending data on the transmitter.</p>
+<p>All inputs to modules need to be assigned a value. However, since we are setting <em>tx.new_data</em> to 0, we really don't care what value gets assigned to <em>tx.data</em> since it will never be used. In cases like this, the value of 'x' is helpful. There isn't really a value associated with 'x'. Instead, this tells the synthesizer that we don't care what value it uses. This gives it freedom to optimize our design instead of being forced to use an arbitrary useless value like 0.</p>
+<p>We will now create two new modules that will actually deal with all these signals to send &quot;Hello World!&quot; when an &quot;h&quot; is received.</p>
+<h2 id="roms">ROMs</h2>
+<p>Before we get too deep into generating and handling these signals, we need to create a ROM (<strong>R</strong>ead <strong>O</strong>nly <strong>M</strong>emory).</p>
+<p>Our ROM will hold the message we want to send, in our case &quot;Hello World!&quot;.</p>
+<p>Create a new module named <em>hello_world_rom</em> and add the following to it.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> hello_world_rom </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> address</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">],  </span><span style="color:#969696;">// ROM address
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> letter</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]   </span><span style="color:#969696;">// ROM output
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">TEXT </span><span style="color:#ed4343;">= </span><span style="color:#77bf0a;">&quot;</span><span style="color:#5fb3b3;">\r\n</span><span style="color:#77bf0a;">!dlroW olleH&quot;</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// text is reversed to make &#39;H&#39; address [0]
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    letter </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">TEXT</span><span style="color:#ed4343;">[</span><span>address</span><span style="color:#ed4343;">]; </span><span style="color:#969696;">// address indexes 8 bit blocks of TEXT
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>We have a single input, <em>address</em>, and a single output, <em>letter</em>. We want to output the first letter, &quot;H&quot;, when address is 0 and the second letter, &quot;e&quot;, when address is 1. This continues for each letter in our message.</p>
+<p>This is actually pretty simple to do. First we need an array of the data we want to send. This is done in the following line.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">TEXT </span><span style="color:#ed4343;">= </span><span style="color:#77bf0a;">&quot;</span><span style="color:#5fb3b3;">\r\n</span><span style="color:#77bf0a;">!dlroW olleH&quot;</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// text is reversed to make &#39;H&#39; address [0]
+</span></code></pre>
+<p>Here we are using a string to represent our data. Strings of more than one letter are 2D. The first dimension has an index for each letter and the second dimension is 8 bits wide.</p>
+<p>Note that the text is reversed. This is because we want, as the comment says, for &quot;H&quot; to be the first letter. Also note that &quot;\n&quot; and &quot;\r&quot; are actually single characters each. That means when we reversed the text we didn't write &quot;n\r&quot; which would be wrong. These characters will make sure the text is on a new line each time it is sent. &quot;\n&quot; goes to the next line and &quot;\r&quot; returns the cursor to the beginning of the new line.</p>
+<p>Next, we simply need to set <em>letter</em> to the correct value in <em>TEXT</em> based on the given <em>address</em>. We do that on line 9.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>letter </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">TEXT</span><span style="color:#ed4343;">[</span><span>address</span><span style="color:#ed4343;">]; </span><span style="color:#969696;">// address indexes 8 bit blocks of TEXT
+</span></code></pre>
+<p>Since the text is reversed, we can simply output the corresponding letter.</p>
+<p>This wraps up the ROM!</p>
+<h2 id="the-greeter">The Greeter</h2>
+<p>This is where we will talk to the UART modules to actually send and receive data.</p>
+<p>Create a new module named <em>greeter</em> and fill it with the following.</p>
+<pre data-linenos data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><table><tbody><tr><td>1</td><td><span style="font-weight:bold;color:#faac1f;">module</span><span> greeter </span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>2</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// clock
+</span></td></tr><tr><td>3</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// reset
+</span></td></tr><tr><td>4</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> new_rx</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// new RX flag
+</span></td></tr><tr><td>5</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> rx_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],  </span><span style="color:#969696;">// RX data
+</span></td></tr><tr><td>6</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> new_tx</span><span style="color:#ed4343;">,     </span><span style="color:#969696;">// new TX flag
+</span></td></tr><tr><td>7</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> tx_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// TX data
+</span></td></tr><tr><td>8</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> tx_busy      </span><span style="color:#969696;">// TX is busy flag
+</span></td></tr><tr><td>9</td><td><span>  </span><span style="color:#ed4343;">) {
+</span></td></tr><tr><td>10</td><td><span> 
+</span></td></tr><tr><td>11</td><td><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">NUM_LETTERS </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">14</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>12</td><td><span> 
+</span></td></tr><tr><td>13</td><td><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span></td></tr><tr><td>14</td><td><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span></td></tr><tr><td>15</td><td><span>      </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">GREET</span><span style="color:#ed4343;">};
+</span></td></tr><tr><td>16</td><td><span>    </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>17</td><td><span>    </span><span style="color:#0a8dbf;">dff</span><span> count</span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">NUM_LETTERS</span><span style="color:#ed4343;">)]; </span><span style="color:#969696;">// min bits to store NUM_LETTERS - 1
+</span></td></tr><tr><td>18</td><td><span>  </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>19</td><td><span> 
+</span></td></tr><tr><td>20</td><td><span>  hello_world_rom rom</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>21</td><td><span> 
+</span></td></tr><tr><td>22</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span></td></tr><tr><td>23</td><td><span>    rom.address </span><span style="color:#ed4343;">=</span><span> count.q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>24</td><td><span>    tx_data </span><span style="color:#ed4343;">=</span><span> rom.letter</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>25</td><td><span> 
+</span></td></tr><tr><td>26</td><td><span>    new_tx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// default to 0
+</span></td></tr><tr><td>27</td><td><span> 
+</span></td></tr><tr><td>28</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state.q</span><span style="color:#ed4343;">) {
+</span></td></tr><tr><td>29</td><td><span>      state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">:
+</span></td></tr><tr><td>30</td><td><span>        count.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>31</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>new_rx </span><span style="color:#ed4343;">&amp;&amp;</span><span> rx_data </span><span style="color:#ed4343;">== </span><span style="color:#77bf0a;">&quot;h&quot;</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>32</td><td><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">GREET</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>33</td><td><span> 
+</span></td></tr><tr><td>34</td><td><span>      state.</span><span style="color:#d45ada;">GREET</span><span style="color:#ed4343;">:
+</span></td></tr><tr><td>35</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>tx_busy</span><span style="color:#ed4343;">) {
+</span></td></tr><tr><td>36</td><td><span>          count.d </span><span style="color:#ed4343;">=</span><span> count.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>37</td><td><span>          new_tx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>38</td><td><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>count.q </span><span style="color:#ed4343;">== </span><span style="color:#d45ada;">NUM_LETTERS </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>39</td><td><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>40</td><td><span>        </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>41</td><td><span>    </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>42</td><td><span>  </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>43</td><td><span style="color:#ed4343;">}
+</span></td></tr></tbody></table></code></pre>
+<p>The inputs and outputs should look a little familiar. They will connect to the <em>uart_tx</em> and <em>uart_rx</em> modules in our top level.</p>
+<p>We are using the constant <em>NUM_LETTERS</em> to specify how big the ROM is. In our case, we have 14 letters to send (this includes the new line characters).</p>
+<h3 id="fsms">FSMs</h3>
+<p>On line 15 we instantiate an FSM.</p>
+<pre data-linenos data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><table><tbody><tr><td>15</td><td><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">GREET</span><span style="color:#ed4343;">};
+</span></td></tr></tbody></table></code></pre>
+<p><strong>fsm</strong> is similar to <strong>dff</strong> in that they both have <em>.clk</em>, <em>.rst</em>, and <em>.d</em> inputs and a <em>.q</em> output. They behave much the same way, with one important exception. FSMs are used to store a state, not a value.</p>
+<p>In this example, our FSM can have one of two states, <em>IDLE</em> or <em>GREET</em>. In a more complicated example we could add more states to our FSM simply by adding them to the list.</p>
+<p>To access a state, we can use <em>state.IDLE</em> or <em>state.GREET</em>. This is done in the case statement (covered below) as well as when we assign a new state to <em>state</em>.</p>
+<h3 id="functions">Functions</h3>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span><span> count</span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">NUM_LETTERS</span><span style="color:#ed4343;">)]; </span><span style="color:#969696;">// min bits to store NUM_LETTERS - 1
+</span></code></pre>
+<p>Here we are declaring a counter that will be use to keep track of what letter we are on. That means we need the counter to be able to count from 0 to <em>NUM_LETTERS</em> - 1. How do we know how many bits we will need when <em>NUM_LETTERS</em> is a constant? We could simply compute this by hand and type in the value. However, this is fragile since it would be easy to change <em>NUM_LETTERS</em> and forget to change the counter size. This is where the function <em>$clog2()</em> comes in handy. This function will compute the ceiling log base 2 of the value passed to it. This happens to be the number of bits you need to store the values from 0 to one minus the argument. How convenient! Just what we needed.</p>
+<p>It is important to note that this function can only be used with constants or constant expressions. This is because the tools will compute the value during synthesis. Your circuit isn't doing anything fancy here. Computing this function in hardware would be far too complicated for a single line to properly handle.</p>
+<h3 id="saying-hello">Saying Hello</h3>
+<p>We instantiate a copy of our <em>hello_world_rom</em> and call it <em>rom</em> so we know what data to send.</p>
+<p>Since we are only going to be sending the letters from the ROM, we can wire them up directly to <em>tx_data</em>.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>hello_world_rom rom</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>  rom.address </span><span style="color:#ed4343;">=</span><span> count.q</span><span style="color:#ed4343;">;
+</span><span>  tx_data </span><span style="color:#ed4343;">=</span><span> rom.letter</span><span style="color:#ed4343;">;
+</span></code></pre>
+<p>We also can set the ROM's address to simply be the output of our counter since that's what the counter is for!</p>
+<h3 id="case-statements">Case Statements</h3>
+<p><strong>Case statements</strong> are an easy way to do a bunch of different things depending on the value of something. You could always use a bunch of <strong>if statements</strong> but this can be way more compact and easier to read.</p>
+<p>The general syntax for a <strong>case statement</strong> is below.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>expr</span><span style="color:#ed4343;">) {
+</span><span>  </span><span style="color:#0a8dbf;">const</span><span style="color:#ed4343;">:</span><span> statements
+</span><span>  </span><span style="color:#0a8dbf;">const</span><span style="color:#ed4343;">:</span><span> statements
+</span><span>  </span><span style="color:#0a8dbf;">const</span><span style="color:#ed4343;">:</span><span> statements
+</span><span>  </span><span style="color:#0a8dbf;">const</span><span style="color:#ed4343;">:</span><span> statements
+</span><span>  </span><span style="color:#0abfbf;">default</span><span style="color:#ed4343;">:</span><span> statements
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Basically, you pass in some expression and then have a bunch of blocks of statements that are considered based on the value of that expression. It sounds way more complicated than it is. Let's look at our example.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state.q</span><span style="color:#ed4343;">) {
+</span><span>  state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">:
+</span><span>    count.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>new_rx </span><span style="color:#ed4343;">&amp;&amp;</span><span> rx_data </span><span style="color:#ed4343;">== </span><span style="color:#77bf0a;">&quot;h&quot;</span><span style="color:#ed4343;">)
+</span><span>      state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">GREET</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  state.</span><span style="color:#d45ada;">GREET</span><span style="color:#ed4343;">:
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>tx_busy</span><span style="color:#ed4343;">) {
+</span><span>      count.d </span><span style="color:#ed4343;">=</span><span> count.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>      new_tx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>count.q </span><span style="color:#ed4343;">== </span><span style="color:#d45ada;">NUM_LETTERS </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">)
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>When <em>state.q</em> is <em>state.IDLE</em>, we only look at the lines 30-32. However, when <em>state.q</em> is <em>state.GREET</em> we only look at lines 35-40.</p>
+<h3 id="putting-it-all-together">Putting it all Together</h3>
+<p>So how does it all work? Since <em>IDLE</em> was the first state we listed, it is, by default, the default state. You can specify an alternate default state by using the parameter <em>#INIT(STATE_NAME)</em>.</p>
+<p>Because we start in the idle state, the counter is set to 0 and we do nothing until we see &quot;h&quot;. To wait for &quot;h&quot; we wait for <em>new_rx</em> to be high and <em>rx_data</em> to be &quot;h&quot;.</p>
+<p>Once we receive an &quot;h&quot;, we change states to <em>state.GREET</em></p>
+<p>Here we wait for <em>tx_busy</em> to be low to signal we can send data. We then increment the counter for next time and signal we have a new letter to send by setting <em>new_tx</em> high. Remember we already set <em>tx_data</em> as the output of our ROM.</p>
+<p>Once we are out of letters, we return to the idle state to wait for another &quot;h&quot;.</p>
+<h2 id="adding-the-greeter-to-the-top-module">Adding the Greeter to the Top Module</h2>
+<p>Finally we need to add the <em>greeter</em> module to our top module.</p>
+<p>First, let's add an instance of it.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>.clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>  </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>  </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>  reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">BAUD</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1000000</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100000000</span><span style="color:#ed4343;">) {
+</span><span>      uart_rx rx</span><span style="color:#ed4343;">;
+</span><span>      uart_tx tx</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>    greeter greeter</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// instance of our greeter
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Next, we need to connect it up.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>  reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>  rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span><span> 
+</span><span>  rx.rx </span><span style="color:#ed4343;">=</span><span> usb_rx</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// connect rx input
+</span><span>  usb_tx </span><span style="color:#ed4343;">=</span><span> tx.tx</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// connect tx output
+</span><span> 
+</span><span>  greeter.new_rx </span><span style="color:#ed4343;">=</span><span> rx.new_data</span><span style="color:#ed4343;">;
+</span><span>  greeter.rx_data </span><span style="color:#ed4343;">=</span><span> rx.data</span><span style="color:#ed4343;">;
+</span><span>  tx.new_data </span><span style="color:#ed4343;">=</span><span> greeter.new_tx</span><span style="color:#ed4343;">;
+</span><span>  tx.data </span><span style="color:#ed4343;">=</span><span> greeter.tx_data</span><span style="color:#ed4343;">;
+</span><span>  greeter.tx_busy </span><span style="color:#ed4343;">=</span><span> tx.busy</span><span style="color:#ed4343;">;
+</span><span>  tx.block </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8h00</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs off
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>That's it! Go ahead, build your project and load it on your board. You can then fire up a serial monitor (Tools-&gt;Serial Port Monitor) and send &quot;h&quot; to your board to be nicely greeted!</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;components&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Components</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;hello-your-name-here&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Hello YOUR_NAME_HERE</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

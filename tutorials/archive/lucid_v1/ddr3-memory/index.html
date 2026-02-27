@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>DDR3 Memory</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;ddr3-memory&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;">Lucid V1</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;ddr3-memory&#x2F;">DDR3 Memory</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">DDR3 Memory</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+29 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;ddr3-memory.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#setup" aria-label="Setup">Setup</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#adding-the-memory-controller" aria-label="Adding the memory controller">Adding the memory controller</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#adapting-to-lucid" aria-label="Adapting to Lucid">Adapting to Lucid</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#hooking-up-the-wrapper" aria-label="Hooking up the wrapper">Hooking up the wrapper</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#setting-up-the-clock" aria-label="Setting up the clock">Setting up the clock</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-user-interface" aria-label="The user interface">The user interface</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#write-and-read-example" aria-label="Write and read example">Write and read example</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#caching" aria-label="Caching">Caching</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#cache-interface" aria-label="Cache interface">Cache interface</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#cache-example" aria-label="Cache example">Cache example</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#multiple-devices" aria-label="Multiple devices">Multiple devices</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>In this tutorial we are going to setup an interface to the DDR3 memory with the FPGA on the Alchitry Au.</p>
+<h1 id="setup">Setup</h1>
+<p><strong>Before starting, you need to have Alchitry Labs 1.1.6 and Vivado 2019.1 or newer.</strong></p>
+<p>The first step is to setup your project. Open <a href="https://alchitry.com/alchitry-labs/">Alchitry Labs</a>, and go to <strong>Project-&gt;New Project</strong>. From here, make a new project based on the <em>Base Project</em>. We called ours <em>DDR Demo</em>, but feel free to name yours whatever you want.</p>
+<p>Also make sure that the project is for the Alchitry Au. The Alchitry Cu and Mojo don't have DDR memory on board so this tutorial is only for the Alchitry Au.</p>
+<h2 id="adding-the-memory-controller">Adding the memory controller</h2>
+<p>There is special hardware on the Artix 7 FPGA that is used for interfacing with the DDR chip. To efficiently use this, Xilinx provides customizable IP via their IP catalog in Vivado.</p>
+<p>Customizing this IP requires full knowledge of the DDR3 chip being used and the board pinout. While you can find all the information you need to set this up for the Alchitry Au, we have drastically simplified it for you in Alchitry Labs.</p>
+<p>To invoke the commands needed to add the Xilinx memory interface to your project with everything already setup, go to <strong>Project-&gt;Add Memory Controller</strong>. Note that this option is only visible if your project is for the Alchitry Au board.</p>
+<p>Once you click this, Alchitry Labs will add a Vivado IP Project to your project and invoke the necessary commands to add the memory interface.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/Screenshot_from_2019-09-16_09-31-38.png" alt="Screenshot_from_2019-09-16_09-31-38.png" /></p>
+<p>The initial setup can take a couple minutes since it actually builds the core. Once it is done it should look like the above screen shot.</p>
+<p>If you open the <strong>Cores</strong> section of the project tree, you should see the <em>mig_7series_0</em> core. Under its heading you can find the stub file. This is an empty Verilog file that defines all the connections to the core.</p>
+<h2 id="adapting-to-lucid">Adapting to Lucid</h2>
+<p>You can use this core directly in your design if you want, but it is generally more convenient to wrap it. Go to <strong>Project-&gt;Add Components</strong> and under <strong>Memory</strong> select the <strong>MIG Wrapper</strong>. Click <strong>Add</strong> to add it to your project.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">global </span><span style="color:#da5a8c;">Memory </span><span style="color:#ed4343;">{
+</span><span>  </span><span style="color:#0a8dbf;">struct</span><span> in </span><span style="color:#ed4343;">{
+</span><span>    addr</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">28</span><span style="color:#ed4343;">],
+</span><span>    cmd</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">],
+</span><span>    en</span><span style="color:#ed4343;">,
+</span><span>    wr_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">128</span><span style="color:#ed4343;">],
+</span><span>    wr_en</span><span style="color:#ed4343;">,
+</span><span>    wr_mask</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">]
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>   
+</span><span>  </span><span style="color:#0a8dbf;">struct</span><span> out </span><span style="color:#ed4343;">{
+</span><span>    rd_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">128</span><span style="color:#ed4343;">],
+</span><span>    rd_valid</span><span style="color:#ed4343;">,
+</span><span>    rdy</span><span style="color:#ed4343;">,
+</span><span>    wr_rdy
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span><span> 
+</span><span style="font-weight:bold;color:#faac1f;">module</span><span> mig_wrapper </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dq</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dqs_n</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dqs_p</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_addr</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">14</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ba</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ras_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cas_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_we_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_reset_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ck_p</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ck_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cke</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cs_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_dm</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_odt</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// Inputs
+</span><span>    </span><span style="color:#969696;">// Single-ended system clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span>              sys_clk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// Single-ended iodelayctrl clk (reference clock)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span>              clk_ref</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// user interface signalsa
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span>memory.in</span><span style="color:#ed4343;">&gt;</span><span>   mem_in</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span>memory.out</span><span style="color:#ed4343;">&gt;</span><span> mem_out</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span>             ui_clk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span>             sync_rst</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span>              sys_rst
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span>   
+</span><span>  mig_7series_0 mig</span><span style="color:#ed4343;">(</span><span>.ddr3_dq</span><span style="color:#ed4343;">(</span><span>ddr3_dq</span><span style="color:#ed4343;">),</span><span>.ddr3_dqs_n</span><span style="color:#ed4343;">(</span><span>ddr3_dqs_n</span><span style="color:#ed4343;">),</span><span>.ddr3_dqs_p</span><span style="color:#ed4343;">(</span><span>ddr3_dqs_p</span><span style="color:#ed4343;">));
+</span><span>   
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    ddr3_addr </span><span style="color:#ed4343;">=</span><span> mig.ddr3_addr</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ba </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ba</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ras_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ras_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_cas_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cas_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_we_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_we_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_reset_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_reset_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ck_p </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ck_p</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ck_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ck_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_cke </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cke</span><span style="color:#ed4343;">;
+</span><span>    ddr3_cs_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cs_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_dm </span><span style="color:#ed4343;">=</span><span> mig.ddr3_dm</span><span style="color:#ed4343;">;
+</span><span>    ddr3_odt </span><span style="color:#ed4343;">=</span><span> mig.ddr3_odt</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    mig.app_sr_req </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    mig.app_ref_req </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    mig.app_zq_req </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    mig.app_wdf_data </span><span style="color:#ed4343;">=</span><span> mem_in.wr_data</span><span style="color:#ed4343;">;
+</span><span>    mig.app_wdf_end </span><span style="color:#ed4343;">=</span><span> mem_in.wr_en</span><span style="color:#ed4343;">;
+</span><span>    mig.app_wdf_wren </span><span style="color:#ed4343;">=</span><span> mem_in.wr_en</span><span style="color:#ed4343;">;
+</span><span>    mig.app_wdf_mask </span><span style="color:#ed4343;">=</span><span> mem_in.wr_mask</span><span style="color:#ed4343;">;
+</span><span>    mig.app_cmd </span><span style="color:#ed4343;">=</span><span> mem_in.cmd</span><span style="color:#ed4343;">;
+</span><span>    mig.app_en </span><span style="color:#ed4343;">=</span><span> mem_in.en</span><span style="color:#ed4343;">;
+</span><span>    mig.app_addr </span><span style="color:#ed4343;">=</span><span> mem_in.addr</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    mem_out.rd_data </span><span style="color:#ed4343;">=</span><span> mig.app_rd_data</span><span style="color:#ed4343;">;
+</span><span>    mem_out.rd_valid </span><span style="color:#ed4343;">=</span><span> mig.app_rd_data_valid</span><span style="color:#ed4343;">;
+</span><span>    mem_out.rdy </span><span style="color:#ed4343;">=</span><span> mig.app_rdy</span><span style="color:#ed4343;">;
+</span><span>    mem_out.wr_rdy </span><span style="color:#ed4343;">=</span><span> mig.app_wdf_rdy</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    mig.sys_clk_i </span><span style="color:#ed4343;">=</span><span> sys_clk</span><span style="color:#ed4343;">;
+</span><span>    mig.clk_ref_i </span><span style="color:#ed4343;">=</span><span> clk_ref</span><span style="color:#ed4343;">;
+</span><span>    mig.sys_rst </span><span style="color:#ed4343;">=</span><span> sys_rst</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    sync_rst </span><span style="color:#ed4343;">=</span><span> mig.ui_clk_sync_rst</span><span style="color:#ed4343;">;
+</span><span>    ui_clk </span><span style="color:#ed4343;">=</span><span> mig.ui_clk</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This component wraps the <em>mig_7series_0</em> core you previously generated and defines two global structures to make hooking up other modules to it easier.</p>
+<p>If you look at the module declaration of the wrapper, you will see a bunch of inouts and outputs that start with <em>ddr3</em>_. These are all top level signals that need to connect to the DDR3 chip.</p>
+<p>These names are actually important since the pins they connect to are defined in the <em>mig_7series_0</em> core. You don't need to specify a pinout for them in your constraints file.</p>
+<h2 id="hooking-up-the-wrapper">Hooking up the wrapper</h2>
+<p>We can copy/paste these connections to our top level module and hook them up.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> au_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 100MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> usb_rx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// USB-&gt;Serial input
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> usb_tx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// USB-&gt;Serial output
+</span><span>    </span><span style="color:#969696;">/* DDR3 Connections */
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dq</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dqs_n</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dqs_p</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_addr</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">14</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ba</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ras_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cas_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_we_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_reset_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ck_p</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ck_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cke</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cs_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_dm</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_odt
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span>   
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span>   
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>   
+</span><span>  </span><span style="color:#969696;">// DDR3 Interface - connect inouts directly
+</span><span>  mig_wrapper mig </span><span style="color:#ed4343;">(</span><span>.ddr3_dq</span><span style="color:#ed4343;">(</span><span>ddr3_dq</span><span style="color:#ed4343;">),</span><span> .ddr3_dqs_n</span><span style="color:#ed4343;">(</span><span>ddr3_dqs_n</span><span style="color:#ed4343;">),</span><span> .ddr3_dqs_p</span><span style="color:#ed4343;">(</span><span>ddr3_dqs_p</span><span style="color:#ed4343;">));
+</span><span>   
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    </span><span style="color:#969696;">/* DDR3 Connections */
+</span><span>    ddr3_addr </span><span style="color:#ed4343;">=</span><span> mig.ddr3_addr</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ba </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ba</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ras_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ras_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_cas_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cas_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_we_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_we_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_reset_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_reset_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ck_p </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ck_p</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ck_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ck_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_cke </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cke</span><span style="color:#ed4343;">;
+</span><span>    ddr3_cs_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cs_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_dm </span><span style="color:#ed4343;">=</span><span> mig.ddr3_dm</span><span style="color:#ed4343;">;
+</span><span>    ddr3_odt </span><span style="color:#ed4343;">=</span><span> mig.ddr3_odt</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span><span>     
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8h00</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs off
+</span><span> 
+</span><span>    usb_tx </span><span style="color:#ed4343;">=</span><span> usb_rx</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// echo the serial data
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Note that you'll get an error on the <em>mig</em> instantiation since we haven't hooked up the user interface yet.</p>
+<p>Again, it is important you don't change the names of these signals since they are used in the constraint file included with the <em>mig_7series_0</em> core. If you change the names, the tools won't know what pins they need to connect to on the FPGA.</p>
+<h2 id="setting-up-the-clock">Setting up the clock</h2>
+<p>The memory interface requires both a 100MHz and a 200MHz clock. Since the Alchitry Au only has a 100MHz clock, we need to synthesize the 200MHz one.</p>
+<p>We can do this using the <em>Vivado IP Catalog</em>. Go to <strong>Project-&gt;Vivado IP Catalog</strong> to launch it.</p>
+<p>After a few seconds, a window should open that looks likes this.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/Screenshot_from_2019-09-16_10-08-09.png" alt="Screenshot_from_2019-09-16_10-08-09.png" /></p>
+<p>Note that there is already a core in our project, the <em>mig_7series_0</em>.</p>
+<p>In the right <strong>IP Catalog</strong> panel, navigate to <strong>FPGA Features and Design-&gt;Clocking-&gt;Clocking Wizard</strong> and double click on <strong>Clocking Wizard</strong>.</p>
+<p>This will open a new dialog to customize the IP.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/Screenshot_from_2019-09-16_10-10-53.png" alt="Screenshot_from_2019-09-16_10-10-53.png" /></p>
+<p>The defaults on the first page are all fine. However, by default, it is set to output only a single 100MHz clock.</p>
+<p>Go to the <strong>Output Clocks</strong> tab and check the <strong>clk_out2</strong> box.</p>
+<p>Under <strong>Output Freq (MHz) Requested</strong>, enter 200.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/Screenshot_from_2019-09-16_10-12-53.png" alt="Screenshot_from_2019-09-16_10-12-53.png" /></p>
+<p>We can now click <em>OK</em> to close the dialog.</p>
+<p>Another dialog will open with some generation settings, just click on <strong>Generate</strong> to generate the core.</p>
+<p>After a few seconds, another dialog saying <em>Out-of-context module run was launched for generating output products.</em> Simply click OK and wait until you see 100% under the <strong>Progress</strong> section in the bottom of the main window.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/Screenshot_from_2019-09-16_10-15-51.png" alt="Screenshot_from_2019-09-16_10-15-51.png" /></p>
+<p>You can now close the IP catalog.</p>
+<p>Back in Alchitry Labs, you should see some text in the console about finding the new core. You should also see <em>clk_wiz_0</em> added to the <strong>Cores</strong> section of the project tree.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/Screenshot_from_2019-09-16_10-17-14.png" alt="Screenshot_from_2019-09-16_10-17-14.png" /></p>
+<p>We can now hook up the clocks to the memory interface core.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> au_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 100MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> usb_rx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// USB-&gt;Serial input
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> usb_tx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// USB-&gt;Serial output
+</span><span>    </span><span style="color:#969696;">/* DDR3 Connections */
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dq</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dqs_n</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dqs_p</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_addr</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">14</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ba</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ras_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cas_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_we_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_reset_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ck_p</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ck_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cke</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cs_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_dm</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_odt
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span>   
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span>   
+</span><span>  clk_wiz_0 clk_wiz</span><span style="color:#ed4343;">;
+</span><span>   
+</span><span>  </span><span style="color:#969696;">// DDR3 Interface - connect inouts directly
+</span><span>  mig_wrapper mig </span><span style="color:#ed4343;">(</span><span>.ddr3_dq</span><span style="color:#ed4343;">(</span><span>ddr3_dq</span><span style="color:#ed4343;">),</span><span> .ddr3_dqs_n</span><span style="color:#ed4343;">(</span><span>ddr3_dqs_n</span><span style="color:#ed4343;">),</span><span> .ddr3_dqs_p</span><span style="color:#ed4343;">(</span><span>ddr3_dqs_p</span><span style="color:#ed4343;">));
+</span><span>   
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    </span><span style="color:#969696;">/* Clock Wizard Connections */
+</span><span>    clk_wiz.clk_in1 </span><span style="color:#ed4343;">=</span><span> clk</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 100MHz in
+</span><span>    clk_wiz.reset </span><span style="color:#ed4343;">= !</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// reset signal
+</span><span>     
+</span><span>    </span><span style="color:#969696;">/* DDR3 Connections */
+</span><span>    ddr3_addr </span><span style="color:#ed4343;">=</span><span> mig.ddr3_addr</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ba </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ba</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ras_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ras_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_cas_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cas_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_we_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_we_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_reset_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_reset_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ck_p </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ck_p</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ck_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ck_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_cke </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cke</span><span style="color:#ed4343;">;
+</span><span>    ddr3_cs_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cs_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_dm </span><span style="color:#ed4343;">=</span><span> mig.ddr3_dm</span><span style="color:#ed4343;">;
+</span><span>    ddr3_odt </span><span style="color:#ed4343;">=</span><span> mig.ddr3_odt</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    mig.sys_clk </span><span style="color:#ed4343;">=</span><span> clk_wiz.clk_out1</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 100MHz clock
+</span><span>    mig.clk_ref </span><span style="color:#ed4343;">=</span><span> clk_wiz.clk_out2</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 200MHz clock
+</span><span>    mig.sys_rst </span><span style="color:#ed4343;">= !</span><span>clk_wiz.locked</span><span style="color:#ed4343;">;  </span><span style="color:#969696;">// reset when clk_wiz isn&#39;t locked
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> mig.sync_rst</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// use the reset signal from the mig core
+</span><span> 
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8h00</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs off
+</span><span> 
+</span><span>    usb_tx </span><span style="color:#ed4343;">=</span><span> usb_rx</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// echo the serial data
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Note that we are using the 100MHz output from the <em>clk_wiz</em> module instead of the <em>clk</em> signal directly. This is to keep the routing in the FPGA simple. The <em>clk</em> only needs to route to the <em>clk_wiz_0</em> core and nowhere else. You can often run into issues if you try to route the clock to special resources like the PLL used by the clock wizard and the general fabric.</p>
+<p>The two outputs of the clock wizard are also phase aligned (rising edges match up) which may or may not be important for your design. The same is not true for the input clock and the output clocks. In this case, we don't really care about this.</p>
+<p>To clock the rest of our design, we will be using the signal <em>mig.ui_clk</em> which is another synthesized clock from the memory interface. This clock is the one that the user interface is synchronized to. In our case, it is 81.25MHz. This is because our DDR3 interface is setup to run at 325MHz with a 4:1 ratio.</p>
+<p>Also notice that we are using the <em>mig.sync_rst</em> signal as our reset. Because of this, we can remove the <em>reset_conditioner</em> module from our top level module.</p>
+<p>The reset button on the board will still work as the reset since it is used to reset the clock wizard which then resets the memory controller. This works since the <em>locked</em> output of the clock wizard goes low when it is reset. The locked output goes high when it isn't being reset and the clocks are stable. If you don't hold your circuit in reset when this input isn't high, you risk running into glitches as the clocks may be doing weird things.</p>
+<p>With all of that we are now fully setup to use the core!</p>
+<h1 id="the-user-interface">The user interface</h1>
+<p>The memory interface abstracts away a ton of the complexities of dealing with DDR3 memory, but the interface we get to it is still reasonably complex.</p>
+<p>Check out <a href="https://docs.amd.com/v/u/1.4-English/ug586_7Series_MIS">this document</a> from Xilinx that details all the information on the core. Skip to page 57 and look at the section labeled <strong>User Interface</strong>.</p>
+<p>This section details what each of the signals we will be interacting with do.</p>
+<p>The actual signals we need to deal with are a subset of the ones listed. See the two structs declared in the <em>mig_wrapper</em> component for the ones we need.</p>
+<p>One thing to note is that while the <em>cmd</em> signal (<em>app_cmd</em> in the Xilinx doc) is three bits wide, it only ever has a value of 0 (for write) and 1 (for read). Other values are used in different configurations of the core (for example, with ECC memory).</p>
+<p>There are really three independent interface bundled together used to deal with the controller.</p>
+<p>The first is the write FIFO. The controller will store data in a FIFO to be used in subsequent write commands. The signal <em>wr_rdy</em> is 1 when there is space in the buffer. You can write to the buffer by supplying data on <em>wr_data</em> and setting <em>we_en</em> to 1.</p>
+<p>The signal <em>wr_mask</em> can be used to ignore bytes in <em>wr_data</em>. A 1 means to ignore the corresponding byte. To write the full 16 bytes (128 bits) set <em>wr_mask</em> to 0.</p>
+<p>Note that this mask doesn't change which bytes are sent to the DDR3 chip. It is used to control the <em>DM</em> lines which tell the DDR3 chip to ignore certain bytes. If you set <em>wr_mask</em> to 16hFFFF and perform a write, the full 128 bits will still be sent to the DDR3 but nothing will happen.</p>
+<p>With data in the FIFO, you can issue a write command.</p>
+<p>The command interface can be used when the signal <em>rdy</em> is 1.</p>
+<p>To issue a command, set <em>cmd</em> to 0 for a write or 1 for a read, supply the related address on <em>addr</em> and set <em>en</em> to 1.</p>
+<p>If you issue a write command, the first value written to the write FIFO will be used as data.</p>
+<p>If you issue a read command, once it has been performed, the value will be returned on the read interface.</p>
+<p>The read interface consists of <em>rd_valid</em>, which is 1 when there is new data, and <em>rd_data</em>, which is the data. After sending a read command, you wait for <em>rd_valid</em> to be 1 which means the data you requested is on <em>rd_data</em>.</p>
+<p>The reason for the three independent interfaces it efficiency. The command interface may be ready to accept more commands before the read data is fully ready. The write FIFO may also be willing to accept data while a read is being performed.</p>
+<p>It is also possible to setup the core to allow it to reorder the execution of commands to improve efficiency. In this case you may be issuing many commands while waiting for the first read command to finish. However, to keep things simple, our interface configuration uses strict ordering (commands executed in the order given).</p>
+<h1 id="write-and-read-example">Write and read example</h1>
+<p>In this next section, we will create a small state machine that first initializes the DDR3 to have sequential values stored and then reads them back displaying them on the LEDs.</p>
+<p>Here's the full top level module.</p>
+<pre data-linenos data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><table><tbody><tr><td>1</td><td><span style="font-weight:bold;color:#faac1f;">module</span><span> au_top </span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>2</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 100MHz clock
+</span></td></tr><tr><td>3</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span></td></tr><tr><td>4</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span></td></tr><tr><td>5</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> usb_rx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// USB-&gt;Serial input
+</span></td></tr><tr><td>6</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> usb_tx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// USB-&gt;Serial output
+</span></td></tr><tr><td>7</td><td><span>    </span><span style="color:#969696;">/* DDR3 Connections */
+</span></td></tr><tr><td>8</td><td><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dq</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],
+</span></td></tr><tr><td>9</td><td><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dqs_n</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span></td></tr><tr><td>10</td><td><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dqs_p</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span></td></tr><tr><td>11</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_addr</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">14</span><span style="color:#ed4343;">],
+</span></td></tr><tr><td>12</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ba</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">],
+</span></td></tr><tr><td>13</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ras_n</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>14</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cas_n</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>15</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_we_n</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>16</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_reset_n</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>17</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ck_p</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>18</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ck_n</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>19</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cke</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>20</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cs_n</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>21</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_dm</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span></td></tr><tr><td>22</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_odt
+</span></td></tr><tr><td>23</td><td><span>  </span><span style="color:#ed4343;">) {
+</span></td></tr><tr><td>24</td><td><span>   
+</span></td></tr><tr><td>25</td><td><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span></td></tr><tr><td>26</td><td><span>   
+</span></td></tr><tr><td>27</td><td><span>  clk_wiz_0 clk_wiz</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>28</td><td><span>   
+</span></td></tr><tr><td>29</td><td><span>  </span><span style="color:#969696;">// DDR3 Interface - connect inouts directly
+</span></td></tr><tr><td>30</td><td><span>  mig_wrapper mig </span><span style="color:#ed4343;">(</span><span>.ddr3_dq</span><span style="color:#ed4343;">(</span><span>ddr3_dq</span><span style="color:#ed4343;">),</span><span> .ddr3_dqs_n</span><span style="color:#ed4343;">(</span><span>ddr3_dqs_n</span><span style="color:#ed4343;">),</span><span> .ddr3_dqs_p</span><span style="color:#ed4343;">(</span><span>ddr3_dqs_p</span><span style="color:#ed4343;">));
+</span></td></tr><tr><td>31</td><td><span>   
+</span></td></tr><tr><td>32</td><td><span>  .clk</span><span style="color:#ed4343;">(</span><span>mig.ui_clk</span><span style="color:#ed4343;">) {
+</span></td></tr><tr><td>33</td><td><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span></td></tr><tr><td>34</td><td><span>      </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">WRITE_DATA</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WRITE_CMD</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">READ_CMD</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WAIT_READ</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">DELAY</span><span style="color:#ed4343;">};
+</span></td></tr><tr><td>35</td><td><span>      </span><span style="color:#0a8dbf;">dff</span><span> ctr</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">24</span><span style="color:#ed4343;">];
+</span></td></tr><tr><td>36</td><td><span>      </span><span style="color:#0a8dbf;">dff</span><span> address</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];
+</span></td></tr><tr><td>37</td><td><span>      </span><span style="color:#0a8dbf;">dff</span><span> led_reg</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];
+</span></td></tr><tr><td>38</td><td><span>    </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>39</td><td><span>  </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>40</td><td><span>   
+</span></td></tr><tr><td>41</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span></td></tr><tr><td>42</td><td><span>    </span><span style="color:#969696;">/* Clock Wizard Connections */
+</span></td></tr><tr><td>43</td><td><span>    clk_wiz.clk_in1 </span><span style="color:#ed4343;">=</span><span> clk</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 100MHz in
+</span></td></tr><tr><td>44</td><td><span>    clk_wiz.reset </span><span style="color:#ed4343;">= !</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// reset signal
+</span></td></tr><tr><td>45</td><td><span>     
+</span></td></tr><tr><td>46</td><td><span>    </span><span style="color:#969696;">/* DDR3 Connections */
+</span></td></tr><tr><td>47</td><td><span>    ddr3_addr </span><span style="color:#ed4343;">=</span><span> mig.ddr3_addr</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>48</td><td><span>    ddr3_ba </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ba</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>49</td><td><span>    ddr3_ras_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ras_n</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>50</td><td><span>    ddr3_cas_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cas_n</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>51</td><td><span>    ddr3_we_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_we_n</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>52</td><td><span>    ddr3_reset_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_reset_n</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>53</td><td><span>    ddr3_ck_p </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ck_p</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>54</td><td><span>    ddr3_ck_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ck_n</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>55</td><td><span>    ddr3_cke </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cke</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>56</td><td><span>    ddr3_cs_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cs_n</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>57</td><td><span>    ddr3_dm </span><span style="color:#ed4343;">=</span><span> mig.ddr3_dm</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>58</td><td><span>    ddr3_odt </span><span style="color:#ed4343;">=</span><span> mig.ddr3_odt</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>59</td><td><span>     
+</span></td></tr><tr><td>60</td><td><span>    mig.sys_clk </span><span style="color:#ed4343;">=</span><span> clk_wiz.clk_out1</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 100MHz clock
+</span></td></tr><tr><td>61</td><td><span>    mig.clk_ref </span><span style="color:#ed4343;">=</span><span> clk_wiz.clk_out2</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 200MHz clock
+</span></td></tr><tr><td>62</td><td><span>    mig.sys_rst </span><span style="color:#ed4343;">= !</span><span>clk_wiz.locked</span><span style="color:#ed4343;">;  </span><span style="color:#969696;">// reset when clk_wiz isn&#39;t locked
+</span></td></tr><tr><td>63</td><td><span>    rst </span><span style="color:#ed4343;">=</span><span> mig.sync_rst</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// use the reset signal from the mig core
+</span></td></tr><tr><td>64</td><td><span>     
+</span></td></tr><tr><td>65</td><td><span>    led </span><span style="color:#ed4343;">=</span><span> led_reg.q</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// set leds to show led_reg value
+</span></td></tr><tr><td>66</td><td><span>     
+</span></td></tr><tr><td>67</td><td><span>    usb_tx </span><span style="color:#ed4343;">=</span><span> usb_rx</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// echo the serial data
+</span></td></tr><tr><td>68</td><td><span>     
+</span></td></tr><tr><td>69</td><td><span>    </span><span style="color:#969696;">// default values
+</span></td></tr><tr><td>70</td><td><span>    mig.mem_in.en </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>71</td><td><span>    mig.mem_in.cmd </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">3bx</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>72</td><td><span>    mig.mem_in.addr </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">28bx</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>73</td><td><span>    mig.mem_in.wr_data </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">128bx</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>74</td><td><span>    mig.mem_in.wr_mask </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>75</td><td><span>    mig.mem_in.wr_en </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>76</td><td><span>     
+</span></td></tr><tr><td>77</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state.q</span><span style="color:#ed4343;">) {
+</span></td></tr><tr><td>78</td><td><span>      state.</span><span style="color:#d45ada;">WRITE_DATA</span><span style="color:#ed4343;">:
+</span></td></tr><tr><td>79</td><td><span>        mig.mem_in.wr_en </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>80</td><td><span>        mig.mem_in.wr_data </span><span style="color:#ed4343;">=</span><span> address.q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>81</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>mig.mem_out.wr_rdy</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>82</td><td><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WRITE_CMD</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>83</td><td><span>       
+</span></td></tr><tr><td>84</td><td><span>      state.</span><span style="color:#d45ada;">WRITE_CMD</span><span style="color:#ed4343;">:
+</span></td></tr><tr><td>85</td><td><span>        mig.mem_in.en </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>86</td><td><span>        mig.mem_in.cmd </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 0 = write
+</span></td></tr><tr><td>87</td><td><span>        mig.mem_in.addr </span><span style="color:#ed4343;">= c{</span><span>address.q</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">3b000</span><span style="color:#ed4343;">}; </span><span style="color:#969696;">// first three bits of addr are for the 8 words in wr_data
+</span></td></tr><tr><td>88</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>mig.mem_out.rdy</span><span style="color:#ed4343;">) {
+</span></td></tr><tr><td>89</td><td><span>          address.d </span><span style="color:#ed4343;">=</span><span> address.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>90</td><td><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WRITE_DATA</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>91</td><td><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>address.q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">8hFF</span><span style="color:#ed4343;">) {
+</span></td></tr><tr><td>92</td><td><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">READ_CMD</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>93</td><td><span>            address.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>94</td><td><span>          </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>95</td><td><span>        </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>96</td><td><span>       
+</span></td></tr><tr><td>97</td><td><span>      state.</span><span style="color:#d45ada;">READ_CMD</span><span style="color:#ed4343;">:
+</span></td></tr><tr><td>98</td><td><span>        mig.mem_in.en </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>99</td><td><span>        mig.mem_in.cmd </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 1 = read
+</span></td></tr><tr><td>100</td><td><span>        mig.mem_in.addr </span><span style="color:#ed4343;">= c{</span><span>address.q</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">3b000</span><span style="color:#ed4343;">};
+</span></td></tr><tr><td>101</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>mig.mem_out.rdy</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>102</td><td><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_READ</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>103</td><td><span>       
+</span></td></tr><tr><td>104</td><td><span>      state.</span><span style="color:#d45ada;">WAIT_READ</span><span style="color:#ed4343;">:
+</span></td></tr><tr><td>105</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>mig.mem_out.rd_valid</span><span style="color:#ed4343;">) {
+</span></td></tr><tr><td>106</td><td><span>          led_reg.d </span><span style="color:#ed4343;">=</span><span> mig.mem_out.rd_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span></td></tr><tr><td>107</td><td><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">DELAY</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>108</td><td><span>          address.d </span><span style="color:#ed4343;">=</span><span> address.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>109</td><td><span>        </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>110</td><td><span>       
+</span></td></tr><tr><td>111</td><td><span>      state.</span><span style="color:#d45ada;">DELAY</span><span style="color:#ed4343;">:
+</span></td></tr><tr><td>112</td><td><span>        ctr.d </span><span style="color:#ed4343;">=</span><span> ctr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// delay so we can see the value
+</span></td></tr><tr><td>113</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(&amp;</span><span>ctr.q</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>114</td><td><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">READ_CMD</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>115</td><td><span>    </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>116</td><td><span>  </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>117</td><td><span style="color:#ed4343;">}
+</span></td></tr></tbody></table></code></pre>
+<p>First notice that we used the signal <em>mig.ui_clk</em> in the <em>.clk</em> block for our dffs and fsm. This is the clock that the user interface of the memory interface is synchronized to. If you need to use a different clock for the rest of your design, you'll have to implement some clock domain crossing scheme. It is easiest if you can make your design work at the 81.25MHz of this clock.</p>
+<p>If you look a little lower in the <em>always</em> block, you'll see the default values we assign to the <em>mem_in</em> struct on the <em>mig</em> module. The <em>wr_mask</em> signal is active low, meaning a 0 enables the byte. Since we will be writing all the bytes we can fix it to 0.</p>
+<p>The other values we don't care about when the enable signals are 0 so they are set to x.</p>
+<p>The state machine is simple, it starts in <em>WRITE_DATA</em> where it writes a value to the write FIFO. Once the value is written, which is noted by <em>wr_en</em> and <em>wr_rdy</em> both being 1, it switches to the <em>WRITE_CMD</em> state.</p>
+<p>In this state, it sends the write command. One thing to note is that the address associated with the write is the <strong>DDR native address</strong>. This means that the first three bits should always be 0 since each DDR entry is 16 bits (the DDR3 on the Au has a 16 bit bus) and each read/write we preform is on 128 bit blocks.</p>
+<p>This is easy to do by concatenating three 0's onto the end of our address.</p>
+<pre data-linenos data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><table><tbody><tr><td>87</td><td><span>mig.mem_in.addr </span><span style="color:#ed4343;">= c{</span><span>address.q</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">3b000</span><span style="color:#ed4343;">}; </span><span style="color:#969696;">// first three bits of addr are for the 8 words in wr_data
+</span></td></tr></tbody></table></code></pre>
+<p>The 128 bit operation size isn't configurable. Xillinx's memory interface uses bursts of 8 to increase efficiency. This is common practice when working with DDR memory. Also note that the DDR interface is clocked at 4x the system clock which means that you complete an entire burst in the span of a single system clock cycle (4x freq * 2 for double data rate = 8 values per system cycle).</p>
+<p>The burst operation is actually supported by the DDR3 chip itself. The address you give the memory interface is sent directly the the DDR3 chip. If you don't set the last three bits to 0 weird things happen. For writes, these bits are ignored and everything works as if they were 0.</p>
+<p>For reads, the same 16 bit words in the burst will be read from same 128 bit block but in a different order. For example, if the last three bits are 0, then they are read in the expected order, 0, 1, 2, 3, 4, 5, 6, and 7. However, if you set the last three bits to 2 then it will read them in the order 2, 3, 0, 1, 6, 7, 4, and 5. See page 145 of <a href="https://media-www.micron.com/-/media/client/global/documents/products/data-sheet/dram/ddr3/2gb_1_35v_ddr3l.pdf">this document</a> for the full behavior. The memory controller is setup to use the sequential burst type.</p>
+<p>It is generally best to just ensure these bits are always 0. The reason this feature exists is so that you can get a specific 16 bit value as soon as possible while still reading in a burst of 8.</p>
+<p>Note that we are writing the address' value to each address. In other words, address 0 gets value 0, address 1 gets value 1, and so on. This means when we read these back in order, it'll look like a counter.</p>
+<p>Once all 256 addresses have been written, it switches to reading. The <em>READ_CMD</em> state issues the read command and then transitions to the <em>WAIT_READ</em> state.</p>
+<p>In the <em>WAIT_READ</em> state, it waits for <em>rd_valid</em> to be 1. It then uses the read value to set the LED's state.</p>
+<p>Finally, it goes into the <em>DELAY</em> state to waste some time so we can see the LED value before it loops to <em>READ_CMD</em> again.</p>
+<p>It will continue reading the first 256 addresses of the DDR3 over and over.</p>
+<p>If you change what value is written in the <em>WRITE_DATA</em> state, it'll change what the LEDs show.</p>
+<p>With this you should be able to build the project and load it onto your board to see the LEDs counting.</p>
+<h1 id="caching">Caching</h1>
+<p>You may have noticed that this example is incredibly wasteful. We are reading and writing full 128 bit blocks of data when we are only using the first 8 bits.</p>
+<p>This could be fixed if we just combined 16 values into 128 bit blocks and wrote those to a single address. When we read them we could then store a while line and iterate over each byte before reading in another line.</p>
+<p>For our trivial example, it wouldn't be too hard to implement this directly. However, for more complex read/write patterns, this could be very difficult to do efficiently.</p>
+<p>Luckily, there is a component in the <em>component library</em> that can help us with this.</p>
+<p>Go to <strong>Project-&gt;Add Components</strong> and under <em>Memory</em> select <em>LRU Cache</em>.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> lru_cache </span><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#d45ada;">ENTRIES </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">ENTRIES </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#d45ada;">WORD_SIZE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">16 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">WORD_SIZE </span><span style="color:#ed4343;">&gt;= </span><span style="color:#a269dc;">8 </span><span style="color:#ed4343;">&amp;&amp; </span><span style="color:#d45ada;">WORD_SIZE </span><span style="color:#ed4343;">&lt;= </span><span style="color:#a269dc;">128 </span><span style="color:#ed4343;">&amp;&amp; (</span><span style="color:#d45ada;">WORD_SIZE </span><span style="color:#ed4343;">== </span><span style="color:#1bddaf;">$pow</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">,</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">WORD_SIZE</span><span style="color:#ed4343;">/</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">))*</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// 8,16,32,64,128 valid
+</span><span>    </span><span style="color:#d45ada;">AGE_BITS </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">3 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">AGE_BITS </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0
+</span><span>  </span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> wr_addr</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">24 </span><span style="color:#ed4343;">+ </span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">128</span><span style="color:#ed4343;">/</span><span style="color:#d45ada;">WORD_SIZE</span><span style="color:#ed4343;">)], </span><span style="color:#969696;">// 24-28 bits
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> wr_data</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">WORD_SIZE</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> wr_valid</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> wr_ready</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rd_addr</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">24 </span><span style="color:#ed4343;">+ </span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">128</span><span style="color:#ed4343;">/</span><span style="color:#d45ada;">WORD_SIZE</span><span style="color:#ed4343;">)],
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rd_cmd_valid</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> rd_ready</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> rd_data</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">WORD_SIZE</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> rd_data_valid</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> flush</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> flush_ready</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.out</span><span style="color:#ed4343;">&gt;</span><span> mem_out</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.in</span><span style="color:#ed4343;">&gt;</span><span> mem_in
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span>   
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">WORDS_PER_LINE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">128 </span><span style="color:#ed4343;">/ </span><span style="color:#d45ada;">WORD_SIZE</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">BYTES_PER_WORD </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">WORD_SIZE </span><span style="color:#ed4343;">/ </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">SUB_ADDR_BITS </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">WORDS_PER_LINE</span><span style="color:#ed4343;">);
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">ADDR_SIZE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">24 </span><span style="color:#ed4343;">+ </span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">;
+</span><span>   
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#0a8dbf;">dff</span><span> active</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">];
+</span><span>       
+</span><span>      </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">PREP_WRITE_ENTRY</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">PREP_READ_ENTRY</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">FLUSH</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WRITE_DATA</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WRITE_CMD</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">READ_CMD</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WAIT_READ</span><span style="color:#ed4343;">};
+</span><span>      </span><span style="color:#0a8dbf;">fsm</span><span> write_state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">PUT</span><span style="color:#ed4343;">};
+</span><span>      </span><span style="color:#0a8dbf;">fsm</span><span> read_state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">FETCH</span><span style="color:#ed4343;">};
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>     
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> buffer</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">WORDS_PER_LINE</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">WORD_SIZE</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> address</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">25</span><span style="color:#ed4343;">];
+</span><span>     
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> written</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> valid</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">WORDS_PER_LINE</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> age</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">AGE_BITS</span><span style="color:#ed4343;">];
+</span><span>     
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> active_entry</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ENTRIES </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">1 </span><span style="color:#ed4343;">? </span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">) : </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">];
+</span><span>     
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> read_data</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">WORD_SIZE</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> read_valid</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> read_pending</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> read_addr</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ADDR_SIZE</span><span style="color:#ed4343;">];
+</span><span>     
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> write_pending</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> write_addr</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ADDR_SIZE</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> write_data</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">WORD_SIZE</span><span style="color:#ed4343;">];
+</span><span>     
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> old_active</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> return_state</span><span style="color:#ed4343;">[</span><span>state.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">];
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>   
+</span><span>  </span><span style="color:#0a8dbf;">var</span><span> i</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> handled</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> oldest_entry</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ENTRIES </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">1 </span><span style="color:#ed4343;">? </span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">) : </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">];
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> entry</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ENTRIES </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">1 </span><span style="color:#ed4343;">? </span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">) : </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">];
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> max_age</span><span style="color:#ed4343;">[</span><span>age.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]];
+</span><span>   
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    mem_in.en </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    mem_in.wr_data </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$flatten</span><span style="color:#ed4343;">(</span><span>buffer.q</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">]);
+</span><span>    mem_in.cmd </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bx</span><span style="color:#ed4343;">;
+</span><span>    mem_in.addr </span><span style="color:#ed4343;">= c{</span><span>address.q</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">], </span><span style="color:#a269dc;">3b000</span><span style="color:#ed4343;">};
+</span><span>    mem_in.wr_en </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    flush_ready </span><span style="color:#ed4343;">=</span><span> state.q </span><span style="color:#ed4343;">==</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>    wr_ready </span><span style="color:#ed4343;">=</span><span> write_state.q </span><span style="color:#ed4343;">==</span><span> write_state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>    rd_ready </span><span style="color:#ed4343;">=</span><span> read_state.q </span><span style="color:#ed4343;">==</span><span> read_state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>    rd_data </span><span style="color:#ed4343;">=</span><span> read_data.q</span><span style="color:#ed4343;">;
+</span><span>    rd_data_valid </span><span style="color:#ed4343;">=</span><span> read_valid.q</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    read_valid.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    </span><span style="color:#969696;">// only write out valid bytes (0 = write)
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">WORDS_PER_LINE</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++)
+</span><span>      mem_in.wr_mask</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">*</span><span style="color:#d45ada;">BYTES_PER_WORD</span><span style="color:#ed4343;">+:</span><span style="color:#d45ada;">BYTES_PER_WORD</span><span style="color:#ed4343;">] = </span><span style="color:#d45ada;">BYTES_PER_WORD</span><span style="color:#ed4343;">x{~</span><span>valid.q</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">][</span><span>i</span><span style="color:#ed4343;">]};
+</span><span>     
+</span><span>    </span><span style="color:#969696;">// Keep track of the oldest entry (the one to replace)
+</span><span>    max_age </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    oldest_entry </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    handled </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>handled</span><span style="color:#ed4343;">) {
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>active.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]) { </span><span style="color:#969696;">// entry isn&#39;t in use
+</span><span>          oldest_entry </span><span style="color:#ed4343;">=</span><span> i</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// use the inactive entry
+</span><span>          handled </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;      </span><span style="color:#969696;">// stop the for loop
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>age.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] &gt;</span><span> max_age</span><span style="color:#ed4343;">) {
+</span><span>          max_age </span><span style="color:#ed4343;">=</span><span> age.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">];
+</span><span>          oldest_entry </span><span style="color:#ed4343;">=</span><span> i</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>      </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>     
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>read_state.q</span><span style="color:#ed4343;">) {
+</span><span>      read_state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rd_cmd_valid</span><span style="color:#ed4343;">) {
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) </span><span style="color:#969696;">// increment all the entry ages
+</span><span>            </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!(&amp;</span><span>age.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]))
+</span><span>              age.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] =</span><span> age.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] + </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>           
+</span><span>           
+</span><span>          handled </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>            </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>handled </span><span style="color:#ed4343;">&amp;&amp;</span><span> active.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] &amp;&amp;</span><span> valid.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">SUB_ADDR_BITS </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0 </span><span style="color:#ed4343;">?</span><span> rd_addr</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] : </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] &amp;&amp; (</span><span>address.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] ==</span><span> rd_addr</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ADDR_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">])) {
+</span><span>              handled </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>              read_valid.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>              read_data.d </span><span style="color:#ed4343;">=</span><span> buffer.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">SUB_ADDR_BITS </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0 </span><span style="color:#ed4343;">?</span><span> rd_addr</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] : </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span>              age.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// reset the age on an access
+</span><span>            </span><span style="color:#ed4343;">}
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>handled</span><span style="color:#ed4343;">) { </span><span style="color:#969696;">// entry isn&#39;t in the cache
+</span><span>            read_pending.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>            read_addr.d </span><span style="color:#ed4343;">=</span><span> rd_addr</span><span style="color:#ed4343;">;
+</span><span>            read_state.d </span><span style="color:#ed4343;">=</span><span> read_state.</span><span style="color:#d45ada;">FETCH</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      read_state.</span><span style="color:#d45ada;">FETCH</span><span style="color:#ed4343;">:
+</span><span>        read_pending.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>         
+</span><span>        handled </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>handled </span><span style="color:#ed4343;">&amp;&amp;</span><span> active.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] &amp;&amp;</span><span> valid.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">SUB_ADDR_BITS </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0 </span><span style="color:#ed4343;">?</span><span> read_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] : </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] &amp;&amp; (</span><span>address.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] ==</span><span> read_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ADDR_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">])) {
+</span><span>            handled </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>            read_valid.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>            read_data.d </span><span style="color:#ed4343;">=</span><span> buffer.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">SUB_ADDR_BITS </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0 </span><span style="color:#ed4343;">?</span><span> read_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] : </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span>            age.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// reset the age on an access
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>handled</span><span style="color:#ed4343;">) {
+</span><span>          read_pending.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          read_state.d </span><span style="color:#ed4343;">=</span><span> read_state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>     
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>write_state.q</span><span style="color:#ed4343;">) {
+</span><span>      write_state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>wr_valid</span><span style="color:#ed4343;">) {
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) </span><span style="color:#969696;">// increment all the entry ages
+</span><span>            </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!(&amp;</span><span>age.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]))
+</span><span>              age.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] =</span><span> age.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] + </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>           
+</span><span>          handled </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>            </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>handled </span><span style="color:#ed4343;">&amp;&amp;</span><span> active.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] &amp;&amp; (</span><span>address.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] ==</span><span> wr_addr</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ADDR_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">])) {
+</span><span>              handled </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>              written.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>              valid.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">SUB_ADDR_BITS </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0 </span><span style="color:#ed4343;">?</span><span> wr_addr</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] : </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>              buffer.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">SUB_ADDR_BITS </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0 </span><span style="color:#ed4343;">?</span><span> wr_addr</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] : </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> wr_data</span><span style="color:#ed4343;">;
+</span><span>              age.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// reset the age on an access
+</span><span>            </span><span style="color:#ed4343;">}
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>           
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>handled</span><span style="color:#ed4343;">) { </span><span style="color:#969696;">// entry isn&#39;t in the cache
+</span><span>            write_pending.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>            write_data.d </span><span style="color:#ed4343;">=</span><span> wr_data</span><span style="color:#ed4343;">;
+</span><span>            write_addr.d </span><span style="color:#ed4343;">=</span><span> wr_addr</span><span style="color:#ed4343;">;
+</span><span>            write_state.d </span><span style="color:#ed4343;">=</span><span> write_state.</span><span style="color:#d45ada;">PUT</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      write_state.</span><span style="color:#d45ada;">PUT</span><span style="color:#ed4343;">:
+</span><span>        write_pending.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>         
+</span><span>        handled </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>handled </span><span style="color:#ed4343;">&amp;&amp;</span><span> active.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] &amp;&amp; (</span><span>address.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] ==</span><span> write_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ADDR_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">])) {
+</span><span>            handled </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>            written.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>            valid.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">SUB_ADDR_BITS </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0 </span><span style="color:#ed4343;">?</span><span> write_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] : </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>            buffer.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">SUB_ADDR_BITS </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0 </span><span style="color:#ed4343;">?</span><span> write_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] : </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> write_data.q</span><span style="color:#ed4343;">;
+</span><span>            age.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// reset the age on an access
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>         
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>handled</span><span style="color:#ed4343;">) {
+</span><span>          write_pending.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          write_state.d </span><span style="color:#ed4343;">=</span><span> write_state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>     
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state.q</span><span style="color:#ed4343;">) {
+</span><span>      state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>flush</span><span style="color:#ed4343;">) { </span><span style="color:#969696;">// flush command takes priority
+</span><span>          active.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          old_active.d </span><span style="color:#ed4343;">=</span><span> active.q</span><span style="color:#ed4343;">;
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">FLUSH</span><span style="color:#ed4343;">;
+</span><span>           
+</span><span>        </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>read_pending.q</span><span style="color:#ed4343;">) { </span><span style="color:#969696;">// Read command is pending
+</span><span>          entry </span><span style="color:#ed4343;">=</span><span> oldest_entry</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// default to oldest
+</span><span>           
+</span><span>          </span><span style="color:#969696;">// check for a cache line that was written but never read (ie only partially valid)
+</span><span>          handled </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>            </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>handled </span><span style="color:#ed4343;">&amp;&amp;</span><span> active.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] &amp;&amp;</span><span> valid.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">SUB_ADDR_BITS </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0 </span><span style="color:#ed4343;">?</span><span> read_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] : </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] &amp;&amp; (</span><span>address.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] ==</span><span> read_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ADDR_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">])) {
+</span><span>              handled </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>              entry </span><span style="color:#ed4343;">=</span><span> i</span><span style="color:#ed4343;">;
+</span><span>            </span><span style="color:#ed4343;">}
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>           
+</span><span>          </span><span style="color:#969696;">// save the entry
+</span><span>          active_entry.d </span><span style="color:#ed4343;">=</span><span> entry</span><span style="color:#ed4343;">;
+</span><span>           
+</span><span>          </span><span style="color:#969696;">// if entry is active and not our address
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>active.q</span><span style="color:#ed4343;">[</span><span>entry</span><span style="color:#ed4343;">] &amp;&amp;</span><span> address.q</span><span style="color:#ed4343;">[</span><span>entry</span><span style="color:#ed4343;">] !=</span><span> read_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ADDR_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">]) {
+</span><span>            </span><span style="color:#969696;">// need to mark inactive then wait for any potential writes
+</span><span>            active.d</span><span style="color:#ed4343;">[</span><span>entry</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">PREP_READ_ENTRY</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">READ_CMD</span><span style="color:#ed4343;">;
+</span><span>            address.d</span><span style="color:#ed4343;">[</span><span>entry</span><span style="color:#ed4343;">] =</span><span> read_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ADDR_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">];
+</span><span>            </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>address.q</span><span style="color:#ed4343;">[</span><span>entry</span><span style="color:#ed4343;">] !=</span><span> read_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ADDR_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">])
+</span><span>              valid.d</span><span style="color:#ed4343;">[</span><span>entry</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>           
+</span><span>        </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>write_pending.q</span><span style="color:#ed4343;">) { </span><span style="color:#969696;">// Write command is pending
+</span><span>          </span><span style="color:#969696;">// if oldest entry is active
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>active.q</span><span style="color:#ed4343;">[</span><span>oldest_entry</span><span style="color:#ed4343;">]) {
+</span><span>            </span><span style="color:#969696;">// need to mark inactive then wait for any potential writes
+</span><span>            active.d</span><span style="color:#ed4343;">[</span><span>oldest_entry</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>            active_entry.d </span><span style="color:#ed4343;">=</span><span> oldest_entry</span><span style="color:#ed4343;">;
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">PREP_WRITE_ENTRY</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{ </span><span style="color:#969696;">// oldest entry can be cleared
+</span><span>            </span><span style="color:#969696;">// prep the new entry
+</span><span>            written.d</span><span style="color:#ed4343;">[</span><span>oldest_entry</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>            valid.d</span><span style="color:#ed4343;">[</span><span>oldest_entry</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>            address.d</span><span style="color:#ed4343;">[</span><span>oldest_entry</span><span style="color:#ed4343;">] =</span><span> write_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ADDR_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">];
+</span><span>            age.d</span><span style="color:#ed4343;">[</span><span>oldest_entry</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>            active.d</span><span style="color:#ed4343;">[</span><span>oldest_entry</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>            write_pending.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      state.</span><span style="color:#d45ada;">PREP_WRITE_ENTRY</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="color:#969696;">// if entry was written to
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>written.q</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">]) {
+</span><span>          </span><span style="color:#969696;">// write the data out
+</span><span>          return_state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">PREP_WRITE_ENTRY</span><span style="color:#ed4343;">;
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WRITE_DATA</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{
+</span><span>          </span><span style="color:#969696;">// prep the new entry
+</span><span>          written.d</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          valid.d</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          address.d</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">] =</span><span> write_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ADDR_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">];
+</span><span>          age.d</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          active.d</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>          write_pending.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      state.</span><span style="color:#d45ada;">PREP_READ_ENTRY</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>written.q</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">]) {
+</span><span>          </span><span style="color:#969696;">// write the data out
+</span><span>          return_state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">PREP_READ_ENTRY</span><span style="color:#ed4343;">;
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WRITE_DATA</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{
+</span><span>          </span><span style="color:#969696;">// read in new active_entry
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">READ_CMD</span><span style="color:#ed4343;">;
+</span><span>          address.d</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">] =</span><span> read_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">ADDR_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#d45ada;">SUB_ADDR_BITS</span><span style="color:#ed4343;">];
+</span><span>          valid.d</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      state.</span><span style="color:#d45ada;">FLUSH</span><span style="color:#ed4343;">:
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// default to returning if no entries to flush
+</span><span>         
+</span><span>        handled </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>          </span><span style="color:#969696;">// find the first entry that needs to be flushed
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>handled </span><span style="color:#ed4343;">&amp;&amp;</span><span> old_active.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] &amp;&amp;</span><span> written.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]) {
+</span><span>            handled </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>            active_entry.d </span><span style="color:#ed4343;">=</span><span> i</span><span style="color:#ed4343;">;
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WRITE_DATA</span><span style="color:#ed4343;">;
+</span><span>            old_active.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>            return_state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">FLUSH</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      state.</span><span style="color:#d45ada;">WRITE_DATA</span><span style="color:#ed4343;">:
+</span><span>        mem_in.wr_en </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>mem_out.wr_rdy</span><span style="color:#ed4343;">) {
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WRITE_CMD</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      state.</span><span style="color:#d45ada;">WRITE_CMD</span><span style="color:#ed4343;">:
+</span><span>        mem_in.en </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>        mem_in.cmd </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// write
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>mem_out.rdy</span><span style="color:#ed4343;">) {
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> return_state.q</span><span style="color:#ed4343;">;
+</span><span>          written.d</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      state.</span><span style="color:#d45ada;">READ_CMD</span><span style="color:#ed4343;">:
+</span><span>        mem_in.en </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>        mem_in.cmd </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// read
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>mem_out.rdy</span><span style="color:#ed4343;">) {
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_READ</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      state.</span><span style="color:#d45ada;">WAIT_READ</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>mem_out.rd_valid</span><span style="color:#ed4343;">) {
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">WORDS_PER_LINE</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++)
+</span><span>            </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>valid.q</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">][</span><span>i</span><span style="color:#ed4343;">]) </span><span style="color:#969696;">// only read in unwritten words
+</span><span>              buffer.d</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">][</span><span>i</span><span style="color:#ed4343;">] =</span><span> mem_out.rd_data</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">WORD_SIZE</span><span style="color:#ed4343;">*</span><span>i</span><span style="color:#ed4343;">+:</span><span style="color:#d45ada;">WORD_SIZE</span><span style="color:#ed4343;">];
+</span><span>           
+</span><span>          </span><span style="color:#969696;">// prep the new entry
+</span><span>          active.d</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>          valid.d</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">] = </span><span style="color:#d45ada;">WORDS_PER_LINE</span><span style="color:#ed4343;">x{</span><span style="color:#a269dc;">1b1</span><span style="color:#ed4343;">}; </span><span style="color:#969696;">// everything valid
+</span><span>          age.d</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          read_pending.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          written.d</span><span style="color:#ed4343;">[</span><span>active_entry.q</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>           
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This component is pretty complicated but it can take the memory interface from the <em>MIG Wrapper</em> component and give you efficient read and write interfaces of selectable word sizes.</p>
+<p>This cache is lazy and will only access the RAM when it needs to. That means you can read and write to entries in the cache as much as you want without hitting the memory. It will only access values in the external memory when it needs to free up a cache line or if you try to read values that aren't in the cache.</p>
+<p>The cache presents independant read and write interfaces. This comes in handy when you have one section of your design doing only reads and another doing only writes. If you read and write the same address in the same cycle, you will read the old value.</p>
+<p>You can configure the cache to have multiple entries (AKA cache lines). This can save a ton of IO for certain memory access patterns. For example, in our GPU demo project the rasterizer reads values from the Z buffer sequentially and writes values back sequentially at a slightly delayed time down the pipeline. This cache was used with two entries so that the reads and writes would each have their own cache lines to minimize fighting.</p>
+<p>This cache attempts to approximate a LRU (<strong>L</strong>east <strong>R</strong>ecently <strong>U</strong>sed) cache policy. This means that when a new cache line is needed, the least recently used (AKA oldest) entry will be evicted.</p>
+<p>The age of each entry is kept track of by adding 1 to its age counter every time a read/write is performed to any entry. The age counter can saturate if it isn't accessed in a long time.</p>
+<p>Each time an entry is accessed, its age counter is reset.</p>
+<p>The maximum age can be set with the <em>AGE_BITS</em> parameter. The default value is 3, which gives a maximum age of 7. This way of keeping track of age isn't perfect and if <em>AGE_BITS</em> is too small, in some cases the cache may not act as a perfect LRU. However, this typically isn't an issue as it will always evict the oldest or a max age cache line.</p>
+<p>Setting <em>AGE_BITS</em> to a large value will ensure that the oldest cache line is more likely to be removed but will incur a performance penalty.</p>
+<h2 id="cache-interface">Cache interface</h2>
+<p>The interface to the cache is pretty simple.</p>
+<p>The addresses used are word address. This means you don't need to worry about zero padding anything.</p>
+<p>You can set the size of the data word with the <em>WORD_SIZE</em> parameter. This can be set to 8, 16, 32, 64, or 128. </p>
+<p>To write, you simply check <em>wr_ready</em>. If this signal is 1, you can specify a value on <em>wr_data</em>, an address on <em>wr_addr</em>, and set <em>wr_valid</em> to 1. </p>
+<p>To read, you check if <em>rd_ready</em> is 1. If it is, you set <em>rd_addr</em> to the address to read and <em>rd_cmd_valid</em> to 1.</p>
+<p>You then wait for <em>rd_data_valid</em> to be 1. When it is, <em>rd_data</em> has your data.</p>
+<p>When you perform reads, <em>rd_data_valid</em> is guaranteed to take at least one cycle from the request to go high. However, <em>rd_ready</em> may stay high if it is a cache hit. That means you can stream multiple reads back to back with each result delayed a single cycle if they are all hits.</p>
+<p>Cache misses will take longer for <em>rd_data_valid</em> to go high since it will need to actually fetch the value from the RAM.</p>
+<p>If you have a cache in your design and are also reading values from another piece of your design, you may need to occasionally flush the cache to ensure that the values are actually written to the DDR3. For this, you can use the ﻿_flush_﻿ signal. When ﻿_flush_﻿ and ﻿_flush_ready_﻿ are high, the cache will write all dirty entries to the DDR3 memory.</p>
+<h2 id="cache-example">Cache example</h2>
+<p>With the cache component in our design, we can use it to more efficiently use the DDR3.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> au_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 100MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> usb_rx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// USB-&gt;Serial input
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> usb_tx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// USB-&gt;Serial output
+</span><span>    </span><span style="color:#969696;">/* DDR3 Connections */
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dq</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dqs_n</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> ddr3_dqs_p</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_addr</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">14</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ba</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ras_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cas_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_we_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_reset_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ck_p</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_ck_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cke</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_cs_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_dm</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> ddr3_odt
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span>   
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span>   
+</span><span>  clk_wiz_0 clk_wiz</span><span style="color:#ed4343;">;
+</span><span>   
+</span><span>  </span><span style="color:#969696;">// DDR3 Interface - connect inouts directly
+</span><span>  mig_wrapper mig </span><span style="color:#ed4343;">(</span><span>.ddr3_dq</span><span style="color:#ed4343;">(</span><span>ddr3_dq</span><span style="color:#ed4343;">),</span><span> .ddr3_dqs_n</span><span style="color:#ed4343;">(</span><span>ddr3_dqs_n</span><span style="color:#ed4343;">),</span><span> .ddr3_dqs_p</span><span style="color:#ed4343;">(</span><span>ddr3_dqs_p</span><span style="color:#ed4343;">));
+</span><span>   
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>mig.ui_clk</span><span style="color:#ed4343;">) {
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">WRITE_DATA</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">READ_CMD</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WAIT_READ</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">DELAY</span><span style="color:#ed4343;">};
+</span><span>      </span><span style="color:#0a8dbf;">dff</span><span> ctr</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">24</span><span style="color:#ed4343;">];
+</span><span>      </span><span style="color:#0a8dbf;">dff</span><span> address</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];
+</span><span>      </span><span style="color:#0a8dbf;">dff</span><span> led_reg</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];
+</span><span>       
+</span><span>      lru_cache cache</span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">WORD_SIZE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">AGE_BITS</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>   
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    </span><span style="color:#969696;">/* Clock Wizard Connections */
+</span><span>    clk_wiz.clk_in1 </span><span style="color:#ed4343;">=</span><span> clk</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 100MHz in
+</span><span>    clk_wiz.reset </span><span style="color:#ed4343;">= !</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// reset signal
+</span><span>     
+</span><span>    </span><span style="color:#969696;">/* DDR3 Connections */
+</span><span>    ddr3_addr </span><span style="color:#ed4343;">=</span><span> mig.ddr3_addr</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ba </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ba</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ras_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ras_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_cas_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cas_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_we_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_we_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_reset_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_reset_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ck_p </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ck_p</span><span style="color:#ed4343;">;
+</span><span>    ddr3_ck_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_ck_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_cke </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cke</span><span style="color:#ed4343;">;
+</span><span>    ddr3_cs_n </span><span style="color:#ed4343;">=</span><span> mig.ddr3_cs_n</span><span style="color:#ed4343;">;
+</span><span>    ddr3_dm </span><span style="color:#ed4343;">=</span><span> mig.ddr3_dm</span><span style="color:#ed4343;">;
+</span><span>    ddr3_odt </span><span style="color:#ed4343;">=</span><span> mig.ddr3_odt</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    mig.sys_clk </span><span style="color:#ed4343;">=</span><span> clk_wiz.clk_out1</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 100MHz clock
+</span><span>    mig.clk_ref </span><span style="color:#ed4343;">=</span><span> clk_wiz.clk_out2</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 200MHz clock
+</span><span>    mig.sys_rst </span><span style="color:#ed4343;">= !</span><span>clk_wiz.locked</span><span style="color:#ed4343;">;  </span><span style="color:#969696;">// reset when clk_wiz isn&#39;t locked
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> mig.sync_rst</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// use the reset signal from the mig core
+</span><span>     
+</span><span>    led </span><span style="color:#ed4343;">=</span><span> led_reg.q</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// set leds to show led_reg value
+</span><span>     
+</span><span>    usb_tx </span><span style="color:#ed4343;">=</span><span> usb_rx</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// echo the serial data
+</span><span>     
+</span><span>    mig.mem_in </span><span style="color:#ed4343;">=</span><span> cache.mem_in</span><span style="color:#ed4343;">;
+</span><span>    cache.mem_out </span><span style="color:#ed4343;">=</span><span> mig.mem_out</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    </span><span style="color:#969696;">// default values
+</span><span>    cache.flush </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// don&#39;t need to flush
+</span><span>    cache.wr_addr </span><span style="color:#ed4343;">=</span><span> address.q</span><span style="color:#ed4343;">;
+</span><span>    cache.wr_data </span><span style="color:#ed4343;">=</span><span> address.q</span><span style="color:#ed4343;">;
+</span><span>    cache.wr_valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    cache.rd_addr </span><span style="color:#ed4343;">=</span><span> address.q</span><span style="color:#ed4343;">;
+</span><span>    cache.rd_cmd_valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state.q</span><span style="color:#ed4343;">) {
+</span><span>      state.</span><span style="color:#d45ada;">WRITE_DATA</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>cache.wr_ready</span><span style="color:#ed4343;">) {
+</span><span>          cache.wr_valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>          address.d </span><span style="color:#ed4343;">=</span><span> address.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>address.q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">8hFF</span><span style="color:#ed4343;">) {
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">READ_CMD</span><span style="color:#ed4343;">;
+</span><span>            address.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>      state.</span><span style="color:#d45ada;">READ_CMD</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>cache.rd_ready</span><span style="color:#ed4343;">) {
+</span><span>          cache.rd_cmd_valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_READ</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      state.</span><span style="color:#d45ada;">WAIT_READ</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>cache.rd_data_valid</span><span style="color:#ed4343;">) {
+</span><span>          led_reg.d </span><span style="color:#ed4343;">=</span><span> cache.rd_data</span><span style="color:#ed4343;">;
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">DELAY</span><span style="color:#ed4343;">;
+</span><span>          address.d </span><span style="color:#ed4343;">=</span><span> address.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      state.</span><span style="color:#d45ada;">DELAY</span><span style="color:#ed4343;">:
+</span><span>        ctr.d </span><span style="color:#ed4343;">=</span><span> ctr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// delay so we can see the value
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(&amp;</span><span>ctr.q</span><span style="color:#ed4343;">)
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">READ_CMD</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This new design performs exactly the same as before, but now we are using the DDR3 more efficiently. We are using 1/16th the memory as we were before without having to complicate our design. It actually simplifies the design since the writes don't require separate operations to write the data and command.</p>
+<p>Note that <em>ENTRIES</em> is set to 1 since our access pattern is super simple and having more entries won't increase the number of cache hits we have (unless <em>ENTRIES</em> was set to 16 which would mean everything would fit in the cache).</p>
+<p>We also set <em>AGE_BITS</em> to 1 since there isn't much of a choice which entry to evict with there is only 1.</p>
+<p>In this super basic use case, the cache component is overkill. However, the tools will optimize a lot of the logic out keeping it fairly efficient.</p>
+<h1 id="multiple-devices">Multiple devices</h1>
+<p>It is common to want to interface multiple parts of your design with the one memory interface. To make this easy there is a component in the <em>Components LIbrary</em> called <em>DDR Arbiter</em> under the <em>Memory</em> section.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> ddr_arbiter </span><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#d45ada;">DEVICES </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">DEVICES </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">1
+</span><span>  </span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#969696;">// Master
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span>memory.in</span><span style="color:#ed4343;">&gt;</span><span> master_in</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span>memory.out</span><span style="color:#ed4343;">&gt;</span><span> master_out</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// Devices
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span>memory.in</span><span style="color:#ed4343;">&gt;</span><span> device_in</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">],
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span>memory.out</span><span style="color:#ed4343;">&gt;</span><span> device_out</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">]
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span>   
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">WAIT_CMD</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WAIT_WRITE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WAIT_RDY</span><span style="color:#ed4343;">};
+</span><span>       
+</span><span>      fifo fifo </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">SIZE</span><span style="color:#ed4343;">(</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">)), #</span><span style="color:#d45ada;">DEPTH</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">256</span><span style="color:#ed4343;">));
+</span><span>      </span><span style="color:#0a8dbf;">dff</span><span> device</span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">)];
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>   
+</span><span>  </span><span style="color:#0a8dbf;">var</span><span> i</span><span style="color:#ed4343;">,</span><span> act</span><span style="color:#ed4343;">;
+</span><span>   
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    fifo.din </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bx</span><span style="color:#ed4343;">;
+</span><span>    fifo.wput </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    fifo.rget </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    master_in.en </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    master_in.wr_data </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bx</span><span style="color:#ed4343;">;
+</span><span>    master_in.cmd </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    master_in.wr_mask </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    master_in.addr </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bx</span><span style="color:#ed4343;">;
+</span><span>    master_in.wr_en </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>      device_out</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.rdy </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>      device_out</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.wr_rdy </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>     
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state.q</span><span style="color:#ed4343;">) {
+</span><span>      state.</span><span style="color:#d45ada;">WAIT_CMD</span><span style="color:#ed4343;">:
+</span><span>        act </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">((</span><span>device_in</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.en </span><span style="color:#ed4343;">||</span><span> device_in</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.wr_en</span><span style="color:#ed4343;">) &amp;&amp; !</span><span>act</span><span style="color:#ed4343;">) {
+</span><span>            act </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>            device.d </span><span style="color:#ed4343;">=</span><span> i</span><span style="color:#ed4343;">;
+</span><span>            master_in </span><span style="color:#ed4343;">=</span><span> device_in</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">];
+</span><span>            device_out</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] =</span><span> master_out</span><span style="color:#ed4343;">;
+</span><span>            </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>device_in</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.en </span><span style="color:#ed4343;">&amp;&amp; (</span><span>device_in</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.cmd </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">3b001</span><span style="color:#ed4343;">)) { </span><span style="color:#969696;">// read
+</span><span>              fifo.wput </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>              fifo.din </span><span style="color:#ed4343;">=</span><span> i</span><span style="color:#ed4343;">;
+</span><span>              </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>master_out.rdy</span><span style="color:#ed4343;">) {
+</span><span>                state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_RDY</span><span style="color:#ed4343;">;
+</span><span>              </span><span style="color:#ed4343;">}
+</span><span>            </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{ </span><span style="color:#969696;">// write
+</span><span>              </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>master_out.wr_rdy</span><span style="color:#ed4343;">) {
+</span><span>                state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_WRITE</span><span style="color:#ed4343;">;
+</span><span>              </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{
+</span><span>                state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_RDY</span><span style="color:#ed4343;">;
+</span><span>              </span><span style="color:#ed4343;">}
+</span><span>            </span><span style="color:#ed4343;">}
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      state.</span><span style="color:#d45ada;">WAIT_WRITE</span><span style="color:#ed4343;">:
+</span><span>        master_in </span><span style="color:#ed4343;">=</span><span> device_in</span><span style="color:#ed4343;">[</span><span>device.q</span><span style="color:#ed4343;">];
+</span><span>        device_out</span><span style="color:#ed4343;">[</span><span>device.q</span><span style="color:#ed4343;">] =</span><span> master_out</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>master_out.wr_rdy</span><span style="color:#ed4343;">) {
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>device_in</span><span style="color:#ed4343;">[</span><span>device.q</span><span style="color:#ed4343;">]</span><span>.en </span><span style="color:#ed4343;">&amp;&amp;</span><span> master_out.rdy</span><span style="color:#ed4343;">) {
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_CMD</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_RDY</span><span style="color:#ed4343;">;
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      state.</span><span style="color:#d45ada;">WAIT_RDY</span><span style="color:#ed4343;">:
+</span><span>        master_in </span><span style="color:#ed4343;">=</span><span> device_in</span><span style="color:#ed4343;">[</span><span>device.q</span><span style="color:#ed4343;">];
+</span><span>        device_out</span><span style="color:#ed4343;">[</span><span>device.q</span><span style="color:#ed4343;">] =</span><span> master_out</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>master_out.rdy</span><span style="color:#ed4343;">) {
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_CMD</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>     
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>      device_out</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.rd_data </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bx</span><span style="color:#ed4343;">;
+</span><span>      device_out</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.rd_valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>     
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>master_out.rd_valid</span><span style="color:#ed4343;">) {
+</span><span>      device_out</span><span style="color:#ed4343;">[</span><span>fifo.dout</span><span style="color:#ed4343;">]</span><span>.rd_data </span><span style="color:#ed4343;">=</span><span> master_out.rd_data</span><span style="color:#ed4343;">;
+</span><span>      device_out</span><span style="color:#ed4343;">[</span><span>fifo.dout</span><span style="color:#ed4343;">]</span><span>.rd_valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>      fifo.rget </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This module can be hooked up to the memory interface via the <em>master_in</em> and <em>master_out</em> signals. You then get <em>DEVICES</em> number of similar interfaces on the <em>device_in</em> and <em>device_out</em> arrays that can be hooked up to different parts of your design.</p>
+<p>For example, in our GPU project, we have a section that writes frames and another that reads the buffer to display the frames on the LCD.</p>
+<p>It is important to order your devices carefully since the device attached to index 0 get full priority. If it never has idle bus time, it'll starve out all the other devices.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;hello-your-name-here&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Hello YOUR_NAME_HERE</span>
+        </a>
+        
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

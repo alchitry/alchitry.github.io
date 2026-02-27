@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Alchitry Constraints Reference</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;references&#x2F;alchitry-constraints-reference&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;references&#x2F;">References</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;references&#x2F;alchitry-constraints-reference&#x2F;">Alchitry Constraints Reference</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Alchitry Constraints Reference</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2025-02-04</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;references&#x2F;alchitry-constraints-reference.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#alchitry-constraints-file-contents" aria-label="Alchitry Constraints File Contents">Alchitry Constraints File Contents</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#comments" aria-label="Comments">Comments</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#pin-constraints" aria-label="Pin Constraints">Pin Constraints</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#attribute-block" aria-label="Attribute Block">Attribute Block</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#attributes" aria-label="Attributes">Attributes</a>
+                            
+                            <ul>
+                                
+                                <li>
+                                    <a href="#pinout" aria-label="PINOUT">PINOUT</a>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a href="#side" aria-label="SIDE">SIDE</a>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a href="#standard" aria-label="STANDARD">STANDARD</a>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a href="#frequency" aria-label="FREQUENCY">FREQUENCY</a>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a href="#pull" aria-label="PULL">PULL</a>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a href="#drive" aria-label="DRIVE">DRIVE</a>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a href="#slew" aria-label="SLEW">SLEW</a>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a href="#diff-term" aria-label="DIFF_TERM">DIFF_TERM</a>
+                                    
+                                </li>
+                                
+                            </ul>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#pinouts" aria-label="Pinouts">Pinouts</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#native-constraints" aria-label="Native Constraints">Native Constraints</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#acf-pin" aria-label="acf_pin()">acf_pin()</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#acf-port" aria-label="acf_port()">acf_port()</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>This page is a reference for Alchitry Constraints V2.</p>
+<div class="video-container">
+    <iframe class="video" src="https://www.youtube.com/embed/dnk6_uN5UyE?si=eKinloydxoEf2rXi"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div><h1 id="alchitry-constraints-file-contents">Alchitry Constraints File Contents</h1>
+<p>An Alchitry Constraints File (.acf extension) contains a list of <a href="https://alchitry.com/tutorials/references/alchitry-constraints-reference/#pin-constraints">pin constraints</a>.</p>
+<h2 id="comments">Comments</h2>
+<p>Comments take the same form as in <a href="https://alchitry.com/tutorials/references/lucid-reference/#comments">Lucid</a>.</p>
+<p>Use <code class ="language-acf" data-lang="acf"><span style="color:#969696;">//</span></code> for a single line comment and <code class ="language-acf" data-lang="acf"><span style="color:#969696;">/*    */</span></code> for a multi-line comment.</p>
+<h2 id="pin-constraints">Pin Constraints</h2>
+<p>The main purpose of a pin constraint is to tell the tools which physical pin on the FPGA corresponds to a port 
+of your design's top-level module.</p>
+<p>A pin constraint takes the following form.</p>
+<pre data-lang="acf" style="background-color:#282828;color:#ffffff;" class="language-acf "><code class ="language-acf" data-lang="acf"><span style="color:#0a8dbf;">pin</span><span> port_name </span><span style="color:#d45ada;">PIN_NAME OPTIONAL_ATTRIBUTE_LIST
+</span></code></pre>
+<p>Here, <code class ="language-acf" data-lang="acf"><span>port_name</span></code> corresponds to a port of your top-level module.
+If the port is an array, then it should also include <a href="https://alchitry.com/tutorials/references/lucid-reference/#array-selection">array selectors</a>
+to select only a single bit.</p>
+<p>The <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">PIN_NAME</span></code> is the name of the physical pin to connect to <code class ="language-acf" data-lang="acf"><span>port_name</span></code>.
+This name is the Alchitry pin name and not the pin name of the FPGA.
+See the <a href="https://alchitry.com/tutorials/references/alchitry-constraints-reference/#pinouts">pinout section</a> for the various pin names.</p>
+<p>Finally, the <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">OPTIONAL_ATTRIBUTE_LIST</span></code> is a list of <a href="https://alchitry.com/tutorials/references/alchitry-constraints-reference/#attributes">attributes</a> that apply to only this pin.</p>
+<h2 id="attribute-block">Attribute Block</h2>
+<p>Specifying attributes for every single pin constraint would often become very tedious as many pins will share the same attribute values.
+This is where attribute blocks come into play.
+They take a very similar form to the <a href="https://alchitry.com/tutorials/references/lucid-reference/#connection-blocks">connection blocks</a> in Lucid.</p>
+<pre data-lang="acf" style="background-color:#282828;color:#ffffff;" class="language-acf "><code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">ATTRIBUTES_LIST </span><span style="color:#ed4343;">{
+</span><span>   ...
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>The <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">ATTRIBUTES_LIST</span></code> is a comma-seperated list of <a href="https://alchitry.com/tutorials/references/alchitry-constraints-reference/#attributes">attributes</a>.</p>
+<p>The attributes in the list are applied to every <a href="https://alchitry.com/tutorials/references/alchitry-constraints-reference/#pin-constraints">pin constraint</a> inside the brackets.</p>
+<p>Attribute blocks can also be nested to allow for fine-grained assignments.</p>
+<p>For example, the Hd constraints uses two <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">STANDARD</span></code> blocks along with a single <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">PINOUT</span></code> block.</p>
+<pre data-lang="acf" style="background-color:#282828;color:#ffffff;" class="language-acf "><code class ="short language-acf" data-lang="acf"><span style="color:#d45ada;">PINOUT</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">V2</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#d45ada;">STANDARD</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">LVCMOS33</span><span style="color:#ed4343;">) { </span><span style="color:#969696;">// standard 3.3V IO standard
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_sda_1 </span><span style="color:#d45ada;">A70
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_scl_1 </span><span style="color:#d45ada;">A72
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_cec_1 </span><span style="color:#d45ada;">A76
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_hp_1 </span><span style="color:#d45ada;">A78
+</span><span>
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_sda_2 </span><span style="color:#d45ada;">A69
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_scl_2 </span><span style="color:#d45ada;">A71
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_cec_2 </span><span style="color:#d45ada;">A75
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_hp_2 </span><span style="color:#d45ada;">A77
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>
+</span><span>    </span><span style="color:#d45ada;">STANDARD</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">TMDS_33</span><span style="color:#ed4343;">) { </span><span style="color:#969696;">// HDMI IO standard
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_clk_1_p </span><span style="color:#d45ada;">A48
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_clk_1_n </span><span style="color:#d45ada;">A46
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_data_1_p</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] </span><span style="color:#d45ada;">A54
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_data_1_n</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] </span><span style="color:#d45ada;">A52
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_data_1_p</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] </span><span style="color:#d45ada;">A60
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_data_1_n</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] </span><span style="color:#d45ada;">A58
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_data_1_p</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] </span><span style="color:#d45ada;">A66
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_data_1_n</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] </span><span style="color:#d45ada;">A64
+</span><span>
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_clk_2_p </span><span style="color:#d45ada;">A47
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_clk_2_n </span><span style="color:#d45ada;">A45
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_data_2_p</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] </span><span style="color:#d45ada;">A53
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_data_2_n</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] </span><span style="color:#d45ada;">A51
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_data_2_p</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] </span><span style="color:#d45ada;">A59
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_data_2_n</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] </span><span style="color:#d45ada;">A57
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_data_2_p</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] </span><span style="color:#d45ada;">A65
+</span><span>        </span><span style="color:#0a8dbf;">pin</span><span> hdmi_data_2_n</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] </span><span style="color:#d45ada;">A63
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<h2 id="attributes">Attributes</h2>
+<p>An attribute takes the following form.</p>
+<pre data-lang="acf" style="background-color:#282828;color:#ffffff;" class="language-acf "><code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">ATTRIBUTE_NAME</span><span style="color:#ed4343;">(</span><span>attribute_value</span><span style="color:#ed4343;">)
+</span></code></pre>
+<p>This assigns the value, <code class ="language-acf" data-lang="acf"><span>attribute_value</span></code>, to the attribute named <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">ATTRIBUTE_NAME</span></code>.</p>
+<p>There are a handful of different attributes currently supported.</p>
+<h3 id="pinout">PINOUT</h3>
+<p>This attribute is either <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">V2</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">V1</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">PT_ALPHA</span></code>, or not specified.</p>
+<p>When it is specified, it says that the pinout used for that pin should use that version's pin mapping.</p>
+<p>When it isn't specified, the project's board's version is used.
+For example, an Au V1 will use <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">V1</span></code>.</p>
+<p>Most of the time, if specified, it should match the board's version.
+However, if a <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">V1</span></code> pinout is specified when using a <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">V2</span></code> board, then the tools assume you are using a 
+<a href="https://shop.alchitry.com/products/alchitry-v2-v1-adapter">V2-&gt;V1 adapter</a>.
+In this case, the tools will translate the pinout to the adapter's pinout.</p>
+<p>If a <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">V2</span></code> version is used with a <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">V1</span></code> board an error is thrown.</p>
+<p>The value <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">PT_ALPHA</span></code> is specifically for the first batch of Pt boards that had a pinout error.
+It is only valid when <a href="https://alchitry.com/tutorials/references/alchitry-constraints-reference/#side"><code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SIDE</span></code></a> is set to <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">TOP</span></code>.
+The bottom pinout of the alpha boards should use a <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">PINOUT</span></code> of <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">V2</span></code>.</p>
+<h3 id="side">SIDE</h3>
+<p>Most boards only have ports on the top side.
+However, the <a href="https://shop.alchitry.com/products/alchitry-pt">Pt</a> has pins on both sides.</p>
+<p>To distinguish between the top and bottom, the <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SIDE</span></code> attribute was added.</p>
+<p><code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SIDE</span></code> can have a value of <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">TOP</span></code> or <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">BOTTOM</span></code>.
+It defaults to <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">TOP</span></code>.</p>
+<p>On the Pt, the top and bottom connectors both have banks A and B, and the pin names are identical.
+This means that a constraint file that works for the top of the board can be simply wrapped in a <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SIDE</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">BOTTOM</span><span style="color:#ed4343;">)</span></code> attribute
+block to use the board with the bottom connectors.</p>
+<h3 id="standard">STANDARD</h3>
+<p>This specifies the IO standard to apply to the pin.</p>
+<p>Most of the time, it will be set to <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">LVCMOS33</span></code>.
+This is the basic 3.3V IO standard.
+It is also the only standard supported by the <a href="https://shop.alchitry.com/products/alchitry-cu-v2">Cu</a>.</p>
+<p>The <a href="https://shop.alchitry.com/products/alchitry-au">Au</a> and <a href="https://shop.alchitry.com/products/alchitry-pt">Pt</a> both
+support the same IO standards.
+There are too many standards to list here, but page 98 of <a href="https://docs.amd.com/v/u/en-US/ug471_7Series_SelectIO">UG471</a>
+has a nice table summarizing the requirements for each standard.</p>
+<p>Each IO standard has various requirements that must be met in order for it to be used.
+The biggest one is the <code class ="language-acf" data-lang="acf"><span style="color:#da5a8c;">Vcco</span></code> voltage.
+All the pins on the Cu and most of the Au and Pt have <code class ="language-acf" data-lang="acf"><span style="color:#da5a8c;">Vcco</span></code> fixed at 3.3V.</p>
+<p>The Au and Pt have one group of pins that can have <code class ="language-acf" data-lang="acf"><span style="color:#da5a8c;">Vcco</span></code> switched between 3.3V, 2.5V, and 1.8V.
+This drastically opens up the IO standards available on these pins.</p>
+<p>For example, by setting <code class ="language-acf" data-lang="acf"><span style="color:#da5a8c;">Vcco</span></code> to 2.5V, the tri-voltage pins can be used as <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">LVDS_25</span></code> outputs or enable termination 
+when used as inputs.
+Any pins on the Au/Pt can be used as <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">LVDS_25</span></code> inputs as long as they don't use internal termination.</p>
+<p>The other common requirement is the <code class ="language-acf" data-lang="acf"><span style="color:#da5a8c;">Vref</span></code> voltage.
+Many standards don't require a specific <code class ="language-acf" data-lang="acf"><span style="color:#da5a8c;">Vref</span></code> and for the ones that do, an internal reference can typically be used.
+However, only one <code class ="language-acf" data-lang="acf"><span style="color:#da5a8c;">Vref</span></code> can be set for a bank of pins.
+Here, <em>bank</em> refers not to the connector's bank but rather the FPGA's internal bank.</p>
+<p>In the <a href="https://cdn.alchitry.com/docs/Au-V2/AuSchematic.pdf">Au's schematic</a>, the bank number is the first number 
+of the FPGA's IO signal names.
+On page 2, you can see the header's pinout as well as the associated pin banks for each signal.
+The banks are numbers like <code class ="language-acf" data-lang="acf"><span style="color:#a269dc;">14</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#a269dc;">34</span></code>, and <code class ="language-acf" data-lang="acf"><span style="color:#a269dc;">35</span></code>.</p>
+<p>All the IO standards used in a bank must have at most one <code class ="language-acf" data-lang="acf"><span style="color:#da5a8c;">Vref</span></code> requirement.</p>
+<h3 id="frequency">FREQUENCY</h3>
+<p>This attribute marks the pin as a clock input with the given frequency.</p>
+<p>The frequency value takes the form of a number followed by a frequency unit.
+The unit can be <code class ="language-acf" data-lang="acf"><span style="color:#da5a8c;">Hz</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#da5a8c;">KHz</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#da5a8c;">MHz</span></code>, or <code class ="language-acf" data-lang="acf"><span style="color:#da5a8c;">GHz</span></code>.
+For example, <code class ="language-acf" data-lang="acf"><span>100MHz</span></code>.</p>
+<p>Clock inputs should also be typically placed on a clock capable input pin.
+Xilinx (for the Au/Pt) calls these <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">MRCC</span></code> or <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SRCC</span></code> pins.
+Lattice (for the Cu) calls these <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">GBIN</span></code>.
+You can look at each board's schematic to see what pins are clock capable inputs.</p>
+<p>For V2 boards, pins <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">A41</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">A42</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">A47</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">A48</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">B41</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">B42</span></code>, and <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">B47</span></code> are clock capable inputs.</p>
+<p>The Au also includes <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">B48</span></code>.</p>
+<p>The Pt also includes <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">B24</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">B29</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">B30</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">B48</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">C41</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">C42</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">C47</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">C48</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">D41</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">D42</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">D47</span></code>, and <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">D48</span></code>.</p>
+<h3 id="pull">PULL</h3>
+<p>This attribute is used to enable a pin's pull-up or pull-down resistors.</p>
+<p>For the Cu, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">UP</span></code> is the only valid value.</p>
+<p>For the Au/Pt, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">UP</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DOWN</span></code>, or <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">KEEP</span></code> are valid values.</p>
+<p><code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">UP</span></code> enables a weak pull-up.
+<code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DOWN</span></code> enables a weak pull-down.
+<code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">KEEP</span></code> enables a weak pull to the same value the pin currently is (0 -&gt; pull-down, 1 -&gt; pull-up).</p>
+<h3 id="drive">DRIVE</h3>
+<p>The attribute specifies the drive strength of the pin in mA.</p>
+<p>It is not supported by the Cu.</p>
+<p>It is only valid when paired with specific <a href="https://alchitry.com/tutorials/references/alchitry-constraints-reference/#standard">IO standards</a>.
+For the valid values of each standard, see table 1-56 on page 101 of <a href="https://docs.amd.com/v/u/en-US/ug471_7Series_SelectIO">UG471</a>.</p>
+<p>For <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">LVCMOS33</span></code> on the Au/Pt, these are <code class ="language-acf" data-lang="acf"><span style="color:#a269dc;">4</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#a269dc;">8</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#a269dc;">12</span></code>, or <code class ="language-acf" data-lang="acf"><span style="color:#a269dc;">16</span></code>.</p>
+<p>This number specifies the drive strength in mA and defaults to <code class ="language-acf" data-lang="acf"><span style="color:#a269dc;">12</span></code>.</p>
+<h3 id="slew">SLEW</h3>
+<p>This attribute specifies the slew rate of the pin and is only supported by the Au/Pt, not the Cu.</p>
+<p>The slew rate is how fast the edge transitions.</p>
+<p>It is only valid when paired with specific <a href="https://alchitry.com/tutorials/references/alchitry-constraints-reference/#standard">IO standards</a>.
+For the valid values of each standard, see table 1-56 on page 101 of <a href="https://docs.amd.com/v/u/en-US/ug471_7Series_SelectIO">UG471</a>.</p>
+<p>For standards that support a slew rate, the valid values are <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">FAST</span></code> or <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SLOW</span></code> with <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SLOW</span></code> being the default.</p>
+<p>Using a <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">FAST</span></code> slew rate may help with high speed signals but may also cause more power consumption and noise if not 
+used carefully.</p>
+<h3 id="diff-term">DIFF_TERM</h3>
+<p>The <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DIFF_TERM</span></code> attribute specifies if internal differential termination should be enabled.
+It can have a value of <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">TRUE</span></code> or <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">FALSE</span></code> and defaults to <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">FALSE</span></code>.</p>
+<p>It is only available with some <a href="https://alchitry.com/tutorials/references/alchitry-constraints-reference/#standard"><code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">STANDARD</span></code></a> values on the Au and Pt.
+See <a href="https://docs.amd.com/v/u/en-US/ug471_7Series_SelectIO">UG471</a> for details on which ones.</p>
+<p>It is most often used with <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">LVDS_25</span></code> on the tri-voltage pins.
+Using internal termination requires that VCCO be set to 2.5V for the pins using it.
+Failing to set the tri-voltage pins correctly could damage the FPGA.</p>
+<h1 id="pinouts">Pinouts</h1>
+<p>The available pins vary depending on your board, but they follow a standard format.</p>
+<p>The pins broken out on the connectors are named by the bank letter followed by the pin number.
+For example, pin 2 on bank A is <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">A2</span></code>.</p>
+<p>The V2 boards have two banks on top, A and B.
+The <a href="https://shop.alchitry.com/products/alchitry-pt">Pt</a> has two more on the bottom. 
+They're also called A and B but distinguished via the </p>
+<p>The V1 boards have four banks, A, B, C, and D on top.</p>
+<p>Check the schematic for the <a href="https://cdn.alchitry.com/docs/alchitry_cu_sch.pdf">Cu V1</a>, <a href="https://cdn.alchitry.com/docs/alchitry_au_sch.pdf">Au V1</a>, <a href="https://cdn.alchitry.com/docs/Cu-V2/CuSchematic.pdf">Cu V2</a> or <a href="https://cdn.alchitry.com/docs/Au-V2/AuSchematic.pdf">Au V2</a> for what pins are populated on the connectors.</p>
+<p>In addition to the pins on the connectors, there are some special internal pin names.</p>
+<p>All boards have the pins <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">LED0</span></code>-<code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">LED7</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">RESET</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">CLOCK</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">USB_RX</span></code>, and <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">USB_TX</span></code>.</p>
+<p>The Cu (V1 and V2) also have <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SPI_MOSI</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SPI_MISO</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SPI_SCK</span></code>, and <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SPI_SS</span></code> that connect to the configuration flash.</p>
+<p>The Au (V1, V1+, and V2) and Pt also have <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SPI_D0</span></code>-<code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SPI_D3</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SPI_SCK</span></code>, and <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SPI_SS</span></code> that connect to the configuration flash.
+There is also <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">VP</span></code> and <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">VN</span></code> which are special analog inputs.</p>
+<p>The Pt also has <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">C29</span></code> - <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">C36</span></code> that connect to where the LED signals on the Au and Cu are broken out on the control connector.
+The LED signals aren't broken out on the Pt.</p>
+<p>The Pt also has <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">USB_D2</span></code> - <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">USB_D7</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">USB_RXF</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">USB_TXE</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">USB_RD</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">USB_WR</span></code>, and <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">USB_SIWUI</span></code> for using the FIFO-based 
+interface with the FTDI chip.
+Note that what would be <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">USB_D0</span></code> is <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">USB_RX</span></code> and <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">USB_D1</span></code> is <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">USB_TX</span></code>.</p>
+<p>Finally, there are <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_DQ0</span></code>-<code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_DQ15</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_DQS0_P</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_DQS0_N</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_DQS1_P</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_DQS1_N</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_DM0</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_DM1</span></code>,
+<code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_ODT</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_RESET</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_BA0</span></code>-<code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_BA2</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_CK_P</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_CK_N</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_CKE</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_CS</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_RAS</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_CAS</span></code>, <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_WE</span></code>,
+<code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_A0</span></code>-<code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">DDR_A13</span></code> for interfacing with the DDR3.
+You generally shouldn't specify these directly as the <a href="https://alchitry.com/tutorials/advanced/ddr3-memory/">MIG core</a> does it for you.</p>
+<h1 id="native-constraints">Native Constraints</h1>
+<p>Sometimes you may need to do something more advanced that isn't directly supported within the Alchitry Constraint Format.
+For those cases, you can use a <code class ="language-acf" data-lang="acf"><span style="font-weight:bold;color:#0abfbf;">native</span></code> block.</p>
+<p>The <code class ="language-acf" data-lang="acf"><span style="font-weight:bold;color:#0abfbf;">native</span></code> block takes the following form.</p>
+<pre data-lang="acf" style="background-color:#282828;color:#ffffff;" class="language-acf "><code class ="language-acf" data-lang="acf"><span style="font-weight:bold;color:#0abfbf;">native </span><span style="color:#ed4343;">{
+</span><span>  </span><span style="color:#969696;">// Native constraints here
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>The text inside the block will be inserted into the final constraint file mostly as is.
+This allows you to write <a href="https://docs.amd.com/r/en-US/ug903-vivado-using-constraints/About-XDC-Constraints">XDC</a> constraints
+for the Au or Pt and SDC constraints for the Cu.</p>
+<p>Inside the <code class ="language-acf" data-lang="acf"><span style="font-weight:bold;color:#0abfbf;">native</span></code> block, you have access to two helper functions. <code class ="language-acf" data-lang="acf"><span style="font-weight:bold;color:#0abfbf;">acf_pin</span><span style="color:#ed4343;">()</span></code> and <code class ="language-acf" data-lang="acf"><span style="font-weight:bold;color:#0abfbf;">acf_port</span><span style="color:#ed4343;">()</span></code>.</p>
+<h2 id="acf-pin">acf_pin()</h2>
+<p>The <code class ="language-acf" data-lang="acf"><span style="font-weight:bold;color:#0abfbf;">acf_pin</span><span style="color:#ed4343;">()</span></code> function allows you to access the Alchitry pin converter inside the native block.
+This lets you use the names of the pins on the connectors instead of the FPGA's pin.</p>
+<p>For example, <code class ="language-acf" data-lang="acf"><span style="font-weight:bold;color:#0abfbf;">acf_pin</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">A3</span><span style="color:#ed4343;">)</span></code>, when used with the Au, will be replaced by <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">N6</span></code> (the name of the FPGA pin).</p>
+<p>If the native block is wrapped in an attribute block specifying a <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">PINOUT</span></code> or <code class ="language-acf" data-lang="acf"><span style="color:#d45ada;">SIDE</span></code>, that is taken into account
+during the translation.</p>
+<h2 id="acf-port">acf_port()</h2>
+<p>The <code class ="language-acf" data-lang="acf"><span style="font-weight:bold;color:#0abfbf;">acf_port</span><span style="color:#ed4343;">()</span></code> function allows you to get the name of a top-level port.
+The name of the port in Lucid isn't always exactly the same in the translated files, and this function ensures you use
+the correct name.</p>
+<p>For example, <code class ="language-acf" data-lang="acf"><span style="font-weight:bold;color:#0abfbf;">acf_port</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">)</span></code> will be replaced with the name of the <code class ="language-acf" data-lang="acf"><span>clk</span></code> signal (most likely just <code class ="language-acf" data-lang="acf"><span>clk</span></code>).</p>
+<p>The port should also include all the indexing.
+This is where translation often differs from Lucid to the final name.</p>
+<p>For example, <code class ="language-acf" data-lang="acf"><span style="font-weight:bold;color:#0abfbf;">acf_port</span><span style="color:#ed4343;">(</span><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">])</span></code> will be replaced with the correct port name for the <code class ="language-acf" data-lang="acf"><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">]</span></code> signal.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;references&#x2F;lucid-reference&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Lucid Reference</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;references&#x2F;custom-element&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Custom Elements</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

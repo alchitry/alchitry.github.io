@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Pulse Width Modulation</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;pulse-width-modulation&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;">Verilog</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;pulse-width-modulation&#x2F;">Pulse Width Modulation</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Pulse Width Modulation</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+14 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;pulse-width-modulation.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#pulse-trains" aria-label="Pulse-Trains">Pulse-Trains</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#creating-a-pulse-train" aria-label="Creating a Pulse-Train">Creating a Pulse-Train</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#parameters" aria-label="Parameters">Parameters</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#instantiating-the-module" aria-label="Instantiating the module">Instantiating the module</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#for-generate-loops" aria-label="For Generate Loops">For Generate Loops</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#creating-animations" aria-label="Creating Animations">Creating Animations</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#putting-it-all-together" aria-label="Putting it all together">Putting it all together</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p><strong>P</strong>ulse-<strong>W</strong>idth <strong>M</strong>odulation, or <strong>PWM</strong> is a very common technique that varies the width of the pulses in a pulse-train. PWM has a few applications, the main ones are for controlling things like servos and speed controllers and limiting the effective power for things like motors and LEDs. This tutorial will cover how to use PWM to change the brightness of an LED. </p>
+<h3 id="pulse-trains">Pulse-Trains</h3>
+<p>A <strong>pulse-train</strong> is just the name given to a series of pulses that come after one another. A simple pulse train could look like this one.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/pulse_train.png" alt="pulse_train.png" /></p>
+<p>As time goes by the signal alternates between high (1) and low (0). Each pulse comes one after another in a very ordered fashion. In this example the pulse is high for 1/3 of the time. That means that the signal has a <strong>duty cycle</strong> of 33%. If the signal had a duty cycle of 50% then the signal would be high and low for equal amounts of time.</p>
+<h3 id="creating-a-pulse-train">Creating a Pulse-Train</h3>
+<p>In the <a href="https://alchitry.com/tutorials/archive/verilog/mojo/synchronous-logic/">synchronous logic tutorial</a> we created a circuit that could blinked an LED. What we really created was a circuit that created a pulse-train with a 50% duty cycle!  Because we used such a large counter the period (the time between the beginning of two pulses) was very long we could easily see the LED turn on and off.</p>
+<p>What would happen if instead of using a 25 bit counter we used an 8 bit counter? The LED would blink at 50MHz / 2^8 = 195,313 Hz or 195,313 times per second. There is no way our eyes are fast enough to see it blink that fast. Since we can't see it blink what would it look like? It would not look like a whole lot, it would just appear to always be on! However, the interesting part is that since it is only on for half of the time our eye averages the light and the LED appears to be dimmer than if it was on the entire time!</p>
+<p>I recommend you try modifying the code form that tutorial to have one LED blinking from an 8 bit counter and another LED always on so you can see the difference.</p>
+<p>How does PWM play into all of this? As you may have guessed, by varying the duty cycle of the signal we can effectively control the brightness of the LED! With a 0% duty cycle the LED is off, with a 100% duty cycle the LED is full brightness, and by controlling the duty cycles we can reach any point in between.</p>
+<p>When we were blinking the LED we used a simplification because we always wanted a 50% duty cycle. Instead of saying the LED should be on when the counter is greater than half its max value, we simply used the most significant bit. However, in the case where we want to create a signal with an arbitrary duty cycle we need to be able to control the value we are comparing the counter to.</p>
+<p>Here is an example where we want to create the same 33% duty cycle signal shown before.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/pwm_33.png" alt="" /></p>
+<p>The graph on the bottom is the value of our counter over time. You can see the <strong>Compare</strong> value is set to 1/3 of the <strong>Max</strong> value. If we output a 1 whenever the value of the counter is less than <strong>Compare</strong> and a 0 otherwise you can see we create a pulse-train with a 33% duty cycle!</p>
+<p>Now if we want to change the duty cycle of our signal all we need to do is vary the value of <strong>Compare</strong> and everything will take care of itself. Here's another example, but now with a 66% duty cycle.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/pwm_66.png" alt="pwm_66.png" /></p>
+<p>You can see that by simply raising the value of <strong>Compare</strong> to 2/3 of <strong>Max</strong> our duty cycle became 66%!</p>
+<p>To implement this in Verilog is pretty simple and only requires a few modifications to the blinker code.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#faac1f;">module</span><span> pwm </span><span style="color:#ed4343;">#(</span><span style="color:#0a8dbf;">parameter</span><span> CTR_LEN </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">) (
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input </span><span style="color:#ed4343;">[</span><span>CTR_LEN </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">1 </span><span style="color:#ed4343;">: </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> compare</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> pwm
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">reg</span><span> pwm_d</span><span style="color:#ed4343;">,</span><span> pwm_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span>CTR_LEN </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">: </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> ctr_d</span><span style="color:#ed4343;">,</span><span> ctr_q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> pwm </span><span style="color:#ed4343;">=</span><span> pwm_q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(*) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    ctr_d </span><span style="color:#ed4343;">=</span><span> ctr_q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>compare </span><span style="color:#ed4343;">&gt;</span><span> ctr_q</span><span style="color:#ed4343;">)
+</span><span>      pwm_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">else
+</span><span>      pwm_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(</span><span style="font-weight:bold;color:#0abfbf;">posedge</span><span> clk</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>      ctr_q </span><span style="color:#ed4343;">&lt;= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">end else begin
+</span><span>      ctr_q </span><span style="color:#ed4343;">&lt;=</span><span> ctr_d</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span>    pwm_q </span><span style="color:#ed4343;">&lt;=</span><span> pwm_d</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span style="font-weight:bold;color:#faac1f;">endmodule
+</span></code></pre>
+<p>Let's put this all together in a project. Make sure you've downloaded the <a href="https://github.com/embmicro/mojo-base-project/archive/master.zip">Mojo Base Project</a> to work from. Create a new source file called PWM.v and add the contents of the code above.</p>
+<h3 id="parameters">Parameters</h3>
+<p>This code has something new, the <strong>parameter</strong>. Parameters are constants that are used to configure the behavior of a module when your code is synthesized. These are useful for making generic modules that can be reused.</p>
+<p>Parameters are declared before the IO ports by using the #( ... ) syntax. You can list as many parameters as you like by separating them with commas. If you assign a parameter a value, like we did in this example, then that is the default value and will be used if a value isn't specified when the module is instantiated. </p>
+<h3 id="instantiating-the-module">Instantiating the module</h3>
+<p>Just like before, since we added a new module, we need to instantiate it in the <strong>mojo_top.v</strong> file. </p>
+<p>For this example we are going to instantiate 8 PWM modules and give each one a different constant compare value. That way we should get each of the LEDs on the Mojo to be at a different brightness.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="short language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top</span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#969696;">// 50MHz clock input
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// Input from reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// cclk input from AVR, high when AVR is ready
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// Outputs to the 8 onboard LEDs
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span>led</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// AVR SPI connections
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// AVR ADC channel select
+</span><span>    </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> spi_channel</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// Serial connections
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">, </span><span style="color:#969696;">// AVR Tx =&gt; FPGA Rx
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">, </span><span style="color:#969696;">// AVR Rx =&gt; FPGA Tx
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy </span><span style="color:#969696;">// AVR Rx buffer full
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">wire</span><span> rst </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// make reset active high
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// these signals should be high-z when not used
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> spi_miso </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;bz</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> avr_rx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;bz</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> spi_channel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;bzzzz</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="color:#fac863;">pwm </span><span style="font-weight:bold;color:#0abfbf;">#</span><span style="color:#ed4343;">(</span><span>.CTR_LEN</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">))</span><span> pwm_1 </span><span style="color:#ed4343;">(
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">),
+</span><span>    .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),
+</span><span>    .compare</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3&#39;d0</span><span style="color:#ed4343;">),
+</span><span>    .pwm</span><span style="color:#ed4343;">(</span><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">])
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#fac863;">pwm </span><span style="font-weight:bold;color:#0abfbf;">#</span><span style="color:#ed4343;">(</span><span>.CTR_LEN</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">))</span><span> pwm_2 </span><span style="color:#ed4343;">(
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">),
+</span><span>    .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),
+</span><span>    .compare</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3&#39;d1</span><span style="color:#ed4343;">),
+</span><span>    .pwm</span><span style="color:#ed4343;">(</span><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">])
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#fac863;">pwm </span><span style="font-weight:bold;color:#0abfbf;">#</span><span style="color:#ed4343;">(</span><span>.CTR_LEN</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">))</span><span> pwm_3 </span><span style="color:#ed4343;">(
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">),
+</span><span>    .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),
+</span><span>    .compare</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3&#39;d2</span><span style="color:#ed4343;">),
+</span><span>    .pwm</span><span style="color:#ed4343;">(</span><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">])
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#fac863;">pwm </span><span style="font-weight:bold;color:#0abfbf;">#</span><span style="color:#ed4343;">(</span><span>.CTR_LEN</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">))</span><span> pwm_4 </span><span style="color:#ed4343;">(
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">),
+</span><span>    .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),
+</span><span>    .compare</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3&#39;d3</span><span style="color:#ed4343;">),
+</span><span>    .pwm</span><span style="color:#ed4343;">(</span><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">])
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#fac863;">pwm </span><span style="font-weight:bold;color:#0abfbf;">#</span><span style="color:#ed4343;">(</span><span>.CTR_LEN</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">))</span><span> pwm_5 </span><span style="color:#ed4343;">(
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">),
+</span><span>    .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),
+</span><span>    .compare</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3&#39;d4</span><span style="color:#ed4343;">),
+</span><span>    .pwm</span><span style="color:#ed4343;">(</span><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">])
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#fac863;">pwm </span><span style="font-weight:bold;color:#0abfbf;">#</span><span style="color:#ed4343;">(</span><span>.CTR_LEN</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">))</span><span> pwm_6 </span><span style="color:#ed4343;">(
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">),
+</span><span>    .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),
+</span><span>    .compare</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3&#39;d5</span><span style="color:#ed4343;">),
+</span><span>    .pwm</span><span style="color:#ed4343;">(</span><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">])
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#fac863;">pwm </span><span style="font-weight:bold;color:#0abfbf;">#</span><span style="color:#ed4343;">(</span><span>.CTR_LEN</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">))</span><span> pwm_7 </span><span style="color:#ed4343;">(
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">),
+</span><span>    .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),
+</span><span>    .compare</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3&#39;d6</span><span style="color:#ed4343;">),
+</span><span>    .pwm</span><span style="color:#ed4343;">(</span><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">])
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#fac863;">pwm </span><span style="font-weight:bold;color:#0abfbf;">#</span><span style="color:#ed4343;">(</span><span>.CTR_LEN</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">))</span><span> pwm_8 </span><span style="color:#ed4343;">(
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">),
+</span><span>    .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),
+</span><span>    .compare</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3&#39;d7</span><span style="color:#ed4343;">),
+</span><span>    .pwm</span><span style="color:#ed4343;">(</span><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">])
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span style="font-weight:bold;color:#faac1f;">endmodule
+</span></code></pre>
+<p>For this example we set <strong>CTR_LEN</strong> to be 3 because we only need 8 different brightness values. For whatever reason, when you instantiate the module the parameters come <em>before</em> the name of the instance. </p>
+<p>Go ahead and synthesize the code in ISE and load it onto your Mojo. You should see the top LED is max brightness and each one under it is slightly dimmer. </p>
+<h3 id="for-generate-loops">For Generate Loops</h3>
+<p>Sometimes when you want to instantiate a bunch of the same thing it is much easier to use a special type of for loop, called the <strong>for generate</strong> loop. If we rewrite our code above using a for generate loop it will look like this.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top</span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#969696;">// 50MHz clock input
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// Input from reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// cclk input from AVR, high when AVR is ready
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// Outputs to the 8 onboard LEDs
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span>led</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// AVR SPI connections
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// AVR ADC channel select
+</span><span>    </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> spi_channel</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// Serial connections
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">, </span><span style="color:#969696;">// AVR Tx =&gt; FPGA Rx
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">, </span><span style="color:#969696;">// AVR Rx =&gt; FPGA Tx
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy </span><span style="color:#969696;">// AVR Rx buffer full
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">wire</span><span> rst </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// make reset active high
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// these signals should be high-z when not used
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> spi_miso </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;bz</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> avr_rx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;bz</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> spi_channel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;bzzzz</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">genvar</span><span> i</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">generate
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">=</span><span>i</span><span style="color:#ed4343;">+</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin</span><span style="color:#ed4343;">:</span><span> pwm_gen_loop
+</span><span>    </span><span style="color:#fac863;">pwm </span><span style="font-weight:bold;color:#0abfbf;">#</span><span style="color:#ed4343;">(</span><span>.CTR_LEN</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">))</span><span> pwm </span><span style="color:#ed4343;">(
+</span><span>      .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">),
+</span><span>      .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),
+</span><span>      .compare</span><span style="color:#ed4343;">(</span><span>i</span><span style="color:#ed4343;">),
+</span><span>      .pwm</span><span style="color:#ed4343;">(</span><span>led</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">])
+</span><span>    </span><span style="color:#ed4343;">);
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">endgenerate
+</span><span> 
+</span><span style="font-weight:bold;color:#faac1f;">endmodule
+</span></code></pre>
+<p>This is so much cleaner!</p>
+<p>It is important to remember that all the numbers used for the for loop must be constants since the synthesizer needs to be able to figure out exactly how many times to duplicate the PWM module in hardware! In this case we get 8 copies of the same circuit in our design.</p>
+<p>The tag <strong>pwm_gen_loop</strong> is the name of the for loop. When working with generate statements you need to give the loop a name. It uses that name and the value of <strong>i</strong> to assign a unique name to each of the instances of the PWM module. This is important when simulating.</p>
+<h3 id="creating-animations">Creating Animations</h3>
+<p>This code is great and all, but the LEDs are just static. In this example we are going to make an LED fade in and out.</p>
+<p>First we need to figure out what do we have to do to make it fade in and out? We know that the value of <strong>compare</strong> sets the brightness of the LED so we just need to vary <strong>compare</strong> up and down. At first this seems like it could be done using a simple counter, but there's a problem with that. Once a counter gets to its max value it resets to 0 just like this.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/basic.png" alt="basic.png" /></p>
+<p>In this picture the grayed out areas are where the MSB of the counter is 1. If instead of looking at the value of the whole counter, we look at the value without the MSB the counter will look like this.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/basic_counter_wo_msb.png" alt="basic_counter_wo_msb.png" /></p>
+<p>The max value of the counter become half of what it used to be, but the frequency is doubled. However, we now have a way to make the counter behave like we want it to. If we simply invert the value of the counter when the MSB is 1, we end up with this.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/basic_counter_inversion.png" alt="basic_counter_inversion.png" /></p>
+<p>That looks much better! If we feed that signal into the compare signal of the PWM module the LED will fade in and out just like we want.</p>
+<p>This is great but how do we actually invert the value of the counter? One way to do it is to take <strong>Max/2</strong> and subtract the counter value. However, there is a better way to do this. If we simply invert all the bits we get the same effect! For example if we are counting from 0-7 the first three numbers are 000, 001, and 010. If we invert the bits that becomes 111, 110, 101, or 7, 6, 5. Simply by inverting each bit we can change the counter from counting up to counting down.</p>
+<p>Let's add this counter to the project. Create a new file called counter.v and add the following to it.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#faac1f;">module</span><span> counter </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> value
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">reg</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">24</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> ctr_d</span><span style="color:#ed4343;">,</span><span> ctr_q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(</span><span>ctr_q</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    ctr_d </span><span style="color:#ed4343;">=</span><span> ctr_q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">24</span><span style="color:#ed4343;">])
+</span><span>      value </span><span style="color:#ed4343;">= ~</span><span>ctr_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">23</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">else
+</span><span>      value </span><span style="color:#ed4343;">=</span><span> ctr_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">23</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">];
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(</span><span style="font-weight:bold;color:#0abfbf;">posedge</span><span> clk</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>      ctr_q </span><span style="color:#ed4343;">&lt;= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">end else begin
+</span><span>      ctr_q </span><span style="color:#ed4343;">&lt;=</span><span> ctr_d</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span style="font-weight:bold;color:#faac1f;">endmodule
+</span></code></pre>
+<p>This is just a basic counter with the inversion method to make the value count up then down. Note that we are using a large 25 bit counter, but we are only using the top few bits. This is because we need the counter to be slow enough for us to see the LED fade in and out!</p>
+<p>Also note that the output <strong>value</strong> is declared as a <strong>reg</strong>. That allows us to assign a value to it directly in the always block.</p>
+<p>We now need to wire this up to our PWM module in <strong>mojo_top.v</strong>.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>1</td><td><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top</span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>2</td><td><span>    </span><span style="color:#969696;">// 50MHz clock input
+</span></td></tr><tr><td>3</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>4</td><td><span>    </span><span style="color:#969696;">// Input from reset button (active low)
+</span></td></tr><tr><td>5</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>6</td><td><span>    </span><span style="color:#969696;">// cclk input from AVR, high when AVR is ready
+</span></td></tr><tr><td>7</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>8</td><td><span>    </span><span style="color:#969696;">// Outputs to the 8 onboard LEDs
+</span></td></tr><tr><td>9</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span>led</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>10</td><td><span>    </span><span style="color:#969696;">// AVR SPI connections
+</span></td></tr><tr><td>11</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>12</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>13</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>14</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>15</td><td><span>    </span><span style="color:#969696;">// AVR ADC channel select
+</span></td></tr><tr><td>16</td><td><span>    </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> spi_channel</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>17</td><td><span>    </span><span style="color:#969696;">// Serial connections
+</span></td></tr><tr><td>18</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">, </span><span style="color:#969696;">// AVR Tx =&gt; FPGA Rx
+</span></td></tr><tr><td>19</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">, </span><span style="color:#969696;">// AVR Rx =&gt; FPGA Tx
+</span></td></tr><tr><td>20</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy </span><span style="color:#969696;">// AVR Rx buffer full
+</span></td></tr><tr><td>21</td><td><span>  </span><span style="color:#ed4343;">);
+</span></td></tr><tr><td>22</td><td><span> 
+</span></td></tr><tr><td>23</td><td><span>  </span><span style="color:#0a8dbf;">wire</span><span> rst </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// make reset active high
+</span></td></tr><tr><td>24</td><td><span> 
+</span></td></tr><tr><td>25</td><td><span>  </span><span style="color:#969696;">// these signals should be high-z when not used
+</span></td></tr><tr><td>26</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> spi_miso </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;bz</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>27</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> avr_rx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;bz</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>28</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> spi_channel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;bzzzz</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>29</td><td><span> 
+</span></td></tr><tr><td>30</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> led </span><span style="color:#ed4343;">= {</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">{</span><span>pwm</span><span style="color:#ed4343;">}};
+</span></td></tr><tr><td>31</td><td><span> 
+</span></td></tr><tr><td>32</td><td><span>  </span><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> compare</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>33</td><td><span>  </span><span style="color:#0a8dbf;">wire</span><span> pwm</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>34</td><td><span> 
+</span></td></tr><tr><td>35</td><td><span>  counter fancyCounter </span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>36</td><td><span>  .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>37</td><td><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>38</td><td><span>  .value</span><span style="color:#ed4343;">(</span><span>compare</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>39</td><td><span>  </span><span style="color:#ed4343;">);
+</span></td></tr><tr><td>40</td><td><span> 
+</span></td></tr><tr><td>41</td><td><span>  </span><span style="color:#fac863;">pwm </span><span style="font-weight:bold;color:#0abfbf;">#</span><span style="color:#ed4343;">(</span><span>.CTR_LEN</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">))</span><span> fancyPWM </span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>42</td><td><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>43</td><td><span>    .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>44</td><td><span>    .compare</span><span style="color:#ed4343;">(</span><span>compare</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>45</td><td><span>    .pwm</span><span style="color:#ed4343;">(</span><span>pwm</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>46</td><td><span>  </span><span style="color:#ed4343;">);
+</span></td></tr><tr><td>47</td><td><span> 
+</span></td></tr><tr><td>48</td><td><span style="font-weight:bold;color:#faac1f;">endmodule
+</span></td></tr></tbody></table></code></pre>
+<p>This code is fairly straight forward, but it uses a new feature of Verilog. Take a look at the line below.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>30</td><td><span style="font-weight:bold;color:#0abfbf;">assign</span><span> led </span><span style="color:#ed4343;">= {</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">{</span><span>pwm</span><span style="color:#ed4343;">}};
+</span></td></tr></tbody></table></code></pre>
+<p>The <code class ="language-verilog" data-lang="verilog"><span style="color:#ed4343;">{{}}</span></code> syntax allows you to duplicate a signal a set number of times. In this case we are duplicating the one wire wide signal <strong>pwm</strong> into an eight wire wide signal with identical values. This is just to make all the LEDs do the same thing without having to assign each one <strong>pwm</strong> individually.</p>
+<p>You can now synthesize your project and check it out on the Mojo. All the LEDs should fade in and out.</p>
+<h3 id="putting-it-all-together">Putting it all together</h3>
+<p>The code above is actually a bit inefficient. This is because we have but of redundancy. The counter in our PWM module will have the exact same value as the eight LSBs in our counter module! It turns out that ISE is actually smart enough to figure this out and it will optimize one of them away and just use one. If you look in the warning when you synthesize the project you will see something like the following for each of the eight signals.</p>
+<blockquote>
+<p>Xst:2261 - The FF/Latchin Unitis equivalent to the following FF/Latch, which will be removed :</p>
+</blockquote>
+<p>Another thing to consider is that if you want to have multiple PWM units you really don't need multiple counters because they will all be the same. </p>
+<p>The Mojo ships with an example project that fades the LEDs in a fancy wave pattern. Here is the module responsible for that.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#faac1f;">module</span><span> led_wave </span><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#0a8dbf;">parameter</span><span> CTR_LEN </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">25
+</span><span>  </span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#0a8dbf;">input wire</span><span> clk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input wire</span><span> rst</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output reg</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> led
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">reg</span><span style="color:#ed4343;">[</span><span>CTR_LEN</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> ctr_d</span><span style="color:#ed4343;">,</span><span> ctr_q </span><span style="color:#ed4343;">= {</span><span>CTR_LEN</span><span style="color:#ed4343;">{</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">}};
+</span><span>  </span><span style="color:#0a8dbf;">reg</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> i</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> acmp</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> result</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(</span><span>ctr_q</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    ctr_d </span><span style="color:#ed4343;">=</span><span> ctr_q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">=</span><span> i </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>      result </span><span style="color:#ed4343;">=</span><span> ctr_q</span><span style="color:#ed4343;">[</span><span>CTR_LEN</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span>CTR_LEN</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">] +</span><span> i </span><span style="color:#ed4343;">* </span><span style="color:#a269dc;">8&#39;d64</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>result</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">])
+</span><span>        acmp </span><span style="color:#ed4343;">= ~</span><span>result</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">else
+</span><span>        acmp </span><span style="color:#ed4343;">=</span><span> result</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span> 
+</span><span>      led</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] =</span><span> acmp </span><span style="color:#ed4343;">&gt;</span><span> ctr_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(</span><span style="font-weight:bold;color:#0abfbf;">posedge</span><span> clk</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>      ctr_q </span><span style="color:#ed4343;">&lt;= {</span><span>CTR_LEN</span><span style="color:#ed4343;">{</span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">}};
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">end else begin
+</span><span>      ctr_q </span><span style="color:#ed4343;">&lt;=</span><span> ctr_d</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span style="font-weight:bold;color:#faac1f;">endmodule
+</span></code></pre>
+<p>This module has a few fancy tricks, like the one with the inverted counter, to make it very compact. It also gets away with using only one counter to control all eight LEDs even though each has a different duty cycle!</p>
+<p>This code uses a different type of for loop, but it accomplishes the same thing and should be fairly easy to understand. Just like with <strong>for generate</strong> loops the number of loop iterations needs to be constant. When designing hardware it is important to think of for loops as simply a compact way to write something.</p>
+<p>The counter value is offset by a different amount for each LED which creates the wave effect. </p>
+<p>I'll leave it up to you to instantiate this module and connect its output to the LEDs in <strong>mojo_top.v</strong>. This is similar to the previous <strong>mojo_top.v</strong> file except instead of using the same signal (<strong>pwm</strong>) for all eight LEDs, you can directly connect the LED signal to the output of the module.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;synchronous-logic&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Synchronous Logic</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;writing-test-benches&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Writing Test Benches</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

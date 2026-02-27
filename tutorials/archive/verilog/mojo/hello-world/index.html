@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hello World!</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;hello-world&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;">Verilog</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;hello-world&#x2F;">Hello World!</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Hello World!</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+10 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;hello-world.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#avr-interface" aria-label="AVR Interface">AVR Interface</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#roms" aria-label="ROMs">ROMs</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#state-machines" aria-label="State Machines">State Machines</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#case-statements" aria-label="Case Statements">Case Statements</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-top-module" aria-label="The Top Module">The Top Module</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p><strong>The serial interface has changed on April 10, 2015. If you are having trouble, make sure you have the</strong> <a href="https://alchitry.com/tutorials/archive/mojo/update-the-mojo/">latest firmware</a> <strong>and Mojo Base Project!</strong></p>
+<p>One of the cool features of the Mojo is that there is a microcontroller on-board that is used to configure the FPGA. However, once the FPGA is configured, the microcontroller is free to help out the FPGA! There are two main functions you can use the microcontroller for without modifying the code yourself. The first is an analog to digital convert and the other, which we are covering here, is a USB to serial converter.</p>
+<p>This allows you to use the USB port on the Mojo to send data to your computer. The protocol used to send data isn't too complicated at it's core, but luckily for you we already wrote that part of the design for you! </p>
+<p>If you grab a copy of the <a href="https://github.com/embmicro/mojo-base-project/archive/master.zip">Mojo Base Project</a>, all the source for this is included. Make sure you download a fresh copy for this tutorial.</p>
+<h3 id="avr-interface">AVR Interface</h3>
+<p>The main module you need to worry about is the <strong>avr_interface</strong> module. <strong>AVR</strong> is the type of microcontroller on the Mojo. This module is the only one you need to directly interface with. </p>
+<p>As you've probably noticed in other tutorials, out <strong>mojo_top</strong> module had a lot of extra inputs and outputs that weren't being used. Those are all used to interface with the AVR and should be connected to the <strong>avr_interface</strong> module.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#faac1f;">module</span><span> avr_interface </span><span style="color:#ed4343;">#(
+</span><span>  </span><span style="color:#0a8dbf;">parameter</span><span> CLK_RATE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">50000000</span><span style="color:#ed4343;">,
+</span><span>  </span><span style="color:#0a8dbf;">parameter</span><span> SERIAL_BAUD_RATE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">500000
+</span><span style="color:#ed4343;">)(
+</span><span>  </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span><span>  </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// cclk, or configuration clock is used when the FPGA is begin configured.
+</span><span>  </span><span style="color:#969696;">// The AVR will hold cclk high when it has finished initializing.
+</span><span>  </span><span style="color:#969696;">// It is important not to drive the lines connecting to the AVR
+</span><span>  </span><span style="color:#969696;">// until cclk is high for a short period of time to avoid contention.
+</span><span>  </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// AVR SPI Signals
+</span><span>  </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,
+</span><span>  </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,
+</span><span>  </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,
+</span><span>  </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,
+</span><span>  </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> spi_channel</span><span style="color:#ed4343;">,
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// AVR Serial Signals
+</span><span>  </span><span style="color:#0a8dbf;">output</span><span> tx</span><span style="color:#ed4343;">,
+</span><span>  </span><span style="color:#0a8dbf;">input</span><span> rx</span><span style="color:#ed4343;">,
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// ADC Interface Signals
+</span><span>  </span><span style="color:#0a8dbf;">input </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> channel</span><span style="color:#ed4343;">,
+</span><span>  </span><span style="color:#0a8dbf;">output</span><span> new_sample</span><span style="color:#ed4343;">,
+</span><span>  </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> sample</span><span style="color:#ed4343;">,
+</span><span>  </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> sample_channel</span><span style="color:#ed4343;">,
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// Serial TX User Interface
+</span><span>  </span><span style="color:#0a8dbf;">input </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> tx_data</span><span style="color:#ed4343;">,
+</span><span>  </span><span style="color:#0a8dbf;">input</span><span> new_tx_data</span><span style="color:#ed4343;">,
+</span><span>  </span><span style="color:#0a8dbf;">output</span><span> tx_busy</span><span style="color:#ed4343;">,
+</span><span>  </span><span style="color:#0a8dbf;">input</span><span> tx_block</span><span style="color:#ed4343;">,
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// Serial Rx User Interface
+</span><span>  </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> rx_data</span><span style="color:#ed4343;">,
+</span><span>  </span><span style="color:#0a8dbf;">output</span><span> new_rx_data
+</span><span style="color:#ed4343;">);
+</span></code></pre>
+<p>Here is the port declaration of the module.  Many of the signals are named the same as the top level ports. The few exceptions are <strong>tx</strong> which connects to <strong>avr_rx</strong>, <strong>rx</strong> which connects to <strong>avr_tx</strong>, and <strong>tx_block</strong> which connects to <strong>avr_rx_busy</strong>. </p>
+<p>For now forget about the <strong>channel</strong> and <strong>sample</strong> signals, they are used to interface with the ADC and will be covered in another tutorial.</p>
+<p>The signals that are important right now are <strong>tx_data</strong>, <strong>new_tx_data</strong>, <strong>tx_busy</strong>, <strong>rx_data</strong>, <strong>new_rx_data</strong>.</p>
+<p><strong>tx_data</strong> is the data (one byte) that you want to send over the virtual serial port. When you have a new byte you want to send, you need to check <strong>tx_busy</strong> to make sure the module is not busy in anyway. The busy flag can be set for a number of reasons which include, the module is currently sending a byte, <strong>cclk</strong> has not signaled the AVR is ready for data, or the AVR can't accept new data because it's buffer is full.</p>
+<p>If the <strong>tx_busy</strong> flag is not set, you can set <strong>new_tx_data</strong> high for one clock cycle to indicate you want the byte present on <strong>tx_data</strong> to be sent. </p>
+<p>To make this clearer, we will implement the classic <em>Hello World!</em> example.</p>
+<h3 id="roms">ROMs</h3>
+<p>Since we want to send the string <em>Hello World!</em> through the serial port we need to store it somewhere that is easy to access. This is where a <strong>ROM</strong> (<strong>R</strong>ead <strong>O</strong>nly <strong>M</strong>emory) comes in handy.</p>
+<p>Here is the ROM we will use. Create a new file named <strong>message_rom.v</strong> and add the following code.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="short language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#faac1f;">module</span><span> message_rom </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> addr</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> data
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> rom_data </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">13</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> rom_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] = </span><span style="color:#77bf0a;">&quot;H&quot;</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> rom_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] = </span><span style="color:#77bf0a;">&quot;e&quot;</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> rom_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] = </span><span style="color:#77bf0a;">&quot;l&quot;</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> rom_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">] = </span><span style="color:#77bf0a;">&quot;l&quot;</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> rom_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">] = </span><span style="color:#77bf0a;">&quot;o&quot;</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> rom_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">] = </span><span style="color:#77bf0a;">&quot; &quot;</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> rom_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">] = </span><span style="color:#77bf0a;">&quot;W&quot;</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> rom_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">] = </span><span style="color:#77bf0a;">&quot;o&quot;</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> rom_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">] = </span><span style="color:#77bf0a;">&quot;r&quot;</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> rom_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">] = </span><span style="color:#77bf0a;">&quot;l&quot;</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> rom_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">] = </span><span style="color:#77bf0a;">&quot;d&quot;</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> rom_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">11</span><span style="color:#ed4343;">] = </span><span style="color:#77bf0a;">&quot;!&quot;</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> rom_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">12</span><span style="color:#ed4343;">] = </span><span style="color:#77bf0a;">&quot;</span><span style="color:#5fb3b3;">\n</span><span style="color:#77bf0a;">&quot;</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> rom_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">13</span><span style="color:#ed4343;">] = </span><span style="color:#77bf0a;">&quot;</span><span style="color:#5fb3b3;">\r</span><span style="color:#77bf0a;">&quot;</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> data_d</span><span style="color:#ed4343;">,</span><span> data_q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> data </span><span style="color:#ed4343;">=</span><span> data_q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(*) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>addr </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">4&#39;d13</span><span style="color:#ed4343;">)
+</span><span>      data_d </span><span style="color:#ed4343;">= </span><span style="color:#77bf0a;">&quot; &quot;</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">else
+</span><span>      data_d </span><span style="color:#ed4343;">=</span><span> rom_data</span><span style="color:#ed4343;">[</span><span>addr</span><span style="color:#ed4343;">];
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(</span><span style="font-weight:bold;color:#0abfbf;">posedge</span><span> clk</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    data_q </span><span style="color:#ed4343;">&lt;=</span><span> data_d</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span style="font-weight:bold;color:#faac1f;">endmodule
+</span></code></pre>
+<p>A ROM generally just consists of a few ports, in our case three. The way a ROM works is you specify an address, <strong>addr</strong>, and on the next clock cycle the corresponding data appears at it's output port, <strong>data</strong>.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>7</td><td><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> rom_data </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">13</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span></td></tr></tbody></table></code></pre>
+<p>This line is worth mentioning because it is the first time we needed a 2D array. For whatever reason, in Verilog when you want a multi-dimensional array, you specify the extra dimensions after the name of your array.</p>
+<p>A 3D array could look like this.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>7</td><td><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> rom_data </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">13</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span></td></tr></tbody></table></code></pre>
+<p>One thing to note, you aren't allowed to use multi-dimensional arrays in port declarations.</p>
+<p>To address into our array of data we use the 4 bit wide value from <strong>addr,</strong> which can have a value from 0-15. However, our array only has indexes up to 13! To compensate for this we use the if statement to provide a default value for the out-of-bounds case.</p>
+<h3 id="state-machines">State Machines</h3>
+<p>A state machine is a very useful technique when you are working with FPGAs. Most designs will have many state machines in them. You could even classify a processor as a state machine in the broad use of the term.</p>
+<p>So what is a state machine? For the FPGA, it's basically a circuit that has various states and it will behave differently depending on the state it's in. Certain sets of input may cause the state to change.</p>
+<p>The text-book example is a traffic light. The light has a few states, red, yellow, green, and it will transition between these states when certain events happen like a car waiting for a green, or a certain amount of time has elapsed.</p>
+<p>In our example, our state machine is very simple and it has only two states, <strong>IDLE</strong> and <strong>PRINT_MESSAGE</strong>. As the names suggest, the <strong>IDLE</strong> state just waits for a signal to transition to the <strong>PRINT_MESSAGE</strong> state. The <strong>PRINT_MESSAGE</strong> state will print out our <em>Hello World!</em> message then return to the <strong>IDLE</strong> state.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="short language-verilog" data-lang="verilog"><table><tbody><tr><td>1</td><td><span style="font-weight:bold;color:#faac1f;">module</span><span> message_printer </span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>2</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>3</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>4</td><td><span>    </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> tx_data</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>5</td><td><span>    </span><span style="color:#0a8dbf;">output reg</span><span> new_tx_data</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>6</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> tx_busy</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>7</td><td><span>    </span><span style="color:#0a8dbf;">input </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> rx_data</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>8</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> new_rx_data
+</span></td></tr><tr><td>9</td><td><span>  </span><span style="color:#ed4343;">);
+</span></td></tr><tr><td>10</td><td><span> 
+</span></td></tr><tr><td>11</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> STATE_SIZE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>12</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> IDLE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>13</td><td><span>    PRINT_MESSAGE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>14</td><td><span> 
+</span></td></tr><tr><td>15</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> MESSAGE_LEN </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">14</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>16</td><td><span> 
+</span></td></tr><tr><td>17</td><td><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span>STATE_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> state_d</span><span style="color:#ed4343;">,</span><span> state_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>18</td><td><span> 
+</span></td></tr><tr><td>19</td><td><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> addr_d</span><span style="color:#ed4343;">,</span><span> addr_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>20</td><td><span> 
+</span></td></tr><tr><td>21</td><td><span>  message_rom message_rom </span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>22</td><td><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>23</td><td><span>  .addr</span><span style="color:#ed4343;">(</span><span>addr_q</span><span style="color:#ed4343;">),
+</span></td></tr><tr><td>24</td><td><span>  .data</span><span style="color:#ed4343;">(</span><span>tx_data</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>25</td><td><span>  </span><span style="color:#ed4343;">);
+</span></td></tr><tr><td>26</td><td><span> 
+</span></td></tr><tr><td>27</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(*) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>28</td><td><span>    state_d </span><span style="color:#ed4343;">=</span><span> state_q</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// default values
+</span></td></tr><tr><td>29</td><td><span>    addr_d </span><span style="color:#ed4343;">=</span><span> addr_q</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// needed to prevent latches
+</span></td></tr><tr><td>30</td><td><span>    new_tx_data </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>31</td><td><span> 
+</span></td></tr><tr><td>32</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state_q</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>33</td><td><span>      IDLE</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>34</td><td><span>        addr_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4&#39;d0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>35</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>new_rx_data </span><span style="color:#ed4343;">&amp;&amp;</span><span> rx_data </span><span style="color:#ed4343;">== </span><span style="color:#77bf0a;">&quot;h&quot;</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>36</td><td><span>          state_d </span><span style="color:#ed4343;">=</span><span> PRINT_MESSAGE</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>37</td><td><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>38</td><td><span>      PRINT_MESSAGE</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>39</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>tx_busy</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>40</td><td><span>          new_tx_data </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>41</td><td><span>          addr_d </span><span style="color:#ed4343;">=</span><span> addr_q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>42</td><td><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>addr_q </span><span style="color:#ed4343;">==</span><span> MESSAGE_LEN</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>43</td><td><span>            state_d </span><span style="color:#ed4343;">=</span><span> IDLE</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>44</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>45</td><td><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>46</td><td><span>      default</span><span style="color:#ed4343;">: </span><span>state_d </span><span style="color:#ed4343;">=</span><span> IDLE</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>47</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">endcase
+</span></td></tr><tr><td>48</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>49</td><td><span> 
+</span></td></tr><tr><td>50</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(</span><span style="font-weight:bold;color:#0abfbf;">posedge</span><span> clk</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>51</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>52</td><td><span>      state_q </span><span style="color:#ed4343;">&lt;=</span><span> IDLE</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>53</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">end else begin
+</span></td></tr><tr><td>54</td><td><span>      state_q </span><span style="color:#ed4343;">&lt;=</span><span> state_d</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>55</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>56</td><td><span> 
+</span></td></tr><tr><td>57</td><td><span>    addr_q </span><span style="color:#ed4343;">&lt;=</span><span> addr_d</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>58</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>59</td><td><span> 
+</span></td></tr><tr><td>60</td><td><span style="font-weight:bold;color:#faac1f;">endmodule
+</span></td></tr></tbody></table></code></pre>
+<p>Add a new file named <strong>message_printer.v</strong> and add this code.</p>
+<p>It is good practice to use <strong>localparams</strong> to declare the states in your state machine. That makes it not only easier to read, but a lot easier to add or remove states.</p>
+<p>For this example, I decided it would be a good idea to wait for an <strong><em>h</em></strong> before printing <em>Hello World!</em>. Once an <strong><em>h</em></strong> is detected, the state changes to <strong>PRINT_MESSAGE</strong>. It then uses <strong>addr_d</strong>/<strong>_q</strong> to increment through the ROM sending each character.</p>
+<p>One important thing to notice is the first three lines in the combinational always block. It's important to always give <strong>regs</strong> a value. If it is possible to run through the always block without assigning a value to every <strong>reg</strong> you can end up with something known as a <strong>latch</strong>. Without going into detail, latches are bad! They can make things behave very unpredictably when actually loaded on the FPGA (although you may not notice it in simulation)! ISE will throw warnings when it detects a latch so you should always check for those.</p>
+<p>The easy solution is to just assign every <strong>reg</strong> a default value in the beginning of your always block.</p>
+<h3 id="case-statements">Case Statements</h3>
+<p>To implement state machines, you usually use a <strong>case</strong> statement. If you've ever programmed in C/C++ or Java this should be pretty familiar (it's basically a switch statement).</p>
+<p>The first line</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>32</td><td><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state_q</span><span style="color:#ed4343;">)
+</span></td></tr></tbody></table></code></pre>
+<p>sets up the case statement and says we are going to be looking at the value of <strong>state_q</strong>.</p>
+<p>Each of the following blocks of code is only used in the case that <strong>state_q</strong> matches the value stated. So the first part is used when <strong>state_q</strong> is <strong>IDLE</strong> and the second is used when it is <strong>PRINT_MESSAGE</strong>. </p>
+<p>It is important to always have a <strong>default</strong> entry in your case statement that will bring you back to a known state. You may be thinking that you don't need one since it should be impossible to have any other state than the two we defined. You may be surprised to find out that this is not the case. If the state is encoded with just 1 bit then it is true that it is impossible to be anything else because 1 bit only has 2 values. However, when your design gets synthesized the tools will generally optimize the encoding used by your states and it may make <strong>state_q</strong> actually 2 bits! You may be thinking that this shouldn't change anything because no where in your design do you specify a change to an unknown state. There is however, a small chance that the value a register holds gets flipped randomly putting you in an unknown state! This can be caused by a number of events including radiation. Providing a default case makes sure that if this happens your design will still have predictable behavior. </p>
+<h3 id="the-top-module">The Top Module</h3>
+<p>Here is the code for <strong>mojo_top.v</strong></p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="short language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top</span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#969696;">// 50MHz clock input
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// Input from reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// cclk input from AVR, high when AVR is ready
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// Outputs to the 8 onboard LEDs
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span>led</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// AVR SPI connections
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// AVR ADC channel select
+</span><span>    </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> spi_channel</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// Serial connections
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">, </span><span style="color:#969696;">// AVR Tx =&gt; FPGA Rx
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">, </span><span style="color:#969696;">// AVR Rx =&gt; FPGA Tx
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy </span><span style="color:#969696;">// AVR Rx buffer full
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">wire</span><span> rst </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// make reset active high
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;b0</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> tx_data</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">wire</span><span> new_tx_data</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">wire</span><span> tx_busy</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">wire </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> rx_data</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">wire</span><span> new_rx_data</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  avr_interface avr_interface </span><span style="color:#ed4343;">(
+</span><span>    .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">),
+</span><span>    .cclk</span><span style="color:#ed4343;">(</span><span>cclk</span><span style="color:#ed4343;">),
+</span><span>    .spi_miso</span><span style="color:#ed4343;">(</span><span>spi_miso</span><span style="color:#ed4343;">),
+</span><span>    .spi_mosi</span><span style="color:#ed4343;">(</span><span>spi_mosi</span><span style="color:#ed4343;">),
+</span><span>    .spi_sck</span><span style="color:#ed4343;">(</span><span>spi_sck</span><span style="color:#ed4343;">),
+</span><span>    .spi_ss</span><span style="color:#ed4343;">(</span><span>spi_ss</span><span style="color:#ed4343;">),
+</span><span>    .spi_channel</span><span style="color:#ed4343;">(</span><span>spi_channel</span><span style="color:#ed4343;">),
+</span><span>    .tx</span><span style="color:#ed4343;">(</span><span>avr_rx</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// FPGA tx goes to AVR rx
+</span><span>    .rx</span><span style="color:#ed4343;">(</span><span>avr_tx</span><span style="color:#ed4343;">),
+</span><span>    .channel</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">4&#39;d15</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// invalid channel disables the ADC
+</span><span>    .new_sample</span><span style="color:#ed4343;">(),
+</span><span>    .sample</span><span style="color:#ed4343;">(),
+</span><span>    .sample_channel</span><span style="color:#ed4343;">(),
+</span><span>    .tx_data</span><span style="color:#ed4343;">(</span><span>tx_data</span><span style="color:#ed4343;">),
+</span><span>    .new_tx_data</span><span style="color:#ed4343;">(</span><span>new_tx_data</span><span style="color:#ed4343;">),
+</span><span>    .tx_busy</span><span style="color:#ed4343;">(</span><span>tx_busy</span><span style="color:#ed4343;">),
+</span><span>    .tx_block</span><span style="color:#ed4343;">(</span><span>avr_rx_busy</span><span style="color:#ed4343;">),
+</span><span>    .rx_data</span><span style="color:#ed4343;">(</span><span>rx_data</span><span style="color:#ed4343;">),
+</span><span>    .new_rx_data</span><span style="color:#ed4343;">(</span><span>new_rx_data</span><span style="color:#ed4343;">)
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  message_printer helloWorldPrinter </span><span style="color:#ed4343;">(
+</span><span>    .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">),
+</span><span>    .tx_data</span><span style="color:#ed4343;">(</span><span>tx_data</span><span style="color:#ed4343;">),
+</span><span>    .new_tx_data</span><span style="color:#ed4343;">(</span><span>new_tx_data</span><span style="color:#ed4343;">),
+</span><span>    .tx_busy</span><span style="color:#ed4343;">(</span><span>tx_busy</span><span style="color:#ed4343;">),
+</span><span>    .rx_data</span><span style="color:#ed4343;">(</span><span>rx_data</span><span style="color:#ed4343;">),
+</span><span>    .new_rx_data</span><span style="color:#ed4343;">(</span><span>new_rx_data</span><span style="color:#ed4343;">)
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span style="font-weight:bold;color:#faac1f;">endmodule
+</span></code></pre>
+<p>Here we just instantiate the two modules. Notice the <strong>assign</strong> statements that used to be at the top were removed since we are now using those ports.</p>
+<p>You should now be able to synthesize your project and load it onto your Mojo. I tested this using <strong>minicom</strong> on Linux, but any serial terminal program should work. It doesn't matter the parameters you specify for the serial port as they are ignored. </p>
+<p>When you send <strong><em>h</em></strong> over the serial port the Mojo should respond with <em>Hello World!</em>.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;finite-state-machines&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Finite State Machines</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;servos&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Servos</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

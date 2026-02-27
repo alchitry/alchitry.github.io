@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Camera</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;camera&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;">Lucid V1</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;camera&#x2F;">Camera</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Camera</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+21 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;camera.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#take-a-picture" aria-label="Take a Picture">Take a Picture</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#what-s-going-on" aria-label="What&#x27;s Going On">What&#x27;s Going On</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#configuration" aria-label="Configuration">Configuration</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#image-capture" aria-label="Image Capture">Image Capture</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#retrieving-the-image" aria-label="Retrieving the Image">Retrieving the Image</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#memory-arbiter" aria-label="Memory Arbiter">Memory Arbiter</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>In this tutorial we will go over how to use the Camera Shield and SDRAM Shield to capture images, but first, let me take a selfie!</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/robotselfie.jpg" alt="robotselfie.jpg" /></p>
+<h2 id="take-a-picture">Take a Picture</h2>
+<p>This tutorial will run a bit backwards from most of the other tutorials. First, we will use the example project to take a picture, then go through and understand it.</p>
+<p>Before we continue, make sure the firmware on your Mojo is up-to-date. Some USB bugs were fixed that may cause issues when trying to capture an image. To flash the latest firmware, in the Mojo IDE click <strong>Tools-&gt;Flash Firmware...</strong></p>
+<p>With that out of the way, create a new project based on the <em>Image Capture</em> example.</p>
+<p>Build the project and load it onto your Mojo.</p>
+<p>Now make sure your setup goes Mojo-&gt;SDRAM Shield-&gt;Camera Shield-&gt;OV2640. It's important that the SDRAM Shield be the first board in the stack. Also, you have to be using the OV2640 camera module for the design to work.</p>
+<p>With the stack setup and the design loaded, you should see the right LED on the Mojo blinking 7.5 times per second. The LED toggles each time a picture is taken (15 frames per second).</p>
+<p>In the Mojo IDE, go to <strong>Tools-&gt;Image Capture...</strong>.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/imgcapture.png" alt="imgcapture.png" /></p>
+<p>Leave everything as the defaults and with your Mojo plugged in, click <em>Capture</em>.</p>
+<p>You should now see the image start to load. It takes some time for it to come through so be patient.</p>
+<p>Once the image is loaded, you can save it as a .png by clicking <em>Save Image</em>.</p>
+<h2 id="what-s-going-on">What's Going On</h2>
+<p>It's time to dig into the design to understand what's going on. It's always a good idea to start at the top level and work down, so open up <em>mojo_top.luc</em>.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,                    </span><span style="color:#969696;">// 50MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,                  </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],               </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,                   </span><span style="color:#969696;">// configuration clock, AVR ready when high
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// AVR SPI MISO
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,                 </span><span style="color:#969696;">// AVR SPI Slave Select
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,               </span><span style="color:#969696;">// AVR SPI MOSI
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,                </span><span style="color:#969696;">// AVR SPI Clock
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_channel </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">],       </span><span style="color:#969696;">// AVR general purpose pins (used by default to select ADC channel)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">,                 </span><span style="color:#969696;">// AVR TX (FPGA RX)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">,                </span><span style="color:#969696;">// AVR RX (FPGA TX)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// AVR RX buffer full
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Sdram</span><span>.out</span><span style="color:#ed4343;">&gt;</span><span> sdramOut</span><span style="color:#ed4343;">,   </span><span style="color:#969696;">// SDRAM outputs
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Sdram</span><span>.inOut</span><span style="color:#ed4343;">&gt;</span><span> sdramInOut</span><span style="color:#ed4343;">,// </span><span style="color:#d45ada;">SDRAM</span><span> inouts
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> camera_scl</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// camera sccb clock
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> camera_sda</span><span style="color:#ed4343;">,             </span><span style="color:#969696;">// camera sccb data
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> camera_xclk</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// camera main clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> camera_pclk</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// camera pixel clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> camera_href</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// camera href signal
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> camera_vsync</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// camera vsync signal
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> camera_data </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],        </span><span style="color:#969696;">// camera pixel data
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> camera_rst</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// camera reset (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> camera_pwdn            </span><span style="color:#969696;">// camera power down (active high)
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;  </span><span style="color:#969696;">// reset signal
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> fclk</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 100MHz clock
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// boost clock to 100MHz
+</span><span>  clk_wiz clk_wiz</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    clk_wiz.</span><span style="color:#d45ada;">CLK_IN </span><span style="color:#ed4343;">=</span><span> clk</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// 50MHz in
+</span><span>    fclk </span><span style="color:#ed4343;">=</span><span> clk_wiz.</span><span style="color:#d45ada;">CLK_OUT</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 100MHz out (it&#39;s like magic!)
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>fclk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#969696;">// inouts need to be connected at instantiation and directly to an inout of the module
+</span><span>      sdram sdram </span><span style="color:#ed4343;">(</span><span>.sdramInOut</span><span style="color:#ed4343;">(</span><span>sdramInOut</span><span style="color:#ed4343;">));
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// interface to the camera (OV2640)
+</span><span>      ov2640 cam </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100000000</span><span style="color:#ed4343;">),</span><span> .sda</span><span style="color:#ed4343;">(</span><span>camera_sda</span><span style="color:#ed4343;">));
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// toggle to show frame captures
+</span><span>      </span><span style="color:#0a8dbf;">dff</span><span> frame_toggle</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// interface to the AVR (and PC indirectly)
+</span><span>      avr_interface avr </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100000000</span><span style="color:#ed4343;">));
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// serial port to register interface
+</span><span>      reg_interface reg_int </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100000000</span><span style="color:#ed4343;">));
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// memory arbiter to connect multiple devices to SDRAM
+</span><span>      memory_arbiter mem_arb </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">));
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// module to capture an image and save it to SDRAM
+</span><span>      img_capture img_capture</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// adapter to give read-only access to the SDRAM over the USB port
+</span><span>  ram_to_reg rtr</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;                   </span><span style="color:#969696;">// conditioned reset
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// avr interface connections
+</span><span>    avr.cclk </span><span style="color:#ed4343;">=</span><span> cclk</span><span style="color:#ed4343;">;
+</span><span>    spi_miso </span><span style="color:#ed4343;">=</span><span> avr.spi_miso</span><span style="color:#ed4343;">;
+</span><span>    avr.spi_mosi </span><span style="color:#ed4343;">=</span><span> spi_mosi</span><span style="color:#ed4343;">;
+</span><span>    avr.spi_sck </span><span style="color:#ed4343;">=</span><span> spi_sck</span><span style="color:#ed4343;">;
+</span><span>    avr.spi_ss </span><span style="color:#ed4343;">=</span><span> spi_ss</span><span style="color:#ed4343;">;
+</span><span>    spi_channel </span><span style="color:#ed4343;">=</span><span> avr.spi_channel</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// serial port connections
+</span><span>    avr_rx </span><span style="color:#ed4343;">=</span><span> avr.tx</span><span style="color:#ed4343;">;
+</span><span>    avr.rx </span><span style="color:#ed4343;">=</span><span> avr_tx</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    avr.channel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">hf</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// disabled
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// avr to register interface connections
+</span><span>    avr.tx_block </span><span style="color:#ed4343;">=</span><span> avr_rx_busy</span><span style="color:#ed4343;">;
+</span><span>    reg_int.rx_data </span><span style="color:#ed4343;">=</span><span> avr.rx_data</span><span style="color:#ed4343;">;
+</span><span>    reg_int.new_rx_data </span><span style="color:#ed4343;">=</span><span> avr.new_rx_data</span><span style="color:#ed4343;">;
+</span><span>    reg_int.tx_busy </span><span style="color:#ed4343;">=</span><span> avr.tx_busy</span><span style="color:#ed4343;">;
+</span><span>    avr.tx_data </span><span style="color:#ed4343;">=</span><span> reg_int.tx_data</span><span style="color:#ed4343;">;
+</span><span>    avr.new_tx_data </span><span style="color:#ed4343;">=</span><span> reg_int.new_tx_data</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// default to no capture
+</span><span>    img_capture.start </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// if new write command to address 0
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>reg_int.regOut.new_cmd </span><span style="color:#ed4343;">&amp;&amp;</span><span> reg_int.regOut.write </span><span style="color:#ed4343;">&amp;&amp;</span><span> reg_int.regOut.address </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">32d0</span><span style="color:#ed4343;">)
+</span><span>      img_capture.start </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// start image capture
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>cam.image.end_frame</span><span style="color:#ed4343;">)                </span><span style="color:#969696;">// if frame over
+</span><span>      frame_toggle.d </span><span style="color:#ed4343;">= ~</span><span>frame_toggle.q</span><span style="color:#ed4343;">;     </span><span style="color:#969696;">// toggle frame_toggle
+</span><span> 
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                                </span><span style="color:#969696;">// default to off
+</span><span>    led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> frame_toggle.q</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// toggle led[0] with each image captured
+</span><span>    led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">] = ~</span><span>img_capture.idle</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// show when image is being captured
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// arbiter to memory connections
+</span><span>    mem_arb.memIn </span><span style="color:#ed4343;">=</span><span> sdram.memOut</span><span style="color:#ed4343;">;
+</span><span>    sdram.memIn </span><span style="color:#ed4343;">=</span><span> mem_arb.memOut</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    img_capture.img </span><span style="color:#ed4343;">=</span><span> cam.image</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// image feed
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// image capture to memory arbiter connection
+</span><span>    mem_arb.devIn</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> img_capture.memOut</span><span style="color:#ed4343;">;
+</span><span>    img_capture.memIn </span><span style="color:#ed4343;">=</span><span> mem_arb.devOut</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// register interface to register adapter connections
+</span><span>    rtr.regIn </span><span style="color:#ed4343;">=</span><span> reg_int.regOut</span><span style="color:#ed4343;">;
+</span><span>    reg_int.regIn </span><span style="color:#ed4343;">=</span><span> rtr.regOut</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// register adapter to memory connections
+</span><span>    rtr.memIn </span><span style="color:#ed4343;">=</span><span> mem_arb.devOut</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">];
+</span><span>    mem_arb.devIn</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> rtr.memOut</span><span style="color:#ed4343;">;    
+</span><span> 
+</span><span>    sdramOut </span><span style="color:#ed4343;">=</span><span> sdram.sdramOut</span><span style="color:#ed4343;">;              </span><span style="color:#969696;">// connect controller to SDRAM
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// camera connection
+</span><span>    cam.cam_clk </span><span style="color:#ed4343;">=</span><span> clk_wiz.</span><span style="color:#d45ada;">CAM_CLK</span><span style="color:#ed4343;">;          </span><span style="color:#969696;">// 24MHz
+</span><span>    cam.data </span><span style="color:#ed4343;">=</span><span> camera_data</span><span style="color:#ed4343;">;
+</span><span>    camera_scl </span><span style="color:#ed4343;">=</span><span> cam.scl</span><span style="color:#ed4343;">;
+</span><span>    camera_xclk </span><span style="color:#ed4343;">=</span><span> cam.xclk</span><span style="color:#ed4343;">;
+</span><span>    cam.pclk </span><span style="color:#ed4343;">=</span><span> camera_pclk</span><span style="color:#ed4343;">;
+</span><span>    cam.href </span><span style="color:#ed4343;">=</span><span> camera_href</span><span style="color:#ed4343;">;
+</span><span>    cam.vsync </span><span style="color:#ed4343;">=</span><span> camera_vsync</span><span style="color:#ed4343;">;
+</span><span>    camera_rst </span><span style="color:#ed4343;">=</span><span> cam.rst_cm</span><span style="color:#ed4343;">;
+</span><span>    camera_pwdn </span><span style="color:#ed4343;">=</span><span> cam.pwdn</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>There's a lot going on, so I drew a block diagram to help you out.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/imagecapture.png" alt="imagecapture.png" /></p>
+<p>The <em>ov2640.luc</em> component deals with initializing the camera and reading in the pixel data. Open up this file and take a look.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">global </span><span style="color:#da5a8c;">Camera </span><span style="color:#ed4343;">{
+</span><span>  </span><span style="color:#969696;">// structure for storing the image data
+</span><span>  </span><span style="color:#0a8dbf;">struct</span><span> image_data </span><span style="color:#ed4343;">{
+</span><span>    end_frame</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// end of frame reached (active high)
+</span><span>    end_line</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// end of line reached (active high)
+</span><span>    new_pixel</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// new pixel (active high)
+</span><span>    pixel </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">]        </span><span style="color:#969696;">// pixel data (valid when new_pixel = 1)
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span><span> 
+</span><span style="font-weight:bold;color:#faac1f;">module</span><span> ov2640 </span><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#d45ada;">CLK_FREQ </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">50000000 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">CLK_FREQ </span><span style="color:#ed4343;">&gt; </span><span style="color:#1bddaf;">$pow</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">,</span><span style="color:#a269dc;">18</span><span style="color:#ed4343;">) </span><span style="color:#969696;">// clock frequency
+</span><span>  </span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// main clock, must be CLK_FREQ
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cam_clk</span><span style="color:#ed4343;">,    </span><span style="color:#969696;">// camera clock, typically 24MHz
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// reset
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// SCCB Interface
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> scl</span><span style="color:#ed4343;">,       </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span> sda</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// data
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// Main camera interface
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> xclk</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// clock output to camera
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> pclk</span><span style="color:#ed4343;">,       </span><span style="color:#969696;">// pixel clock from camera
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> href</span><span style="color:#ed4343;">,       </span><span style="color:#969696;">// href flag
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> vsync</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// vsync flag
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> data </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],   </span><span style="color:#969696;">// pixel data
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> rst_cm</span><span style="color:#ed4343;">,    </span><span style="color:#969696;">// reset camera (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> pwdn</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// power down camera (active high)
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// FPGA interface
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Camera</span><span>.image_data</span><span style="color:#ed4343;">&gt;</span><span> image </span><span style="color:#969696;">// image data
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">WAIT_RESET</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">RESET_CAMERA</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WAIT_SETUP</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">PROG_CAMERA</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">DONE</span><span style="color:#ed4343;">};        </span><span style="color:#969696;">// main fsm
+</span><span>      </span><span style="color:#0a8dbf;">dff</span><span> rom_addr </span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#da5a8c;">OV2640_config</span><span>.</span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">)];                                 </span><span style="color:#969696;">// ROM address
+</span><span>      </span><span style="color:#0a8dbf;">dff</span><span> cam_delay </span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">)-</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">];                                           </span><span style="color:#969696;">// delay counter
+</span><span>      sccb sccb </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">CLK_DIV_SIZE</span><span style="color:#ed4343;">(</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">)-</span><span style="color:#a269dc;">17</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">WRITE_ADDR</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">8h60</span><span style="color:#ed4343;">),</span><span> .sda</span><span style="color:#ed4343;">(</span><span>sda</span><span style="color:#ed4343;">)); </span><span style="color:#969696;">// sccb interface
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Camera</span><span>.image_data</span><span style="color:#ed4343;">&gt;</span><span> img</span><span style="color:#ed4343;">;  </span><span style="color:#969696;">// output buffer
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> href_old</span><span style="color:#ed4343;">,</span><span> vsync_old</span><span style="color:#ed4343;">;     </span><span style="color:#969696;">// vsync/href edge detectors
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> byte_ct</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// pixel byte counter
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  ov2640_config reg_rom</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// configuration ROM
+</span><span> 
+</span><span>  xil_ODDR2 oddr </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">DDR_ALIGNMENT</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;NONE&quot;</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">INIT</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">SRTYPE</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;SYNC&quot;</span><span style="color:#ed4343;">)); </span><span style="color:#969696;">// ODDR to output cam_clk to xclk
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    oddr.</span><span style="color:#d45ada;">C0 </span><span style="color:#ed4343;">=</span><span> cam_clk</span><span style="color:#ed4343;">;
+</span><span>    oddr.</span><span style="color:#d45ada;">C1 </span><span style="color:#ed4343;">= ~</span><span>cam_clk</span><span style="color:#ed4343;">;
+</span><span>    oddr.</span><span style="color:#d45ada;">CE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>    oddr.</span><span style="color:#d45ada;">D0 </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>    oddr.</span><span style="color:#d45ada;">D1 </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    oddr.</span><span style="color:#d45ada;">R </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    oddr.</span><span style="color:#d45ada;">S </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    xclk </span><span style="color:#ed4343;">=</span><span> oddr.</span><span style="color:#d45ada;">Q</span><span style="color:#ed4343;">;
+</span><span>    rst_cm </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// active low
+</span><span>    pwdn </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// active high
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// subsignals from fifo buffer
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> sync_href</span><span style="color:#ed4343;">,</span><span> sync_vsync</span><span style="color:#ed4343;">,</span><span> sync_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// reset conditioner for pclk clock domain
+</span><span>  reset_conditioner wrst_cond </span><span style="color:#ed4343;">(</span><span>.clk</span><span style="color:#ed4343;">(</span><span>pclk</span><span style="color:#ed4343;">),</span><span> .in</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">));
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// asyncronous fifo for crossing clock domains (pclk to clk)
+</span><span>  async_fifo fifo </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">SIZE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">DEPTH</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">),</span><span> .wclk</span><span style="color:#ed4343;">(</span><span>pclk</span><span style="color:#ed4343;">),</span><span> .rclk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),</span><span> .wrst</span><span style="color:#ed4343;">(</span><span>wrst_cond.out</span><span style="color:#ed4343;">),</span><span> .rrst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">));
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    </span><span style="color:#969696;">// defaults
+</span><span>    cam_delay.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    reg_rom.addr </span><span style="color:#ed4343;">=</span><span> rom_addr.q</span><span style="color:#ed4343;">;
+</span><span>    sccb.addr </span><span style="color:#ed4343;">=</span><span> reg_rom.reg_addr</span><span style="color:#ed4343;">;
+</span><span>    sccb.value </span><span style="color:#ed4343;">=</span><span> reg_rom.value</span><span style="color:#ed4343;">;
+</span><span>    sccb.write </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    scl </span><span style="color:#ed4343;">=</span><span> sccb.scl</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state.q</span><span style="color:#ed4343;">) {
+</span><span>      state.</span><span style="color:#d45ada;">WAIT_RESET</span><span style="color:#ed4343;">:
+</span><span>        cam_delay.d </span><span style="color:#ed4343;">=</span><span> cam_delay.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// wait power on
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(&amp;</span><span>cam_delay.q</span><span style="color:#ed4343;">)                               </span><span style="color:#969696;">// if timer elapsed
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">RESET_CAMERA</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// switch states
+</span><span>      state.</span><span style="color:#d45ada;">RESET_CAMERA</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>sccb.busy</span><span style="color:#ed4343;">) {                               </span><span style="color:#969696;">// if not busy
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rom_addr.q </span><span style="color:#ed4343;">!= </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">) {                        </span><span style="color:#969696;">// if not second command
+</span><span>            rom_addr.d </span><span style="color:#ed4343;">=</span><span> rom_addr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// increment command address
+</span><span>            sccb.write </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                             </span><span style="color:#969696;">// write command
+</span><span>          </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_SETUP</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// reset command sent, need to wait for it
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>      state.</span><span style="color:#d45ada;">WAIT_SETUP</span><span style="color:#ed4343;">:
+</span><span>        cam_delay.d </span><span style="color:#ed4343;">=</span><span> cam_delay.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// wait for camera to come back up
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(&amp;</span><span>cam_delay.q</span><span style="color:#ed4343;">)
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">PROG_CAMERA</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// start configuring the registers
+</span><span>      state.</span><span style="color:#d45ada;">PROG_CAMERA</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>sccb.busy</span><span style="color:#ed4343;">) {                               </span><span style="color:#969696;">// if sccb bus isn&#39;t busy
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rom_addr.q </span><span style="color:#ed4343;">!= </span><span style="color:#da5a8c;">OV2640_config</span><span>.</span><span style="color:#d45ada;">ENTRIES</span><span style="color:#ed4343;">) {    </span><span style="color:#969696;">// if there are more registers to write
+</span><span>            rom_addr.d </span><span style="color:#ed4343;">=</span><span> rom_addr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// increment address
+</span><span>            sccb.write </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                             </span><span style="color:#969696;">// write the register
+</span><span>          </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{                                      </span><span style="color:#969696;">// otherwise...
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">DONE</span><span style="color:#ed4343;">;                       </span><span style="color:#969696;">// configuration is done
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>      state.</span><span style="color:#d45ada;">DONE</span><span style="color:#ed4343;">:
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">DONE</span><span style="color:#ed4343;">;                           </span><span style="color:#969696;">// do nothing but stay here
+</span><span>      </span><span style="color:#0abfbf;">default</span><span style="color:#ed4343;">:
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_RESET</span><span style="color:#ed4343;">;                     </span><span style="color:#969696;">// shouldn&#39;t reach here
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// defaults
+</span><span>    fifo.wput </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                                      </span><span style="color:#969696;">// always put data into the fifo
+</span><span>    fifo.rget </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                                      </span><span style="color:#969696;">// always get data from the fifo
+</span><span>    fifo.din </span><span style="color:#ed4343;">= c{</span><span>href</span><span style="color:#ed4343;">,</span><span> vsync</span><span style="color:#ed4343;">,</span><span> data</span><span style="color:#ed4343;">};                    </span><span style="color:#969696;">// connect camera data into fifo
+</span><span>    sync_href </span><span style="color:#ed4343;">=</span><span> fifo.dout</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">];                           </span><span style="color:#969696;">// href out of the fifo
+</span><span>    sync_vsync </span><span style="color:#ed4343;">=</span><span> fifo.dout</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];                          </span><span style="color:#969696;">// vsync out of the fifo
+</span><span>    sync_data </span><span style="color:#ed4343;">=</span><span> fifo.dout</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];                         </span><span style="color:#969696;">// pixel data out of the fifo
+</span><span> 
+</span><span>    image </span><span style="color:#ed4343;">=</span><span> img.q</span><span style="color:#ed4343;">;                                      </span><span style="color:#969696;">// output img.q
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// defaults
+</span><span>    img.d.end_frame </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    img.d.end_line </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    img.d.new_pixel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// if new fifo data and camera is configured
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>fifo.empty </span><span style="color:#ed4343;">&amp;&amp;</span><span> state.q </span><span style="color:#ed4343;">==</span><span> state.</span><span style="color:#d45ada;">DONE</span><span style="color:#ed4343;">) {
+</span><span>      href_old.d </span><span style="color:#ed4343;">=</span><span> sync_href</span><span style="color:#ed4343;">;                           </span><span style="color:#969696;">// save href
+</span><span>      vsync_old.d </span><span style="color:#ed4343;">=</span><span> sync_vsync</span><span style="color:#ed4343;">;                         </span><span style="color:#969696;">// save vsync
+</span><span> 
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>vsync_old.q </span><span style="color:#ed4343;">&amp;&amp; !</span><span>sync_vsync</span><span style="color:#ed4343;">)                   </span><span style="color:#969696;">// if vsync fell
+</span><span>        img.d.end_frame </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                            </span><span style="color:#969696;">// signal end of frame
+</span><span> 
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>href_old.q </span><span style="color:#ed4343;">&amp;&amp; !</span><span>sync_href</span><span style="color:#ed4343;">)                     </span><span style="color:#969696;">// if href fell
+</span><span>        img.d.end_line </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                             </span><span style="color:#969696;">// signal end of line
+</span><span> 
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>sync_href </span><span style="color:#ed4343;">|| !</span><span>sync_vsync</span><span style="color:#ed4343;">)                    </span><span style="color:#969696;">// if invalid
+</span><span>        byte_ct.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                                  </span><span style="color:#969696;">// reset byte_ct
+</span><span> 
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>sync_href </span><span style="color:#ed4343;">&amp;&amp;</span><span> sync_vsync</span><span style="color:#ed4343;">) {                    </span><span style="color:#969696;">// if valid
+</span><span>        img.d.pixel </span><span style="color:#ed4343;">= c{</span><span>img.q.pixel</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">],</span><span> sync_data</span><span style="color:#ed4343;">};   </span><span style="color:#969696;">// shift in pixel data
+</span><span>        byte_ct.d </span><span style="color:#ed4343;">= ~</span><span>byte_ct.q</span><span style="color:#ed4343;">;                         </span><span style="color:#969696;">// flip byte counter
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>byte_ct.q</span><span style="color:#ed4343;">)                                  </span><span style="color:#969696;">// if both bytes read
+</span><span>          img.d.new_pixel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                          </span><span style="color:#969696;">// flag we have a new pixel
+</span><span>      </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>The OV2640 camera (with the configurations in the IDE) takes a 24MHz clock and uses an internal PLL to boost it to 36MHz. This clock is used to output the pixel data. The problem is we need a way to capture the pixel data reliably without violating any timing constraints. We could just use this clock for the entire design, but the SDRAM controller is designed to work at 100MHz and if you ever want to do some more complicated processing the extra speed may be nice.</p>
+<p>To get the pixel data from the 36MHz clock domain to our 100MHz domain, we can use an <em>asynchronous FIFO</em>. A FIFO (or <strong>F</strong>irst <strong>I</strong>n <strong>F</strong>irst <strong>O</strong>ut) buffer is a type of memory structure that allows you to write/read data to/from it. Unlike a chunk of RAM, you don't specify addresses, but rather just that you'd like to read or write. The order that you write data dictates the order that you read it. In other words, the order is preserved. What's special about an <em>asynchronous FIFO</em>, is that the writing and reading operations can happen from two different clock domains.</p>
+<p>We can write all the pixel data to the FIFO with the 36MHz clock, then read it back out with the 100MHz clock. The only restrictions when using a FIFO is that your average read speed needs to be equal to or faster than the write speed so you don't fill up the FIFO and drop data. You also need to size the FIFO so that it can handle the largest burst size you need to absorb.</p>
+<p>In our case, we are reading at 100MHz and writing at 36Mhz, so we will have no problems keeping up with the data flow.</p>
+<p>There are four signals the camera uses to send image data to us. <em>pclk</em> is the pixel clock. This is the 36MHz clock that the rest of the signals are aligned to. <em>vsync</em> is the vertical sync signal. It tells us when a frame starts and stops. <em>href</em> is horizontal reference. It tells us when a row starts and stops. <em>data</em> is the eight data lines that convey the actual color information.</p>
+<p>When <em>href</em> and <em>vsync</em> are both high, each rising edge of <em>pclk</em> signals a new valid byte of data on <em>data</em>. The current configuration of the camera has it outputting 16 bits per pixel, so a new pixel is received every two rising edges of <em>pclk</em>.</p>
+<p>The <em>ov2640</em> module's job is to output the pixel data and flags for the end of row/frame. Each time <em>vsync</em> falls, the end of a frame is signaled. Each time <em>href</em> falls, the end of a row if signaled. Ever other valid <em>pclk</em> cycle, the two bytes are packed together into a single 16 bit pixel that is output.</p>
+<p>The format of each pixel is 565 RGB. That means bits 15-11 are red, 10-5 are green, and 4-0 are blue. You can convert these values to 24 bit color by appending the MSBs of each color so that it's 8 bits wide. For example, if red is 5 bits wide, you can do <em>c{red[4:0],red[4:2]}</em> to get the 8 bit equivalent. Note that you aren't actually upscaling the color, but just converting to a different color space.</p>
+<p>As we mentioned before, these signals can't be sampled directly in the 100MHz clock domain so the asynchronous FIFO is setup so that each rising edge of <em>pclk</em> writes the <em>href</em>, <em>vsync</em>, and <em>data</em> signals to it. In the 100MHz clock domain, we simply wait until the FIFO has data to read and treat that data as the three signals to generate the pixel data and flags.</p>
+<h3 id="configuration">Configuration</h3>
+<p>When the camera is first powered up, it isn't taking any pictures. It needs to go through a fairly complicated configuration process before it'll start sending useful data. Unfortunately, camera companies seem to feel the need to keep all the configuration data locked up under NDAs. Fortunately, I was able to find a <a href="https://stuff.mit.edu/afs/sipb/contrib/linux/drivers/media/i2c/soc_camera/ov2640.c">Linux driver</a> for this camera that contained all the configuration data needed to get it to spit out images. This data is packed into the <em>ov2640_uxga_config.luc</em> module.</p>
+<p>This driver contained different configuration settings for various frame sizes from 176x144 to 1600x1200. The <em>ov2640_uxga_config.luc</em> module contains data for 1600x1200 resolution images. If you want to change the resolution, you can remove this component and add one of the other configuration ROMs under <em>Image</em> in the components library. Note that you can only have one of these modules in your project at any given time as they all use the same module name, <em>ov2640_config</em>.</p>
+<p>This camera is capable of shooting up to 60fps at 408x304, but unfortunately, these configurations are always 15fps. I haven't found any valid configurations for properly setting it up to shoot at higher frame rates, but if someone does find one, <a href="mailto:support@embeddedmicro.com">let us know</a>.</p>
+<p>The configuration data is written using a protocol called <em>SCCB</em>, or <strong>S</strong>erial <strong>C</strong>amera <strong>C</strong>ontrol <strong>B</strong>us. SCCB is very similar to I2C, with only very minor differences.</p>
+<h2 id="image-capture">Image Capture</h2>
+<p>Now that we have the camera setup and spitting out useful pixel information, we need to do something with it.</p>
+<p>In this tutorial, we are going to simply save the pixel data into SDRAM so that it can be used later. Open up <em>img_capture.luc</em>.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> img_capture </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,                       </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,                       </span><span style="color:#969696;">// reset
+</span><span> 
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> start</span><span style="color:#ed4343;">,                     </span><span style="color:#969696;">// start flag (1 = start)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> idle</span><span style="color:#ed4343;">,                     </span><span style="color:#969696;">// idle flag (1 = idle)
+</span><span> 
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Camera</span><span>.image_data</span><span style="color:#ed4343;">&gt;</span><span> img</span><span style="color:#ed4343;">,    </span><span style="color:#969696;">// image data stream
+</span><span> 
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.master</span><span style="color:#ed4343;">&gt;</span><span> memOut</span><span style="color:#ed4343;">,    </span><span style="color:#969696;">// memory interface
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.slave</span><span style="color:#ed4343;">&gt;</span><span> memIn
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WAIT_FRAME</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WAIT_PIXEL_1</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WAIT_PIXEL_2</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WRITE_SDRAM</span><span style="color:#ed4343;">};
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// RAM may not be ready for each pixel so we need to buffer the writes
+</span><span>      mem_write_buffer buffer </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">DEPTH</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">));
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> addr</span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#da5a8c;">OV2640_config</span><span>.</span><span style="color:#d45ada;">IMG_SIZE</span><span style="color:#ed4343;">/</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">)];       </span><span style="color:#969696;">// RAM address to write to
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">];                                     </span><span style="color:#969696;">// data to write
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    buffer.memIn </span><span style="color:#ed4343;">=</span><span> memIn</span><span style="color:#ed4343;">;                             </span><span style="color:#969696;">// connect buffer to RAM
+</span><span>    memOut </span><span style="color:#ed4343;">=</span><span> buffer.memOut</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    buffer.devIn.valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                           </span><span style="color:#969696;">// not valid
+</span><span>    buffer.devIn.write </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                           </span><span style="color:#969696;">// always a write
+</span><span>    buffer.devIn.data </span><span style="color:#ed4343;">=</span><span> data.q</span><span style="color:#ed4343;">;                       </span><span style="color:#969696;">// connect data
+</span><span>    buffer.devIn.addr </span><span style="color:#ed4343;">=</span><span> addr.q</span><span style="color:#ed4343;">;                       </span><span style="color:#969696;">// connect address
+</span><span>    idle </span><span style="color:#ed4343;">=</span><span> state.q </span><span style="color:#ed4343;">==</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;                     </span><span style="color:#969696;">// idle when we are IDLE
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state.q</span><span style="color:#ed4343;">) {
+</span><span>      state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">:
+</span><span>        addr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                                   </span><span style="color:#969696;">// reset address
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>start</span><span style="color:#ed4343;">)                                    </span><span style="color:#969696;">// if start
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_FRAME</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// wait for the next frame
+</span><span> 
+</span><span>      state.</span><span style="color:#d45ada;">WAIT_FRAME</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>img.end_frame</span><span style="color:#ed4343;">)                            </span><span style="color:#969696;">// if end of current frame
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_PIXEL_1</span><span style="color:#ed4343;">;               </span><span style="color:#969696;">// start capturing pixels
+</span><span> 
+</span><span>      state.</span><span style="color:#d45ada;">WAIT_PIXEL_1</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>img.new_pixel</span><span style="color:#ed4343;">) {                          </span><span style="color:#969696;">// if new pixel     
+</span><span>          data.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">15</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> img.pixel</span><span style="color:#ed4343;">;                   </span><span style="color:#969696;">// write to lower half
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_PIXEL_2</span><span style="color:#ed4343;">;               </span><span style="color:#969696;">// wait for next pixel
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>      state.</span><span style="color:#d45ada;">WAIT_PIXEL_2</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>img.new_pixel</span><span style="color:#ed4343;">) {                          </span><span style="color:#969696;">// if new pixel
+</span><span>          data.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">31</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">] =</span><span> img.pixel</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// write to upper half
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WRITE_SDRAM</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// write data to SDRAM
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>      state.</span><span style="color:#d45ada;">WRITE_SDRAM</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>buffer.devOut.busy</span><span style="color:#ed4343;">) {                    </span><span style="color:#969696;">// if buffer isn&#39;t full (busy)
+</span><span>          buffer.devIn.valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                     </span><span style="color:#969696;">// new command
+</span><span>          addr.d </span><span style="color:#ed4343;">=</span><span> addr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                        </span><span style="color:#969696;">// increment the address
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_PIXEL_1</span><span style="color:#ed4343;">;               </span><span style="color:#969696;">// wait for next pixel
+</span><span> 
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>addr.q </span><span style="color:#ed4343;">== (</span><span style="color:#da5a8c;">OV2640_config</span><span>.</span><span style="color:#d45ada;">IMG_SIZE</span><span style="color:#ed4343;">/</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">)-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) </span><span style="color:#969696;">// if we read in all the pixels
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;                     </span><span style="color:#969696;">// return to idle
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>      </span><span style="color:#0abfbf;">default</span><span style="color:#ed4343;">:
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;                         </span><span style="color:#969696;">// shouldn&#39;t reach here
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This module waits until <em>start</em> signals to capture a frame. It then waits for the current frame to end (signaling a fresh frame is about to start). Once the frame starts, it waits for the first pixel, save it in a dff, then when the next pixel is received it write them both to RAM. The reason it needs to wait for two pixels is because each pixel is 16 bits of data and the SDRAM interface uses 32 bits of data per address. This means we can pack two pixels into each address.</p>
+<p>This continues until we have written an entire frames worth of pixels to RAM. We know how many pixels are in a frame from the <em>OV2640_config.IMG_SIZE</em> constant. This constant is defined in the configuration ROM, so if you switch out the ROM, this constant will change everywhere.</p>
+<p>There is one minor issue that we didn't consider yet. We get a new pixel at a rate of 36MHz/2 = 18MHz. This means we need to write to RAM at a rate of 18MHz/2 = 9MHz. A write takes 5 clock cycles @ 100MHz (assuming the row is already open) so we should be able to write at 20MHz. However, SDRAM requires refresh cycles to keep the contents intact. This means that periodically there will be fairly large delays. A refresh operation takes 11 cycles. That means, in the worst case, we have to wait 16 cycles between writes. 16 cycles is equivalent to 6.25MHz and since we need to write on average at 9MHz, we have a problem. The solution, another FIFO.</p>
+<p>The key is that we need to average a rate 9MHz. The average write performance is easily about 9MHz, we just need to smooth out the delays caused from refresh cycles and opening/closing rows. There is a component, <em>mem_write_buffer</em> that has the same interface as the SDRAM controller that will absorb our writes and spew them out when the SDRAM controller isn't busy.</p>
+<p>This buffer makes sure that we don't lose any pixels and everything is written to RAM.</p>
+<p>Just to recap, we now have the camera configured and spitting out pixel data. When we receive a signal to capture a frame, we then save the pixel data into SDRAM starting at address 0 and going to address (OV2640_config.IMG_SIZE/2)-1.</p>
+<h2 id="retrieving-the-image">Retrieving the Image</h2>
+<p>Now that we have a way to capture an image in SDRAM, we need a way to trigger the capture and read the data back.</p>
+<p>This is where the <a href="https://alchitry.com/tutorials/archive/lucid_v1/mojo/register-interface/">Register Interface</a> comes in handy. If you haven't read that tutorial yet, make sure you do.</p>
+<p>Just as a recap, the register interface allows us to easily issue read and write commands over the USB port on the Mojo to specific addresses. We can then use these addresses for whatever we want.</p>
+<p>We can use a write to address 0 to trigger the capture of an image. Check out these lines from <em>mojo_top</em>.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">// default to no capture
+</span><span>img_capture.start </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span style="color:#969696;">// if new write command to address 0
+</span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>reg_int.regOut.new_cmd </span><span style="color:#ed4343;">&amp;&amp;</span><span> reg_int.regOut.write </span><span style="color:#ed4343;">&amp;&amp;</span><span> reg_int.regOut.address </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">32d0</span><span style="color:#ed4343;">)
+</span><span>  img_capture.start </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// start image capture
+</span></code></pre>
+<p>When a write to address 0 is detected, we set <em>img_capture.start</em> to 1 to capture an image.</p>
+<p>We now just need a way to give the register interface access to the SDRAM.</p>
+<p>This is where <em>ram_to_reg</em> takes over.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> ram_to_reg </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#969696;">// register interface
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Register</span><span>.master</span><span style="color:#ed4343;">&gt;</span><span> regIn</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Register</span><span>.slave</span><span style="color:#ed4343;">&gt;</span><span> regOut</span><span style="color:#ed4343;">,
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// memory interface
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.master</span><span style="color:#ed4343;">&gt;</span><span> memOut</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.slave</span><span style="color:#ed4343;">&gt;</span><span> memIn
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    memOut.write </span><span style="color:#ed4343;">=</span><span> regIn.write</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// connect write flags
+</span><span>    memOut.data </span><span style="color:#ed4343;">=</span><span> regIn.data</span><span style="color:#ed4343;">;                    </span><span style="color:#969696;">// connect data for writes
+</span><span>    memOut.addr </span><span style="color:#ed4343;">=</span><span> regIn.address</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">22</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];           </span><span style="color:#969696;">// memory only uses 23 bit addresses
+</span><span>    memOut.valid </span><span style="color:#ed4343;">=</span><span> regIn.new_cmd </span><span style="color:#ed4343;">&amp; ~</span><span>regIn.write</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// valid only for new read commands
+</span><span>    regOut.data </span><span style="color:#ed4343;">=</span><span> memIn.data</span><span style="color:#ed4343;">;                    </span><span style="color:#969696;">// connect data from reads
+</span><span>    regOut.drdy </span><span style="color:#ed4343;">=</span><span> memIn.valid</span><span style="color:#ed4343;">;                   </span><span style="color:#969696;">// connect read valid flag
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This modules takes all read requests from the register interface and forwards them the SDRAM controller. The results from the SDRAM controller and sent back to the register interface. Note that writes could easily be forwarded too, but we are using writes to address 0 to signal an image capture and we don't want to corrupt the image data.</p>
+<p>Notice how similar these interfaces are. We barely have to do anything to forward the requests.</p>
+<h2 id="memory-arbiter">Memory Arbiter</h2>
+<p>We now have a way to take an image, save it, and retrieve the data. However, there's one last issue we need to address. We now have the <em>img_capture</em> and <em>ram_to_reg</em> modules needing to connect to the SDRAM controller.</p>
+<p>We need a way to give both modules access to the SDRAM. Good thing we have the <em>memory_arbiter</em> component. This component allows you to connect an arbitrary number of modules implementing the master memory interface (things that want to write/read from RAM) to a single slave (the SDRAM controller).</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> memory_arbiter </span><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#d45ada;">DEVICES </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">DEVICES </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0                               </span><span style="color:#969696;">// number of devices to arbitrate
+</span><span>  </span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,                                              </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,                                              </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.slave</span><span style="color:#ed4343;">&gt;</span><span> memIn</span><span style="color:#ed4343;">,                              </span><span style="color:#969696;">// memory inputs
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.master</span><span style="color:#ed4343;">&gt;</span><span> memOut</span><span style="color:#ed4343;">,                           </span><span style="color:#969696;">// memory outputs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.master</span><span style="color:#ed4343;">&gt;</span><span> devIn</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">],                    </span><span style="color:#969696;">// devices inputs
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.slave</span><span style="color:#ed4343;">&gt;</span><span> devOut</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">]                    </span><span style="color:#969696;">// devices outputs
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// simple structure to hold pending commands
+</span><span>  </span><span style="color:#0a8dbf;">struct</span><span> command </span><span style="color:#ed4343;">{
+</span><span>    valid</span><span style="color:#ed4343;">,                                                  </span><span style="color:#969696;">// valid flag (1 = valid)
+</span><span>    write</span><span style="color:#ed4343;">,                                                  </span><span style="color:#969696;">// write/read flag (1 = write)
+</span><span>    addr</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">23</span><span style="color:#ed4343;">],                                               </span><span style="color:#969696;">// address to read/write
+</span><span>    data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">]                                                </span><span style="color:#969696;">// data for writes
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),</span><span> .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span style="color:#ed4343;">&lt;</span><span>command</span><span style="color:#ed4343;">&gt;</span><span> commands</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">];                         </span><span style="color:#969696;">// buffer for pending commands
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> device</span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">)];                            </span><span style="color:#969696;">// device waiting for a read
+</span><span>    </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">WAIT_READ</span><span style="color:#ed4343;">};                          </span><span style="color:#969696;">// current state
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> activeDev</span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">)];                         </span><span style="color:#969696;">// highest priority device with pending command
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">var</span><span> i</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    </span><span style="color:#969696;">// defaults
+</span><span>    memOut.data </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">32bx</span><span style="color:#ed4343;">;
+</span><span>    memOut.valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    memOut.addr </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">23bx</span><span style="color:#ed4343;">;
+</span><span>    memOut.write </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1bx</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>      devOut</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.busy </span><span style="color:#ed4343;">=</span><span> commands.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.valid</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// if the command isn&#39;t valid we can take a new one
+</span><span>      devOut</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.data </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">32bx</span><span style="color:#ed4343;">;                                </span><span style="color:#969696;">// don&#39;t care
+</span><span>      devOut</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                                  </span><span style="color:#969696;">// not valid
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// if not busy and new command issued
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>commands.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.valid </span><span style="color:#ed4343;">&amp;&amp;</span><span> devIn</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.valid</span><span style="color:#ed4343;">) {
+</span><span>        commands.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                            </span><span style="color:#969696;">// command pending
+</span><span>        commands.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.write </span><span style="color:#ed4343;">=</span><span> devIn</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.write</span><span style="color:#ed4343;">;               </span><span style="color:#969696;">// save the command type
+</span><span>        commands.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.addr </span><span style="color:#ed4343;">=</span><span> devIn</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.addr</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// save the address
+</span><span>        commands.d</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.data </span><span style="color:#ed4343;">=</span><span> devIn</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]</span><span>.data</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// save the data
+</span><span>      </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// set activeDev to the lowest index with a pending command
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>commands.q</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">-</span><span>i</span><span style="color:#ed4343;">]</span><span>.valid</span><span style="color:#ed4343;">)
+</span><span>        activeDev.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">DEVICES</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">-</span><span>i</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state.q</span><span style="color:#ed4343;">) {
+</span><span>      state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">:
+</span><span> 
+</span><span>        </span><span style="color:#969696;">// if the memory bus isn&#39;t busy and we have a pending command
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>memIn.busy </span><span style="color:#ed4343;">&amp;&amp;</span><span> commands.q</span><span style="color:#ed4343;">[</span><span>activeDev.q</span><span style="color:#ed4343;">]</span><span>.valid</span><span style="color:#ed4343;">) {
+</span><span>          memOut.data </span><span style="color:#ed4343;">=</span><span> commands.q</span><span style="color:#ed4343;">[</span><span>activeDev.q</span><span style="color:#ed4343;">]</span><span>.data</span><span style="color:#ed4343;">;       </span><span style="color:#969696;">// command data
+</span><span>          memOut.addr </span><span style="color:#ed4343;">=</span><span> commands.q</span><span style="color:#ed4343;">[</span><span>activeDev.q</span><span style="color:#ed4343;">]</span><span>.addr</span><span style="color:#ed4343;">;       </span><span style="color:#969696;">// command address
+</span><span>          memOut.write </span><span style="color:#ed4343;">=</span><span> commands.q</span><span style="color:#ed4343;">[</span><span>activeDev.q</span><span style="color:#ed4343;">]</span><span>.write</span><span style="color:#ed4343;">;     </span><span style="color:#969696;">// command type (r/w)
+</span><span>          memOut.valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                                 </span><span style="color:#969696;">// new command
+</span><span>          commands.d</span><span style="color:#ed4343;">[</span><span>activeDev.q</span><span style="color:#ed4343;">]</span><span>.valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// command has been processed
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>commands.q</span><span style="color:#ed4343;">[</span><span>activeDev.q</span><span style="color:#ed4343;">]</span><span>.write</span><span style="color:#ed4343;">) {             </span><span style="color:#969696;">// if it is a read
+</span><span>            device.d </span><span style="color:#ed4343;">=</span><span> activeDev.q</span><span style="color:#ed4343;">;                         </span><span style="color:#969696;">// save active device
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT_READ</span><span style="color:#ed4343;">;                      </span><span style="color:#969696;">// wait for the result
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>      state.</span><span style="color:#d45ada;">WAIT_READ</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>memIn.valid</span><span style="color:#ed4343;">) {                                  </span><span style="color:#969696;">// if we have the result
+</span><span>          devOut</span><span style="color:#ed4343;">[</span><span>device.q</span><span style="color:#ed4343;">]</span><span>.data </span><span style="color:#ed4343;">=</span><span> memIn.data</span><span style="color:#ed4343;">;               </span><span style="color:#969696;">// send it to the waiting device
+</span><span>          devOut</span><span style="color:#ed4343;">[</span><span>device.q</span><span style="color:#ed4343;">]</span><span>.valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;                             </span><span style="color:#969696;">// go back to IDLE
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>      </span><span style="color:#0abfbf;">default</span><span style="color:#ed4343;">:
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>The way it works is it takes requests from any any attached master module. These requests are then issued to the slave in priority order. That means that the first device always has the highest priority, followed by the next, etc.</p>
+<p>Priority order is nice because it is simple to implement as it has no internal state (you don't care who was just served). However, it isn't a fair algorithm. That means if the module with the highest priority saturates the memory bus, lower priority modules will never get their requests served.</p>
+<p>This isn't typically a problem as long as you order the masters carefully.</p>
+<p>In our case, it actually doesn't really matter if the <em>img_capture</em> or <em>ram_to_reg</em> module has higher priority as they won't be operating at the same time (the image is captured, then it is read back). Anyways, the <em>img_capture</em> module was given higher priority as it attaches to the 0th position and <em>ram_to_reg</em> attaches to the 1st position.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>If we go back and look at the block diagram from the beginning, all the connections should now make sense.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/imagecapture.png" alt="imagecapture.png" /></p>
+<p>The SCCB and Config ROM modules are used to configure the camera. The camera then spits out image data that the OV2640 modules brings over to the 100MHz clock domain and packs into pixel chunks. The image data is then fed into the Image Capture module that, when told to, saves an entire frame into the SDRAM. Writes are buffered in the RAM Write Buffer so we don't drop any pixels when the SDRAM is busy refreshing or opening a new row. The Register Interface module allows us to issue reads and writes to various addresses. If a write to address 0 is issued, we issue a start command to the Image Capture module. All reads are forwarded to the Reg to RAM module which sends them to the SDRAM controller. The Memory Arbiter allows us to give both the Image Capture and Reg to RAM modules access to the SDRAM.</p>
+<p>The Image Capture Tool in the Mojo IDE issues a write to address 0 when you click <em>Capture</em>. It then waits a small amount of time for the image to be captured and then reads all the addresses needed for an entire frame. As the image data is read in, it builds an image out of it.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;register-interface&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Register Interface</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;sdram&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>SDRAM</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>External IO</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;external-io&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;">Lucid V1</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;external-io&#x2F;">External IO</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">External IO</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+13 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;external-io.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#the-button-counter" aria-label="The Button Counter">The Button Counter</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#hooking-up-a-button" aria-label="Hooking up a Button">Hooking up a Button</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#adding-the-button-to-the-top-level" aria-label="Adding the Button to the Top Level">Adding the Button to the Top Level</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-user-constraints-file" aria-label="The User Constraints File">The User Constraints File</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-counter" aria-label="The Counter">The Counter</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#metastability" aria-label="Metastability">Metastability</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#debouncing" aria-label="Debouncing">Debouncing</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#putting-it-all-together" aria-label="Putting It All Together">Putting It All Together</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>This tutorial will cover how to connect your design to the IO pins on the Mojo as well as some of the dangers that can arise when interfacing your digital design with the external world.</p>
+<h1 id="the-button-counter">The Button Counter</h1>
+<p>To demonstrate these principles, we will hook up an external button to the FPGA. Each time the button is pressed we will increment a counter. The counter can then be displayed on the LEDs so we can see each time a button press is registered.</p>
+<h1 id="hooking-up-a-button">Hooking up a Button</h1>
+<p>First we need a button to connect! Above is a picture of the button I am going to use. Pretty much any momentary switch will work.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/button.jpg" alt="Button" /></p>
+<p>We now need to connect it to the Mojo. We simply need to connect one side of the button to ground and the other to any pin on the Mojo. The FPGA has configurable internal pull-up and pull-down resistors so we don't need an external pull-up. I like this particular button because it fits nicely in the header. I put one pin into ground and the other to P51. Like I said before, you don't need to use P51, you just need to make note of which pin you choose.</p>
+<h1 id="adding-the-button-to-the-top-level">Adding the Button to the Top Level</h1>
+<p>Make a new project based on the Base Project. We now need to add our new button input to mojo_top. Remember, the inputs and outputs of this module are the inputs and outputs of the FPGA.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 50MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,             </span><span style="color:#969696;">// configuration clock, AVR ready when high
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// AVR SPI MISO
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR SPI Slave Select
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// AVR SPI MOSI
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR SPI Clock
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_channel </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// AVR general purpose pins (used by default to select ADC channel)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR TX (FPGA RX)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR RX (FPGA TX)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// AVR RX buffer full
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> button            </span><span style="color:#969696;">// Super cool button!
+</span><span>  </span><span style="color:#ed4343;">) {
+</span></code></pre>
+<p>Note that I had to add a comma after avr_rx_busy.</p>
+<h1 id="the-user-constraints-file">The User Constraints File</h1>
+<p>OK so now we have the button signal in our design, but how do the tools know what pin to connect button to? This is where the User Constraints File, or UCF, comes into play.</p>
+<p>Under the Constraints heading in the left panel of the Mojo IDE, open the mojo.ucf file.</p>
+<pre data-lang="ucf" style="background-color:#282828;color:#ffffff;" class="language-ucf "><code class ="language-ucf" data-lang="ucf"><span>NET &quot;clk&quot; TNM_NET = clk;
+</span><span>TIMESPEC TS_clk = PERIOD &quot;clk&quot; 50 MHz HIGH 50%;
+</span><span> 
+</span><span>NET &quot;clk&quot; LOC = P56 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;rst_n&quot; LOC = P38 | IOSTANDARD = LVTTL;
+</span><span> 
+</span><span>NET &quot;cclk&quot; LOC = P70 | IOSTANDARD = LVTTL;
+</span><span> 
+</span><span>NET &quot;led&lt;0&gt;&quot; LOC = P134 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;led&lt;1&gt;&quot; LOC = P133 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;led&lt;2&gt;&quot; LOC = P132 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;led&lt;3&gt;&quot; LOC = P131 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;led&lt;4&gt;&quot; LOC = P127 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;led&lt;5&gt;&quot; LOC = P126 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;led&lt;6&gt;&quot; LOC = P124 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;led&lt;7&gt;&quot; LOC = P123 | IOSTANDARD = LVTTL;
+</span><span> 
+</span><span>NET &quot;spi_mosi&quot; LOC = P44 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;spi_miso&quot; LOC = P45 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;spi_ss&quot; LOC = P48 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;spi_sck&quot; LOC = P43 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;spi_channel&lt;0&gt;&quot; LOC = P46 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;spi_channel&lt;1&gt;&quot; LOC = P61 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;spi_channel&lt;2&gt;&quot; LOC = P62 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;spi_channel&lt;3&gt;&quot; LOC = P65 | IOSTANDARD = LVTTL;
+</span><span> 
+</span><span>NET &quot;avr_tx&quot; LOC = P55 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;avr_rx&quot; LOC = P59 | IOSTANDARD = LVTTL;
+</span><span>NET &quot;avr_rx_busy&quot; LOC = P39 | IOSTANDARD = LVTTL;
+</span></code></pre>
+<p>Here are all the definitions of all the predefined pins! Also note the first two lines define the parameters for the clock so the tools know what your design needs to handle.</p>
+<p>The IOSTANDARD specifies what standard the pin will operate at. Since all the IO pins on the Mojo are powered with 3.3V, LVTTL and CMOS33 are the only valid options for singled ended signals. These standards define what should be considered a 1 and what should be a 0. These two are more or less the same, with a 1 being 3.3v and 0 being 0v (or roughly these levels), but you can only use one type per IO bank, so stick with LVTTL. If you are really curious about the different standards check out this document from Xilinx (IO standards start at page 24), but be warned, it's pretty thick.</p>
+<p>The mojo.ucf file is part of the component library so it can't be edited. To add our own pin definitions, we need to add a new constraints file. Click the new file icon (left-most icon in the toolbar) and create a new User Constraints file called custom.ucf.</p>
+<p>Now we need to add the following line to the the file for the button.</p>
+<pre data-lang="ucf" style="background-color:#282828;color:#ffffff;" class="language-ucf "><code class ="language-ucf" data-lang="ucf"><span>NET &quot;button&quot; LOC = P51 | IOSTANDARD = LVTTL | PULLUP;
+</span></code></pre>
+<p>The NET name, &quot;button&quot;, must match the name of the signal of the top level module. Here I set the location (LOC) to P51 which is the pin I chose to connect the button to. If you chose a different pin, use that instead.</p>
+<p>Notice at the end there is the extra PULLUP parameter. This tells the tools we want the internal pull-up resistor to be used on the pin. You can also specify PULLDOWN to use a pull-down resistor.</p>
+<p>That's all there is to adding a new signal! Just to make sure it's all working properly let's modify mojo_top.luc and connect the button the LEDs.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">x{</span><span>button</span><span style="color:#ed4343;">};       </span><span style="color:#969696;">// connect the button
+</span></code></pre>
+<p>Build and load your project to your Mojo. When you aren't pushing the button the LEDs should be on. When it's pressed the LEDs should turn off.</p>
+<h1 id="the-counter">The Counter</h1>
+<p>We can now write out module that takes the button input and counts how many times it has been pressed.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> counter </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,       </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,       </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> button</span><span style="color:#ed4343;">,    </span><span style="color:#969696;">// button input
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> count</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]  </span><span style="color:#969696;">// press counter
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    edge_detector edge_detector</span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">RISE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">FALL</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">)); </span><span style="color:#969696;">// detect rising edges
+</span><span> 
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>       </span><span style="color:#0a8dbf;">dff</span><span> ctr</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]; </span><span style="color:#969696;">// our lovely counter
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    edge_detector.in </span><span style="color:#ed4343;">=</span><span> button</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input to the edge_detector
+</span><span>    count </span><span style="color:#ed4343;">=</span><span> ctr.q</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// output the counter
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>edge_detector.out</span><span style="color:#ed4343;">)     </span><span style="color:#969696;">// if edge detected
+</span><span>      ctr.d </span><span style="color:#ed4343;">=</span><span> ctr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;       </span><span style="color:#969696;">// add one to the counter
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This module is making use of the edge_detector component so make sure you add that to your project (it's under Miscellaneous). The edge_detector is pretty simple and you should take a look at the source. To use it, we need to specify what types of edges we are interested in. In our case, we only care about the rising edge so we set RISE to 1 and FALL to 0. This means that every time there is a rising edge on edge_detector.in, edge_detector.out will be 1 for a single clock cycle.</p>
+<p>With the edge detector, we only then need to increment our counter each time an edge is detected.</p>
+<p>Finally, add this to mojo_top and connect the output to the LEDs.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 50MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,             </span><span style="color:#969696;">// configuration clock, AVR ready when high
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// AVR SPI MISO
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR SPI Slave Select
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// AVR SPI MOSI
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR SPI Clock
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_channel </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// AVR general purpose pins (used by default to select ADC channel)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR TX (FPGA RX)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR RX (FPGA TX)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// AVR RX buffer full
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> button            </span><span style="color:#969696;">// Super cool button!
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">){
+</span><span>      counter counter</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span><span> 
+</span><span>    spi_miso </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bz</span><span style="color:#ed4343;">;          </span><span style="color:#969696;">// not using SPI
+</span><span>    spi_channel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bzzzz</span><span style="color:#ed4343;">;    </span><span style="color:#969696;">// not using flags
+</span><span>    avr_rx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bz</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// not using serial port
+</span><span> 
+</span><span>    counter.button </span><span style="color:#ed4343;">= ~</span><span>button</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// make button active high
+</span><span>    led </span><span style="color:#ed4343;">=</span><span> counter.count</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Build and load it onto your Mojo. Try pressing the button and observing what happens. Is it counting exactly once per press? Chances are many presses will register as multiple presses. In my case it wasn't uncommon for a single press to be counted as high as eight times!</p>
+<p>This happens because the button bounces and each bounce will be counted as a press. But before we get to fixing that, we run into another problem.</p>
+<h1 id="metastability">Metastability</h1>
+<p>To understand metastability, you first need a little background on the timing requirements of the flip-flop. As we discussed before, a flip-flop will copy the value at the D side to the Q side at the positive edge of the clock and hold the value steady until the next positive edge. What we didn't cover was what is known as the setup and hold timing constraints.</p>
+<p>This tutorial will not go into too much detail on what causes these constraints and what their actual values are. All that is important right now is to know that the setup constraint tells you how long before the positive edge must the value on the D side be stable. The hold time tells you how long after the positive edge the D side must continue to be stable.</p>
+<p>Here is a diagram illustrating this.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/metastability.png" alt="Setup and hold diagram" /></p>
+<p>The areas that D needs to be constant are shaded in gray on the clock. As you can see the setup time specifies the time before the rising edge and the hold time is the time after the rising edge.</p>
+<p>The D and the Q signals under the clock are an example of what could happen. The first two rising edges are valid since during the setup and hold time D is constant. For the last edge D changes when it shouldn't so the value of Q becomes unknown.</p>
+<p>Q may take a random value of 0 or 1, however, that is the best case. There is also a possibility that Q will get stuck somewhere between 0 and 1 (0.5?!?), or worse yet it may oscillate, flipping between 0 and 1 very rapidly.</p>
+<p>As you may have guessed you don't want any of that to happen. Bad things will happen and your circuit will do unexpected things.</p>
+<p>There are two solutions to this problem.</p>
+<p>First, you can just design your circuit so this never happens! This is exactly what the tools do for you when you build your design. If it can't meet timing for some reason you'll get timing errors. If you are just running the Mojo at 50MHz, you probably won't encounter these unless you do multiple multiplications between flip flops or some other complicated computational logic. This will be covered more in later tutorials.</p>
+<p>As you may have realized, sometimes you can't control when a signal will change. For this tutorial we are using a button. It's impossible for us to guarantee that the button won't be pressed and violate the setup and hold constraints.</p>
+<p>The second solution is to then to use not one but two flip-flops!</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/metastability-dualff.png" alt="Flip-flop chain" /></p>
+<p>This will add a small amount of latency to your input signal, but it significantly reduces the chance that you will encounter metastability problems. This is the solution we will use to read the button reliably.</p>
+<p>It is important to note that this does not solve the metastability problem and there is still a small chance you could have problems. However, using two flip-flops drastically reduces that chance. If you are really worried about a certain input, you can chain more flip-flops together for a smaller chance of stability issues. However, there are diminishing returns and two will be plenty for most cases.</p>
+<h1 id="debouncing">Debouncing</h1>
+<p>When you press a button, there is a chance that the button will not simply go from open to closed. Since a button is a mechanical device the contacts can bounce. When a button bounces the value it produces looks something like this.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/bouncing.png" alt="Button bounce" /></p>
+<p>For a short period after the button is pressed the value you read from an IO pin may toggle between 0 and 1 a few times before settling on the actual value. This is where debouncing comes into play.</p>
+<p>To debounce a button, you just need to require that for a button to register as being pressed, it must look like it's being pressed for a set amount of time. In this case, being pressed is when the value of the button is 0. If you read enough 0's in a row it is safe to assume that the button has stopped bouncing and you can register one button press.</p>
+<p>If you fail to do this and you are using the button to increment a counter, then the counter may increase by more than 1 per button press since it will appear that each bounce was a separate press. Just as we saw before.</p>
+<p>Conveniently, there is a component under Miscellaneous called Button Conditioner that we can use to fix these problems.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> button_conditioner </span><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#d45ada;">CLK_FREQ </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">50000000 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">CLK_FREQ </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">, </span><span style="color:#969696;">// clock frequency
+</span><span>    </span><span style="color:#d45ada;">MIN_DELAY </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">20 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">MIN_DELAY </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">,     </span><span style="color:#969696;">// minimum delay in ms
+</span><span>    </span><span style="color:#d45ada;">NUM_SYNC </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">NUM_SYNC </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">1         </span><span style="color:#969696;">// number of sync flip flops
+</span><span>  </span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">, </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> in</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// button in (active high)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> out </span><span style="color:#969696;">// output
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    pipeline sync</span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">DEPTH</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">NUM_SYNC</span><span style="color:#ed4343;">)); </span><span style="color:#969696;">// synchronizing chain
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// CLK_FREQ * MIN_DELAY / 1000 = clock cycles for MIN_DELAY milliseconds
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> ctr</span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">CLK_FREQ </span><span style="color:#ed4343;">* </span><span style="color:#d45ada;">MIN_DELAY </span><span style="color:#ed4343;">/ </span><span style="color:#a269dc;">1000</span><span style="color:#ed4343;">)];
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    sync.in </span><span style="color:#ed4343;">=</span><span> in</span><span style="color:#ed4343;">;
+</span><span>    out </span><span style="color:#ed4343;">= &amp;</span><span>ctr.q</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// output 1 when ctr is full
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!&amp;</span><span>ctr.q</span><span style="color:#ed4343;">)         </span><span style="color:#969696;">// if counter isn&#39;t full
+</span><span>      ctr.d </span><span style="color:#ed4343;">=</span><span> ctr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// increment it
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>sync.out</span><span style="color:#ed4343;">)       </span><span style="color:#969696;">// if button is low
+</span><span>      ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// reset the counter
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This component works by taking a button press and passing it through two (or more) flip-flops to prevent stability issues. This happens in the pipeline component which is just a string of connected flip-flops of length DEPTH. With the synchronized signal, a counter is incremented when the button is pressed and reset when it isn't. The counter will saturate at it's max value. Once it hit's the max value it is safe to say the the button has been pressed and the output changes to 1.</p>
+<p>By using the button_conditioner module you can be sure that you will be able to reliably read button presses.</p>
+<h1 id="putting-it-all-together">Putting It All Together</h1>
+<p>We now have all the parts we need to reliably count the number of times the button is pressed.</p>
+<p>The only change we need to make is to add the button conditioner to counter.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> counter </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,       </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,       </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> button</span><span style="color:#ed4343;">,    </span><span style="color:#969696;">// button input
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> count</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]  </span><span style="color:#969696;">// press counter
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    edge_detector edge_detector</span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">RISE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">FALL</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">)); </span><span style="color:#969696;">// detect rising edges
+</span><span> 
+</span><span>    button_conditioner button_cond</span><span style="color:#ed4343;">;     </span><span style="color:#969696;">// button input conditioner
+</span><span> 
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>       </span><span style="color:#0a8dbf;">dff</span><span> ctr</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]; </span><span style="color:#969696;">// our lovely counter
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    button_cond.in </span><span style="color:#ed4343;">=</span><span> button</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// raw button input
+</span><span>    edge_detector.in </span><span style="color:#ed4343;">=</span><span> button_cond.out</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input to the edge_detector
+</span><span>    count </span><span style="color:#ed4343;">=</span><span> ctr.q</span><span style="color:#ed4343;">;                      </span><span style="color:#969696;">// output the counter
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>edge_detector.out</span><span style="color:#ed4343;">)              </span><span style="color:#969696;">// if edge detected
+</span><span>      ctr.d </span><span style="color:#ed4343;">=</span><span> ctr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// add one to the counter
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Build and load your project for the last time. When you push the button now, the counter should only increase by one each time!</p>
+<p>If you have other external inputs that aren't synchronized to the Mojo's clock, you can use the pipeline component to synchronize them. This component will create a chain of flip-flops for you and the length of the chain is parameterizable.</p>
+<p>That's it for this tutorial. You should now be able to connect your Mojo to whatever you want!</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;hello-your-name-here&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Hello YOUR_NAME_HERE</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;analog-inputs&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Analog Inputs</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>
