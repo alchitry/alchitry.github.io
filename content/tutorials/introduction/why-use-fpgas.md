@@ -284,7 +284,7 @@ Only inputs from certain pins on the FPGA are allowed to drive a signal on the g
 These are the MRCC/SRCC pins on the Au and Pt and GBIN pins on the Cu.
 
 On the Alchitry V2 headers, these are normally connected to pins 41, 42, 47, and 48 of each bank where available.
-For more info on the pinout, see 
+For more info on the pinout, see the [Pinout and Custom Elements](@/tutorials/references/pinouts-and-custom-elements.md) page.
 
 All of these resources that are used in an FPGA to make them very flexible also slow things down. 
 This is why you will never be able to clock an FPGA at speeds comparable to a dedicated chip.

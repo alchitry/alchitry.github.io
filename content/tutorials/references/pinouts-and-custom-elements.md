@@ -1,5 +1,5 @@
 +++
-title = "Custom Elements"
+title = "Pinouts and Custom Elements"
 weight = 2
 date = "2025-02-25"
 +++
