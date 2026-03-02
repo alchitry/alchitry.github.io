@@ -62,9 +62,7 @@ You've likely heard that term before, and in this context it describes a circuit
 in some way before passing to the next section.
 All the sections run in parallel with many pieces of data flowing through the pipeline at any given time in various stages of completeness.
 
-However, while pipelines are very powerful and common place, FPGAs can implement any digital circuit you want.
-That includes things like processors.
-
+However, while pipelines are very powerful and commonplace, FPGAs can implement any digital circuit you want, including things like processors.
 ## Processors _and_ FPGAs
 
 While it's common to want to compare FPGAs to processors, it isn't really a strictly fair comparison.
@@ -128,7 +126,7 @@ This is an incredible superpower.
 # When to Use an FPGA
 
 Given that FPGAs are more expensive and power-hungry than a typical microcontroller, you may be wondering when you should use one.
-There are a handful of places where FPGAs really excel.
+There are a handful of places, such as tons of IO, predictable latency, and high throughput, where FPGAs really excel.
 
 ## IO
 
@@ -286,7 +284,7 @@ Only inputs from certain pins on the FPGA are allowed to drive a signal on the g
 These are the MRCC/SRCC pins on the Au and Pt and GBIN pins on the Cu.
 
 On the Alchitry V2 headers, these are normally connected to pins 41, 42, 47, and 48 of each bank where available.
-For more info on Alchitry headers, check out the [Custom Elements Reference].
+For more info on the pinout, see 
 
 All of these resources that are used in an FPGA to make them very flexible also slow things down. 
 This is why you will never be able to clock an FPGA at speeds comparable to a dedicated chip.
