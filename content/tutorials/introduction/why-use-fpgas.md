@@ -17,7 +17,7 @@ They let you design a digital circuit using text on a computer, similar to writi
 However, FPGAs don't _run_ code. 
 Instead, the text is something called a **H**ardware **D**escription **L**anguage (HDL).
 
-These are languages designed specifically for describing digital circuits.
+These are languages specifically designed for describing digital circuits.
 
 The tools on your computer take your HDL and turn it into a configuration file for the FPGA.
 Almost like magic, once loaded onto the FPGA, the FPGA becomes the circuit you described.
@@ -91,7 +91,6 @@ All the benefits I've said up to this point aren't specific to FPGAs.
 Instead, they're just benefits to creating a custom circuit.
 
 The term ASIC, or **A**pplication **S**pecific **I**ntegrated **C**ircuit, is used to describe a custom circuit made into a custom chip.
-
 This is the gold standard when it comes to performance (both speed and power consumption).
 However, it isn't always in reach.
 
@@ -99,7 +98,6 @@ There are two major downsides to having your design turned into an ASIC.
 
 First, once you get your chip back from the fab, that's it.
 If you find you made a mistake, even a tiny one, it is baked into the design and requires new chips to be made to fix.
-
 Second, getting them made a slow and expensive process.
 Typically, you're looking somewhere North of a million USD.
 
@@ -288,6 +286,7 @@ Only inputs from certain pins on the FPGA are allowed to drive a signal on the g
 These are the MRCC/SRCC pins on the Au and Pt and GBIN pins on the Cu.
 
 On the Alchitry V2 headers, these are normally connected to pins 41, 42, 47, and 48 of each bank where available.
+For more info on Alchitry headers, check out the [Custom Elements Reference].
 
 All of these resources that are used in an FPGA to make them very flexible also slow things down. 
 This is why you will never be able to clock an FPGA at speeds comparable to a dedicated chip.
