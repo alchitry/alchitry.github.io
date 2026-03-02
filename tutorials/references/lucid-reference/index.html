@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Lucid Reference</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;references&#x2F;lucid-reference&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;references&#x2F;">References</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;references&#x2F;lucid-reference&#x2F;">Lucid Reference</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Lucid Reference</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<span>2025-02-04</span>&nbsp;·&nbsp;40 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;references&#x2F;lucid-reference.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#lucid-file-contents" aria-label="Lucid File Contents">Lucid File Contents</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#modules" aria-label="Modules">Modules</a>
+                            
+                            <ul>
+                                
+                                <li>
+                                    <a href="#parameters" aria-label="Parameters">Parameters</a>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a href="#ports" aria-label="Ports">Ports</a>
+                                    
+                                    <ul>
+                                        
+                                        <li><a href="#input" aria-label="input">input</a></li>
+                                        
+                                        <li><a href="#output" aria-label="output">output</a></li>
+                                        
+                                        <li><a href="#inout" aria-label="inout">inout</a></li>
+                                        
+                                    </ul>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a href="#module-body" aria-label="Module Body">Module Body</a>
+                                    
+                                    <ul>
+                                        
+                                        <li><a href="#type-declarations" aria-label="Type Declarations">Type Declarations</a></li>
+                                        
+                                        <li><a href="#module-instances" aria-label="Module Instances">Module Instances</a></li>
+                                        
+                                        <li><a href="#connection-blocks" aria-label="Connection Blocks">Connection Blocks</a></li>
+                                        
+                                        <li><a href="#always-blocks" aria-label="Always Blocks">Always Blocks</a></li>
+                                        
+                                    </ul>
+                                    
+                                </li>
+                                
+                            </ul>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#globals" aria-label="Globals">Globals</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#testbenches" aria-label="Testbenches">Testbenches</a>
+                            
+                            <ul>
+                                
+                                <li>
+                                    <a href="#test-blocks" aria-label="Test Blocks">Test Blocks</a>
+                                    
+                                </li>
+                                
+                            </ul>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#comments" aria-label="Comments">Comments</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#single-line-comments" aria-label="Single Line Comments">Single Line Comments</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#multi-line-comments" aria-label="Multi-line Comments">Multi-line Comments</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#signals" aria-label="Signals">Signals</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#sizing" aria-label="Sizing">Sizing</a>
+                            
+                            <ul>
+                                
+                                <li>
+                                    <a href="#arrays" aria-label="Arrays">Arrays</a>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a href="#struct" aria-label="struct">struct</a>
+                                    
+                                </li>
+                                
+                            </ul>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#signal-selection" aria-label="Signal Selection">Signal Selection</a>
+                            
+                            <ul>
+                                
+                                <li>
+                                    <a href="#array-selection" aria-label="Array Selection">Array Selection</a>
+                                    
+                                    <ul>
+                                        
+                                        <li><a href="#index-selector" aria-label="Index Selector">Index Selector</a></li>
+                                        
+                                        <li><a href="#constant-range-selector" aria-label="Constant Range Selector">Constant Range Selector</a></li>
+                                        
+                                        <li><a href="#fixed-width-selector" aria-label="Fixed Width Selector">Fixed Width Selector</a></li>
+                                        
+                                        <li><a href="#negative-indices" aria-label="Negative Indices">Negative Indices</a></li>
+                                        
+                                    </ul>
+                                    
+                                </li>
+                                
+                                <li>
+                                    <a href="#struct-selection" aria-label="Struct Selection">Struct Selection</a>
+                                    
+                                </li>
+                                
+                            </ul>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#types" aria-label="Types">Types</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#sig" aria-label="sig">sig</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#dff" aria-label="dff">dff</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#const" aria-label="const">const</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#enum" aria-label="enum">enum</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#expressions" aria-label="Expressions">Expressions</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#value" aria-label="Value">Value</a>
+                            
+                            <ul>
+                                
+                                <li>
+                                    <a href="#signed" aria-label="Signed">Signed</a>
+                                    
+                                </li>
+                                
+                            </ul>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#group" aria-label="Group">Group</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#concatenation" aria-label="Concatenation">Concatenation</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#duplication" aria-label="Duplication">Duplication</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#array-builder" aria-label="Array Builder">Array Builder</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#invert" aria-label="Invert">Invert</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#negate" aria-label="Negate">Negate</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#multiply-and-divide" aria-label="Multiply and Divide">Multiply and Divide</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#addition-and-subtract" aria-label="Addition and Subtract">Addition and Subtract</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#shifting" aria-label="Shifting">Shifting</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#bitwise" aria-label="Bitwise">Bitwise</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#reduction" aria-label="Reduction">Reduction</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#comparison" aria-label="Comparison">Comparison</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#logical" aria-label="Logical">Logical</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#ternary" aria-label="Ternary">Ternary</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#always-test-block-statements" aria-label="Always&#x2F;Test Block Statements">Always&#x2F;Test Block Statements</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#assignments" aria-label="Assignments">Assignments</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#if" aria-label="if">if</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#case" aria-label="case">case</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#repeat" aria-label="repeat">repeat</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#function-call" aria-label="Function call">Function call</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#literals" aria-label="Literals">Literals</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#numbers" aria-label="Numbers">Numbers</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#arrays-1" aria-label="Arrays">Arrays</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#strings" aria-label="Strings">Strings</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#structs" aria-label="Structs">Structs</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#functions" aria-label="Functions">Functions</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#built-in" aria-label="Built-in">Built-in</a>
+                            
+                            <ul>
+                                
+                                <li>
+                                    <a href="#simulation-only" aria-label="Simulation Only">Simulation Only</a>
+                                    
+                                </li>
+                                
+                            </ul>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#user-created" aria-label="User Created">User Created</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>This page is a reference for the Lucid V2 language.</p>
+<h1 id="lucid-file-contents">Lucid File Contents</h1>
+<p>Every Lucid file (.luc extension) can contain  <a href="https://alchitry.com/tutorials/references/lucid-reference/#modules">module</a>, <a href="https://alchitry.com/tutorials/references/lucid-reference/#testbenches">testbench</a>, and/or <a href="https://alchitry.com/tutorials/references/lucid-reference/#globals">global</a> declarations.</p>
+<h2 id="modules">Modules</h2>
+<p>Modules are the core of any Lucid project. They are where you define a block of functionality.</p>
+<p>A <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span></code> declaration takes the following form.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> module_name </span><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#969696;">// optional parameter list
+</span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#969696;">// port list
+</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// module body
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<h3 id="parameters">Parameters</h3>
+<p>Parameters provide a way for a module to be customized when it is <a href="https://alchitry.com/tutorials/references/lucid-reference/#module-instances">instantiated</a> to improve code reuse.</p>
+<p>All parameters must be constant as they are replaced during synthesis (build time).</p>
+<p>Parameters are defined in a list of comma separated parameter declarations between <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">#(</span></code> and <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">)</span></code>.</p>
+<p>It is optional and can be completely omitted.</p>
+<p>Each parameter declaration takes the following form.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">PARAM_NAME </span><span style="color:#ed4343;">=</span><span> default_value </span><span style="color:#ed4343;">:</span><span> test_condition
+</span></code></pre>
+<p>or</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">PARAM_NAME </span><span style="color:#ed4343;">~</span><span> test_value </span><span style="color:#ed4343;">:</span><span> test_condition
+</span></code></pre>
+<p>Here, <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">PARAM_NAME</span></code> is the name of the parameter. 
+Parameter names, like <a href="https://alchitry.com/tutorials/references/lucid-reference/#const">constants</a>, must be made up of only capital letters and underscores.</p>
+<p>Everything besides <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">PARAM_NAME</span></code> is optional.</p>
+<p>In the first example, <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">=</span><span> default_value</span></code>, will provide a default value for the parameter. If a default value is provided, when the module is <a href="https://alchitry.com/tutorials/references/lucid-reference/#module-instances">instantiated</a> the parameter can be omitted.</p>
+<p>If you want to require a value to be provided when the module in <a href="https://alchitry.com/tutorials/references/lucid-reference/#module-instances">instantiated</a> then you can use the form in the second example of <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">~</span><span> test_value</span></code>. 
+With this form, <code class ="language-lucid" data-lang="lucid"><span>test_value</span></code> is used as an example value to test your module in a stand-alone fashion by Alchitry Labs. However, it won't be used when the module is instantiated.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>test_value</span></code> and <code class ="language-lucid" data-lang="lucid"><span>default_value</span></code> can be omitted but this will hinder the amount of error checking Alchitry Labs can perform on your module until it is instantiated.</p>
+<p>The last piece, <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">:</span><span> test_condition</span></code> provides a condition to test the parameter against. If it is false (evaluates to 0), then an error is thrown when the module is <a href="https://alchitry.com/tutorials/references/lucid-reference/#module-instances">instantiated</a>. </p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>test_condition</span></code> can be any <a href="https://alchitry.com/tutorials/references/lucid-reference/#expressions">expression</a> that evaluates to a number and references only this parameter or any previously declared parameters (ones that appear before this one in the list).</p>
+<p>An example full declaration could look like this.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#d45ada;">CLK_FREQ </span><span style="color:#ed4343;">~ </span><span style="color:#a269dc;">100000000 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">CLK_FREQ </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// clock frequency
+</span><span>    </span><span style="color:#d45ada;">BAUD </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1000000 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">BAUD </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0 </span><span style="color:#ed4343;">&amp;&amp; </span><span style="color:#d45ada;">BAUD </span><span style="color:#ed4343;">&lt;= </span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">/</span><span style="color:#a269dc;">4 </span><span style="color:#969696;">// desired baud rate
+</span><span style="color:#ed4343;">)
+</span></code></pre>
+<p>If a parameter has a <code class ="language-lucid" data-lang="lucid"><span>default_value</span></code> provided, then any value assigned to the module during instantiation, must be compatible with the width of <code class ="language-lucid" data-lang="lucid"><span>default_value</span></code>.</p>
+<p>For a width to be <em>compatible</em> all of its dimensions except the outermost dimension must match.</p>
+<p>For example, if a parameter was declared as <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">PARAM </span><span style="color:#ed4343;">= {</span><span style="color:#a269dc;">8d1</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8d2</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8d3</span><span style="color:#ed4343;">}</span></code> then any value assigned to <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">PARAM</span></code> must has the width of <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span>x</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]</span></code> where <code class ="language-lucid" data-lang="lucid"><span>x</span></code> can be anything.</p>
+<p>If the parameter is a simple number, or <code class ="language-lucid" data-lang="lucid"><span>default_value</span></code> is omitted, then the width of the parameter is assumed to be a simple (1D) array.</p>
+<h3 id="ports">Ports</h3>
+<p>Ports are how modules connect to the outside world.</p>
+<p>They act similar to <a href="https://alchitry.com/tutorials/references/lucid-reference/#sig">signals</a> but have a direction associated with them.</p>
+<p>Ports are defined in a comma separated list of port declarations between <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">(</span></code> and <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">)</span></code>. </p>
+<p>Note that this differs from the <a href="https://alchitry.com/tutorials/references/lucid-reference/#parameters">parameter list</a> in that opening symbol is simply <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">(</span></code> instead of <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">#(</span></code>.</p>
+<p>Each port declaration takes the following form.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">signed</span><span> direction port_name port_size
+</span></code></pre>
+<p><code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">signed</span></code> optionally marks the port to be interpreted as <a href="https://alchitry.com/tutorials/references/lucid-reference/#signed">signed</a>.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>direction</span></code> is one of <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">input</span></code>, <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">output</span></code>, or <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">inout</span></code>. The details of these are below.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>port_name</span></code> is the name of the port and must start with a lowercase letter. 
+It can then be followed by letters, numbers, and underscores.<br />
+It is convention for it to be <code class ="language-lucid" data-lang="lucid"><span>snake_case</span></code>.</p>
+<p>The port can have an optional <code class ="language-lucid" data-lang="lucid"><span>port_size</span></code>. 
+This follows the format defined in <a href="https://alchitry.com/tutorials/references/lucid-reference/#sizing">sizing</a>. 
+If it is omitted, then the port is a single bit wide.</p>
+<h4 id="input">input</h4>
+<p>Inputs are read-only signals passed into the module. </p>
+<h4 id="output">output</h4>
+<p>Outputs are write-only signals passed out of module.</p>
+<p>Typically, they will have a value of <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">b0</span></code> or <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">b1</span></code>. However, if they connect directly to a top-level output (pin on the FPGA) they can also have the value <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">bz</span></code> meaning high-impedance (not driven).</p>
+<p>Signals inside an FPGA don't have a mechanism for realizing <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">bz</span></code> so this can't be used internally.</p>
+<h4 id="inout">inout</h4>
+<p>Inouts provide a way to create a bidirectional signal.</p>
+<p>These can't be used internally in the FPGA and are only valid to be connected directly to a top-level <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">inout</span></code> (pin on the FPGA).</p>
+<p>When an <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">inout</span></code> is written, the value will dictate if the pin's driver is enabled. 
+If it is anything other than <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">bz</span></code> the driver will be enabled. 
+A value of <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">bz</span></code> will disable the driver and leave the pin floating to be driven externally.</p>
+<p>When an <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">inout</span></code> is read, the value at the actual pin is read. The value will never be <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">bz</span></code>.</p>
+<p>A module with an <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">inout</span></code> can be <a href="https://alchitry.com/tutorials/references/lucid-reference/#module-instances">instantiated</a> inside another module as long as the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">inout</span></code> is passed directly to an <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">inout</span></code> of the parent module. It can't be interacted with inside the FPGA.</p>
+<h3 id="module-body">Module Body</h3>
+<p>A module body consists of any number of the following statement types between <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">{</span></code> and <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">}</span></code> at the end of a <a href="https://alchitry.com/tutorials/references/lucid-reference/#modules">module declaration</a>.</p>
+<h4 id="type-declarations">Type Declarations</h4>
+<p>Inside the module body, local types can be defined.</p>
+<p>These can be <a href="https://alchitry.com/tutorials/references/lucid-reference/#sig">signals</a>, <a href="https://alchitry.com/tutorials/references/lucid-reference/#dff">DFFs</a>, <a href="https://alchitry.com/tutorials/references/lucid-reference/#const">constants</a>, or <a href="https://alchitry.com/tutorials/references/lucid-reference/#enum">enums</a> as defined in the <a href="https://alchitry.com/tutorials/references/lucid-reference/#types">types</a> section.</p>
+<h4 id="module-instances">Module Instances</h4>
+<p>A module can contain sub-modules. When you use a module, that is called <em>instantiation</em>.</p>
+<p>A module instantiation takes the following form.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>module_type module_instance_name optional_array_size </span><span style="color:#ed4343;">(</span><span> port_and_param_connections </span><span style="color:#ed4343;">)
+</span></code></pre>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>module_type</span></code> is the name of a previously defined module to be instantiated.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>module_instance_name</span></code> is the name of this particular <em>instance</em>. It must start with a lowercase letter. It can then be followed by letters, numbers, and underscores. 
+It is convention for it to be <code class ="language-lucid" data-lang="lucid"><span>snake_case</span></code>.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>optional_array_size</span></code> follows the format defined in the <a href="https://alchitry.com/tutorials/references/lucid-reference/#sizing">sizing</a> section for arrays. Structs are not supported for module instances.</p>
+<p>If <code class ="language-lucid" data-lang="lucid"><span>optional_array_size</span></code> is omitted, a single instance of the module is created.</p>
+<p>If <code class ="language-lucid" data-lang="lucid"><span>optional_array_size</span></code> is provided, an instance of the module will be created for every index in the specified size. Each port of every instance is concatenated into a single multidimensional port.</p>
+<p>For example, if the module, <code class ="language-lucid" data-lang="lucid"><span>module_type</span></code>, had an output named <code class ="language-lucid" data-lang="lucid"><span>out</span></code> that was 1 bit wide and we instantiated 8 copies it with the following, then <code class ="language-lucid" data-lang="lucid"><span>module_instance_name.out</span></code> would be an 8-bit wide array with each index corresponding to each copy.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>module_type module_instance_name</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]
+</span></code></pre>
+<p>If <code class ="language-lucid" data-lang="lucid"><span>out</span></code> was already an array then <code class ="language-lucid" data-lang="lucid"><span>module_instance_name.out</span></code> would be a 2-D array of size <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">][</span><span>n</span><span style="color:#ed4343;">]</span></code> where <code class ="language-lucid" data-lang="lucid"><span>n</span></code> is the size of a single <code class ="language-lucid" data-lang="lucid"><span>out</span></code>.</p>
+<p>Finally, <code class ="language-lucid" data-lang="lucid"><span>port_and_param_connections</span></code> are a comma separated list of connections to ports and parameters.</p>
+<p>Port connections take the form <code class ="language-lucid" data-lang="lucid"><span>.port_name</span><span style="color:#ed4343;">(</span><span>port_value</span><span style="color:#ed4343;">)</span></code> where <code class ="language-lucid" data-lang="lucid"><span>port_name</span></code> is the name of the port and <code class ="language-lucid" data-lang="lucid"><span>port_value</span></code> is the value to connect to it. <code class ="language-lucid" data-lang="lucid"><span>port_value</span></code> can be an <a href="https://alchitry.com/tutorials/references/lucid-reference/#expressions">expression</a> of matching width.</p>
+<p>Parameter connections take the form <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">#</span><span style="color:#d45ada;">PARAM_NAME</span><span style="color:#ed4343;">(</span><span>param_value</span><span style="color:#ed4343;">)</span></code> where <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">PARAM_NAME</span></code> is the name of the parameter and <code class ="language-lucid" data-lang="lucid"><span>param_value</span></code> is the value to assign to it. <code class ="language-lucid" data-lang="lucid"><span>param_value</span></code> must be a constant <a href="https://alchitry.com/tutorials/references/lucid-reference/#expressions">expression</a> that can be evaluated during synthesis.</p>
+<p>Port and parameter connections can be presented in any order. Convention is to list all parameters first.</p>
+<h4 id="connection-blocks">Connection Blocks</h4>
+<p>When declaring many <a href="https://alchitry.com/tutorials/references/lucid-reference/#dff">DFFs</a> or <a href="https://alchitry.com/tutorials/references/lucid-reference/#module-instances">modules</a>, you may find yourself specifying the same connection over and over. This is where connection blocks are helpful.</p>
+<p>Connection blocks allow you to define a connection to a port or parameter for all instances inside of them. The most common use case for this is connecting the <code class ="language-lucid" data-lang="lucid"><span>clk</span></code> port of a <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> to the <code class ="language-lucid" data-lang="lucid"><span>clk</span></code> signal in the module.</p>
+<p>Connection blocks take the following format. </p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>connection_list </span><span style="color:#ed4343;">{
+</span><span>	declaration_or_connection_block
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>connection_list</span></code> is a comma separated list of port and parameter connections with the same format used during a typical <a href="https://alchitry.com/tutorials/references/lucid-reference/#module-instances">module instantiation</a>.</p>
+<p>Inside the block, you can instantiate modules or <a href="https://alchitry.com/tutorials/references/lucid-reference/#dff">DFFs</a>. You can also nest other connection blocks.</p>
+<p>A common use case is to have two nested connection blocks. The outer one for the <code class ="language-lucid" data-lang="lucid"><span>clk</span></code> port and the inner one for the <code class ="language-lucid" data-lang="lucid"><span>rst</span></code> port.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>.clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>        </span><span style="color:#0a8dbf;">dff</span><span> with_reset
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> without_reset
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This allows you to easily create <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> with and without resets.</p>
+<p>If the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> or module instance is an array, the connections in the connection blocks are connected to each individual instance instead of to the concatenated value.</p>
+<p>This can be helpful if you have an array modules and want to use the same parameter value for each one.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">#</span><span style="color:#d45ada;">PARAM_NAME</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">) {
+</span><span>    module_type my_module</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>In the above example, all eight instances of <code class ="language-lucid" data-lang="lucid"><span>module_type</span></code> will have their parameter, <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">PARAM_NAME</span></code> set to <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">10</span></code>.</p>
+<p>If we wanted to assign different values to each one, they would need to be assigned inline as an array.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>module_type my_module</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">](#</span><span style="color:#d45ada;">PARAM_NAME</span><span style="color:#ed4343;">({</span><span style="color:#a269dc;">8d0</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8d1</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8d2</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8d3</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8d4</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8d5</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8d6</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8d7</span><span style="color:#ed4343;">}))
+</span></code></pre>
+<p>This does not apply to the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code>. 
+The <code class ="language-lucid" data-lang="lucid"><span>clk</span></code> and <code class ="language-lucid" data-lang="lucid"><span>rst</span></code> inputs are always 1 bit and the <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">INIT</span></code> parameter always applies to the full <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code>.</p>
+<h4 id="always-blocks">Always Blocks</h4>
+<p>Always blocks provide a way to describe complex behavior in a way that resembles traditional programming.</p>
+<p>An <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block takes the following format.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    always_statements
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p><code class ="language-lucid" data-lang="lucid"><span>always_statements</span></code> are defined in the <a href="https://alchitry.com/tutorials/references/lucid-reference/#always-test-block-statements">block statements</a> section.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block can contain any number of these separated by new lines or semicolons.</p>
+<p>The statements are evaluated top-down. This means lower statements take precedent over higher ones.</p>
+<p>For example, if you assigned the signal <code class ="language-lucid" data-lang="lucid"><span>led</span></code> the value of <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> then immediately assigned it <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> the first assignment would be ignored.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This is <em>identical</em> to simply removing the first assignment.</p>
+<p>An <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block describes the desired behavior for part of your design. It is not actually <em>run</em> like typical code would be. The tools look at the block and figure out a way to make a circuit that would behave the same way. This means that there are some restrictions.</p>
+<p>For example, <a href="https://alchitry.com/tutorials/references/lucid-reference/#repeat">repeat</a> loops must have a fixed number of iterations. This is because there isn't actually a way to loop with hardware and the loop must be unrolled.</p>
+<p>If a signal is written inside an <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block, it must be written in all possible cases.</p>
+<p>For example, this is not allowed.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>button_pressed</span><span style="color:#ed4343;">) {
+</span><span>        my_sig </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>In the case that <code class ="language-lucid" data-lang="lucid"><span>button_pressed</span></code> is false, <code class ="language-lucid" data-lang="lucid"><span>my_sig</span></code> won't have a value.</p>
+<p>This could be remedied by adding an <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">else</span></code> clause or by assigning a value before the <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">if</span></code>.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>button_pressed</span><span style="color:#ed4343;">) {
+</span><span>        my_sig </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1
+</span><span>    </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{
+</span><span>        my_sig </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>
+</span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    my_sig </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0 </span><span style="color:#969696;">// default value
+</span><span>    
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>button_pressed</span><span style="color:#ed4343;">) {
+</span><span>        my_sig </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>These two blocks are functionally identical and the choice for each depends on your use case.</p>
+<p>If it is a simple assignment like this, you may prefer the first.</p>
+<p>If you have a reasonable default with complex logic for when it should deviate, use the second.</p>
+<p>An exception to this rule is for <a href="https://alchitry.com/tutorials/references/lucid-reference/#dff">DFFs</a>. The <code class ="language-lucid" data-lang="lucid"><span>.d</span></code> input of a <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> doesn't need to always be driven. This is because the <code class ="language-lucid" data-lang="lucid"><span>.d</span></code> input is implicitly assigned the value of <code class ="language-lucid" data-lang="lucid"><span>.q</span></code> at the start of the <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block.</p>
+<p>If the <code class ="language-lucid" data-lang="lucid"><span>.d</span></code> input isn't assigned, then the value of the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> won't change.</p>
+<p>Here is an example where the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> will only increment when <code class ="language-lucid" data-lang="lucid"><span>button_pressed</span></code> is true.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>   </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>button_pressed</span><span style="color:#ed4343;">) {
+</span><span>       my_dff.d </span><span style="color:#ed4343;">=</span><span> my_dff.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1
+</span><span>   </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>At the beginning of the <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block <code class ="language-lucid" data-lang="lucid"><span>my_dff.d </span><span style="color:#ed4343;">=</span><span> my_dff.q</span></code> is implicitly added making this valid.</p>
+<p>If an <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block writes a signal, it is the driver for that signal meaning it can't be driven else where. In other words, a signal can be written in only one <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block.</p>
+<h2 id="globals">Globals</h2>
+<p>Globals allow you declare are group of <a href="https://alchitry.com/tutorials/references/lucid-reference/#const">constants</a>, <a href="https://alchitry.com/tutorials/references/lucid-reference/#struct">structs</a>, and <a href="https://alchitry.com/tutorials/references/lucid-reference/#enum">enums</a> that are available anywhere in your project.</p>
+<p>A global declaration takes the following form.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">global </span><span style="color:#da5a8c;">GlobalName </span><span style="color:#ed4343;">{
+</span><span>    declarations
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p><code class ="language-lucid" data-lang="lucid"><span style="color:#da5a8c;">GlobalName</span></code> is the name of the <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">global</span></code> namespace. All the definitions in it are accessed by using <code class ="language-lucid" data-lang="lucid"><span style="color:#da5a8c;">GlobalName</span><span>.declaration_name</span></code>. It must start with a capital letter and contain at least one lowercase letter. Convention is to use <code class ="language-lucid" data-lang="lucid"><span style="color:#da5a8c;">UpperCamelCase</span></code>.</p>
+<p><code class ="language-lucid" data-lang="lucid"><span style="color:#da5a8c;">GlobalName</span></code> must be unique across the entire project.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>declarations</span></code> are  <a href="https://alchitry.com/tutorials/references/lucid-reference/#const">constants</a>, <a href="https://alchitry.com/tutorials/references/lucid-reference/#struct">structs</a>, or <a href="https://alchitry.com/tutorials/references/lucid-reference/#enum">enums</a>. </p>
+<p>Here's an example.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">global </span><span style="color:#da5a8c;">MyGlobal </span><span style="color:#ed4343;">{
+</span><span>    </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CLK_FREQ </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">100000000
+</span><span>    </span><span style="color:#0a8dbf;">enum </span><span style="color:#da5a8c;">States </span><span style="color:#ed4343;">{ </span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">RUN</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">STOP </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#0a8dbf;">struct</span><span> color_struct </span><span style="color:#ed4343;">{</span><span> red</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],</span><span> green</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],</span><span> blue</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">] }
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>These can be accessed later with <code class ="language-lucid" data-lang="lucid"><span style="color:#da5a8c;">MyGlobal</span><span>.</span><span style="color:#d45ada;">CLK_FREQ</span></code>, <code class ="language-lucid" data-lang="lucid"><span style="color:#da5a8c;">MyGlobal</span><span>.</span><span style="color:#da5a8c;">States</span></code>, and <code class ="language-lucid" data-lang="lucid"><span style="color:#da5a8c;">MyGlobal</span><span>.color_struct</span></code>.</p>
+<h2 id="testbenches">Testbenches</h2>
+<p>Testbenches look very similar to <a href="https://alchitry.com/tutorials/references/lucid-reference/#modules">modules</a>, but they serve as a way to run simulations.</p>
+<p>The basic format is as follows.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">testbench</span><span> testbench_name </span><span style="color:#ed4343;">{
+</span><span>    testbench_body
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>testbench_name</span></code> follows the same conventions as module names. 
+It must start with a lower case letter and can be followed by letters, numbers, or underscores. 
+It is <code class ="language-lucid" data-lang="lucid"><span>snake_case</span></code> by convention.</p>
+<p><code class ="language-lucid" data-lang="lucid"><span>testbench_body</span></code> is basically the same as the <a href="https://alchitry.com/tutorials/references/lucid-reference/#modules">module body</a> in the way can instantiate modules and DFFs or declare constants, enums, and structs.</p>
+<p>However, instead of <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> blocks you have <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">test</span></code> blocks. You can also declare <a href="https://alchitry.com/tutorials/references/lucid-reference/#user-created">functions</a>.</p>
+<h3 id="test-blocks">Test Blocks</h3>
+<p>The rules inside a <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">test</span></code> block are similar to those inside of an <a href="https://alchitry.com/tutorials/references/lucid-reference/#always-blocks">always</a> block except that things are actually run sequentially like code.</p>
+<p>The simulation will run each line in the <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">test</span></code> block line by line. Special test-only <a href="https://alchitry.com/tutorials/references/lucid-reference/#simulation-only">functions</a> let you control the flow of the simulation.</p>
+<p>A test block takes the following format.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">test</span><span> test_name </span><span style="color:#ed4343;">{
+</span><span>    test_statements
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">test</span></code> keyword is followed by the name of the test, <code class ="language-lucid" data-lang="lucid"><span>test_name</span></code>, which must start with a lowercase letter and can be followed by letters, numbers, or underscores.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>test_statements</span></code> can be any statements described in the <a href="https://alchitry.com/tutorials/references/lucid-reference/#always-test-block-statements">statements</a> section.</p>
+<h1 id="comments">Comments</h1>
+<p>Comments can appear anywhere and are ignored by the Lucid parser. They share the same format as C/Java comments.</p>
+<h3 id="single-line-comments">Single Line Comments</h3>
+<p>Single line comments take the following form.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">// my comment
+</span></code></pre>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">//</span></code> denotes the start of the comment and it continues to the end of the line.</p>
+<h3 id="multi-line-comments">Multi-line Comments</h3>
+<p>Multi-line comments take the following form.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">/* inline comment */
+</span><span>
+</span><span style="color:#969696;">/* 
+</span><span style="color:#969696;">    multi
+</span><span style="color:#969696;">    line
+</span><span style="color:#969696;">    comment
+</span><span style="color:#969696;">*/
+</span></code></pre>
+<p>The comment is everything between the two markers, <code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">/* and */</span></code>.</p>
+<p>They doesn't necessarily have to be on different lines and can be used to place a comment inline with code.</p>
+<h1 id="signals">Signals</h1>
+<p>Basically any named value in Lucid can be thought of as a signal. This includes the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span></code> type, ports on a module or <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code>, and even a <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">const</span></code>.</p>
+<h2 id="sizing">Sizing</h2>
+<p>When declaring a type, you can specify the width of that type with any number of <a href="https://alchitry.com/tutorials/references/lucid-reference/#arrays">array</a>  dimensions followed by an optional <a href="https://alchitry.com/tutorials/references/lucid-reference/#struct">struct</a> type with the following format.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span>a</span><span style="color:#ed4343;">]</span><span>...</span><span style="color:#ed4343;">[</span><span>b</span><span style="color:#ed4343;">]&lt;</span><span>struct_type</span><span style="color:#ed4343;">&gt;
+</span></code></pre>
+<p>After the array sizes, you can specify a struct type using the syntax <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">&lt;</span><span>struct_type</span><span style="color:#ed4343;">&gt;</span></code> where <code class ="language-lucid" data-lang="lucid"><span>struct_type</span></code> is some previously declared <a href="https://alchitry.com/tutorials/references/lucid-reference/#struct">struct</a>. </p>
+<p>The only exception to this is module instances don't support structs.</p>
+<p>All of the components of a signals size are optional and if omitted it defaults to 1 (either a bit or a single module instance).</p>
+<p>If you declare something with both, you will have an array of that struct. Here is an example.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">struct</span><span> color </span><span style="color:#ed4343;">{</span><span> r</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],</span><span> g</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],</span><span> b</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">] }
+</span><span style="color:#0a8dbf;">sig</span><span> a_few_colors</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">]&lt;</span><span>color</span><span style="color:#ed4343;">&gt;
+</span></code></pre>
+<p>A component of <code class ="language-lucid" data-lang="lucid"><span>a_few_colors</span></code> could be accessed like <code class ="language-lucid" data-lang="lucid"><span>a_few_colors</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">]</span><span>.r</span></code>. To get the least significant bit of green for index 2 we could use <code class ="language-lucid" data-lang="lucid"><span>a_few_colors</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">]</span><span>.g</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span></code></p>
+<h3 id="arrays">Arrays</h3>
+<p>An array is a list consisting of elements of all the same size.</p>
+<p>To make an array, you use the <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span>size</span><span style="color:#ed4343;">]</span></code> syntax where <code class ="language-lucid" data-lang="lucid"><span>size</span></code> is some constant. These can be chained together to form multi-dimensional arrays.</p>
+<p>A 1-D array is treated as a binary number. See the <a href="https://alchitry.com/tutorials/references/lucid-reference/#expressions">expressions</a> section for some examples.</p>
+<h3 id="struct">struct</h3>
+<p>Structs are a way to split a signal into arbitrary named sections.</p>
+<p>Unlike an array that requires each element to be identical in size, in a struct, each element can be have any width.</p>
+<p>The syntax of a <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">struct</span></code> declaration looks like the following.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">struct</span><span> struct_name </span><span style="color:#ed4343;">{
+</span><span>    struct_elements
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>struct_name</span></code> is the name of the struct. It must start with a lowercase letter and can be followed by letters, numbers, or underscores. By convention, it is <code class ="language-lucid" data-lang="lucid"><span>snake_case</span></code>.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>struct_elements</span></code> are a comma separated list of elements. Each element takes the following format.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">signed</span><span> element_name signal_width
+</span></code></pre>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">signed</span></code> keyword is optional and will mark this element to be treated as a <a href="https://alchitry.com/tutorials/references/lucid-reference/#signed">signed</a> value. If the <code class ="language-lucid" data-lang="lucid"><span>signal_width</span></code> has a struct component to it, this does nothing.</p>
+<p><code class ="language-lucid" data-lang="lucid"><span>element_name</span></code> is the name of the element. It must start with a lowercase letter and can be followed by letters, numbers, or underscores. By convention, it is <code class ="language-lucid" data-lang="lucid"><span>snake_case</span></code>. It must be unique inside this struct.</p>
+<p><code class ="language-lucid" data-lang="lucid"><span>signal_width</span></code> is an optional width for the element as specified in the <a href="https://alchitry.com/tutorials/references/lucid-reference/#sizing">sizing</a> section.</p>
+<p>An example struct for holding a 24 bit color could look like this.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">struct</span><span> color </span><span style="color:#ed4343;">{</span><span> red</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],</span><span> green</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],</span><span> blue</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">] }
+</span></code></pre>
+<p>Components of the struct are accessed via the <code class ="language-lucid" data-lang="lucid"><span>.element_name</span></code> syntax.</p>
+<h2 id="signal-selection">Signal Selection</h2>
+<p>When reading or writing a signal, if it isn't a single bit, you may need access only part of it. How you do this depends on the width of the signal.</p>
+<h3 id="array-selection">Array Selection</h3>
+<p>If the signal is an array, you can use any of the array selectors to access part of it.</p>
+<p>There are three main types of array selectors. </p>
+<h4 id="index-selector">Index Selector</h4>
+<p>This selector is used to select a single index out of an array and takes the form <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span>idx</span><span style="color:#ed4343;">]</span></code>.</p>
+<p>The selector, <code class ="language-lucid" data-lang="lucid"><span>idx</span></code>, doesn't need to be constant.</p>
+<p>This is the only selector that can have another array selector following it.</p>
+<h4 id="constant-range-selector">Constant Range Selector</h4>
+<p>You can select a range of indices using the <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span>max</span><span style="color:#ed4343;">:</span><span>min</span><span style="color:#ed4343;">]</span></code> syntax.</p>
+<p>The values of <code class ="language-lucid" data-lang="lucid"><span>max</span></code> and <code class ="language-lucid" data-lang="lucid"><span>min</span></code> must be constant values and <code class ="language-lucid" data-lang="lucid"><span>max</span></code> must be greater or equal to <code class ="language-lucid" data-lang="lucid"><span>min</span></code>.</p>
+<p>This selector will select all the indices from <code class ="language-lucid" data-lang="lucid"><span>min</span></code> to <code class ="language-lucid" data-lang="lucid"><span>max</span></code> including both.</p>
+<h4 id="fixed-width-selector">Fixed Width Selector</h4>
+<p>You will sometimes need to select multiple bits using a dynamic index. This is where the fixed width selector is helpful.</p>
+<p>With the selector you specify a starting index then how many bits to include above or below including the start bit.</p>
+<p>It takes the form <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span>start</span><span style="color:#ed4343;">+:</span><span>width</span><span style="color:#ed4343;">]</span></code> to select a total of <code class ="language-lucid" data-lang="lucid"><span>width</span></code> bits starting at <code class ="language-lucid" data-lang="lucid"><span>start</span></code> and going up or <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span>start</span><span style="color:#ed4343;">-:</span><span>width</span><span style="color:#ed4343;">]</span></code> to select <code class ="language-lucid" data-lang="lucid"><span>width</span></code> bits starting at <code class ="language-lucid" data-lang="lucid"><span>start</span></code> but going down.</p>
+<p>For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">+:</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">]</span></code> would select indices 4, 5, and 6. <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">-:</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">]</span></code> would select indices 4, 3, and 2.</p>
+<p>The value used for <code class ="language-lucid" data-lang="lucid"><span>width</span></code> must be constant. However, the value used for <code class ="language-lucid" data-lang="lucid"><span>start</span></code> can be dynamic.</p>
+<p>The reason for this is so that the resulting selection is always a fixed width.</p>
+<h4 id="negative-indices">Negative Indices</h4>
+<p>The indices for the selectors can also be negative.
+When an index is negative, it wraps around to the highest value. </p>
+<p>For example, if you had an 8 bit wide signal then index <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]</span></code> would be the same as <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">]</span></code>.
+An index of <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[-</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">]</span></code> would be the same as <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">]</span></code> and so on.
+An index of <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[-</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]</span></code> would be out of bounds and invalid.</p>
+<p>The actual index used is essentially the negative value plus the width of the signal.</p>
+<p>Many times a signal's width is defined by a <a href="https://alchitry.com/tutorials/references/lucid-reference/#const">constant</a> or a <a href="https://alchitry.com/tutorials/references/lucid-reference/#parameters">parameter</a> to allow it to be easily changed.
+Negative indices makes it easy to access the MSB of a signal regardless of its width.</p>
+<h3 id="struct-selection">Struct Selection</h3>
+<p>If a signal is a <a href="https://alchitry.com/tutorials/references/lucid-reference/#struct">struct</a> then to select an element from it you use the syntax <code class ="language-lucid" data-lang="lucid"><span>my_struct_signal.element_name</span></code>.</p>
+<p>This assumes the signal <code class ="language-lucid" data-lang="lucid"><span>my_struct_signal</span></code> is of a <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">struct</span></code> type that has an element named <code class ="language-lucid" data-lang="lucid"><span>element_name</span></code>.</p>
+<h1 id="types">Types</h1>
+<h2 id="sig">sig</h2>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span></code> type is short for <em>signal</em>. These are used as basic connections between parts of your design.</p>
+<p>Each <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span></code> must have a single driver. Something that provides a value at all times as they have no state themselves.</p>
+<p>Declaring a <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span></code> takes the following form.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">signed </span><span style="color:#0a8dbf;">sig</span><span> sig_name sig_size </span><span style="color:#ed4343;">=</span><span> expression
+</span></code></pre>
+<p>Everything other than the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span></code> keyword and <code class ="language-lucid" data-lang="lucid"><span>sig_name</span></code> are optional.</p>
+<p><code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">signed</span></code> optionally marks the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span></code> to be interpreted as <a href="https://alchitry.com/tutorials/references/lucid-reference/#signed">signed</a>.</p>
+<p><code class ="language-lucid" data-lang="lucid"><span>sig_name</span></code> is the name of the signal and it must start with a lowercase letter. It can then contain letters, numbers, and underscores. By convention, it is <code class ="language-lucid" data-lang="lucid"><span>snake_case</span></code>.</p>
+<p><code class ="language-lucid" data-lang="lucid"><span>sig_size</span></code> is the optional array/struct size of the signal. See <a href="https://alchitry.com/tutorials/references/lucid-reference/#sizing">sizing</a> for details.</p>
+<p>A signal can have an <code class ="language-lucid" data-lang="lucid"><span>expression</span></code> attached to it. This <code class ="language-lucid" data-lang="lucid"><span>expression</span></code> is considered to be the driver of the signal and it can't be written elsewhere if provided.</p>
+<p>If the <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">=</span><span> expression</span></code> portion is present, it behaves exactly the same as the following.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span><span> sig_name
+</span><span>
+</span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    sig_name </span><span style="color:#ed4343;">=</span><span> expression
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>A <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span></code> can be read and written inside an <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block. The value that is read is always the last value written.</p>
+<p>If a <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span></code> is read in the same <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block that it is written, then it must be written before it is read.</p>
+<p>Here's an example.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span><span> my_sig</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">] </span><span style="color:#969696;">// 8-bit wide signal
+</span><span>
+</span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>my_sig </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">) { </span><span style="color:#969696;">// ERROR my_sig was read before being written
+</span><span>        my_sig </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>    my_sig </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">3
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>A <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span></code> is often used explicitly internally in an <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block as a temporary value.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span><span> result</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">]
+</span><span>
+</span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    result </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8hff </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">8h05
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>result</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]) {
+</span><span>        </span><span style="color:#969696;">// the addition overflowed!
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>As mentioned before, inside an <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block, the value of a <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span></code> is always the last value written to it.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span><span> my_sig</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]
+</span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    my_sig </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>my_sig </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">) {
+</span><span>        </span><span style="color:#969696;">// never reached
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>button_pressed</span><span style="color:#ed4343;">) {
+</span><span>        my_sig </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">5
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>my_sig </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">) {
+</span><span>        </span><span style="color:#969696;">// only reached if button_pressed is true
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>    my_sig </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Outside the <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block that drives the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span></code>, only the final value will ever be seen. 
+In the previous example, the final line <code class ="language-lucid" data-lang="lucid"><span>my_sig </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span></code> means that anything reading <code class ="language-lucid" data-lang="lucid"><span>my_sig</span></code> outside of that <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block will always see the value <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code>.</p>
+<h2 id="dff">dff</h2>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> is the building block of any sequential logic. It is the only type to have an internal state.</p>
+<p>You can think of the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> as a single bit of memory.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> acts a lot like a <a href="https://alchitry.com/tutorials/references/lucid-reference/#module-instances">module instance</a> in that it has ports and parameters.</p>
+<p>It has three inputs, one output, and one parameter.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>.d</span></code> input is the data input. This is used to update the value of the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code>.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>.clk</span></code> input is the clock input. Whenever this transitions from 0 to 1, a rising edge, the <code class ="language-lucid" data-lang="lucid"><span>.d</span></code> input is saved. </p>
+<div class="callout-box callout-warning" >
+    <div class="callout-icon"></div>
+    <div class="callout-content">
+        <p>Generally, the <code>.clk</code> of every <code>dff</code> should all connect to the same system clock. 
+You shouldn't drive this signal with other logic. 
+FPGAs have special dedicated clock routing resources to efficiently distribute a clock signal to the entire (or large portions) of the FPGA. 
+Messing with this can cause your design to simulate fine but fail in the real world.</p>
+
+    </div>
+</div>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>.rst</span></code> input is the reset input. 
+This is used to force the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> into a known state (0 or 1). 
+If a reset isn't needed, this input can be left unconnected. 
+You should only use this when a reset is actually needed as omitting it will reduce the routing complexity of your design.</p>
+<p>A complementary <code class ="language-lucid" data-lang="lucid"><span>.arst</span></code> input can be used as an asynchronous reset.
+This input works the same as the <code class ="language-lucid" data-lang="lucid"><span>.rst</span></code> input, but it doesn't wait for a rising edge of the clock to reset the <code class ="language-lucid" data-lang="lucid"><span>.q</span></code> value.
+This is typically not desired and should be used with caution as it may lead to timing issues.</p>
+<p>Only <code class ="language-lucid" data-lang="lucid"><span>.rst</span></code> <em>or</em> <code class ="language-lucid" data-lang="lucid"><span>.arst</span></code> can be used at once.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>.q</span></code> output is the current value of the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code>.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">#</span><span style="color:#d45ada;">INIT</span></code> parameter is used to specify the value that the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> will both initialize and reset to. It has a default value of <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code>. </p>
+<p>FPGAs are fully initialized when programmed regardless if the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> has a <code class ="language-lucid" data-lang="lucid"><span>rst</span></code> signal or not.</p>
+<p>The format to declare a <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> looks like the following.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">signed </span><span style="color:#0a8dbf;">dff</span><span> dff_name dff_size </span><span style="color:#ed4343;">(</span><span>ports_and_params</span><span style="color:#ed4343;">)
+</span></code></pre>
+<p><code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">signed</span></code> optionally marks the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> to be interpreted as <a href="https://alchitry.com/tutorials/references/lucid-reference/#signed">signed</a>.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>dff_name</span></code> is the name of the dff and it must start with a lowercase letter. It can then contain letters, numbers, and underscores. By convention, it is <code class ="language-lucid" data-lang="lucid"><span>snake_case</span></code>.</p>
+<p><code class ="language-lucid" data-lang="lucid"><span>dff_size</span></code>  is the optional array/struct size of the signal. See <a href="https://alchitry.com/tutorials/references/lucid-reference/#sizing">sizing</a> for details.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>ports_and_params</span></code> portion is a comma separated list of port and parameter connections. See <a href="https://alchitry.com/tutorials/references/lucid-reference/#module-instances">module instances</a> for details.</p>
+<h2 id="const">const</h2>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">const</span></code> type provides a way to name constant values. This allows you to set the value in one place but use in in many places. That way if you need to change it later, it is easy.</p>
+<p>The form for a <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">const</span></code> declaration looks the the following.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CONST_NAME </span><span style="color:#ed4343;">=</span><span> const_expr
+</span></code></pre>
+<p>It starts with the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">const</span></code> keyword followed by <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">CONST_NAME</span></code>, the name of your constant. The name must start with an uppercase letter and be followed by uppercase setters and underscores. By convention, it is <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">UPPER_SNAKE_CASE</span></code>.</p>
+<p>The value of the constant is provided by <code class ="language-lucid" data-lang="lucid"><span>const_expr</span></code>. This can be any <a href="https://alchitry.com/tutorials/references/lucid-reference/#expressions">expression</a> that evaluates to a constant value.</p>
+<p>The width and <a href="https://alchitry.com/tutorials/references/lucid-reference/#signed">sign</a> of the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">const</span></code> is inferred from the <code class ="language-lucid" data-lang="lucid"><span>const_expr</span></code>.</p>
+<p>For example, if you need a constant of an 8-bit number you could use the following.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">MY_CONST </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8d120
+</span></code></pre>
+<p>The constant, <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">MY_CONST</span></code>, would be an array of 8 bits wide with the value <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">120</span></code>.</p>
+<h2 id="enum">enum</h2>
+<p>An <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">enum</span></code> provides a way to group a list of constants whose value  you don't explicitly care about.</p>
+<p>Declaring one takes the following form.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">enum </span><span style="color:#da5a8c;">EnumName </span><span style="color:#ed4343;">{ </span><span style="color:#d45ada;">VALUE_1</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">VALUE_2</span><span style="color:#ed4343;">,</span><span> ... </span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>It starts with the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">enum</span></code> keyword followed by its name, <code class ="language-lucid" data-lang="lucid"><span style="color:#da5a8c;">EnumName</span></code>. The name must start with an uppercase letter and contain at lease one lowercase letter. It can otherwise contain letters, numbers, and underscores. By convention, it is <code class ="language-lucid" data-lang="lucid"><span style="color:#da5a8c;">UpperCamelCase</span></code>.</p>
+<p>Following the name is a list of comma separated values. The names of the values follow the same naming convention as <a href="https://alchitry.com/tutorials/references/lucid-reference/#const">constants</a>.</p>
+<p>To access the values of the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">enum</span></code> you use the notation <code class ="language-lucid" data-lang="lucid"><span style="color:#da5a8c;">EnumName</span><span>.</span><span style="color:#d45ada;">VALUE</span></code>.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">enum</span></code> is often paired with a <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span></code> to store the state of a finite-state machine (FSM).</p>
+<p>Here is a common example.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">enum </span><span style="color:#da5a8c;">States </span><span style="color:#ed4343;">{ </span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">RUN</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">STOP </span><span style="color:#ed4343;">}
+</span><span style="color:#0a8dbf;">dff</span><span> state</span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$width</span><span style="color:#ed4343;">(</span><span style="color:#da5a8c;">States</span><span style="color:#ed4343;">)](#</span><span style="color:#d45ada;">INIT</span><span style="color:#ed4343;">(</span><span style="color:#da5a8c;">States</span><span>.</span><span style="color:#d45ada;">RUN</span><span style="color:#ed4343;">),</span><span> .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">))
+</span></code></pre>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$width</span></code> <a href="https://alchitry.com/tutorials/references/lucid-reference/#built-in">function</a> can be used on the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">enum</span></code> to get the minimum number of bits to store a value.</p>
+<h1 id="expressions">Expressions</h1>
+<p>Expressions appear all over Lucid.</p>
+<p>An expression is something that can be evaluated to a single value.</p>
+<p>The following sections appear in order of precedence. That means that higher up on the list, the earlier the Lucid parser will match that expression.</p>
+<p>For example, the <a href="https://alchitry.com/tutorials/references/lucid-reference/#multiply-and-divide">multiply and divide</a> section comes before the <a href="https://alchitry.com/tutorials/references/lucid-reference/#addition-and-subtract">add and subtract</a> section. That means for something like <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">5 </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">2 </span><span style="color:#ed4343;">* </span><span style="color:#a269dc;">6</span></code>  the parser will first evaluate the multiplication before the addition.</p>
+<h2 id="value">Value</h2>
+<p>The simplest expression is a value.</p>
+<p>This can be a <a href="https://alchitry.com/tutorials/references/lucid-reference/#literals">literal value</a>, a <a href="https://alchitry.com/tutorials/references/lucid-reference/#signals">signal</a>, or a <a href="https://alchitry.com/tutorials/references/lucid-reference/#const">constant</a>.</p>
+<h3 id="signed">Signed</h3>
+<p>When a value is <code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">signed</span></code>, it means that it will be interpreted as a 2's complement number and can represent negative and positive numbers instead of simply positive. </p>
+<p>An unsigned value can represent values from 0 to 2<sup>b</sup> -1 where b is the number of bits.</p>
+<p>A signed value can represent  values from -2<sup>b-1</sup>  to 2<sup>b-1</sup> -1 where b is the number of bits.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">signed</span></code> keyword can be applied as a prefix to most <a href="https://alchitry.com/tutorials/references/lucid-reference/#types">types</a> to mark them as <code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">signed</span></code>.</p>
+<p>The <a href="https://alchitry.com/tutorials/references/lucid-reference/#built-in">functions</a> <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">()</span></code> and <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$unsigned</span><span style="color:#ed4343;">()</span></code> can be used to explicitly mark an expression as one or the other.</p>
+<p>Expression that operate on numbers assume the values are unsigned binary numbers unless all of the arguments are marked as <code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">signed</span></code>. In that case, they are all treated as 2's complement signed numbers.</p>
+<p>It's common to see something like <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>a</span><span style="color:#ed4343;">) * </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">)</span></code> to ensure that the <a href="https://alchitry.com/tutorials/references/lucid-reference/#multiply-and-divide">multiplication</a> is <code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">signed</span></code>.</p>
+<h2 id="group">Group</h2>
+<p>The group expression takes the form <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">(</span><span> expr </span><span style="color:#ed4343;">)</span></code> where <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is an expression.</p>
+<p>It is used to force the order expressions are evaluated. For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">(</span><span style="color:#a269dc;">5 </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">) * </span><span style="color:#a269dc;">6</span></code> will cause the <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">5 </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">2</span></code> to be evaluated before the multiplication.</p>
+<h2 id="concatenation">Concatenation</h2>
+<p>Concatenation provides a way to merge two or more arrays.</p>
+<p>It takes the form <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">c{</span><span> expr1</span><span style="color:#ed4343;">,</span><span> expr2</span><span style="color:#ed4343;">,</span><span> ... </span><span style="color:#ed4343;">}</span></code> where all <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> are arrays or bits.</p>
+<p>If the values passed into it are multi-dimensional arrays, all of their sub-dimensions must match. For example, an array of width <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]</span></code> could be concatenated with an array of width <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]</span></code> to form an array of width <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">[</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]</span></code>.</p>
+<p>The order of concatenation is such that the right most element occupies the least significant spot.</p>
+<p>Here is an example.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">c{</span><span style="color:#a269dc;">4b1111</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">4b0000</span><span style="color:#ed4343;">} </span><span style="color:#969696;">// result is 8b11110000
+</span></code></pre>
+<h2 id="duplication">Duplication</h2>
+<p>Duplication provides a way to concatenate a single value many times with itself.</p>
+<p>It takes the form <code class ="language-lucid" data-lang="lucid"><span>const_expr </span><span style="color:#ed4343;">x{</span><span> expr </span><span style="color:#ed4343;">}</span></code> where <code class ="language-lucid" data-lang="lucid"><span>const_expr</span></code> is a constant expression indicating how many times to duplicate <code class ="language-lucid" data-lang="lucid"><span>expr</span></code>.</p>
+<p>The value <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> must be an array (or bit).</p>
+<p>Duplication works the same way as <a href="https://alchitry.com/tutorials/references/lucid-reference/#concatenation">concatenation</a>. For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">3</span><span style="color:#ed4343;">x{</span><span style="color:#a269dc;">2b11</span><span style="color:#ed4343;">}</span></code> is the same as <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">c{</span><span style="color:#a269dc;">2b11</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">2b11</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">2b11</span><span style="color:#ed4343;">}</span></code>. Both equal <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">6b111111</span></code>.</p>
+<p>It is often used to get a value of all <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> with some given width.</p>
+<p>For example, you could get the max value of a signal with <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">PARAM</span></code> bits using <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">PARAM</span><span style="color:#ed4343;">x{</span><span style="color:#a269dc;">b1</span><span style="color:#ed4343;">}</span></code>.</p>
+<h2 id="array-builder">Array Builder</h2>
+<p>The array builder provides a way to create an array from any number of identically sized expressions.</p>
+<p>The syntax is <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">{</span><span> expr1</span><span style="color:#ed4343;">,</span><span> expr2</span><span style="color:#ed4343;">,</span><span> ... </span><span style="color:#ed4343;">}</span></code> where all <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> have the same width.</p>
+<p>The order of the array is such that the right most <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is index 0.</p>
+<p>Here is an example.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">{</span><span style="color:#a269dc;">2d2</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">2d1</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">2d0</span><span style="color:#ed4343;">} </span><span style="color:#969696;">// creates a [3][2] array where index [0] == 2d0
+</span></code></pre>
+<h2 id="invert">Invert</h2>
+<p>The invert operators allow you to perform a bitwise or logical invert.</p>
+<table><thead><tr><th>Operator</th><th>Function</th></tr></thead><tbody>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">~</span><span>expr</span></code></td><td>Bitwise invert</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">!</span><span>expr</span></code></td><td>Logical invert</td></tr>
+</tbody></table>
+<p>The result of a bitwise invert is the same width as <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> with every bit inverted (<code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> becomes <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> and <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> becomes <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code>).</p>
+<p>The result of a logical invert is a single bit. It is <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> if <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is equal to <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> and <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> otherwise.</p>
+<h2 id="negate">Negate</h2>
+<p>The negate operator allows you to negate the 2's complement interpretation of an array.</p>
+<p>It takes the form <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">-</span><span>expr</span></code> where <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> must be a 1-D array or bit.  The result is the negative value of <code class ="language-lucid" data-lang="lucid"><span>expr</span></code>. The width of the result is always 1 bit wider than <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> to accommodate overflow.</p>
+<p>For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">-</span><span style="color:#a269dc;">4b0001</span></code> is equal to <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">5b11111</span></code>.</p>
+<p>Using this operator does not mark the value to be considered <a href="https://alchitry.com/tutorials/references/lucid-reference/#signed">signed</a>.</p>
+<h2 id="multiply-and-divide">Multiply and Divide</h2>
+<p>The multiply and divide operators do what you would expect, they multiply or divide two expressions.</p>
+<table><thead><tr><th>Operator</th><th>Function</th></tr></thead><tbody>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">*</span><span> expr</span></code></td><td>Multiplication</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">/</span><span> expr</span></code></td><td>Division</td></tr>
+</tbody></table>
+<p>The result from each operation is the minimum number of bits to represent the largest possible value.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> used in either must be 1-D arrays or bits.</p>
+<p>For the computation to be <a href="https://alchitry.com/tutorials/references/lucid-reference/#signed">signed</a>, both <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> must be signed. If either is unsigned, the computation will be unsigned.</p>
+<div class="callout-box callout-warning" >
+    <div class="callout-icon"></div>
+    <div class="callout-content">
+        <p>FPGAs typically have some number of dedicated multipliers that make multiplication pretty fast. </p>
+<p>Division can be very costly to perform. However, it is basically free if your denominator is a power of 2.</p>
+<p>A simple trick you can often use is to multiply the numerator by something then divide by a power of 2 to approximate the division. For example dividing by 3 can be efficiently approximated with <code>n * 85 / 256</code>.</p>
+
+    </div>
+</div><h2 id="addition-and-subtract">Addition and Subtract</h2>
+<p>The addition and subtraction operators allow you to add or subtract two expressions.</p>
+<table><thead><tr><th>Operator</th><th>Function</th></tr></thead><tbody>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">+</span><span> expr</span></code></td><td>Addition</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">-</span><span> expr</span></code></td><td>Subtraction</td></tr>
+</tbody></table>
+<p>The result from each operation is the width of the larger <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> plus one bit to account for overflow.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> used in either must be 1-D arrays or bits.</p>
+<p>For the computation to be <a href="https://alchitry.com/tutorials/references/lucid-reference/#signed">signed</a>, both <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> must be signed. If either is unsigned, the computation will be unsigned.</p>
+<h2 id="shifting">Shifting</h2>
+<p>The shifting operators allow you to shift the bits in a 1-D array or bit left or right.</p>
+<p>There are four versions of the shifting operator.</p>
+<table><thead><tr><th>Operator</th><th>Function</th></tr></thead><tbody>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">&lt;&lt;</span><span> amount</span></code></td><td>Logical left shift</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">&gt;&gt;</span><span> amount</span></code></td><td>Logical right shift</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">&lt;&lt;&lt;</span><span> amount</span></code></td><td>Arithmetic left shift</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">&gt;&gt;&gt;</span><span> amount</span></code></td><td>Arithmetic right shift</td></tr>
+</tbody></table>
+<p><code class ="language-lucid" data-lang="lucid"><span>amount</span></code> and <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> must be 1-D arrays or bits.</p>
+<p>Logical shifts always use <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> for the bits shifted in.</p>
+<p>Arithmetic right shift will use the sign bit if <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is <a href="https://alchitry.com/tutorials/references/lucid-reference/#signed">signed</a> and <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> if it is not.</p>
+<p>Arithmetic left always uses <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> and is functionally identical to logical left.</p>
+<p>The result of right shifts have the width of <code class ="language-lucid" data-lang="lucid"><span>expr</span></code>.</p>
+<p>The result of left shifts have the width of <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> plus the value of <code class ="language-lucid" data-lang="lucid"><span>amount</span></code>.</p>
+<p>Here are some examples.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">4b0110 </span><span style="color:#ed4343;">&lt;&lt; </span><span style="color:#a269dc;">1 </span><span style="color:#969696;">// 5b01100
+</span><span style="color:#a269dc;">4b0110 </span><span style="color:#ed4343;">&lt;&lt;&lt; </span><span style="color:#a269dc;">1 </span><span style="color:#969696;">// 5b01100
+</span><span style="color:#a269dc;">4b1100 </span><span style="color:#ed4343;">&gt;&gt; </span><span style="color:#a269dc;">1 </span><span style="color:#969696;">// 4b0110
+</span><span style="color:#a269dc;">4b1100 </span><span style="color:#ed4343;">&gt;&gt;&gt; </span><span style="color:#a269dc;">1 </span><span style="color:#969696;">// 4b0110
+</span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">4b1100</span><span style="color:#ed4343;">) &gt;&gt; </span><span style="color:#a269dc;">1 </span><span style="color:#969696;">// 4b1110
+</span></code></pre>
+<h2 id="bitwise">Bitwise</h2>
+<p>Bitwise operators allow you to perform the boolean operations <em>and</em>, <em>or</em>, and <em>xor</em> on a bit-by-bit basis of two expressions with matching widths.</p>
+<table><thead><tr><th>Operator</th><th>Function</th></tr></thead><tbody>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">&amp;</span><span> expr</span></code></td><td>AND</td></tr>
+<tr><td><code class="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">|</span><span> expr</span></code></td><td>OR</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">^</span><span> expr</span></code></td><td>XOR</td></tr>
+</tbody></table>
+<p>The widths of both <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> must match exactly. Otherwise, they can be anything.</p>
+<p>The result has the same width as <code class ="language-lucid" data-lang="lucid"><span>expr</span></code>.</p>
+<h2 id="reduction">Reduction</h2>
+<p>Reduction operators allow you to perform the boolean operations <em>and</em>, <em>or</em>, and <em>xor</em> on all the bits in an expression with all the other bits.</p>
+<table><thead><tr><th>Operator</th><th>Function</th></tr></thead><tbody>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">&amp;</span><span> expr</span></code></td><td>AND</td></tr>
+<tr><td><code class="language-lucid" data-lang="lucid"><span style="color:#ed4343;">|</span><span> expr</span></code></td><td>OR</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">^</span><span> expr</span></code></td><td>XOR</td></tr>
+</tbody></table>
+<p>The result of any reduction operator is a single bit.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">&amp;</span></code> operator is <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> if every bit in <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> and <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> otherwise.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">|</span></code> operator is <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> if any bit in <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> and <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> otherwise.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">^</span></code> operator is <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> if there are an odd number of <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> bits in <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> and <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> otherwise.</p>
+<h2 id="comparison">Comparison</h2>
+<p>The comparison operators allow you to compare the values of two 1-D arrays or bits.</p>
+<table><thead><tr><th>Operator</th><th>Function</th></tr></thead><tbody>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">&lt;</span><span> expr</span></code></td><td>Less than</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">&gt;</span><span> expr</span></code></td><td>Greater than</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">==</span><span> expr</span></code></td><td>Equality</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">!=</span><span> expr</span></code></td><td>Not equal</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">&lt;=</span><span> expr</span></code></td><td>Less than or equal</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">&gt;=</span><span> expr</span></code></td><td>Greater than or equal</td></tr>
+</tbody></table>
+<p>The result of any comparison is a single bit. The value <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> means the comparison was true and <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> means false.</p>
+<p>For a comparison to be <a href="https://alchitry.com/tutorials/references/lucid-reference/#signed">signed</a>, both <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> must be signed. If either is unsigned, the comparison will be unsigned.</p>
+<h2 id="logical">Logical</h2>
+<p>Logical operators allow you to perform the boolean operations <em>and</em> and <em>or</em> on two logical values.</p>
+<table><thead><tr><th>Operator</th><th>Function</th></tr></thead><tbody>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">&amp;&amp;</span><span> expr</span></code></td><td>AND</td></tr>
+<tr><td><code class="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">||</span><span> expr</span></code></td><td>OR</td></tr>
+</tbody></table>
+<p>The result from either operator is a single bit.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is considered to be <em>true</em> if it isn't <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> and <em>false</em> only when it equals <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code>.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">&amp;&amp;</span></code> operator will produce <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> if both <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> are <em>true</em> and <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> otherwise.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">||</span></code> operator will produce <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> is either <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is <em>true</em> and <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> otherwise.</p>
+<h2 id="ternary">Ternary</h2>
+<p>The ternary operator allows you select between two identically sized expressions using the value of a third expression.</p>
+<p>It takes the following form.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>selector </span><span style="color:#ed4343;">?</span><span> true_expr </span><span style="color:#ed4343;">:</span><span> false_expr
+</span></code></pre>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>selector</span></code> is considered to be <em>true</em> if it isn't <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> and <em>false</em> only when it equals <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code>.</p>
+<p>The result has the same width of <code class ="language-lucid" data-lang="lucid"><span>true_expr</span></code> and <code class ="language-lucid" data-lang="lucid"><span>false_expr</span></code>, which must match.</p>
+<p>When <code class ="language-lucid" data-lang="lucid"><span>selector</span></code> is <em>true</em> the result is <code class ="language-lucid" data-lang="lucid"><span>true_expr</span></code> otherwise it is <code class ="language-lucid" data-lang="lucid"><span>false_expr</span></code>.</p>
+<h1 id="always-test-block-statements">Always/Test Block Statements</h1>
+<p>This section contains the statements that can appear inside <a href="https://alchitry.com/tutorials/references/lucid-reference/#always-blocks">always</a> and <a href="https://alchitry.com/tutorials/references/lucid-reference/#test-blocks">test</a> blocks.</p>
+<h2 id="assignments">Assignments</h2>
+<p>The most common statement is the assignment statement. These allow you to write a value to a signal.</p>
+<p>They take the following form.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>signal </span><span style="color:#ed4343;">=</span><span> expression
+</span></code></pre>
+<p>Where <code class ="language-lucid" data-lang="lucid"><span>signal</span></code> is the writable signal to have the value of <code class ="language-lucid" data-lang="lucid"><span>expression</span></code> written to it.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>signal</span></code> doesn't necessarily have to be the entire width of the signal and <a href="https://alchitry.com/tutorials/references/lucid-reference/#signal-selection">signal selectors</a> can be used to assign a value to only part of the signal.</p>
+<p>Here is an example.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">sig</span><span> my_sig</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">]
+</span><span>
+</span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    my_sig</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">8haa
+</span><span>    my_sig</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">15</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">8hbb
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>If any portion of a signal is driven inside an <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block then all of the signal must be driven somewhere in the block. In the above example, removing either assignment would result in an error since that <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always</span></code> block would have a value for only half of the signal.</p>
+<h2 id="if">if</h2>
+<p>An <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">if</span></code> statement allows you to conditionally consider a block of statements.</p>
+<p>They take the following form.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>condition</span><span style="color:#ed4343;">) {
+</span><span>    statements
+</span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{
+</span><span>    statements
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>If <code class ="language-lucid" data-lang="lucid"><span>condition</span></code> is <em>true</em>, meaning non-zero, then the statements in the first <code class ="language-lucid" data-lang="lucid"><span>statements</span></code> section are considered. If it is <em>false</em>, meaning zero, then the statements in the second <code class ="language-lucid" data-lang="lucid"><span>statements</span></code> section are considered.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">else</span></code> portion is optional.</p>
+<p>The brackets can be omitted if there is only one statement in <code class ="language-lucid" data-lang="lucid"><span>statements</span></code>.</p>
+<h2 id="case">case</h2>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">case</span></code> statement provides a way to cleanly write a group of conditional statements that depend on the value of a single expression.</p>
+<p>It takes the following form.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>condition</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#d45ada;">VALUE_1</span><span style="color:#ed4343;">:
+</span><span>        statements
+</span><span>    </span><span style="color:#d45ada;">VALUE_2</span><span style="color:#ed4343;">:
+</span><span>        statements
+</span><span>    ...
+</span><span>    </span><span style="color:#0abfbf;">default</span><span style="color:#ed4343;">:
+</span><span>        statements
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>condition</span></code> expression is evaluated and compared against the provided values (<code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">VALUE_1</span></code>, <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">VALUE_2</span></code>, etc) inside the <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">case</span></code> block.</p>
+<p>If one of the values match <code class ="language-lucid" data-lang="lucid"><span>condition</span></code>, then its corresponding group of <code class ="language-lucid" data-lang="lucid"><span>statements</span></code> are considered. If none of the values match, an optional <code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">default</span></code> branch's <code class ="language-lucid" data-lang="lucid"><span>statements</span></code> are considered.</p>
+<p>Unlike some programming languages, there is no <code class ="language-lucid" data-lang="lucid"><span>break</span></code> keyword and the branches don't fall through to the next condition without one.</p>
+<p>You often see these used in conjunction with <a href="https://alchitry.com/tutorials/references/lucid-reference/#enum">enums</a> where the condition is a <a href="https://alchitry.com/tutorials/references/lucid-reference/#dff">dff</a> that holds the current state and each branch is one of the <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">enum</span></code>'s values.</p>
+<h2 id="repeat">repeat</h2>
+<p>The <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">repeat</span></code> statement allows for a block of statements to be considered multiple times.</p>
+<p>They take the following form.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">repeat</span><span style="color:#ed4343;">(</span><span>i</span><span style="color:#ed4343;">,</span><span> count</span><span style="color:#ed4343;">,</span><span> start </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">,</span><span> step </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) {
+</span><span>    statements
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Here <code class ="language-lucid" data-lang="lucid"><span>count</span></code> is a constant expression indicating how many times the block of <code class ="language-lucid" data-lang="lucid"><span>statements</span></code> should be considered.</p>
+<p>The arguments <code class ="language-lucid" data-lang="lucid"><span>start</span></code> and <code class ="language-lucid" data-lang="lucid"><span>step</span></code> are optional and have default values of <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> and <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code> respectively.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>i</span></code> argument is an optional variable name that can be used inside the <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">repeat</span></code> block. It will start with the value <code class ="language-lucid" data-lang="lucid"><span>start</span></code> and increment by <code class ="language-lucid" data-lang="lucid"><span>step</span></code> each iteration of the loop to a final value of <code class ="language-lucid" data-lang="lucid"><span>start </span><span style="color:#ed4343;">+</span><span> step </span><span style="color:#ed4343;">* (</span><span>count </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">)</span></code>. It must start with a lowercase letter and can contain letters, numbers, and underscores. By convention, it is <code class ="language-lucid" data-lang="lucid"><span>snake_case</span></code>.</p>
+<p>If <code class ="language-lucid" data-lang="lucid"><span>i</span></code> is omitted, then only <code class ="language-lucid" data-lang="lucid"><span>count</span></code> should be provided making it take the form <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">repeat</span><span style="color:#ed4343;">(</span><span>count</span><span style="color:#ed4343;">)</span></code>.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>count</span></code> value can be an expression depending on outer loops <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">var</span></code> in the case of nested <code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">repeat</span></code> blocks.</p>
+<p>Here is an example.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">repeat</span><span style="color:#ed4343;">(</span><span>i</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">repeat</span><span style="color:#ed4343;">(</span><span>j</span><span style="color:#ed4343;">,</span><span> i</span><span style="color:#ed4343;">+</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) {
+</span><span>        </span><span style="color:#1bddaf;">$print</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;(i, j) = (%d, %d)&quot;</span><span style="color:#ed4343;">,</span><span> i</span><span style="color:#ed4343;">,</span><span> j</span><span style="color:#ed4343;">)
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This would print the following (in a simulation).</p>
+<pre style="background-color:#282828;color:#ffffff;"><code><span>(i, j) = (0, 0)
+</span><span>(i, j) = (1, 0)
+</span><span>(i, j) = (1, 1)
+</span><span>(i, j) = (2, 0)
+</span><span>(i, j) = (2, 1)
+</span><span>(i, j) = (2, 2)
+</span></code></pre>
+<div class="callout-box callout-info" >
+    <div class="callout-icon"></div>
+    <div class="callout-content">
+        <p>While it may seem like <code>repeat</code> works like <code>for</code> loops in many programming languages, it is important to remember that <code>always</code> blocks are only a convenient abstraction for describing a circuit's behavior. When your design is synthesized it must be converted to hardware.</p>
+<p>This means that all loops must be <em>unrolled</em>. A <code>repeat</code> block is identical to simply copy-pasting the contents over and over and replacing the loop variable with a different value for each one.</p>
+
+    </div>
+</div><h2 id="function-call">Function call</h2>
+<p>In <a href="https://alchitry.com/tutorials/references/lucid-reference/#test-blocks">test blocks</a>, you can call <a href="https://alchitry.com/tutorials/references/lucid-reference/#simulation-only">simulation functions</a> as a statement.</p>
+<p>These are used to control the simulator or produce output like <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$print</span><span style="color:#ed4343;">()</span></code> used in the <a href="https://alchitry.com/tutorials/references/lucid-reference/#repeat">repeat</a> example.</p>
+<h1 id="literals">Literals</h1>
+<h2 id="numbers">Numbers</h2>
+<p>Numbers can be represented in decimal, binary, or hexadecimal. In each case you can choose to explicitly specify the number of bits.</p>
+<table><thead><tr><th>Format</th><th>Radix</th><th>Width</th></tr></thead><tbody>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0123456789</span></code></td><td>10 (decimal)</td><td>Minimum bits required</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">d0123456789</span></code></td><td>10 (decimal)</td><td>Minimum bits required</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">b01xz</span></code></td><td>2 (binary)</td><td>Number of digits</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">h0123456789ABCDEFxz</span></code></td><td>16 (hex)</td><td>Number of digits * 4</td></tr>
+</tbody></table>
+<p>Decimal numbers can be written as a stand-alone number. For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">12</span></code> will have the expected value of <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">12</span></code>. They can also be prefixed with a <code class ="language-lucid" data-lang="lucid"><span>d</span></code> to specify that it is a decimal number like <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">d12</span></code>. In both of these cases, the value will have the minimum number of bits required, 4.</p>
+<p>Binary numbers are written with the <code class ="language-lucid" data-lang="lucid"><span>b</span></code> prefix. After that, they can have the digits <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code>, <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code>, <code class ="language-lucid" data-lang="lucid"><span>x</span></code>, and <code class ="language-lucid" data-lang="lucid"><span>z</span></code>. </p>
+<p>Hex numbers are written with the <code class ="language-lucid" data-lang="lucid"><span>h</span></code> prefix. After that, they can have the digits <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> through <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">9</span></code>, <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">A</span></code> through <code class ="language-lucid" data-lang="lucid"><span style="color:#d45ada;">F</span></code>, <code class ="language-lucid" data-lang="lucid"><span>x</span></code>, and <code class ="language-lucid" data-lang="lucid"><span>z</span></code>.</p>
+<p>The value of <code class ="language-lucid" data-lang="lucid"><span>x</span></code> means either <em>don't care</em> or <em>unknown</em> depending on the context.</p>
+<p>It is impossible for hardware to realize the value <code class ="language-lucid" data-lang="lucid"><span>x</span></code> so outside of simulations these are actually <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> or <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1</span></code>. You can assign something <code class ="language-lucid" data-lang="lucid"><span>x</span></code> if you don't care what the value is and this will give the tools the freedom to choose whatever value is most efficient.</p>
+<p>The value of <code class ="language-lucid" data-lang="lucid"><span>z</span></code> means <em>high-impedance</em> and is covered in the <a href="https://alchitry.com/tutorials/references/lucid-reference/#ports">ports</a> section.</p>
+<p>FPGAs don't have the hardware internally to realize <code class ="language-lucid" data-lang="lucid"><span>z</span></code> values so they can only be used on top-level <a href="https://alchitry.com/tutorials/references/lucid-reference/#output">outputs</a> and <a href="https://alchitry.com/tutorials/references/lucid-reference/#inout">inouts</a>.</p>
+<p>To explicitly specify the width of a number, you add the number of bits before the radix prefix.</p>
+<p>For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">8d10</span></code> will have the value <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">10</span></code> and be 8 bits wide.</p>
+<p>If the explicit width is wider than the minimum required width, the value is padded with <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code> unless the most-significant (left-most) digit is either <code class ="language-lucid" data-lang="lucid"><span>x</span></code> or <code class ="language-lucid" data-lang="lucid"><span>z</span></code>. In that case, it will be padded with <code class ="language-lucid" data-lang="lucid"><span>x</span></code> or <code class ="language-lucid" data-lang="lucid"><span>z</span></code> respectively.</p>
+<p>For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">12hx0</span></code> has the value <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">12bxxxxxxxx0000</span></code>.</p>
+<p>If the explicit width is less than the minimum required width, the value will be truncated and a warning will be shown.</p>
+<p>Underscores can be added anywhere in the value portion of a number to help with readability.
+For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">100_000_000</span></code> or <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">8b1010_1100</span></code>.</p>
+<h2 id="arrays-1">Arrays</h2>
+<p>Literal arrays can be constructed using other literals and the <a href="https://alchitry.com/tutorials/references/lucid-reference/#array-builder">array builder</a> expression.</p>
+<p>Here is an example of an array of 4, 8 bit values.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">{</span><span style="color:#a269dc;">8d4</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8d3</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8d2</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8d1</span><span style="color:#ed4343;">}
+</span></code></pre>
+<h2 id="strings">Strings</h2>
+<p>Strings are just an easy way of creating an array of 8 bit values that correspond to text.</p>
+<p>They take the form of text enclosed by quotation marks like <code class ="language-lucid" data-lang="lucid"><span style="color:#77bf0a;">&quot;this example&quot;</span></code>.</p>
+<p>The right-most character is index 0 in the resulting array.</p>
+<p>For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#77bf0a;">&quot;Hi&quot;</span></code> is equal to <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">{</span><span style="color:#a269dc;">8h48</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8h69</span><span style="color:#ed4343;">}</span></code> (<code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">h48</span></code> is the code for <em>H</em> and <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">h69</span></code> is <em>i</em>).</p>
+<p>You will often see strings used in conjunction with <a href="https://alchitry.com/tutorials/references/lucid-reference/#built-in"><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$reverse</span><span style="color:#ed4343;">()</span></code></a> to make index 0 be the left-most letter.</p>
+<h2 id="structs">Structs</h2>
+<p>Struct types are covered in the <a href="https://alchitry.com/tutorials/references/lucid-reference/#struct">struct section</a>.</p>
+<p>To create a literal of a <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">struct</span></code>, you use the following syntax.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">&lt;</span><span>struct_type</span><span style="color:#ed4343;">&gt;(</span><span>.element_name</span><span style="color:#ed4343;">(</span><span>const_value</span><span style="color:#ed4343;">),</span><span> ...</span><span style="color:#ed4343;">)
+</span></code></pre>
+<p>Here <code class ="language-lucid" data-lang="lucid"><span>struct_type</span></code> is a previously defined <code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">struct</span></code> type.</p>
+<p>The following comma separated list must contain every element in <code class ="language-lucid" data-lang="lucid"><span>struct_type</span></code>. The <code class ="language-lucid" data-lang="lucid"><span>element_name</span></code> is the name of element in the <code class ="language-lucid" data-lang="lucid"><span>struct_type</span></code> and <code class ="language-lucid" data-lang="lucid"><span>const_value</span></code> is the constant value to assign to the element.</p>
+<p>Here is an example.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">struct</span><span> color </span><span style="color:#ed4343;">{</span><span> red</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],</span><span> green</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],</span><span> blue</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">] }
+</span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">ALCHITRY_GOLD </span><span style="color:#ed4343;">= &lt;</span><span>color</span><span style="color:#ed4343;">&gt;(</span><span>.red</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">250</span><span style="color:#ed4343;">),</span><span> .green</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">172</span><span style="color:#ed4343;">),</span><span> .blue</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">31</span><span style="color:#ed4343;">))
+</span></code></pre>
+<h1 id="functions">Functions</h1>
+<h2 id="built-in">Built-in</h2>
+<p>In the table below, the argument type of <em>Value</em> means a 1-D array or bit. In other words, something that can represent a number.</p>
+<table><thead><tr><th>Function</th><th>Argument Type</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$width</span><span style="color:#ed4343;">(</span><span>expr</span><span style="color:#ed4343;">,</span><span> dim</span><span style="color:#ed4343;">)</span></code></td><td><code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is an array and <code class ="language-lucid" data-lang="lucid"><span>dim</span></code> is a constant value</td><td>Provides the width of <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> on dimension <code class ="language-lucid" data-lang="lucid"><span>dim</span></code>. If <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is a 1-D array or bit, <code class ="language-lucid" data-lang="lucid"><span>dim</span></code> is optional and assumed to be <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">0</span></code>. If <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is a multi-dimensional array, then <code class ="language-lucid" data-lang="lucid"><span>dim</span></code> is required. For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$width</span><span style="color:#ed4343;">({</span><span style="color:#a269dc;">4b0</span><span style="color:#ed4343;">,</span><span style="color:#a269dc;">4b0</span><span style="color:#ed4343;">}, </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">)</span></code> is equal to <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">2</span></code>, <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$width</span><span style="color:#ed4343;">({</span><span style="color:#a269dc;">4b0</span><span style="color:#ed4343;">,</span><span style="color:#a269dc;">4b0</span><span style="color:#ed4343;">}, </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">)</span></code> is equal to <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">4</span></code>, and <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$width</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">8b0</span><span style="color:#ed4343;">)</span></code> is equal to <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">8</span></code>.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>expr</span><span style="color:#ed4343;">)</span></code></td><td>Value</td><td>Marks the value to be interpreted as signed without changing the underlying bits.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$unsigned</span><span style="color:#ed4343;">(</span><span>expr</span><span style="color:#ed4343;">)</span></code></td><td>Value</td><td>Marks the value to be interpreted as unsigned without changing the underlying bits.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span>expr</span><span style="color:#ed4343;">)</span></code></td><td>Constant value</td><td>Calculates ceiling log base 2 of <code class ="language-lucid" data-lang="lucid"><span>expr</span></code>.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$cdiv</span><span style="color:#ed4343;">(</span><span>numer</span><span style="color:#ed4343;">,</span><span> denom</span><span style="color:#ed4343;">)</span></code></td><td>Constant value</td><td>Calculates the ceiling of <code class ="language-lucid" data-lang="lucid"><span>numer</span></code> / <code class ="language-lucid" data-lang="lucid"><span>denom</span></code></td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$pow</span><span style="color:#ed4343;">(</span><span>expr</span><span style="color:#ed4343;">,</span><span> expo</span><span style="color:#ed4343;">)</span></code></td><td>Constant values</td><td>Calculates <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> to the power of <code class ="language-lucid" data-lang="lucid"><span>expo</span></code>.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$reverse</span><span style="color:#ed4343;">(</span><span>expr</span><span style="color:#ed4343;">)</span></code></td><td>Constant array</td><td>Reverses the indices of the outer most dimension of <code class ="language-lucid" data-lang="lucid"><span>expr</span></code>.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$flatten</span><span style="color:#ed4343;">(</span><span>expr</span><span style="color:#ed4343;">)</span></code></td><td>Anything</td><td>Returns a 1-D array of all the bits in <code class ="language-lucid" data-lang="lucid"><span>expr</span></code>. Arrays are concatenated in order and structs are in the order their elements were declared.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$build</span><span style="color:#ed4343;">(</span><span>expr</span><span style="color:#ed4343;">,</span><span> dims...</span><span style="color:#ed4343;">)</span></code></td><td><code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is a value and <code class ="language-lucid" data-lang="lucid"><span>dims</span></code> are constant values</td><td>Converts a 1-D array into a multi-dimensional array based on the <code class ="language-lucid" data-lang="lucid"><span>dims</span></code> passed in. Each <code class ="language-lucid" data-lang="lucid"><span>dim</span></code> corresponds to how many times it should be split. For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$build</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">b111000</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">)</span></code> will split it into 2 becoming <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">{</span><span style="color:#a269dc;">b111</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">b000</span><span style="color:#ed4343;">}</span></code>. More than one <code class ="language-lucid" data-lang="lucid"><span>dim</span></code> can be supplied to build more dimensions. For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$build</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">b11001001</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">)</span></code> becomes <code class ="language-lucid" data-lang="lucid"><span style="color:#ed4343;">{{</span><span style="color:#a269dc;">b11</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">b00</span><span style="color:#ed4343;">}, {</span><span style="color:#a269dc;">b10</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">b01</span><span style="color:#ed4343;">}}</span></code>.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$resize</span><span style="color:#ed4343;">(</span><span>expr</span><span style="color:#ed4343;">,</span><span> size</span><span style="color:#ed4343;">)</span></code></td><td><code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is a value and <code class ="language-lucid" data-lang="lucid"><span>size</span></code> is a constant values</td><td>Resizes a value either smaller or wider. If <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is signed, it will be sign extended.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$fixed_point</span><span style="color:#ed4343;">(</span><span>real</span><span style="color:#ed4343;">,</span><span> width</span><span style="color:#ed4343;">,</span><span> fractional</span><span style="color:#ed4343;">)</span></code></td><td><code class ="language-lucid" data-lang="lucid"><span>real</span></code> is a real number, <code class ="language-lucid" data-lang="lucid"><span>width</span></code> and <code class ="language-lucid" data-lang="lucid"><span>fractional</span></code> are  constant values</td><td>Calculates the nearest fixed-point representation of <code class ="language-lucid" data-lang="lucid"><span>real</span></code> using a total width of <code class ="language-lucid" data-lang="lucid"><span>width</span></code> and <code class ="language-lucid" data-lang="lucid"><span>fractional</span></code> fractional bits. For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$fixed_point</span><span style="color:#ed4343;">(</span><span style="color:#b262cb;">3.14</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">)</span></code> produces <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">8d50</span></code>.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$c_fixed_point</span><span style="color:#ed4343;">(</span><span>real</span><span style="color:#ed4343;">,</span><span> width</span><span style="color:#ed4343;">,</span><span> fractional</span><span style="color:#ed4343;">)</span></code></td><td><code class ="language-lucid" data-lang="lucid"><span>real</span></code> is a real number, <code class ="language-lucid" data-lang="lucid"><span>width</span></code> and <code class ="language-lucid" data-lang="lucid"><span>fractional</span></code> are  constant values</td><td>Calculates the smallest fixed-point representation of <code class ="language-lucid" data-lang="lucid"><span>real</span></code>  that is still larger than it using a total width of <code class ="language-lucid" data-lang="lucid"><span>width</span></code> and <code class ="language-lucid" data-lang="lucid"><span>fractional</span></code> fractional bits. For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$c_fixed_point</span><span style="color:#ed4343;">(</span><span style="color:#b262cb;">3.14</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">)</span></code> produces <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">8d51</span></code>.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$f_fixed_point</span><span style="color:#ed4343;">(</span><span>real</span><span style="color:#ed4343;">,</span><span> width</span><span style="color:#ed4343;">,</span><span> fractional</span><span style="color:#ed4343;">)</span></code></td><td><code class ="language-lucid" data-lang="lucid"><span>real</span></code> is a real number, <code class ="language-lucid" data-lang="lucid"><span>width</span></code> and <code class ="language-lucid" data-lang="lucid"><span>fractional</span></code> are  constant values</td><td>Calculates the largest fixed-point representation of <code class ="language-lucid" data-lang="lucid"><span>real</span></code>  that is still smaller than it using a total width of <code class ="language-lucid" data-lang="lucid"><span>width</span></code> and <code class ="language-lucid" data-lang="lucid"><span>fractional</span></code> fractional bits. For example, <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$f_fixed_point</span><span style="color:#ed4343;">(</span><span style="color:#b262cb;">3.14</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">)</span></code> produces <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">8d50</span></code>.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$is_sim</span><span style="color:#ed4343;">()</span></code></td><td>None</td><td>Evaluates to <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1b1</span></code> during interactive simulations and <code class ="language-lucid" data-lang="lucid"><span style="color:#a269dc;">1b0</span></code> otherwise.</td></tr>
+</tbody></table>
+<h3 id="simulation-only">Simulation Only</h3>
+<p>These functions are only available during simulations. In other words, inside <a href="https://alchitry.com/tutorials/references/lucid-reference/#test-blocks">test blocks</a> or <a href="https://alchitry.com/tutorials/references/lucid-reference/#user-created">test functions</a>.</p>
+<table><thead><tr><th>Function</th><th>Argument Type</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$tick</span><span style="color:#ed4343;">()</span></code></td><td>None</td><td>Propagates all signal changes and captures the state.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$silent_tick</span><span style="color:#ed4343;">()</span></code></td><td>None</td><td>Propagates all signal changes.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$assert</span><span style="color:#ed4343;">(</span><span>expr</span><span style="color:#ed4343;">)</span></code></td><td>Any expression, typically a <a href="https://alchitry.com/tutorials/references/lucid-reference/#comparison">comparison</a>.</td><td>Checks that <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is non-zero (true). If it is zero the simulation is halted and an error is printed indicating the failed assert.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$print</span><span style="color:#ed4343;">(</span><span>expr</span><span style="color:#ed4343;">)</span></code></td><td>Any expression</td><td>Prints the value of <code class ="language-lucid" data-lang="lucid"><span>expr</span></code>. If <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is a <a href="https://alchitry.com/tutorials/references/lucid-reference/#strings">string literal</a>, it prints the string. Otherwise, it prints <code class ="language-lucid" data-lang="lucid"><span>expr </span><span style="color:#ed4343;">=</span><span> value</span></code> where <code class ="language-lucid" data-lang="lucid"><span>expr</span></code> is the text and <code class ="language-lucid" data-lang="lucid"><span>value</span></code> is the actual value.</td></tr>
+<tr><td><code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$print</span><span style="color:#ed4343;">(</span><span>format</span><span style="color:#ed4343;">,</span><span> exprs...</span><span style="color:#ed4343;">)</span></code></td><td><code class ="language-lucid" data-lang="lucid"><span>format</span></code> is a <a href="https://alchitry.com/tutorials/references/lucid-reference/#strings">string literal</a> and <code class ="language-lucid" data-lang="lucid"><span>exprs</span></code> is a variable number of expressions depending on the <code class ="language-lucid" data-lang="lucid"><span>format</span></code></td><td>Prints the string <code class ="language-lucid" data-lang="lucid"><span>format</span></code> with the values of the provided <code class ="language-lucid" data-lang="lucid"><span>exprs</span></code> replaced where applicable. Valid format flags are <code class ="language-lucid" data-lang="lucid"><span>%d</span></code> for decimal, <code class ="language-lucid" data-lang="lucid"><span>%h</span></code> for hex, <code class ="language-lucid" data-lang="lucid"><span>%b</span></code> for binary, <code class ="language-lucid" data-lang="lucid"><span>%nf</span></code> for fractional where <code class ="language-lucid" data-lang="lucid"><span>n</span></code> is the number of fractional bits.</td></tr>
+</tbody></table>
+<h2 id="user-created">User Created</h2>
+<p>Inside <a href="https://alchitry.com/tutorials/references/lucid-reference/#testbenches">testbenches</a>, you can create your own functions using the following syntax.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">fun</span><span> function_name</span><span style="color:#ed4343;">(</span><span>argument_list</span><span style="color:#ed4343;">) {
+</span><span>    function_body
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p><code class ="language-lucid" data-lang="lucid"><span>function_name</span></code> is the name of the function. It must start with a lowercase letter and be followed by letters, numbers, and underscores. By convention, it is <code class ="language-lucid" data-lang="lucid"><span>snake_case</span></code>.</p>
+<p>The <code class ="language-lucid" data-lang="lucid"><span>argument_list</span></code> is an optional list of arguments. They act the same as read-only <a href="https://alchitry.com/tutorials/references/lucid-reference/#sig">signals</a> and have a width of 1 bit if a width isn't provided. They may also be marked as <a href="https://alchitry.com/tutorials/references/lucid-reference/#signed">signed</a> using the <code class ="language-lucid" data-lang="lucid"><span style="color:#0abfbf;">signed</span></code> keyword.</p>
+<p>To call a function, you use the syntax <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$function_name</span><span style="color:#ed4343;">(</span><span>arg</span><span style="color:#ed4343;">,</span><span> ...</span><span style="color:#ed4343;">)</span></code>.</p>
+<p>Here is an example function with an argument.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">fun</span><span> tick_clock</span><span style="color:#ed4343;">(</span><span>times</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">]) {
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">repeat</span><span style="color:#ed4343;">(</span><span>times</span><span style="color:#ed4343;">) {
+</span><span>        clk </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1
+</span><span>        </span><span style="color:#1bddaf;">$tick</span><span style="color:#ed4343;">()
+</span><span>        clk </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0
+</span><span>        </span><span style="color:#1bddaf;">$tick</span><span style="color:#ed4343;">()
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This could be called using something like <code class ="language-lucid" data-lang="lucid"><span style="color:#1bddaf;">$tick_clock</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">20</span><span style="color:#ed4343;">)</span></code>.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;references&#x2F;alchitry-constraints-reference&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Alchitry Constraints Reference</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

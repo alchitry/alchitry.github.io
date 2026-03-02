@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Servos</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;servos&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;">Lucid V1</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;servos&#x2F;">Servos</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Servos</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+10 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;servos.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#the-pwm-signal" aria-label="The PWM Signal">The PWM Signal</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#controlling-servos" aria-label="Controlling Servos">Controlling Servos</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-servo-controller" aria-label="The Servo Controller">The Servo Controller</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>This tutorial will explain how servos work and how to use them in your Lucid projects. We will be using a pre-written module (found in the Components Library in the Mojo IDE) but the module will be fully explained. Enjoy!</p>
+<p>Servos, for those unfamiliar, are typically little boxes that have a spline that a <em>servo horn</em> can be attached to. Inside the box is a set of gear, a motor, a potentiometer and some control electronics. What makes a servo useful is that you can simply specify a position and the electronics inside will drive the motor to move the spline to that position. A typical servo has a travel range of a little over 180 degrees. However, you can find servos with more. There are even special servos that act more as a motor and spin continuously. Similar to servos would be electronic speed controllers, or <strong>ESC</strong>, which can be used to accept the same signal as a servo but will drive a motor for you. These are commonly used in RC hobbies (cars, planes, helicopters, etc.) and can be great for robots.</p>
+<h2 id="the-pwm-signal">The PWM Signal</h2>
+<p>Servos require that you send them a PWM signal, but the signal has some special requirements. Typically, a PWM signal will have a duty cycle that ranges from 0% (always off) to 100% (always on). However, a servo uses a much narrower range and it is less helpful to think of duty cycle as it is pulse width.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/servo_signal.png" alt="servo_signal.png" /></p>
+<p>A typical servo expects a pulse every 20ms, or 50 times per second. The width of these pulses specifies the position of the servo. The center, or neutral point, is generally set with a 1.5ms pulse. It is pretty safe to assume that any servo will then accept +/-0.5ms. In other words, 1ms to 2ms pulses.</p>
+<p>It's important not to exceed the servo's range as servos are typically stupid and will try to drive the motor past a fixed stopping point potentially burning it out.</p>
+<p>Lucky for us, there's a component that will make this super easy.</p>
+<h2 id="controlling-servos">Controlling Servos</h2>
+<p>Make a new Lucid project based on the <em>Base Project</em> and open the <em>Components Library</em>. Add the servo controller, which can be found under <em>Controllers</em>. While you are there, also add the <em>Counter</em> component to your project (found under <em>Miscellaneous</em>).</p>
+<p>Before I explain how this component works, let's put it to use.</p>
+<p>Open up <em>mojo_top.luc</em> and make it look like the following.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 50MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,             </span><span style="color:#969696;">// configuration clock, AVR ready when high
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// AVR SPI MISO
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR SPI Slave Select
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// AVR SPI MOSI
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR SPI Clock
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_channel </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// AVR general purpose pins (used by default to select ADC channel)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR TX (FPGA RX)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR RX (FPGA TX)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// AVR RX buffer full
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> servo            </span><span style="color:#969696;">// My servo
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      servo servo_controller</span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">RESOLUTION</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">));
+</span><span>      counter ctr</span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">SIZE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">17</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">DIV</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">));
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span><span> 
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8h00</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs off
+</span><span>    spi_miso </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bz</span><span style="color:#ed4343;">;          </span><span style="color:#969696;">// not using SPI
+</span><span>    spi_channel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bzzzz</span><span style="color:#ed4343;">;    </span><span style="color:#969696;">// not using flags
+</span><span>    avr_rx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bz</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// not using serial port
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// Connect the counter to the servo controller
+</span><span>    servo_controller.position </span><span style="color:#ed4343;">=</span><span> ctr.value</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">15</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]^(</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">x{</span><span>ctr.value</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">]});
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// Output the servo signal
+</span><span>    servo </span><span style="color:#ed4343;">=</span><span> servo_controller.servo</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>First, I added the <em>servo</em> output. You will also need to add the following to <em>mojo.ucf</em>.</p>
+<pre data-lang="ucf" style="background-color:#282828;color:#ffffff;" class="language-ucf "><code class ="language-ucf" data-lang="ucf"><span>NET &quot;servo&quot; LOC = P50 | IOSTANDARD = LVTTL;
+</span></code></pre>
+<p>This will be the pin we use to control the servo.</p>
+<p>The <em>servo</em> module has a few parameters, but the one you will change most is probably <em>RESOLUTION</em>. This sets how precise you can control the width of the pulse. Most of the time 8 bits will be plenty, but, we will use 16 here just to show off the FPGA (buttery smooth servo motion).</p>
+<p>We then have a counter that outputs 17 bits with 10 bits of extra division to slow things down.</p>
+<p>The reason we need 17 instead of simply 16 is because of the neat little trick on line 40 that allows you to use the 17th bit to make the counter count up then count down.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>servo_controller.position </span><span style="color:#ed4343;">=</span><span> ctr.value</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">15</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]^(</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">x{</span><span>ctr.value</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">]});
+</span></code></pre>
+<p>Here we take bit 16 (the 17th bit) and duplicate it 16 times. We then XOR this with the lower 16 bits of the counter. When bit 16 is 0, the XOR with 0 does nothing and the counter behaves exactly as you would expect. However, once bit 16 is 1, all the bits of the output are XORed with 1. XOR with 1 will invert the bits. Inverting the bits is the same as taking the max value and subtracting the counter value from it, so in effect it will start counting down. What will happen is the counter will count from 16h0000 to 16hFFFF then back to 16h0000.</p>
+<p>Here are some images to help explain what is happening.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/basic_counter_921e6f82-afd0-4cf9-96b8-321bfebf005d.png" alt="basic_counter_921e6f82-afd0-4cf9-96b8-321bfebf005d.png" /></p>
+<p>This is what a basic counter looks like. As it reaches the max value, it resets back to 0. The areas in gray are where the MSB is 1.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/basic_counter_wo_msb_d14b6cb0-2987-4653-ad9e-26e877d2dfec.png" alt="basic_counter_wo_msb_d14b6cb0-2987-4653-ad9e-26e877d2dfec.png" /></p>
+<p>If we now simply ignore the MSB, we get the same thing but with twice the frequency and half the max value.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/basic_counter_inversion_00da0619-17b4-408f-a85f-ebb2e9df7f91.png" alt="basic_counter_inversion_00da0619-17b4-408f-a85f-ebb2e9df7f91.png" /></p>
+<p>Finally, if we use the MSB to invert every other section, we get a nice saw-tooth wave without any discontinuities.</p>
+<p>You can now build the project and load it to your Mojo.</p>
+<p>Plug a servo into P50, RAW (make sure the Mojo is powered with 5V), and GND. The servo should move back and forth. You should notice that the servo stops at both extremes for a short period. This will be explained in the next section.</p>
+<h2 id="the-servo-controller">The Servo Controller</h2>
+<p>Now we will take a look at the controller itself.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> servo </span><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#969696;">// Clock frequency (Hz)
+</span><span>    </span><span style="color:#d45ada;">CLOCK_FREQ </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">50000000 </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">CLOCK_FREQ </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">,   
+</span><span>    </span><span style="color:#969696;">// How much the pulse width can change (us)                
+</span><span>    </span><span style="color:#d45ada;">MIN_MAX_DIFF </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">500    </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">MIN_MAX_DIFF </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">,   
+</span><span>    </span><span style="color:#969696;">// Neutral pulse width (us)                
+</span><span>    </span><span style="color:#d45ada;">CENTER_WIDTH </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1500   </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">CENTER_WIDTH </span><span style="color:#ed4343;">&gt; </span><span style="color:#d45ada;">MIN_MAX_DIFF</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// PWM period (us)
+</span><span>    </span><span style="color:#d45ada;">PERIOD </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">20000        </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">PERIOD </span><span style="color:#ed4343;">&gt; </span><span style="color:#d45ada;">MIN_MAX_DIFF </span><span style="color:#ed4343;">+ </span><span style="color:#d45ada;">CENTER_WIDTH</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#969696;">// Number of bits used to set the position
+</span><span>    </span><span style="color:#d45ada;">RESOLUTION </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8        </span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">RESOLUTION </span><span style="color:#ed4343;">&lt;= </span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">((</span><span style="color:#d45ada;">CLOCK_FREQ</span><span style="color:#ed4343;">/</span><span style="color:#a269dc;">1000000</span><span style="color:#ed4343;">)*(</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">*</span><span style="color:#d45ada;">MIN_MAX_DIFF</span><span style="color:#ed4343;">))
+</span><span>                            </span><span style="color:#ed4343;">&amp;&amp; </span><span style="color:#d45ada;">RESOLUTION </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">0
+</span><span>  </span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,                  </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,                  </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> position</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">RESOLUTION</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// servo position
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> servo                </span><span style="color:#969696;">// servo output
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// Max value of counter
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">TOP </span><span style="color:#ed4343;">= (</span><span style="color:#d45ada;">CLOCK_FREQ</span><span style="color:#ed4343;">/</span><span style="color:#a269dc;">1000000</span><span style="color:#ed4343;">) * </span><span style="color:#d45ada;">PERIOD</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#969696;">// Min/max offsets
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">MIN_MAX </span><span style="color:#ed4343;">= (</span><span style="color:#d45ada;">CLOCK_FREQ</span><span style="color:#ed4343;">/</span><span style="color:#a269dc;">1000000</span><span style="color:#ed4343;">) * </span><span style="color:#d45ada;">MIN_MAX_DIFF</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#969696;">// Amount to shift input by to get close to MIN_MAX range
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">SHIFT </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">MIN_MAX</span><span style="color:#ed4343;">*</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">) - </span><span style="color:#d45ada;">RESOLUTION</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#969696;">// Offset to get a pulse centered around CENTER_WIDTH
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">OFFSET </span><span style="color:#ed4343;">= (</span><span style="color:#d45ada;">CLOCK_FREQ</span><span style="color:#ed4343;">/</span><span style="color:#a269dc;">1000000</span><span style="color:#ed4343;">) * </span><span style="color:#d45ada;">CENTER_WIDTH </span><span style="color:#ed4343;">- </span><span style="color:#1bddaf;">$pow</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">,</span><span style="color:#d45ada;">RESOLUTION</span><span style="color:#ed4343;">+</span><span style="color:#d45ada;">SHIFT</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),</span><span> .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> pos</span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">RESOLUTION</span><span style="color:#ed4343;">];    </span><span style="color:#969696;">// buffer for input
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> ctr</span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">TOP</span><span style="color:#ed4343;">)];   </span><span style="color:#969696;">// counter for PWM
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    ctr.d </span><span style="color:#ed4343;">=</span><span> ctr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;      </span><span style="color:#969696;">// increment the counter
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr.q </span><span style="color:#ed4343;">== </span><span style="color:#d45ada;">TOP </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) { </span><span style="color:#969696;">// if the counter overflowed
+</span><span>      </span><span style="color:#969696;">// We only update the position when the counter overflows to avoid glitches
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// if position is over-saturated
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>position </span><span style="color:#ed4343;">&gt; </span><span style="color:#1bddaf;">$pow</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">,</span><span style="color:#d45ada;">RESOLUTION</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) + </span><span style="color:#d45ada;">MIN_MAX</span><span style="color:#ed4343;">)
+</span><span>        pos.d </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$pow</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">,</span><span style="color:#d45ada;">RESOLUTION</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) + </span><span style="color:#d45ada;">MIN_MAX</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// if position is under-saturated
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>position </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$pow</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">,</span><span style="color:#d45ada;">RESOLUTION</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) - </span><span style="color:#d45ada;">MIN_MAX</span><span style="color:#ed4343;">)
+</span><span>        pos.d </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$pow</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">,</span><span style="color:#d45ada;">RESOLUTION</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) - </span><span style="color:#d45ada;">MIN_MAX</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// else it is safe to just assign it
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">else
+</span><span>        pos.d </span><span style="color:#ed4343;">=</span><span> position</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// reset the counter
+</span><span>      ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// PWM output
+</span><span>    servo </span><span style="color:#ed4343;">= (</span><span>pos.q </span><span style="color:#ed4343;">&lt;&lt; </span><span style="color:#d45ada;">SHIFT</span><span style="color:#ed4343;">) + </span><span style="color:#d45ada;">OFFSET </span><span style="color:#ed4343;">&gt;</span><span> ctr.q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This module is pretty dense due to all the stuff to make it easily configurable.</p>
+<p>Let's first talk about the parameters. <em>CLOCK_FREQ</em> is used to specify the clock frequency (who would have guessed?). For the vast majority of projects, this will be 50MHz, or 50,000,000Hz. <em>CENTER_WIDTH</em> is used to specify the neutral point for the servo. As mentioned before this is typically 1.5ms. All the time parameters are specified in micro seconds so this is 1500 by default. <em>MIN_MAX_DIFF</em> is used to set how much the pulse can vary off center. Since most servos accept 1-2ms pulses, 500us gives us exactly that (1500 +/- 500 = 1000 to 2000). <em>PERIOD</em> is used to specify how often a pulse occurs. Again, 20ms is typical so 20000us is used.</p>
+<p>Finally, <em>RESOLUTION</em> we already talked about. It is the number of bits used to specify the servo's position. Note that there are some kinda crazy looking restrictions on this parameter. This is because there's a limit to how high this can be. It's the number of bits needed to represent the number of clock cycles in the difference between the min and max pulse widths. By default, the difference is 1ms and we have a clock of 50MHz. This means there are 50,000 clock cycles, or 50,000 possible steps we can use for the pulse width. Since you need 16 bits to represent this, 16 is the maximum value <em>RESOLUTION</em> can take.</p>
+<p>Note that the way this is setup is very different than is you use PWM on something like an Arduino to control a servo. There if you use a 16bit counter, you will only get a small sliver of that in actual usable resolution. Most of it will be wasted in waiting for the reset of the pulse period. The FPGA can achieve a <strong>MUCH</strong> higher resolution than any microcontroller I've ever seen.</p>
+<p>The constants on lines 61 to 67 are just some more calculations for all the flexibility. <em>TOP</em> is the value to reset the timer at so we get a period of exactly <em>PERIOD</em>. <em>MIN_MAX</em> is the number of clock cycles to allow in either direction of the center. <em>SHIFT</em> is the number of bits to shift our input position by if we aren't operating at maximum resolution.<em>OFFSET</em> is the offset to use to make sure the pulse width is <em>CENTER_WIDTH</em> when the input position is half of its max value.</p>
+<p>When the counter reaches its maximum value (<em>TOP - 1</em>), we reset the counter and update the position value. The reason we update the value here is because it prevents us from updating when the pulse could be active. If the pulse could be active and we change the desired position, we could get half a pulse which causes servos to glitch (jitter).</p>
+<p>Here we also cap the values of the position so that we never output a pulse outside the set bounds. This is why the servo pauses at either extreme as it sweeps back and forth. The two extremes have values that aren't being used but the counter sweeps them anyways. If we wanted to open these up, we could simply set <em>MIN_MAX_DIFF</em> to be a bit larger.</p>
+<p>Finally, we output a 1 only when the shifted position plus offset is greater than the counter.</p>
+<p>That's it for this module! You could totally use the <em>PWM</em> component instead, but you would have to do a lot of calculations to set the TOP value correctly and then you would need to be careful about what duty cycle you requested to not damage your servo. With this module, you don't have to think about the details and it won't let you send values outside the range you specify.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;analog-inputs&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Analog Inputs</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;basic-cpu&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Basic CPU</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

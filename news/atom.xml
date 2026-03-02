@@ -1,0 +1,1099 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title> - News</title>
+    <link rel="self" type="application/atom+xml" href="https://alchitry.com/news/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://alchitry.com/news/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-01-24T00:00:00+00:00</updated>
+    <id>https://alchitry.com/news/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Alchitry Labs V2.0.24 - Negative Indices</title>
+        <published>2025-01-24T00:00:00+00:00</published>
+        <updated>2025-01-24T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-labs-v2-0-24/"/>
+        <id>https://alchitry.com/news/alchitry-labs-v2-0-24/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs&#x2F;&quot;&gt;Alchitry Labs V2.0.24-BETA&lt;&#x2F;a&gt; is now out bringing many updates from the last blog post on 2.0.21.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry Labs V2.0.21 - Alchitry Constraints Updated</title>
+        <published>2024-12-26T00:00:00+00:00</published>
+        <updated>2024-12-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-labs-v2-0-21-acf/"/>
+        <id>https://alchitry.com/news/alchitry-labs-v2-0-21-acf/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs&#x2F;&quot;&gt;Alchitry Labs V2.0.21-BETA&lt;&#x2F;a&gt; just dropped with support for the new &lt;a href=&quot;https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;all&quot;&gt;Alchitry V2 boards&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;To properly support the new boards, the format for Alchitry Constraint Files (ACF) was updated. </summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry V2 - Production Begins</title>
+        <published>2024-12-09T00:00:00+00:00</published>
+        <updated>2024-12-09T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-v2-design-update/"/>
+        <id>https://alchitry.com/news/alchitry-v2-design-update/</id>
+        
+        <summary type="html">&lt;p&gt;It has been a busy couple of months and things are starting to come together!&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry V2 - All New Boards</title>
+        <published>2024-11-13T00:00:00+00:00</published>
+        <updated>2024-11-13T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-v2/"/>
+        <id>https://alchitry.com/news/alchitry-v2/</id>
+        
+        <summary type="html">&lt;p&gt;It&#x27;s official, all the boards are being redesigned into a new form factor.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry Platinum and Board Rework</title>
+        <published>2024-10-09T00:00:00+00:00</published>
+        <updated>2024-10-09T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-platinum-v2/"/>
+        <id>https://alchitry.com/news/alchitry-platinum-v2/</id>
+        
+        <summary type="html">&lt;p&gt;The Alchitry Platinum (Pt), is in the early stages of design. 
+This version will most likely be based on the XC7A100T-2FGG484C FPGA.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry Labs V2 - snake_case</title>
+        <published>2024-09-23T00:00:00+00:00</published>
+        <updated>2024-09-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-labs-v2-snake-case/"/>
+        <id>https://alchitry.com/news/alchitry-labs-v2-snake-case/</id>
+        
+        <content type="html" xml:base="https://alchitry.com/news/alchitry-labs-v2-snake-case/">&lt;p&gt;Alchitry Labs V2.0.17 just release and is a major shift from previous releases.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;snake-case&quot;&gt;snake_case&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#snake-case&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;When starting on Lucid V2, I had originally though to make &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;camelCase&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; the default style for names.
+However, I think this was a poor choice for a few reasons and decided to switch to &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;snake_case&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;The biggest reason to use &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;snake_case&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is because this is what is used by Verilog.
+All the Xilinx tools use &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;snake_case&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; so when mixing Lucid and Verilog it is nicer to have a consistent style.&lt;&#x2F;p&gt;
+&lt;p&gt;Lucid V1 was also mostly documented in &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;snake_case&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; but the styling wasn&#x27;t super consistent.
+This is what made me think to switch in the first place.
+I generally prefer the aesthetics of &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;camelCase&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;, but writing &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;rst_n&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; as &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;rstN&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is just awful.&lt;&#x2F;p&gt;
+&lt;p&gt;Adding a &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;_n&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; or &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;_p&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; suffix to names is common with differential signals (as seen in the DDR3 MIG module).
+Single letters are hard to discern in &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;camelCase&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and are much better in &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;snake_case&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;what-changed&quot;&gt;What Changed&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#what-changed&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;In V2.0.17, all the components and example projects switched to use &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;snake_case&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; for names.&lt;&#x2F;p&gt;
+&lt;p&gt;Functions names also changed so &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$silentTick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; became &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$silent_tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;The keyword &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;testBench&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; also changed to &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#faac1f;&quot;&gt;testbench&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.
+It seems a bit inconsistent if the word testbench is two words or one, but it seems like it is more often seen as one.
+I also thought using &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;test_bench&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; as a keyword felt weird.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;auto-migration&quot;&gt;Auto-migration&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#auto-migration&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;If you open an older project with Alchitry Labs V2.0.17 or newer, it will automatically migrate your code.
+This means files will be renamed and all &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;camelCase&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; will be replaced with &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;snake_case&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Also, in the Io constraints and examples &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;ioSel&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; became &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;io_select&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;ioSeg&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; became &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;io_segment&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; for clarity.
+The migration will change these names as well.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;m sorry for any inconvenience this causes to anyone already using Alchitry Labs V2, but I believe in the long run this is the better choice.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ll be updating the tutorials and documentation today to reflect these changes.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry Labs V2 - Now in Beta!</title>
+        <published>2024-09-16T00:00:00+00:00</published>
+        <updated>2024-09-16T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-labs-v2-beta/"/>
+        <id>https://alchitry.com/news/alchitry-labs-v2-beta/</id>
+        
+        <content type="html" xml:base="https://alchitry.com/news/alchitry-labs-v2-beta/">&lt;p&gt;Alchitry Labs V2.0.14 is now released, and with it the status of the project changes from preview to beta!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn.alchitry.com&#x2F;labs-v2&#x2F;alchitry-labs-2.0.14-beta.png&quot; alt=&quot;Alchitry Labs V2.0.14 Beta&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;You can &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;Alchitry-Labs-V2&#x2F;download.html&quot;&gt;download it here&lt;&#x2F;a&gt; and help out by reporting any issues you encounter to the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;Alchitry-Labs-V2&#x2F;issues&quot;&gt;GitHub issues page&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;what-s-new&quot;&gt;What&#x27;s New&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#what-s-new&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;Before getting into the technical details of V2, lets look at the fun stuff, what&#x27;s new.&lt;&#x2F;p&gt;
+&lt;p&gt;The first thing you&#x27;re likely to notice is the UI has been revamped. 
+It is based on a modern UI toolkit that allows for easy animations, Sublime-style scroll bars, interactive virtual boards, and drag-and-drop window splitting.&lt;&#x2F;p&gt;
+&lt;p&gt;Alchitry Labs V2 supports the new &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;references&#x2F;lucid-reference&#x2F;&quot;&gt;Lucid V2&lt;&#x2F;a&gt;.
+See the &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;news&#x2F;lucid-1-vs-2&#x2F;&quot;&gt;V1 vs V2 blog post&lt;&#x2F;a&gt; for a summary of what has changed. &lt;&#x2F;p&gt;
+&lt;p&gt;Support for Lucid V2 is so much deeper than Lucid V1 ever was. 
+Alchitry Labs now creates a full model of your Lucid code.
+This causes plenty of errors that would just fly under the radar in V1 to be caught and reported in real-time.
+It also allows for your project to be simulated.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;simulations&quot;&gt;Simulations&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#simulations&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;By clicking the little bug icon, you can launch the simulator.
+It currently supports the base board (Au, Au+, or Cu) as well as the Io.&lt;&#x2F;p&gt;
+&lt;p&gt;The simulator is an interactive virtual board running your design.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn.alchitry.com&#x2F;labs-v2&#x2F;alchitry-labs-2.0.8-preview.gif&quot; alt=&quot;Alchitry Labs 2.0.8&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;You can toggle the DIP switches or press the buttons by clicking on them.
+PWM effects are also simulated on LEDs allowing for fade effects or multiplexing of the Io element&#x27;s 7-segment displays.&lt;&#x2F;p&gt;
+&lt;p&gt;The only real catch is the simulator can&#x27;t run as fast as dedicated hardware.
+By default, it runs at 1KHz which is a fair bit slower than the 100MHz clock on the real board.
+However, many educational designs don&#x27;t need a fast clock.
+Hopefully, the Io simulator will make learning the basics that much easier.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;test-benches&quot;&gt;Test Benches&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#test-benches&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h3&gt;
+&lt;p&gt;Alchitry Labs V2 supports test benches.
+These allow you test out Lucid modules to make sure they are doing what you expect them to do.&lt;&#x2F;p&gt;
+&lt;p&gt;In a test block, you can manipulate the values feeding into a module then check their outputs.
+In the event that things didn&#x27;t go according to plan, the values of every signal at every step of the simulation are saved, and you can view them after it finishes.
+See the &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;news&#x2F;lucid-v2-update-2&#x2F;&quot;&gt;test bench blog post&lt;&#x2F;a&gt; for more details.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;open-source-tools&quot;&gt;Open Source Tools&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#open-source-tools&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Using the open source tools (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;YosysHQ&#x2F;yosys&quot;&gt;yosys&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;YosysHQ&#x2F;nextpnr&quot;&gt;nextpnr&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;YosysHQ&#x2F;icestorm&quot;&gt;icestorm&lt;&#x2F;a&gt;) for the Cu has never been easier.
+Alchitry Labs V1 had support for some of the older open source tools, but you had to install them yourself.
+V2 now comes with the open source tools so you can use them out of the box for the Cu.&lt;&#x2F;p&gt;
+&lt;p&gt;This also means that you can now build projects for the Cu natively on a Mac!&lt;&#x2F;p&gt;
+&lt;p&gt;Currently, the open source tools don&#x27;t support the Artix 7 used on the Au, but they are in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gatecat&#x2F;nextpnr-xilinx&#x2F;&quot;&gt;development&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;all-the-small-things&quot;&gt;All The Small Things&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#all-the-small-things&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Alchitry Labs V2 has been in the works for over two years now.
+There are way too many things to list here that has changed.&lt;&#x2F;p&gt;
+&lt;p&gt;Most of the important changes are under the hood and will allow future improvements to continue in a sustainable way.&lt;&#x2F;p&gt;
+&lt;p&gt;I hope you&#x27;ll head over to the &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;Alchitry-Labs-V2&#x2F;download.html&quot;&gt;download page&lt;&#x2F;a&gt; and check it out.
+You can leave any general feedback on the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;Alchitry-Labs-V2&#x2F;discussions&quot;&gt;discussions page&lt;&#x2F;a&gt; and report any issues to the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;Alchitry-Labs-V2&#x2F;issues&quot;&gt;issues page&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;why-v2&quot;&gt;Why V2&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#why-v2&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;Alchitry Labs was originally the Mojo IDE. The goal of the Mojo IDE was to both create an IDE with creature comforts like real-time syntax error checking and support a new HDL, Lucid, to make programming FPGAs more accessible.&lt;&#x2F;p&gt;
+&lt;p&gt;The initial Lucid support was very basic. The IDE would show any syntax errors, but nothing more in depth than that.&lt;&#x2F;p&gt;
+&lt;p&gt;The focus was on creating a Lucid -&amp;gt; Verilog translator so you could even use it. 
+Only later, more indepth parsing was added.&lt;&#x2F;p&gt;
+&lt;p&gt;At first, only the widths of signals and expressions were checked. 
+It was able to warn you if an assignment would truncate your value.&lt;&#x2F;p&gt;
+&lt;p&gt;Over time, the types of errors being checked continued to grow. 
+Eventually, it was doing full parsing of constant values.&lt;&#x2F;p&gt;
+&lt;p&gt;This lead to the idea that the parser could be used to simulate Lucid. 
+All you have to do is run it over and over right... right?
+Turned out to be a tad more complicated.&lt;&#x2F;p&gt;
+&lt;p&gt;When looking into how to actually turn the parser into a simulator, it was clear the pile of tech debt had grown too much to ignore any longer. 
+I started writing the Mojo IDE a decade ago during my junior year of college. 
+It was by far the biggest piece of software I had written and I made plenty of questionable design choices.&lt;&#x2F;p&gt;
+&lt;p&gt;To make any meaningful improvements, a full rewrite looked like the only practical way forward.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;new-tools&quot;&gt;New Tools&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#new-tools&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Since things were starting over, I was able to overhaul the GUI. 
+V1 was based on the aging SWT. 
+V2 is based on Compose.
+While I appreciated that SWT kept the look and feel of the native desktop environment, Compose is enormously more flexible.
+The new interactive virtual boards would have been incredibly difficult to pull off with SWT. &lt;&#x2F;p&gt;
+&lt;p&gt;The other major shift is that V2 is pure Kotlin. 
+I was notoriously bad at checking for null values in the original Java based parser causing a vast number of bugs that would simply crash the IDE.
+Kotlin&#x27;s built-in null safety has been incredibly helpful.&lt;&#x2F;p&gt;
+&lt;p&gt;Kotlin&#x27;s other features, like coroutines, have also been instrumental for building out the simulator in an efficient manner.&lt;&#x2F;p&gt;
+&lt;p&gt;The last fundamental change was in the build system.
+Before V2, building distributables was a nightmare.
+It was a multistep error-prone process including firing up a Windows VM to build the Windows executable and installer.
+This inherently lead to infrequent updates since they were such a pain.&lt;&#x2F;p&gt;
+&lt;p&gt;The new system relies on &lt;a href=&quot;https:&#x2F;&#x2F;conveyor.hydraulic.dev&#x2F;&quot;&gt;Hydraulic Conveyor&lt;&#x2F;a&gt;.
+This software is awesome.
+It lets me build and publish distributables for Windows, Linux, and Mac, with one click from Linux.
+It is also free for open source software.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;what-s-next&quot;&gt;What&#x27;s Next&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#what-s-next&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;With the beta released, the next step is to update the tutorials.
+I&#x27;ll be working on the first few this week.&lt;&#x2F;p&gt;
+&lt;p&gt;Looking back at the V1 tutorials, I&#x27;m a bit disappointed I never got into the depth I should have.
+I&#x27;m planning to rectify that with V2.&lt;&#x2F;p&gt;
+&lt;p&gt;These will go hand in hand with work on the IDE.
+The best place to see what&#x27;s coming is the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;Alchitry-Labs-V2&#x2F;issues&quot;&gt;issues page&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry Labs V2.0.13 - Verilog Interoperability</title>
+        <published>2024-08-28T00:00:00+00:00</published>
+        <updated>2024-08-28T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-labs-v2-0-13-verilog/"/>
+        <id>https://alchitry.com/news/alchitry-labs-v2-0-13-verilog/</id>
+        
+        <content type="html" xml:base="https://alchitry.com/news/alchitry-labs-v2-0-13-verilog/">&lt;p&gt;Today version &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;Alchitry-Labs-V2&#x2F;releases&#x2F;tag&#x2F;2.0.13&quot;&gt;V2.0.13&lt;&#x2F;a&gt; of Alchitry Labs was released!&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;verilog-interoperability&quot;&gt;Verilog Interoperability&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#verilog-interoperability&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;A ton has changed&#x2F;been added since the last post about &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;news&#x2F;alchitry-labs-v2-0-8&#x2F;&quot;&gt;V2.0.8&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;The biggest feature, by far, is the addition of Verilog interoperability.&lt;&#x2F;p&gt;
+&lt;p&gt;You can now add Verilog modules and instantiate them from Lucid. This was an important missing feature to allow for vendor specific things to be easily integrated into Lucid projects.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, in a Verilog module, you can instantiate the primitives outlined in &lt;a href=&quot;https:&#x2F;&#x2F;docs.amd.com&#x2F;viewer&#x2F;book-attachment&#x2F;Lz7t3FLJuzYlv9pBdksO6Q&#x2F;ob7lIrXtxRMJLY4I6UEprg&quot;&gt;UG953&lt;&#x2F;a&gt; for the Au&#x2F;Au+. This is important for stuff like the upcoming &lt;em&gt;Alchitry Hd&lt;&#x2F;em&gt; that utilizes the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;OSERDESE2&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; primitive to output HDMI video data.&lt;&#x2F;p&gt;
+&lt;p&gt;While the entire Verilog module is checked for syntax error in the editor, Alchitry Labs doesn&#x27;t look at the content inside the Verilog modules. It only ever looks at the module interface (parameters and ports).&lt;&#x2F;p&gt;
+&lt;p&gt;This means that Verilog inside Alchitry Labs has a lot less guards in place and should only really be used as glue to existing Verilog.&lt;&#x2F;p&gt;
+&lt;p&gt;It also has the major downside that Verilog modules are essentially ignored during simulations.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;string-indexing&quot;&gt;String Indexing&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#string-indexing&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;To make Verilog smoothly interoperate with Lucid, the indexing for strings was reverted to how it worked in Lucid V1. That is, the right-most letter is index 0 instead of the left-most.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, the string &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#77bf0a;&quot;&gt;&amp;quot;Hello&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; in Lucid is represented as an &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;][&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; array where index &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; points to &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#77bf0a;&quot;&gt;&amp;quot;o&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;. In V2.0.12 and earlier, index &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; pointed to &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#77bf0a;&quot;&gt;&amp;quot;H&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;You can use the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$reverse&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; function to restore the indexing to the previous behavior.&lt;&#x2F;p&gt;
+&lt;p&gt;Verilog uses the right-side indexing so it now matches. This was important for passing strings as parameters which is often done with Xilinx&#x27;s primitives. Before this change, the Verilog side would see the strings as reversed causing them not to be recognized.&lt;&#x2F;p&gt;
+&lt;p&gt;While having the right side of string be index 0 seems a little strange, it does nicely match how arrays and everything else are indexed. Now, the right side is always index 0.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;build-flow&quot;&gt;Build Flow&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#build-flow&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;The way projects are built underwent a huge change. Previously, when building a project, the tools would start with the top-level module and build out a tree of all instantiated modules underneath it. This has the huge benefit of knowing what all the parameter values are as they &lt;strong&gt;must&lt;&#x2F;strong&gt; be specified at this point.&lt;&#x2F;p&gt;
+&lt;p&gt;The big downside of this, is that a separate Verilog translation needs to happen for every different combination of parameters on a module. For example, if you used a counter module and set it&#x27;s parameter &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;SIZE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; but in another location used the counter with &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;#&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;SIZE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;16&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; then two separate Verilog modules would have been generated.&lt;&#x2F;p&gt;
+&lt;p&gt;This was a fairly small downside to making all constant values calculable when converting to Verilog. However, it has the big downside of making it impossible to call a Lucid module directly from Verilog.&lt;&#x2F;p&gt;
+&lt;p&gt;In the new version, each module is translated to Verilog in isolation properly using parameters. &lt;&#x2F;p&gt;
+&lt;p&gt;This makes it possible for Lucid modules to be used inside Verilog modules.&lt;&#x2F;p&gt;
+&lt;p&gt;It also likely helps the build tools to do things more optimally.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;&quot;&gt;&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$isSim&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;A new function, &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$isSim&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;, was introduced. This function evaluates to &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1b1&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; if running in an interactive simulation and &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1b0&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; otherwise.&lt;&#x2F;p&gt;
+&lt;p&gt;This is useful for dealing with the &lt;em&gt;much&lt;&#x2F;em&gt; slower clock speeds when running an interactive simulation (usually around 1,000 Hz instead of 100,000,000 Hz).&lt;&#x2F;p&gt;
+&lt;p&gt;For example, providing a different &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;DIV&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; parameter value to a &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;multiSevenSeg&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; module with the following makes the display work well in simulation and builds.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;multiSevenSeg seg &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(#&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;DIV&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$isSim&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;() ? &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;16&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;))
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Note that &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$isSim&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; evaluates to &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1b0&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; during test benches.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;beta-release&quot;&gt;Beta Release&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#beta-release&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;Things are getting pretty close to the release of V2.1.0 which will mark the first beta release.&lt;&#x2F;p&gt;
+&lt;p&gt;Check out the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;Alchitry-Labs-V2&#x2F;issues?q=is%3Aopen+is%3Aissue+milestone%3A%222.1.0+Beta+Release%22&quot;&gt;V2.1.0 Milestone on GitHub&lt;&#x2F;a&gt; to track the remaining features to be added before the release.&lt;&#x2F;p&gt;
+&lt;p&gt;If you&#x27;re using the preview builds and run into any issues, be sure to report them on &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;Alchitry-Labs-V2&#x2F;issues&quot;&gt;GitHub&lt;&#x2F;a&gt; so I can get them fixed ASAP!&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry Labs V2.0.8</title>
+        <published>2024-05-14T00:00:00+00:00</published>
+        <updated>2024-05-14T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-labs-v2-0-8/"/>
+        <id>https://alchitry.com/news/alchitry-labs-v2-0-8/</id>
+        
+        <content type="html" xml:base="https://alchitry.com/news/alchitry-labs-v2-0-8/">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn.alchitry.com&#x2F;labs-v2&#x2F;alchitry-labs-2.0.8-preview.gif&quot; alt=&quot;Alchitry Labs 2.0.8&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Yesterday version 2.0.8 of &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs&#x2F;&quot;&gt;Alchitry Labs&lt;&#x2F;a&gt; was released.&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s been a while since 2.0.7 was released, so I&#x27;ll do my best not to miss any import updates.&lt;&#x2F;p&gt;
+&lt;p&gt;First off, there is now an official &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;references&#x2F;lucid-reference&#x2F;&quot;&gt;Lucid V2 Reference&lt;&#x2F;a&gt;. This page should be able to answer any questions you have about the details of Lucid V2.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;known-values&quot;&gt;Known Values&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#known-values&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;A major refactoring was done for determining if a value is &lt;em&gt;constant&lt;&#x2F;em&gt;. The old code would keep track of if a value was constant or not with a simple boolean.&lt;&#x2F;p&gt;
+&lt;p&gt;This became a problem when working with &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; blocks. The issue is that the loop variable isn&#x27;t constant but it is known during synthesis and should be able to be used like a constant.&lt;&#x2F;p&gt;
+&lt;p&gt;To fix this, the state of an expression is now marked as &lt;em&gt;dynamic&lt;&#x2F;em&gt;, &lt;em&gt;known&lt;&#x2F;em&gt;, or &lt;em&gt;constant&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;An important example of this is in the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;binToDec&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; component that uses the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$pow&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; function with a loop variable.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;sig&lt;&#x2F;span&gt;&lt;span&gt; scale&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$width&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;value&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)] = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$pow&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span&gt; j&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#969696;&quot;&gt;&#x2F;&#x2F; get the scale for the digit
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The value of &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;j&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is different for each loop iteration but can be replaced with a constant during synthesis.&lt;&#x2F;p&gt;
+&lt;p&gt;The &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$pow&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; function accepts arguments that are &lt;em&gt;known&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;updated-repeat-block&quot;&gt;Updated Repeat Block&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#updated-repeat-block&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;The &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; block has been modified a bit.&lt;&#x2F;p&gt;
+&lt;p&gt;The old syntax was &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;count&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span&gt; i&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; where &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;count&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; was the number of times to loop and &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;i&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; was the optional loop variable that would be between &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;0&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;count&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;The repeat block can now take the form &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;count&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; where &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;count&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is the number of loops and there is no loop variable (like before). However, it can also take the form &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;i&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span&gt; count&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span&gt; start&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span&gt; step&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; where &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;i&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;count&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; are as before (but switched positions). The parameters &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;start&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;step&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; are optional and specify the starting value and amount to increment by each loop.&lt;&#x2F;p&gt;
+&lt;p&gt;If omitted they default to &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;start &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;0&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;step &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Note that this is a breaking change as the form &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;count&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span&gt; i&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is now &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;i&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span&gt; count&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;component-library&quot;&gt;Component Library&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#component-library&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;The component library has been added. It can be accessed by the three box icon in the main toolbar.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn.alchitry.com&#x2F;labs-v2&#x2F;component-library.png&quot; alt=&quot;Component Library&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Components are now designated in the project tree buy the same three box icon.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;example-projects&quot;&gt;Example Projects&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#example-projects&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;In addition to the components being added, the project templates have been added as well.&lt;&#x2F;p&gt;
+&lt;p&gt;This means you can easily start a project for the Io with the Io Base or Io Demo templates.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;toolchain-settings&quot;&gt;Toolchain Settings&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#toolchain-settings&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;A settings menu was added under the main drop down that is accessed by click on the Alchitry logo.&lt;&#x2F;p&gt;
+&lt;p&gt;Currently, it is populated with the toolchain settings. These let you select the locations for your Vivado and iCEcube2 installs.&lt;&#x2F;p&gt;
+&lt;p&gt;There is also an option to toggle between the built in Yosys toolchain or iCEcube2 when working with the Cu.&lt;&#x2F;p&gt;
+&lt;p&gt;The Yosys toolchain was updated in the Linux build to not require that a specific version of Python be installed.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>iCEcube2 No Longer Free</title>
+        <published>2024-04-17T00:00:00+00:00</published>
+        <updated>2024-05-06T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/icecube2-no-longer-free/"/>
+        <id>https://alchitry.com/news/icecube2-no-longer-free/</id>
+        
+        <content type="html" xml:base="https://alchitry.com/news/icecube2-no-longer-free/">&lt;div class=&quot;callout-box callout-info&quot; &gt;
+    &lt;div class=&quot;callout-icon&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;callout-content&quot;&gt;
+        &lt;p&gt;Lattice has since added a note about free licenses for &amp;quot;hobbyists, enthusiasts, community educators &amp;amp; start-up companies.&amp;quot; See the Licensing section at the bottom of &lt;a href=&quot;https:&#x2F;&#x2F;www.latticesemi.com&#x2F;iCEcube2&quot;&gt;this page&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;It appears that Lattice Semiconductors, the manufacture of the FPGA used in the &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;boards&#x2F;cu&#x2F;&quot;&gt;Cu&lt;&#x2F;a&gt;, has decided to pull a fast one and silently change the license required to use &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;introduction&#x2F;icecube2&#x2F;&quot;&gt;iCEcube2&lt;&#x2F;a&gt; from free to an &lt;strong&gt;expensive&lt;&#x2F;strong&gt; subscription.&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s unclear when exactly this change happened, but looking at the latest snapshot from &lt;a href=&quot;https:&#x2F;&#x2F;web.archive.org&#x2F;web&#x2F;20240224150050&#x2F;https:&#x2F;&#x2F;www.latticesemi.com&#x2F;Support&#x2F;Licensing&quot;&gt;the wayback machine&lt;&#x2F;a&gt; on February 24th, 2024, it was still free.&lt;&#x2F;p&gt;
+&lt;p&gt;On the &lt;a href=&quot;https:&#x2F;&#x2F;www.latticesemi.com&#x2F;Support&#x2F;Licensing&quot;&gt;live site&lt;&#x2F;a&gt; iCEcube2 is now only listed as &lt;em&gt;Subscription&lt;&#x2F;em&gt; for all FPGA families it supports.&lt;&#x2F;p&gt;
+&lt;p&gt;Heading over to their &lt;a href=&quot;https:&#x2F;&#x2F;www.latticestore.com&#x2F;products&#x2F;tabid&#x2F;417&#x2F;searchid&#x2F;1&#x2F;searchvalue&#x2F;lsc-sw-icecube2&#x2F;default.aspx&quot;&gt;online store&lt;&#x2F;a&gt;, I&#x27;m currently seeing pricing of &lt;strong&gt;$471.31&lt;&#x2F;strong&gt; for the first year and &lt;strong&gt;$353.15&lt;&#x2F;strong&gt; to renew each additional year.&lt;&#x2F;p&gt;
+&lt;p&gt;This is insane!&lt;&#x2F;p&gt;
+&lt;p&gt;iCEcube2 hasn&#x27;t had any meaningful software updates in many many years. Just take a look at the &lt;a href=&quot;https:&#x2F;&#x2F;www.latticesemi.com&#x2F;Products&#x2F;DesignSoftwareAndIP&#x2F;FPGAandLDS&#x2F;iCEcube2#_B014C41EC7EA406C8BF8E943EABA6317&quot;&gt;versions&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;The only thing that makes sense to me is that they very much do &lt;strong&gt;not&lt;&#x2F;strong&gt; want you to use it.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;contact-lattice&quot;&gt;Contact Lattice&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#contact-lattice&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;If this change bothers you as much as it does me, I highly encourage you to &lt;a href=&quot;https:&#x2F;&#x2F;www.latticesemi.com&#x2F;en&#x2F;About&#x2F;ContactUs&quot;&gt;contact Lattice&lt;&#x2F;a&gt; and let them know what you think. &lt;a href=&quot;mailto:general_inquiries@latticesemi.com&quot;&gt;Click here for their general inquiries email&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ve sent them an email asking what&#x27;s going on and I&#x27;ll update this post if&#x2F;when they respond.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;a-beacon-of-hope&quot;&gt;A Beacon of Hope&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#a-beacon-of-hope&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;Luckily, we have an alternative, &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;YosysHQ&#x2F;icestorm&quot;&gt;Project IceStorm&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;YosysHQ&quot;&gt;Yosys&lt;&#x2F;a&gt; more generally.&lt;&#x2F;p&gt;
+&lt;p&gt;The open source tools for FPGAs have continued to improve and my latest experiences with them for the &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;boards&#x2F;cu&#x2F;&quot;&gt;Alchitry Cu&lt;&#x2F;a&gt; have been excellent.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs&#x2F;&quot;&gt;Alchitry Labs V2&lt;&#x2F;a&gt; comes with all the necessary open source tools bundled to work with the Cu without having to compile&#x2F;install anything else.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Lucid V1 to V2</title>
+        <published>2024-04-01T00:00:00+00:00</published>
+        <updated>2024-04-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/lucid-1-vs-2/"/>
+        <id>https://alchitry.com/news/lucid-1-vs-2/</id>
+        
+        <content type="html" xml:base="https://alchitry.com/news/lucid-1-vs-2/">&lt;p&gt;This post was created for people who are already familiar with Lucid V1 to get up to speed with what&#x27;s new&#x2F;different in Lucid V2.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;style-changes&quot;&gt;Style Changes&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#style-changes&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;Let&#x27;s start off with the most basic changes, those to style.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;optional-semicolons&quot;&gt;Optional Semicolons&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#optional-semicolons&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;First off, the new Lucid grammar now accepts a new line as a semicolon.&lt;&#x2F;p&gt;
+&lt;p&gt;This means that as long as each expression is on a separate line, you don&#x27;t need to use semicolons at all.&lt;&#x2F;p&gt;
+&lt;p&gt;This change was motivated by many modern programming languages.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;trailing-commas&quot;&gt;Trailing Commas&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#trailing-commas&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Again taking inspiration from many other languages, trailing commas in lists are now supported.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#faac1f;&quot;&gt;module&lt;&#x2F;span&gt;&lt;span&gt; trailingComma &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;input&lt;&#x2F;span&gt;&lt;span&gt; clk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#969696;&quot;&gt;&#x2F;&#x2F; clock
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;input&lt;&#x2F;span&gt;&lt;span&gt; rst&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#969696;&quot;&gt;&#x2F;&#x2F; reset
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;output&lt;&#x2F;span&gt;&lt;span&gt; out&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#969696;&quot;&gt;&#x2F;&#x2F; &amp;lt;- LOOK A COMMA
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)&lt;&#x2F;span&gt;&lt;span&gt; ...
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;By making trailing commas optional, it helps make it easier to re-arrange items in a list or add new items to the end without modifying previous lines.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;camel-case&quot;&gt;Camel Case&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#camel-case&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;This is fairly subtle, but camel case is now the preferred naming format for all basic names. The libraries and examples in Lucid V1 were fairly inconsistent between &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;camelCase&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;snake_case&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;This is just to make things more consistent.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;struct-position&quot;&gt;Struct Position&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#struct-position&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The first breaking change is that struct sizes are now specified after the array size (or name if there isn&#x27;t an array size) instead of after the type.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, before when declaring a &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;sig&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; with an array of 8 structs with type &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;myStruct&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; you would write the following.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;sig&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span&gt;myStruct&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; mySig&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;];
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This is now written as the following.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;sig&lt;&#x2F;span&gt;&lt;span&gt; mySig&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;]&amp;lt;&lt;&#x2F;span&gt;&lt;span&gt;myStruct&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This change was made to better match how the elements in the signal are structured.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;mySig&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span&gt;.structElement&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is how you access the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;structElement&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; of the second element in the array.&lt;&#x2F;p&gt;
+&lt;p&gt;In both cases, the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;sig&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is an array of structs so the array index always comes first. &lt;&#x2F;p&gt;
+&lt;p&gt;This also makes a bit more sense for the cases when you need to specify the width of a signal that doesn&#x27;t have a type.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, a struct declaration could look like this.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;struct&lt;&#x2F;span&gt;&lt;span&gt; myStruct &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    structElement&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span&gt;otherStruct&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    structArray&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;]&amp;lt;&lt;&#x2F;span&gt;&lt;span&gt;otherStruct&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;&amp;gt;,
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h1 id=&quot;no-more&quot;&gt;No More &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;WIDTH&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#no-more&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;Something that always felt kind of out of place to me was the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;WIDTH&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; attribute attached to &amp;quot;all&amp;quot; signals in Lucid V1.&lt;&#x2F;p&gt;
+&lt;p&gt;While it worked for the most part, it had two issues I wanted to address. &lt;&#x2F;p&gt;
+&lt;p&gt;First, it just didn&#x27;t seem to fit. There was nothing else like it in the language.&lt;&#x2F;p&gt;
+&lt;p&gt;Second, it could only be used on full signals, not expressions or anything else.&lt;&#x2F;p&gt;
+&lt;p&gt;Both of these are fixed by replacing it with the new &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$width&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; function.&lt;&#x2F;p&gt;
+&lt;p&gt;Simply pass in whatever you want and it&#x27;ll spit out a constant value representing the width of the signal&#x2F;expression.&lt;&#x2F;p&gt;
+&lt;p&gt;This fits much better as there are plenty of other functions to calculate constant values.&lt;&#x2F;p&gt;
+&lt;p&gt;The use of &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;WIDTH&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; was in Lucid before there were custom Lucid functions. Otherwise, it probably would&#x27;ve been a function from the beginning.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;simplification&quot;&gt;Simplification&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#simplification&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;There are a few changes made to make things a bit simpler.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;loops&quot;&gt;&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; Loops&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#loops&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;For loops were replaced with the new &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; loop.&lt;&#x2F;p&gt;
+&lt;p&gt;Lucid V1 used &lt;em&gt;C&lt;&#x2F;em&gt; style for loop that were easy to write in a way that would be impossible to implement in hardware.&lt;&#x2F;p&gt;
+&lt;p&gt;The new &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; loop has the simple syntax of &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;i&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span&gt; count&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span&gt; start &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span&gt; step &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;) {}&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; where &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;i&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is an optional loop variable.
+&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;count&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is a constant expression.
+&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;start&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;step&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; are also constant expressions but are optional.
+The loop will repeat &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;count&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; times and &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;i&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; will be set from &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;start&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; to &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;start &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;+&lt;&#x2F;span&gt;&lt;span&gt; step &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;* (&lt;&#x2F;span&gt;&lt;span&gt;count &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;This syntax makes it impossible to write a loop with a variable number of iterations (which hardware can&#x27;t accommodate). &lt;&#x2F;p&gt;
+&lt;h2 id=&quot;no-more-1&quot;&gt;No More &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;var&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#no-more-1&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;var&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; type was always a bit weird. It was basically just a 32 bit &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;sig&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; that you would use with for loops. &lt;&#x2F;p&gt;
+&lt;p&gt;No for loops means you doubly don&#x27;t need it.&lt;&#x2F;p&gt;
+&lt;p&gt;Anywhere you had a &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;var&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; before could be replaced with a &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;sig&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bye-hello&quot;&gt;Bye &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;fsm&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;, Hello &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;enum&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#bye-hello&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The type &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;fsm&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; was also kind of a weird type. It was a &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;dff&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; with a list of constants attached.&lt;&#x2F;p&gt;
+&lt;p&gt;Nothing kept you from using these constants in other places in your designs and a few times I did just that. It always felt a little wrong.&lt;&#x2F;p&gt;
+&lt;p&gt;Now the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;enum&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; type lets you declare a list of constants that will have their values assigned by the tools just like &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;fsm&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; but it is separate from any storage type.&lt;&#x2F;p&gt;
+&lt;p&gt;Something like &lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;fsm&lt;&#x2F;span&gt;&lt;span&gt; state &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;{ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;IDLE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;START_BIT&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;DATA&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;STOP_BIT &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;...
+&lt;&#x2F;span&gt;&lt;span&gt;state.d &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; state.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;START_BIT&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;is now replaced with&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;enum &lt;&#x2F;span&gt;&lt;span style=&quot;color:#da5a8c;&quot;&gt;States &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;{ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;IDLE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;START_BIT&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;DATA&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;STOP_BIT &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;dff&lt;&#x2F;span&gt;&lt;span&gt; state&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$width&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#da5a8c;&quot;&gt;States&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)]
+&lt;&#x2F;span&gt;&lt;span&gt;...
+&lt;&#x2F;span&gt;&lt;span&gt;state.d &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#da5a8c;&quot;&gt;States&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;START_BIT
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This makes the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;dff&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; type the only storage type.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;parameter-test-values&quot;&gt;Parameter Test Values&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#parameter-test-values&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;In Lucid V1 you had to choose between better error checking and making a parameter optional.&lt;&#x2F;p&gt;
+&lt;p&gt;Lucid V2 adds the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;~&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; operator during parameter declaration to allow you to specify a test value.&lt;&#x2F;p&gt;
+&lt;p&gt;Here&#x27;s an example.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#faac1f;&quot;&gt;module&lt;&#x2F;span&gt;&lt;span&gt; uartTx &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;#(
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;CLK_FREQ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;~ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;100000000 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;CLK_FREQ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#969696;&quot;&gt;&#x2F;&#x2F; clock frequency
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;BAUD &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;~ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1000000 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;BAUD &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;&amp;amp;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;BAUD &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;&amp;lt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;CLK_FREQ&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;2 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#969696;&quot;&gt;&#x2F;&#x2F; desired baud rate
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)(
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Both the parameter &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;CLK_FREQ&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#d45ada;&quot;&gt;BAUD&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; have test values specified. These values are used when the module is being checked for errors but hasn&#x27;t been instantiated.&lt;&#x2F;p&gt;
+&lt;p&gt;If these values were omitted, the error checking code doesn&#x27;t know what they could be so it has to do its best to check for potential errors.&lt;&#x2F;p&gt;
+&lt;p&gt;You could provided a value with &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;=&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; instead of &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;~&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; but this allows the parameter to be omitted when it is instantiated.&lt;&#x2F;p&gt;
+&lt;p&gt;The &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;~&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; version provides a value for the error checker to use but still requires a value to be explicitly presented when instantiated.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;test-benches&quot;&gt;Test Benches&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#test-benches&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;A huge reason for the whole Alchitry Labs&#x2F;Lucid V2 rewrite was to add simulations.&lt;&#x2F;p&gt;
+&lt;p&gt;These have been covered in a &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;news&#x2F;lucid-v2-update-2&#x2F;&quot;&gt;previous post&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>New Site, New Forum, New Alchitry Labs</title>
+        <published>2024-03-26T00:00:00+00:00</published>
+        <updated>2024-03-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/new-site-new-forum-new-labs/"/>
+        <id>https://alchitry.com/news/new-site-new-forum-new-labs/</id>
+        
+        <summary type="html">&lt;p&gt;A lot has happened since the last blog post!&lt;&#x2F;p&gt;
+&lt;p&gt;First lets start with the page you&#x27;re reading this on, the new website!&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry Labs V2.0.5 - Simulations</title>
+        <published>2024-02-06T00:00:00+00:00</published>
+        <updated>2024-02-06T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-labs-v2-0-5-simulations/"/>
+        <id>https://alchitry.com/news/alchitry-labs-v2-0-5-simulations/</id>
+        
+        <summary type="html">&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;Alchitry-Labs-V2&#x2F;download.html&quot;&gt;Version 2.0.5-Preview&lt;&#x2F;a&gt; of Alchitry Labs is now available. It now supports simulating the main Alchitry boards as well as the Io Element.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry Labs V2 - Update 3</title>
+        <published>2024-01-15T00:00:00+00:00</published>
+        <updated>2024-01-15T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-labs-v2-update-3/"/>
+        <id>https://alchitry.com/news/alchitry-labs-v2-update-3/</id>
+        
+        <content type="html" xml:base="https://alchitry.com/news/alchitry-labs-v2-update-3/">&lt;p&gt;Simulations are now supported!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn.alchitry.com&#x2F;labs-v2&#x2F;alchitry-labs-2.0.4-preview.png&quot; alt=&quot;Alchitry Labs 2.0.4 PREVIEW&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;test-benches&quot;&gt;Test Benches&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#test-benches&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The new update, &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;Alchitry-Labs-V2&#x2F;download.html&quot;&gt;2.0.4-PREVIEW&lt;&#x2F;a&gt;, now has the first draft of the
+simulation GUI.&lt;&#x2F;p&gt;
+&lt;p&gt;To run a simulation you need to first create a test bench.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ve covered these before when you could first run them from the command line so make sure
+to &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;news&#x2F;lucid-v2-update-2&#x2F;&quot;&gt;check that out&lt;&#x2F;a&gt; if you haven&#x27;t already.&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s been an addition to the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$print&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; function though. You can still pass it a signal directly for the old behavior,
+but you can now pass in a formatting string followed by the values to use.&lt;&#x2F;p&gt;
+&lt;p&gt;This is similar to something like &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;printf&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; in C&#x2F;C++.&lt;&#x2F;p&gt;
+&lt;p&gt;The function call looks something like &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$print&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#77bf0a;&quot;&gt;&amp;quot;my value is %d&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span&gt; mySig&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; where &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;mySig&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is the signal to print in decimal
+where the %d is.&lt;&#x2F;p&gt;
+&lt;p&gt;The format options are &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#77bf0a;&quot;&gt;&amp;quot;%d&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; for decimal, &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#77bf0a;&quot;&gt;&amp;quot;%b&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; for binary, &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#77bf0a;&quot;&gt;&amp;quot;%h&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; for hexadecimal, and &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#77bf0a;&quot;&gt;&amp;quot;%nf&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; for fixed point where
+n is the number of fixed fractional bits (for example &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#77bf0a;&quot;&gt;&amp;quot;%2f&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;).&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;run-the-test&quot;&gt;Run the Test&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#run-the-test&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;In the code editor, when it detects a test, there is an arrow in the left hand gutter on the line where the test was
+declared. You can click this arrow to run that test.&lt;&#x2F;p&gt;
+&lt;p&gt;Alternatively, clicking the bug icon in the toolbar will run every test.&lt;&#x2F;p&gt;
+&lt;p&gt;The results of the test are printed to the console and a new tab is opened displaying the resulting values captured at
+each &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;The waveform viewer is currently pretty basic but its enough to start messing with it.&lt;&#x2F;p&gt;
+&lt;p&gt;You can use the mouse wheel to zoom and click&#x2F;drag to pan around.&lt;&#x2F;p&gt;
+&lt;p&gt;The values at your cursor are show as an overlay.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry Labs V2 - Update 2</title>
+        <published>2024-01-04T00:00:00+00:00</published>
+        <updated>2024-01-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-labs-v2-update-2/"/>
+        <id>https://alchitry.com/news/alchitry-labs-v2-update-2/</id>
+        
+        <content type="html" xml:base="https://alchitry.com/news/alchitry-labs-v2-update-2/">&lt;p&gt;It&#x27;s been a while since I&#x27;ve posted an update and a lot has happened. Most of the work I&#x27;ve been putting into Alchitry Labs has been for the new GUI.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn.alchitry.com&#x2F;labs-v2&#x2F;alchitry-labs-2.0.3-preview.png&quot; alt=&quot;Alchitry Labs 2.0.3 PREVIEW&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;As I&#x27;ve mentioned in a previous blog post, this time around I&#x27;m using &lt;a href=&quot;https:&#x2F;&#x2F;www.jetbrains.com&#x2F;lp&#x2F;compose-multiplatform&#x2F;&quot;&gt;Compose Multiplatform&lt;&#x2F;a&gt; for creating the UI instead of the now very old &lt;a href=&quot;https:&#x2F;&#x2F;www.eclipse.org&#x2F;swt&#x2F;&quot;&gt;SWT&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Compose is fundamentally different from SWT and allows for a lot more freedom in creating a beautiful UI. However, since Compose for desktop is so new, there are some growing pains I&#x27;ve had to overcome.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;code-editor&quot;&gt;Code Editor&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#code-editor&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;One of the first things I did when starting the Alchitry Labs rewrite was to see if I could make a text editor perform well with Compose. The built in &lt;code&gt;TextField&lt;&#x2F;code&gt; widget is fine for small text fields but falls apart for something as complicated as a code editor.&lt;&#x2F;p&gt;
+&lt;p&gt;Compose exposes various levels of abstraction you can dig into depending on what you want to accomplish. I jumped a few layers down and created my own code editor composable. &lt;&#x2F;p&gt;
+&lt;p&gt;The most important difference between my code editor and the built in &lt;code&gt;TextField&lt;&#x2F;code&gt; is that my code computes the layout of each line individually instead of the entire block of text. The big upside to this is that when text is being edited I only need to compute the lines that change instead of every single line.&lt;&#x2F;p&gt;
+&lt;p&gt;This makes editing text fast no matter how big the file is.&lt;&#x2F;p&gt;
+&lt;p&gt;There was a lot of complexity added to make this work but the payoff was worth it.&lt;&#x2F;p&gt;
+&lt;p&gt;In addition to performance, I was able to add some additional features that are nice to have for the code editor, such as the line numbers in the gutter. These are even flexible so I can potentially later add stuff like icons if needed.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;TextField&lt;&#x2F;code&gt; also doesn&#x27;t provide any way to draw a background color behind text so I had to add this custom. This allows for highlighting the token the cursor is on as well as all matching tokens. &lt;&#x2F;p&gt;
+&lt;h2 id=&quot;tabs&quot;&gt;Tabs&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#tabs&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The next major UI hurdle was making the editor tabs work. I already had written a sash composable that would allow me to split a section into left and right or top and bottom resize-able areas (I needed it already for the main layout). However, I wanted to make splitting the editor be as easy as dragging a dropping the tab to where you want it.&lt;&#x2F;p&gt;
+&lt;p&gt;Again, compose gives you plenty of tools to do this and I had already done something similar for a different project that I was able to steal most of the code from. With some modifications I ended up where it is now where you can not only drag and drop the tabs to rearrange them but drag them top any side of the window to split it.&lt;&#x2F;p&gt;
+&lt;p&gt;This is definitely a step up from the previous version that requires you to split then window then drag the tab over.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;project-tree&quot;&gt;Project Tree&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#project-tree&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;This is something that still needs some work, but one of the new features is that file names in the tree are color coded based on their state (yellow = has warnings, red = has errors).&lt;&#x2F;p&gt;
+&lt;p&gt;This was possible because the way projects&#x2F;files are checked for errors is fundamentally different than before.&lt;&#x2F;p&gt;
+&lt;p&gt;When a file is changed, an error check is queued. The error check first parses all the project files for errors like syntax errors. Then starting from the top module, the project is parsed as a tree through the module instances.&lt;&#x2F;p&gt;
+&lt;p&gt;This allows for a thorough check of the modules using actual parameter values. &lt;&#x2F;p&gt;
+&lt;p&gt;Some of this could be improved in the future such as caching some of the results for files that haven&#x27;t changed, but even as it is now it is quite fast.&lt;&#x2F;p&gt;
+&lt;p&gt;It currently doesn&#x27;t fully check modules that fall outside the project tree (in other words, modules that are in the project but not used). I&#x27;ll add this in a later update.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;labs-and-loader&quot;&gt;Labs and Loader&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#labs-and-loader&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Alchitry Labs and the Alchitry Loader now share one executable&#x2F;launcher. This was done because it isn&#x27;t possible to create two launchers with one installer on macOS.&lt;&#x2F;p&gt;
+&lt;p&gt;Instead, when you open Alchitry Labs, it&#x27;ll open whatever you were using last.&lt;&#x2F;p&gt;
+&lt;p&gt;To switch between Labs and the Loader, you simply click the Alchitry logo in the top left and choose &amp;quot;Switch to X&amp;quot;&lt;&#x2F;p&gt;
+&lt;p&gt;I have a feeling that most people are using either one or the other and don&#x27;t often switch between the two. If this isn&#x27;t you, let me know on the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;LucidParserV2&#x2F;discussions&quot;&gt;discussion page&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;test-it-out&quot;&gt;Test It Out&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#test-it-out&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;There is still a lot of features missing, but if you would like you can download the &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;Alchitry-Labs-V2&#x2F;download.html&quot;&gt;latest version here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Everything should be there to make a simple project, build, and load it to any of the Alchitry boards.&lt;&#x2F;p&gt;
+&lt;p&gt;This also means you should be able to use this to build projects for the Alchitry Cu on a Mac.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;next-steps&quot;&gt;Next Steps&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#next-steps&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The code editor needs many quality of life improvements such as auto indenting&#x2F;formatting, auto-complete, support for Verilog, error checking for ACF files, support for Xilinx and Lattice constraint files, context menus (right click), and I&#x27;m sure endless more.&lt;&#x2F;p&gt;
+&lt;p&gt;I need to also add in the component library, port the project templates to Lucid V2, and add back in support the Vivado&#x27;s IP catalog.&lt;&#x2F;p&gt;
+&lt;p&gt;I also need to build the front end for running simulations. All the code is there to actually run it, there just isn&#x27;t currently a way to conveniently start it or view the results. This will likely be my first next step.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry Labs V2 - Update 1</title>
+        <published>2023-10-13T00:00:00+00:00</published>
+        <updated>2023-10-13T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-labs-v2-update-1/"/>
+        <id>https://alchitry.com/news/alchitry-labs-v2-update-1/</id>
+        
+        <content type="html" xml:base="https://alchitry.com/news/alchitry-labs-v2-update-1/">&lt;p&gt;Today was the first time I built a .bin file from Alchitry Labs V2!&lt;&#x2F;p&gt;
+&lt;p&gt;Before we get too far ahead, there is a lot more to cover.&lt;&#x2F;p&gt;
+&lt;p&gt;In the last release, I use the Compose Multiplatform Gradle plugin to create &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;JetBrains&#x2F;compose-multiplatform&#x2F;blob&#x2F;master&#x2F;tutorials&#x2F;Native_distributions_and_local_execution&#x2F;README.md&quot;&gt;native distributions&lt;&#x2F;a&gt;.
+At first, this seemed like an awesome solution. However, it has one fatal flaw.&lt;&#x2F;p&gt;
+&lt;p&gt;The plugin requires you to build each target on its respective platform. That means if you want to build for Windows, you need to be on Windows. If you want to build for an ARM based Mac, you need to have an ARM based Mac.&lt;&#x2F;p&gt;
+&lt;p&gt;This requirement was the same issue I had before with the original Alchitry Labs but it wasn&#x27;t that bad since I only ever built for Windows and Linux X64. I was able to do everything from Linux using a Window VM.&lt;&#x2F;p&gt;
+&lt;p&gt;This time around, I want to add support for more systems. Alchitry Labs runs on a JVM (Java Virtual Machine) so in theory it should run in a ton of places with minimal work.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;m hoping to target everything that Compose supports, Windows x64, Linux x64, Linux ARM, Mac x64, and Mac ARM.&lt;&#x2F;p&gt;
+&lt;p&gt;When looking for solutions to this, I came across &lt;a href=&quot;https:&#x2F;&#x2F;www.hydraulic.dev&#x2F;&quot;&gt;Conveyor&lt;&#x2F;a&gt; which seems to be almost everything I was looking for. Best of all, it is free for open source projects like Alchitry Labs!&lt;&#x2F;p&gt;
+&lt;p&gt;Conveyor lets you build for every target from a single system. It also deals with code signing and pushing updates.&lt;&#x2F;p&gt;
+&lt;p&gt;The only downside right now is that it doesn&#x27;t support Linux AArch64 (ARM). I became a paid subscriber to get this feature onto the dev&#x27;s radar and I was told it will likely make it into the next major release.&lt;&#x2F;p&gt;
+&lt;p&gt;Now that I have this all setup, I can run a single command that builds my project, creates update packages, creates an update website, and pushes it all to GitHub.&lt;&#x2F;p&gt;
+&lt;p&gt;You can now download the latest version from the &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;Alchitry-Labs-V2&#x2F;download.html&quot;&gt;GitHub page here&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;m currently just self signing everything. This only really matters for Windows and Macs where you&#x27;ll see more security warnings when trying to install it.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ll likely get everything officially signed for the next release. For the Window&#x27;s release, this means that it&#x27;ll be available from the Microsoft Store.&lt;&#x2F;p&gt;
+&lt;p&gt;The Linux version is now packaged as a deb which makes installation so much easier! Installing the deb also adds an update site so that when updates for Alchitry Labs are available they show up in the package manager with everything else.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;mac-support&quot;&gt;Mac Support&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#mac-support&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;As I&#x27;ve mentioned above, the new releases have Mac versions.&lt;&#x2F;p&gt;
+&lt;p&gt;Before you get too excited, no, you still can&#x27;t run Vivado or iceCube 2 on a Mac. This means that you still can&#x27;t build FPGA projects using the proprietary tools.&lt;&#x2F;p&gt;
+&lt;p&gt;So why bother supporting Macs? First, many people run the build tools inside of virtual machines inside a Mac. USB devices don&#x27;t always play nicely going across the VM layer so by having native support for the Alchitry Loader, we can avoid that issue.&lt;&#x2F;p&gt;
+&lt;p&gt;The Mac versions of the loader are already working!&lt;&#x2F;p&gt;
+&lt;p&gt;Second, there are open source tools that &lt;em&gt;can&lt;&#x2F;em&gt; run on a Mac. I&#x27;m hoping to bundle these with a later release of Alchitry Labs so that you will be able to develop for the Alchitry Cu natively on a Mac.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-new-verilog-converter&quot;&gt;The New Verilog Converter&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#the-new-verilog-converter&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The biggest update to the Alchitry Labs V2 codebase is the Verilog converter.&lt;&#x2F;p&gt;
+&lt;p&gt;Continuing with the full rewrite, the new converter is much cleaner than the old one. The original converter was one of the first things I wrote back when the IDE was the &amp;quot;Mojo IDE.&amp;quot;&lt;&#x2F;p&gt;
+&lt;p&gt;Back then, the converted was responsible for everything. Given some Lucid text, it had to spit out a Verilog version.&lt;&#x2F;p&gt;
+&lt;p&gt;The new converted is instead given a fully parsed Lucid module instance. A lot of the complicated tasks are already done in the previous stage such as dealing with signal indexing, declarations, etc.&lt;&#x2F;p&gt;
+&lt;p&gt;This, along with better coding practices, has made the new converter about 40% of the size of the original! I&#x27;m pretty excited for it.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;acf-parser&quot;&gt;ACF Parser&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#acf-parser&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;With a Lucid-&amp;gt;Verilog translator working, the next step was to add support for constraint files.&lt;&#x2F;p&gt;
+&lt;p&gt;The Alchitry Constraint File format is super simple and adding a parser for it wasn&#x27;t too complicated.&lt;&#x2F;p&gt;
+&lt;p&gt;I ended up modifying the format a bit from V1 though. &lt;&#x2F;p&gt;
+&lt;p&gt;Keeping with the change to Lucid, semicolons are now optional. Also, clock statements are considered a special type of pin statement so you don&#x27;t need to specify both for a single pin.&lt;&#x2F;p&gt;
+&lt;p&gt;It now checks that the names of the ports and pins are valid. Wildly, I apparently never checked the pin names properly for V1 so they would just show up as &amp;quot;null&amp;quot; in the converted constraint file and cause silent issues.&lt;&#x2F;p&gt;
+&lt;p&gt;For now, I just have an ACF-&amp;gt;XDC converter (XDC is the Xilinx format).&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;test-build&quot;&gt;Test Build&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#test-build&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;With all the pieces in place, I was able to get a test build running.&lt;&#x2F;p&gt;
+&lt;p&gt;Once a project is open, calling &lt;code&gt;Project.build()&lt;&#x2F;code&gt; simply builds the entire project!&lt;&#x2F;p&gt;
+&lt;p&gt;This only works for the Au&#x2F;Au+ right now as I still have to port the Cu builders but it is a big milestone!&lt;&#x2F;p&gt;
+&lt;p&gt;Building Au projects is accessible from the command line interface now.&lt;&#x2F;p&gt;
+&lt;p&gt;If you want to check out the progress, see &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;Alchitry-Labs-V2&quot;&gt;the GitHub page&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;You can install the &lt;a href=&quot;https:&#x2F;&#x2F;alchitry.com&#x2F;Alchitry-Labs-V2&#x2F;download.html&quot;&gt;latest version here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry Loader V2</title>
+        <published>2023-09-18T00:00:00+00:00</published>
+        <updated>2023-09-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-loader-v2/"/>
+        <id>https://alchitry.com/news/alchitry-loader-v2/</id>
+        
+        <content type="html" xml:base="https://alchitry.com/news/alchitry-loader-v2/">&lt;p&gt;The Alchitry Loader portion of the Alchitry Labs V2 rewrite is mostly done!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;cdn.alchitry.com&#x2F;labs-v2&#x2F;loader-alpha.png&quot; alt=&quot;Alchitry Loader&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The new loader automatically detects connected boards and lists them in a drop down. This allows you to have more than one board connected without conflict.&lt;&#x2F;p&gt;
+&lt;p&gt;Under the hood, it now also handles the D2XX driver a bit more elegantly. It first tries to load the proprietary D2XX library (libd2xx) and if it fails, it falls back to the open source libUSB driver.&lt;&#x2F;p&gt;
+&lt;p&gt;On Windows, you&#x27;ll almost always be using D2XX from FTDI. However, on Linux, libUSB is the default but you can install libd2xx and it&#x27;ll be detected and used.&lt;&#x2F;p&gt;
+&lt;p&gt;There are still a few weird kinks to work out but it is overall usable (and an improvement over the old one).&lt;&#x2F;p&gt;
+&lt;p&gt;On Windows, I haven&#x27;t been able to figure out how to configure the installer to not install a shortcut for the command line interface version of the launcher. After running the installer, you&#x27;ll see a shortcut called &amp;quot;alchitry&amp;quot; which doesn&#x27;t seem to do anything. This is the command line interface launcher.&lt;&#x2F;p&gt;
+&lt;p&gt;There seems to be a bug in &lt;code&gt;jpackage&lt;&#x2F;code&gt; that ignores the value of the &lt;code&gt;--win-shortcut&lt;&#x2F;code&gt; option and always makes shortcuts. I&#x27;ll have to dig into more eventually.&lt;&#x2F;p&gt;
+&lt;p&gt;On Linux, I&#x27;ve been having a hard time getting the window&#x27;s icon to be set correctly. On Gnome, it seems to be working but on Ubuntu (22.04) it shows the default Java icon and has some kind of secondary ghost window that you can&#x27;t focus.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;installers&quot;&gt;Installers&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#installers&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;cdn.alchitry.com&#x2F;labs-v2&#x2F;Alchitry%20Labs-2.0.0-ALPHA-1.msi&quot;&gt;Windows Installer&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;cdn.alchitry.com&#x2F;labs-v2&#x2F;alchitry-labs_2.0.0-ALPHA-1-1_amd64.deb&quot;&gt;Linux Installer&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry Labs V2 - Command Line Interface</title>
+        <published>2023-09-11T00:00:00+00:00</published>
+        <updated>2023-09-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-labs-v2-cli/"/>
+        <id>https://alchitry.com/news/alchitry-labs-v2-cli/</id>
+        
+        <content type="html" xml:base="https://alchitry.com/news/alchitry-labs-v2-cli/">&lt;p&gt;It has been a while since I last wrote about the progress on Alchitry Labs V2 and a lot has changed.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;build-tools&quot;&gt;Build Tools&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#build-tools&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;I&#x27;ve spent a good amount of time working on building out the Gradle build script so that the deployment process will be much easier than it was for Alchitry Labs V1.&lt;&#x2F;p&gt;
+&lt;p&gt;When I was looking for a way to create the Window&#x27;s installer, I discovered that &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;JetBrains&#x2F;compose-multiplatform&#x2F;tree&#x2F;master&quot;&gt;Compose Multiplatform&lt;&#x2F;a&gt; has a built-in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;JetBrains&#x2F;compose-multiplatform&#x2F;blob&#x2F;master&#x2F;tutorials&#x2F;Native_distributions_and_local_execution&#x2F;README.md&quot;&gt;packaging tool&lt;&#x2F;a&gt;!&lt;&#x2F;p&gt;
+&lt;p&gt;It turns out that this still has the major downside of needing to be running on the OS that you want to package for. This means you can&#x27;t build an installer for Windows from Linux. Bummer, but not the end of the world.&lt;&#x2F;p&gt;
+&lt;p&gt;I ran into two other issues when flushing out the build script. First, Compose&#x27;s build tools only support creating one launcher per application. I need to create two. The main one to launch Alchitry Labs and the second to launch the Alchitry Loader.&lt;&#x2F;p&gt;
+&lt;p&gt;These two programs are actually the same thing with just a different argument passed to them to show a different GUI.&lt;&#x2F;p&gt;
+&lt;p&gt;It turns out that jpackage, the tool used by Compose, has a way to add additional launchers but Compose currently gives no way to access it. I add the support I needed, I forked the Compose plugin and submitted a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;JetBrains&#x2F;compose-multiplatform&#x2F;pull&#x2F;3640&quot;&gt;pull request&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;For now, I&#x27;m using my local forked version of the Compose plugin, but hopefully they&#x27;ll accept the pull request or make some similar changes to allow creating additional launchers.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;command-line-interface&quot;&gt;Command Line Interface&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#command-line-interface&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Something I often get emails about is for command line support in Alchitry Labs. Well, I&#x27;m happy to announce that the command line interface for Alchitry Labs V2 will be well supported.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ve decided to get everything working via the command line before diving too much into the GUI.&lt;&#x2F;p&gt;
+&lt;p&gt;Right now, the loading tools already work. So if you&#x27;ve been looking for a way to load your Alchitry boards from the command line, check out the very early releases below.&lt;&#x2F;p&gt;
+&lt;p&gt;The command line is broken into a bunch of subcommands.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#282828;color:#ffffff;&quot;&gt;&lt;code&gt;&lt;span&gt;$ alchitry --help
+&lt;&#x2F;span&gt;&lt;span&gt;Usage: alchitry_labs options_list
+&lt;&#x2F;span&gt;&lt;span&gt;Subcommands: 
+&lt;&#x2F;span&gt;&lt;span&gt;    new - Create a new project
+&lt;&#x2F;span&gt;&lt;span&gt;    clone - Clone an existing project
+&lt;&#x2F;span&gt;&lt;span&gt;    check - Check a project for errors
+&lt;&#x2F;span&gt;&lt;span&gt;    build - Build an Alchitry Project
+&lt;&#x2F;span&gt;&lt;span&gt;    load - Load a project or .bin file
+&lt;&#x2F;span&gt;&lt;span&gt;    sim - Simulate a project
+&lt;&#x2F;span&gt;&lt;span&gt;    labs - Launch Alchitry Labs GUI
+&lt;&#x2F;span&gt;&lt;span&gt;    loader - Launch Alchitry Loader GUI
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;Options: 
+&lt;&#x2F;span&gt;&lt;span&gt;    --help, -h -&amp;gt; Usage info 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;If you install the .deb on Linux, you&#x27;ll get access to the &lt;code&gt;alchitry&lt;&#x2F;code&gt; command.&lt;&#x2F;p&gt;
+&lt;p&gt;On Windows, the &lt;code&gt;Alchitry.exe&lt;&#x2F;code&gt; executable in the installation directory can be used.&lt;&#x2F;p&gt;
+&lt;p&gt;You can run &lt;code&gt;--help&lt;&#x2F;code&gt; on each subcommand for more info.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#282828;color:#ffffff;&quot;&gt;&lt;code&gt;&lt;span&gt;$ alchitry load --help
+&lt;&#x2F;span&gt;&lt;span&gt;Usage: alchitry_labs load options_list
+&lt;&#x2F;span&gt;&lt;span&gt;Options: 
+&lt;&#x2F;span&gt;&lt;span&gt;    --project, -p -&amp;gt; Alchitry project file { String }
+&lt;&#x2F;span&gt;&lt;span&gt;    --flash, -f [false] -&amp;gt; Load project to FPGA&amp;#39;s flash (persistent) 
+&lt;&#x2F;span&gt;&lt;span&gt;    --ram, -r [false] -&amp;gt; Load project to FPGA&amp;#39;s RAM (temporary) 
+&lt;&#x2F;span&gt;&lt;span&gt;    --list, -l [false] -&amp;gt; List all detected boards 
+&lt;&#x2F;span&gt;&lt;span&gt;    --device, -d [0] -&amp;gt; Index of device to load { Int }
+&lt;&#x2F;span&gt;&lt;span&gt;    --bin -&amp;gt; Bin file to load { String }
+&lt;&#x2F;span&gt;&lt;span&gt;    --board, -b -&amp;gt; Board used in the project { Value should be one of [Au, Au+, Cu] }
+&lt;&#x2F;span&gt;&lt;span&gt;    --help, -h -&amp;gt; Usage info 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;For example, you can load a .bin file like this.&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#282828;color:#ffffff;&quot;&gt;&lt;code&gt;&lt;span&gt;$ alchitry load --bin alchitry.bin -b Au+ --flash
+&lt;&#x2F;span&gt;&lt;span&gt;Checking IDCODE...
+&lt;&#x2F;span&gt;&lt;span&gt;Loading bridge configuration...
+&lt;&#x2F;span&gt;&lt;span&gt;Erasing...
+&lt;&#x2F;span&gt;&lt;span&gt;Flashing 100% │███████████████████████████████████│ 335339&#x2F;335339 (0:00:01 &#x2F; 0:00:00) 
+&lt;&#x2F;span&gt;&lt;span&gt;Resetting FPGA...
+&lt;&#x2F;span&gt;&lt;span&gt;Done.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;If you try this out, let me know what you think over at the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;Alchitry-Labs-V2&#x2F;discussions&quot;&gt;discussions page&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;releases&quot;&gt;Releases&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#releases&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;These aren&#x27;t really a &amp;quot;release&amp;quot; as much as just something you can try and mess around with.&lt;&#x2F;p&gt;
+&lt;p&gt;That being said, the loading features should be fully working.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;cdn.alchitry.com&#x2F;labs-v2&#x2F;alchitry-labs_2.0.0-ALPHA-0-1_amd64.deb&quot;&gt;Linux Deb&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;cdn.alchitry.com&#x2F;labs-v2&#x2F;Alchitry-2.0.0-ALPHA-0.msi&quot;&gt;Windows Installer&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The Labs GUI will open but it doesn&#x27;t really do much. It is basically just a test right now for the custom text editor.&lt;&#x2F;p&gt;
+&lt;p&gt;The Loader GUI doesn&#x27;t open&#x2F;exist at all yet.&lt;&#x2F;p&gt;
+&lt;p&gt;The command line tools work for creating and simulating projects as well as loading .bin files.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alchitry Labs V2</title>
+        <published>2023-06-07T00:00:00+00:00</published>
+        <updated>2023-06-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/alchitry-labs-v2/"/>
+        <id>https://alchitry.com/news/alchitry-labs-v2/</id>
+        
+        <content type="html" xml:base="https://alchitry.com/news/alchitry-labs-v2/">&lt;p&gt;I am now starting to work on the UI of the Alchitry Labs rewrite!&lt;&#x2F;p&gt;
+&lt;p&gt;Alchitry Labs currently use UI toolkit, SWT. 
+This is the UI toolkit developed and used by Eclipse.
+At the time I started working on what was then the Mojo IDE, SWT was a solid choice.
+It allowed me to create a single UI that worked on Windows and Linux with minimal effort, and it looked native on both
+platforms.&lt;&#x2F;p&gt;
+&lt;p&gt;However, it hasn&#x27;t aged super well.&lt;&#x2F;p&gt;
+&lt;p&gt;I found it to be fairly limited when trying to do anything custom.
+For example, I wanted the project tree on the left side of the window to stay the same size when you resized the window.
+The main code editor should be the only thing that changes size to accommodate the new window size.
+SWT doesn&#x27;t allow for this, and instead you specify the size of each side as a percent.
+My workaround was to recalculate the percentages every time the window size changes to keep one side a fixed size.
+This mostly works, but if you resize the window a lot, you may notice the divider jumps around due to rounding errors.&lt;&#x2F;p&gt;
+&lt;p&gt;In newer versions of SWT, something changed&#x2F;broke that broke the tooltip window from popping up when hovering over an
+error in the text editor.
+I spend a stupid amount of time trying to figure out a fix for this before giving up and sticking with an old version
+of the library.
+This annoyingly prevents other bugs from getting fixed though.&lt;&#x2F;p&gt;
+&lt;p&gt;One of the worst offenders is the undo&#x2F;redo bug in the current Alchitry Labs. 
+I&#x27;ve spent days trying to get the undo&#x2F;redo function to be reliable, but for whatever reason, the way SWT handles the
+edit events have prevented me from getting it to always work. V2 already has a fully reliable undo&#x2F;redo working.&lt;&#x2F;p&gt;
+&lt;p&gt;TLDR, I&#x27;m moving to something else.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;jetpack-compose&quot;&gt;Jetpack Compose&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#jetpack-compose&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;If you do any UI work and haven&#x27;t tried &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;JetBrains&#x2F;compose-multiplatform&quot;&gt;Jetpack Compose&lt;&#x2F;a&gt; you&#x27;re 
+missing out.&lt;&#x2F;p&gt;
+&lt;p&gt;This is a declarative UI framework originally developed for use on Android, but it has since made its way onto more 
+platforms including desktop.&lt;&#x2F;p&gt;
+&lt;p&gt;I find it a joy to use, and it doesn&#x27;t lock you into anything allowing me to create whatever custom UI elements or 
+tweaks I need.&lt;&#x2F;p&gt;
+&lt;p&gt;Unfortunately, the built-in text editor (TextField) has terrible performance if you are trying to edit any decent amount
+of text.
+This led me to write my own custom editor that has solid performance for thousands of lines of code.&lt;&#x2F;p&gt;
+&lt;p&gt;While this was a substantial amount of work, it also opens up potential in the future for doing cool tricks like 
+collapsable blocks. This was impossible with SWT.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;lucid-parser&quot;&gt;Lucid Parser&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#lucid-parser&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;I&#x27;ve also implemented the snapshots for &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and added &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$silentTick&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; which skips the snapshot step.
+The snapshots get compiled into a simulation result that holds the value of every signal in the design for every call
+of &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;This will allow the UI to display the results of the entire simulation.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-repo&quot;&gt;The Repo&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#the-repo&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The Lucid Parser repo has been renamed to &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;Alchitry-Labs-V2&quot;&gt;Alchitry Labs V2&lt;&#x2F;a&gt; and now 
+contains the UI and parser code. 
+This is where all the progress can be found.&lt;&#x2F;p&gt;
+&lt;p&gt;There is a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;Alchitry-Labs-V2&#x2F;discussions&quot;&gt;discussion page&lt;&#x2F;a&gt;, or you can 
+&lt;a href=&quot;mailto:justin@alchitry.com&quot;&gt;email me&lt;&#x2F;a&gt; and let me know your thoughts.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Lucid V2 - Update 2 - Test Benches</title>
+        <published>2023-06-01T00:00:00+00:00</published>
+        <updated>2023-06-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/lucid-v2-update-2/"/>
+        <id>https://alchitry.com/news/lucid-v2-update-2/</id>
+        
+        <content type="html" xml:base="https://alchitry.com/news/lucid-v2-update-2/">&lt;p&gt;Test benches are here!&lt;&#x2F;p&gt;
+&lt;p&gt;I just pushed a working draft of the test bench code that has the necessities for writing quick tests for you modules!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;test-bench-example&quot;&gt;Test Bench Example&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#test-bench-example&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;Take a look at this revolutionary counter module I created. &lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#faac1f;&quot;&gt;module&lt;&#x2F;span&gt;&lt;span&gt; counter &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;input&lt;&#x2F;span&gt;&lt;span&gt; clk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;output&lt;&#x2F;span&gt;&lt;span&gt; count&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;dff&lt;&#x2F;span&gt;&lt;span&gt; counter&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;] (&lt;&#x2F;span&gt;&lt;span&gt;.clk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;clk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;))
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;always &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;        counter.d &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; counter.q &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;+ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1
+&lt;&#x2F;span&gt;&lt;span&gt;        count &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; counter.q
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;I designed it so that the output &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;count&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; will increment by one on every rising edge of the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;clk&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; input. However, does 
+it actually work?!? There&#x27;s no way to know. Oh wait, we could test it.&lt;&#x2F;p&gt;
+&lt;p&gt;Here is my test bench that does just that.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;testBench myTestBench &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#0a8dbf;&quot;&gt;sig&lt;&#x2F;span&gt;&lt;span&gt; clk &lt;&#x2F;span&gt;&lt;span style=&quot;color:#969696;&quot;&gt;&#x2F;&#x2F; signal to use as my clock
+&lt;&#x2F;span&gt;&lt;span&gt;    
+&lt;&#x2F;span&gt;&lt;span&gt;    counter dut &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;.clk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;clk&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#969696;&quot;&gt;&#x2F;&#x2F; device under test
+&lt;&#x2F;span&gt;&lt;span&gt;    
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;fun&lt;&#x2F;span&gt;&lt;span&gt; tickClock&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;        clk &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        clk &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;0
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;    
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;test&lt;&#x2F;span&gt;&lt;span&gt; simpleTest &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;        clk &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#969696;&quot;&gt;&#x2F;&#x2F; initialize the clock
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span&gt; i&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$print&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;dut.count&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$assert&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;dut.count &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;==&lt;&#x2F;span&gt;&lt;span&gt; i&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tickClock&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;        
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$assert&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;dut.count &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;== &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;100&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The insides of a &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;testBench&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; are very similar to a &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#faac1f;&quot;&gt;module&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; with a couple of key differences. There are no ports
+or parameters and instead of &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;always&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; blocks you use &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;test&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;fun&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; blocks.&lt;&#x2F;p&gt;
+&lt;p&gt;On line 2, we create a signal named &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;clk&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; that will act as our clock.&lt;&#x2F;p&gt;
+&lt;p&gt;On line 4, we instantiate the device under test or &amp;quot;dut&amp;quot;. It is convention to call the module being tested &amp;quot;dut&amp;quot; but 
+there is nothing special about the name.&lt;&#x2F;p&gt;
+&lt;p&gt;Next, we have our function declaration. Functions have the same properties as tests, but they aren&#x27;t run directly. 
+Instead, functions are little pieces of helper code that can be called from tests.&lt;&#x2F;p&gt;
+&lt;p&gt;Here I defined the very common function of toggling the clock and called it &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;tickClock&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;. This function doesn&#x27;t have any
+parameters, but it could.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, we could give it a parameter to repeat a specified number of times.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;lucid&quot; style=&quot;background-color:#282828;color:#ffffff;&quot; class=&quot;language-lucid &quot;&gt;&lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;fun&lt;&#x2F;span&gt;&lt;span&gt; tickClock&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;times&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;32&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;]) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span&gt;times&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;        clk &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;1
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        clk &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;0
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Function arguments act the same as module inputs and can be multidimensional arrays or structs.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;test-bench-functions&quot;&gt;Test Bench Functions&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#test-bench-functions&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h3&gt;
+&lt;p&gt;Before we move on, let me quickly go over the couple of test bench specific functions that I&#x27;m using.&lt;&#x2F;p&gt;
+&lt;p&gt;The function &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is at the very core of the simulation. It initiates a simulation tick. So what is a simulation
+tick? This is when the simulator publishes all signal changes and recalculates the outputs for all the pieces in the 
+design whose input signals changed. Those output changes then trigger other updates if they are used as inputs. This 
+continues until the results of everything stabilize.&lt;&#x2F;p&gt;
+&lt;p&gt;The only time it won&#x27;t stabilize is if you have some kind of dependency loop like &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;a &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; b&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; and &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;b &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= ~&lt;&#x2F;span&gt;&lt;span&gt;a&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;. In this case, 
+the simulator will quit after 1000 iterations. I chose this number as a seemingly nice upper bound, but it may change if
+I find designs often need more or fewer iterations. A loop like this would result in faulty hardware, and anything 
+requiring too many iterations to resolve would likely be too complicated to do in a single real clock cycle.&lt;&#x2F;p&gt;
+&lt;p&gt;So back to the test bench. Before we call &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;, first we need to set a value to all signals we are using. Signals 
+default to having a &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;bx&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; value so bad things will happen if we call &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; before setting a real value. By bad things,
+I mean that &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;bx&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; value will propagate throughout the design contaminating our counter.&lt;&#x2F;p&gt;
+&lt;p&gt;With &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;clk&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; set to 0, we call &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; to initialize the design.&lt;&#x2F;p&gt;
+&lt;p&gt;Next, we hit a &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#0abfbf;&quot;&gt;repeat&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; block that will repeat its contents 100 times and use the signal &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;i&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; as the iteration index.&lt;&#x2F;p&gt;
+&lt;p&gt;The first line in the loop prints the value of &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;dut.count&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; using the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$print&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; function. This function takes one
+argument, the value to print. It currently outputs the value in the format &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span&gt;dut.count &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;= {&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;00011100&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;} : &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a269dc;&quot;&gt;28&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; where the value
+is shown in its binary form as well as its decimal value (if it has one).&lt;&#x2F;p&gt;
+&lt;p&gt;The next line uses the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$assert&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; function to check that the value of the counter matches the loop iteration we are on.
+The argument to &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$assert&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; can be anything, and it is treated as a boolean. That means if it is non-zero, nothing 
+happens, but if it is zero, the simulation is aborted and the &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$assert&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; that caused it is called out.&lt;&#x2F;p&gt;
+&lt;p&gt;This is very useful for checking values quickly without having to look back through the simulation manually to see if 
+values make sense.&lt;&#x2F;p&gt;
+&lt;p&gt;The last line in the loop is the call to the function &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tickClock&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; that we already defined.&lt;&#x2F;p&gt;
+&lt;p&gt;Finally, we end our test by checking that the counter output is 100 after the 100 cycles.&lt;&#x2F;p&gt;
+&lt;p&gt;This example is from one of the tests and can be found in the 
+&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;LucidParserV2&#x2F;blob&#x2F;9795d9dcea1a769be7567025b15607549c36edc3&#x2F;src&#x2F;test&#x2F;kotlin&#x2F;TestBenchTests.kt#L45&quot;&gt;repo here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;next-step&quot;&gt;Next Step&lt;a class=&quot;anchor&quot; aria-hidden=&quot;true&quot; href=&quot;#next-step&quot; hidden=&quot;&quot;&gt;#&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The next step is to add snapshots of the entire design every time &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$tick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; is called. This will allow for the 
+simulation results to be shown after it is run. Currently, it just runs discarding all intermediate values.&lt;&#x2F;p&gt;
+&lt;p&gt;I also plan to have a &lt;code class =&quot;language-lucid&quot; data-lang=&quot;lucid&quot;&gt;&lt;span style=&quot;color:#1bddaf;&quot;&gt;$silentTick&lt;&#x2F;span&gt;&lt;span style=&quot;color:#ed4343;&quot;&gt;()&lt;&#x2F;span&gt;&lt;&#x2F;code&gt; or similarly named function that does a tick without taking a snapshot. This way
+you can use that when making the clock fall for most designs and avoid the overhead of an entire snapshot.&lt;&#x2F;p&gt;
+&lt;p&gt;As before, there is a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;LucidParserV2&#x2F;discussions&quot;&gt;discussion page&lt;&#x2F;a&gt; setup as part of the repo
+where you can let me know your thoughts.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Lucid V2 - Update 1</title>
+        <published>2023-05-30T00:00:00+00:00</published>
+        <updated>2023-05-30T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/lucid-v2-update-1/"/>
+        <id>https://alchitry.com/news/lucid-v2-update-1/</id>
+        
+        <summary type="html">&lt;p&gt;I just pushed what I believe is the last piece of the core Lucid 2 rewrite.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Lucid V2</title>
+        <published>2023-05-18T00:00:00+00:00</published>
+        <updated>2023-05-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Justin Rajewski
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://alchitry.com/news/lucid-v2/"/>
+        <id>https://alchitry.com/news/lucid-v2/</id>
+        
+        <summary type="html">&lt;p&gt;A full rewrite of the Lucid parser in Alchitry Labs has been a long time coming.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>

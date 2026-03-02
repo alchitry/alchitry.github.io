@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Hello YOUR_NAME_HERE</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;hello-your-name-here&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;">Lucid V1</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;hello-your-name-here&#x2F;">Hello YOUR_NAME_HERE</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Hello YOUR_NAME_HERE</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+18 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;hello-your-name-here.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#the-ram" aria-label="The RAM">The RAM</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-greeter-revisited" aria-label="The Greeter (revisited)">The Greeter (revisited)</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#no-more-rom" aria-label="No More ROM">No More ROM</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#modules-and-dffs" aria-label="Modules and DFFs">Modules and DFFs</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#the-fsm" aria-label="The FSM">The FSM</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-top-level" aria-label="The Top Level">The Top Level</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#building-the-project" aria-label="Building the Project">Building the Project</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>In this tutorial we will be making some modifications to the Hello World! project from the last tutorial so make sure you have read the <a href="https://alchitry.com/tutorials/archive/lucid_v1/roms-and-fsms/">ROMs and FSMs tutorial</a> first. We will be personalizing the greeter so that it first asks for your name and then prints &quot;Hello NAME&quot; where NAME is the name you entered. To do this we will need some form of memory and in this case we will use a single port RAM.</p>
+<p>With the project open from the last tutorial, you can make a copy to edit for this tutorial by going to <strong>File-&gt;Clone Project</strong>. Enter a new name in the dialog that pops up and click <strong>Create</strong>.</p>
+<h2 id="the-ram">The RAM</h2>
+<p>We need to add the RAM component to our project. Go to <strong>Project-&gt;Add Components...</strong> and under <em>Memory</em> check off <em>Simple RAM</em>.</p>
+<p>Go ahead and open up <strong>simple_ram.v</strong>.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> simple_ram </span><span style="color:#ed4343;">#(
+</span><span>    parameter </span><span style="color:#d45ada;">SIZE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// size of each entry
+</span><span>    parameter </span><span style="color:#d45ada;">DEPTH </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1  </span><span style="color:#969696;">// number of entries
+</span><span>  </span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,                         </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input </span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">DEPTH</span><span style="color:#ed4343;">)-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> address</span><span style="color:#ed4343;">, </span><span style="color:#969696;">// address to read or write
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> reg </span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> read_data</span><span style="color:#ed4343;">,   </span><span style="color:#969696;">// data read
+</span><span>    </span><span style="color:#0a8dbf;">input </span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> write_data</span><span style="color:#ed4343;">,       </span><span style="color:#969696;">// data to write
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> write_en                     </span><span style="color:#969696;">// write enable (1 = write)
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  reg </span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> ram </span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">DEPTH</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];      </span><span style="color:#969696;">// memory array
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(</span><span>posedge clk</span><span style="color:#ed4343;">)</span><span> begin
+</span><span>    read_data </span><span style="color:#ed4343;">&lt;=</span><span> ram</span><span style="color:#ed4343;">[</span><span>address</span><span style="color:#ed4343;">];         </span><span style="color:#969696;">// read the entry
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>write_en</span><span style="color:#ed4343;">)                      </span><span style="color:#969696;">// if we need to write
+</span><span>      ram</span><span style="color:#ed4343;">[</span><span>address</span><span style="color:#ed4343;">] &lt;=</span><span> write_data</span><span style="color:#ed4343;">;      </span><span style="color:#969696;">// update that value
+</span><span>  end
+</span><span> 
+</span><span>endmodule
+</span></code></pre>
+<p>Note that this component is written in Verilog instead of Lucid. This is because the tools that actually build your project can be very picky when it comes to deciding if something is a block of RAM or not. By using this module we can ensure that our RAM is properly recognized as RAM. This is important because FPGAs actually have dedicated block RAM (also known as BRAM). If your RAM is big enough, the tools will use BRAM to implement it instead of the FPGA fabric. Using BRAM is both substantially faster and smaller than the FPGA fabric.</p>
+<p>A single port RAM like this works much the same as the ROM from the last tutorial. However, we now have the option to write to an address instead of only reading. To write to an address, we simply supply the address and data to write then set <em>write_en</em> to 1. The data at that address will then be updated to whatever <em>write_data</em> is.</p>
+<p>The parameters <em>SIZE</em> and <em>DEPTH</em> are used to specify how big we want the RAM to be. <em>SIZE</em> specifies how big each entry is. In our case we will be storing letters and a letter is 8 bits wide so SIZE will be set to 8. <em>DEPTH</em> is used to specify how many entries we want. This will be the maximum name length we can accept.</p>
+<h2 id="the-greeter-revisited">The Greeter (revisited)</h2>
+<p>Just like the last tutorial we will have a <em>greeter</em> module. The interface to this module is exactly the same as before but it is now a bit more mannered and will greet you personally.</p>
+<p>Like most tutorials, I'll post the entire module here and then break it down.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> greeter </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> new_rx</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// new RX flag
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rx_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],  </span><span style="color:#969696;">// RX data
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> new_tx</span><span style="color:#ed4343;">,     </span><span style="color:#969696;">// new TX flag
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> tx_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// TX data
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> tx_busy      </span><span style="color:#969696;">// TX is busy flag
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">HELLO_TEXT </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$reverse</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;</span><span style="color:#5fb3b3;">\r\n</span><span style="color:#77bf0a;">Hello @!</span><span style="color:#5fb3b3;">\r\n</span><span style="color:#77bf0a;">&quot;</span><span style="color:#ed4343;">); </span><span style="color:#969696;">// reverse so index 0 is the left most letter
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">PROMPT_TEXT </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$reverse</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;Please type your name: &quot;</span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">PROMPT</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">LISTEN</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">HELLO</span><span style="color:#ed4343;">}; </span><span style="color:#969696;">// our state machine
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// we need our counters to be large enough to store all the indices of our text
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> hello_count</span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">HELLO_TEXT</span><span>.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">])]; </span><span style="color:#969696;">// HELLO_TEXT is 2D so WIDTH[0] gets the first dimension
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> prompt_count</span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">PROMPT_TEXT</span><span>.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">])];
+</span><span> 
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> name_count</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">]; </span><span style="color:#969696;">// 5 allows for 2^5 = 32 letters
+</span><span>    </span><span style="color:#969696;">// we need our RAM to have an entry for every value of name_count
+</span><span>    simple_ram ram </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">SIZE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">DEPTH</span><span style="color:#ed4343;">(</span><span style="color:#1bddaf;">$pow</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">,</span><span>name_count.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">)));
+</span><span>  </span><span style="color:#ed4343;">}
+</span></code></pre>
+<h3 id="no-more-rom">No More ROM</h3>
+<p>So unlike last tutorial, we aren't going to use an explicit ROM module. This is because some convenient features of Lucid allow us to easily use constants with strings as ROMs. Let us take a look at the constant declaration.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">HELLO_TEXT </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$reverse</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;</span><span style="color:#5fb3b3;">\r\n</span><span style="color:#77bf0a;">Hello @!</span><span style="color:#5fb3b3;">\r\n</span><span style="color:#77bf0a;">&quot;</span><span style="color:#ed4343;">); </span><span style="color:#969696;">// reverse so index 0 is the left most letter
+</span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">PROMPT_TEXT </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$reverse</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;Please type your name: &quot;</span><span style="color:#ed4343;">);
+</span></code></pre>
+<p>Here we are using a function called <em>$reverse()</em>. This function takes some constant expression and reverse the order of the top most dimension of the array. Since strings are 2D arrays with the top most dimension being the letter order, this is exactly the same as typing the string backwards like we did in the last tutorial. This is just a little bit cleaner and easier to deal with.</p>
+<p>Because strings are 2D arrays, we can simply use <em>HELLO_TEXT[i]</em> to access the _i_th letter of it.</p>
+<p>Note that we are using the @ symbol in place of a name. This will signal to our design where to insert the name that was recorded.</p>
+<h3 id="modules-and-dffs">Modules and DFFs</h3>
+<p>Just like before we have an FSM <em>state</em>. This will store the current state of our module. <em>IDLE</em> is where we will start and it will initialize everything. <em>PROMPT</em> will print the prompt asking for your name. <em>LISTEN</em> will listen to you type your name and echo it back. Finally, <em>HELLO</em> will greet you personally.</p>
+<p>We need counters to keep track of what letter in each ROM we are currently positioned.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span><span> hello_count</span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">HELLO_TEXT</span><span>.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">])]; </span><span style="color:#969696;">// HELLO_TEXT is 2D so WIDTH[0] gets the first dimension
+</span><span style="color:#0a8dbf;">dff</span><span> prompt_count</span><span style="color:#ed4343;">[</span><span style="color:#1bddaf;">$clog2</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">PROMPT_TEXT</span><span>.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">])];
+</span></code></pre>
+<p>Let us take a look at <em>hello_count</em>. We need it to be wide enough so that we can index all the letters in HELLO_TEXT. We can get how many letters there are in the string by using the <em>WIDTH</em> attribute. Because <em>HELLO_TEXT</em> is a multi-dimensional array (2D in this case), <em>WIDTH</em> will be a 2D array. The first index of <em>WIDTH</em> is the number of indices in the first dimension of <em>HELLO_TEXT</em>. This is the number of letters. So we simply use <em>HELLO_TEXT.WIDTH[0]</em>. Note that the second dimension has a width of 8 since each letter is 8 bits wide.</p>
+<p>We can then use the <em>$clog2()</em> function as before to make sure it is large enough to store values from 0 to <em>HELLO_TEXT.WIDTH[0]</em>-1.</p>
+<p>Next take a look at <em>name_count</em>. This will be used to index into the RAM. We can set this width to be whatever we want, but the size of the RAM will grow exponentially with it. I set it to 5 which will allow for a name of 2<sup>5</sup>, or 32 letters long. We will play with this towards the end of the tutorial.</p>
+<p>We need the size of the RAM to match the size of <em>name_count</em>.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>simple_ram ram </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">DEPTH</span><span style="color:#ed4343;">(</span><span style="color:#1bddaf;">$pow</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">,</span><span>name_count.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">)));
+</span></code></pre>
+<p>Here we are using the function <em>$pow()</em> which takes two constants and returns the first to the power of the second. In this case, <em>name_count.WIDTH</em> is 5, so 2<sup>5</sup> is 32. By using <em>name_count.WIDTH</em> instead of typing in 5 or 32 directly, we ensure that if we change the width of <em>name_count</em> then everything will still work.</p>
+<h3 id="the-fsm">The FSM</h3>
+<p>The <em>IDLE</em> and <em>PROMPT</em> states should look very familiar to the last tutorial so we will jump to the <em>LISTEN</em> state.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">// LISTEN: Listen to the user as they type his/her name.
+</span><span>state.</span><span style="color:#d45ada;">LISTEN</span><span style="color:#ed4343;">:
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>new_rx</span><span style="color:#ed4343;">) { </span><span style="color:#969696;">// wait for a new byte
+</span><span>    ram.write_data </span><span style="color:#ed4343;">=</span><span> rx_data</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// write the received letter to RAM
+</span><span>    ram.write_en </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// signal we want to write
+</span><span>    name_count.d </span><span style="color:#ed4343;">=</span><span> name_count.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// increment the address
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// We aren&#39;t checking tx_busy here that means if someone types super
+</span><span>    </span><span style="color:#969696;">// fast we could drop bytes. In practice this doesn&#39;t happen.
+</span><span>    new_tx </span><span style="color:#ed4343;">=</span><span> rx_data </span><span style="color:#ed4343;">!= </span><span style="color:#77bf0a;">&quot;</span><span style="color:#5fb3b3;">\n</span><span style="color:#77bf0a;">&quot; </span><span style="color:#ed4343;">&amp;&amp;</span><span> rx_data </span><span style="color:#ed4343;">!= </span><span style="color:#77bf0a;">&quot;</span><span style="color:#5fb3b3;">\r</span><span style="color:#77bf0a;">&quot;</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// only echo non-new line characters
+</span><span>    tx_data </span><span style="color:#ed4343;">=</span><span> rx_data</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// echo text back so you can see what you type
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// if we run out of space or they pressed enter
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(&amp;</span><span>name_count.q </span><span style="color:#ed4343;">||</span><span> rx_data </span><span style="color:#ed4343;">== </span><span style="color:#77bf0a;">&quot;</span><span style="color:#5fb3b3;">\n</span><span style="color:#77bf0a;">&quot; </span><span style="color:#ed4343;">||</span><span> rx_data </span><span style="color:#ed4343;">== </span><span style="color:#77bf0a;">&quot;</span><span style="color:#5fb3b3;">\r</span><span style="color:#77bf0a;">&quot;</span><span style="color:#ed4343;">) {
+</span><span>      state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">HELLO</span><span style="color:#ed4343;">;
+</span><span>      name_count.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// reset name_count
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Here we wait until <em>new_rx</em> is 1. This signals that we have a new byte to process and that the data on <em>rx_data</em> is valid. We then write <em>rx_data</em> into our RAM. We are writing to the address specified by <em>name_count.q</em> as <em>ram.address</em> is set to this in the beginning of the always block.</p>
+<p>We also need to send the character we received back so that you can see your name as you type it. We simply set <em>new_tx</em> to 1 and <em>tx_data</em> to <em>rx_data</em>. Note that we aren't checking <em>tx_busy</em> so it is possible this byte will be dropped. However, in practice you can't type fast enough for this to be an issue. If you wanted to make this more robust you would need to buffer the received letters and send them out only when <em>tx_busy</em> was 0.</p>
+<p>The if statement is used to know when to stop. We have two conditions to stop on. The first is if we simply run out of space. To check of this we use <em>&amp;name_count.q</em>. The &amp; operator here <strong>and</strong>s all the bits of <em>name_count.q</em> together into a single bit. This tells us if all the bits of <em>name_count.q</em> are 1. The second condition is that the user pressed the enter key. We want to accept &quot;\n&quot; or &quot;\r&quot; as a stop character so we check for both.</p>
+<p>When we are moving onto the next state, notice that we reset <em>name_count</em>. This is so that we can start printing the name from the beginning.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">// HELLO: Prints the hello text with the given name inserted
+</span><span>state.</span><span style="color:#d45ada;">HELLO</span><span style="color:#ed4343;">:
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>tx_busy</span><span style="color:#ed4343;">) { </span><span style="color:#969696;">// wait for tx to not be busy
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">HELLO_TEXT</span><span style="color:#ed4343;">[</span><span>hello_count.q</span><span style="color:#ed4343;">] != </span><span style="color:#77bf0a;">&quot;@&quot;</span><span style="color:#ed4343;">) { </span><span style="color:#969696;">// if we are not at the sentry
+</span><span>      hello_count.d </span><span style="color:#ed4343;">=</span><span> hello_count.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;    </span><span style="color:#969696;">// increment to next letter
+</span><span>      new_tx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                           </span><span style="color:#969696;">// new data to send
+</span><span>      tx_data </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">HELLO_TEXT</span><span style="color:#ed4343;">[</span><span>hello_count.q</span><span style="color:#ed4343;">];  </span><span style="color:#969696;">// send the letter
+</span><span>    </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{                                </span><span style="color:#969696;">// we are at the sentry
+</span><span>      name_count.d </span><span style="color:#ed4343;">=</span><span> name_count.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;      </span><span style="color:#969696;">// increment the name_count letter
+</span><span> 
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ram.read_data </span><span style="color:#ed4343;">!= </span><span style="color:#77bf0a;">&quot;</span><span style="color:#5fb3b3;">\n</span><span style="color:#77bf0a;">&quot; </span><span style="color:#ed4343;">&amp;&amp;</span><span> ram.read_data </span><span style="color:#ed4343;">!= </span><span style="color:#77bf0a;">&quot;</span><span style="color:#5fb3b3;">\r</span><span style="color:#77bf0a;">&quot;</span><span style="color:#ed4343;">) </span><span style="color:#969696;">// if we are not at the end
+</span><span>        new_tx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                                       </span><span style="color:#969696;">// send data
+</span><span> 
+</span><span>      tx_data </span><span style="color:#ed4343;">=</span><span> ram.read_data</span><span style="color:#ed4343;">;              </span><span style="color:#969696;">// send the letter from the RAM
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// if we are at the end of the name or out of letters to send
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ram.read_data </span><span style="color:#ed4343;">== </span><span style="color:#77bf0a;">&quot;</span><span style="color:#5fb3b3;">\n</span><span style="color:#77bf0a;">&quot; </span><span style="color:#ed4343;">||</span><span> ram.read_data </span><span style="color:#ed4343;">== </span><span style="color:#77bf0a;">&quot;</span><span style="color:#5fb3b3;">\r</span><span style="color:#77bf0a;">&quot; </span><span style="color:#ed4343;">|| &amp;</span><span>name_count.q</span><span style="color:#ed4343;">) {
+</span><span>        hello_count.d </span><span style="color:#ed4343;">=</span><span> hello_count.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;  </span><span style="color:#969696;">// increment hello_count to pass the sentry
+</span><span>      </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// if we have sent all of HELLO_TEXT
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>hello_count.q </span><span style="color:#ed4343;">== </span><span style="color:#d45ada;">HELLO_TEXT</span><span>.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] - </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">)
+</span><span>      state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// return to IDLE
+</span><span>  </span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>In this state, we are going to use two counters, <em>hello_count</em> and <em>name_count</em>. First we will start by sending each letter of <em>HELLO_TEXT</em>. However, once we hit the &quot;@&quot; letter we will send all the letters in our RAM. Once that is done, we will finish sending the rest of <em>HELLO_TEXT</em>.</p>
+<p>Once everything has been sent, we return to the <em>IDLE</em> state to await another key press to start it all over again.</p>
+<h2 id="the-top-level">The Top Level</h2>
+<p>The top level tile file is exactly the same as last time since the interface to our <em>greeter</em> module is the same.</p>
+<div class="md-fenced-code-tabs" id="tab-tab-group-1"><input
+name="tab-group-1"
+type="radio"
+id="tab-group-1-0_Au"
+checked="checked"
+class="code-tab"
+data-lang="Au"
+aria-controls="tab-group-1-0_Au-panel"
+aria-hidden="true"
+role="tab"
+>
+<label
+for="tab-group-1-0_Au"
+class="code-tab-label"
+data-lang="Au"
+id="tab-group-1-0_Au-label"
+>Au</label>
+<div
+	class="code-tabpanel"
+	role="tabpanel"
+	data-lang="Au"
+	id="tab-group-1-0_Au-panel"
+	aria-labelledby="tab-group-1-0_Au-label"
+> <pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> au_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 100MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> usb_rx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// USB-&gt;Serial input
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> usb_tx           </span><span style="color:#969696;">// USB-&gt;Serial output
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span>   
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span>   
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">BAUD</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1000000</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100000000</span><span style="color:#ed4343;">) {
+</span><span>        uart_rx rx</span><span style="color:#ed4343;">;
+</span><span>        uart_tx tx</span><span style="color:#ed4343;">;
+</span><span>      </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      greeter greeter</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// instance of our greeter
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>   
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span><span>     
+</span><span>    rx.rx </span><span style="color:#ed4343;">=</span><span> usb_rx</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// connect rx input
+</span><span>    usb_tx </span><span style="color:#ed4343;">=</span><span> tx.tx</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// connect tx output
+</span><span>      
+</span><span>    greeter.new_rx </span><span style="color:#ed4343;">=</span><span> rx.new_data</span><span style="color:#ed4343;">;
+</span><span>    greeter.rx_data </span><span style="color:#ed4343;">=</span><span> rx.data</span><span style="color:#ed4343;">;
+</span><span>    tx.new_data </span><span style="color:#ed4343;">=</span><span> greeter.new_tx</span><span style="color:#ed4343;">;
+</span><span>    tx.data </span><span style="color:#ed4343;">=</span><span> greeter.tx_data</span><span style="color:#ed4343;">;
+</span><span>    greeter.tx_busy </span><span style="color:#ed4343;">=</span><span> tx.busy</span><span style="color:#ed4343;">;
+</span><span>    tx.block </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8h00</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs off
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+ </div><input
+name="tab-group-1"
+type="radio"
+id="tab-group-1-1_Cu"
+class="code-tab"
+data-lang="Cu"
+aria-controls="tab-group-1-1_Cu-panel"
+aria-hidden="true"
+role="tab"
+>
+<label
+for="tab-group-1-1_Cu"
+class="code-tab-label"
+data-lang="Cu"
+id="tab-group-1-1_Cu-label"
+>Cu</label>
+<div
+	class="code-tabpanel"
+	role="tabpanel"
+	data-lang="Cu"
+	id="tab-group-1-1_Cu-panel"
+	aria-labelledby="tab-group-1-1_Cu-label"
+> 
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> cu_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 100MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> usb_rx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// USB-&gt;Serial input
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> usb_tx           </span><span style="color:#969696;">// USB-&gt;Serial output
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span>   
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span>   
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">BAUD</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1000000</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">CLK_FREQ</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100000000</span><span style="color:#ed4343;">) {
+</span><span>        uart_rx rx</span><span style="color:#ed4343;">;
+</span><span>        uart_tx tx</span><span style="color:#ed4343;">;
+</span><span>      </span><span style="color:#ed4343;">}
+</span><span>       
+</span><span>      greeter greeter</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// instance of our greeter
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>   
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span><span>     
+</span><span>    rx.rx </span><span style="color:#ed4343;">=</span><span> usb_rx</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// connect rx input
+</span><span>    usb_tx </span><span style="color:#ed4343;">=</span><span> tx.tx</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// connect tx output
+</span><span>      
+</span><span>    greeter.new_rx </span><span style="color:#ed4343;">=</span><span> rx.new_data</span><span style="color:#ed4343;">;
+</span><span>    greeter.rx_data </span><span style="color:#ed4343;">=</span><span> rx.data</span><span style="color:#ed4343;">;
+</span><span>    tx.new_data </span><span style="color:#ed4343;">=</span><span> greeter.new_tx</span><span style="color:#ed4343;">;
+</span><span>    tx.data </span><span style="color:#ed4343;">=</span><span> greeter.tx_data</span><span style="color:#ed4343;">;
+</span><span>    greeter.tx_busy </span><span style="color:#ed4343;">=</span><span> tx.busy</span><span style="color:#ed4343;">;
+</span><span>    tx.block </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>     
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8h00</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs off
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+ </div><input
+name="tab-group-1"
+type="radio"
+id="tab-group-1-2_Mojo"
+class="code-tab"
+data-lang="Mojo"
+aria-controls="tab-group-1-2_Mojo-panel"
+aria-hidden="true"
+role="tab"
+>
+<label
+for="tab-group-1-2_Mojo"
+class="code-tab-label"
+data-lang="Mojo"
+id="tab-group-1-2_Mojo-label"
+>Mojo</label>
+<div
+	class="code-tabpanel"
+	role="tabpanel"
+	data-lang="Mojo"
+	id="tab-group-1-2_Mojo-panel"
+	aria-labelledby="tab-group-1-2_Mojo-label"
+> 
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top</span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 50MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,             </span><span style="color:#969696;">// configuration clock, AVR ready when high
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// AVR SPI MISO
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR SPI Slave Select
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// AVR SPI MOSI
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR SPI Clock
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_channel </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// AVR general purpose pins (used by default to select ADC channel)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR TX (FPGA RX)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR RX (FPGA TX)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy       </span><span style="color:#969696;">// AVR RX buffer full
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">),</span><span> .rst</span><span style="color:#ed4343;">(~</span><span>rst_n</span><span style="color:#ed4343;">){
+</span><span>    </span><span style="color:#969696;">// the avr_interface module is used to talk to the AVR for access to the USB port and analog pins
+</span><span>    avr_interface avr</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    greeter greeter</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// instance of our greeter
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    </span><span style="color:#969696;">// connect inputs of avr
+</span><span>    avr.cclk </span><span style="color:#ed4343;">=</span><span> cclk</span><span style="color:#ed4343;">;
+</span><span>    avr.spi_ss </span><span style="color:#ed4343;">=</span><span> spi_ss</span><span style="color:#ed4343;">;
+</span><span>    avr.spi_mosi </span><span style="color:#ed4343;">=</span><span> spi_mosi</span><span style="color:#ed4343;">;
+</span><span>    avr.spi_sck </span><span style="color:#ed4343;">=</span><span> spi_sck</span><span style="color:#ed4343;">;
+</span><span>    avr.rx </span><span style="color:#ed4343;">=</span><span> avr_tx</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// connect outputs of avr
+</span><span>    spi_miso </span><span style="color:#ed4343;">=</span><span> avr.spi_miso</span><span style="color:#ed4343;">;
+</span><span>    spi_channel </span><span style="color:#ed4343;">=</span><span> avr.spi_channel</span><span style="color:#ed4343;">;
+</span><span>    avr_rx </span><span style="color:#ed4343;">=</span><span> avr.tx</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    avr.channel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">hf</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// ADC is unused so disable
+</span><span>    avr.tx_block </span><span style="color:#ed4343;">=</span><span> avr_rx_busy</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// block TX when AVR is busy
+</span><span> 
+</span><span>    greeter.new_rx </span><span style="color:#ed4343;">=</span><span> avr.new_rx_data</span><span style="color:#ed4343;">;
+</span><span>    greeter.rx_data </span><span style="color:#ed4343;">=</span><span> avr.rx_data</span><span style="color:#ed4343;">;
+</span><span>    avr.new_tx_data </span><span style="color:#ed4343;">=</span><span> greeter.new_tx</span><span style="color:#ed4343;">;
+</span><span>    avr.tx_data </span><span style="color:#ed4343;">=</span><span> greeter.tx_data</span><span style="color:#ed4343;">;
+</span><span>    greeter.tx_busy </span><span style="color:#ed4343;">=</span><span> avr.tx_busy</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8h00</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs off
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+ </div>
+</div>
+<h2 id="building-the-project">Building the Project</h2>
+<p>You should now be all set to build the project. Once the project has build successfully, load it onto your board and open up the serial port monitor to test it out. Note that you have to send it a letter to get it to prompt you for your name.</p>
+<p>Here is some demo output.</p>
+<pre style="background-color:#282828;color:#ffffff;"><code><span>Please type your name: Justin
+</span><span>Hello Justin!
+</span><span>Please type your name: Steve
+</span><span>Hello Steve!
+</span><span>Please type your name: 01234567890123456789012345678901
+</span><span>Hello 01234567890123456789012345678901!
+</span></code></pre>
+<p>Notice that the moment you type 32 letters it cuts you off and says hello.</p>
+<blockquote>
+<p>The rest of the tutorial is based on the Mojo and ISE.</p>
+<p>For the Cu, iCEcube 2 shows similar (although somewhat simplified) statistics. It also seems to pack the RAM into BRAM even when it is only 32 entries deep. Changing it to 1024 (making <em>name_count</em> 10 bits wide) entries deep will cause it to use two BRAMs. This is listed under <em>Device Utilization Summary</em> in the build output.</p>
+<p>For the Au, Vivado also shows similar statistics. Look for the table labeled <em>Report Cell Usage</em> in the synthesis output. You will notice it is using eight of something called <strong>RAM32X1S</strong>. This is a 32x1bit RAM that fits our small RAM perfectly! It isn't BRAM but a special slice that can be confirmed as a tiny RAM (or generic logic). If you increase the RAM size, you'll notice it switches to using <strong>RAMB18E1</strong> which is larger more flexible BRAM. See <a href="https://www.xilinx.com/support/documentation/user_guides/ug473_7Series_Memory_Resources.pdf">this document</a> for more info.</p>
+</blockquote>
+<p>Once you've played with it a bit, look back at the output from the build. If you scroll up a bit from the bottom you should find something that looks like the following.</p>
+<pre style="background-color:#282828;color:#ffffff;"><code class ="short"><span>Device Utilization Summary:
+</span><span> 
+</span><span>Slice Logic Utilization:
+</span><span>  Number of Slice Registers:                    96 out of  11,440    1%
+</span><span>    Number used as Flip Flops:                  96
+</span><span>    Number used as Latches:                      0
+</span><span>    Number used as Latch-thrus:                  0
+</span><span>    Number used as AND/OR logics:                0
+</span><span>  Number of Slice LUTs:                        163 out of   5,720    2%
+</span><span>    Number used as logic:                      157 out of   5,720    2%
+</span><span>      Number using O6 output only:             123
+</span><span>      Number using O5 output only:              12
+</span><span>      Number using O5 and O6:                   22
+</span><span>      Number used as ROM:                        0
+</span><span>    Number used as Memory:                       5 out of   1,440    1%
+</span><span>      Number used as Dual Port RAM:              0
+</span><span>      Number used as Single Port RAM:            4
+</span><span>        Number using O6 output only:             0
+</span><span>        Number using O5 output only:             0
+</span><span>        Number using O5 and O6:                  4
+</span><span>      Number used as Shift Register:             1
+</span><span>        Number using O6 output only:             1
+</span><span>        Number using O5 output only:             0
+</span><span>        Number using O5 and O6:                  0
+</span><span>    Number used exclusively as route-thrus:      1
+</span><span>      Number with same-slice register load:      0
+</span><span>      Number with same-slice carry load:         1
+</span><span>      Number with other load:                    0
+</span></code></pre>
+<p>This tells you how much of the FPGA your design is using. The two most important numbers are typically the slice register and slice LUT usage. You can see in our case we are using about 2% of the space in the FPGA!</p>
+<p>The reason we are looking at this is to see how the RAM was implemented in the FPGA. Remember the FPGA has blocks of RAM that we can use? These are shown under <strong>Specific Feature Utilization</strong>. <strong>RAMB16BWER</strong> and <strong>RAMB8BWER</strong> are the two types of BRAM we can use. But wait! We aren't using any! This is because our RAM is too small to warrant its own BRAM.</p>
+<p>If we go back to where <em>name_count</em> is declared and make it bigger, we can increase the RAM size.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">dff</span><span> name_count</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]; </span><span style="color:#969696;">// 8 allows for 2^8 = 256 letters
+</span></code></pre>
+<p>If you build the project again with the bigger RAM, you will get the following.</p>
+<pre style="background-color:#282828;color:#ffffff;"><code class ="short"><span>Device Utilization Summary:
+</span><span> 
+</span><span>Slice Logic Utilization:
+</span><span>  Number of Slice Registers:                    90 out of  11,440    1%
+</span><span>    Number used as Flip Flops:                  90
+</span><span>    Number used as Latches:                      0
+</span><span>    Number used as Latch-thrus:                  0
+</span><span>    Number used as AND/OR logics:                0
+</span><span>  Number of Slice LUTs:                        144 out of   5,720    2%
+</span><span>    Number used as logic:                      140 out of   5,720    2%
+</span><span>      Number using O6 output only:             107
+</span><span>      Number using O5 output only:              12
+</span><span>      Number using O5 and O6:                   21
+</span><span>      Number used as ROM:                        0
+</span><span>    Number used as Memory:                       1 out of   1,440    1%
+</span><span>      Number used as Dual Port RAM:              0
+</span><span>      Number used as Single Port RAM:            0
+</span><span>      Number used as Shift Register:             1
+</span><span>        Number using O6 output only:             1
+</span><span>        Number using O5 output only:             0
+</span><span>        Number using O5 and O6:                  0
+</span><span>    Number used exclusively as route-thrus:      3
+</span><span>      Number with same-slice register load:      2
+</span><span>      Number with same-slice carry load:         1
+</span><span>      Number with other load:                    0
+</span><span> 
+</span><span>Slice Logic Distribution:
+</span><span>  Number of occupied Slices:                    48 out of   1,430    3%
+</span><span>  Number of MUXCYs used:                        16 out of   2,860    1%
+</span><span>  Number of LUT Flip Flop pairs used:          152
+</span><span>    Number with an unused Flip Flop:            70 out of     152   46%
+</span><span>    Number with an unused LUT:                   8 out of     152    5%
+</span><span>    Number of fully used LUT-FF pairs:          74 out of     152   48%
+</span><span>    Number of slice register sites lost
+</span><span>      to control set restrictions:               0 out of  11,440    0%
+</span><span> 
+</span><span>  A LUT Flip Flop pair for this architecture represents one LUT paired with
+</span><span>  one Flip Flop within a slice.  A control set is a unique combination of
+</span><span>  clock, reset, set, and enable signals for a registered element.
+</span><span>  The Slice Logic Distribution report is not meaningful if the design is
+</span><span>  over-mapped for a non-slice resource or if Placement fails.
+</span><span> 
+</span><span>IO Utilization:
+</span><span>  Number of bonded IOBs:                        22 out of     102   21%
+</span><span>    Number of LOCed IOBs:                       22 out of      22  100%
+</span><span> 
+</span><span>Specific Feature Utilization:
+</span><span>  Number of RAMB16BWERs:                         0 out of      32    0%
+</span><span>  Number of RAMB8BWERs:                          1 out of      64    1%
+</span><span>  Number of BUFIO2/BUFIO2_2CLKs:                 0 out of      32    0%
+</span><span>  Number of BUFIO2FB/BUFIO2FB_2CLKs:             0 out of      32    0%
+</span><span>  Number of BUFG/BUFGMUXs:                       1 out of      16    6%
+</span><span>    Number used as BUFGs:                        1
+</span><span>    Number used as BUFGMUX:                      0
+</span><span>  Number of DCM/DCM_CLKGENs:                     0 out of       4    0%
+</span><span>  Number of ILOGIC2/ISERDES2s:                   0 out of     200    0%
+</span><span>  Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     200    0%
+</span><span>  Number of OLOGIC2/OSERDES2s:                   0 out of     200    0%
+</span><span>  Number of BSCANs:                              0 out of       4    0%
+</span><span>  Number of BUFHs:                               0 out of     128    0%
+</span><span>  Number of BUFPLLs:                             0 out of       8    0%
+</span><span>  Number of BUFPLL_MCBs:                         0 out of       4    0%
+</span><span>  Number of DSP48A1s:                            0 out of      16    0%
+</span><span>  Number of ICAPs:                               0 out of       1    0%
+</span><span>  Number of MCBs:                                0 out of       2    0%
+</span><span>  Number of PCILOGICSEs:                         0 out of       2    0%
+</span><span>  Number of PLL_ADVs:                            0 out of       2    0%
+</span><span>  Number of PMVs:                                0 out of       1    0%
+</span><span>  Number of STARTUPs:                            0 out of       1    0%
+</span><span>  Number of SUSPEND_SYNCs:                       0 out of       1    0%
+</span></code></pre>
+<p>Notice that we are using a <strong>RAMB8BWER</strong> now. Also notice that the number of registers and LUTs we are using went down. This is because we are using the BRAM instead of the general fabric.</p>
+<p>This is why it is important to use the <em>simple_ram</em> component that implements the template the tools look for. If we used a different coding style the tools may not recognize that it could use BRAM and we could quickly fill up the FPGA with a large RAM that would otherwise take very little space.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;roms-and-fsms&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>ROMs and FSMs</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;ddr3-memory&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>DDR3 Memory</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>
