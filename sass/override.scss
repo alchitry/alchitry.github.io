@@ -660,93 +660,6 @@
     font-size: min(3.8vw, 1em);
   }
 
-  .tutorial-button-container {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 16px 0;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-
-  /* shared button look */
-  .tutorial-button-container > a {
-    --c: var(--starter-color); /* default/fallback */
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-    padding: 18px 34px;
-    border-radius: 18px;
-    color: #fff;
-    font-weight: 800;
-    font-size: min(6vw, 1em);
-    line-height: 1;
-    background: rgba(0, 0, 0, 0.35);
-    border: 2px solid var(--c); /* also avoids color-mix support issues */
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6) inset,
-    0 10px 24px rgba(0, 0, 0, 0.35);
-    user-select: none;
-    white-space: nowrap;
-  }
-
-  /* icon */
-  .tutorial-button-container > a::before {
-    content: "";
-    width: 26px;
-    height: 26px;
-    display: inline-block;
-    background: var(--c);
-  }
-
-  /* per-button colors (more specific than the shared rule) */
-  .tutorial-button-container > .starter-button, .starter-tutorials {
-    --c: var(--starter-color);
-  }
-
-  .tutorial-button-container > .intermediate-button, .intermediate-tutorials {
-    --c: var(--intermediate-color);
-  }
-
-  .tutorial-button-container > .advanced-button, .advanced-tutorials {
-    --c: var(--advanced-color);
-  }
-
-  .tutorial-button-container > .projects-button, .project-tutorials {
-    --c: var(--projects-color);
-  }
-
-  .tutorial-button-container > .starter-button::before,
-  .starter-tutorials h1::before {
-    border-radius: 50%;
-  }
-
-  .tutorial-button-container > .intermediate-button::before,
-  .intermediate-tutorials h1::before {
-    border-radius: 3px;
-  }
-
-  .tutorial-button-container > .advanced-button::before,
-  .advanced-tutorials h1::before {
-    width: 22px;
-    height: 22px;
-    transform: rotate(45deg);
-  }
-
-  .tutorial-button-container > .projects-button::before,
-  .project-tutorials h1::before {
-    width: 0;
-    height: 0;
-    background: transparent;
-    border-left: 14px solid transparent;
-    border-right: 14px solid transparent;
-    border-bottom: 26px solid var(--c);
-  }
-
-  .tutorial-button-container > a:hover {
-    background: rgba(0, 0, 0, 0.65);
-  }
-
   .tutorial-section {
     > p {
       margin-bottom: 1em;
@@ -852,6 +765,93 @@
         z-index: 2;
       }
     }
+  }
+
+  .tutorial-button-container {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px 0;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  /* shared button look */
+  .tutorial-button-container > a {
+    --c: var(--starter-color); /* default/fallback */
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 34px;
+    border-radius: 18px;
+    color: #fff;
+    font-weight: 800;
+    font-size: min(6vw, 1em);
+    line-height: 1;
+    background: rgba(0, 0, 0, 0.35);
+    border: 2px solid var(--c); /* also avoids color-mix support issues */
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6) inset,
+    0 10px 24px rgba(0, 0, 0, 0.35);
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  /* icon */
+  .tutorial-button-container > a::before {
+    content: "";
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    background: var(--c);
+  }
+
+  /* per-button colors (more specific than the shared rule) */
+  .tutorial-button-container > .starter-button, .starter-tutorials {
+    --c: var(--starter-color);
+  }
+
+  .tutorial-button-container > .intermediate-button, .intermediate-tutorials {
+    --c: var(--intermediate-color);
+  }
+
+  .tutorial-button-container > .advanced-button, .advanced-tutorials {
+    --c: var(--advanced-color);
+  }
+
+  .tutorial-button-container > .projects-button, .project-tutorials {
+    --c: var(--projects-color);
+  }
+
+  .tutorial-button-container > .starter-button::before,
+  .starter-tutorials h1::before {
+    border-radius: 50%;
+  }
+
+  .tutorial-button-container > .intermediate-button::before,
+  .intermediate-tutorials h1::before {
+    border-radius: 3px;
+  }
+
+  .tutorial-button-container > .advanced-button::before,
+  .advanced-tutorials h1::before {
+    width: 22px;
+    height: 22px;
+    transform: rotate(45deg);
+  }
+
+  .tutorial-button-container > .projects-button::before,
+  .project-tutorials h1::before {
+    width: 0;
+    height: 0;
+    background: transparent;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 26px solid var(--c);
+  }
+
+  .tutorial-button-container > a:hover {
+    background: rgba(0, 0, 0, 0.65);
   }
 
   .starter-tutorials .tutorials > .post-entry {
