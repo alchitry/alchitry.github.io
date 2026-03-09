@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Your First FPGA Project</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;your-first-fpga-project&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;">Lucid V1</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;your-first-fpga-project&#x2F;">Your First FPGA Project</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Your First FPGA Project</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+18 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;your-first-fpga-project.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#creating-a-new-project" aria-label="Creating a New Project">Creating a New Project</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-contents-of-a-module" aria-label="The Contents of a Module">The Contents of a Module</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#module-declaration" aria-label="Module Declaration">Module Declaration</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#the-always-block" aria-label="The Always Block">The Always Block</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#representing-values" aria-label="Representing Values">Representing Values</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#z-and-x" aria-label="Z and X">Z and X</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#connecting-the-button" aria-label="Connecting the Button">Connecting the Button</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#building-your-project" aria-label="Building Your Project">Building Your Project</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#loading-your-project" aria-label="Loading Your Project">Loading Your Project</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#some-notes-on-hardware" aria-label="Some Notes on Hardware">Some Notes on Hardware</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#duplication" aria-label="Duplication">Duplication</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#array-indexing" aria-label="Array Indexing">Array Indexing</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#always-blocks" aria-label="Always Blocks">Always Blocks</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>This tutorial will walk you through creating your first project and making the onboard LED light up when you press the reset button.</p>
+<h2 id="creating-a-new-project">Creating a New Project</h2>
+<p>Launch Alchitry Labs. After click through the welcome screen, you should see the following.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/Screenshot_from_2019-03-24_13-40-14.png" alt="Screenshot_from_2019-03-24_13-40-14.png" /></p>
+<p>Click on <strong>File-&gt;New Project</strong>. In the dialog that pops up enter a <strong>Project Name</strong> of <strong>LEDtoButton</strong>. You can leave the default workspace if you want or browse for a different one. This is where all your projects will be stored</p>
+<p>Use the drop-down menu to choose the board you are using.</p>
+<p>Leave the language set to Lucid and <strong>From Example</strong> set to <strong>Base Project</strong>. This will copy a bare-bones project as the starting point.</p>
+<p>It should now look something like this. Note that your workspace will be different.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/Screenshot_from_2019-03-24_13-41-08.png" alt="Screenshot_from_2019-03-24_13-41-08.png" /></p>
+<p>Click <em>Create</em> to create your project.</p>
+<p>Back in the main window, expand the tree on the left to find the top file inside of <strong>Source</strong>. This has the name of <strong>_board__top.luc</strong>. Double click on it to open it in the editor.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/Screenshot_from_2019-03-24_13-43-29.png" alt="Screenshot_from_2019-03-24_13-43-29.png" /></p>
+<p>The top file contains all the external inputs and outputs of your design. Your future projects can be built out of many modules, but they all must be sub-modules to this top module. This will be covered more in a later tutorial. For now, we will make all our edits to this file.</p>
+<p>Conveniently, the default file has all the basic inputs and outputs that are hardwired to the FPGA already declared. This way you can just use them without having to look up what pins they connect to.</p>
+<p>Note that if you using the Mojo the top files looks a little difference. You may have noticed the yellow underline under all of the inputs. This is because we aren't using them currently and the IDE is just giving us a warning. The Mojo has an AVR microcontroller on the board that the FPGA can talk to. There are connections defined in the top module that are used for this.</p>
+<p>If you hover your cursor over a warning or error, text will show up to let you know what is going on. Also when you attempt to build your project (click the hammer icon) all the warnings and errors will be printed in the console.</p>
+<h2 id="the-contents-of-a-module">The Contents of a Module</h2>
+<p>Before we continue on, let's cover the basics of what makes up a module and what a module even is. A module is way to organize your project into smaller pieces broken apart by function. It is very similar to the concept of functions when programming where you break down your program into smaller more manageable pieces. Modules are also nice because they can be reused in multiple parts of your design.</p>
+<h3 id="module-declaration">Module Declaration</h3>
+<p>The first part of any module is the <strong>module declaration</strong>. This is lines 1 through 14, reproduced below.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> au_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 100MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> usb_rx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// USB-&gt;Serial input
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> usb_tx           </span><span style="color:#969696;">// USB-&gt;Serial output
+</span><span>  </span><span style="color:#ed4343;">) {
+</span></code></pre>
+<p>It always starts off with the <strong>module</strong> keyword followed by the name of the module. In this case it is <em>au_top</em>. It is convention to name your module the same thing as the file name.</p>
+<p>After the module name comes an optional <strong>parameter declaration</strong>, this isn't used in our module and it will be covered in a later tutorial.</p>
+<p>After that is the <strong>port declaration</strong>. This is where you specify all the <strong>inputs</strong>, <strong>outputs</strong>, and <strong>inouts</strong> of your module. An <strong>inout</strong> is a bi-directional port and will also covered in a later tutorial.</p>
+<p>Most of the ports in this module are single bit signals. However, the outputs <em>led</em> and <em>spi_channel,</em> on the Mojo, are a multi-bit signals. <em>led</em> consists of 8 bits and <em>spi_channel</em> is 4 bits. This is declared by the [8] and [4] after the signal's names, respectively.</p>
+<p>The reason <em>led</em> is 8 bits wide, is because the board has 8 LEDs on it! Each bit of the signal connects to one of the LEDs on the board.</p>
+<p>We only care about two of these ports for our project, <em>led</em> and <em>rst_n</em>. As you may have guessed, <em>rst_n</em> connects to the reset button. The _<em>n</em> part of it's name is because the signal is active low (as stated in the comment). This means that the value is typically 1 (high), but when the button is pressed (active) it is 0 (low).</p>
+<h3 id="the-always-block">The Always Block</h3>
+<p>There is some stuff before the always block, but we will get back to that later (it will make more sense then). So for now, just ignore it.</p>
+<p>Always blocks are where all the magic happens. It is where you can perform computation and read/write signals. The always block gets its name because it is <em>always</em> happening. When the tools see an always block, they need to generate a digital circuit that will replicate the <em>behavior</em> that the block describes. Let's take a look at the always block in our code.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span><span> 
+</span><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8h00</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs off
+</span><span>    usb_tx </span><span style="color:#ed4343;">=</span><span> usb_rx</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// echo the serial data
+</span><span>  </span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Notice I said the tools need to replicate the block's <em>behavior</em> and not the block. That is because inside an always block, statements that appear lower in the block have <em>priority</em> over earlier statements. This is similar to programming, and this abstraction makes it so much easier to program complex logic. However, it is important to understand you are not programming and this is just an abstraction. To make this clear take a look at this example.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>  led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8h00</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs off
+</span><span>  led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8hFF</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// turn LEDs on
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>What would you expect this always block to do? If you have a programming background, you may be tempted to think that the LEDs would continuously turn on and off. You're not in Kansas anymore Dorthy, this isn't programming and that's not what happens. Remember, there is no processor to run code (that is unless you explicitly make one, like a boss). When the tools see this block, they completely ignore the first line. This is because the second line has higher priory. If you were to synthesize this design, the tools would hard-wire the <em>led</em> signal to <em>8hFF</em> (all 1s).</p>
+<p>Back to our design. Were we are assigning four signals a value (six on the Mojo). Note that every output of a module <strong>must</strong> have a value assigned to it at all times. Since we aren't using these outputs, they are assigned with some reasonable defaults. Let's take a quick detour and look at how values are represented in Lucid.</p>
+<h3 id="representing-values">Representing Values</h3>
+<p>A value is made of one or more bits. The number of bits a value has is known as its width. There are a few ways to specify a value, some use an implied width while others allow you to explicitly set a width. If you are unfamiliar with binary or hexadecimal please read the <a href="https://alchitry.com/tutorials/background/encodings/">Encodings Tutorial</a> before continuing.</p>
+<p>The first way to represent a value is to just type a decimal number. For example, 9.</p>
+<p>Sometimes it’s easier to specify a number with a different radix than 10 (the implied default). Lucid supports three different radix, 10 (decimal), 16 (hexadecimal), and 2 (binary). To specify the radix, prepend d, h, or b to specify decimal, hexadecimal, or binary respectively. For example, hFF has the decimal value 255 and b100 has the decimal value 4. If you don’t append a radix indicator, decimal is assumed.</p>
+<p>It is important to remember that all number will be represented as bits in your circuit. When you specify a number this way, the width of the number will be the minimum number of bits required to represent that value for decimal. For binary, it is simply the number of digits and for hexadecimal it is four times the number of digits. For example, the value 7 will be three bits wide (111), <em>1010</em> will be four bits wide, and <em>hACB</em> will be 12 bits wide.</p>
+<p>Sometimes you need more control over the exact width of a number. In those cases you can specify the number of bits by prepending the number of bits and radix to the value. For example, <em>4d2</em> will be the value 2 but using 4 bits instead of the minimum 2 (binary value 0010 instead of 10). You must specify the radix when specifying the width to separate the width from the value.</p>
+<p>If you specify a width smaller than the minimum number of bits required, the number will drop the most significant bits. When this happens you will get a warning.</p>
+<h3 id="z-and-x">Z and X</h3>
+<p>When you specify a decimal number, all the bits in your value will be either 0 or 1. However, each bit can actually be one of four values, 0, 1, x, or z. The values of 0 and 1 are fairly self explanatory, it just means the bit is high (1) or low (0). The value of x means <strong>don't care</strong>. It means you want to assign a value, but you really don't care if it is 1 or 0. This is useful for the synthesizer because your circuit may be simpler in one of the cases and it gives the tools the freedom to choose. During simulation, x also means unknown. Z means that the bit is <strong>high-impedance</strong> or tri-stated. This means that it is effectively disconnected. Note that FPGAs can't realize high-impedance signals internally, so the only time you should use z is for outputs of the top module.</p>
+<p>Back to our always block, the first two lines connect the input <em>rst_n</em> to the input of the <em>reset_cond</em> module. Modules can be nested which makes it possible to reuse them and helps make your project manageable. This is all covered later in more detail so don't get hung up over this yet. The only important thing to know about these two lines, is that the <em>rst_n</em> signal is active low (0 when the button is pressed, 1 otherwise) while the <em>rst</em> signal is active high.</p>
+<p>The next line assigns the <em>led</em> output to all zeros. This turns off all the LEDs.</p>
+<p>On the Alchitry boards, the last line connects the serial input pin to the serial output pin effectively echoing anything the FPGA receives over the serial port. We could have also tied this pin to 1 to disable it.</p>
+<p>On the Mojo, the last three lines assign the outputs to z. This is because they aren't being used and we shouldn't drive these as they connect directly to the microcontroller on the Mojo (to use these you have to wait for the microcontroller to signal that it is ready first, this is also covered later).</p>
+<p>Looking at this always block, we can see there are no redundant assignments (like in our led on/off example). That means these signals will literally be connected to these values.</p>
+<h2 id="connecting-the-button">Connecting the Button</h2>
+<p>We are going to modify the module to connect the reset button to the first LED so that when you push the button the LED turns on.</p>
+<p>To do this we need to modify line 21, where <em>led</em> is assigned.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>led </span><span style="color:#ed4343;">= c{</span><span style="color:#a269dc;">7h00</span><span style="color:#ed4343;">,</span><span> rst</span><span style="color:#ed4343;">};     </span><span style="color:#969696;">// connect rst to the first LED
+</span></code></pre>
+<p>The output <em>led</em> is an 8 bit array. That means when you assign it a value you need to provide an 8 bit array. However, the signal <em>rst</em> is a single bit wide. To compensate for this we use the concatenation operator.</p>
+<p>To concatenate multiple arrays into one, you can use the concatenation operator, c{ x, y, z }. Here the arrays (or single bit values) x, y, and z will be concatenated to form a larger array.</p>
+<p>In our code we are concatenating the constant <em>7h0</em> with <em>rst</em>. The constant here is seven zeros. The 7 represents the size, h represents the number base (in this case hexadecimal) and 0 represents the value. Since we just need a bunch of zeros, the number base doesn’t really matter and we could have used <em>7b0</em>, or <em>7d0</em>, for binary or decimal respectively.</p>
+<p>Note that values are zero padded if the specified width is larger than the size required to store the value. For example, <em>4b11</em> would the same as <em>4b0011</em>.</p>
+<p>If you don’t care about how many bits a values takes up, you don’t have to specify it. The minimum number of bits that will still fit the value will be used. For example, <em>b1101</em> is exactly the same as <em>4b1101</em>. If you are using decimal, you can even drop the d so <em>4d12</em> is the same as <em>d12</em> which is the same as just <em>12</em>. However, when you are concatenating values, you should always specify a width to make it obvious how big the array will be.</p>
+<h2 id="building-your-project">Building Your Project</h2>
+<p>Go ahead and click the little hammer icon in the toolbar to build your project. You may need to first specify where you installed the builder.</p>
+<p>For the Au, use <strong>Settings-&gt;Vivado Location...</strong> and point it to the <em>Xilinx/Vivado/YEAR.MONTH</em> folder.</p>
+<p>For the Cu, use <strong>Settings-&gt;iCEcube2 Location...</strong> and point it to the <em>lscc/iCEcube2</em> folder. You will also need to use <strong>Settings-&gt;iCEcube2 License Location...</strong> to point it to the license file you downloaded when you installed iCEcube2.</p>
+<p>For the Mojo, use <strong>Settings-&gt;ISE Location...</strong> and point it to the <em>Xilinx/14.7</em> folder.</p>
+<p>Once set you should be able to build your project.</p>
+<p>As the project builds you should see a bunch of text spit out. Just wait for it to finish building. It should look like this.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/Screenshot_from_2019-03-24_14-09-37.png" alt="Screenshot_from_2019-03-24_14-09-37.png" /></p>
+<p>The important line here is where it says <strong>Finished building project</strong>. This means that the IDE was able to find a .bin file after. If you ever get a red message telling you the bin file couldn't be found you should scroll up through the build messages for the error that caused it to fail.</p>
+<h2 id="loading-your-project">Loading Your Project</h2>
+<p>With your project built, plug your board into your computer if you haven’t already.</p>
+<p>If you are using the Mojo, go to <strong>Settings-&gt;Serial Port...</strong> and select the serial port the Mojo is connected to.</p>
+<p>The Alchitry boards are detected automatically.</p>
+<p>It is time to load your project onto the board. You have two options. The first is the hollow arrow, this will write your configuration directly to the FPGA's RAM. The second is the solid arrow, this will write your configuration to the FLASH memory on the board (as well as the FPGA). If you program to the FPGA's RAM, your configuration will be lost when the board loses power. However, if you program to the FLASH, your configuration will be automatically loaded when the board is powered up.</p>
+<p>The Alchitry Cu doesn't support loading directly to the FPGA.</p>
+<p>If you program to RAM and then power cycle the board, the last configuration written to FLASH will automatically be loaded. This is helpful when you want to temporarily try out some configuration.</p>
+<p>If you want to stop the FPGA from being configured at power up, you can click the eraser icon. This will wipe the FLASH memory and clear the FPGA's current configuration.</p>
+<p>Go ahead and click the arrow to program the FPGA.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/Screenshot_from_2019-03-24_14-22-47.png" alt="Screenshot_from_2019-03-24_14-22-47.png" /></p>
+<p>Now look at your board. You should see the <strong>DONE</strong> LED on. This means that the configuration was loaded successfully to the FPGA.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/ledbutton.jpg" alt="ledbutton.jpg" /></p>
+<p>Now push the reset button.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/ledbuttonpressed.jpg" alt="ledbuttonpressed.jpg" /></p>
+<p>Notice the LED turned on!</p>
+<h2 id="some-notes-on-hardware">Some Notes on Hardware</h2>
+<p>When you press the button, how long does it take for the LED to turn on? If this was a processor instead of an FPGA, the processor would be in a loop reading the button state and turning the LED on or off based on that state. The amount of time between pressing it and when the LED turns on would vary depending on what code the processor was executing and how long it is until it gets back to reading the button and turning the LED on. As you add more code to your loop, this time and variation gets bigger.</p>
+<p>However, an FPGA is different. With this design (note I said design and not code), the button input is directly connected to the LED output. You can imagine a physical wire bridging the input to the output inside the FPGA. In reality, it's not a wire but a set of switches (multiplexers) that are set to route the signal directly to the output. Well, this is only partially true since the <em>reset_conditioner</em> is there which does some stuff to clean up the reset signal.</p>
+<p>Since the signal doesn’t have to wait for a processor to read it, it will travel as fast as possible through the silicon to light the LED. This is almost instant (again, forget about the <em>reset_conditioner</em>)! The best part is that if you wire the button the LED then go on to create some crazy design with the rest of the FPGA, the speed of this will not slow down. This is because the circuits will operate independently as they both simply <em>exist</em>. It is this parallelism where FPGAs get their real power.</p>
+<h2 id="duplication">Duplication</h2>
+<p>What if we want all the LEDs to turn on and off with the press of the button instead of just one?</p>
+<p>Well we could do it using concatenation just like before by replacing line 20 with the following.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>led </span><span style="color:#ed4343;">= c{</span><span>rst</span><span style="color:#ed4343;">,</span><span>rst</span><span style="color:#ed4343;">,</span><span>rst</span><span style="color:#ed4343;">,</span><span>rst</span><span style="color:#ed4343;">,</span><span>rst</span><span style="color:#ed4343;">,</span><span>rst</span><span style="color:#ed4343;">,</span><span>rst</span><span style="color:#ed4343;">,</span><span>rst</span><span style="color:#ed4343;">};
+</span></code></pre>
+<p>However, there is a better way! This is where the array duplication syntax comes in handy. The syntax is <em>M x{ A }</em>. Here M is the number of times to duplicate A. That means we can make line 20 look like this.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">x{</span><span>rst</span><span style="color:#ed4343;">};
+</span></code></pre>
+<p>Much cleaner! This does exactly the same thing as before, but requires a lot less typing.</p>
+<h2 id="array-indexing">Array Indexing</h2>
+<p>There is an alternative way to write the code where we only want one LED to light. This is by assigning the parts of the led array separately.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">7h0</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// turn these LEDs off
+</span><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> rst</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// connect rst to led[0]
+</span></code></pre>
+<p>On line 20, the bit selector <em>[7:1]</em> is used to select the bits 7 through 1 of the led array. These seven bits are set to 0.</p>
+<p>On line 21, <em>[0]</em> is used to select the single bit, 0, and set it to <em>rst</em>.</p>
+<p>There are two ways to select a group of bits. The first one (and most common) is the one used above where you specify the start and stop bits (inclusive) explicitly. The other way is to specify a start bit and the total number of bits to include above or below the start bit.</p>
+<p>Line 20 could be rewritten as any of the following.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">7b0</span><span style="color:#ed4343;">;  </span><span style="color:#969696;">// select bits 7-1
+</span><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">-:</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">7b0</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// select 7 bits starting from 7 and going down
+</span><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">+:</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">7b0</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// select 7 bits starting from 1 and going up
+</span></code></pre>
+<p>The benefit of using the start-width syntax is the width is guaranteed to be constant. This means you can use a signal to specify the start index. This will be covered in a later tutorial.</p>
+<h2 id="always-blocks">Always Blocks</h2>
+<p>Due to the nature of always blocks, you could also write the LED assignment as follows.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8b0</span><span style="color:#ed4343;">;              </span><span style="color:#969696;">// turn the LEDs off
+</span><span>led</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> rst</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// connect rst to led[0]
+</span></code></pre>
+<p>Because the second statement has priority over the first, <em>led[0]</em> will actually NEVER have the value 0! It will be permanently connected to <em>rst</em>. Note that the second line only assigns the first bit of <em>led</em>. That means that the other 7 bits will still receive their value from the first statement.</p>
+<p>This is one of the weird things of working with hardware. The code you write is not run on a processor like it is when you program. Instead, the code you write is interpreted by the tools to figure out what behavior you want. The tools then create a circuit that will match that behavior.</p>
+<p>Always blocks are an easy way to describe complex behavior, but the way you describe the behavior and it's actual implementation can vary.</p>
+<p>Congratulations! You've finished your first tutorial on Lucid. When you're ready for more click here for the <a href="https://alchitry.com/tutorials/archive/lucid_v1/mojo/synchronous-logic/">Synchronous Logic Tutorial</a>.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;synchronous-logic&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Synchronous Logic</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

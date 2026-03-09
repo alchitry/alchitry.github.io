@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>ISE Setup</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;mojo&#x2F;ise&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;mojo&#x2F;ise&#x2F;">ISE Setup</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">ISE Setup</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+7 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;mojo&#x2F;ise.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#windows-8-1-10" aria-label="Windows 8.1&#x2F;10">Windows 8.1&#x2F;10</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#windows-10-64bit" aria-label="Windows 10 64bit">Windows 10 64bit</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#windows-8-64bit" aria-label="Windows 8 64bit">Windows 8 64bit</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#creating-a-launcher-in-linux" aria-label="Creating a launcher in Linux">Creating a launcher in Linux</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>ISE is a program created by Xilinx to support their FPGAs. It includes a bunch of other tools that will be useful for creating your projects. ISE is required to do any work because it is what actually synthesizes your designs into bit files that can be loaded onto the Mojo.</p>
+<p>The process is fairly long, but it shouldn't be too tricky if you follow these instructions. These instructions were written for ISE 14.7 and tested on Ubuntu 12.04, Ubuntu 12.10, Linux Mint, Windows 7, Windows 8, and Windows 10.</p>
+<p>A quick note for Windows 10. Xilinx doesn't officially support Windows 10 but with a simple work around it should run just fine. They recently released a &quot;Windows 10&quot; version that is really just the Linux version bundled with a virtual machine to run on Windows. This version won't work with the Mojo IDE. I highly recommend using the older version which is now labeled as &quot;Windows 7&quot; even on Windows 10. There is a simple workaround explained in the &quot;Windows 10 64bit&quot; section below that makes this version work.</p>
+<p>First <a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive-ise.html">click here</a> to go to the Xilinx downloads page. Under &quot;Version&quot; select 14.7. <strong>Do not select &quot;14.7 (Windows 10)&quot; even if you are using Windows 10.</strong> Scroll down a bit until you see <strong>ISE Design Suite</strong>. Under that header you should see full installers for Windows and Linux. Choose the one for the system you are installing ISE on.</p>
+<p>You will then be prompted to login. If you don't have an account, create one. Once you have logged in the download should start.</p>
+<p>If you have Java installed, you may be prompted to use their &quot;Download Manager&quot;, if not it will just start like any other download. The method you use does not make a difference; however, if you have problems with the download manager you can disable Java in your browser and try again to prevent it from using it.</p>
+<p>The file is big, about 6.5GB, so make sure you have plenty of space! (Also, the installation requires a further 16GB of space.)</p>
+<p>Once the file is downloaded you need to decompress it. The file is a tar file so if you are on Windows you will need to install something like <a href="http://www.7-zip.org/download.html">7-Zip</a>. Some tar extractors fail to properly extact this archive. 7-Zip is known to work so if you have trouble with the installer, try extracting it with 7-Zip.</p>
+<p>For Windows, just open the folder and double click on <strong>xsetup</strong> to start the installation.</p>
+<p>For Linux, you will need to open up a terminal and cd into the directory where you extracted the files. Then run the setup with <strong>sudo ./xsetup</strong>.</p>
+<p>Once in the setup, accept all the license agreements. Once you are on the page that asks which edition to install, choose the <strong>ISE WebPACK</strong> option and click next.</p>
+<p><img src="https://cdn.alchitry.com/setup/win_select.jpg" alt="win_select.jpg" /></p>
+<p>You are then prompted to select what you would like to install. You only need to select the first option as shown. If you are running Windows 8 on a 64bit computer, you don't need to check anything as the built-in license manager doesn't work anyways. I've also been told that having <strong>Use multiple CPU cores for faster installation</strong> can cause it to lock up during install, but I personally haven't had that happen.</p>
+<p><img src="https://cdn.alchitry.com/setup/lin_license.jpg" alt="lin_license.jpg" /></p>
+<p>Once the install is done you should be prompted to get a license.</p>
+<p>Choose the <strong>Get Free ISE WebPack License</strong> option and click next.</p>
+<p>If you are using Windows clicking <strong>Connect Now</strong> should open up a webpage for you. If you are on Linux you will probably be shown the same prompt, but if clicking <strong>Connect Now</strong> doesn't work you can go to <a href="http://www.xilinx.com/getlicense">http://www.xilinx.com/getlicense</a>.</p>
+<p>From that page login and select <strong>ISE Design Suite: WebPACK License</strong>. Click on the button in the bottom left labeled <strong>Generate Node-Locked License</strong>.</p>
+<p>Click next twice and you should be emailed your license! Open up your email and download the .lic file.</p>
+<p>Now go back to the installation window. Under the <strong>Manage Xilinx Licenses</strong> tab click <strong>Copy License...</strong> and select your .lic file. If you are on Windows 8, clicking <strong>Copy License...</strong> will crash the license manager. See below how to get your license setup in Windows 8.</p>
+<p>Once it finishes copying the license file you can close the window. ISE is now installed and ready to use!</p>
+<p>If you are a Windows user you can stop here. However, if you are using Linux the following steps will make it easier to use ISE.</p>
+<h2 id="windows-8-1-10">Windows 8.1/10</h2>
+<p>Xilinx has released a guide for overcoming the common problems with Windows 8.1 and 10. <a href="http://www.xilinx.com/support/answers/62380.html">Check out the guide here.</a></p>
+<h2 id="windows-10-64bit">Windows 10 64bit</h2>
+<p>The latest updates to Windows 10 seem to break PlanAhead. The second part of <a href="https://www.eevblog.com/forum/microcontrollers/guide-getting-xilinx-ise-to-work-with-windows-8-64-bit/">this post</a> titled &quot;Fixing PlanAhead not opening from 64-bit Project Navigator&quot; seemed to fix the issue.</p>
+<h2 id="windows-8-64bit">Windows 8 64bit</h2>
+<p>To get your license installed in Windows 8 you need to create a folder in the root of your home drive (usually C). Name the folder &quot;.xilinx.&quot; note both dots. Once you made the folder it should show up as &quot;.xilinx&quot; (no trailing dot). For whatever reason, Windows requires you to have that trailing dot and it removes it automatically. Once you have that folder created just drop your Xilinx.lic file into it. ISE should now find the license file and open without complaints.</p>
+<p>The 64bit version of ISE doesn't work correctly in Windows 8. Every time it tries to open a file dialog it crashes. To fix this you need to use the 32bit version.</p>
+<p>First navigate to C:\Xilinx\14.7\ISE_DS\ISE\bin</p>
+<p>The <strong>nt</strong> folders contain the executables. Right now any shortcuts you have and file associations point to the 64bit version. Move into the <strong>nt</strong> folder.</p>
+<p>Copy the file <strong>ise</strong>. Move back to the <strong>bin</strong> folder and into the <strong>nt64</strong> folder. Rename the current <strong>ise</strong> file to <strong>ise64</strong> and paste the 32bit version of the <strong>ise</strong> file. This will make sure you use the 32bit version.</p>
+<p>If you would like a shortcut on your start screen, rename the file you just pasted into <strong>nt64</strong> to <strong>ISE Design Suite</strong>. Then right click it and choose <strong>pin to start</strong>.</p>
+<p><img src="https://cdn.alchitry.com/setup/image-asset.png" alt="" /></p>
+<p>Once it is pinned you need to rename it back to <strong>ise</strong>. I found that trick of renaming, pinning, change name back to be useful to make the launcher on the start page.</p>
+<h2 id="creating-a-launcher-in-linux">Creating a launcher in Linux</h2>
+<p>Open up a terminal and enter</p>
+<pre data-lang="bash" style="background-color:#282828;color:#ffffff;" class="language-bash "><code class ="language-bash" data-lang="bash"><span style="color:#6699cc;">cd /opt/Xilinx/14.7/ISE_DSsudo gedit run_ise.sh
+</span></code></pre>
+<p>In the text editor paste the following code.</p>
+<pre data-lang="bash" style="background-color:#282828;color:#ffffff;" class="language-bash "><code class ="language-bash" data-lang="bash"><span style="color:#969696;">#!/bin/bash. /opt/Xilinx/14.7/ISE_DS/settingsXX.shise
+</span></code></pre>
+<p>Make sure you replace XX with the type of computer you are using (32 for 32bit computers;  64 for 64bit computers).</p>
+<p>Save and close the file. Then back in the command line enter the following.</p>
+<pre data-lang="bash" style="background-color:#282828;color:#ffffff;" class="language-bash "><code class ="language-bash" data-lang="bash"><span style="color:#6699cc;">sudo chmod +x run_ise.sh
+</span></code></pre>
+<p>This will make the file you just created executable.</p>
+<p>The following applies to Ubuntu. If you are using Linux Mint just right click on the <strong>Menu</strong> button and click <strong>Edit menu</strong>. From there you can create a launcher the same way as shown below.</p>
+<p>Enter the following in the terminal.</p>
+<pre data-lang="bash" style="background-color:#282828;color:#ffffff;" class="language-bash "><code class ="language-bash" data-lang="bash"><span style="color:#6699cc;">sudo apt-get install</span><span style="color:#a269dc;"> --no-install-recommends</span><span style="color:#6699cc;"> gnome-panelsudo gnome-desktop-item-edit /usr/share/applications/</span><span style="color:#a269dc;"> --create-new
+</span></code></pre>
+<p><img src="https://cdn.alchitry.com/setup/launcher_ubuntu.png" alt="launcher_ubuntu.png" /></p>
+<p>Fill out the form as shown. For the command select the run_ise.sh file you created in /opt/Xilinx/14.7/ISE_DS.</p>
+<p>An icon can be found at /opt/Xilinx/14.7/ISE_DS/ISE/data/images/pn-ise.png</p>
+<p>Click OK to create the launcher.</p>
+<p>ISE should now show up in Unity.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;mojo&#x2F;mojo-bootloader&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Flashing the Bootloader</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;mojo&#x2F;update-the-mojo&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Updating the Mojo</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

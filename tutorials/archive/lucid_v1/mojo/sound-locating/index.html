@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Sound Locating</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;sound-locating&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;">Lucid V1</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;sound-locating&#x2F;">Sound Locating</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Sound Locating</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+38 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;sound-locating.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#microphone-shield" aria-label="Microphone Shield">Microphone Shield</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#theory-of-operation" aria-label="Theory of Operation">Theory of Operation</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#implementation-overview" aria-label="Implementation Overview">Implementation Overview</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#implementation" aria-label="Implementation">Implementation</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#pdm-microphones" aria-label="PDM Microphones">PDM Microphones</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#fft" aria-label="FFT">FFT</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#cordic" aria-label="CORDIC">CORDIC</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#capture-state" aria-label="CAPTURE State">CAPTURE State</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#fft-state" aria-label="FFT State">FFT State</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#difference-state" aria-label="DIFFERENCE State">DIFFERENCE State</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#aggregate-state" aria-label="AGGREGATE State">AGGREGATE State</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>In this tutorial we will use the Microphone Shield to locate the direction that sound comes from. This is a fairly advanced tutorial that pushes the limits of what you can do with the Mojo.</p>
+<p>We will start by covering the theory and working into how to implement this on the FPGA.</p>
+<h3 id="microphone-shield">Microphone Shield</h3>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/dsc_3056-edit_large.jpg" alt="dsc_3056-edit_large.jpg" /></p>
+<p>The Microphone Shield has seven <em>PDM</em>, or <strong>P</strong>ulse <strong>D</strong>ensity <strong>M</strong>odulation, microphones. This type of microphone has a digital interface. You supply a clock and they output a series of bits. The density of these bits represents the magnitude of the audio being detected. Wikipedia has a good <a href="https://en.wikipedia.org/wiki/Pulse-density_modulation">article</a> on this.</p>
+<p>The shield also has 16 LEDs that are arranged in a ring and multiplexed over the Mojo's existing LEDs. </p>
+<p>We will be using these LEDs to visually output the sound direction.</p>
+<h3 id="theory-of-operation">Theory of Operation</h3>
+<p>The idea is that we will record a short sample of audio from all seven microphones at exactly the same time. We can then use these samples to calculate the delay between the ring of microphones and the center microphone. These delays can be used to detect the direction of the sound's source.</p>
+<p>For this to work, we need to make a few fairly reasonable assumptions. The first is that all sound comes from the sides of the board and not from above or below. This is required because we only have a 2D grid of microphones. The second assumption is that sound waves have a straight wavefront. This isn't typically true as sound originating from a point will have a curved wavefront, but as long as the source isn't too close it'll be a reasonable approximation. inally, we assume that each frequency in a sample comes from a single direction.</p>
+<p>So how do we go about calculating the delays between the microphones? If we had a simple pulse and everything was quiet, it would be quite easy by just looking at the peak of the pulse in each sample. However, the real world is hardly that nice. Instead, we will be using the <em>phase</em> of the different frequencies in each sample. This has two major benefits: the phase is pretty easy to calculate with an FPGA by using a <em>fast fourier transform</em> (FFT), and the other being that we can detect multiple sound sources as long as their frequency components are different enough. Imagine a bird chirping and someone talking. The bird chirps will be substantially higher pitch than the person talking, and we should be able to detect these simultaneously.</p>
+<p>If you aren't familiar with FFTs, don't worry too much. All you need to know for this example is that a Fourier transform takes a signal in the time domain, meaning the x-axis of the sample is time, and converts it into the frequency domain. It tells you what frequency sine waves (and their magnitudes) you would have to add together to get the exact same signal back. If you've ever seen a music equalizer, you've seen an FFT in action. This is exactly what the demo of the Clock/Visualizer Shield does.</p>
+<p>So after collecting a short sample from all seven microphones, we can run each one through an FFT to get the frequency components. The FFT output for each frequency is a complex number. The real portion of the number corresponds to the magnitude of the sine portion, and the imaginary portion corresponds to the cosine portion. By adding together sine and cosine waves of varying amplitudes, you can create a sine wave with any phase.</p>
+<p>The raw output of the FFT isn't particularly useful to us. Instead, it would be much better if we knew the phase and magnitude of each frequency. To do this, we need to convert the complex number, which can be thought of as converting a Cartesian coordinate (if that helps you) into a polar coordinate. Basically, if we were to plot the complex number on a regular 2D space, instead of the <em>x</em> and <em>y</em> position of the coordinate, we want to know the angle and distance it is from the origin. Again, this isn't too bad to do with an FPGA, as you'll see later.</p>
+<p>With the phase of each frequency calculated, we can subtract the phase of the center microphone from each of the surrounding six microphones to get a phase offset for each one. Using the formula <em>delay = phase offset / frequency</em>, we could calculate the delay for that frequency. However, scaling the delay by a constant factor (the frequency) for all six microphones won't make a difference later, and we can use this fact to avoid a costly division in the FPGA. Instead, we will simply use the phase offsets as if they were the delays, since they are proportional to them.</p>
+<p>Now that we have a delay for each microphone relative to the center microphone, we need to combine these to get an overall direction. To do this, we need to scale each of the microphone's location vectors by their corresponding delay and sum them. This will give us a single vector pointing in the direction of the sound source.</p>
+<p>The following figure shows this geometrically. I drew in only three microphones for simplicity. Adding the other three would make the sum of the scaled vectors twice as long but wouldn't change the direction due to symmetry. I also drew this so that the sound is coming from the <em>y</em> direction and the microphones are rotated by <em>ϕ</em> instead of the sound coming in at angle <em>ϕ</em>. This will make it a little easier to show that this method works later. The black circles represent the locations of the microphones, and their coordinates are labeled.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/microphones_4_d7c39a4b-43f3-49d3-ae85-331f5c22eedc_large.png" alt="microphones_4_d7c39a4b-43f3-49d3-ae85-331f5c22eedc_large.png" /></p>
+<p>The delay of each microphone to the origin (center microphone) is proportional to the <em>y</em> value of the microphone's location. We can draw these in, as shown below.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/microphones_3_large.png" alt="microphones_3_large.png" /></p>
+<p>If we take the location of each microphone and scale it by the corresponding delay, we get the new purple lines shown in the next figure. Note that the bottom microphone has a negative delay, so the vector points in the opposite direction.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/microphones_2_large.png" alt="microphones_2_large.png" /></p>
+<p>Finally, we can take the three scaled vectors and sum them together by moving them tip-to-tail. This is shown by the light purple lines below. The orange vector is the result of the summation of the three scaled vectors.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/microphones_large.png" alt="microphones_large.png" /></p>
+<p>Notice that the <em>x</em> components of the summed scaled vectors cancel, so the resulting sum points only in the positive <em>y</em> direction. To prove that this method works, we need to show that the <em>x</em> components cancel and the <em>y</em> components sum to a positive value for any value of <em>ϕ</em>. We don't care about the magnitude of the resulting vector, only the direction.</p>
+<p>It's fairly easy to prove this is true but I'm not going to reproduce the proof here. If you are curious it is fully covered in <a href="https://www.amazon.com/gp/product/B074VTXVSM/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B074VTXVSM&amp;linkCode=as2&amp;tag=embeddedmicro-20&amp;linkId=43827df1ca2f36f080be5ef94b9d4bc1">my book</a>.</p>
+<p>Now that we have the angle for the frequency, we need to aggregate each angle into something useful. I chose to bin them into 16 directions so that it would be easier to use and display them on the LEDs. I used the magnitude from the center microphone to weight the importance of each frequency's contribution. This was done by iterating through each frequency, determining the bin it belonged to, and keeping a running total of the magnitude of each bin.</p>
+<p>The final output is the 16 values representing how much noise came from that direction.</p>
+<h3 id="implementation-overview">Implementation Overview</h3>
+<p>Now that we have an idea of how this is going to work, we need to come up with a plan for implementing this in hardware.</p>
+<p>First, we need to gather the audio samples from all seven microphones at exactly the same time. The microphones on this shield are PDM microphones, meaning that they provide a series of 1-bit pulses at a high rate (2.5 MHz in this case) that we can pass through a low-pass filter (basically, a moving average) to recover the audio signal. We also decimate the signal by a factor of 50, so our sampling rate becomes 50 KHz.</p>
+<p>With the seven audio samples captured, we need to feed each of them through an FFT to extract their frequency information. The output of the FFT is complex numbers, but we need it to be in phase-magnitude form, so we then pass these values through a module that calculates the new values.</p>
+<p>With the phase-magnitude representation of all the samples, we can then subtract the phases of the six surrounding microphones from the center one to get the delays. We need to be careful here because after the subtraction, the phase difference can be outside the +/– pi range. If it is, we need to add or subtract 2 pi to get it back into range.</p>
+<p>The calculated phase differences are equal to the delay multiplied by the frequency. Because we are working with one frequency at a time, it is really just the delay scaled by a constant. We can use this fact to avoid having to divide by the frequency.</p>
+<p>We then scale the six microphone location vectors by the corresponding phase differences (delays) and sum their components. This gives us a vector that points in the direction of the sound source for this frequency. However, we care only about the direction of this vector, as the magnitude is pretty meaningless. We can convert the Cartesian vector into a phase-magnitude representation by using the same module as before to extract the phase (angle).</p>
+<p>Repeating this process for all the frequencies gives us an angle for the direction of sound for each frequency. We can pair each of these directions with the magnitude (volume) of that frequency from the center microphone to find out how relevant it is.</p>
+<p>This in itself could be the output of our design, but it is a little more useful to bin the directions into a handful of angles. In our case, we will assign each into one of 16 equally spaced bins. All the magnitudes of the frequencies that fall into a bin are summed to get that bin's overall magnitude. These 16 sums are the final output and represent the amount of sound that came from each bin's direction.</p>
+<p>We could implement this design as a full pipeline with each stage simply feeding into the next. The following figure shows what that could look like.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/fpga_1206.png" alt="fpga_1206.png" /></p>
+<p>This design would have the highest throughput, but it would also take up a lot of resources. In fact, it would take up way more than we have available in the Mojo's FPGA. However, we can instead perform each step in sequence and take advantage of the fact that a lot of the steps require the same operations, just on different data. In a full pipeline we would need seven FFTs and eight CORDICs (the Cartesian-to-phase-magnitude converts). However, we can reuse just one of each and save a ton of resources.</p>
+<p>The following is a drawing of the <em>data-path</em> of the circuit. The data-path shows the way data flows through a design, but it does not, for simplicity, show the control logic that controls the multiplexers and other flow decisions. The fully pipelined version doesn't need any control logic because the data just flows from one end to the other. However, we will need to create an FSM to control the compact version. The steps the FSM will need to take are outlined in the following paragraphs.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/fpga_1207.png" alt="fpga_1207.png" /></p>
+<p>First, samples from the microphones pass through the decimation filter and are stored in the RAM. The RAM is organized into seven groups of two (14 RAMs total), each 16 bits wide. The seven groups correspond to the seven microphones, and two RAMs in each group will store even and odd samples, respectively. The reason for the 7 x 2 arrangement will become clear later.</p>
+<p>When the blocks of RAM are full of sample data, the data is passed one channel at a time to the FFT. The data is also passed through a Hanning window (not shown) to minimize leakage in the FFT. The purpose of this is outside the scope of this book, but it comes down to multiplying the samples by the Hann function that is stored in a ROM. The output of the FFT is fed into the CORDIC to convert it to phase-magnitude format and then written back into the RAM, overwriting the original channel's sample data. When writing back to the RAM, the seven groups still correspond to each channel, but the two values in each group now are for the phase and magnitude values instead of even and odd samples. By having these two values in different RAMs, we can easily read or write them simultaneously. This is repeated seven times, once for each channel. After this step is done, the RAM contains phase and magnitude data for each channel.</p>
+<p>Because the sample data we are feeding into the FFT is all real (no imaginary components), the output of the FFT will be symmetrical. This means that even though each frequency has two values related to it, we have half the number of frequencies as we did samples, so we have the exact same number of values to store in the RAM.</p>
+<p>The next step is to take the phase-magnitude data for each frequency and pass it through the direction calculator to get the directional vector for that frequency. The angle (phase) of that vector is then extracted using the same CORDIC as before. The output is then saved back into the RAM. This time, we write the data to group 0, as we don't need the phase-magnitude data for this microphone (nor microphones 1–5) anymore.</p>
+<p>Finally, we feed the phase data from the last step and the magnitude data from microphone 6 (the center microphone) into the aggregator. The aggregator adds each sample to its corresponding bin and outputs the final results.</p>
+<p>Even with all this reuse, this design still use 77% of the LUTs, 32% of the DFFs, and occupies 94% of the slices in the Mojo. It just fits!</p>
+<h3 id="implementation">Implementation</h3>
+<p>Now that we have a road map of what we need to design, let's get into the code. You can find the full source as an example project in the Mojo IDE. To view it, create a new project and select <em>Sound Locator</em> from the <em>From Example</em> dropdown in the <em>New Project</em> dialog.</p>
+<p>We will start with the microphones and work our way through the steps of the sound locator.</p>
+<h4 id="pdm-microphones">PDM Microphones</h4>
+<p>This project relies on PDM microphones. These are a common type of microphone and easy to interface with an FPGA because they have a digital output. As noted previously, <em>PDM</em> stands for <em>pulse-density modulation</em>, which means that the density of pulses is correlated to the pressure on the microphone. Because of this simple interface, we need a lot of pulses to be able to get any real definition of the underlying signal. The microphones on the Microphone Shield can output between 1 and 3.25 million pulses per second, depending on the clock provided to it. In our design, we will use the nice middle value of 2.5 million per second.</p>
+<p>To convert this high-frequency, low-resolution pulse train into a more useful lower-frequency, higher-resolution signal, we will use a <em>cascaded integrator–comb</em> (CIC) filter. This type of filter is useful for changing sampling rates, decimation (decrease), or interpolation (increase). Lucky for us, Xilinx's CoreGen tool can be used to generate the filter.</p>
+<p>If you have the full Sound Locator project open, you can launch CoreGen and take a look at the <em>decimation_filter</em> core. It was created from the CIC Compiler version 3.0, which can be found under Digital Signal Processing → Filters → CIC Compiler and is shown in the following image.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/fpga_1208.png" alt="fpga_1208.png" /></p>
+<p>Here we specify that it is a decimation type filter and should have a decimation rate of 50. This will convert the 2.5 MHz input into 50 KHz output. Take a look at the frequency response chart, which shows that it is a low-pass filter. You can play with the other parameters to get it to attenuate the higher frequencies more at the cost of more hardware. For our use, it doesn't really make a difference.</p>
+<p>If you look at the second page, shown below, it shows the filter is capable of outputting 25 bits per sample. However, this is set to 20, so the last 5 bits are truncated. This was found empirically to be a good value for sensitivity, and we will be using only 16 bits for each sample anyway. The extra MSBs will be used to check for overflow but will otherwise be ignored.</p>
+<p>We also have this set not to use <em>Xtreme DSP Slices</em>, as we don't have enough to spare in the FPGA. This option will use the built-in multipliers when selected instead of using the general fabric of the FPGA. However, it will use two multipliers per filter, and we have seven filters. The FPGA on the Mojo has 16 multipliers, so 14 just for this stage would be way too much.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/fpga_1209.png" alt="fpga_1209.png" /></p>
+<p>For more information on the CIC filter, check out <a href="https://www.xilinx.com/support/documentation/ip_documentation/cic_compiler/v3_0/ds845_cic_compiler.pdf">the Xilinx LogiCORE documentation</a>.</p>
+<p>Armed with the filter, we can now look at the <em>pdm_mics.luc</em> file to see how it is used.</p>
+<p>In this module, we need to generate a clock for the microphones. This is a 2.5 MHz signal that is 1/20th of the 50 MHz system clock. To do this, we can use a counter that counts from 0–9 (10 cycles) and toggle the clock each time it overflows. We can detect overflows when the MSB falls.</p>
+<p>On each rising edge of the microphone clock, we have another bit of PDM data from each microphone. We first need to convert the single-bit value of 0 or 1 into a 2-bit signed value of –1 or 1 for the CIC filters.</p>
+<p>All that's left is to feed the data into the CIC filters and output the data from them after converting it to 16 bits. The CIC filter data is signed, so when we convert to 16 bits and want to saturate on overflows, we need to check for negative and positive overflow separately:</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> pdm_mics </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,             </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,             </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> mic_clk</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// clock for all the microphones
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> mic_data </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">],    </span><span style="color:#969696;">// data from each microphone
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> sample </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// sample from all 7 microphones
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> new_sample      </span><span style="color:#969696;">// new sample flag
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      counter clk_ctr </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">SIZE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">TOP</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">));       </span><span style="color:#969696;">// clock divider counter
+</span><span>      </span><span style="color:#0a8dbf;">dff</span><span> mic_clk_reg</span><span style="color:#ed4343;">;                           </span><span style="color:#969696;">// mic_clk dff
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>    edge_detector clk_edge </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">RISE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">FALL</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">)); </span><span style="color:#969696;">// clock counter reset detector
+</span><span>    edge_detector new_data </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">RISE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">), #</span><span style="color:#d45ada;">FALL</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">)); </span><span style="color:#969696;">// clock rising edge detector
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// decimates by a factor of 50
+</span><span>  decimation_filter dfilter </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">] (</span><span>.aclk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">));
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">SAMPLE_MSB </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">19</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">SAMPLE_LSB </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// used to store unused MSBs
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> left_over </span><span style="color:#ed4343;">[</span><span style="color:#d45ada;">SAMPLE_MSB </span><span style="color:#ed4343;">- </span><span style="color:#d45ada;">SAMPLE_LSB </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1 </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">];
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">var</span><span> i</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    </span><span style="color:#969696;">// generate a clock at 1/20 the system clock (2.5 MHz)
+</span><span>    clk_edge.in </span><span style="color:#ed4343;">=</span><span> clk_ctr.value</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">];   </span><span style="color:#969696;">// this bit will fall when clk_ctr resets
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>clk_edge.out</span><span style="color:#ed4343;">)                 </span><span style="color:#969696;">// if fall was detected
+</span><span>      mic_clk_reg.d </span><span style="color:#ed4343;">= ~</span><span>mic_clk_reg.q</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// toggle the mic clock
+</span><span> 
+</span><span>    new_data.in </span><span style="color:#ed4343;">=</span><span> mic_clk_reg.q</span><span style="color:#ed4343;">;      </span><span style="color:#969696;">// detect rising edges = new data
+</span><span> 
+</span><span>    mic_clk </span><span style="color:#ed4343;">=</span><span> mic_clk_reg.q</span><span style="color:#ed4343;">;          </span><span style="color:#969696;">// output mic clock
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// data valid at rising edge of mic clock
+</span><span>    dfilter.s_axis_data_tvalid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">x{</span><span>new_data.out</span><span style="color:#ed4343;">};
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// all decimators are identical so we can use any tvalid flag for new_sample
+</span><span>    new_sample </span><span style="color:#ed4343;">=</span><span> dfilter.m_axis_data_tvalid</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]; 
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// for each mic
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>      </span><span style="color:#969696;">// convert 0 or 1 into -1 or 1
+</span><span>      dfilter.s_axis_data_tdata</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] =</span><span> mic_data</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] ? </span><span style="color:#a269dc;">8d1 </span><span style="color:#ed4343;">: -</span><span style="color:#a269dc;">8d1</span><span style="color:#ed4343;">;
+</span><span>      sample</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] =</span><span> dfilter.m_axis_data_tdata</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">SAMPLE_LSB</span><span style="color:#ed4343;">+:</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">];
+</span><span>      left_over </span><span style="color:#ed4343;">=</span><span> dfilter.m_axis_data_tdata</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#d45ada;">SAMPLE_MSB</span><span style="color:#ed4343;">:</span><span style="color:#d45ada;">SAMPLE_LSB</span><span style="color:#ed4343;">+</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">];
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// check for overflow and saturate
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>left_over</span><span style="color:#ed4343;">[</span><span>left_over.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] &amp;&amp; (|</span><span>left_over</span><span style="color:#ed4343;">))
+</span><span>        sample</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">16h7fff</span><span style="color:#ed4343;">;
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>left_over</span><span style="color:#ed4343;">[</span><span>left_over.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] &amp;&amp; !(&amp;</span><span>left_over</span><span style="color:#ed4343;">))
+</span><span>        sample</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">16h8000</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<h4 id="fft">FFT</h4>
+<p>Before we jump into the <em>sound_locator</em> module, let's take a look at the two other cores we need from CoreGen: the FFT and CORDIC cores. Again, with the Sound Locator project open, fire up CoreGen from the Mojo IDE and take a look at the <em>xfft_v8_0</em> core.</p>
+<p>The first page of the FFT wizard, shown below, allows you to choose the number of channels (the number of FFTs you want to compute at once), the transform length (number of samples), the system clock, and the architecture. We will be using 512 samples per iteration, which seems to be a nice balance between latency and accuracy. The FFT architecture is set to Radix-2 Lite, Burst I/O, which will result in the smallest implementation at the cost of speed. We don't care that much about speed, but resources are at a premium. Even at the slowest architecture type, it will take only 5,671 cycles to compute the transform. With our 50 MHz clock, that is a small 113.4 μs (about 1/10,000th a second). The fastest architecture is about five times faster, but takes a lot more resources that we don't have. We could likely use the next size up for a modest speed improvement, but, again it won't make an appreciable difference for this use. It takes 100 times longer for us to capture the sample in the first place.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/fpga_1210.png" alt="fpga_1210.png" /></p>
+<p>On the second page, we specify more details about the internals of the FFT. We are using fixed-point data, so the data format is set to fixed point. The samples from the microphones are 16 bit, so that's what the input data width is set to. The phase-factor width is the size of some values stored in a ROM that are used when computing the FFT. Higher values will result in a slightly more accurate result. The accuracy for our purposes isn't too important, as 16 bits is more than enough.</p>
+<p>Scaling is used to save resources. Without scaling, the values continue to grow in the different FFT steps that require a much wider data path. However, if you enable scaling, you need to provide a scaling schedule that tells the FFT core when to truncate data. This is set at runtime, and I found one that worked well for the microphone data using Xilinx's Matlab module that simulates the FFT.</p>
+<p>The rounding mode option is another trade-off of accuracy and resources. Truncation is basically free, while convergent rounding has a small cost.</p>
+<p>The control signals are fairly self-explanatory; you can enable a reset and a clock enable if you need them. We need only the reset.</p>
+<p>An FFT will naturally produce values in bit-reversed order. For an FFT of eight samples, the output order would be 0, 4, 2, 6, 1, 5, 3, 7. In binary, this is 000, 100, 010, 110, 001, 101, 011, 111. If you reverse the bits around, this becomes 0, 1, 2, 3, 4, 5, 6, 7. If you can work with the output in this order, the core can load and unload data simultaneously. Otherwise, loading and unloading must take place in different stages. By enabling XK_INDEX in the Optional Output Fields section, we get the index of each output value, so the order doesn't really matter for us.</p>
+<p>Finally, the throttle scheme is to specify whether whatever is receiving the output can stop the core from outputting data. In other words, will the hardware using the output ever not be able to accept data? If it can't for any reason, you need to use Non Real Time. This enables the <em>m_axis_data_tready</em> flag to signal that data can be output. If you set this to Real Time, it will spit out data as soon as it is ready, no matter what. In our case, we are feeding the data into the CORDIC core, which can be busy, so this needs to be Non Real Time.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/fpga_1211.png" alt="fpga_1211.png" /></p>
+<p>The final page of the wizard, shown below, is all about hardware usage. The first section, Memory Options, allows you to choose whether you want to use block RAM or distributed RAM. We have plenty of block RAM left over in our design, so it only makes sense to take advantage of it.</p>
+<p>In the Optimize Options section, choose to use the DSP multipliers. The FPGA on the Mojo has 16 of these, which should be used when you can. For the CIC filter, we set it not to use these because they would use two each, and we have seven filters, so it would take a total of 14 multipliers. That is too much (our design only has eight extra). In this case, the FFT will use only three, and we can spare them. You can see how many it will use under the Implementation Details tab on the left side of the wizard.</p>
+<p>In general, if you have special resources available (block RAM and DSPs, in this case), use them. They will generally make your design faster and smaller, and if you don't take advantage of them, they will still be sitting in your FPGA.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/fpga_1212.png" alt="fpga_1212.png" /></p>
+<p>For more information on the FFT core, check out the <a href="https://www.xilinx.com/support/documentation/ip_documentation/ds808_xfft.pdf">Xilinx LogiCORE documentation</a>.</p>
+<h4 id="cordic">CORDIC</h4>
+<p><em>Coordinate Rotation Digital Computer</em> (CORDIC) is an algorithm for efficiently calculating hyperbolic and trigonometric functions. The algorithm is capable of rotating vectors that can be cleverly used to convert to/from Cartesian and polar (magnitude and angle) notations, compute sin and cos, compute sinh and cosh, compute arc tan, compute arc tanh, or even compute square roots. We will be using it to convert from Cartesian to polar coordinates.</p>
+<p>Open the <em>mag_phase_calculator</em> core in CoreGen.</p>
+<p>On the first page of the wizard, as shown in the first image below, we have options to specify the mode of operation as well as accuracy, latency, and area trade-offs.</p>
+<p>The Functional Selection option selects the mode of operation. In our case, Translate is selected for Cartesian-to-polar conversion.</p>
+<p>The Architectural Configuration option gives an area versus latency trade-off. The Parallel option allows the core to spit out a new value every clock cycle by replicating a bunch of hardware. The <em>Word Serial</em> option reuses hardware but can work on only one value at a time. Optimizing for area, the Word Serial mode was selected.</p>
+<p>The Pipelining Mode is a performance (maximum clock speed) versus area and latency trade-off. The Optimal option will pipeline as much as possible without using extra LUTs. The Maximum option will pipeline after every stage.</p>
+<p>The Phase Format option is important, as it dictates the output format. Either option will output a fixed-point value with the three MSBs being the integer portion. For example, 01100000 would be 3.0, and 00010000 would be 0.5. In the Radians case, this value is the angle in radians. For Scaled Radians, this value is the angle divided by pi. We are using radians for simplicity.</p>
+<p>The Inout/Output Options section is pretty self-explanatory. We are using 16-bit inputs and outputs, and truncation for internal rounding as it is the cheapest option.</p>
+<p>Under Advanced Configuration Parameters, leaving Iterations and Precision at 0 will cause the wizard to automatically set these based on the output width. The Coarse Rotation option allows us to use the full circle instead of just the first quadrant. Compensation Scaling is used to compensate for a side effect of the CORDIC algorithm. By enabling this, the core will output unscaled correct values at the expense of some resources. You can select the resources to use in the drop-down. In our case, we are using Embedded Multiplier, as we still have a few <em>DSP48A1s</em> to use. We could have used the BRAM option as well, as we have plenty of that too.</p>
+<p>On the second page of the wizard, as shown in the second image below, you can configure the input and output streams. The TLAST and TUSER options give you extra inputs to the module that will output the values seen when the corresponding inputs have been processed. It's a way to pass along data and keep it in sync. In our case, we will need the address of the values and where the last sample is, so both are enabled. The address size is 9 bits, so we set TUSER's width to 9.</p>
+<p>The Flow Control option will enable buffers on the input when Blocking is specified. This is more useful when you have the CORDIC in a different mode when both input streams are used, as it will force them to be in sync. The NonBlocking option uses less resources, and there is no real benefit to Blocking for us.</p>
+<p>Finally, we don't care about a reset, as the CORDIC will have flushed itself by the time the FSM ever reaches it upon a reset.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/fpga_1213.png" alt="fpga_1213.png" /></p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/fpga_1214.png" alt="fpga_1214.png" /></p>
+<p>For more information on the CORDIC core, check out the <a href="https://www.xilinx.com/support/documentation/ip_documentation/cordic/v5_0/ds858_cordic.pdf">Xilinx LogiCORE documentation</a>.</p>
+<p>Now that we have all the pieces, let's dig into the <em>sound_locator</em> module itself. The module is too big to replicate here in its entirety, but we will dissect the states of the FSM. The FSM has four main stages: <em>CAPTURE</em>, <em>FFT</em>, <em>DIFFERENCE</em>, and <em>AGGREGATE</em>. The <em>CAPTURE</em> state is responsible for storing the microphone samples into RAM. In <em>FFT</em>, these samples are converted into their frequency representation. The <em>DIFFERENCE</em> state takes this information and calculates a direction for each frequency by using the difference in phase for each microphone. Finally, <em>AGGREGATE</em> combines all the data together into the 16 directional bins and outputs the final result.</p>
+<h4 id="capture-state">CAPTURE State</h4>
+<p>The <em>CAPTURE</em> state is pretty straightforward. We simply wait for new samples to come in from the microphones and write them to RAM, incrementing our address counter until the RAM has been filled.</p>
+<p>There is a little fancy notation for assigning the address value to all 14 RAM modules because they are in a 7 x 2 array. The first line in this state duplicates <em>addr.q</em> (excluding the LSB) into the 7 x 2 x 8 array.</p>
+<p>The LSB of <em>addr</em> is used to select between even and odd RAMs. This little quirk is because we want the two RAMs separate for when we store magnitude and phase data in them later. We assign both even and odd RAMs the same data, but enable the write only on the corresponding one.</p>
+<p>Finally, after the RAM is full, we perform some initialization for the next state and move on to the <em>FFT</em>:</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>state.</span><span style="color:#d45ada;">CAPTURE</span><span style="color:#ed4343;">:
+</span><span>  </span><span style="color:#969696;">// set each channel&#39;s write address to addr.q (minus the LSB)
+</span><span>  ram.waddr </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">x{{</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">x{{</span><span>addr.q</span><span style="color:#ed4343;">[</span><span>addr.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]}}}};
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>new_sample_in</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// write each sample to RAM
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>      ram.write_data</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">x{{</span><span>sample_in</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]}};
+</span><span>      </span><span style="color:#969696;">// write alternating samples to the upper and lower channels
+</span><span>      ram.write_en</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span>addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]] = </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>    addr.d </span><span style="color:#ed4343;">=</span><span> addr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#969696;">// if all samples captured move on to next stage
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>addr.q </span><span style="color:#ed4343;">== </span><span style="color:#d45ada;">SAMPLES </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">) {
+</span><span>      addr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>      load_ch_ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>      unload_ch_ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>      wait_ram.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>      state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">FFT</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span></code></pre>
+<h4 id="fft-state">FFT State</h4>
+<p>In this stage of the calculation, we have two processes going on. The first is responsible for keeping the FFT feed, and the second is for writing the result from the CORDIC into RAM. The FFT feeds directly into the CORDIC.</p>
+<p>The feeding process requires a little finesse, because reading from the RAM takes a clock cycle. The flag <em>wait_ram</em> is used to ensure that the RAM is outputting the value for address 0 when we start. If at any point the FFT can't accept more data but we are feeding it data, we'll need to save the value that is coming out of the RAM because on the next cycle it will be gone. When resuming feeding data into the FFT, we then feed it the saved value before resuming reading from the RAM.</p>
+<p>Before feeding the FFT, we also pass the data through a Hanning window. The Hann ROM has a single-cycle latency like the RAM, so we also need to save its value if the FFT can't accept values. The Hann value and microphone sample are multiplied together. The Hann value is a 1.15 fixed-point number (1 integer bit, 15 decimal bits), so the result of the multiplication is shifted 15 bits to the right before being passed to the FFT. The idea is the same as if you were multiplying two decimal numbers. For example, 2 x 1.3 can be looked at as (2 x 13) / 10. Note that the multiplication should be a signed multiplication, so both operands are wrapped by the <em>$signed</em> function to ensure this.</p>
+<p>Once we've filled the FFT, we increment the channel and wait for the FFT to be ready to accept more data. After all seven channels have been loaded, we wait for the state to change:</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>state.</span><span style="color:#d45ada;">FFT</span><span style="color:#ed4343;">:
+</span><span>  </span><span style="color:#969696;">// read from addr.q minus LSB
+</span><span>  ram.raddr </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">x{{</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">x{{</span><span>addr.q</span><span style="color:#ed4343;">[</span><span>addr.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]}}}};
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// only load the seven channels
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>load_ch_ctr.q </span><span style="color:#ed4343;">&lt; </span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// if we have to wait for the RAM to catch up
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>wait_ram.q</span><span style="color:#ed4343;">) {
+</span><span>       wait_ram.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;      </span><span style="color:#969696;">// reset flag
+</span><span>      addr.d </span><span style="color:#ed4343;">=</span><span> addr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// increment address
+</span><span>    </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{
+</span><span>      </span><span style="color:#969696;">// if the fft was ready but now isn&#39;t we need to save the
+</span><span>      </span><span style="color:#969696;">// output from the RAM for when the FFT is ready
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>xfft_ready.q </span><span style="color:#ed4343;">&amp;&amp; !</span><span>xfft.s_axis_data_tready</span><span style="color:#ed4343;">) {
+</span><span>        last_value.d </span><span style="color:#ed4343;">=</span><span> ram.read_data</span><span style="color:#ed4343;">[</span><span>load_ch_ctr.q</span><span style="color:#ed4343;">][</span><span>addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]];
+</span><span>        last_hann.d </span><span style="color:#ed4343;">=</span><span> hann.value</span><span style="color:#ed4343;">;
+</span><span>      </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// if the FFT is ready to accept data
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>xfft.s_axis_data_tready</span><span style="color:#ed4343;">) {
+</span><span>        </span><span style="color:#969696;">// if the FFT was ready last cycle use the RAM output directly,
+</span><span>        </span><span style="color:#969696;">// otherwise use the saved value
+</span><span>        sample </span><span style="color:#ed4343;">=</span><span> xfft_ready.q </span><span style="color:#ed4343;">?
+</span><span>          ram.read_data</span><span style="color:#ed4343;">[</span><span>load_ch_ctr.q</span><span style="color:#ed4343;">][</span><span>addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]] :</span><span> last_value.q</span><span style="color:#ed4343;">;
+</span><span>        hann_value </span><span style="color:#ed4343;">=</span><span> xfft_ready.q </span><span style="color:#ed4343;">?</span><span> hann.value </span><span style="color:#ed4343;">:</span><span> last_hann.q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>        </span><span style="color:#969696;">// multiply each sample by the HANN window
+</span><span>        mult_temp </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>sample</span><span style="color:#ed4343;">) * </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(c{</span><span style="color:#a269dc;">1b0</span><span style="color:#ed4343;">,</span><span>hann_value</span><span style="color:#ed4343;">});
+</span><span>        hann_sample </span><span style="color:#ed4343;">=</span><span> mult_temp</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">15</span><span style="color:#ed4343;">+:</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">];
+</span><span>        </span><span style="color:#969696;">// imaginary part of FFT is 0
+</span><span>        xfft.s_axis_data_tdata </span><span style="color:#ed4343;">= c{</span><span style="color:#a269dc;">16b0</span><span style="color:#ed4343;">,</span><span> hann_sample</span><span style="color:#ed4343;">};
+</span><span>        xfft.s_axis_data_tvalid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>        addr.d </span><span style="color:#ed4343;">=</span><span> addr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>        </span><span style="color:#969696;">// addr.q will be 0 if the fft was stalled when waiting for the
+</span><span>        </span><span style="color:#969696;">// last sample
+</span><span> 
+</span><span>        </span><span style="color:#969696;">// if we&#39;ve read all the samples
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">((</span><span>addr.q </span><span style="color:#ed4343;">== </span><span style="color:#d45ada;">SAMPLES </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">1 </span><span style="color:#ed4343;">&amp;&amp; !</span><span>xfft_ready.q</span><span style="color:#ed4343;">) ||</span><span> addr.q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">) {
+</span><span>          xfft.s_axis_data_tlast </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>          addr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>          wait_ram.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// wait for RAM to read addr 0
+</span><span>          load_ch_ctr.d </span><span style="color:#ed4343;">=</span><span> load_ch_ctr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>      </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>We need to connect the FFT output to the CORDIC to get the magnitude-angle representation. The CORDIC conveniently lets us pass the address and last flag through it so that it stays in sync with the other data. The <em>tready</em> and <em>tvalid</em> handshaking flags ensure that data is transferred only when there is data and the CORDIC can accept it:</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>xfft.m_axis_data_tready </span><span style="color:#ed4343;">=</span><span> mag_phase.s_axis_cartesian_tready</span><span style="color:#ed4343;">;
+</span><span>mag_phase.s_axis_cartesian_tdata </span><span style="color:#ed4343;">=</span><span> xfft.m_axis_data_tdata</span><span style="color:#ed4343;">;
+</span><span>mag_phase.s_axis_cartesian_tvalid </span><span style="color:#ed4343;">=</span><span> xfft.m_axis_data_tvalid</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span style="color:#969696;">// pass the address info through the user channel so it is available
+</span><span style="color:#969696;">// when the mag_phase data has been processed
+</span><span>mag_phase.s_axis_cartesian_tuser </span><span style="color:#ed4343;">=</span><span> xfft.m_axis_data_tuser</span><span style="color:#ed4343;">[</span><span>addr.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span>mag_phase.s_axis_cartesian_tlast </span><span style="color:#ed4343;">=</span><span> xfft.m_axis_data_tlast</span><span style="color:#ed4343;">;
+</span></code></pre>
+<p>Finally, we need to unload the CORDIC data into the RAM. We have the address to write from the <em>tuser</em> field, and we keep track of the channel number by counting the <em>tlast</em> flags.</p>
+<p>After we have unloaded the last of the data from the last channel, we can change to the next state, <em>DIFFERENCE</em>:</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">// recover the address from the user channel
+</span><span>ram.waddr </span><span style="color:#ed4343;">= 
+</span><span>  </span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">x{{</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">x{{</span><span>mag_phase.m_axis_dout_tuser</span><span style="color:#ed4343;">[</span><span>addr.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]}}}};
+</span><span>ram.write_en</span><span style="color:#ed4343;">[</span><span>unload_ch_ctr.q</span><span style="color:#ed4343;">] =
+</span><span>  </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">x{</span><span>mag_phase.m_axis_dout_tvalid
+</span><span>  </span><span style="color:#969696;">// write only first half of values
+</span><span>  </span><span style="color:#ed4343;">&amp; ~</span><span>mag_phase.m_axis_dout_tuser</span><span style="color:#ed4343;">[</span><span>addr.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]};
+</span><span>ram.write_data</span><span style="color:#ed4343;">[</span><span>unload_ch_ctr.q</span><span style="color:#ed4343;">] =
+</span><span>  </span><span style="color:#969696;">// phase, mag
+</span><span>  </span><span style="color:#ed4343;">{</span><span>mag_phase.m_axis_dout_tdata</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">31</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],</span><span> mag_phase.m_axis_dout_tdata</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">15</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]}; 
+</span><span> 
+</span><span style="color:#969696;">// if we have processed all the samples we need to
+</span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>mag_phase.m_axis_dout_tvalid </span><span style="color:#ed4343;">&amp;&amp;</span><span> mag_phase.m_axis_dout_tlast</span><span style="color:#ed4343;">) {
+</span><span>  unload_ch_ctr.d </span><span style="color:#ed4343;">=</span><span> unload_ch_ctr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// move onto the next channel
+</span><span>  </span><span style="color:#969696;">// if we have processed all 7 channels
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>unload_ch_ctr.q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">) {
+</span><span>    state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">DIFFERENCE</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// move to the next stage
+</span><span>    addr_pipe.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">x{{</span><span>addr.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">x{</span><span style="color:#a269dc;">1b0</span><span style="color:#ed4343;">}}};
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<h4 id="difference-state">DIFFERENCE State</h4>
+<p>In this stage, we subtract the phase of the center microphone from each of the six outer microphones. We then use this difference to scale the microphone's location vectors and then sum the vectors. The single resulting vector is fed through the CORDIC to get its angle, which is then written back to RAM.</p>
+<p>The first operation that takes place is the subtraction of the phases. The only interesting part here is that we need to keep the resulting differences in the +/– pi range. This is done by checking for overflow and adding or subtracting 2pi. All the operations here are intended to be signed, so everything is wrapped in <em>$signed</em> again to ensure this:</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>state.</span><span style="color:#d45ada;">DIFFERENCE</span><span style="color:#ed4343;">:
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>    </span><span style="color:#969696;">// we care about the difference in phase between the center microphone
+</span><span>    </span><span style="color:#969696;">// and the outer microphones
+</span><span>    </span><span style="color:#969696;">// as this is proportional to the delay of the sound (divided by the
+</span><span>    </span><span style="color:#969696;">// frequency)
+</span><span>    temp_phase</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] =
+</span><span>      </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>ram.read_data</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]) - </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>ram.read_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]);
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// we need to keep the difference in the +/- pi range for the next
+</span><span>    </span><span style="color:#969696;">// steps
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// 25736 = pi (4.13 fixed point)
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>temp_phase</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]) &gt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">16d25736</span><span style="color:#ed4343;">)) {
+</span><span>      </span><span style="color:#969696;">// 51472 = 2*pi (4.13 fixed point)
+</span><span>        temp_phase</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] = </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>temp_phase</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]) - </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">17d51472</span><span style="color:#ed4343;">);
+</span><span>      </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>temp_phase</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]) &lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#a269dc;">16d25736</span><span style="color:#ed4343;">)) {
+</span><span>        temp_phase</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] = </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>temp_phase</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">]) + </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">17d51472</span><span style="color:#ed4343;">);
+</span><span>      </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Because of all the multiplications, the scaling of the vectors and summing them happens over two clock cycles. This adds a little bit of complexity: because the CORDIC can tell us it can't accept new data at any time, we need to be able to stall the pipeline.</p>
+<p>To do this, we detect the specific case when pipeline data would be lost and revert to the dropped address. The only time this can happen is if the pipeline has been active for at least two cycles before being halted. This method can cause some values to be calculated more than once, depending on the halt/resume patterns, but this isn't a big deal as long as every value is calculated at least once and we continue to make progress. The worst-case pattern would be run, run, halt, run, run, halt, and so on. In this case, we would advance only one address per run, run, halt cycle. However, we would still make progress and cover all the values. The actual behavior of the CORDIC will have many more halts between a single run, and with this pattern we don't repeat any values.</p>
+<p>Some of the scaling is really simple; for example, the first microphone is at (–1, 0), so the x value is just the negated phase difference, and the y component is always 0. However, some require multiplying by sqrt(3)/2. This is done using fixed-point multiplication and a bit shift.</p>
+<p>With all the scaled phase values calculated, they are summed and then divided by 8, which is the closest power of 2 greater than 6 (the number of microphones). The division is used to keep the values in a 16-bit range:</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="color:#969696;">/* Sample coordinates
+</span><span style="color:#969696;">   0: (-1,    0)
+</span><span style="color:#969696;">   1: (-1/2,  sqrt(3)/2)
+</span><span style="color:#969696;">   2: ( 1/2,  sqrt(3)/2)
+</span><span style="color:#969696;">   3: ( 1     0)
+</span><span style="color:#969696;">   4: ( 1/2, -sqrt(3)/2)
+</span><span style="color:#969696;">   5: (-1/2, -sqrt(3)/2)
+</span><span style="color:#969696;">   6: ( 0,    0)
+</span><span style="color:#969696;">*/
+</span><span> 
+</span><span>addr_pipe.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> addr.q</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// output address of the ram
+</span><span> 
+</span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>mag_phase.s_axis_cartesian_tready</span><span style="color:#ed4343;">) {
+</span><span>  </span><span style="color:#969696;">/*
+</span><span style="color:#969696;">     Here we are scaling each microphone&#39;s location vector by
+</span><span style="color:#969696;">     he delay (phase difference). This will give us a vector
+</span><span style="color:#969696;">     roportional to that microphone&#39;s contribution to the total
+</span><span style="color:#969696;">     direction.
+</span><span style="color:#969696;">  */
+</span><span>  scaled_phase.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] = -</span><span>temp_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span>  scaled_phase.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  mult_temp </span><span style="color:#ed4343;">= -</span><span>temp_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">];
+</span><span>  scaled_phase.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] = c{</span><span>mult_temp</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],</span><span>mult_temp</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]};
+</span><span> 
+</span><span>  mult_temp </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>temp_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]) * </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">17d56756</span><span style="color:#ed4343;">);
+</span><span>  </span><span style="color:#969696;">// phase * sqrt(3)/2
+</span><span>  scaled_phase.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> mult_temp</span><span style="color:#ed4343;">[</span><span>mult_temp.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">];
+</span><span> 
+</span><span>  scaled_phase.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] = c{</span><span>temp_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],</span><span> temp_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]};
+</span><span> 
+</span><span>  mult_temp </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>temp_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">]) * </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">17d56756</span><span style="color:#ed4343;">);
+</span><span>  scaled_phase.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> mult_temp</span><span style="color:#ed4343;">[</span><span>mult_temp.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">];
+</span><span> 
+</span><span>  scaled_phase.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> temp_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">];
+</span><span>  scaled_phase.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  scaled_phase.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] = c{</span><span>temp_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],</span><span> temp_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]};
+</span><span> 
+</span><span>  mult_temp </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>temp_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">]) * </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#a269dc;">17d56756</span><span style="color:#ed4343;">);
+</span><span>  scaled_phase.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> mult_temp</span><span style="color:#ed4343;">[</span><span>mult_temp.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">];
+</span><span> 
+</span><span>  mult_temp </span><span style="color:#ed4343;">= -</span><span>temp_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">];
+</span><span>  scaled_phase.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] = c{</span><span>mult_temp</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],</span><span> mult_temp</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]};
+</span><span> 
+</span><span>  mult_temp </span><span style="color:#ed4343;">= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>temp_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">]) * </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#a269dc;">17d56756</span><span style="color:#ed4343;">);
+</span><span>  scaled_phase.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> mult_temp</span><span style="color:#ed4343;">[</span><span>mult_temp.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">];
+</span><span> 
+</span><span>  addr_pipe.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> addr_pipe.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]; </span><span style="color:#969696;">// address of scaled vector values
+</span><span> 
+</span><span>  </span><span style="color:#969696;">/*
+</span><span style="color:#969696;">     With all the scaled vectors, we simply need to sum them to get
+</span><span style="color:#969696;">     the overall direction of sound for this frequency.
+</span><span style="color:#969696;">  */
+</span><span>  summed_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>  summed_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>    summed_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] = </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>scaled_phase.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]) +
+</span><span>      </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>summed_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]);
+</span><span>    summed_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] = </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>scaled_phase.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]) +
+</span><span>      </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span>summed_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]);
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// if there are more samples to go, advance the addr
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>addr.q </span><span style="color:#ed4343;">!= </span><span style="color:#d45ada;">SAMPLES</span><span style="color:#ed4343;">/</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">)
+</span><span>    addr.d </span><span style="color:#ed4343;">=</span><span> addr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// use the summed vectors (divided by 8) to calculate the overall
+</span><span>  </span><span style="color:#969696;">// direction of sound
+</span><span>  mag_phase.s_axis_cartesian_tdata </span><span style="color:#ed4343;">=
+</span><span>    </span><span style="color:#ed4343;">c{</span><span>summed_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">+:</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],</span><span> summed_phase</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">+:</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">]};
+</span><span>  </span><span style="color:#969696;">// only valid for the first half of addr
+</span><span>  mag_phase.s_axis_cartesian_tvalid </span><span style="color:#ed4343;">= ~</span><span>addr_pipe.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">][</span><span>addr.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">];
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// feed in the address for later use
+</span><span>  mag_phase.s_axis_cartesian_tuser </span><span style="color:#ed4343;">=</span><span> addr_pipe.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">];
+</span><span>  mag_phase.s_axis_cartesian_tlast </span><span style="color:#ed4343;">=</span><span> addr_pipe.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] == </span><span style="color:#d45ada;">SAMPLES</span><span style="color:#ed4343;">/</span><span style="color:#a269dc;">2 </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(&amp;</span><span>mag_phase_ready.q</span><span style="color:#ed4343;">) {
+</span><span>  </span><span style="color:#969696;">// if we were ready but now aren&#39;t we need to go back an address so
+</span><span>  </span><span style="color:#969696;">// that we don&#39;t skip one
+</span><span>  addr.d </span><span style="color:#ed4343;">=</span><span> addr_pipe.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>We now just need to feed the output of the CORDIC back into the RAM. This is basically the same as the last part of the <em>FFT</em> state:</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">// write the phase data into the RAM channel 0
+</span><span>ram.waddr </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">x{{</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">x{{</span><span>mag_phase.m_axis_dout_tuser</span><span style="color:#ed4343;">[</span><span>addr.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]}}}};
+</span><span>ram.write_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =
+</span><span>  </span><span style="color:#ed4343;">{</span><span>mag_phase.m_axis_dout_tdata</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">31</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">],</span><span> mag_phase.m_axis_dout_tdata</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">15</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]};
+</span><span>ram.write_en</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">x{</span><span>mag_phase.m_axis_dout_tvalid</span><span style="color:#ed4343;">};
+</span><span> 
+</span><span style="color:#969696;">// if we are on the last sample move onto the next stage
+</span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>mag_phase.m_axis_dout_tlast </span><span style="color:#ed4343;">&amp;&amp;</span><span> mag_phase.m_axis_dout_tvalid</span><span style="color:#ed4343;">) {
+</span><span>  addr.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">CROP_MIN</span><span style="color:#ed4343;">;
+</span><span>  state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">AGGREGATE_WAIT</span><span style="color:#ed4343;">;
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<h4 id="aggregate-state">AGGREGATE State</h4>
+<p>In this stage, we will run through the calculated directions and sum their corresponding magnitudes into 16 directional bins.</p>
+<p>Even though we have 256 frequencies to work with, we will be summing only the ones between 9 and 199. The lowest frequencies aren't too useful, and the highest ones get out of hearing range. These values are set by <em>CROP_MIN</em> and <em>CROP_MAX</em>.</p>
+<p>The bin selection is performed with a series of <em>if</em> statements that check whether the angle lies in a particular bin's range. Only the 8 MSBs are used to save on the size of the comparisons. It doesn't make a difference if the bin boundaries aren't perfectly precise. These comparisons are all signed, so the constants are wrapped in <em>$signed</em>. The signal <em>angle</em> is declared as <em>signed</em>, so the <em>$signed</em> function isn't required:</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span>state.</span><span style="color:#d45ada;">AGGREGATE</span><span style="color:#ed4343;">:
+</span><span>  addr.d </span><span style="color:#ed4343;">=</span><span> addr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>  angle </span><span style="color:#ed4343;">=</span><span> ram.read_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">15</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]; </span><span style="color:#969696;">// angle calculated in the last step
+</span><span>  magnitude </span><span style="color:#ed4343;">=</span><span> ram.read_data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];   </span><span style="color:#969696;">// use the magnitude from the center mic
+</span><span> 
+</span><span>  </span><span style="color:#969696;">/*
+</span><span style="color:#969696;">     We now need to go through each frequency and bin them into one of 16 groups.
+</span><span style="color:#969696;">     This makes it easier to get an idea of where the sound is coming from as
+</span><span style="color:#969696;">     many frequencies will point in the same direction of a single source. If
+</span><span style="color:#969696;">     we have multiple sources then multiple bins will receive a lot of values.
+</span><span style="color:#969696;">     A more advanced grouping method could be done in software off chip such as
+</span><span style="color:#969696;">     K-means to get a more accurate picture, but this method works relatively well
+</span><span style="color:#969696;">     and is simple to implement in hardware.
+</span><span style="color:#969696;">  */
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">]) ||</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">]) &amp;&amp;</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">]) &amp;&amp;</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">]) &amp;&amp;</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">]) &amp;&amp;</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">]) &amp;&amp;</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]) &amp;&amp;</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]) &amp;&amp;</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]) &amp;&amp;</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]) &amp;&amp;</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">]) &amp;&amp;</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">]) &amp;&amp;</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">11</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">11</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">]) &amp;&amp;</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">12</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">12</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">]) &amp;&amp;</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">13</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">13</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(</span><span>angle </span><span style="color:#ed4343;">&gt;= </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">]) &amp;&amp;</span><span> angle </span><span style="color:#ed4343;">&lt; </span><span style="color:#1bddaf;">$signed</span><span style="color:#ed4343;">(-</span><span style="color:#d45ada;">ANGLE_BOUNDS</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">5</span><span style="color:#ed4343;">])) {
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">14</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">14</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{
+</span><span>    sums.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">15</span><span style="color:#ed4343;">] =</span><span> sums.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">15</span><span style="color:#ed4343;">] +</span><span> magnitude</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// stop once we reach the highest frequency to count (we only care about audible ones)
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>addr.q </span><span style="color:#ed4343;">== </span><span style="color:#d45ada;">CROP_MAX</span><span style="color:#ed4343;">)
+</span><span>    state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">OUTPUT</span><span style="color:#ed4343;">;
+</span></code></pre>
+<p>Finally, with the different bins full, we can output the values. We first check for overflow and saturate the bin if it did.</p>
+<p>Upon completion, we return to idle and wait for the command to start the process all over again:</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>state.</span><span style="color:#d45ada;">OUTPUT</span><span style="color:#ed4343;">:
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">for </span><span style="color:#ed4343;">(</span><span>i </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;</span><span> i </span><span style="color:#ed4343;">&lt; </span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">;</span><span> i</span><span style="color:#ed4343;">++) {
+</span><span>    sum </span><span style="color:#ed4343;">=</span><span> sums.q</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">][</span><span>sums.q.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>sum </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">65535</span><span style="color:#ed4343;">) </span><span style="color:#969696;">// if it overflowed, saturate it
+</span><span>      sum </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">65535</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    result</span><span style="color:#ed4343;">[</span><span>i</span><span style="color:#ed4343;">] =</span><span> sum</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">15</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]; </span><span style="color:#969696;">// use the 16 LSBs for decent sensitivity
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span>  result_valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;
+</span></code></pre>
+<p>This project is a fairly complicated example, but hopefully it gives you an idea of some of the interesting things you can do with an FPGA.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;hdmi&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>HDMI</span>
+        </a>
+        
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>FPGA Timing</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;fpga-timing&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;">Verilog</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;fpga-timing&#x2F;">FPGA Timing</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">FPGA Timing</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+14 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;fpga-timing.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#contamination-and-propagation-delays" aria-label="Contamination and Propagation Delays">Contamination and Propagation Delays</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#clock-skew" aria-label="Clock Skew">Clock Skew</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-full-picture" aria-label="The full picture">The full picture</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#contamination-and-propagation-delays-1" aria-label="Contamination and Propagation Delays">Contamination and Propagation Delays</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#clock-skew-1" aria-label="Clock Skew">Clock Skew</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-full-picture-1" aria-label="The full picture">The full picture</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#what-you-can-control" aria-label="What you can control">What you can control</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#broken-timing" aria-label="Broken timing">Broken timing</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#pipelining" aria-label="Pipelining">Pipelining</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p><strong>Timing</strong> is a term used in digital circuits to refer to the time it takes a signal to propagate from one flip-flop, through some combinational logic, to the next flip-flop.</p>
+<p>Take a look at the following diagram.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/timing_circuit.png" alt="" /></p>
+<p>It is very important to understand that combinational logic is not instantaneous. It takes time for the signal to propagate. The reason for this is that digital circuits actually look like a bunch of <a href="http://en.wikipedia.org/wiki/RC_circuit">RC circuits</a>. MOSFETs, a type of transistor, are the transistors of choice for digital circuits. The gate (switch part) of a MOSFET acts much like a capacitor and takes a small amount of time to charge and discharge (turn on and off the transistor). The more transistors you need to turn on and off, the longer it takes.</p>
+<p>For the scope of this tutorial, it's not important to understand exactly why it takes a certain amount of time for a signal to propagate through combination logic, just that it does and the more logic you have the longer it will take.</p>
+<p>Since each flip-flop will copy the value of <strong>D</strong> to <strong>Q</strong> at the rising edge of each clock, that means that we have a single clock cycle for the output of the first flip-flop to propagate through our combinational logic and make it to the input of the second flip-flop.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/setup_hold.png" alt="setup_hold.png" /></p>
+<p>If you recall from the <a href="https://alchitry.com/tutorials/archive/verilog/mojo/metastability-and-debouncing/">metastability and debouncing tutorial</a>, flip-flops require their inputs to be stable for a certain amount of time before and after the rising edge of the clock. These times are known as the <strong>setup</strong> and <strong>hold</strong> times respectively. These parameters constrain our circuit even more because now we have to ensure that the delay of our combinational logic is short enough that the signal will get there in a clock period minus the setup time. However, it can't be too fast that it violates the hold time!</p>
+<p>The last flip-flop parameter we'll be concerned about here is the <strong>clock-to-Q propagation delay</strong>.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/clock-to-q.png" alt="clock-to-q.png" /></p>
+<p>In past tutorials, we have assumed that the moment the rising edge of the clock happens, the value of <strong>D</strong> showed up at <strong>Q</strong>. However, like all things, there is a slight delay. The <strong>clock-to-Q propagation delay</strong> specifies the amount of time after the rising edge of the clock that <strong>Q</strong> outputs the new value. This delay cuts into the time we have for the combinational logic since the input to the combinational logic is delayed!</p>
+<p>To summarize, the time it take for the signal to propagate through the combinational logic must be shorter than the clock period minus the clock-to-Q propagation delay minus the setup time. The combinational logic delay must also be greater than the hold time minus the clock-to-Q propagation delay.</p>
+<p>If we let the combinational logic delay = <strong>CLD</strong>, clock period = <strong>CLK</strong>, setup time = <strong>ST</strong>, hold time = <strong>HT</strong>, clock-to-Q propagation delay = <strong>CQ</strong>, then the following formula shows our constraints.</p>
+<p><strong>HT - CQ &lt; CLD &lt; CLK - CQ - ST</strong></p>
+<h3 id="contamination-and-propagation-delays">Contamination and Propagation Delays</h3>
+<p>There is another invalid assumption we need to correct. We assumed that the output of our combinational logic was constant until the correct value showed up. This is not true. While the correct value is propagating, the output of the combinational logic can change multiple times before settling on the correct value. There are two important parameters that capture this behavior. The first, <strong>contamination delay</strong>, is the amount of time the output of the combinational logic will stay constant after it's inputs are changed. After that delay the outputs are <em>contaminated</em>. The second, <strong>combinational logic propagation delay</strong>, is the time that it takes for the output to be valid after the input changes.</p>
+<p>That means for the time between the <strong>contamination delay</strong> and <strong>propagation delay</strong> of our combinational logic, its output is unpredictable and possibly invalid.</p>
+<p>We now have to make sure that the <strong>contamination delay</strong> does not violate the hold time, and that the <strong>combinational logic propogation delay</strong> does not violate the setup time.</p>
+<p>If we let the combinational logic propagation delay <strong>= CLPD</strong> and the contamination delay = <strong>CD</strong> the the following new formulas capture our constraints.</p>
+<p><strong>CD &gt; HT - CQ</strong></p>
+<p><strong>CLPD &lt; CLK - CQ - ST</strong></p>
+<h3 id="clock-skew"><strong>Clock Skew</strong></h3>
+<p>This is the last invalid assumption we need to correct. We assumed that the clock reached all the flip-flops in the circuit at the same exact time. Since the clock needs to travel through the chip, this can't possibly be the case. The difference in time it takes to reach two flip-flops is known as the <strong>clock skew</strong>.</p>
+<p>In some cases clock skew can actually be helpful, but in many cases it takes away time from us.</p>
+<p>If we let clock skew = <strong>CS</strong> then the following formulas are updated versions of the previous ones.</p>
+<p><strong>CD &gt; HT - CQ +/- CS</strong></p>
+<p><strong>CLPD &lt; CLK - CQ - ST +/- CS</strong></p>
+<p>Note that the clock skew can have either sign. This is since the clock could arrive earlier to the first flip-flop, or later. It really just depends on how the circuit is laid out on the chip. Notice that if the first flip-flop gets the clock earlier (positive clock skew in our convention), then the constraint on the <strong>contamination delay</strong> becomes stricter and the constraint on the <strong>combinational logic propagation delay</strong> becomes looser. If the clock arrives at the second flip-flop first, the opposite is true.</p>
+<p>In general clock skew is bad. This is why FPGAs have special resources dedicated to routing clock signals. These are designed to deliver the clock to the entire FPGA (or sub-sections for local clocks) with minimal clock skew.</p>
+<h3 id="the-full-picture">The full picture</h3>
+<p>Enough of all these equations. Let's take a look at the following diagram which shows it all.</p>
+<p>In past tutorials, we have assumed that the moment the rising edge of the clock happens, the value of <strong>D</strong> showed up at <strong>Q</strong>. However, like all things, there is a slight delay. The <strong>clock-to-Q propagation delay</strong> specifies the amount of time after the rising edge of the clock that <strong>Q</strong> outputs the new value. This delay cuts into the time we have for the combinational logic since the input to the combinational logic is delayed!</p>
+<p>To summarize, the time it take for the signal to propagate through the combinational logic must be shorter than the clock period minus the clock-to-Q propagation delay minus the setup time. The combinational logic delay must also be greater than the hold time minus the clock-to-Q propagation delay.</p>
+<p>If we let the combinational logic delay = <strong>CLD</strong>, clock period = <strong>CLK</strong>, setup time = <strong>ST</strong>, hold time = <strong>HT</strong>, clock-to-Q propagation delay = <strong>CQ</strong>, then the following formula shows our constraints.</p>
+<p><strong>HT - CQ &lt; CLD &lt; CLK - CQ - ST</strong></p>
+<h3 id="contamination-and-propagation-delays-1">Contamination and Propagation Delays</h3>
+<p>There is another invalid assumption we need to correct. We assumed that the output of our combinational logic was constant until the correct value showed up. This is not true. While the correct value is propagating, the output of the combinational logic can change multiple times before settling on the correct value. There are two important parameters that capture this behavior. The first, <strong>contamination delay</strong>, is the amount of time the output of the combinational logic will stay constant after it's inputs are changed. After that delay the outputs are <em>contaminated</em>. The second, <strong>combinational logic propagation delay</strong>, is the time that it takes for the output to be valid after the input changes.</p>
+<p>That means for the time between the <strong>contamination delay</strong> and <strong>propagation delay</strong> of our combinational logic, its output is unpredictable and possibly invalid.</p>
+<p>We now have to make sure that the <strong>contamination delay</strong> does not violate the hold time, and that the <strong>combinational logic propogation delay</strong> does not violate the setup time.</p>
+<p>If we let the combinational logic propagation delay <strong>= CLPD</strong> and the contamination delay = <strong>CD</strong> the the following new formulas capture our constraints.</p>
+<p><strong>CD &gt; HT - CQ</strong></p>
+<p><strong>CLPD &lt; CLK - CQ - ST</strong></p>
+<h3 id="clock-skew-1"><strong>Clock Skew</strong></h3>
+<p>This is the last invalid assumption we need to correct. We assumed that the clock reached all the flip-flops in the circuit at the same exact time. Since the clock needs to travel through the chip, this can't possibly be the case. The difference in time it takes to reach two flip-flops is known as the <strong>clock skew</strong>.</p>
+<p>In some cases clock skew can actually be helpful, but in many cases it takes away time from us.</p>
+<p>If we let clock skew = <strong>CS</strong> then the following formulas are updated versions of the previous ones.</p>
+<p><strong>CD &gt; HT - CQ +/- CS</strong></p>
+<p><strong>CLPD &lt; CLK - CQ - ST +/- CS</strong></p>
+<p>Note that the clock skew can have either sign. This is since the clock could arrive earlier to the first flip-flop, or later. It really just depends on how the circuit is laid out on the chip. Notice that if the first flip-flop gets the clock earlier (positive clock skew in our convention), then the constraint on the <strong>contamination delay</strong> becomes stricter and the constraint on the <strong>combinational logic propagation delay</strong> becomes looser. If the clock arrives at the second flip-flop first, the opposite is true.</p>
+<p>In general clock skew is bad. This is why FPGAs have special resources dedicated to routing clock signals. These are designed to deliver the clock to the entire FPGA (or sub-sections for local clocks) with minimal clock skew.</p>
+<h3 id="the-full-picture-1">The full picture</h3>
+<p>Enough of all these equations. Let's take a look at the following diagram which shows it all.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/timing_complete.png" alt="" /></p>
+<p>For this diagram, the combinational logic just inverts the signal. The signals with a suffix of 1 are the left flip-flop in the first diagram, while the ones with a suffix of 2 are the right flip-flop. The grey shaded part of the signal is to show how that pulse propagates through the circuit.</p>
+<p>If you look at <strong>Q1</strong> and <strong>Q2</strong> then you will notice how <strong>Q2</strong> is an inverted version of <strong>Q1</strong> delayed by a clock cycle (since it goes through a flip-flop).</p>
+<p>Also notice in this example, timing is met. The setup and hold times of the flip-flops are never violated.</p>
+<h3 id="what-you-can-control">What you can control</h3>
+<p>When you are using an FPGA, you have control over very few of the parameters previously mentioned. This is because they are largely determined by the physical properties of the FPGA circuitry, but also because synthesis tools do a lot of the work for you.</p>
+<p>The two largest factors you have direct control over are the <strong>clock</strong> <strong>period</strong> and the <strong>combinational logic propagation delay</strong>. The delay can be shortened by removing some of the combinational logic between two flip-flops. How you remove this logic is up to you. Besides optimization of your design, you can pipeline your design. We'll cover that in a little bit. First, let's take a look at a case when timing is not being met.</p>
+<h3 id="broken-timing">Broken timing</h3>
+<p><a href="http://cdn.embeddedmicro.com/Timing/Mojo-Timing.zip">Download this project</a> and open it in ISE.</p>
+<p>The <strong>timing.v</strong> file is the one we are interested. Its contents are shown below.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>1</td><td><span style="font-weight:bold;color:#faac1f;">module</span><span> timing </span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>2</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>3</td><td><span>    </span><span style="color:#0a8dbf;">input </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> a</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>4</td><td><span>    </span><span style="color:#0a8dbf;">input </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> b</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>5</td><td><span>    </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">31</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> c
+</span></td></tr><tr><td>6</td><td><span>  </span><span style="color:#ed4343;">);
+</span></td></tr><tr><td>7</td><td><span> 
+</span></td></tr><tr><td>8</td><td><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> a_d</span><span style="color:#ed4343;">,</span><span> a_q</span><span style="color:#ed4343;">,</span><span> b_d</span><span style="color:#ed4343;">,</span><span> b_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>9</td><td><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">31</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> c_d</span><span style="color:#ed4343;">,</span><span> c_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>10</td><td><span> 
+</span></td></tr><tr><td>11</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> c </span><span style="color:#ed4343;">=</span><span> c_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>12</td><td><span> 
+</span></td></tr><tr><td>13</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(*) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>14</td><td><span>    a_d </span><span style="color:#ed4343;">=</span><span> a</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>15</td><td><span>    b_d </span><span style="color:#ed4343;">=</span><span> b</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>16</td><td><span>    c_d </span><span style="color:#ed4343;">= (</span><span>a_q </span><span style="color:#ed4343;">*</span><span> a_q</span><span style="color:#ed4343;">) * (</span><span>a_q </span><span style="color:#ed4343;">*</span><span> a_q</span><span style="color:#ed4343;">) * (</span><span>b_q </span><span style="color:#ed4343;">*</span><span> b_q</span><span style="color:#ed4343;">) * (</span><span>b_q </span><span style="color:#ed4343;">*</span><span> b_q</span><span style="color:#ed4343;">);
+</span></td></tr><tr><td>17</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>18</td><td><span> 
+</span></td></tr><tr><td>19</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(</span><span style="font-weight:bold;color:#0abfbf;">posedge</span><span> clk</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>20</td><td><span>    a_q </span><span style="color:#ed4343;">&lt;=</span><span> a_d</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>21</td><td><span>    b_q </span><span style="color:#ed4343;">&lt;=</span><span> b_d</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>22</td><td><span>    c_q </span><span style="color:#ed4343;">&lt;=</span><span> c_d</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>23</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>24</td><td><span> 
+</span></td></tr><tr><td>25</td><td><span style="font-weight:bold;color:#faac1f;">endmodule
+</span></td></tr></tbody></table></code></pre>
+<p>Notice line 16. This line contains a ton of multiplication. All of these multiplications will be instantiated as a bunch of combinational logic between the flip-flops used at the input and output of the module.</p>
+<p>After you open it, build the programming file. Once that done it should look like the following screen shot.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/ise-timing.resized.png" alt="ise-timing.resized.png" /></p>
+<p>Notice the spot that is highlighted. Even though the project built successfully, it failed to meet timing. That means that our design won't work properly at the clock we specified. There is simply too much combinational logic to put between two flip flops in this design.</p>
+<p>You can click on <strong>(Timing Report)</strong> to get more details on where timing could not be meet.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/ise-timing-report.resized.png" alt="ise-timing-report.resized.png" /></p>
+<p>While there are many paths that failed to meet timing, it's usually most helpful to just look at the worst ones and see where the problem is. Conveniently, those show up at the top of the list.</p>
+<p>Take a look at the <strong>Source</strong> and <strong>Destination</strong> fields. Even though what they say is a bit cryptic, you can usually glean enough information to tell where the problem is. In our case you can tell that the source is in our slow_multiply module and has to do with the signal <strong>a_q</strong>. This is exactly what we expect with all those multiplies.</p>
+<p>One important thing to notice in the report is where it specifies the <strong>minimum period</strong>. In our case it says the minimum period is 25.334ns. That means the fastest our clock can be is 39.47 MHz (1 / 25.334ns). If we didn't care about maintaining the 50MHz clock, we could scale it down to say a 35MHz clock and our circuit would perform as expected.</p>
+<p>Another important thing to notice is that there are no timing errors for the <strong>hold paths</strong>. This is because ISE tries really hard to satisfy the hold time even if that means making some of the setup times be violated. The reason for this is as long as all the hold times are satisfied, you can always scale back your clock speed to get your circuit to work. If there were hold time violations, the circuit could never work regardless of the clock frequency.</p>
+<h3 id="pipelining">Pipelining</h3>
+<p>So assuming we want to keep our 50MHz clock, how do we fix the timing issue? The simple answer is to use a technique called <strong>pipelining</strong>. All that pipelining is, is adding flip-flops in the middle of big combinational logic blocks. In this case, since the timing problem isn't too bad, we are going to just place a set of flip-flops before the final largest (and slowest) multiplication.</p>
+<p>Open up <strong>timing.v</strong> and replace it with the following.</p>
+<pre data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><span style="font-weight:bold;color:#faac1f;">module</span><span> timing </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> a</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">input </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> b</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">31</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> c
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> a_d</span><span style="color:#ed4343;">,</span><span> a_q</span><span style="color:#ed4343;">,</span><span> b_d</span><span style="color:#ed4343;">,</span><span> b_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">31</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> c_d</span><span style="color:#ed4343;">,</span><span> c_q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">15</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> temp1_d</span><span style="color:#ed4343;">,</span><span> temp1_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">15</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> temp2_d</span><span style="color:#ed4343;">,</span><span> temp2_q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">assign</span><span> c </span><span style="color:#ed4343;">=</span><span> c_q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(*) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    a_d </span><span style="color:#ed4343;">=</span><span> a</span><span style="color:#ed4343;">;
+</span><span>    b_d </span><span style="color:#ed4343;">=</span><span> b</span><span style="color:#ed4343;">;
+</span><span>    temp1_d </span><span style="color:#ed4343;">= (</span><span>a_q </span><span style="color:#ed4343;">*</span><span> a_q</span><span style="color:#ed4343;">) * (</span><span>a_q </span><span style="color:#ed4343;">*</span><span> a_q</span><span style="color:#ed4343;">);
+</span><span>    temp2_d </span><span style="color:#ed4343;">= (</span><span>b_q </span><span style="color:#ed4343;">*</span><span> b_q</span><span style="color:#ed4343;">) * (</span><span>b_q </span><span style="color:#ed4343;">*</span><span> b_q</span><span style="color:#ed4343;">);
+</span><span>    c_d </span><span style="color:#ed4343;">=</span><span>  temp1_q </span><span style="color:#ed4343;">*</span><span> temp2_q</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(</span><span style="font-weight:bold;color:#0abfbf;">posedge</span><span> clk</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span><span>    a_q </span><span style="color:#ed4343;">&lt;=</span><span> a_d</span><span style="color:#ed4343;">;
+</span><span>    b_q </span><span style="color:#ed4343;">&lt;=</span><span> b_d</span><span style="color:#ed4343;">;
+</span><span>    c_q </span><span style="color:#ed4343;">&lt;=</span><span> c_d</span><span style="color:#ed4343;">;
+</span><span>    temp1_q </span><span style="color:#ed4343;">&lt;=</span><span> temp1_d</span><span style="color:#ed4343;">;
+</span><span>    temp2_q </span><span style="color:#ed4343;">&lt;=</span><span> temp2_d</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span><span> 
+</span><span style="font-weight:bold;color:#faac1f;">endmodule
+</span></code></pre>
+<p>Now, the fourth power of <strong>a</strong> and <strong>b</strong> are computed in one clock cycle and in the next clock cycle those results are then multiplied to create the final result.</p>
+<p>If you save the file and rebuild the project, you will notice that timing is now satisfied.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/ise-timing-met.resized.png" alt="ise-timing-met.resized.png" /></p>
+<p>One important note with pipelining is that we only increase the latency of our result. We are not decreasing the throughput. That means that we can feed in a new set of numbers to be multiplied every clock cycle, but that their results won't show up at <strong>c</strong> until two clock cycles later. If we just decreased the clock speed to meet timing, we would be increasing latency and decreasing throughput.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>It is very important to be thinking of what clock speed you will want your design to run at when you are writing your code. You will get a feel for when something will take too long to complete in one clock cycle with experience. One of the reasons the Mojo has a 50MHz clock is because 50MHz is fairly slow. That means that unless you decided to do a ton of multiplication or some other complex logic, you probably won't run into timing issues. However, you can synthesize faster clocks inside the FPGA and if you start clocking the Mojo at, say 150MHz, timing can become a real concern.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;metastability-and-debouncing&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Metastability and Debouncing</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;finite-state-machines&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Finite State Machines</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

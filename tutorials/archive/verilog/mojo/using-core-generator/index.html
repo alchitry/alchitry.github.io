@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Using Core Generator</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;using-core-generator&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;">Verilog</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;using-core-generator&#x2F;">Using Core Generator</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Using Core Generator</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+5 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;using-core-generator.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#adding-cores-to-your-project" aria-label="Adding cores to your project">Adding cores to your project</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#using-your-cores" aria-label="Using your cores">Using your cores</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>Core Generator (also called <strong>CoreGen</strong>) is a powerful tool provided by Xilinx to help easily and efficiently accomplish some common functions. It allows you to generate modules for things like RAMs, ROMs, clock synthesis, complicated math functions, and even basic processor cores.</p>
+<p>This tutorial will show how we used CoreGen to perform some complicated math and generate the block RAMs used in our <a href="https://cdn.embeddedmicro.com/clock-shield/Mojo-Clock.zip">Clock/Visualizer Shield Demo</a>. If you haven't already, you should download the project so you can follow along.</p>
+<p>After you download the project, open it up in ISE.</p>
+<p>Once in ISE, to access CoreGen, click on <strong>Tools-&gt;Core Generator...</strong></p>
+<p>This will automatically open the CoreGen project file for the Clock/Visualizer Shield.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/CoreGen_main.resized.png" alt="CoreGen_main.resized.png" /></p>
+<p>On the left hand side of the window, you have the cores that are available to be generated on the top and the cores being used in the project on the bottom left. On the right is information about the currently selected core.</p>
+<p>You can see for this project we used 8 cores. Four of them are RAMs, one performs a square root, one is a decimation filter, another is a FIFO, and the last is the one that performs the Fourier Transform.</p>
+<p>Let's start with one of the most commonly used cores, block RAM. Double click on <strong>sample_ram</strong>.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/CoreGen_sample_ram.resized.png" alt="CoreGen_sample_ram.resized.png" /></p>
+<p>This RAM is used to store the samples from the microphone before they are ready to be processed. If you take a look at the diagram on the left you can see the module's inputs and outputs.</p>
+<p>This module has inputs <strong>ADDRA[9:0]</strong>, <strong>DINA[15:0]</strong>, <strong>WEA[0:0]</strong>, <strong>CLKA</strong>, <strong>ADDRB[9:0]</strong>, <strong>CLKB</strong> and output <strong>DOUTB[15:0]</strong>. As you may be able to tell, this RAM is a <strong>simple dual port RAM</strong>. That means that it has two independent ports, one for writing and one for reading. This allows for different address to be read and written simultaneously.</p>
+<p>If you look at the bottom of the window you will see <strong>&lt; Back</strong> and <strong>Next &gt;</strong> buttons. You can use these to go through the various pages of configuration options. On the second page you can see where we set the <strong>Memory Type</strong> to be a <strong>Simple Dual Port RAM</strong>.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/CoreGen_ram_page_2.resized.png" alt="CoreGen_ram_page_2.resized.png" /></p>
+<p>On the same page there are also options to tell CoreGen what to optimize when generating your RAM. We have <strong>Minimum Area</strong> selected, which is the most important constraint in most cases.</p>
+<p>As you go through the configuration settings, you'll find settings for each port's <strong>width</strong> and <strong>depth</strong>. The <strong>width</strong> of a RAM is how many bits belong to each address. In this case, we use 16 bits as our width since the audio samples are 16 bits wide. The <strong>depth</strong> is how many address the RAM will have. While you don't strictly need to use a power of two for this, it can make life simpler because then you don't have any invalid addresses.</p>
+<p>Once you configure a core how you want, just click the <strong>Generate</strong> button to get CoreGen to generate the core.</p>
+<p>You should look at the other cores used in the project as well as the other cores available to you in your own projects. One thing to be aware of is that <strong>not all cores are free</strong>. Xilinx does a good job of providing a good base of free cores that cover a lot of functionality, but fancier cores such as the cores found in <strong>Standard Bus Interfaces,</strong> require you to purchase a license to use them in the FPGA (you can generally simulate with them, but that's no fun).</p>
+<h3 id="adding-cores-to-your-project">Adding cores to your project</h3>
+<p>After you have generated your core, it's still not in your project! First close CoreGen and go back to ISE.</p>
+<p>Since all the cores we are using in the Clock/Visualizer Shield Demo are already added, you'll get errors if you try to add it again. However, we'll do it anyways to show you how it's done.</p>
+<p>Most cores will have two files you need to add to your project, a <strong>.v</strong> file and a <strong>.ngc</strong> file. It's very important to have both, because the <strong>.ngc</strong> file is the one that actually has the information about the implementation of the core. The <strong>.v</strong> file is used as a kind of glue to connect the <strong>.ngc</strong> to your project.</p>
+<p>Click on <strong>Project-&gt;Add Source</strong></p>
+<p>Navigate to where your cores were generated, in this case it's in the folder named <strong>ipcore_dir</strong>.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/CoreGen_Adding_Core.png" alt="CoreGen_Adding_Core.png" /></p>
+<p>Select the two files for your core and click open. This will add them to your project, but like we said before, these are already in the project so it gives you an error.</p>
+<h3 id="using-your-cores">Using your cores</h3>
+<p>Once you've created your core and added it to your project, you need to actually use it!</p>
+<p>If you look in the <strong>ipcore_dir</strong> folder and open up the <strong>.veo</strong> file for your core, you will find an example on how to instantiate the core.</p>
+<p>There are a lot of comments in the file but here is the important content of the <strong>sample_ram.veo</strong> file</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>49</td><td><span style="color:#969696;">//----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
+</span></td></tr><tr><td>50</td><td><span>sample_ram your_instance_name </span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>51</td><td><span>  .clka</span><span style="color:#ed4343;">(</span><span>clka</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// input clka
+</span></td></tr><tr><td>52</td><td><span>  .wea</span><span style="color:#ed4343;">(</span><span>wea</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// input [0 : 0] wea
+</span></td></tr><tr><td>53</td><td><span>  .addra</span><span style="color:#ed4343;">(</span><span>addra</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// input [9 : 0] addra
+</span></td></tr><tr><td>54</td><td><span>  .dina</span><span style="color:#ed4343;">(</span><span>dina</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// input [15 : 0] dina
+</span></td></tr><tr><td>55</td><td><span>  .clkb</span><span style="color:#ed4343;">(</span><span>clkb</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// input clkb
+</span></td></tr><tr><td>56</td><td><span>  .addrb</span><span style="color:#ed4343;">(</span><span>addrb</span><span style="color:#ed4343;">), </span><span style="color:#969696;">// input [9 : 0] addrb
+</span></td></tr><tr><td>57</td><td><span>  .doutb</span><span style="color:#ed4343;">(</span><span>doutb</span><span style="color:#ed4343;">) </span><span style="color:#969696;">// output [15 : 0] doutb
+</span></td></tr><tr><td>58</td><td><span style="color:#ed4343;">);
+</span></td></tr><tr><td>59</td><td><span style="color:#969696;">// INST_TAG_END ------ End INSTANTIATION Template ---------
+</span></td></tr></tbody></table></code></pre>
+<p>You can just copy and paste this into your project to use the <strong>sample_ram</strong> module. Of course, you still need to specify the correct inputs and outputs.</p>
+<p>That's it! Using CoreGen is a great way to get some of the heavy lifting in a project done for you and in a very efficient way.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;serial-peripheral-interface&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Serial Peripheral Interface (SPI)</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;memory-mapping&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Memory Mapping</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

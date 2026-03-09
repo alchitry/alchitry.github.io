@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Register Interface</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;register-interface&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;">Lucid V1</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;register-interface&#x2F;">Register Interface</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Register Interface</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+9 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;register-interface.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#overview" aria-label="Overview">Overview</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#example" aria-label="Example">Example</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-api" aria-label="The API">The API</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#java-example" aria-label="Java Example">Java Example</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>This tutorial will introduce you to the register interface component and how it can be used to create easy and reliable interfaces to your designs.</p>
+<h2 id="overview">Overview</h2>
+<p>The register interface component takes over a serial port (typically from the AVR interface component) and create an address based interface. You can then issue read and write requests over the Mojo's USB port to specific addresses. By default, these addresses have no meaning. They are simply a way for you to differentiate the requests. Both the data and address values are 32 bits wide.</p>
+<h2 id="example">Example</h2>
+<p>Let's create a quick example that will map the LEDs on the Mojo to address 0. That way we can read and write to address 0 to change the value of the LEDs.</p>
+<p>Create a new project based on the <em>AVR Interface</em> example.</p>
+<p>Now open up the components library and add the <em>Register Interface</em> component, which can be found under <em>Interfaces</em>.</p>
+<p>We now need to hook it up to the serial port of the <em>AVR Interface</em> in <em>mojo_top.luc</em>.</p>
+<pre data-linenos data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><table><tbody><tr><td>1</td><td><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top </span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>2</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 50MHz clock
+</span></td></tr><tr><td>3</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span></td></tr><tr><td>4</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span></td></tr><tr><td>5</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,             </span><span style="color:#969696;">// configuration clock, AVR ready when high
+</span></td></tr><tr><td>6</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// AVR SPI MISO
+</span></td></tr><tr><td>7</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR SPI Slave Select
+</span></td></tr><tr><td>8</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// AVR SPI MOSI
+</span></td></tr><tr><td>9</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR SPI Clock
+</span></td></tr><tr><td>10</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_channel </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// AVR general purpose pins (used by default to select ADC channel)
+</span></td></tr><tr><td>11</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR TX (FPGA RX)
+</span></td></tr><tr><td>12</td><td><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR RX (FPGA TX)
+</span></td></tr><tr><td>13</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy       </span><span style="color:#969696;">// AVR RX buffer full
+</span></td></tr><tr><td>14</td><td><span>  </span><span style="color:#ed4343;">) {
+</span></td></tr><tr><td>15</td><td><span> 
+</span></td></tr><tr><td>16</td><td><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span></td></tr><tr><td>17</td><td><span> 
+</span></td></tr><tr><td>18</td><td><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span></td></tr><tr><td>19</td><td><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span></td></tr><tr><td>20</td><td><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span></td></tr><tr><td>21</td><td><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>22</td><td><span> 
+</span></td></tr><tr><td>23</td><td><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">){
+</span></td></tr><tr><td>24</td><td><span>      </span><span style="color:#969696;">// the avr_interface module is used to talk to the AVR for access to the USB port and analog pins
+</span></td></tr><tr><td>25</td><td><span>      avr_interface avr</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>26</td><td><span>      reg_interface register</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>27</td><td><span>    </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>28</td><td><span>  </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>29</td><td><span> 
+</span></td></tr><tr><td>30</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span></td></tr><tr><td>31</td><td><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span></td></tr><tr><td>32</td><td><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span></td></tr><tr><td>33</td><td><span> 
+</span></td></tr><tr><td>34</td><td><span>    </span><span style="color:#969696;">// connect inputs of avr
+</span></td></tr><tr><td>35</td><td><span>    avr.cclk </span><span style="color:#ed4343;">=</span><span> cclk</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>36</td><td><span>    avr.spi_ss </span><span style="color:#ed4343;">=</span><span> spi_ss</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>37</td><td><span>    avr.spi_mosi </span><span style="color:#ed4343;">=</span><span> spi_mosi</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>38</td><td><span>    avr.spi_sck </span><span style="color:#ed4343;">=</span><span> spi_sck</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>39</td><td><span>    avr.rx </span><span style="color:#ed4343;">=</span><span> avr_tx</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>40</td><td><span>    avr.channel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">hf</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// ADC is unused so disable
+</span></td></tr><tr><td>41</td><td><span>    avr.tx_block </span><span style="color:#ed4343;">=</span><span> avr_rx_busy</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// block TX when AVR is busy
+</span></td></tr><tr><td>42</td><td><span> 
+</span></td></tr><tr><td>43</td><td><span>    </span><span style="color:#969696;">// connect outputs of avr
+</span></td></tr><tr><td>44</td><td><span>    spi_miso </span><span style="color:#ed4343;">=</span><span> avr.spi_miso</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>45</td><td><span>    spi_channel </span><span style="color:#ed4343;">=</span><span> avr.spi_channel</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>46</td><td><span>    avr_rx </span><span style="color:#ed4343;">=</span><span> avr.tx</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>47</td><td><span> 
+</span></td></tr><tr><td>48</td><td><span>    register.rx_data </span><span style="color:#ed4343;">=</span><span> avr.rx_data</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>49</td><td><span>    register.new_rx_data </span><span style="color:#ed4343;">=</span><span> avr.new_rx_data</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>50</td><td><span>    avr.tx_data </span><span style="color:#ed4343;">=</span><span> register.tx_data</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>51</td><td><span>    avr.new_tx_data </span><span style="color:#ed4343;">=</span><span> register.new_tx_data</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>52</td><td><span>    register.tx_busy </span><span style="color:#ed4343;">=</span><span> avr.tx_busy</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>53</td><td><span> 
+</span></td></tr><tr><td>54</td><td><span>    register.regIn.drdy </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;    </span><span style="color:#969696;">// default to no data
+</span></td></tr><tr><td>55</td><td><span>    register.regIn.data </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">32bx</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// don&#39;t care
+</span></td></tr><tr><td>56</td><td><span> 
+</span></td></tr><tr><td>57</td><td><span>    led </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;          </span><span style="color:#969696;">// turn LEDs off
+</span></td></tr><tr><td>58</td><td><span>  </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>59</td><td><span style="color:#ed4343;">}
+</span></td></tr></tbody></table></code></pre>
+<p>Now we only have to deal with the register interface and we can ignore the AVR interface.</p>
+<p>Take a look at the <em>reg_interface.luc</em> file.</p>
+<pre data-linenos data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><table><tbody><tr><td>35</td><td><span style="font-weight:bold;color:#faac1f;">global </span><span style="color:#da5a8c;">Register </span><span style="color:#ed4343;">{
+</span></td></tr><tr><td>36</td><td><span>  </span><span style="color:#0a8dbf;">struct</span><span> master </span><span style="color:#ed4343;">{                                 </span><span style="color:#969696;">// master device outputs
+</span></td></tr><tr><td>37</td><td><span>    new_cmd</span><span style="color:#ed4343;">,                                      </span><span style="color:#969696;">// 1 = new command
+</span></td></tr><tr><td>38</td><td><span>    write</span><span style="color:#ed4343;">,                                        </span><span style="color:#969696;">// 1 = write, 0 = read
+</span></td></tr><tr><td>39</td><td><span>    address</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">],                                  </span><span style="color:#969696;">// address to read/write
+</span></td></tr><tr><td>40</td><td><span>    data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">]                                      </span><span style="color:#969696;">// data to write (ignore on reads)
+</span></td></tr><tr><td>41</td><td><span>  </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>42</td><td><span>  </span><span style="color:#0a8dbf;">struct</span><span> slave </span><span style="color:#ed4343;">{                                  </span><span style="color:#969696;">// slave device outputs
+</span></td></tr><tr><td>43</td><td><span>    data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">],                                     </span><span style="color:#969696;">// data read from requested address
+</span></td></tr><tr><td>44</td><td><span>    drdy                                          </span><span style="color:#969696;">// read data valid (1 = valid)
+</span></td></tr><tr><td>45</td><td><span>  </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>46</td><td><span style="color:#ed4343;">}
+</span></td></tr></tbody></table></code></pre>
+<pre data-linenos data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><table><tbody><tr><td>63</td><td><span style="color:#969696;">// Register Interface
+</span></td></tr><tr><td>64</td><td><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Register</span><span>.master</span><span style="color:#ed4343;">&gt;</span><span> regOut</span><span style="color:#ed4343;">,               </span><span style="color:#969696;">// register outputs
+</span></td></tr><tr><td>65</td><td><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Register</span><span>.slave</span><span style="color:#ed4343;">&gt;</span><span> regIn                   </span><span style="color:#969696;">// register inputs
+</span></td></tr></tbody></table></code></pre>
+<p>Here you can see the interface we will be dealing with. When the master (your PC) issues a command, <em>regOut.new_cmd</em> goes high. At this time, <em>regOut.write</em> will tell you if it is write or read request and <em>regOut.address</em> will tell you what address is being referenced. During a write, <em>regOut.data</em> is valid and is the data that should be written to the specified address. During a read, this value is invalid and should be ignored.</p>
+<p>When a read request is sent, the value corresponding to <em>regOut.address</em> should be generated and presented on <em>regIn.data</em>. When it is ready, <em>regIn.drdy</em> should be set high.</p>
+<p>We now need to add a <em>dff</em> to save the value of the LEDs.</p>
+<pre data-linenos data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><table><tbody><tr><td>23</td><td><span>.rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">){
+</span></td></tr><tr><td>24</td><td><span>  </span><span style="color:#969696;">// the avr_interface module is used to talk to the AVR for access to the USB port and analog pins
+</span></td></tr><tr><td>25</td><td><span>  avr_interface avr</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>26</td><td><span>  reg_interface register</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>27</td><td><span> 
+</span></td></tr><tr><td>28</td><td><span>  </span><span style="color:#0a8dbf;">dff</span><span> leds </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];
+</span></td></tr><tr><td>29</td><td><span style="color:#ed4343;">}
+</span></td></tr></tbody></table></code></pre>
+<p>Now we can add some logic to handle the read and write requests.</p>
+<pre data-linenos data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><table><tbody><tr><td>59</td><td><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>register.regOut.new_cmd</span><span style="color:#ed4343;">) {             </span><span style="color:#969696;">// new command
+</span></td></tr><tr><td>60</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>register.regOut.write</span><span style="color:#ed4343;">) {             </span><span style="color:#969696;">// if write
+</span></td></tr><tr><td>61</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>register.regOut.address </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">) {    </span><span style="color:#969696;">// if address is 0
+</span></td></tr><tr><td>62</td><td><span>      leds.d </span><span style="color:#ed4343;">=</span><span> register.regOut.data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];  </span><span style="color:#969696;">// write the LEDs
+</span></td></tr><tr><td>63</td><td><span>    </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>64</td><td><span>  </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{                                 </span><span style="color:#969696;">// if read
+</span></td></tr><tr><td>65</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>register.regOut.address </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">) {    </span><span style="color:#969696;">// if address is 0
+</span></td></tr><tr><td>66</td><td><span>      register.regIn.data </span><span style="color:#ed4343;">=</span><span> leds.q</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// read the LEDs
+</span></td></tr><tr><td>67</td><td><span>      register.regIn.drdy </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// signal data ready
+</span></td></tr><tr><td>68</td><td><span>    </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>69</td><td><span>  </span><span style="color:#ed4343;">}
+</span></td></tr><tr><td>70</td><td><span style="color:#ed4343;">}
+</span></td></tr><tr><td>71</td><td><span> 
+</span></td></tr><tr><td>72</td><td><span>led </span><span style="color:#ed4343;">=</span><span> leds.q</span><span style="color:#ed4343;">;                              </span><span style="color:#969696;">// connect the dff
+</span></td></tr></tbody></table></code></pre>
+<p>When we detect a write request, we update the value of <em>leds</em>, but when detect a read request, we return the value of <em>leds</em>. Note that we are filtering only for address 0. All other address requests will be ignored.</p>
+<p>Here is the fully modified module.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// 50MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],         </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,             </span><span style="color:#969696;">// configuration clock, AVR ready when high
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// AVR SPI MISO
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR SPI Slave Select
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// AVR SPI MOSI
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR SPI Clock
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_channel </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// AVR general purpose pins (used by default to select ADC channel)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// AVR TX (FPGA RX)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">,          </span><span style="color:#969696;">// AVR RX (FPGA TX)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy       </span><span style="color:#969696;">// AVR RX buffer full
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// reset signal
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">){
+</span><span>      </span><span style="color:#969696;">// the avr_interface module is used to talk to the AVR for access to the USB port and analog pins
+</span><span>      avr_interface avr</span><span style="color:#ed4343;">;
+</span><span>      reg_interface reg</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>      </span><span style="color:#0a8dbf;">dff</span><span> leds </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// conditioned reset
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// connect inputs of avr
+</span><span>    avr.cclk </span><span style="color:#ed4343;">=</span><span> cclk</span><span style="color:#ed4343;">;
+</span><span>    avr.spi_ss </span><span style="color:#ed4343;">=</span><span> spi_ss</span><span style="color:#ed4343;">;
+</span><span>    avr.spi_mosi </span><span style="color:#ed4343;">=</span><span> spi_mosi</span><span style="color:#ed4343;">;
+</span><span>    avr.spi_sck </span><span style="color:#ed4343;">=</span><span> spi_sck</span><span style="color:#ed4343;">;
+</span><span>    avr.rx </span><span style="color:#ed4343;">=</span><span> avr_tx</span><span style="color:#ed4343;">;
+</span><span>    avr.channel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">hf</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// ADC is unused so disable
+</span><span>    avr.tx_block </span><span style="color:#ed4343;">=</span><span> avr_rx_busy</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// block TX when AVR is busy
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// connect outputs of avr
+</span><span>    spi_miso </span><span style="color:#ed4343;">=</span><span> avr.spi_miso</span><span style="color:#ed4343;">;
+</span><span>    spi_channel </span><span style="color:#ed4343;">=</span><span> avr.spi_channel</span><span style="color:#ed4343;">;
+</span><span>    avr_rx </span><span style="color:#ed4343;">=</span><span> avr.tx</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// connect reg interface to avr interface
+</span><span>    reg.rx_data </span><span style="color:#ed4343;">=</span><span> avr.rx_data</span><span style="color:#ed4343;">;
+</span><span>    reg.new_rx_data </span><span style="color:#ed4343;">=</span><span> avr.new_rx_data</span><span style="color:#ed4343;">;
+</span><span>    avr.tx_data </span><span style="color:#ed4343;">=</span><span> reg.tx_data</span><span style="color:#ed4343;">;
+</span><span>    avr.new_tx_data </span><span style="color:#ed4343;">=</span><span> reg.new_tx_data</span><span style="color:#ed4343;">;
+</span><span>    reg.tx_busy </span><span style="color:#ed4343;">=</span><span> avr.tx_busy</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    reg.regIn.drdy </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                   </span><span style="color:#969696;">// default to not ready
+</span><span>    reg.regIn.data </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">32bx</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// don&#39;t care
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>reg.regOut.new_cmd</span><span style="color:#ed4343;">) {             </span><span style="color:#969696;">// new command
+</span><span>      </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>reg.regOut.write</span><span style="color:#ed4343;">) {             </span><span style="color:#969696;">// if write
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>reg.regOut.address </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">) {    </span><span style="color:#969696;">// if address is 0
+</span><span>          leds.d </span><span style="color:#ed4343;">=</span><span> reg.regOut.data</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];  </span><span style="color:#969696;">// write the LEDs
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>      </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{                            </span><span style="color:#969696;">// if read
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>reg.regOut.address </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">) {    </span><span style="color:#969696;">// if address is 0
+</span><span>          reg.regIn.data </span><span style="color:#ed4343;">=</span><span> leds.q</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// read the LEDs
+</span><span>          reg.regIn.drdy </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// signal data ready
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>      </span><span style="color:#ed4343;">}
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>    led </span><span style="color:#ed4343;">=</span><span> leds.q</span><span style="color:#ed4343;">;                         </span><span style="color:#969696;">// connect the dff
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Build your project and load it onto your board.</p>
+<p>In the Mojo IDE, go to <strong>Tools-&gt;Register Interface...</strong>. This tool allows you to send read and write requests to specific addresses when using the register interface component. Fill in 0 for <em>Address</em> and 1 for <em>Value</em> then click <em>Write</em>.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/reginterface.png" alt="reginterface.png" /></p>
+<p>If everything went well, the first LED on your Mojo should have lit up! Try writing different values. Also note that you can use the radio buttons to select if you want the address and value fields to be represented in decimal or hexadecimal.</p>
+<p>If you try to read from an address other than 0, you'll get an error message saying the read failed. This is because if the address isn't 0, we never return any data (<em>regIn.drdy</em> stays 0 forever) so the read times out. You can write to other addresses, but the writes are simply ignored.</p>
+<p>Try to modify the code so that address 0 still controls the LEDs, but address 1 now will read a bit-wise inverted version of what was last written to it. If you need help, <a href="http://forum.alchitry.com/">hit up our forums</a>.</p>
+<h2 id="the-api">The API</h2>
+<p>This built in register interface tool is helpful, but manually entering everything isn't always practical. Here we will go over how the protocol works for issuing read and write requests so that you can use this in your own applications.</p>
+<p>Every request starts with 5 bytes being sent. The first byte is the command byte and the next four are the address (32 bits = 4 bytes) sent with the least significant byte first.</p>
+<p>In many cases you will want to read or write to many consecutive addresses, or perhaps the same address many times. It would be inefficient to have to issue the entire command each time so the command byte contains info for consecutive or multiple read/write requests in one.</p>
+<p>The MSB (bit 7) of the command byte specifies if the command is a read (0) or write (1). The next bit (bit 6), specifies if consecutive addresses should be read/written (1) or if the same address should be read/written multiple times (0). The 6 LSBs (bits 5-0) represent how many read/write requests should be generated. Note that the number of requests will alway be 1 more than the value of these bits. That means if you want to read or write a single address, they should be set to 0. Setting them to 1 will generate two read or write requests.</p>
+<p>If you send a write request, after sending the command byte and address, you continue sending the data to be written. Data is always sent as four bytes per write request and the least significant byte should be sent first.</p>
+<p>For reads, after sending the command byte and address, you simply wait for the data to be returned. Data is returned in least significant byte order. Note that you may not always receive all the data you ask for if there is an issue with the FPGA design (i.e. the requested data is never presented, like in our LED example).</p>
+<p>Let's take a look at an example.</p>
+<p>If you want to write to addresses 5, 6, and 7, you could issue the following request. 0xC2 (1100 0010), 0x05, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00. This would write 1 to address 5, 2 to address 6, and 3 to address 7. If you changed the command byte to 0x82 (1000 0010) you would write 1 to address 5, 2 to address 5, and then 3 to address 5 (in that order).</p>
+<p>Issuing a read follows the exact same format except the data bytes are received instead of sent.</p>
+<p>A single command can generate up to 64 read/write requests. If you need to read/write more, you need to issue separate commands.</p>
+<h2 id="java-example">Java Example</h2>
+<p>You can download a working Java example (Eclipse project) by <a href="http://cdn.embeddedmicro.com/lucid/RegisterInterfaceExample.zip">clicking here</a>. This example simply writes 0x12 to address 0, but there is a class to make it easy to perform reads and writes in bulk.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;basic-cpu&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Basic CPU</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;camera&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Camera</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

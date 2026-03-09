@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>SDRAM</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;sdram&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;">Lucid V1</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;sdram&#x2F;">SDRAM</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">SDRAM</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+35 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;sdram.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#what-is-ram" aria-label="What is RAM?">What is RAM?</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#how-dram-works" aria-label="How DRAM works">How DRAM works</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#dram-vs-sdram" aria-label="DRAM vs SDRAM">DRAM vs SDRAM</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#dram-vs-sram" aria-label="DRAM vs SRAM">DRAM vs SRAM</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-controller" aria-label="The Controller">The Controller</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#structs" aria-label="Structs">Structs</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#accessing-struct-members" aria-label="Accessing Struct Members">Accessing Struct Members</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#the-interface" aria-label="The Interface">The Interface</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#commands" aria-label="Commands">Commands</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-fsm" aria-label="The FSM">The FSM</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#dealing-with-the-hardware" aria-label="Dealing with the Hardware">Dealing with the Hardware</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#xilinx-primitives" aria-label="Xilinx Primitives">Xilinx Primitives</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#using-the-controller" aria-label="Using the Controller">Using the Controller</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-memory-interface" aria-label="The Memory Interface">The Memory Interface</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-tester" aria-label="The Tester">The Tester</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#generating-the-clock" aria-label="Generating the Clock">Generating the Clock</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-top-level" aria-label="The Top Level">The Top Level</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>This tutorial will cover how <strong>DRAM</strong> (<strong>D</strong>ynamic <strong>R</strong>andom <strong>A</strong>ccess <strong>M</strong>emory), or more specifically <strong>SDRAM</strong> (<strong>S</strong>ynchronized <strong>DRAM</strong>), works and how you can use it in your projects. We will be using the SDRAM Shield.</p>
+<h3 id="what-is-ram">What is RAM?</h3>
+<p>It is first important to understand what <strong>RAM</strong> is in general before diving into a specific type. RAM is simply a large block of memory that you can access more or less at random very quickly. It provides temporary storage for your design for things like images, video, or sampled data. In some applications it can even be used to store the instructions and data for a processor.</p>
+<p>Notice the word <strong>temporary</strong> I used. This is because RAM is a volatile form of memory. That means without power, the contents of the memory will be lost.</p>
+<p>RAM is organized into banks, rows, and columns. I like to think of RAM as a set of notebooks where each notebook is a <em>bank</em>, each page is a <em>row</em>, and each line is a <em>column</em>. Each bank, or notebook, can be accessed independently of the other banks. Each bank is comprised of many rows and each row has many columns. To access a specific piece of data you must specify all three pieces of information, the bank, row, and column.</p>
+<p>The actual protocol required to access data depends on the type of RAM being used. However, all RAM breaks our a very similar interface. You generally have an address input, which specifies the row and column, a bank select input, which specifies the bank, a data input/output, which is used for reading and writing data, and a few control signals.</p>
+<h3 id="how-dram-works">How DRAM works</h3>
+<p>So now you know that any type of RAM is used to store large amount of data, how does it actually store this data?</p>
+<p>The basic storage element behind DRAM is the capacitor. Just as a basic refresher, a capacitor is a device that is able to store a charge. You can think of them much like a balloon. Just as you can fill a balloon with some air, you can fill a capacitor with some charge.</p>
+<p>The basic cell in DRAM looks like the following.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/sdram_cell_0234e479-2cf8-4dc8-aedc-e20317664098.png" alt="sdram_cell_0234e479-2cf8-4dc8-aedc-e20317664098.png" /></p>
+<p>There is simply a capacitor that stores a charge, and a transistor that allows charge to either be put into the capacitor or taken out.</p>
+<p>These cells are arranged into a large 2D array of <em>rows</em> and <em>columns</em>. These are the same rows and columns from before.</p>
+<p>When you write data to DRAM, charge is placed on capacitors that should have a value of 1, but no charge is placed on capacitors that have a value of 0.</p>
+<p>When you read data from DRAM, the charge on the capacitor is measured using a circuit called a <strong>sense amplifier</strong>. If the sense amplifier detected charge on the capacitor then it outputs a 1, otherwise it assumes the cell was a 0.</p>
+<p>There are a two main problems to the fundamental design of DRAM. First, to read the charge from the capacitor, the charge must be drained. This causes all reads to be destructive. Once you read a piece of data from DRAM, the value is no longer being stored in the memory array. To deal with this, the data <strong>must</strong> be written back into the array when you are done with it. This is called <strong>precharging</strong>.</p>
+<p>To make the interface to DRAM a bit more efficient, an entire row is read into a buffer in the DRAM. The process of reading a row into that buffer is referred to as <strong>opening</strong> or <strong>activating</strong> the row. Once a row is open, data can be read or written to any columns in that row without having to open it again.</p>
+<p>However, only one row per bank can be open at a time. To read from a different row in the same bank, you must first <strong>precharge</strong> the current row, then <strong>open</strong> the new row.</p>
+<p>The second fundamental flaw of DRAM, and the reason it is called <strong>dynamic</strong> RAM, is that capacitors <em>leak</em> charge. That means that once a charge is stored on a capacitor, it will start losing that charge. This happens either through the transistor connected to it, or through the capacitor itself. What this means for your data is that, if neglected, the values stored will be lost.</p>
+<p>The fix to this problem is to periodically <strong>refresh</strong> each row. A refresh consists of simply reading a row then writing it back into the array. This process ensures that the capacitors retain their charge.</p>
+<p>The amount of time a row can go between refreshes depends on the DRAM. However, the SDRAM chip on the SDRAM Shield, must be refreshed every <strong>64ms</strong>.</p>
+<p>Generally, SDRAM will be able to perform the refresh operation for you. However, you still must tell it when to refresh.</p>
+<h3 id="dram-vs-sdram">DRAM vs SDRAM</h3>
+<p>The difference between these two types of RAM is that SDRAM is <strong>synchronous</strong> and DRAM is not. All this means is that the SDRAM uses a clock while DRAM does not. The benefits to SDRAM are that inputs and outputs are synchronized to whatever it is connected to, in our case the FPGA, as well as some speed benefits due to pipelining.</p>
+<p>SDRAM is much more common than plain DRAM.</p>
+<p>It is also worth noting that <strong>DDR</strong> (<strong>D</strong>ouble <strong>D</strong>ata <strong>R</strong>ate) RAM, usually heard in the context of computers, is a form of SDRAM.</p>
+<h3 id="dram-vs-sram">DRAM vs SRAM</h3>
+<p>The difference between DRAM and SRAM is a bit more interesting. SRAM operates fundamentally differently than DRAM. It doesn't store data on capacitors, but instead uses two inverters back to back.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/sram_cell_5e0b76ab-6ad6-4443-bfde-d976110ff738.png" alt="sram_cell_5e0b76ab-6ad6-4443-bfde-d976110ff738.png" /></p>
+<p>This solves the two problems discussed earlier about destructive reads and forgetting the value. However, this comes at a price, literally. SRAM is much more expensive than DRAM due to the fact that the technology is much less dense. Each cell in SRAM is much larger than each cell of DRAM, meaning you can't pack nearly as many into the same area.</p>
+<p>SRAM is, however, faster and uses less power than DRAM. Because of this, it is still used frequently in digital systems for things like caches. Modern CPUs have something like 8-16MB of very fast SRAM cache, but the computer can have 1000x that much (8+GB) DRAM.</p>
+<h2 id="the-controller">The Controller</h2>
+<p>Create a new project based on the <em>Base Project</em>. We now need to add the SDRAM controller to our project. In the <em>Component Selector</em>, select <em>Controllers/SDRAM Controller</em>. We also need the pin definitions for the SDRAM Shield, so also check off <em>Constraints/SDRAM Shield</em>. Add these to your project.</p>
+<p>Open up the <em>sdram.luc</em> file and take a look at it. It can be helpful to have the <a href="http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf">datasheet</a> for the SDRAM chip open.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="color:#969696;">// Interface to the SDRAM chip
+</span><span style="font-weight:bold;color:#faac1f;">global </span><span style="color:#da5a8c;">Sdram </span><span style="color:#ed4343;">{
+</span><span>  </span><span style="color:#969696;">// Outputs
+</span><span>  </span><span style="color:#0a8dbf;">struct</span><span> out </span><span style="color:#ed4343;">{
+</span><span>    clk</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// clock
+</span><span>    cle</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// clock enable
+</span><span>    cs</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// chip select
+</span><span>    cas</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// column address strobe
+</span><span>    ras</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// row address strobe
+</span><span>    we</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// write enable
+</span><span>    dqm</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// data tri-state mask
+</span><span>    bank </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],      </span><span style="color:#969696;">// bank address
+</span><span>    addr </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">13</span><span style="color:#ed4343;">]      </span><span style="color:#969696;">// column/row address
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// Inouts
+</span><span>  </span><span style="color:#0a8dbf;">struct</span><span> inOut </span><span style="color:#ed4343;">{
+</span><span>    dq </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]         </span><span style="color:#969696;">// data bus
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span><span> 
+</span><span style="font-weight:bold;color:#faac1f;">module</span><span> sdram </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// reset
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// SDRAM interface
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Sdram</span><span>.inOut</span><span style="color:#ed4343;">&gt;</span><span> sdramInOut</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Sdram</span><span>.out</span><span style="color:#ed4343;">&gt;</span><span> sdramOut</span><span style="color:#ed4343;">,
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// Memory interface
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.master</span><span style="color:#ed4343;">&gt;</span><span> memIn</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.slave</span><span style="color:#ed4343;">&gt;</span><span> memOut
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// Commands for the SDRAM
+</span><span>  </span><span style="color:#969696;">//const CMD_UNSELECTED    = 4b1000; // Unused
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CMD_NOP           </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4b0111</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// No operation
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CMD_ACTIVE        </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4b0011</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// Activate a row
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CMD_READ          </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4b0101</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// Start a read
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CMD_WRITE         </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4b0100</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// Start a write
+</span><span>  </span><span style="color:#969696;">//const CMD_TERMINATE     = 4b0110; // Unused
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CMD_PRECHARGE     </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4b0010</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// Precharge a row
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CMD_REFRESH       </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4b0001</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// Perform a refresh
+</span><span>  </span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CMD_LOAD_MODE_REG </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4b0000</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// Load mode register
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {
+</span><span>        </span><span style="color:#d45ada;">INIT</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// Initial state
+</span><span>        </span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// Generic wait state
+</span><span>        </span><span style="color:#d45ada;">PRECHARGE_INIT</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// Start initial precharge
+</span><span>        </span><span style="color:#d45ada;">REFRESH_INIT_1</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// Perform first refresh
+</span><span>        </span><span style="color:#d45ada;">REFRESH_INIT_2</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// Perform second refresh
+</span><span>        </span><span style="color:#d45ada;">LOAD_MODE_REG</span><span style="color:#ed4343;">,   </span><span style="color:#969696;">// Load mode register
+</span><span>        </span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// Main idle state
+</span><span>        </span><span style="color:#d45ada;">REFRESH</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// Perform a refresh
+</span><span>        </span><span style="color:#d45ada;">ACTIVATE</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// Activate a row
+</span><span>        </span><span style="color:#d45ada;">READ</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// Start a read
+</span><span>        </span><span style="color:#d45ada;">READ_RES</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// Read results
+</span><span>        </span><span style="color:#d45ada;">WRITE</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// Perform a write
+</span><span>        </span><span style="color:#d45ada;">PRECHARE         </span><span style="color:#969696;">// Precharge bank(s)
+</span><span>      </span><span style="color:#ed4343;">}; 
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// DFF to store the next state to go into after WAIT state
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> next_state</span><span style="color:#ed4343;">[</span><span>state.</span><span style="color:#d45ada;">WIDTH</span><span style="color:#ed4343;">];
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// IO buffer flip-flops are important for timing
+</span><span>    </span><span style="color:#969696;">// The #IOB parameter tells the tools to pack the
+</span><span>    </span><span style="color:#969696;">// dff into the IO buffer which is important for
+</span><span>    </span><span style="color:#969696;">// consistant timing.
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> cle </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">IOB</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));       </span><span style="color:#969696;">// clock enable
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> dqm </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">IOB</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));       </span><span style="color:#969696;">// data mask
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> cmd </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">] (#</span><span style="color:#d45ada;">IOB</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));   </span><span style="color:#969696;">// command (we, cas, ras, cs)
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> bank </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] (#</span><span style="color:#d45ada;">IOB</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));  </span><span style="color:#969696;">// bank select
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> a </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">13</span><span style="color:#ed4343;">] (#</span><span style="color:#d45ada;">IOB</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));    </span><span style="color:#969696;">// address
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> dq </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">] (#</span><span style="color:#d45ada;">IOB</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));    </span><span style="color:#969696;">// data output
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> dqi </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">] (#</span><span style="color:#d45ada;">IOB</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));   </span><span style="color:#969696;">// data input
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> dq_en</span><span style="color:#ed4343;">;               </span><span style="color:#969696;">// data bus output enable
+</span><span> 
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> addr </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">23</span><span style="color:#ed4343;">];           </span><span style="color:#969696;">// operation address
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> data </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">];           </span><span style="color:#969696;">// operation data
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> rw_op</span><span style="color:#ed4343;">;               </span><span style="color:#969696;">// operation read/write flag
+</span><span> 
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> out_valid</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// output valid
+</span><span> 
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> delay_ctr </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">16</span><span style="color:#ed4343;">];      </span><span style="color:#969696;">// delay counter
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> byte_ctr </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">];        </span><span style="color:#969696;">// byte counter
+</span><span> 
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> refresh_ctr </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">];    </span><span style="color:#969696;">// refresh counter
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> refresh_flag</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// refresh counter expired flag
+</span><span> 
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> ready</span><span style="color:#ed4343;">;               </span><span style="color:#969696;">// controller ready flag
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> saved_rw</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// saved command read/write flag
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> saved_addr </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">23</span><span style="color:#ed4343;">];     </span><span style="color:#969696;">// saved command address
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> saved_data </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">];     </span><span style="color:#969696;">// saved command data
+</span><span> 
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> row_open </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">];        </span><span style="color:#969696;">// row in bank open flags
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> row_addr </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">][</span><span style="color:#a269dc;">13</span><span style="color:#ed4343;">];    </span><span style="color:#969696;">// open row addresses
+</span><span> 
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> precharge_bank </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">];  </span><span style="color:#969696;">// bank(s) to precharge
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// xil_XXX modules aren&#39;t real modules but rather
+</span><span>  </span><span style="color:#969696;">// hardware primitives inside the FPGA.
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// The OODR2 is used to output the FPGA clock to
+</span><span>  </span><span style="color:#969696;">// an output pin because a clock can&#39;t be directly
+</span><span>  </span><span style="color:#969696;">// routed as an output.
+</span><span>  xil_ODDR2 oddr </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">DDR_ALIGNMENT</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;NONE&quot;</span><span style="color:#ed4343;">),
+</span><span>    </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">INIT</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">),
+</span><span>    </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">SRTYPE</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;SYNC&quot;</span><span style="color:#ed4343;">)
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// The IODELAY2 is used to delay the clock a bit
+</span><span>  </span><span style="color:#969696;">// in order to align the data with the clock edge.
+</span><span>  </span><span style="color:#969696;">// These settings assume a 100MHz clock and the
+</span><span>  </span><span style="color:#969696;">// SDRAM Shield being stacked next to the Mojo.
+</span><span>  xil_IODELAY2 iodelay </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">IDELAY_VALUE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">),
+</span><span>    </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">IDELAY_MODE</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;NORMAL&quot;</span><span style="color:#ed4343;">),
+</span><span>    </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">ODELAY_VALUE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100</span><span style="color:#ed4343;">),
+</span><span>    </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">IDELAY_TYPE</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;FIXED&quot;</span><span style="color:#ed4343;">),
+</span><span>    </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">DELAY_SRC</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;ODATAIN&quot;</span><span style="color:#ed4343;">),
+</span><span>    </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">DATA_RATE</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;SDR&quot;</span><span style="color:#ed4343;">)
+</span><span>  </span><span style="color:#ed4343;">);
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// Connections
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    </span><span style="color:#969696;">// Connect the dffs to the outputs
+</span><span>    sdramOut.cle </span><span style="color:#ed4343;">=</span><span> cle.q</span><span style="color:#ed4343;">;
+</span><span>    sdramOut.cs </span><span style="color:#ed4343;">=</span><span> cmd.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">];
+</span><span>    sdramOut.ras </span><span style="color:#ed4343;">=</span><span> cmd.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">];
+</span><span>    sdramOut.cas </span><span style="color:#ed4343;">=</span><span> cmd.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">];
+</span><span>    sdramOut.we </span><span style="color:#ed4343;">=</span><span> cmd.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span><span>    sdramOut.dqm </span><span style="color:#ed4343;">=</span><span> dqm.q</span><span style="color:#ed4343;">;
+</span><span>    sdramOut.bank </span><span style="color:#ed4343;">=</span><span> bank.q</span><span style="color:#ed4343;">;
+</span><span>    sdramOut.addr </span><span style="color:#ed4343;">=</span><span> a.q</span><span style="color:#ed4343;">;
+</span><span>    sdramOut.clk </span><span style="color:#ed4343;">=</span><span> iodelay.</span><span style="color:#d45ada;">DOUT</span><span style="color:#ed4343;">;    </span><span style="color:#969696;">// delayed clock
+</span><span>    sdramInOut.enable.dq </span><span style="color:#ed4343;">=</span><span> dq_en.q</span><span style="color:#ed4343;">;
+</span><span>    sdramInOut.write.dq </span><span style="color:#ed4343;">=</span><span> dq.q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    memOut.data </span><span style="color:#ed4343;">=</span><span> data.q</span><span style="color:#ed4343;">;
+</span><span>    memOut.busy </span><span style="color:#ed4343;">= !</span><span>ready.q</span><span style="color:#ed4343;">;
+</span><span>    memOut.valid </span><span style="color:#ed4343;">=</span><span> out_valid.q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// Connections for the IODELAY2
+</span><span>    iodelay.</span><span style="color:#d45ada;">ODATAIN </span><span style="color:#ed4343;">=</span><span> oddr.</span><span style="color:#d45ada;">Q</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// use the ODDR2 output as the source
+</span><span>    iodelay.</span><span style="color:#d45ada;">IDATAIN </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    iodelay.</span><span style="color:#d45ada;">T </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    iodelay.</span><span style="color:#d45ada;">CAL </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    iodelay.</span><span style="color:#d45ada;">IOCLK0 </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    iodelay.</span><span style="color:#d45ada;">IOCLK1 </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    iodelay.</span><span style="color:#d45ada;">CLK </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    iodelay.</span><span style="color:#d45ada;">INC </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    iodelay.</span><span style="color:#d45ada;">CE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    iodelay.</span><span style="color:#d45ada;">RST </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// Connections for the ODDR2
+</span><span>    oddr.</span><span style="color:#d45ada;">C0 </span><span style="color:#ed4343;">=</span><span> clk</span><span style="color:#ed4343;">;
+</span><span>    oddr.</span><span style="color:#d45ada;">C1 </span><span style="color:#ed4343;">= ~</span><span>clk</span><span style="color:#ed4343;">;
+</span><span>    oddr.</span><span style="color:#d45ada;">CE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>    oddr.</span><span style="color:#d45ada;">D0 </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// using 0 for D0 and 1 for D1 inverts the clock
+</span><span>    oddr.</span><span style="color:#d45ada;">D1 </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// because D0 is output on the rising edge of C0
+</span><span>    oddr.</span><span style="color:#d45ada;">R </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    oddr.</span><span style="color:#d45ada;">S </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// Logic
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    </span><span style="color:#969696;">// default values
+</span><span>    dqi.d </span><span style="color:#ed4343;">=</span><span> sdramInOut.read.dq</span><span style="color:#ed4343;">;
+</span><span>    dq_en.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    cmd.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">CMD_NOP</span><span style="color:#ed4343;">;
+</span><span>    dqm.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    bank.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    a.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    out_valid.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>    byte_ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// Continuously increment the refresh counter
+</span><span>    </span><span style="color:#969696;">// If it reaches 750, 7.5us has elapsed and a refresh needs to happen
+</span><span>    </span><span style="color:#969696;">// The maximum delay is 7.813us
+</span><span>    refresh_ctr.d </span><span style="color:#ed4343;">=</span><span> refresh_ctr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>refresh_ctr.q </span><span style="color:#ed4343;">&gt; </span><span style="color:#a269dc;">750</span><span style="color:#ed4343;">) {
+</span><span>      refresh_ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;  </span><span style="color:#969696;">// reset the timer
+</span><span>      refresh_flag.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// set the refresh flag
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// If we are ready for a new command and we get one...
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ready.q </span><span style="color:#ed4343;">&amp;&amp;</span><span> memIn.valid</span><span style="color:#ed4343;">) {
+</span><span>      saved_rw.d </span><span style="color:#ed4343;">=</span><span> memIn.write</span><span style="color:#ed4343;">;  </span><span style="color:#969696;">// save the type
+</span><span>      saved_data.d </span><span style="color:#ed4343;">=</span><span> memIn.data</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// save the data
+</span><span>      saved_addr.d </span><span style="color:#ed4343;">=</span><span> memIn.addr</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// save the address
+</span><span>      ready.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;               </span><span style="color:#969696;">// don&#39;t accept new commands
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state.q</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#969696;">///// INTIALIZE /////
+</span><span>      state.</span><span style="color:#d45ada;">INIT</span><span style="color:#ed4343;">:
+</span><span>        ready.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                          </span><span style="color:#969696;">// not ready while initializing
+</span><span>        row_open.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                       </span><span style="color:#969696;">// no rows open yet 
+</span><span>        cle.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                            </span><span style="color:#969696;">// enable the clock
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// need to wait
+</span><span>        delay_ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">10100</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// for 101us (100us minimum)
+</span><span>        next_state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">PRECHARGE_INIT</span><span style="color:#ed4343;">;  </span><span style="color:#969696;">// move to PRECHARGE_INIT after
+</span><span> 
+</span><span>      state.</span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">:
+</span><span>        delay_ctr.d </span><span style="color:#ed4343;">=</span><span> delay_ctr.q </span><span style="color:#ed4343;">- </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// decrement counter
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>delay_ctr.q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">) {               </span><span style="color:#969696;">// if 0
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> next_state.q</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// go to the next state
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>next_state.q </span><span style="color:#ed4343;">==</span><span> state.</span><span style="color:#d45ada;">WRITE</span><span style="color:#ed4343;">) {  </span><span style="color:#969696;">// if it&#39;s WRITE
+</span><span>            dq_en.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                      </span><span style="color:#969696;">// enable the data bus
+</span><span>            dq.d </span><span style="color:#ed4343;">=</span><span> data.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];               </span><span style="color:#969696;">// and output the first byte
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>      state.</span><span style="color:#d45ada;">PRECHARGE_INIT</span><span style="color:#ed4343;">:
+</span><span>        cmd.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">CMD_PRECHARGE</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// need to precharge all banks
+</span><span>        a.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">] = </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                          </span><span style="color:#969696;">// all banks
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// need to wait after
+</span><span>        next_state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">REFRESH_INIT_1</span><span style="color:#ed4343;">;  </span><span style="color:#969696;">// move to REFRESH_INIT_1 after
+</span><span>        delay_ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                      </span><span style="color:#969696;">// delay 20ns (min 15ns)
+</span><span> 
+</span><span>      state.</span><span style="color:#d45ada;">REFRESH_INIT_1</span><span style="color:#ed4343;">:
+</span><span>        cmd.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">CMD_REFRESH</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// need to perform two refreshes
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// need to wait after a refresh
+</span><span>        next_state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">REFRESH_INIT_2</span><span style="color:#ed4343;">;  </span><span style="color:#969696;">// move to REFRESH_INIT_2 after
+</span><span>        delay_ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">;                      </span><span style="color:#969696;">// delay 90ns (min 66ns)
+</span><span> 
+</span><span>      state.</span><span style="color:#d45ada;">REFRESH_INIT_2</span><span style="color:#ed4343;">:
+</span><span>        cmd.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">CMD_REFRESH</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// need to perform two refreshes
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// need to wait after a refresh
+</span><span>        next_state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">LOAD_MODE_REG</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// move to LOAD_MODE_REG after
+</span><span>        delay_ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">;                      </span><span style="color:#969696;">// delay 90ns (min 66ns)
+</span><span> 
+</span><span>      state.</span><span style="color:#d45ada;">LOAD_MODE_REG</span><span style="color:#ed4343;">:
+</span><span>        cmd.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">CMD_LOAD_MODE_REG</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// load the mode register
+</span><span> 
+</span><span>        </span><span style="color:#969696;">// Reserved, Burst Access, Standard Op, CAS = 2, Sequential, Burst = 4
+</span><span>        a.d </span><span style="color:#ed4343;">= c{</span><span style="color:#a269dc;">3b000</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">1b0</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">2b00</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">3b010</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">1b0</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">3b010</span><span style="color:#ed4343;">};
+</span><span> 
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// need to wait 
+</span><span>        next_state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// move to IDLE after
+</span><span>        delay_ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                      </span><span style="color:#969696;">// delay 30ns (min 2 clock cycles)
+</span><span>        refresh_flag.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                   </span><span style="color:#969696;">// don&#39;t need refresh
+</span><span>        refresh_ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                    </span><span style="color:#969696;">// reset the counter
+</span><span>        ready.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                          </span><span style="color:#969696;">// we can now accept commands
+</span><span> 
+</span><span>      </span><span style="color:#969696;">///// IDLE STATE /////
+</span><span>      state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>refresh_flag.q</span><span style="color:#ed4343;">) {                 </span><span style="color:#969696;">// if we need to perform a refresh
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">PRECHARE</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// first precharge everything
+</span><span>          next_state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">REFRESH</span><span style="color:#ed4343;">;       </span><span style="color:#969696;">// then refresh
+</span><span>          precharge_bank.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">3b100</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// precharge all banks
+</span><span>          refresh_flag.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// refresh was taken care of
+</span><span>        </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else if </span><span style="color:#ed4343;">(!</span><span>ready.q</span><span style="color:#ed4343;">) {                </span><span style="color:#969696;">// if we have a waiting command
+</span><span>          ready.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                        </span><span style="color:#969696;">// we can accept another now
+</span><span>          rw_op.d </span><span style="color:#ed4343;">=</span><span> saved_rw.q</span><span style="color:#ed4343;">;               </span><span style="color:#969696;">// save the command type
+</span><span>          addr.d </span><span style="color:#ed4343;">=</span><span> saved_addr.q</span><span style="color:#ed4343;">;              </span><span style="color:#969696;">// save the address
+</span><span> 
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>saved_rw.q</span><span style="color:#ed4343;">)                     </span><span style="color:#969696;">// if write
+</span><span>            data.d </span><span style="color:#ed4343;">=</span><span> saved_data.q</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// save the data
+</span><span> 
+</span><span>          </span><span style="color:#969696;">// if there is already an open row
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>row_open.q</span><span style="color:#ed4343;">[</span><span>saved_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]]) {
+</span><span>            </span><span style="color:#969696;">// if the row is the one we want
+</span><span>            </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>row_addr.q</span><span style="color:#ed4343;">[</span><span>saved_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]] ==</span><span> saved_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">22</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">]) {
+</span><span>              </span><span style="color:#969696;">// the row is already open so just perform the operation
+</span><span>              </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>saved_rw.q</span><span style="color:#ed4343;">)
+</span><span>                state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WRITE</span><span style="color:#ed4343;">;
+</span><span>              </span><span style="font-weight:bold;color:#0abfbf;">else
+</span><span>                state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">READ</span><span style="color:#ed4343;">;
+</span><span>            </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{                          </span><span style="color:#969696;">// need to open the row
+</span><span>              state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">PRECHARE</span><span style="color:#ed4343;">;       </span><span style="color:#969696;">// first need to close current one
+</span><span>              precharge_bank.d </span><span style="color:#ed4343;">= c{</span><span style="color:#a269dc;">1b0</span><span style="color:#ed4343;">,</span><span> saved_addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]}; </span><span style="color:#969696;">// row to close
+</span><span>              next_state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">ACTIVATE</span><span style="color:#ed4343;">;  </span><span style="color:#969696;">// then open the correct one
+</span><span>            </span><span style="color:#ed4343;">}
+</span><span>          </span><span style="color:#ed4343;">} </span><span style="font-weight:bold;color:#0abfbf;">else </span><span style="color:#ed4343;">{                            </span><span style="color:#969696;">// nothing is already open
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">ACTIVATE</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// so just open the row
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>      </span><span style="color:#969696;">///// REFRESH /////
+</span><span>      state.</span><span style="color:#d45ada;">REFRESH</span><span style="color:#ed4343;">:
+</span><span>        cmd.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">CMD_REFRESH</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// send refresh command
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// need to wait
+</span><span>        next_state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// go back to IDLE after
+</span><span>        delay_ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">6</span><span style="color:#ed4343;">;                      </span><span style="color:#969696;">// wait 8 cycles, 80ns (min 66ns)
+</span><span> 
+</span><span>      </span><span style="color:#969696;">///// ACTIVATE /////
+</span><span>      state.</span><span style="color:#d45ada;">ACTIVATE</span><span style="color:#ed4343;">:
+</span><span>        cmd.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">CMD_ACTIVE</span><span style="color:#ed4343;">;                   </span><span style="color:#969696;">// activate command
+</span><span>        a.d </span><span style="color:#ed4343;">=</span><span> addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">22</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">];                  </span><span style="color:#969696;">// row address
+</span><span>        bank.d </span><span style="color:#ed4343;">=</span><span> addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];                 </span><span style="color:#969696;">// bank select
+</span><span>        delay_ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                      </span><span style="color:#969696;">// delay 20ns (15ns min)
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// need to wait
+</span><span> 
+</span><span>        </span><span style="color:#969696;">// set the next state based on the command
+</span><span>        next_state.d </span><span style="color:#ed4343;">=</span><span> rw_op.q </span><span style="color:#ed4343;">?</span><span> state.</span><span style="color:#d45ada;">WRITE </span><span style="color:#ed4343;">:</span><span> state.</span><span style="color:#d45ada;">READ</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>        row_open.d</span><span style="color:#ed4343;">[</span><span>addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]] = </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;          </span><span style="color:#969696;">// row is now open 
+</span><span>        row_addr.d</span><span style="color:#ed4343;">[</span><span>addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]] =</span><span> addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">22</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">]; </span><span style="color:#969696;">// address of row
+</span><span> 
+</span><span>      </span><span style="color:#969696;">///// READ /////
+</span><span>      state.</span><span style="color:#d45ada;">READ</span><span style="color:#ed4343;">:
+</span><span>        cmd.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">CMD_READ</span><span style="color:#ed4343;">;                     </span><span style="color:#969696;">// read command
+</span><span>        a.d </span><span style="color:#ed4343;">= c{</span><span style="color:#a269dc;">2b0</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">1b0</span><span style="color:#ed4343;">,</span><span> addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">], </span><span style="color:#a269dc;">2b0</span><span style="color:#ed4343;">};  </span><span style="color:#969696;">// address of column
+</span><span>        bank.d </span><span style="color:#ed4343;">=</span><span> addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];                 </span><span style="color:#969696;">// bank select
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// need to wait
+</span><span>        next_state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">READ_RES</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// go to READ_RES after
+</span><span>        delay_ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">;                      </span><span style="color:#969696;">// wait 3 cycles
+</span><span> 
+</span><span>      state.</span><span style="color:#d45ada;">READ_RES</span><span style="color:#ed4343;">:
+</span><span>        byte_ctr.d </span><span style="color:#ed4343;">=</span><span> byte_ctr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;          </span><span style="color:#969696;">// count 4 bytes
+</span><span>        data.d </span><span style="color:#ed4343;">= c{</span><span>dqi.q</span><span style="color:#ed4343;">,</span><span> data.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">31</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]};      </span><span style="color:#969696;">// shift in each byte
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>byte_ctr.q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">) {                </span><span style="color:#969696;">// if we read all 4 bytes
+</span><span>          out_valid.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                    </span><span style="color:#969696;">// output is valid
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;               </span><span style="color:#969696;">// return to IDLE
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>      </span><span style="color:#969696;">///// WRITE /////
+</span><span>      state.</span><span style="color:#d45ada;">WRITE</span><span style="color:#ed4343;">:
+</span><span>        byte_ctr.d </span><span style="color:#ed4343;">=</span><span> byte_ctr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;          </span><span style="color:#969696;">// count 4 bytes
+</span><span> 
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>byte_ctr.q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">)                  </span><span style="color:#969696;">// first byte is write command
+</span><span>          cmd.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">CMD_WRITE</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// send command
+</span><span> 
+</span><span>        dq.d </span><span style="color:#ed4343;">=</span><span> data.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];                   </span><span style="color:#969696;">// output the data
+</span><span>        data.d </span><span style="color:#ed4343;">=</span><span> data.q </span><span style="color:#ed4343;">&gt;&gt; </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// shift data
+</span><span>        dq_en.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;                          </span><span style="color:#969696;">// enable data bus output
+</span><span>        a.d </span><span style="color:#ed4343;">= c{</span><span style="color:#a269dc;">2b0</span><span style="color:#ed4343;">, </span><span style="color:#a269dc;">1b0</span><span style="color:#ed4343;">,</span><span> addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">], </span><span style="color:#a269dc;">2b0</span><span style="color:#ed4343;">};  </span><span style="color:#969696;">// column address
+</span><span>        bank.d </span><span style="color:#ed4343;">=</span><span> addr.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">9</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">];                 </span><span style="color:#969696;">// bank select
+</span><span> 
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>byte_ctr.q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">)                  </span><span style="color:#969696;">// if we wrote all 4 bytes
+</span><span>          state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">;               </span><span style="color:#969696;">// return to IDLE
+</span><span> 
+</span><span>      </span><span style="color:#969696;">///// PRECHARGE /////
+</span><span>      state.</span><span style="color:#d45ada;">PRECHARE</span><span style="color:#ed4343;">:
+</span><span>        cmd.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">CMD_PRECHARGE</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// precharge command
+</span><span>        a.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">10</span><span style="color:#ed4343;">] =</span><span> precharge_bank.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">];        </span><span style="color:#969696;">// all banks flag
+</span><span>        bank.d </span><span style="color:#ed4343;">=</span><span> precharge_bank.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];       </span><span style="color:#969696;">// single bank select
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// need to wait
+</span><span>        delay_ctr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                      </span><span style="color:#969696;">// delay 20ns (15ns min)
+</span><span> 
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>precharge_bank.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">])              </span><span style="color:#969696;">// if all banks flag
+</span><span>          row_open.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                     </span><span style="color:#969696;">// they are all closed
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">else                                  </span><span style="color:#969696;">// otherwise
+</span><span>          row_open.d</span><span style="color:#ed4343;">[</span><span>precharge_bank.q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]] = </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// only selected was closed
+</span><span> 
+</span><span>      </span><span style="color:#0abfbf;">default</span><span style="color:#ed4343;">:                                </span><span style="color:#969696;">// shouldn&#39;t be here
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">INIT</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// restart the FSM
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This module uses some new advanced features that we haven't covered yet so let's get right into it.</p>
+<h3 id="structs">Structs</h3>
+<p>The most obvious new part to this module is the the use of <em>structs</em>. In this case, two structs are declared in the global namespace <em>Sdram</em>.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">// Interface to the SDRAM chip
+</span><span style="font-weight:bold;color:#faac1f;">global </span><span style="color:#da5a8c;">Sdram </span><span style="color:#ed4343;">{
+</span><span>  </span><span style="color:#969696;">// Outputs
+</span><span>  </span><span style="color:#0a8dbf;">struct</span><span> out </span><span style="color:#ed4343;">{
+</span><span>    clk</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// clock
+</span><span>    cle</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// clock enable
+</span><span>    cs</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// chip select
+</span><span>    cas</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// column address strobe
+</span><span>    ras</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// row address strobe
+</span><span>    we</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// write enable
+</span><span>    dqm</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// data tri-state mask
+</span><span>    bank </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">],      </span><span style="color:#969696;">// bank address
+</span><span>    addr </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">13</span><span style="color:#ed4343;">]      </span><span style="color:#969696;">// column/row address
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// Inouts
+</span><span>  </span><span style="color:#0a8dbf;">struct</span><span> inOut </span><span style="color:#ed4343;">{
+</span><span>    dq </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]         </span><span style="color:#969696;">// data bus
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>You can declare structs inside your module, but they are then local to your module and can only be used internally (not in port definitions).</p>
+<p>A struct definition consists of the <em>struct</em> keyword, followed by the name of the struct, followed by the list of the struct's members. A member declaration consists of a name, an optional struct type, and an optional array size.</p>
+<p>Take a look at the following example.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">struct</span><span> color </span><span style="color:#ed4343;">{
+</span><span>  red</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],
+</span><span>  green</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],
+</span><span>  blue</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]
+</span><span style="color:#ed4343;">}
+</span><span style="color:#0a8dbf;">struct</span><span> display </span><span style="color:#ed4343;">{
+</span><span>  x</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">12</span><span style="color:#ed4343;">],
+</span><span>  y</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">12</span><span style="color:#ed4343;">],
+</span><span>  pixel</span><span style="color:#ed4343;">&lt;</span><span>color</span><span style="color:#ed4343;">&gt;
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>In this example we have two structs, <em>color</em> and <em>display</em>. The <em>color</em> struct has three members, <em>red</em>, <em>green</em>, and <em>blue</em>, each an 8bit array.</p>
+<p>The <em>display</em> struct is a bit more complex. The first two elements, <em>x</em> and <em>y</em> are 12bit arrays, but the third, <em>pixel</em> is itself a struct of type <em>color</em>.</p>
+<p>The <em>&lt;name&gt;</em> notation is used to specify the struct type. This can be used with struct members, <em>input</em>, <em>output</em>, <em>inout</em>, <em>sig</em>, and <em>dff</em> types.</p>
+<h3 id="accessing-struct-members">Accessing Struct Members</h3>
+<p>Now that we know how to declare a struct, we need to be able to access its members. Let's look at another example.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">struct</span><span> foo </span><span style="color:#ed4343;">{
+</span><span>  a</span><span style="color:#ed4343;">,
+</span><span>  b</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">],
+</span><span>  c</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]
+</span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>.clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>  </span><span style="color:#0a8dbf;">dff</span><span style="color:#ed4343;">&lt;</span><span>foo</span><span style="color:#ed4343;">&gt;</span><span> bar</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="color:#0a8dbf;">dff</span><span style="color:#ed4343;">&lt;</span><span>foo</span><span style="color:#ed4343;">&gt;</span><span> cat</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">];
+</span><span style="color:#ed4343;">}
+</span><span> 
+</span><span style="color:#0a8dbf;">sig</span><span style="color:#ed4343;">&lt;</span><span>foo</span><span style="color:#ed4343;">&gt;</span><span> dog</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>  bar.d.b </span><span style="color:#ed4343;">=</span><span> bar.q.c</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]; </span><span style="color:#969696;">// d/q must be selected first
+</span><span>  dog </span><span style="color:#ed4343;">=</span><span> bar.q</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// structs can be assigned directly to others of the same type
+</span><span>  cat.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> dog</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// need to select a single element before accessing the struct
+</span><span>  cat.d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]</span><span>.a </span><span style="color:#ed4343;">=</span><span> bar.q.a</span><span style="color:#ed4343;">; 
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>The members of a struct are accessed the same way as the d/q signals of a <em>dff</em> or the signals of a module instance.</p>
+<p>The SDRAM controller uses two other structs defined in <em>memory_bus.luc</em>. These are split into a different file as they may be used by other modules besides the SDRAM controller.</p>
+<h3 id="the-interface">The Interface</h3>
+<p>Take a look at the ports of the SDRAM controller.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> sdram </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// reset
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// SDRAM interface
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Sdram</span><span>.inOut</span><span style="color:#ed4343;">&gt;</span><span> sdramInOut</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Sdram</span><span>.out</span><span style="color:#ed4343;">&gt;</span><span> sdramOut</span><span style="color:#ed4343;">,
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// Memory interface
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.master</span><span style="color:#ed4343;">&gt;</span><span> memIn</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.slave</span><span style="color:#ed4343;">&gt;</span><span> memOut
+</span><span>  </span><span style="color:#ed4343;">) {
+</span></code></pre>
+<p>We have the canonical clock and reset inputs. We then have a bunch of IO condensed into 4 lines by using structs. The connection to the SDRAM chip consists of an output and an inout. The interface from the controller to the rest of the FPGA is broken into an input and an output. Take a look at the struct definitions for details of their contents.</p>
+<h3 id="commands">Commands</h3>
+<p>The SDRAM chip accepts a series of commands that we define as constants for easier use.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">// Commands for the SDRAM
+</span><span style="color:#969696;">//const CMD_UNSELECTED    = 4b1000; // Unused
+</span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CMD_NOP           </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4b0111</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// No operation
+</span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CMD_ACTIVE        </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4b0011</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// Activate a row
+</span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CMD_READ          </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4b0101</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// Start a read
+</span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CMD_WRITE         </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4b0100</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// Start a write
+</span><span style="color:#969696;">//const CMD_TERMINATE     = 4b0110; // Unused
+</span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CMD_PRECHARGE     </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4b0010</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// Precharge a row
+</span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CMD_REFRESH       </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4b0001</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// Perform a refresh
+</span><span style="color:#0a8dbf;">const </span><span style="color:#d45ada;">CMD_LOAD_MODE_REG </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4b0000</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// Load mode register
+</span></code></pre>
+<p>These commands connect to the <em>CS</em>, <em>RAS</em>, <em>CAS</em>, and <em>WE</em> pins on the SDRAM. See page 31 of the <a href="http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf">datasheet</a> if you want to know more.</p>
+<h2 id="the-fsm">The FSM</h2>
+<p>The entire controller is based around a single FSM.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span>.clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>  .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {
+</span><span>      </span><span style="color:#d45ada;">INIT</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// Initial state
+</span><span>      </span><span style="color:#d45ada;">WAIT</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// Generic wait state
+</span><span>      </span><span style="color:#d45ada;">PRECHARGE_INIT</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// Start initial precharge
+</span><span>      </span><span style="color:#d45ada;">REFRESH_INIT_1</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// Perform first refresh
+</span><span>      </span><span style="color:#d45ada;">REFRESH_INIT_2</span><span style="color:#ed4343;">,  </span><span style="color:#969696;">// Perform second refresh
+</span><span>      </span><span style="color:#d45ada;">LOAD_MODE_REG</span><span style="color:#ed4343;">,   </span><span style="color:#969696;">// Load mode register
+</span><span>      </span><span style="color:#d45ada;">IDLE</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// Main idle state
+</span><span>      </span><span style="color:#d45ada;">REFRESH</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// Perform a refresh
+</span><span>      </span><span style="color:#d45ada;">ACTIVATE</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// Activate a row
+</span><span>      </span><span style="color:#d45ada;">READ</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// Start a read
+</span><span>      </span><span style="color:#d45ada;">READ_RES</span><span style="color:#ed4343;">,        </span><span style="color:#969696;">// Read results
+</span><span>      </span><span style="color:#d45ada;">WRITE</span><span style="color:#ed4343;">,           </span><span style="color:#969696;">// Perform a write
+</span><span>      </span><span style="color:#d45ada;">PRECHARE         </span><span style="color:#969696;">// Precharge bank(s)
+</span><span>    </span><span style="color:#ed4343;">}; 
+</span><span>  </span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>The relations of these states can be summed up in the state diagram shown below. The <em>WAIT</em> state wasn't shown for clarity.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/sdram_controller_38832f10-c391-47b2-b689-16fda4f17e26.png" alt="sdram_controller_38832f10-c391-47b2-b689-16fda4f17e26.png" /></p>
+<p>When the board is powered on (or reset) the FSM starts in the <em>INIT</em> state. SDRAM requires a bit of initialization before you can read and write to it. This is also covered in the <a href="http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf">datasheet</a> (page 42) for those curious.</p>
+<p>After the board is initialized, it sits in the <em>IDLE</em> state until one of two things happen, either it's time to perform a refresh or there is a pending operation.</p>
+<p>First, let's talk about the refresh. To manage the refreshing, there is a timer that tells the controller to send another refresh operation. The SDRAM requires 8,192 refresh commands to be sent every 64ms. That means you can either send a refresh command every 7.813µs or all 8,192 commands in a batch every 64ms. To provide a more uniform interface, this controller sends the refresh commands evenly spaced. This limits the maximum amount of time the controller will be busy doing refreshes. In some applications where you need very fast burst speeds, but have some known down time, performing burst refreshing can be better.</p>
+<p>When a read or write command is pending, the controller first checks to see if the row is open. If the requested row is already open, life is great, it simply reads or writes to the row. If the row isn't open then it first opens the row before performing the operation. The worst case is if there is already another row open. In this case the other row must be precharged, before the controller can open the new row and perform the operation.</p>
+<p>Each of these operations has some number of cycles the SDRAM requires to complete (the reason for the <em>WAIT</em> state). These sometimes vary with the clock frequency (in other words, they have a set amount of real time). This controller assumes a clock rate of 100MHz. This is important for other reasons as well that will be discussed a little later. All of these delays and timing specifications can be found in the <a href="http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf">datasheet</a> (many of them are on pages 27-28).</p>
+<p>This mostly sums up how the controller works. If you want an even deeper understanding, you need to take a look at the rest of the code in the controller as well as the SDRAM <a href="http://cdn.embeddedmicro.com/sdram-shield/256Mb_sdr.pdf">datasheet</a>.</p>
+<p>However, there is some advanced voodoo magic going on in the controller code that is worth mentioning.</p>
+<h3 id="dealing-with-the-hardware">Dealing with the Hardware</h3>
+<p>When you start interfacing with a relatively high speed external device, you start having to deal with FPGA specific details. There are two hardware related issues addressed in the controller. The first is that the FPGA can't route a clock signal directly to an output pin. This is because the clock and general logic of an FPGA share different routing resources and there isn't a way for the clock signal to move back into the general routing system. However, we can use an <em>ODDR2</em> primitive to compensate for this.</p>
+<pre style="background-color:#282828;color:#ffffff;"><code><span>// The OODR2 is used to output the FPGA clock to
+</span><span>// an output pin because a clock can&#39;t be directly
+</span><span>// routed as an output.
+</span><span>xil_ODDR2 oddr (
+</span><span>  #DDR_ALIGNMENT(&quot;NONE&quot;),
+</span><span>  #INIT(0),
+</span><span>  #SRTYPE(&quot;SYNC&quot;)
+</span><span>);
+</span></code></pre>
+<pre style="background-color:#282828;color:#ffffff;"><code><span>// Connections for the ODDR2
+</span><span>oddr.C0 = clk;
+</span><span>oddr.C1 = ~clk;
+</span><span>oddr.CE = 1;
+</span><span>oddr.D0 = 0; // using 0 for D0 and 1 for D1 inverts the clock
+</span><span>oddr.D1 = 1; // because D0 is output on the rising edge of C0
+</span><span>oddr.R = 0;
+</span><span>oddr.S = 0;
+</span></code></pre>
+<p>This is the instantiation of a <em>ODDR2</em> module. If you look the project files, you will notice there is no <em>xil_ODDR2.luc</em> file. This is because this isn't really a module, but rather an <strong>FPGA primitive</strong>. ODDR2 or <strong>O</strong>utput <strong>D</strong>ouble <strong>D</strong>ata <strong>R</strong>ate 2, is a primitive that is generally used to output data on both the rising and falling edges of the clock (hence, <em>double</em> data rate). However, in this case we are using the ODDR2 to simply output our clock signal. You can't output the clock signal directly due to how the FPGA is structured internally. So instead, you can use the ODDR with the data pins wired to 0 or 1.</p>
+<p>When <em>C0</em> has a rising edge, <em>D0</em> is output until <em>C1</em> has a rising edge. At that point <em>D1</em> is output. Notice that in our case <em>C1</em> is actually just the clock inverted. That means <em>D0</em> is output when the clock rises and <em>D1</em> is output when the clock falls.</p>
+<p>You may be thinking now &quot;Ok... but if <em>D0</em> is output when the clock <em>rises</em>, shouldn't <em>D0</em> be 1 and <em>D1</em> be 0&quot;? Very good my young padawan. That is exactly right <em>if</em> you wanted to output to be the same as the clock. However, we <strong>don't</strong> want this. We want the output clock to be our clock inverted!</p>
+<p>Why the *&amp;^$# would we want the clock to be inverted? Wouldn't that mean that the SDRAM would read it's inputs and change it's outputs on our falling edge? Oh wait... that's exactly what we want! We want this because that gives both devices half a clock cycle for their output to become stable before the other device. This all has to do with satisfying <em>setup</em> and <em>hold</em> times of both devices. If you don't know what the means, check out the <a href="https://alchitry.com/tutorials/archive/lucid_v1/mojo/external-io/">External IO Tutorial</a>.</p>
+<p>Timing is the other hardware related issue we need to account for and we will use another FPGA primitive, the <em>IODELAY2</em>, to deal with it.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">// The IODELAY2 is used to delay the clock a bit
+</span><span style="color:#969696;">// in order to align the data with the clock edge.
+</span><span style="color:#969696;">// These settings assume a 100MHz clock and the
+</span><span style="color:#969696;">// SDRAM Shield being stacked next to the Mojo.
+</span><span>xil_IODELAY2 iodelay </span><span style="color:#ed4343;">(
+</span><span>  </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">IDELAY_VALUE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">),
+</span><span>  </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">IDELAY_MODE</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;NORMAL&quot;</span><span style="color:#ed4343;">),
+</span><span>  </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">ODELAY_VALUE</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">100</span><span style="color:#ed4343;">),
+</span><span>  </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">IDELAY_TYPE</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;FIXED&quot;</span><span style="color:#ed4343;">),
+</span><span>  </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">DELAY_SRC</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;ODATAIN&quot;</span><span style="color:#ed4343;">),
+</span><span>  </span><span style="color:#ed4343;">#</span><span style="color:#d45ada;">DATA_RATE</span><span style="color:#ed4343;">(</span><span style="color:#77bf0a;">&quot;SDR&quot;</span><span style="color:#ed4343;">)
+</span><span style="color:#ed4343;">);
+</span></code></pre>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">// Connections for the IODELAY2
+</span><span>iodelay.</span><span style="color:#d45ada;">ODATAIN </span><span style="color:#ed4343;">=</span><span> oddr.</span><span style="color:#d45ada;">Q</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// use the ODDR2 output as the source
+</span><span>iodelay.</span><span style="color:#d45ada;">IDATAIN </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>iodelay.</span><span style="color:#d45ada;">T </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>iodelay.</span><span style="color:#d45ada;">CAL </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>iodelay.</span><span style="color:#d45ada;">IOCLK0 </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>iodelay.</span><span style="color:#d45ada;">IOCLK1 </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>iodelay.</span><span style="color:#d45ada;">CLK </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>iodelay.</span><span style="color:#d45ada;">INC </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>iodelay.</span><span style="color:#d45ada;">CE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span><span>iodelay.</span><span style="color:#d45ada;">RST </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;
+</span></code></pre>
+<p>As you may have guessed from the name, the <em>IODELAY2</em> block provides a delay to inputs and outputs. In this case we are using it to delay the clock being output to the SDRAM. There are a lot of features of these primitives that aren't being used here. However if you want t check them out in their full glory, take a look at the <a href="http://www.xilinx.com/support/documentation/user_guides/ug381.pdf">UG381</a> document from Xilinx (ODDR2 starts on page 62 and IODELAY2 starts on page 74).</p>
+<p>We need the delay because simply inverting the clock doesn't quite ensure timing is met. We need to shift it a little more.</p>
+<p>The important values here are <em>DELAY_SRC</em> is set to make the <em>IODELAY2</em> delay an output and <em>ODELAY_VALUE</em> is how much we want to delay the signal.</p>
+<p>The actual amount of delay that is given per step of <em>ODELAY_VALUE</em> is a bit fuzzy and will actually vary over temperature and voltage in the Spartan 6 chip. However, with a 100MHz clock, using a delay of 100 (maximum is 255) ensures that the setup and hold times are being met. This delay was found empirically by running lots of tests checking for read/write errors.</p>
+<p>The last piece to the puzzle is making sure that the input and output registers are packed into <strong>IOBs</strong>, or <strong>I</strong>nput <strong>O</strong>utput <strong>B</strong>uffers.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">// IO buffer flip-flops are important for timing
+</span><span style="color:#969696;">// The #IOB parameter tells the tools to pack the
+</span><span style="color:#969696;">// dff into the IO buffer which is important for
+</span><span style="color:#969696;">// consistant timing.
+</span><span style="color:#0a8dbf;">dff</span><span> cle </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">IOB</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));       </span><span style="color:#969696;">// clock enable
+</span><span style="color:#0a8dbf;">dff</span><span> dqm </span><span style="color:#ed4343;">(#</span><span style="color:#d45ada;">IOB</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));       </span><span style="color:#969696;">// data mask
+</span><span style="color:#0a8dbf;">dff</span><span> cmd </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">] (#</span><span style="color:#d45ada;">IOB</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));   </span><span style="color:#969696;">// command (we, cas, ras, cs)
+</span><span style="color:#0a8dbf;">dff</span><span> bank </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">] (#</span><span style="color:#d45ada;">IOB</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));  </span><span style="color:#969696;">// bank select
+</span><span style="color:#0a8dbf;">dff</span><span> a </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">13</span><span style="color:#ed4343;">] (#</span><span style="color:#d45ada;">IOB</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));    </span><span style="color:#969696;">// address
+</span><span style="color:#0a8dbf;">dff</span><span> dq </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">] (#</span><span style="color:#d45ada;">IOB</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));    </span><span style="color:#969696;">// data output
+</span><span style="color:#0a8dbf;">dff</span><span> dqi </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">] (#</span><span style="color:#d45ada;">IOB</span><span style="color:#ed4343;">(</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">));   </span><span style="color:#969696;">// data input
+</span></code></pre>
+<p>The <em>dff</em> type has a parameter, <em>IOB</em>, that, when set to 1, will mark that flip-flop to be packed into an IOB.</p>
+<p>What the heck is an IOB? An IOB is simply a flip-flop that is embedded in the pin of the FPGA. They aren't in the typical FPGA fabric, but rather right at the inputs and outputs.</p>
+<p>We want to make sure these registers are packed into IOBs to ensure that there are no additional delays due to the signal needing to propagate through the FPGA.</p>
+<p>To make sure these registers are actually packed into the IOB, their output/input can't connect to anything other than the top level output/input. If you tried to read these signals in some other part of your design, the tools would be forced to pull the flip-flop out of the IOB, possibly messing up timing. This is why it is important that these signals go directly to the top level inputs/outputs.</p>
+<h3 id="xilinx-primitives">Xilinx Primitives</h3>
+<p>At the time of writing this, the <em>IODELAY2</em> and <em>ODDR2</em> are the only primitives currently supported by the Mojo IDE. All the supported primitives can be found by typing <em>xil</em> and the auto-complete will list the known modules (the primitives are always prefixed with <em>xil</em>_). More primitives will be added over time.</p>
+<p>This sums up how the controller works, but now we need to use it for something.</p>
+<h2 id="using-the-controller">Using the Controller</h2>
+<p>What good is a fancy SDRAM controller if we don't even use it? NO GOOD that what! To demonstrate how to use the controller we are going to create a tester. Our module will write a bunch of stuff to the RAM then read it back to make sure the contents are still there and correct.</p>
+<p>There is one big problem with creating a tester like this. What do we write to the RAM? It has to be something easily <em>generated</em> because we don't have enough memory to memorize all the values. If we did we wouldn't be using the SDRAM. We could use part of the address, but this causes a very artificial pattern that can fail to detect some problems.</p>
+<p>Instead we will use a pseudo-random number generator. The key word there is <em>pseudo</em>. Which is layman's terms translates to <em>not-really-a-random number generator</em>. This is something that generates <em>random-looking</em> numbers but they are actually completely predictable. That's a great property for us because we need to be able to regenerate the exact same 8,388,608 long sequence of numbers to verify our write.</p>
+<p>From the components library add <em>Math/Pseudo-random Number Generator</em> to your project.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> pn_gen </span><span style="color:#ed4343;">#(
+</span><span>    </span><span style="color:#969696;">// SEED needs to always be non-zero
+</span><span>    </span><span style="color:#969696;">// Since seed is XORed with the 32MSBs of SEED, we need the 96 LSBs to be nonzero.
+</span><span>    </span><span style="color:#d45ada;">SEED </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">128h843233523a613966423b622562592c62</span><span style="color:#ed4343;">: </span><span style="color:#d45ada;">SEED</span><span>.</span><span style="color:#d45ada;">WIDTH </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">128 </span><span style="color:#ed4343;">&amp;&amp; </span><span style="color:#d45ada;">SEED</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">95</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] != </span><span style="color:#a269dc;">0
+</span><span>  </span><span style="color:#ed4343;">)(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,       </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,       </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> next</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// generate next number flag
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> seed </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">], </span><span style="color:#969696;">// seed used on reset
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> num </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">]  </span><span style="color:#969696;">// &quot;random&quot; number output
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#0a8dbf;">dff</span><span> x</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">],</span><span> y</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">],</span><span> z</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">],</span><span> w</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">]; </span><span style="color:#969696;">// state storage
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> t </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">];                       </span><span style="color:#969696;">// temporary results
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    num </span><span style="color:#ed4343;">=</span><span> w.q</span><span style="color:#ed4343;">;                      </span><span style="color:#969696;">// output is from w
+</span><span>    t </span><span style="color:#ed4343;">=</span><span> x.q </span><span style="color:#ed4343;">^ (</span><span>x.q </span><span style="color:#ed4343;">&lt;&lt; </span><span style="color:#a269dc;">11</span><span style="color:#ed4343;">);          </span><span style="color:#969696;">// calculate intermediate value
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>next</span><span style="color:#ed4343;">) {                     </span><span style="color:#969696;">// if we need a new number
+</span><span>      x.d </span><span style="color:#ed4343;">=</span><span> y.q</span><span style="color:#ed4343;">;                    </span><span style="color:#969696;">// shift values along
+</span><span>      y.d </span><span style="color:#ed4343;">=</span><span> z.q</span><span style="color:#ed4343;">;                   
+</span><span>      z.d </span><span style="color:#ed4343;">=</span><span> w.q</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>      </span><span style="color:#969696;">// magic formula from Wikipedia
+</span><span>      w.d </span><span style="color:#ed4343;">=</span><span> w.q </span><span style="color:#ed4343;">^ (</span><span>w.q </span><span style="color:#ed4343;">&gt;&gt; </span><span style="color:#a269dc;">19</span><span style="color:#ed4343;">) ^</span><span> t </span><span style="color:#ed4343;">^ (</span><span>t </span><span style="color:#ed4343;">&gt;&gt; </span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">);
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>    </span><span style="color:#969696;">// Manually reset the flip-flops so we can change the reset value
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      x.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">SEED</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">+:</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">];
+</span><span>      y.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">SEED</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">+:</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">];
+</span><span>      z.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">SEED</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">64</span><span style="color:#ed4343;">+:</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">];
+</span><span>      w.d </span><span style="color:#ed4343;">= </span><span style="color:#d45ada;">SEED</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">96</span><span style="color:#ed4343;">+:</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">] ^</span><span> seed</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>This algorithm is called <strong>Xorshift</strong> and it simply is a ported version of one presented on <a href="https://en.wikipedia.org/wiki/Xorshift">Wikipedia</a>.</p>
+<p>This module will generate a new number each time <em>next</em> is high. It can be reset to start the sequence over. If the value of <em>seed</em> changes, the sequence will be different.</p>
+<p>This type of number generator is great for hardware because it only uses XOR and shift operations. Both of which are really cheap. However, it isn't a super great random number generator and should <strong>not</strong> be used for crypto purposes where it isn't good enough to <em>look</em> random.</p>
+<h2 id="the-memory-interface">The Memory Interface</h2>
+<p>Before we get into our tester module, we need to understand the interface used for reading and writing the SDRAM. Take a look at <em>memory_bus.luc</em>.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#969696;">// Generic Memory Interface
+</span><span style="font-weight:bold;color:#faac1f;">global </span><span style="color:#da5a8c;">Memory </span><span style="color:#ed4343;">{
+</span><span>  </span><span style="color:#969696;">// Memory slave outputs/master inputs
+</span><span>  </span><span style="color:#0a8dbf;">struct</span><span> slave </span><span style="color:#ed4343;">{
+</span><span>    data </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">],     </span><span style="color:#969696;">// data read
+</span><span>    valid</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// data valid
+</span><span>    busy           </span><span style="color:#969696;">// device busy
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// Memory master outputs/slave inputs
+</span><span>  </span><span style="color:#0a8dbf;">struct</span><span> master </span><span style="color:#ed4343;">{
+</span><span>    data </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">],     </span><span style="color:#969696;">// data to write
+</span><span>    valid</span><span style="color:#ed4343;">,         </span><span style="color:#969696;">// data valid
+</span><span>    addr </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">23</span><span style="color:#ed4343;">],     </span><span style="color:#969696;">// address to write/read
+</span><span>    write          </span><span style="color:#969696;">// 1 = write, 0 = read
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>The interface consists of a <em>master</em> and a <em>slave</em>. The <em>slave</em> in this case is the SDRAM controller (the one receiving commands) and we will play the role of the <em>master</em> by issuing commands.</p>
+<p>Whenever we want to issue a command, we need to first make sure that <em>slave.busy</em> is 0. This indicates that the controller can accept a new command.</p>
+<p>To issue a write command we set <em>master.write</em> to 1, <em>master.addr</em> to the address we want to write to, <em>master.data</em> to the value we want to write, and finally <em>master.valid</em> to 1 to indicate a new command.</p>
+<p>To perform a read we set <em>master.write</em> to 0, <em>master.addr</em> to the address to read, and <em>master.valid</em> to 1. The value of <em>master.data</em> is ignored. We then need to wait for <em>slave.valid</em> to be 1. When it is 1, <em>slave.data</em> is the value we requested. Note that <em>slave.busy</em> may go back to 0 before the read is actually complete. This is because the busy flag only says when the controller can accept a new request, not necessarily when it idle. If you issue multiple read requests, they will be processed in the order they are received.</p>
+<h2 id="the-tester">The Tester</h2>
+<p>Create a new module named <em>ram_test</em> and copy the following into it.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> ram_test </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,                         </span><span style="color:#969696;">// clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,                         </span><span style="color:#969696;">// reset
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.master</span><span style="color:#ed4343;">&gt;</span><span> memOut</span><span style="color:#ed4343;">,      </span><span style="color:#969696;">// memory interface
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Memory</span><span>.slave</span><span style="color:#ed4343;">&gt;</span><span> memIn</span><span style="color:#ed4343;">,
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> leds </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">]                    </span><span style="color:#969696;">// status LEDs
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>clk</span><span style="color:#ed4343;">){</span><span> .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#0a8dbf;">fsm</span><span> state </span><span style="color:#ed4343;">= {</span><span style="color:#d45ada;">WRITE</span><span style="color:#ed4343;">, </span><span style="color:#d45ada;">READ</span><span style="color:#ed4343;">};       </span><span style="color:#969696;">// states
+</span><span> 
+</span><span>      </span><span style="color:#0a8dbf;">dff</span><span> addr </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">23</span><span style="color:#ed4343;">];                   </span><span style="color:#969696;">// current address
+</span><span>      </span><span style="color:#0a8dbf;">dff</span><span> error </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">];                   </span><span style="color:#969696;">// number of errors
+</span><span>      </span><span style="color:#0a8dbf;">dff</span><span> seed </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">32</span><span style="color:#ed4343;">];                   </span><span style="color:#969696;">// seed for each run
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>    pn_gen pn_gen</span><span style="color:#ed4343;">;                     </span><span style="color:#969696;">// pseudo-random number generator
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    </span><span style="color:#969696;">// Show the state and number of errors on the LEDs
+</span><span>    leds </span><span style="color:#ed4343;">= c{</span><span>state.q </span><span style="color:#ed4343;">==</span><span> state.</span><span style="color:#d45ada;">READ</span><span style="color:#ed4343;">,</span><span> error.q</span><span style="color:#ed4343;">};
+</span><span> 
+</span><span>    pn_gen.seed </span><span style="color:#ed4343;">=</span><span> seed.q</span><span style="color:#ed4343;">;              </span><span style="color:#969696;">// use seed.q as the seed
+</span><span>    pn_gen.next </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                   </span><span style="color:#969696;">// don&#39;t generate new numbers
+</span><span>    pn_gen.rst </span><span style="color:#ed4343;">=</span><span> rst</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// connect rst by default
+</span><span> 
+</span><span>    memOut.addr </span><span style="color:#ed4343;">=</span><span> addr.q</span><span style="color:#ed4343;">;              </span><span style="color:#969696;">// use addr.q as the address
+</span><span>    memOut.write </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1bx</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// don&#39;t care
+</span><span>    memOut.data </span><span style="color:#ed4343;">=</span><span> pn_gen.num</span><span style="color:#ed4343;">;          </span><span style="color:#969696;">// use the pseudo-random number as data
+</span><span>    memOut.valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                  </span><span style="color:#969696;">// invalid
+</span><span> 
+</span><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state.q</span><span style="color:#ed4343;">) {
+</span><span>      state.</span><span style="color:#d45ada;">WRITE</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>memIn.busy</span><span style="color:#ed4343;">) {             </span><span style="color:#969696;">// if RAM isn&#39;t busy
+</span><span>          pn_gen.next </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// generate a new number
+</span><span>          addr.d </span><span style="color:#ed4343;">=</span><span> addr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// increment the address
+</span><span>          memOut.write </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// perform a write
+</span><span>          memOut.valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// command is valid
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>addr.q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">23</span><span style="color:#ed4343;">x{</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">}) {      </span><span style="color:#969696;">// if address is maxed
+</span><span>            addr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// reset to 0
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">READ</span><span style="color:#ed4343;">;      </span><span style="color:#969696;">// switch states
+</span><span>            pn_gen.rst </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// reset the number generator
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span>      state.</span><span style="color:#d45ada;">READ</span><span style="color:#ed4343;">:
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(!</span><span>memIn.busy</span><span style="color:#ed4343;">) {             </span><span style="color:#969696;">// if RAM isn&#39;t busy
+</span><span>          addr.d </span><span style="color:#ed4343;">=</span><span> addr.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// increment the address
+</span><span>          memOut.valid </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// command is valid
+</span><span>          memOut.write </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// perform a read
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>addr.q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">23</span><span style="color:#ed4343;">x{</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">}-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">)      </span><span style="color:#969696;">// if address is almost max
+</span><span>            seed.d </span><span style="color:#ed4343;">=</span><span> seed.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;       </span><span style="color:#969696;">// generate a new seed
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>addr.q </span><span style="color:#ed4343;">== </span><span style="color:#a269dc;">23</span><span style="color:#ed4343;">x{</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">}) {      </span><span style="color:#969696;">// if address is maxed
+</span><span>            addr.d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">;                </span><span style="color:#969696;">// reset to 0
+</span><span>            state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WRITE</span><span style="color:#ed4343;">;     </span><span style="color:#969696;">// switch state            
+</span><span>            pn_gen.rst </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;            </span><span style="color:#969696;">// reset the number generator
+</span><span>          </span><span style="color:#ed4343;">}
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>memIn.valid</span><span style="color:#ed4343;">) {             </span><span style="color:#969696;">// if new data
+</span><span>          pn_gen.next </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;             </span><span style="color:#969696;">// go to the next number
+</span><span> 
+</span><span>          </span><span style="color:#969696;">// if the data doesn&#39;t match the random number and the
+</span><span>          </span><span style="color:#969696;">// error counter isn&#39;t maxed out
+</span><span>          </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>memIn.data </span><span style="color:#ed4343;">!=</span><span> pn_gen.num </span><span style="color:#ed4343;">&amp;&amp; !&amp;</span><span>error.q</span><span style="color:#ed4343;">)
+</span><span>            error.d </span><span style="color:#ed4343;">=</span><span> error.q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">;     </span><span style="color:#969696;">// increment the error counter
+</span><span>        </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>      </span><span style="color:#0abfbf;">default</span><span style="color:#ed4343;">:                         </span><span style="color:#969696;">// should never get here
+</span><span>        state.d </span><span style="color:#ed4343;">=</span><span> state.</span><span style="color:#d45ada;">WRITE</span><span style="color:#ed4343;">;         </span><span style="color:#969696;">// get to a known state
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>Our tester has two states, <em>WRITE</em> and <em>READ</em>. We start in the <em>WRITE</em> state and fill up the RAM with random stuff. Once the RAM is full, we reset the number generator and move to the <em>READ</em> state.</p>
+<p>In the <em>READ</em> state we read each value back and generate the same sequence of numbers again. If the values we read back don't match the number in our sequence, we increment the error counter. The error counter is setup to saturate at 127 error so if there are a ton of errors it will simply max out.</p>
+<p>We need to be able to see what our tester is doing so we will use the LEDs to show the status. We hook up <em>leds[7]</em> to the state (so we know when it's reading or writing) and the rest to the error counter.</p>
+<h2 id="generating-the-clock">Generating the Clock</h2>
+<p>If you've been paying attention (you have haven't you?) you probably noticed that the SDRAM controller says it assumes a clock of 100MHz. However, the Mojo's clock is only 50Mhz. Whatever will do? Luckily the FPGA has a super rad circuit called a PLL that lets you generate new clocks. Even more rad is that there are tools to help us set it up.</p>
+<p>We are going to be using the <strong>Core Generator</strong> tool from Xilinx. Support for this tool is built into the Mojo IDE, so simply click <em>Project-&gt;Launch CoreGen</em>.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/coregen.png" alt="coregen.png" /></p>
+<p>Under <em>FPGA Features and Design/Clocking</em> double click on <em>Clocking Wizard</em>.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/clkwiz1.png" alt="clkwiz1.png" /></p>
+<p><em>You're a clocking wizard Harry!</em></p>
+<p>Change the name to just <em>clk_wiz</em> because the default is UGLY. Also uncheck <em>Phase alignment</em> (we don't care about that) and set the <em>primary</em> input clock to 50MHz.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/clkwiz2.png" alt="clkwiz2.png" /></p>
+<p>On the next page you shouldn't have to change anything as <em>CLK_OUT1</em> is already set to generate 100MHz.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/clkwiz3.png" alt="clkwiz3.png" /></p>
+<p>On page 3, uncheck everything because again, we don't care.</p>
+<p><img src="https://cdn.alchitry.com/lucid_v1/mojo/clkwiz5.png" alt="clkwiz5.png" /></p>
+<p>Skip page 4 and on page 5, remove the <em>1</em> from the signal names. We only have one input and one output so why bother labeling them 1?</p>
+<p>Finally, click <em>Generate</em>.</p>
+<p>Once it finishes generating the core, you can close all the CoreGen windows. The core should automagically (it's a word, trust me) be under the <em>Cores</em> section of your project.</p>
+<h2 id="the-top-level">The Top Level</h2>
+<p>Now that we have all the pieces we need to hook it all up.</p>
+<p>If you take a look at the <em>sdram_shield.ucf</em> file we added in the beginning of the tutorial, you'll notice that there are only two signals defined.</p>
+<pre data-lang="ucf" style="background-color:#282828;color:#ffffff;" class="language-ucf "><code class ="language-ucf" data-lang="ucf"><span>NET &quot;sdramOut&lt;0&gt;&quot; LOC = P5 | IOSTANDARD = LVTTL | SLEW = FAST;     # clk
+</span><span>NET &quot;sdramOut&lt;1&gt;&quot; LOC = P2 | IOSTANDARD = LVTTL | SLEW = FAST;     # cle
+</span><span>NET &quot;sdramOut&lt;6&gt;&quot; LOC = P6 | IOSTANDARD = LVTTL | SLEW = FAST;     # cs
+</span><span>NET &quot;sdramOut&lt;2&gt;&quot; LOC = P115 | IOSTANDARD = LVTTL | SLEW = FAST;   # cas
+</span><span>NET &quot;sdramOut&lt;5&gt;&quot; LOC = P111 | IOSTANDARD = LVTTL | SLEW = FAST;   # ras
+</span><span>NET &quot;sdramOut&lt;3&gt;&quot; LOC = P112 | IOSTANDARD = LVTTL | SLEW = FAST;   # we
+</span><span>NET &quot;sdramOut&lt;4&gt;&quot; LOC = P114 | IOSTANDARD = LVTTL | SLEW = FAST;   # dqm
+</span><span> 
+</span><span>NET &quot;sdramOut&lt;7&gt;&quot; LOC = P116 | IOSTANDARD = LVTTL | SLEW = FAST;   # bank[0]
+</span><span>NET &quot;sdramOut&lt;8&gt;&quot; LOC = P117 | IOSTANDARD = LVTTL | SLEW = FAST;   # bank[1]
+</span><span> 
+</span><span>NET &quot;sdramOut&lt;9&gt;&quot; LOC = P118 | IOSTANDARD = LVTTL | SLEW = FAST;   # addr[0]
+</span><span>NET &quot;sdramOut&lt;10&gt;&quot; LOC = P119 | IOSTANDARD = LVTTL | SLEW = FAST;  # addr[1]
+</span><span>NET &quot;sdramOut&lt;11&gt;&quot; LOC = P120 | IOSTANDARD = LVTTL | SLEW = FAST;  # addr[2]
+</span><span>NET &quot;sdramOut&lt;12&gt;&quot; LOC = P121 | IOSTANDARD = LVTTL | SLEW = FAST;  # addr[3]
+</span><span>NET &quot;sdramOut&lt;13&gt;&quot; LOC = P138 | IOSTANDARD = LVTTL | SLEW = FAST;  # addr[4]
+</span><span>NET &quot;sdramOut&lt;14&gt;&quot; LOC = P139 | IOSTANDARD = LVTTL | SLEW = FAST;  # addr[5]
+</span><span>NET &quot;sdramOut&lt;15&gt;&quot; LOC = P140 | IOSTANDARD = LVTTL | SLEW = FAST;  # addr[6]
+</span><span>NET &quot;sdramOut&lt;16&gt;&quot; LOC = P141 | IOSTANDARD = LVTTL | SLEW = FAST;  # addr[7]
+</span><span>NET &quot;sdramOut&lt;17&gt;&quot; LOC = P142 | IOSTANDARD = LVTTL | SLEW = FAST;  # addr[8]
+</span><span>NET &quot;sdramOut&lt;18&gt;&quot; LOC = P143 | IOSTANDARD = LVTTL | SLEW = FAST;  # addr[9]
+</span><span>NET &quot;sdramOut&lt;19&gt;&quot; LOC = P137 | IOSTANDARD = LVTTL | SLEW = FAST;  # addr[10]
+</span><span>NET &quot;sdramOut&lt;20&gt;&quot; LOC = P144 | IOSTANDARD = LVTTL | SLEW = FAST;  # addr[11]
+</span><span>NET &quot;sdramOut&lt;21&gt;&quot; LOC = P1 | IOSTANDARD = LVTTL | SLEW = FAST;    # addr[12]
+</span><span> 
+</span><span>NET &quot;sdramInOut&lt;0&gt;&quot; LOC = P101 | IOSTANDARD = LVTTL | SLEW = FAST; # dq[0]
+</span><span>NET &quot;sdramInOut&lt;1&gt;&quot; LOC = P102 | IOSTANDARD = LVTTL | SLEW = FAST; # dq[1]
+</span><span>NET &quot;sdramInOut&lt;2&gt;&quot; LOC = P104 | IOSTANDARD = LVTTL | SLEW = FAST; # dq[2]
+</span><span>NET &quot;sdramInOut&lt;3&gt;&quot; LOC = P105 | IOSTANDARD = LVTTL | SLEW = FAST; # dq[3]
+</span><span>NET &quot;sdramInOut&lt;4&gt;&quot; LOC = P7 | IOSTANDARD = LVTTL | SLEW = FAST;   # dq[4]
+</span><span>NET &quot;sdramInOut&lt;5&gt;&quot; LOC = P8 | IOSTANDARD = LVTTL | SLEW = FAST;   # dq[5]
+</span><span>NET &quot;sdramInOut&lt;6&gt;&quot; LOC = P9 | IOSTANDARD = LVTTL | SLEW = FAST;   # dq[6]
+</span><span>NET &quot;sdramInOut&lt;7&gt;&quot; LOC = P10 | IOSTANDARD = LVTTL | SLEW = FAST;  # dq[7]
+</span></code></pre>
+<p>This is setup so that all the signals will pack into the structs defined in the SDRAM controller.</p>
+<p>We can add them to <em>mojo_top.luc</em> like below.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="language-lucid" data-lang="lucid"><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Sdram</span><span>.out</span><span style="color:#ed4343;">&gt;</span><span> sdramOut</span><span style="color:#ed4343;">,   </span><span style="color:#969696;">// SDRAM outputs
+</span><span style="color:#0a8dbf;">inout</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Sdram</span><span>.inOut</span><span style="color:#ed4343;">&gt;</span><span> sdramInOut </span><span style="color:#969696;">// SDRAM inouts
+</span></code></pre>
+<p>We now just need to instantiate our modules and hook everything up.</p>
+<pre data-lang="lucid" style="background-color:#282828;color:#ffffff;" class="language-lucid "><code class ="short language-lucid" data-lang="lucid"><span style="font-weight:bold;color:#faac1f;">module</span><span> mojo_top </span><span style="color:#ed4343;">(
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,                    </span><span style="color:#969696;">// 50MHz clock
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> rst_n</span><span style="color:#ed4343;">,                  </span><span style="color:#969696;">// reset button (active low)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> led </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">8</span><span style="color:#ed4343;">],               </span><span style="color:#969696;">// 8 user controllable LEDs
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> cclk</span><span style="color:#ed4343;">,                   </span><span style="color:#969696;">// configuration clock, AVR ready when high
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_miso</span><span style="color:#ed4343;">,              </span><span style="color:#969696;">// AVR SPI MISO
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_ss</span><span style="color:#ed4343;">,                 </span><span style="color:#969696;">// AVR SPI Slave Select
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_mosi</span><span style="color:#ed4343;">,               </span><span style="color:#969696;">// AVR SPI MOSI
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> spi_sck</span><span style="color:#ed4343;">,                </span><span style="color:#969696;">// AVR SPI Clock
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> spi_channel </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">],       </span><span style="color:#969696;">// AVR general purpose pins (used by default to select ADC channel)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_tx</span><span style="color:#ed4343;">,                 </span><span style="color:#969696;">// AVR TX (FPGA RX)
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span> avr_rx</span><span style="color:#ed4343;">,                </span><span style="color:#969696;">// AVR RX (FPGA TX)
+</span><span>    </span><span style="color:#0a8dbf;">input</span><span> avr_rx_busy</span><span style="color:#ed4343;">,            </span><span style="color:#969696;">// AVR RX buffer full
+</span><span>    </span><span style="color:#0a8dbf;">output</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Sdram</span><span>.out</span><span style="color:#ed4343;">&gt;</span><span> sdramOut</span><span style="color:#ed4343;">,   </span><span style="color:#969696;">// SDRAM outputs
+</span><span>    </span><span style="color:#0a8dbf;">inout</span><span style="color:#ed4343;">&lt;</span><span style="color:#da5a8c;">Sdram</span><span>.inOut</span><span style="color:#ed4343;">&gt;</span><span> sdramInOut </span><span style="color:#969696;">// SDRAM inouts
+</span><span>  </span><span style="color:#ed4343;">) {
+</span><span> 
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> rst</span><span style="color:#ed4343;">;  </span><span style="color:#969696;">// reset signal
+</span><span>  </span><span style="color:#0a8dbf;">sig</span><span> fclk</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 100MHz clock
+</span><span> 
+</span><span>  </span><span style="color:#969696;">// boost clock to 100MHz
+</span><span>  clk_wiz clk_wiz</span><span style="color:#ed4343;">;
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    clk_wiz.</span><span style="color:#d45ada;">CLK_IN </span><span style="color:#ed4343;">=</span><span> clk</span><span style="color:#ed4343;">;   </span><span style="color:#969696;">// 50MHz in
+</span><span>    fclk </span><span style="color:#ed4343;">=</span><span> clk_wiz.</span><span style="color:#d45ada;">CLK_OUT</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// 100MHz out (it&#39;s like magic!)
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  .clk</span><span style="color:#ed4343;">(</span><span>fclk</span><span style="color:#ed4343;">) {
+</span><span>    </span><span style="color:#969696;">// The reset conditioner is used to synchronize the reset signal to the FPGA
+</span><span>    </span><span style="color:#969696;">// clock. This ensures the entire FPGA comes out of reset at the same time.
+</span><span>    reset_conditioner reset_cond</span><span style="color:#ed4343;">;
+</span><span> 
+</span><span>    .rst</span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) {
+</span><span>      </span><span style="color:#969696;">// inouts need to be connected at instantiation and directly to an inout of the module
+</span><span>      sdram sdram </span><span style="color:#ed4343;">(</span><span>.sdramInOut</span><span style="color:#ed4343;">(</span><span>sdramInOut</span><span style="color:#ed4343;">));
+</span><span>      ram_test ram_test</span><span style="color:#ed4343;">;
+</span><span>    </span><span style="color:#ed4343;">}
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span> 
+</span><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">{
+</span><span>    reset_cond.in </span><span style="color:#ed4343;">= ~</span><span>rst_n</span><span style="color:#ed4343;">;        </span><span style="color:#969696;">// input raw inverted reset signal
+</span><span>    rst </span><span style="color:#ed4343;">=</span><span> reset_cond.out</span><span style="color:#ed4343;">;          </span><span style="color:#969696;">// conditioned reset
+</span><span> 
+</span><span>    spi_miso </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bz</span><span style="color:#ed4343;">;                 </span><span style="color:#969696;">// not using SPI
+</span><span>    spi_channel </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bzzzz</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// not using flags
+</span><span>    avr_rx </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">bz</span><span style="color:#ed4343;">;                   </span><span style="color:#969696;">// not using serial port
+</span><span> 
+</span><span>    led </span><span style="color:#ed4343;">=</span><span> ram_test.leds</span><span style="color:#ed4343;">;           </span><span style="color:#969696;">// connect LEDs to ram_test
+</span><span> 
+</span><span>    sdram.memIn </span><span style="color:#ed4343;">=</span><span> ram_test.memOut</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// connect ram_test to controller
+</span><span>    ram_test.memIn </span><span style="color:#ed4343;">=</span><span> sdram.memOut</span><span style="color:#ed4343;">; </span><span style="color:#969696;">// connect controller to ram_test
+</span><span> 
+</span><span>    sdramOut </span><span style="color:#ed4343;">=</span><span> sdram.sdramOut</span><span style="color:#ed4343;">;     </span><span style="color:#969696;">// connect controller to SDRAM
+</span><span>  </span><span style="color:#ed4343;">}
+</span><span style="color:#ed4343;">}
+</span></code></pre>
+<p>You should be able to build your project now. Stack your SDRAM Shield onto your Mojo and load the project! If everything went well, you should see the left-most LED blinking and the other 7 off (no errors). Each time the LED blinks, 32MB of data was written and read back from the SDRAM!</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;camera&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>Camera</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;lucid_v1&#x2F;mojo&#x2F;hdmi&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>HDMI</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

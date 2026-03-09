@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Finite State Machines</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;finite-state-machines&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;">Verilog</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;finite-state-machines&#x2F;">Finite State Machines</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Finite State Machines</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+8 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;finite-state-machines.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#what-s-an-fsm" aria-label="What&#x27;s an FSM?">What&#x27;s an FSM?</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#the-states" aria-label="The States">The States</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#state-transitions" aria-label="State Transitions">State Transitions</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#implementation" aria-label="Implementation">Implementation</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#final-product" aria-label="Final Product">Final Product</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p><strong>F</strong>inite <strong>S</strong>tate <strong>M</strong>achines, or <strong>FSM</strong>s, are an incredibly powerful tool when designing digital circuits. This tutorial will teach what an FSM is through example. We will use a basic FSM to control a very simple robot.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/robot.jpg" alt="robot.jpg" /></p>
+<p>Before we get into the nitty gritty of how to actually implement this, it's important to understand what an FSM actually is.</p>
+<h3 id="what-s-an-fsm">What's an FSM?</h3>
+<p>An FSM, in its most general form, is a set of flipflops that hold only the current state, and a block of combinational logic that determines the the next state given the current state and some inputs. The output is determined by what the current state is. </p>
+<p>Take a look at the following diagram.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/generic_fsm.png" alt="generic_fsm.png" /></p>
+<p>This is what an FSM looks like in hardware. The only storage it has is for the current state. Since the main block of logic is combinational, there can't be any flip-flops inside of it. Remember, <strong>combinational logic</strong> will produce the same outputs given the same set of inputs at any time. </p>
+<p>This is all very abstract. Let's now look at how to actually design an FSM.</p>
+<h3 id="the-states">The States</h3>
+<p>The first thing to do when designing an FSM is to figure out what states you will need.</p>
+<p>Since we are going to use the FSM to control a robot, we need to think about the behavior we want.</p>
+<p>First, the robot has two contact switches mounted on the front of it as shown below.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/robot_wiskers.jpg" alt="robot_wiskers.jpg" /></p>
+<p>These are wired up so that when they are not being pressed, the signal line is connected to ground, but when pressed, it get connected to +5V. Remember, the Mojo's IO pins are not 5V tolerant, however, because this robot is using the Servo Shield, this is exactly what we want.</p>
+<p>By using these switches, the robot can realize when it runs into something. For some basic object avoidance, we will make the robot back up when it hits something then turn right if the left switch was pressed or turn left if the right switch was pressed. When the robot hasn't hit anything it will just drive forward.</p>
+<p>This leads us to five states.</p>
+<ul>
+<li><strong>FORWARD</strong></li>
+<li><strong>BACKUP_RIGHT</strong></li>
+<li><strong>TURN_RIGHT</strong></li>
+<li>**BACKUP_LEFT</li>
+<li>**TURN_LEFT</li>
+</ul>
+<p>Notice that there are two versions of the <strong>BACKUP</strong> state, <strong>BACKUP_RIGHT</strong> and <strong>BACKUP_LEFT</strong>. This is because we need to encode in the states which one will turn right after it backs up and which will turn left. If we didn't have separate states, we would have to read the state of the switch after it backed up and at that point the switch would not be pressed anymore.</p>
+<p>Take a look at the basic flow of states to help clear this up.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/fsm_blank.png" alt="fsm_blank.png" /></p>
+<h3 id="state-transitions">State Transitions</h3>
+<p>We now need to figure out under what conditions we would like the state to change.</p>
+<p>The first one is easy, when the FSM is in the <strong>FORWARD</strong> state it should change to the <strong>BACKUP_RIGHT</strong> state when the left switch is pressed, or to the <strong>BACKUP_LEFT</strong> state when the right switch is pressed.</p>
+<p>The next ones are a little different. We want them to just flow to the next state, but we can't just have them flow immediately to the next state otherwise the robot won't have any time to backup or turn! It will happen so fast that it will appear that nothing happened.</p>
+<p>To keep the state the same for a longer amount of time, we need to introduce a counter.</p>
+<p>The counter <strong>can't</strong> be part of the FSM because a counter requires some flip-flops to store the counter value! Instead, the counter is part of what is known as the <strong>data path</strong>. The FSM portion of circuit simply supplies signals to reset the counter and the data path provides signals like the counter has reached a certain value.</p>
+<p>This naming convention is a bit arbitrary and you shouldn't worry about it too much when designing your own FSMs. If it seems to make your circuit a lot simpler if you break some rules, you probably should.</p>
+<p>Take a look now at the state diagram with the transitions labeled.</p>
+<p><img src="https://cdn.alchitry.com/verilog/mojo/fsm.png" alt="fsm.png" /></p>
+<h3 id="implementation">Implementation</h3>
+<p>The easiest way to understand how to write an FSM is to just take a look at one.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="short language-verilog" data-lang="verilog"><table><tbody><tr><td>1</td><td><span style="font-weight:bold;color:#faac1f;">module</span><span> robot_fsm </span><span style="color:#ed4343;">(
+</span></td></tr><tr><td>2</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> clk</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>3</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> rst</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>4</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> switch_left</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>5</td><td><span>    </span><span style="color:#0a8dbf;">input</span><span> switch_right</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>6</td><td><span>    </span><span style="color:#0a8dbf;">output reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> left</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>7</td><td><span>    </span><span style="color:#0a8dbf;">output reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">7</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> right
+</span></td></tr><tr><td>8</td><td><span>  </span><span style="color:#ed4343;">);
+</span></td></tr><tr><td>9</td><td><span> 
+</span></td></tr><tr><td>10</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> STATE_SIZE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>11</td><td><span> 
+</span></td></tr><tr><td>12</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> FORWARD </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>13</td><td><span>    BACKUP_RIGHT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>14</td><td><span>    TURN_RIGHT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>15</td><td><span>    BACKUP_LEFT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>16</td><td><span>    TURN_LEFT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>17</td><td><span> 
+</span></td></tr><tr><td>18</td><td><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span>STATE_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> state_d</span><span style="color:#ed4343;">,</span><span> state_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>19</td><td><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">25</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> ctr_d</span><span style="color:#ed4343;">,</span><span> ctr_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>20</td><td><span> 
+</span></td></tr><tr><td>21</td><td><span>  </span><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> sl_d</span><span style="color:#ed4343;">,</span><span> sl_q</span><span style="color:#ed4343;">,</span><span> sr_d</span><span style="color:#ed4343;">,</span><span> sr_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>22</td><td><span> 
+</span></td></tr><tr><td>23</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@* </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>24</td><td><span>    sl_d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> switch_left</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>25</td><td><span>    sl_d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> sl_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span></td></tr><tr><td>26</td><td><span>    sr_d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">] =</span><span> switch_right</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>27</td><td><span>    sr_d</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">] =</span><span> sr_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">];
+</span></td></tr><tr><td>28</td><td><span> 
+</span></td></tr><tr><td>29</td><td><span>    ctr_d </span><span style="color:#ed4343;">=</span><span> ctr_q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>30</td><td><span>    state_d </span><span style="color:#ed4343;">=</span><span> state_q</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>31</td><td><span> 
+</span></td></tr><tr><td>32</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state_q</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>33</td><td><span>      FORWARD</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>34</td><td><span>        ctr_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">25&#39;d0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>35</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>sr_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>36</td><td><span>          state_d </span><span style="color:#ed4343;">=</span><span> BACKUP_LEFT</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>37</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">end else if </span><span style="color:#ed4343;">(</span><span>sl_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>38</td><td><span>          state_d </span><span style="color:#ed4343;">=</span><span> BACKUP_RIGHT</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>39</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>40</td><td><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>41</td><td><span>      BACKUP_RIGHT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>42</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr_q </span><span style="color:#ed4343;">== {</span><span style="color:#a269dc;">26</span><span style="color:#ed4343;">{</span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">}})
+</span></td></tr><tr><td>43</td><td><span>          state_d </span><span style="color:#ed4343;">=</span><span> TURN_RIGHT</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>44</td><td><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>45</td><td><span>      TURN_RIGHT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>46</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr_q </span><span style="color:#ed4343;">== {</span><span style="color:#a269dc;">25</span><span style="color:#ed4343;">{</span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">}})
+</span></td></tr><tr><td>47</td><td><span>          state_d </span><span style="color:#ed4343;">=</span><span> FORWARD</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>48</td><td><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>49</td><td><span>      BACKUP_LEFT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>50</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr_q </span><span style="color:#ed4343;">== {</span><span style="color:#a269dc;">26</span><span style="color:#ed4343;">{</span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">}})
+</span></td></tr><tr><td>51</td><td><span>          state_d </span><span style="color:#ed4343;">=</span><span> TURN_LEFT</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>52</td><td><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>53</td><td><span>      TURN_LEFT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>54</td><td><span>        </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr_q </span><span style="color:#ed4343;">== {</span><span style="color:#a269dc;">25</span><span style="color:#ed4343;">{</span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">}})
+</span></td></tr><tr><td>55</td><td><span>          state_d </span><span style="color:#ed4343;">=</span><span> FORWARD</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>56</td><td><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>57</td><td><span>      default</span><span style="color:#ed4343;">: </span><span>state_d </span><span style="color:#ed4343;">=</span><span> FORWARD</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>58</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">endcase
+</span></td></tr><tr><td>59</td><td><span> 
+</span></td></tr><tr><td>60</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state_q</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>61</td><td><span>      FORWARD</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>62</td><td><span>        left </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;h50</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>63</td><td><span>        right </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;h50</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>64</td><td><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>65</td><td><span>      BACKUP_RIGHT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>66</td><td><span>        left </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;hB0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>67</td><td><span>        right </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;hB0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>68</td><td><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>69</td><td><span>      TURN_RIGHT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>70</td><td><span>        left </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;hB0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>71</td><td><span>        right </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;h50</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>72</td><td><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>73</td><td><span>      BACKUP_LEFT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>74</td><td><span>        left </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;hB0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>75</td><td><span>        right </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;hB0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>76</td><td><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>77</td><td><span>      TURN_LEFT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>78</td><td><span>        left </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;h50</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>79</td><td><span>        right </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;hB0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>80</td><td><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>81</td><td><span>      default</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>82</td><td><span>        left </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;h80</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>83</td><td><span>        right </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;h80</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>84</td><td><span>      </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>85</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">endcase
+</span></td></tr><tr><td>86</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>87</td><td><span> 
+</span></td></tr><tr><td>88</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">always </span><span style="color:#ed4343;">@(</span><span style="font-weight:bold;color:#0abfbf;">posedge</span><span> clk</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>89</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>rst</span><span style="color:#ed4343;">) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>90</td><td><span>      state_q </span><span style="color:#ed4343;">&lt;=</span><span> FORWARD</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>91</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">end else begin
+</span></td></tr><tr><td>92</td><td><span>      state_q </span><span style="color:#ed4343;">&lt;=</span><span> state_d</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>93</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>94</td><td><span>    ctr_q </span><span style="color:#ed4343;">&lt;=</span><span> ctr_d</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>95</td><td><span>    sl_q </span><span style="color:#ed4343;">&lt;=</span><span> sl_d</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>96</td><td><span>    sr_q </span><span style="color:#ed4343;">&lt;=</span><span> sr_d</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>97</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>98</td><td><span> 
+</span></td></tr><tr><td>99</td><td><span style="font-weight:bold;color:#faac1f;">endmodule
+</span></td></tr></tbody></table></code></pre>
+<p>First let's look at the declaration of states.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>10</td><td><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> STATE_SIZE </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>11</td><td><span> 
+</span></td></tr><tr><td>12</td><td><span style="font-weight:bold;color:#0abfbf;">localparam</span><span> FORWARD </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>13</td><td><span>  BACKUP_RIGHT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>14</td><td><span>  TURN_RIGHT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">2</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>15</td><td><span>  BACKUP_LEFT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">3</span><span style="color:#ed4343;">,
+</span></td></tr><tr><td>16</td><td><span>  TURN_LEFT </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">4</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>17</td><td><span> 
+</span></td></tr><tr><td>18</td><td><span style="color:#0a8dbf;">reg </span><span style="color:#ed4343;">[</span><span>STATE_SIZE</span><span style="color:#ed4343;">-</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">:</span><span style="color:#a269dc;">0</span><span style="color:#ed4343;">]</span><span> state_d</span><span style="color:#ed4343;">,</span><span> state_q</span><span style="color:#ed4343;">;
+</span></td></tr></tbody></table></code></pre>
+<p>Here we declare the various states we will use in a human readable way. By using <strong>STATE_SIZE</strong> it makes it easy to add or remove states if we change the design later.</p>
+<p>All the stuff with <strong>sl_d</strong>, <strong>sl_q</strong>, <strong>sr_d</strong>, and <strong>sr_q</strong>, are used to prevent meta-stability when reading the switches. Be sure to check out the <a href="https://alchitry.com/tutorials/archive/verilog/mojo/metastability-and-debouncing/">metastability and debouncing tutorial</a> if you need a refresher. </p>
+<p>Take note of the following two lines.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>29</td><td><span>ctr_d </span><span style="color:#ed4343;">=</span><span> ctr_q </span><span style="color:#ed4343;">+ </span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>30</td><td><span>state_d </span><span style="color:#ed4343;">=</span><span> state_q</span><span style="color:#ed4343;">;
+</span></td></tr></tbody></table></code></pre>
+<p>The first line says that the counter should continue counting unless something in our FSM says otherwise.</p>
+<p>The second line says that the state should remain the same unless we specify a new state.</p>
+<p>These types of defaults are very good practice because they will prevent the case where you forget to assign a value to the reg which results in latches and bad things.</p>
+<p>Finally, the first case statement is used for determining the next state.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>32</td><td><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state_q</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>33</td><td><span>  FORWARD</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>34</td><td><span>    ctr_d </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">25&#39;d0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>35</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>sr_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>36</td><td><span>      state_d </span><span style="color:#ed4343;">=</span><span> BACKUP_LEFT</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>37</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">end else if </span><span style="color:#ed4343;">(</span><span>sl_q</span><span style="color:#ed4343;">[</span><span style="color:#a269dc;">1</span><span style="color:#ed4343;">]) </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>38</td><td><span>      state_d </span><span style="color:#ed4343;">=</span><span> BACKUP_RIGHT</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>39</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>40</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>41</td><td><span>  BACKUP_RIGHT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>42</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr_q </span><span style="color:#ed4343;">== {</span><span style="color:#a269dc;">26</span><span style="color:#ed4343;">{</span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">}})
+</span></td></tr><tr><td>43</td><td><span>      state_d </span><span style="color:#ed4343;">=</span><span> TURN_RIGHT</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>44</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>45</td><td><span>  TURN_RIGHT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>46</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr_q </span><span style="color:#ed4343;">== {</span><span style="color:#a269dc;">25</span><span style="color:#ed4343;">{</span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">}})
+</span></td></tr><tr><td>47</td><td><span>      state_d </span><span style="color:#ed4343;">=</span><span> FORWARD</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>48</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>49</td><td><span>  BACKUP_LEFT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>50</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr_q </span><span style="color:#ed4343;">== {</span><span style="color:#a269dc;">26</span><span style="color:#ed4343;">{</span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">}})
+</span></td></tr><tr><td>51</td><td><span>      state_d </span><span style="color:#ed4343;">=</span><span> TURN_LEFT</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>52</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>53</td><td><span>  TURN_LEFT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>54</td><td><span>    </span><span style="font-weight:bold;color:#0abfbf;">if </span><span style="color:#ed4343;">(</span><span>ctr_q </span><span style="color:#ed4343;">== {</span><span style="color:#a269dc;">25</span><span style="color:#ed4343;">{</span><span style="color:#a269dc;">1&#39;b1</span><span style="color:#ed4343;">}})
+</span></td></tr><tr><td>55</td><td><span>      state_d </span><span style="color:#ed4343;">=</span><span> FORWARD</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>56</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>57</td><td><span>  default</span><span style="color:#ed4343;">: </span><span>state_d </span><span style="color:#ed4343;">=</span><span> FORWARD</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>58</td><td><span style="font-weight:bold;color:#0abfbf;">endcase
+</span></td></tr></tbody></table></code></pre>
+<p>When the counter is found to be high enough, the state transitions from <strong>BACKUP_XXX</strong> to <strong>TURN_XXX</strong>. Once it gets high enough again, it transitions from <strong>TURN_XXX</strong> to <strong>FORWARD</strong>. The counter will overflow during the first transition because it reached the top, and when the FSM reaches the <strong>FORWARD</strong> state the counter is held at 0.</p>
+<p>The second case statement is used to generate the outputs based on the current state.</p>
+<pre data-linenos data-lang="verilog" style="background-color:#282828;color:#ffffff;" class="language-verilog "><code class ="language-verilog" data-lang="verilog"><table><tbody><tr><td>60</td><td><span style="font-weight:bold;color:#0abfbf;">case </span><span style="color:#ed4343;">(</span><span>state_q</span><span style="color:#ed4343;">)
+</span></td></tr><tr><td>61</td><td><span>  FORWARD</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>62</td><td><span>    left </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;h50</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>63</td><td><span>    right </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;h50</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>64</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>65</td><td><span>  BACKUP_RIGHT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>66</td><td><span>    left </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;hB0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>67</td><td><span>    right </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;hB0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>68</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>69</td><td><span>  TURN_RIGHT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>70</td><td><span>    left </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;hB0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>71</td><td><span>    right </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;h50</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>72</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>73</td><td><span>  BACKUP_LEFT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>74</td><td><span>    left </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;hB0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>75</td><td><span>    right </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;hB0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>76</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>77</td><td><span>  TURN_LEFT</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>78</td><td><span>    left </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;h50</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>79</td><td><span>    right </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;hB0</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>80</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>81</td><td><span>  default</span><span style="color:#ed4343;">: </span><span style="font-weight:bold;color:#0abfbf;">begin
+</span></td></tr><tr><td>82</td><td><span>    left </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;h80</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>83</td><td><span>    right </span><span style="color:#ed4343;">= </span><span style="color:#a269dc;">8&#39;h80</span><span style="color:#ed4343;">;
+</span></td></tr><tr><td>84</td><td><span>  </span><span style="font-weight:bold;color:#0abfbf;">end
+</span></td></tr><tr><td>85</td><td><span style="font-weight:bold;color:#0abfbf;">endcase
+</span></td></tr></tbody></table></code></pre>
+<p>These are fed to two servo modules (see the <a href="https://alchitry.com/tutorials/archive/verilog/mojo/servos/">servos tutorial</a>) for more info) and control the wheels of the robot.</p>
+<h3 id="final-product">Final Product</h3>
+<p>Now check out the FSM in action!</p>
+<div class="video-container">
+    <iframe class="video" src="https://www.youtube.com/embed/eqGPOE-J_CU?si=FoF80eUCaDhFixnF"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<p>You can download the full project code <a href="https://cdn.embeddedmicro.com/fsm/Mojo-FSM.zip">here</a>.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;fpga-timing&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>FPGA Timing</span>
+        </a>
+        
+        
+        <a class="next" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;verilog&#x2F;mojo&#x2F;hello-world&#x2F;">
+            <span class="title">Next »</span>
+            <br>
+            <span>Hello World!</span>
+        </a>
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>

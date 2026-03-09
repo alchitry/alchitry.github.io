@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+    
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Updating the Mojo</title>
+
+
+<meta name="keywords" content="keyword1, keyword2, keyword3">
+
+
+
+<meta name="description" content="">
+
+
+
+<meta name="author" content="Justin Rajewski">
+
+
+<link rel="canonical" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;mojo&#x2F;update-the-mojo&#x2F;">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+    {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+</script>
+<script type="module">
+    import '@material/web/all.js';
+    import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+    document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+</script>
+
+<link rel="stylesheet" href="https://alchitry.com/styles.css">
+<link rel="stylesheet" href="https://alchitry.com/override.css">
+
+<link rel="icon" href="https://alchitry.com/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="https://alchitry.com/favicon_16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://alchitry.com/favicon_32.png">
+<link rel="apple-touch-icon" href="https://alchitry.com/apple-touch-icon.png"><!-- 180×180 -->
+<meta name="theme-color" content="#333333">
+
+
+<link rel="alternate" type="application/atom+xml" title="RSS" href="https://alchitry.com/atom.xml">
+
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+    </style>
+    
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    
+</noscript>
+
+
+
+    
+</head>
+<body class=" dark" id="top">
+    
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"/>
+
+<header class="header">
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="https:&#x2F;&#x2F;alchitry.com" accesskey="h" title="Alchitry (Alt + H)"><img src="https://alchitry.com/alchitry.svg"
+                                                         alt="Alchitry"
+                                                         aria-label="Alchitry">
+            </a>
+        </div>
+        
+        <div id="nav-search">
+            <ul id="menu" class="desktop-nav">
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+                        <span>Boards</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+                        <span>News</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+                        <span>Tutorials</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+                        <span>Alchitry Labs</span>
+                        
+                    </a>
+                </li>
+                
+                
+                
+                <li>
+                    <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+                        <span>Forum</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+            <div class="search-container">
+                <input class="search" type="search" placeholder="Search" autocomplete="off">
+                <span class="material-symbols-outlined search-icon">search</span>
+
+                <div class="search-results">
+                    <div class="search-results__items"></div>
+                </div>
+            </div>
+        </div>
+        <div id="overlayNavOpen">
+            <span onclick="openNav()" class="material-symbols-outlined">menu</span>
+        </div>
+        
+    </nav>
+</header>
+
+
+<div id="overlayNav" class="overlay">
+    <div class="overlay-header">
+        <div class="search-container">
+            <input class="search" type="search" placeholder="Search" autocomplete="off">
+            <span class="material-symbols-outlined search-icon">search</span>
+
+            <div class="search-results">
+                <div class="search-results__items"></div>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div class="overlay-content">
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;shop.alchitry.com&#x2F;collections&#x2F;products" title="Boards">
+            <span>Boards</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;news" title="News">
+            <span>News</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials" title="Tutorials">
+            <span>Tutorials</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;alchitry-labs" title="Alchitry Labs">
+            <span>Alchitry Labs</span>
+            
+        </a>
+        
+        
+        
+        <a href="https:&#x2F;&#x2F;forum.alchitry.com" title="Forum">
+            <span>Forum</span>
+            
+        </a>
+        
+    </div>
+</div>
+
+    
+    <main class="main">
+        
+<article class="post-single">
+    <header class="post-header">
+        <div class="breadcrumbs">
+            
+            <div class="breadcrumb-container">
+                <a class="breadcrumb-path" href="/">Home</a>
+                
+                
+                
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;">Tutorials</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;">Archive</a>
+                
+                
+                <span class="breadcrumb-separator">»</span>
+                
+                <a class="breadcrumb-path" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;mojo&#x2F;">Mojo</a>
+                
+                <span class="breadcrumb-separator">»</span>
+                <a class="breadcrumb-path active" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;mojo&#x2F;update-the-mojo&#x2F;">Updating the Mojo</a>
+            </div>
+            
+        </div>
+        <h1 class="post-title">Updating the Mojo</h1>
+        
+        
+        <div class="post-meta">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+6 min&nbsp;·&nbsp;Justin Rajewski
+
+            &nbsp;|&nbsp;&nbsp;<a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry&#x2F;alchitry.github.io&#x2F;tree&#x2F;master/content/tutorials&#x2F;archive&#x2F;mojo&#x2F;update-the-mojo.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+        </div>
+        
+    </header>
+
+    
+    
+
+<div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner">
+            <ul>
+                
+                <li>
+                    <a href="#mojo-ide" aria-label="Mojo IDE">Mojo IDE</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#manual-update" aria-label="Manual Update">Manual Update</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="#arduino-compatible-mojo-instructions" aria-label="Arduino Compatible Mojo Instructions">Arduino Compatible Mojo Instructions</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#ubuntu" aria-label="Ubuntu">Ubuntu</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#windows" aria-label="Windows">Windows</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#legacy-mojo-instructions" aria-label="Legacy Mojo Instructions">Legacy Mojo Instructions</a>
+                    
+                    <ul>
+                    
+                        <li>
+                            <a href="#ubuntu-1" aria-label="Ubuntu">Ubuntu</a>
+                            
+                        </li>
+                    
+                        <li>
+                            <a href="#windows-1" aria-label="Windows">Windows</a>
+                            
+                        </li>
+                    
+                    </ul>
+                    
+                </li>
+                
+                <li>
+                    <a href="#entering-bootloader-mode" aria-label="Entering Bootloader Mode">Entering Bootloader Mode</a>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </details>
+</div>
+
+
+    
+
+    
+    <div class="post-content">
+        <p>Mojos shipped in 2014 or later have the Arduino compatible bootloader. If your Mojo does not have the Arduino compatible bootloader, we recommend upgrading it. Please visit <a href="https://alchitry.com/tutorials/archive/mojo/mojo-bootloader/">this page for more instructions</a>.</p>
+<p>On the Mojo there is a microcontroller that provides most of the core functionality. As we improve the firmware for the microcontroller by fixing bugs and adding new features, you can update the Mojo by following this tutorial. The microcontroller has a USB bootloader so it is easy to update yourself.</p>
+<h2 id="mojo-ide">Mojo IDE</h2>
+<p>If you are using the <a href="https://alchitry.com/alchitry-labs/">Alchitry Labs</a>, simply click <strong>Tools-&gt;Flash Firmware...</strong> to flash the latest firmware.</p>
+<h2 id="manual-update">Manual Update</h2>
+<p>First you will need to download the latest firmware. The latest firmware was posted on <strong>March 2, 2016</strong>.</p>
+<ul>
+<li><a href="http://cdn.embeddedmicro.com/mojo-loader/Mojo-v3-Loader-1.2.6.hex">Mojo V3 Firmware (ATmega32U4)</a></li>
+<li><a href="http://cdn.embeddedmicro.com/mojo-loader/Mojo-v2-Loader-1.2.6.hex">Mojo V2 Firmware (ATmega16U4)</a></li>
+</ul>
+<p>The latest update includes some patches to the serial interface to the FPGA which requires you to use the updated <a href="https://github.com/embmicro/mojo-base-project/archive/master.zip">Mojo Base Project</a>. These changes ensure no bytes are dropped.</p>
+<h2 id="arduino-compatible-mojo-instructions">Arduino Compatible Mojo Instructions</h2>
+<p>The easiest way to update the firmware when an Arduino compatible Mojo is to simply setup the Arduino IDE and grab the latest code from the GIT repository. Instructions for doing this can be found on the <a href="https://alchitry.com/tutorials/archive/mojo/arduino-setup/">Arduino setup page</a>.</p>
+<p>However, if you want to just flash the hex without installing the Arduino IDE and applying the modifications, you can use <strong>avrdude</strong> to program it.</p>
+<h3 id="ubuntu">Ubuntu</h3>
+<p>It's really easy to update using Linux. Simply install <strong>avrdude</strong> by typing the following.</p>
+<pre data-lang="bash" style="background-color:#282828;color:#ffffff;" class="language-bash "><code class ="language-bash" data-lang="bash"><span style="color:#6699cc;">sudo apt-get install avrdude
+</span></code></pre>
+<p>Then navigate to the folder with the hex file and run avrdude. <strong>Before</strong> you run avrdude, make sure you get the Mojo in bootloader mode by temporarily shorting the pins shown at the bottom of the page.</p>
+<pre data-lang="bash" style="background-color:#282828;color:#ffffff;" class="language-bash "><code class ="language-bash" data-lang="bash"><span style="color:#6699cc;">avrdude</span><span style="color:#a269dc;"> -P</span><span style="color:#6699cc;"> /dev/ttyACM0</span><span style="color:#a269dc;"> -c</span><span style="color:#6699cc;"> avr109</span><span style="color:#a269dc;"> -p</span><span style="color:#6699cc;"> m32u4</span><span style="color:#a269dc;"> -U</span><span style="color:#6699cc;"> flash:w:Mojo-v3-Loader-1.2.5.hex
+</span></code></pre>
+<p>Make sure to change <strong>/dev/ttyACM0</strong> to the correct port for the Mojo!</p>
+<p>The hex should now be loaded on the Mojo!</p>
+<h3 id="windows">Windows</h3>
+<p>Head over to SourceForge and download <a href="http://sourceforge.net/projects/winavr/">WinAVR</a>.</p>
+<p>After it's installed click Start-&gt;Run and type <strong>cmd</strong> to open a command prompt.</p>
+<p>Navigate to where the hex file is and enter the following. <strong>Before</strong> you run avrdude, make sure you get the Mojo in bootloader mode by temporarily shorting the pins shown at the bottom of the page.</p>
+<pre data-lang="bash" style="background-color:#282828;color:#ffffff;" class="language-bash "><code class ="language-bash" data-lang="bash"><span style="color:#6699cc;">avrdude</span><span style="color:#a269dc;"> -P</span><span style="color:#6699cc;"> COM4</span><span style="color:#a269dc;"> -c</span><span style="color:#6699cc;"> avr109</span><span style="color:#a269dc;"> -p</span><span style="color:#6699cc;"> m32u4</span><span style="color:#a269dc;"> -U</span><span style="color:#6699cc;"> flash:w:Mojo-v3-Loader-1.2.5.hex
+</span></code></pre>
+<p>Make sure to change <strong>COM4</strong> to the port the Mojo is connected to. Note that this port may change after you put the Mojo is bootloader mode. It will only stay in bootloader mode for about 15-20 seconds and it will show up in the Device Manger as <strong>Mojo V3 bootloader</strong>. If you miss the bootloader window, simply short the pins again to re-enter it.</p>
+<p>The hex should noe be loaded on the Mojo!</p>
+<h2 id="legacy-mojo-instructions">Legacy Mojo Instructions</h2>
+<h3 id="ubuntu-1">Ubuntu</h3>
+<p>It is pretty easy to update the Mojo in Ubuntu using <strong>dfu-programmer</strong>.</p>
+<p>First you need to install dfu-programmer. Open a terminal and enter</p>
+<pre data-lang="bash" style="background-color:#282828;color:#ffffff;" class="language-bash "><code class ="language-bash" data-lang="bash"><span style="color:#6699cc;">sudo apt-get install dfu-programmer
+</span></code></pre>
+<p>You also need to download the following file and place it in <strong>/etc/udev/rules.d</strong>. You will need superuser privileges to do this.</p>
+<p><a href="http://cdn.embeddedmicro.com/mojo/99-mojo.rules">Mojo USB Rules</a></p>
+<p>Once you add the rules file, you will need to unplug and re-plug the Mojo to have it take effect. </p>
+<p>Jump down to <strong>Entering Bootloader Mode</strong> for instructions on how to get the Mojo into bootloader mode.</p>
+<p>You can now update the Mojo with the following commands.</p>
+<pre data-lang="bash" style="background-color:#282828;color:#ffffff;" class="language-bash "><code class ="language-bash" data-lang="bash"><span style="color:#6699cc;">dfu-programmer atmega32u4 erasedfu-programmer atmega32u4 flash /path/to/hex/file/Mojo-Loader-1.2.5.hexdfu-programmer atmega32u4 start
+</span></code></pre>
+<p>Note that if you have a Mojo V2 the board probably has an ATmega16U4 microcontroller and not an ATmega32U4. In that case, replace <strong>atmega32u4</strong> with <strong>atmega16u4</strong> in the above commands.</p>
+<p>The firmware is now updated.</p>
+<h3 id="windows-1">Windows</h3>
+<p>To update the Mojo in Windows you will need to download FLIP.</p>
+<p><a href="https://www.microchip.com/en-us/development-tool/flip">FLIP Download Page</a></p>
+<p>There are two flavors of FLIP, one with a Java Runtime included and one without. Either will work as long as you have Java installed on your computer. If you are unsure if you have Java or not, download the one with the Runtime included.</p>
+<p>Once you've installed FLIP, jump down to <strong>Entering Bootloader Mode</strong> for instructions on how to get the Mojo into bootloader mode.</p>
+<p>Windows may or may not find the driver for your Mojo. If it doesn't, open the Device Manager. It should look similar to below.</p>
+<p><img src="https://cdn.alchitry.com/mojo/bootloader-no-driver.png" alt="bootloader-no-driver.png" /></p>
+<p>Right click on the <strong>ATm32U4DFU</strong> or <strong>ATm16U4DFU</strong>, depending on your Mojo, and click <strong>Update Driver Software...</strong> </p>
+<p>Then choose <strong>Browse my computer for driver software</strong> and fill in the path to where you installed FLIP. Select the sub-folder <strong>usb</strong>.</p>
+<p><img src="https://cdn.alchitry.com/mojo/bootloader-driver-path.png" alt="bootloader-driver-path.png" /></p>
+<p>Click <strong>Next</strong> and install the driver.</p>
+<p>Once the driver is installed, launch FLIP.</p>
+<p>Click on the chip icon in the upper left corner and choose the microcontroller your Mojo has. If you have a Mojo V2 chances are you have an ATmega16U4, although some have ATmega32U4's. If you have a Mojo V3 you have an ATmega32U4.</p>
+<p>Click on the icon of the USB cable and choose <strong>USB</strong> then <strong>Open</strong>.</p>
+<p>Next, click on the red book that has the red arrow pointing into it. When you hover over it with your mouse it should say <strong>Load HEX File</strong>. Select the <strong>Mojo-Loader-1.2.hex</strong> file you downloaded.</p>
+<p><img src="https://cdn.alchitry.com/mojo/bootloader-load-hex.png" alt="bootloader-load-hex.png" /></p>
+<p>Finally click on <strong>Run</strong>. Once that finishes click <strong>Start Application</strong>. The firmware is now updated!</p>
+<h2 id="entering-bootloader-mode">Entering Bootloader Mode</h2>
+<p>To program the microcontroller you need to get it into bootloader mode.</p>
+<p>First plug the Mojo into your computer. With the Mojo still powered on, flip it over so you see the six little pads above the last O in Mojo. You need to momentarily connect the two leftmost pads. A jumper wire works well for this. Connecting these pads resets the microcontroller and on restart it will enter the bootloader.</p>
+<p>The image below shows the pins to connect.</p>
+<p><img src="https://cdn.alchitry.com/mojo/mojo-v3-bootloader.jpg" alt="mojo-v3-bootloader.jpg" /></p>
+<p>Once you tap those together it should be in bootloader mode. Jump back to your operating system's section.</p>
+
+    </div>
+    
+
+    <footer class="post-footer">
+        
+
+        
+        
+
+
+
+<nav class="paginav">
+    
+        
+        <a class="prev" href="https:&#x2F;&#x2F;alchitry.com&#x2F;tutorials&#x2F;archive&#x2F;mojo&#x2F;ise&#x2F;">
+            <span class="title">« Prev</span>
+            <br>
+            <span>ISE Setup</span>
+        </a>
+        
+        
+    
+</nav>
+
+
+        
+        
+    </footer>
+
+</article>
+
+    </main>
+    
+    <footer class="footer">
+    <div>
+        <div class="social-icons">
+    
+    <a href="https:&#x2F;&#x2F;github.com&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="GitHub">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;youtube.com&#x2F;c&#x2F;alchitry" target="_blank" rel="noopener noreferrer me" title="YouTube">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+
+
+    </a>
+    
+    <a href="https:&#x2F;&#x2F;alchitry.com&#x2F;atom.xml" target="_blank" rel="noopener noreferrer me" title="RSS">
+        
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 11a9 9 0 0 1 9 9" />
+    <path d="M4 4a16 16 0 0 1 16 16" />
+    <circle cx="5" cy="19" r="1" />
+</svg>
+
+
+    </a>
+    
+</div>
+
+        <span>&copy; 2026 <a href="https:&#x2F;&#x2F;alchitry.com">Alchitry</a></span>
+    </div>
+</footer>
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#e3e3e3"><path d="M440-320h80v-168l64 64 56-56-160-160-160 160 56 56 64-64v168Zm40 240q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+</a>
+
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+
+
+<script>
+    /* Open */
+    function openNav() {
+        document.getElementById("overlayNav").style.display = "block";
+    }
+
+    /* Close */
+    function closeNav() {
+        document.getElementById("overlayNav").style.display = "none";
+    }
+</script>
+
+
+
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            let codeText = '';
+
+            // 1. Check if the codeblock contains a table (Line Numbers present)
+            const tableRows = codeblock.querySelectorAll('table tr');
+
+            if (tableRows.length > 0) {
+                const lines = [];
+                tableRows.forEach(row => {
+                    // The actual code is in the last TD
+                    const codeCell = row.lastElementChild;
+                    if (codeCell) {
+                        let cellText = codeCell.textContent;
+
+                        if (cellText.endsWith('\n')) {
+                            cellText = cellText.slice(0, -1);
+                        }
+
+                        lines.push(cellText);
+                    }
+                });
+                codeText = lines.join('\n');
+            } else {
+                // 2. No table, use standard text extraction
+                codeText = codeblock.textContent;
+            }
+
+            // 3. Copy the cleaned text to clipboard
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeText);
+                copyingDone();
+                return;
+            }
+
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = codeText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) {
+                console.error('Copy failed', e);
+            }
+            document.body.removeChild(textArea);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            // td containing LineNos
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // table containing LineNos and code
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            // code blocks not having highlight as parent class
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://alchitry.com/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://alchitry.com/search.js"></script>
+<script type="module" src="https://alchitry.com/table-toggles.js"></script>
+    
+</body>
+</html>
