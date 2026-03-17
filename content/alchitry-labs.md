@@ -11,7 +11,7 @@ weight = 0
 </a>
 </div>
 
-Or get it from the [Microsoft Store](https://apps.microsoft.com/detail/9mvzrn9dbj3c).
+Or get it from the [Microsoft Store](https://apps.microsoft.com/detail/9mvzrn9dbj3c) or [Arch User Repository](https://aur.archlinux.org/packages/alchitry-labs-bin).
 
 Check out the source code here: [GitHub Source Code](https://github.com/alchitry/Alchitry-Labs-V2).
 
@@ -27,7 +27,10 @@ This means that building for the [Au](@/boards/au.md) is not possible.
 
 ## Builders
 
-See the [Setup Page](@/tutorials/introduction/_index.md) for information on the other software required for your board.
+If you have an Au or Pt, you need to install [Vivado](@/tutorials/introduction/vivado.md).
+
+If you have a Cu, you can use the built-in open-source tools by clicking the beaker logo and going to _Settings → Cu Toolchain → Yosys (Open Source)_ in Alchitry Labs.
+Alternatively, you can install [iCEcube2](@/tutorials/introduction/icecube2.md).
 
 # Version 1.2.7
 

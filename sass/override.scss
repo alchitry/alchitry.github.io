@@ -321,12 +321,20 @@
   pointer-events: none;
 }
 
-.video-container {
+.video-container-full-width {
   position: relative;
   width: 100%;
   height: 0;
   padding-bottom: calc(100% * 9 / 16);
   margin-bottom: 2em;
+}
+
+.video-container {
+  position: relative;
+  width: min(800px, 100%);
+  height: 0;
+  padding-bottom: min(450px, calc(100% * 9 / 16));
+  margin: 0 auto 2em auto;
 }
 
 .video {
@@ -486,7 +494,7 @@
 
 /* HOME PAGE STYLES */
 .home-page {
-  .video-container {
+  .video-container-full-width {
     margin: 0;
   }
 

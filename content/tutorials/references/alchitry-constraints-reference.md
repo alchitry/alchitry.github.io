@@ -8,6 +8,8 @@ aliases = ["tutorials/alchitry-constraints-reference"]
 
 This page is a reference for Alchitry Constraints V2.
 
+<!-- more -->
+
 {{ youtube(id="dnk6_uN5UyE?si=eKinloydxoEf2rXi") }}
 
 # Alchitry Constraints File Contents

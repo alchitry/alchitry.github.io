@@ -10,6 +10,8 @@ This tutorial goes over all the information you need to create your own custom e
 
 # Pinout
 
+{{ youtube(id="9MR1ovY6iic?si=RrO2I0FKkwfP4FXy") }}
+
 The Alchitry V2 boards have
 three [DF40](https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
 connectors on a side.
@@ -35,21 +37,32 @@ See below for the full pinouts.
 
 ## Cu
 
-[Schematic](https://cdn.alchitry.com/docs/Cu-V2/CuSchematic.pdf)
+[Cu Schematic](https://cdn.alchitry.com/docs/Cu-V2/CuSchematic.pdf)
 
 {{ cu_pinout() }}
 
 ## Au
 
-[Schematic](https://cdn.alchitry.com/docs/Au-V2/AuSchematic.pdf)
+[Au Schematic](https://cdn.alchitry.com/docs/Au-V2/AuSchematic.pdf)
 
 {{ au_pinout() }}
 
 ## Pt
 
-[Schematic](https://cdn.alchitry.com/docs/Pt-V2/Alchitry%20Platinum%20Rev%20A.pdf)
+[Pt Schematic](https://cdn.alchitry.com/docs/Pt-V2/Alchitry%20Platinum%20Rev%20A.pdf)
 
 {{ pt_pinout() }}
+
+## Other Schematics
+
+* [Alchitry Br](https://cdn.alchitry.com/docs/Br-V2/BrSchematic.pdf)
+* [Alchitry Br Wide](https://cdn.alchitry.com/docs/Br-V2/BrWideSchematic.pdf)
+* [Alchitry Io](https://cdn.alchitry.com/docs/Io-V2/IoSchematic.pdf)
+* [Alchitry Hd](https://cdn.alchitry.com/docs/Hd-V2/HdSchematic.pdf)
+* [Alchitry Ft](https://cdn.alchitry.com/docs/Ft-V2/FtSchematic.pdf)
+* [Alchitry Ft+](https://cdn.alchitry.com/docs/Ft-V2/FtPlusSchematic.pdf)
+* [Alchitry Fn](https://cdn.alchitry.com/docs/Fn-V2/FnSchematic.pdf)
+* [Alchitry V2->V1 Adapter](https://cdn.alchitry.com/docs/V2-to-V1/V2%20to%20V1%20Adapter%20Schematic.pdf)
 
 # PCB Layout
 
@@ -60,6 +73,19 @@ See below for the full pinouts.
 These are libraries that already have the connectors in the right place and the pins labeled with the signal names.
 
 * [KiCad](https://cdn.alchitry.com/elements/Alchitry%20V2%20Elements%20KiCAD.zip)
-* [Altium Develop](https://cdn.alchitry.com/elements/Alchitry%20V2%20Elements.IntLib)
+* [Altium Designer](https://cdn.alchitry.com/elements/Alchitry%20V2%20Elements.IntLib)
 * [Fusion](https://cdn.alchitry.com/elements/Alchitry%20V2%20Elements.flbr)
 * [Eagle 9.x](https://cdn.alchitry.com/elements/Alchitry%20V2%20Elements.lbr)
+
+## 3D Models
+
+* [Alchitry Cu](https://cdn.alchitry.com/docs/Cu-V2/Cu.step)
+* [Alchitry Au](https://cdn.alchitry.com/docs/Au-V2/Au.step) - [Simplified Version](https://cdn.alchitry.com/docs/Au-V2/AuSimple.step)
+* [Alchitry Pt](https://cdn.alchitry.com/docs/Pt-V2/Alchitry%20Platinum%20v2.step)
+* [Alchitry Br](https://cdn.alchitry.com/docs/Br-V2/Br.step)
+* [Alchitry Br Wide](https://cdn.alchitry.com/docs/Br-V2/BrWide.step)
+* [Alchitry Io](https://cdn.alchitry.com/docs/Io-V2/Io.step)
+* [Alchitry Hd](https://cdn.alchitry.com/docs/Hd-V2/Hd.step)
+* [Alchitry Ft](https://cdn.alchitry.com/docs/Ft-V2/Ft.step)
+* [Alchitry Ft+](https://cdn.alchitry.com/docs/Ft-V2/FtPlus.step)
+* [Alchitry Fn](https://cdn.alchitry.com/docs/Fn-V2/Fn.step)

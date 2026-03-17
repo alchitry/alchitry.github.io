@@ -6,7 +6,10 @@ date = "2025-02-04"
 aliases = ["tutorials/lucid-reference"]
 +++
 
-This page is a reference for the Lucid V2 language.
+This page is a reference to the Lucid V2 language.
+
+<!-- more -->
+
 # Lucid File Contents
 
 Every Lucid file (.luc extension) can contain  [module](#modules), [testbench](#testbenches), and/or [global](#globals) declarations.
