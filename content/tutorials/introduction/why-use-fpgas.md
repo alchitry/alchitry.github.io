@@ -153,7 +153,7 @@ Usually, these include things like timers, UART (serial ports), or other communi
 
 Using one of the built-in peripherals for sending and receiving data is basically mandatory as _bit-banging_ it (using the 
 CPU to generate all the signals) is slow and wastes a lot of CPU time.
-However, you have a fixed number of each, and they typically route to specific pins on the chip.
+However, you have a limited number of each peripheral, and they typically route to specific pins on the chip.
 
 In an FPGA, for the most part, IO pins are IO pins.
 If you need two of them to be a serial port, connect them to a circuit that knows how to deal with that signal.
