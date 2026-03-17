@@ -17,20 +17,22 @@ the [tutorials page](@/tutorials/_index.md).
 You've also likely noticed Al, our resident mad-alchemist turned electrical engineer.
 
 All the tutorials were reorganized. We now have a full _Introduction_ section that has a great [Getting Started](@/tutorials/introduction/getting-started.md) page. 
-This tutorial is a great guide if you're just getting started with FPGAs and don't know what kind of board you should get.
+This tutorial is a great guide if you're just getting started with FPGAs and don't know what board(s) you should get.
 
-The new [Pinouts and Custom Elements](@/tutorials/references/pinouts-and-custom-elements.md) page is a great reference.
+The new [Pinouts and Custom Elements](@/tutorials/references/pinouts-and-custom-elements.md) page has all the info 
+you need to make your own elements.
 This page has the pinouts for the three base FPGA boards, including trace lengths and package delays.
 There's also a nice diagram for connector positions, links to all the 3D models, and links to the Alchitry V2 Elements
 Library for KiCad, Fusion, and Altium Designer.
 
-The standard tutorials are now broken into four categories.
+The standard tutorials are now split into four categories.
 
 _Starter_ tutorials are intended to be the first ones you work though.
 They all build off each other and are expected to be followed in order.
 
-_Intermediate_ tutorials are still fairly beginner-friendly, but they're not provided in any specific order.
+_Intermediate_ tutorials are still beginner-friendly, but they're not provided in any specific order.
 Feel free to pick and choose the order you read through them.
+They assume you have the background from the _starter_ tutorials.
 
 _Advanced_ tutorials assume you have a decent background and have read through at least a few _intermediate_ tutorials.
 
@@ -46,8 +48,8 @@ We have lots of things in the works that should help fill them out nicely.
 
 If you've been poking around the new website, you've probably already run into some of our new videos.
 
-It has been 5 years since we made a video, but we are back!
-A big part of this was moving into a new larger space where filming is much easier.
+It had been 5 years since we made a video, but we are back baby!
+A big part of this was moving into a larger space where filming is much easier.
 
 Check out our [YouTube channel](https://www.youtube.com/@Alchitry) and subscribe if you're interested in seeing our new 
 video tutorials.
@@ -72,7 +74,7 @@ Alchitry Constraints got a major overhaul and now supports various values like `
 These can be put into attribute blocks like signal connections in Lucid to avoid highly repetitive constraints.
 See the [Alchitry Constraints Reference](@/tutorials/references/alchitry-constraints-reference.md) for all the details.
 
-Alchitry Constraints now have `native` blocks that allow you to inject native constraints for when things extra spicy.
+Alchitry Constraints now have `native` blocks that allow you to inject native constraints for when things get extra spicy.
 
 A major refactoring happened under that hood that unified the code editor logic with the console text.
 This brought some performance improvements and bug fixes like being able to select off-screen text in the console.
