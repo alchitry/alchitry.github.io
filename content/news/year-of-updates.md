@@ -62,7 +62,7 @@ focused on creating your own Alchitry Element (add-on board) and digital PCB des
 Since the last post, there have been 28 new releases consisting of 494 commits!
 That's a bit much to cover in one post, but here are the highlights.
 
-Project templates were added for both the [Ft](https://shop.alchitry.com/products/alchitry-ft-v2) and [Hd](https://shop.alchitry.com/products/alchitry-hd)
+Project templates were added for both the [Ft](https://shop.alchitry.com/products/alchitry-ft-v2) and [Hd](https://shop.alchitry.com/products/alchitry-hd),
 including the [GPU](@/tutorials/projects/gpu.md) project.
 
 The UI can now be scaled to various percentages to fit your preference.
