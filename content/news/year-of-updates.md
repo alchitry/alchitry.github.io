@@ -98,7 +98,7 @@ By the end of this week, we should have one published exploring the speed of ele
 Next month, we will have videos looking at return paths and impedance.
 After all that, we will begin a series where we design an acoustic camera.
 
-As parts of these series, we will likely be offering both the acoustic camera and a Raspberry Pi PCIe adapter board as products.
+As part of this series, we will likely be offering both the acoustic camera and a Raspberry Pi PCIe adapter board as products.
 
 For Alchitry Labs, there are a handful of bugs that will get squashed soon.
 After that, the next major feature will be bringing back the on-chip debugger.
