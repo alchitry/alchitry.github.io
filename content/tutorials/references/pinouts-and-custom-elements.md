@@ -53,14 +53,34 @@ See below for the full pinouts.
 
 {{ pt_pinout() }}
 
+## Io
+
+[Io Schematic](https://cdn.alchitry.com/docs/Io-V2/IoSchematic.pdf)
+
+{{ io_pinout() }}
+
+## Hd
+
+[Hd Schematic](https://cdn.alchitry.com/docs/Hd-V2/HdSchematic.pdf)
+
+{{ hd_pinout() }}
+
+## Ft
+
+[Ft Schematic](https://cdn.alchitry.com/docs/Ft-V2/FtSchematic.pdf)
+
+{{ ft_pinout() }}
+
+## Ft+
+
+[Ft+ Schematic](https://cdn.alchitry.com/docs/Ft-V2/FtPlusSchematic.pdf)
+
+{{ ft_plus_pinout() }}
+
 ## Other Schematics
 
 * [Alchitry Br](https://cdn.alchitry.com/docs/Br-V2/BrSchematic.pdf)
 * [Alchitry Br Wide](https://cdn.alchitry.com/docs/Br-V2/BrWideSchematic.pdf)
-* [Alchitry Io](https://cdn.alchitry.com/docs/Io-V2/IoSchematic.pdf)
-* [Alchitry Hd](https://cdn.alchitry.com/docs/Hd-V2/HdSchematic.pdf)
-* [Alchitry Ft](https://cdn.alchitry.com/docs/Ft-V2/FtSchematic.pdf)
-* [Alchitry Ft+](https://cdn.alchitry.com/docs/Ft-V2/FtPlusSchematic.pdf)
 * [Alchitry Fn](https://cdn.alchitry.com/docs/Fn-V2/FnSchematic.pdf)
 * [Alchitry V2->V1 Adapter](https://cdn.alchitry.com/docs/V2-to-V1/V2%20to%20V1%20Adapter%20Schematic.pdf)
 
@@ -69,6 +89,8 @@ See below for the full pinouts.
 <img src="https://cdn.alchitry.com/elements/AU_v2_Banks_Measurements_Labeled.svg" alt="Alchitry V2 Connector Positions" style="width: min(100%, 900px);" />
 
 ## Alchitry V2 Element Libraries
+
+{{ youtube(id="oYNjJetM8HE?si=Gd8msYS6K-9yDPi8") }}
 
 These are libraries that already have the connectors in the right place and the pins labeled with the signal names.
 
