@@ -1,5 +1,5 @@
 +++
-title = "Upcomming Alchitry Labs Updates"
+title = "Upcoming Alchitry Labs Updates"
 date = "2026-06-03"
 inline_language = "acf"
 +++
