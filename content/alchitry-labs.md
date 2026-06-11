@@ -5,6 +5,16 @@ weight = 0
 
 # Version 2
 
+Check out the source code here: [GitHub Source Code](https://github.com/alchitry/Alchitry-Labs-V2).
+
+V2 supports Windows, Linux, and **Macs**.
+
+On Macs, you can only build for the [Cu](@/boards/cu.md) using the included open-source toolchain.
+Both Lattice and Xilinx still do not support Macs with their build tools.
+This means that building for the [Au](@/boards/au.md) is not possible.
+
+## Stable Channel
+
 <div class="img-left" >
 <a style="display: flex; align-items: center;" href="https://alchitry.com/Alchitry-Labs-V2/download.html">
 <div style="margin-right: 14px;">Download the latest:</div><img style="display:inline;" src="https://img.shields.io/github/v/release/alchitry/Alchitry-Labs-V2" height="30px" />
@@ -13,17 +23,15 @@ weight = 0
 
 Or get it from the [Microsoft Store](https://apps.microsoft.com/detail/9mvzrn9dbj3c) or [Arch User Repository](https://aur.archlinux.org/packages/alchitry-labs-bin).
 
-Check out the source code here: [GitHub Source Code](https://github.com/alchitry/Alchitry-Labs-V2).
+## Beta Channel
 
-A full rewrite of Alchitry Labs is currently underway. You can download the latest version at the link above.
+<div class="img-left" >
+<a style="display: flex; align-items: center;" href="https://alchitry.com/Alchitry-Labs-V2-Beta/download.html">
+<div style="margin-right: 14px;">Download the latest:</div><img style="display:inline;" src="https://img.shields.io/github/v/release/alchitry/Alchitry-Labs-V2-Beta" height="30px" />
+</a>
+</div>
 
-This is now in beta! Give it try and report any issues to the [issues page](https://github.com/alchitry/Alchitry-Labs-V2/issues).
-
-V2 supports Windows, Linux, and **Macs**.
-
-On Macs, you can only build for the [Cu](@/boards/cu.md) using the included open-source toolchain. 
-Both Lattice and Xilinx still do not support Macs with their build tools. 
-This means that building for the [Au](@/boards/au.md) is not possible.
+Or get it from the [Microsoft Store](https://apps.microsoft.com/detail/9nrzgb6phkrb) or [Arch User Repository](https://aur.archlinux.org/packages/alchitry-labs-beta-bin).
 
 ## Builders
 
