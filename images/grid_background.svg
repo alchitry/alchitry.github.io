@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="New_Here_Section"
+   data-name="New Here Section"
+   viewBox="0 0 2087.4119 400.00001"
+   version="1.1"
+   sodipodi:docname="grid_background.svg"
+   width="2087.4119"
+   height="400"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview62"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.52442855"
+     inkscape:cx="1105.0123"
+     inkscape:cy="-238.35468"
+     inkscape:window-width="3840"
+     inkscape:window-height="2123"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="New_Here_Section" />
+  <defs
+     id="defs19">
+    <style
+       id="style1">
+      .cls-1 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-2 {
+        mask: url(#mask-1);
+      }
+
+      .cls-3 {
+        mask: url(#mask);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient);
+        opacity: .8;
+      }
+
+      .cls-5, .cls-6 {
+        fill: none;
+      }
+
+      .cls-7 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-6 {
+        stroke: #faac1f;
+        stroke-miterlimit: 10;
+        stroke-width: 1.5px;
+      }
+
+      .cls-8 {
+        filter: url(#luminosity-invert-2);
+      }
+
+      .cls-9 {
+        filter: url(#luminosity-invert);
+      }
+
+      .cls-10 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath
+       id="clippath">
+      <rect
+         class="cls-5"
+         x="-1338.48"
+         y="-346.04999"
+         width="931.52002"
+         height="461.76999"
+         rx="10"
+         ry="10"
+         id="rect1" />
+    </clipPath>
+    <linearGradient
+       id="linear-gradient"
+       x1="-728.71997"
+       y1="-386.89999"
+       x2="-506.57001"
+       y2="324.78"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#131313"
+         id="stop1" />
+      <stop
+         offset=".31"
+         stop-color="#181513"
+         stop-opacity=".99"
+         id="stop2" />
+      <stop
+         offset=".49"
+         stop-color="#2a1f14"
+         stop-opacity=".95"
+         id="stop3" />
+      <stop
+         offset=".63"
+         stop-color="#483015"
+         stop-opacity=".89"
+         id="stop4" />
+      <stop
+         offset=".76"
+         stop-color="#744717"
+         stop-opacity=".79"
+         id="stop5" />
+      <stop
+         offset=".87"
+         stop-color="#ac661a"
+         stop-opacity=".68"
+         id="stop6" />
+      <stop
+         offset=".98"
+         stop-color="#f08a1d"
+         stop-opacity=".53"
+         id="stop7" />
+      <stop
+         offset="1"
+         stop-color="#ff931e"
+         stop-opacity=".5"
+         id="stop8" />
+    </linearGradient>
+    <filter
+       id="luminosity-invert"
+       x="-1990.3199"
+       y="-194"
+       width="2198.96"
+       height="508.06"
+       color-interpolation-filters="sRGB"
+       filterUnits="userSpaceOnUse">
+      <feColorMatrix
+         result="cm"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0"
+         id="feColorMatrix8" />
+    </filter>
+    <linearGradient
+       id="linear-gradient-2"
+       x1="-900.14001"
+       y1="24.049999"
+       x2="-832.38"
+       y2="286.07001"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#fff"
+         id="stop9" />
+      <stop
+         offset=".13"
+         stop-color="#fbfbfb"
+         id="stop10" />
+      <stop
+         offset=".24"
+         stop-color="#f0f0f0"
+         id="stop11" />
+      <stop
+         offset=".35"
+         stop-color="#ddd"
+         id="stop12" />
+      <stop
+         offset=".46"
+         stop-color="#c2c2c2"
+         id="stop13" />
+      <stop
+         offset=".57"
+         stop-color="#a0a0a0"
+         id="stop14" />
+      <stop
+         offset=".68"
+         stop-color="#777"
+         id="stop15" />
+      <stop
+         offset=".79"
+         stop-color="#454545"
+         id="stop16" />
+      <stop
+         offset=".89"
+         stop-color="#0d0d0d"
+         id="stop17" />
+      <stop
+         offset=".91"
+         stop-color="#000"
+         id="stop18" />
+    </linearGradient>
+    <mask
+       id="mask"
+       x="-1990.32"
+       y="-194"
+       width="2198.96"
+       height="508.06"
+       maskUnits="userSpaceOnUse">
+      <g
+         class="cls-9"
+         id="g18">
+        <rect
+           class="cls-1"
+           x="-1990.3199"
+           y="-194"
+           width="2198.96"
+           height="508.06"
+           id="rect18" />
+      </g>
+    </mask>
+    <filter
+       id="luminosity-invert-2"
+       x="-390.19"
+       y="196.42"
+       width="2198.96"
+       height="508.06"
+       color-interpolation-filters="sRGB"
+       filterUnits="userSpaceOnUse">
+      <feColorMatrix
+         result="cm"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0"
+         id="feColorMatrix18" />
+    </filter>
+    <linearGradient
+       id="linear-gradient-3"
+       x1="699.98999"
+       y1="414.48001"
+       x2="767.75"
+       y2="676.5"
+       xlink:href="#linear-gradient-2" />
+    <mask
+       id="mask-1"
+       x="-390.19"
+       y="196.42"
+       width="2198.96"
+       height="508.06"
+       maskUnits="userSpaceOnUse">
+      <g
+         class="cls-8"
+         id="g19">
+        <rect
+           class="cls-7"
+           x="-390.19"
+           y="196.42"
+           width="2198.96"
+           height="508.06"
+           id="rect19" />
+      </g>
+    </mask>
+  </defs>
+  <g
+     class="cls-2"
+     mask="url(#mask-1)"
+     id="g62"
+     transform="matrix(2.1036159,0,0,2,-446.85314,-606.32001)">
+    <g
+       id="g61">
+      <polygon
+         class="cls-6"
+         points="-331.43,637.92 1748.57,637.92 915.56,286.35 501.58,286.35 "
+         id="polygon22" />
+      <line
+         class="cls-6"
+         x1="493.38"
+         y1="289.82001"
+         x2="923.76001"
+         y2="289.82001"
+         id="line22" />
+      <line
+         class="cls-6"
+         x1="484.48999"
+         y1="293.57001"
+         x2="932.65002"
+         y2="293.57001"
+         id="line23" />
+      <line
+         class="cls-6"
+         x1="474.84"
+         y1="297.64001"
+         x2="942.29999"
+         y2="297.64001"
+         id="line24" />
+      <line
+         class="cls-6"
+         x1="464.32001"
+         y1="302.07999"
+         x2="952.82001"
+         y2="302.07999"
+         id="line25" />
+      <line
+         class="cls-6"
+         x1="452.81"
+         y1="306.94"
+         x2="964.33002"
+         y2="306.94"
+         id="line26" />
+      <line
+         class="cls-6"
+         x1="440.16"
+         y1="312.28"
+         x2="976.97998"
+         y2="312.28"
+         id="line27" />
+      <line
+         class="cls-6"
+         x1="426.19"
+         y1="318.17001"
+         x2="990.95001"
+         y2="318.17001"
+         id="line28" />
+      <line
+         class="cls-6"
+         x1="410.69"
+         y1="324.70999"
+         x2="1006.45"
+         y2="324.70999"
+         id="line29" />
+      <line
+         class="cls-6"
+         x1="393.39001"
+         y1="332.01999"
+         x2="1023.75"
+         y2="332.01999"
+         id="line30" />
+      <line
+         class="cls-6"
+         x1="373.95999"
+         y1="340.22"
+         x2="1043.1801"
+         y2="340.22"
+         id="line31" />
+      <line
+         class="cls-6"
+         x1="351.97"
+         y1="349.5"
+         x2="1065.17"
+         y2="349.5"
+         id="line32" />
+      <line
+         class="cls-6"
+         x1="326.89001"
+         y1="360.07999"
+         x2="1090.25"
+         y2="360.07999"
+         id="line33" />
+      <line
+         class="cls-6"
+         x1="298.01001"
+         y1="372.26999"
+         x2="1119.13"
+         y2="372.26999"
+         id="line34" />
+      <line
+         class="cls-6"
+         x1="264.41"
+         y1="386.45001"
+         x2="1152.73"
+         y2="386.45001"
+         id="line35" />
+      <line
+         class="cls-6"
+         x1="224.82001"
+         y1="403.16"
+         x2="1192.3199"
+         y2="403.16"
+         id="line36" />
+      <line
+         class="cls-6"
+         x1="177.47"
+         y1="423.14001"
+         x2="1239.67"
+         y2="423.14001"
+         id="line37" />
+      <line
+         class="cls-6"
+         x1="119.86"
+         y1="447.45999"
+         x2="1297.28"
+         y2="447.45999"
+         id="line38" />
+      <line
+         class="cls-6"
+         x1="48.220001"
+         y1="477.69"
+         x2="1368.92"
+         y2="477.69"
+         id="line39" />
+      <line
+         class="cls-6"
+         x1="-43.259998"
+         y1="516.29999"
+         x2="1460.4"
+         y2="516.29999"
+         id="line40" />
+      <line
+         class="cls-6"
+         x1="-164.17"
+         y1="567.33002"
+         x2="1581.3199"
+         y2="567.33002"
+         id="line41" />
+      <line
+         class="cls-6"
+         x1="1649.52"
+         y1="637.91998"
+         x2="895.84003"
+         y2="286.35001"
+         id="line42" />
+      <line
+         class="cls-6"
+         x1="1550.48"
+         y1="637.91998"
+         x2="876.13"
+         y2="286.35001"
+         id="line43" />
+      <line
+         class="cls-6"
+         x1="1451.4301"
+         y1="637.91998"
+         x2="856.41998"
+         y2="286.35001"
+         id="line44" />
+      <line
+         class="cls-6"
+         x1="1352.38"
+         y1="637.91998"
+         x2="836.70001"
+         y2="286.35001"
+         id="line45" />
+      <line
+         class="cls-6"
+         x1="1253.33"
+         y1="637.91998"
+         x2="816.98999"
+         y2="286.35001"
+         id="line46" />
+      <line
+         class="cls-6"
+         x1="1154.28"
+         y1="637.91998"
+         x2="797.28003"
+         y2="286.35001"
+         id="line47" />
+      <line
+         class="cls-6"
+         x1="1055.24"
+         y1="637.91998"
+         x2="777.57001"
+         y2="286.35001"
+         id="line48" />
+      <line
+         class="cls-6"
+         x1="956.19"
+         y1="637.91998"
+         x2="757.84998"
+         y2="286.35001"
+         id="line49" />
+      <line
+         class="cls-6"
+         x1="857.14001"
+         y1="637.91998"
+         x2="738.14001"
+         y2="286.35001"
+         id="line50" />
+      <line
+         class="cls-6"
+         x1="758.09003"
+         y1="637.91998"
+         x2="718.42999"
+         y2="286.35001"
+         id="line51" />
+      <line
+         class="cls-6"
+         x1="659.04999"
+         y1="637.91998"
+         x2="698.71002"
+         y2="286.35001"
+         id="line52" />
+      <line
+         class="cls-6"
+         x1="560"
+         y1="637.91998"
+         x2="679"
+         y2="286.35001"
+         id="line53" />
+      <line
+         class="cls-6"
+         x1="460.95001"
+         y1="637.91998"
+         x2="659.28998"
+         y2="286.35001"
+         id="line54" />
+      <line
+         class="cls-6"
+         x1="361.89999"
+         y1="637.91998"
+         x2="639.57001"
+         y2="286.35001"
+         id="line55" />
+      <line
+         class="cls-6"
+         x1="262.85999"
+         y1="637.91998"
+         x2="619.85999"
+         y2="286.35001"
+         id="line56" />
+      <line
+         class="cls-6"
+         x1="163.81"
+         y1="637.91998"
+         x2="600.15002"
+         y2="286.35001"
+         id="line57" />
+      <line
+         class="cls-6"
+         x1="64.760002"
+         y1="637.91998"
+         x2="580.44"
+         y2="286.35001"
+         id="line58" />
+      <line
+         class="cls-6"
+         x1="-34.290001"
+         y1="637.91998"
+         x2="560.71997"
+         y2="286.35001"
+         id="line59" />
+      <line
+         class="cls-6"
+         x1="-133.33"
+         y1="637.91998"
+         x2="541.01001"
+         y2="286.35001"
+         id="line60" />
+      <line
+         class="cls-6"
+         x1="-232.38"
+         y1="637.91998"
+         x2="521.29999"
+         y2="286.35001"
+         id="line61" />
+    </g>
+  </g>
+</svg>
